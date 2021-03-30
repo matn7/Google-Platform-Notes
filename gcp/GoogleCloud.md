@@ -1062,6 +1062,42 @@ Each dataset can be shared with individual users.
 Each table has a schema that describes strongly typed columns of values. 
 Each table belongs to a dataset.
 
+### Summary
+
+- Continuum between managed infrastructure and dynamic infrastructure. GCP Compute Services are arranged along this
+continuum.
+- Choose Compute Engine if you want to deploy your application in VMs that run on Google's infrastructure.
+- Choose Kubernetes Engine if you want instead to deploy your app in containers that run on Google's infrastructure. In a
+Kubernetes cluster you're defining control.
+- Choose App Engine instead if you just want to focus on your code, leaving most infrastructure and provisioning to Google.
+    - App Engine flexible environment lets you use any runtime you want, and gives you full control of the environment
+    in which your app runs.
+    - App Engine standard environment lets you choose from a set of standard runtimes and offers finer-grained scaling and 
+    scaled to zero.
+- Cloud Functions, you supply chunks of code for business logic and your code get spun up on demand in response to events.
+- Variety of ways to load balance inbound traffic:
+    - Global HTTP(S) LB to put your Web app behind a single anycast IP to the entire internet. It load balances traffic 
+    among all your backend instances in regions around the world. And it's integrated with GCP's Content Delivery Network.
+    - Global TCP or SSL Proxy for traffic on many ports. For other ports or UDP traffic, use regional LB.
+    - To load balance the internal tiers of a multi-tier application, use the internal load balancer.
+- Variety of ways for you to interconnect your on-premises or other network with your Google VPC.
+    - Setup VPN and use Cloud ROuter to make it dynamic.
+    - Peer with Google in Point of Presence either directly or through a carrier partner.
+    - SLA and adopt one of the required network topologies, use Dedicated Interconnect.
+- Storage:
+    - Cloud Datastore if you need to store structured objects, or if you require support for transactions and SQL-like
+    queries.
+    - Cloud Bigtable if you need to store a large amount of single-keyed data, especially structured objects.
+    - Cloud Storage if you need to store immutable binary objects.
+    - Cloud SQL or Cloud Spanner if you need full SQL support for an online transaction processing system. Cloud SQL
+    provides terabytes of capacity while Cloud Spanner provides petabytes and horizontal scalability.
+    - BigQuery if you need interactive querying in an online analytical processing system with petabytes of scale. 
+- Cloud Storage, Four Storage Class:
+    - Multi-regional and Regional are the classes for warm and hot data. Use Multi-regional especially for content that's 
+    being served to a global Web audience. Use Regional for working storage for compute operations.
+    - Nearline and Coldline are the classes for. Nearline for backups and for infrequently accessed content. Coldline
+    for archiving and disaster recovery.
+    
 ***
 
 # App Development
@@ -1333,6 +1369,14 @@ $> gsutil cp /home/mike/pictures/cloud-logo.png gs://my-bucket
     - Cloud Vision API.
     - Cloud Speech API.    
     
+**Summary**
+
+- Use API Explorer as a sandbox to try out Google Cloud APIs.
+- When you are ready to write your app, use Google Cloud Client Libraries to programmatically interact with GCP 
+services. 
+- If you need to write quick scripts to work with GCP services use the Google Cloud SDK.
+- Implement Federated identity management using Firebase Authentication.
+    
 ### :star: Run Java App
 
 - This command (above) to configure the IP tables redirects requests on Port 80 to Port 8080 - 
@@ -1506,7 +1550,23 @@ Cloud Storage, Firestore, Datastore, Cloud Bigtable, Cloud SQL, Cloud Spanner, B
 | Spanner | Low (ms) | Any | Relational |
 | BigQuery | High(s) | Any | Columnar |
 
-### Datastore Concepts and Indexes
+**Summary**
+
+- Store files in Cloud Storage, use reader labs, Memcached Cloud to cache app data.
+- Cloud Datastore use it to store structured app data.
+- Bigtable is a high-performance, wide column NoSQL database. High volume flat data such as sensor readings and data from
+IoT devices.
+- CloudSQL is a managed service for MySQL and PostgreSQL.
+- CloudSQL Proxy to easily and securely connect to your Cloud SQL instance.
+- If your apps relational data will exceed the volume that can be optimally handled in Cloud SQL, or you need global reach,
+use Spanner.
+- Spanner is a fully managed relational database service that offers both strong consistency and horizontal scalability.
+- Spanner supports global automatic synchronous replication with low latency.
+- BigQuery is a fully managed data warehouse solution. Use for analytics workloads. 
+
+***
+
+## Datastore Concepts and Indexes
 
 **Datastore = Firestore in Datastore mode**
 
@@ -1668,7 +1728,21 @@ key = client.key('Task', 'hard/task')
 
 > Make your Datastore transaction idempotent whenever possible!
 
-**Design app to handle errors**        
+**Design app to handle errors**     
+
+**Summary**   
+
+- Cloud Datastore is a fully managed, NoSQL database service that you can use to store structured or semi-structured
+app data.
+- Data objects in Cloud Datastore are called entities. Each entity is of a particular kind.
+- You can specify ancestor path relationships between entities to create entity groups.
+- Ancestor queries of entity groups give you a strongly consistent view of the data.
+- By creating entity group you can ensure that all related entities can be updated in a single transaction.
+- Cloud Datastore automatically build indexes for individual properties in an entity. Composite index for more
+complex queries.
+- Cloud Datastore can scale seamlessly with zero down time, make sure to ramp up traffic gradually.
+- General guideline is to use the 500-50-5 rule to ramp up traffic. (500 write per minute, increase 50% every 5 minutes).
+- Distribute your writes across a key range.
 
 ***
 
@@ -1935,11 +2009,22 @@ Cloud Storage resources.
 - You can also allow scripts hosted in Cloud Storage to access static resources hosted on a website external to
 Cloud Storage.
 
+**Summary**
+
+- Cloud Storage is the ideal solution for file storage in the Cloud.
+- Storage classes and object lifecycle management enable you to optimally store and archive data depending on frequency
+of access.
+- You can compose large objects using smaller fragments that are uploaded separately. With this approach, you don't have 
+to worry about intermittent network failures during uploads. 
+- Leverage parallel uploads to speed up the upload process.
+- Cloud Storage enables you to secure and so rich content such as audio and video with high availability and throughput.
+- Use Cloud Storage as a key component of your data analytics pipelines and ML apps.
+
 ***
 
-## Securing and Integrating Components of App
+# Securing and Integrating Components of App
 
-### Handling Authentication and Authorization
+## Handling Authentication and Authorization
 
 **Cloud Identity and Access Management**
 
@@ -2096,7 +2181,7 @@ Cloud Storage.
 
 - Controls access to your cloud apps running on Google Cloud.
 - Verifies a user's identity.
-- Determines whether thet user should be allowed to access the app.    
+- Determines whether that user should be allowed to access the app.    
 
 ![IAP](gcp-img/gcp-iap.png "IAP")
 
@@ -2119,6 +2204,930 @@ Cloud Storage.
 Firebase services.
 - Both support a collection of Client and Admin SDKs.
 
+**Notes**
+
+- A service account is a special Google account that belongs to your application or a VM instance, 
+instead of to an individual end user. Use a service account to call the Google API of a service.
+
+**Summary**
+
+- You can control user access to the resources in your app by creating IAM members with the appropriate permissions.
+- App access to GCP APIs is controlled using service accounts.
+- Your app assumes the identity of the service account to invoke GCP APIs.
+- You can create one or more service accounts to restrict access to different resources in your app.
+- Cloud Identity Aware Proxy, enables you to control access to your app. It verifies the user's identity and checks 
+whether that user should be allowed to access the app.
+- End users, simply use an internet accessible URL to access Cloud IAP secured apps. No more VPN.
+- Use Firebase Authentication to authenticate your users using their preferred identity provider such as; 
+GitHub, Google, Facebook, or Twitter.
+
+***
+
+## Google Cloud Pub/Sub
+
+**Organizations have to rapidly ingest, transform, and analyze massive amounts of data**
+
+**Organizations have to orchestrate complex business processes**
+
+**Pub/Sub is a fully managed real-time messaging architecture**
+
+- Pub/Sub delivers each message to every subscription at-least-once.
+
+![Cloud Pub/Sub](gcp-img/gcp-cloud-pub-sub.png "Cloud Pub/Sub")
+
+**Pub/Sub supports pull and push subscriptions**
+
+![Pull Subscriptions](gcp-img/gcp-pub-sub-pull-push.png "Pull Subscriptions")
+
+- Use pull subscription model when you need to process a very large volume of messages with high-throughput.
+
+![Pull Subscriptions](gcp-img/gcp-pub-sub-push-sub.png "Push Subscriptions")
+
+- Use push subscription in environments where Google Cloud dependencies, such as credentials and the Client Library can't
+be configured or multiple topics must be processed by the same web-hook.
+- When an HTTP endpoint will be invoked by Pub/Sub and other apps.
+
+**Choice of execution environments for subscribers**
+
+- Develop highly-scalable subscribers with Cloud Functions or Dataflow.
+- Deploy subscriber on Compute Engine, Google Kubernetes Engine, or App Engine flexible environment. Autoscale based
+on Cloud Monitoring metrics.
+
+### Pub/Sub use cases
+
+**Use Cloud Pub/Sub for asynchronous processing and loose coupling**
+
+![Pub/Sub async processing](gcp-img/gcp-pub-sub-async.png "Pub/Sub async processing")
+
+**Use Cloud Pub/Sub to buffer incoming data**
+
+![Pub/Sub buffer data](gcp-img/gcp-pub-sub-buffer.png "Pub/Sub buffer data")
+
+**Use Cloud Pub/Sub to fan out messages**
+
+![Pub/Sub fan out message](gcp-img/gcp-pub-sub-fan-out.png "Pub/Sub fan out message")
+
+**Handle duplicate messages**
+
+- Ensure that messages contain identifying attributes thet subscribers can use to perform idempotent operations.
+- Publish messages that contain a unique ID.
+- Check previously saved messages to see whether the incoming message is new and needs to be processed.
+- Store information about messages that have already been processed. Use the unique ID as key.
+
+**For scalability, reduce, or eliminate dependencies on message ordering**
+
+- **Scenarios**:
+    - Ordering is irrelevant:
+        - Collections of statistics about event.
+        - Notification when somebody comes online.
+    - Final order is important; processed message order is not:
+        - Log messages.
+    - Processed message order is important:
+        - Transactional data such as financial transactions.
+        - Multi-player network games.   
+
+**Handle message ordering for transactional data**
+
+- Subscriber knows the order in which messages must be processed.
+- Subscriber check oldest unacknowledged message in Cloud Monitoring metrics.
+
+```
+mvn compile exec:java@worker
+```
+
+**Summary**
+
+- In general avoid point-to-point communications between applications:
+    - Such integrations can make your system brittle and difficult to manage.
+- Use Cloud Pub/Sub to simplify integrations between scalable distributed systems.
+- You can build a more scalable and resilient architecture when the components of all are loosely couples and
+communicate asynchronously.
+- Use Cloud Pub/Sub to rapidly and reliably ingest large volumes of incoming data and to fan out messages to multiple
+subscribers.
+- You can run your subscriber app in any execution environment such as Compute Engine, GKE, or App Engine.
+- You can also perform event-driven processing of Cloud Pub/Sub messages by using a Cloud functions.
+- With Cloud Pub/Sub, you can build highly scalable and resilient architectures.
+
+***
+
+## Adding Intelligence
+
+**Use pre-trained machine learning (ML) models to add intelligence to your apps**
+
+- Use pre-trained ML models:
+    - Vision API
+    - Speech API
+    - Video Intelligence API
+    - Translation API
+    - Natural Language API
+- Use your own data to train models:
+    - TensorFlow
+    - Cloud API Platform    
+
+**Invoke REST APIs to use machine learning APIs; no machine learning knowledge is required**
+
+**Analyze images**
+
+- Label Detection
+- Optical character recognition (OCR)
+- Landmark Detection
+- Logo Detection
+- Face Detection
+- Explicit Content Detection
+
+**Summary**
+
+- Invoke Google's machine learning APIs, using Google Cloud Client Libraries in programming language you choose.
+
+***
+
+## Cloud Functions
+
+- Google Cloud services emit "events" (file uploaded to google cloud storage bucket etc).
+- External services invoke functions.
+- Your functions respond to event.
+- Functions can write back to the cloud or call other APIs.
+
+**Cloud Functions enable event-driven, serverless, highly scalable microservices**
+
+**Cloud Functions use cases**
+
+- Cloud functions can serve as webhooks:
+    - You can set up a webhook that is invoked automatically after each commit to a Git repository.
+    - External and internal clients can make direct HTTP calls to invoke microservices that are deployed as cloud functions.
+- For lightweight extract, transform, load or ETL operations:
+    - File is uploaded to Cloud Storage, a cloud function can be triggered to transform and upload the contents to
+    a database.
+- Process IoT streaming data or other application messages that are published to a pub/sub topic.
+
+**Cloud Functions features**
+
+- Pay as you go.
+- No servers to provision, manage or upgrade.
+- Highly scalable, automatically scaling based on load.
+- Pay for your function's execution time, pay nothing when it's idle.
+- Write your functions in Node.js, Python, Go or Java.
+
+**Cloud Functions can have asynchronous and synchronous triggers**
+
+- Background functions - Asynchronous.
+- HTTP function - Synchronous.
+
+**Write a Cloud Function (Node.js example)**
+
+- Background function
+
+*index.js*
+
+```
+            Event
+Function
+            Callback
+```
+
+- Http function
+
+*index.js*
+
+```
+            Request
+Function
+            Response
+```
+
+- Specify dependencies in a package.json file.
+
+**Deploy your Cloud Function**
+
+![Deploy Cloud Functions](gcp-img/gcp-deploy-cloud-function.png "Deploy Cloud Functions")
+
+**Cloud Functions support logging, error reporting, and monitoring**
+
+- Cloud Logging
+
+```
+INFO log level: console.log(...)
+ERROR log level: console.error(...)
+DEBUG log level: internal system messages
+```
+
+- Error Reporting
+
+```
+Errors thrown or reported manually
+```
+
+- Cloud Functions
+
+```
+Number of invocations, execution time, memory usege
+```
+
+**Summary**
+
+- Cloud Functions are ideal for lightweight microservices and event-driven processing.
+- Cloud Functions can serve as WebHooks when invoked by using the direct HTTP request response method.
+- You can use Cloud Functions to develop microservices that perform lightweight extract transform load. ETL operations
+or process IoT Streaming Data.
+- Cloud Functions provides a highly scalable serverless environment.
+
+***
+
+## Cloud Endpoints
+
+**Implement an API gateway to make backend functionality available to consumer apps**
+
+**Deploying and managing APIs can be difficult**
+
+- API management:
+    - Interface definition.
+    - Authentication and authorization.
+    - Management and scalability.
+    - Logging and monitoring.
+
+**Cloud Endpoints makes it easier to deploy and manage APIs**
+
+- Cloud Endpoints:
+    - Interface definition:
+        - OpenAPI
+        - gRPC API
+    - Authentication and authorization:
+        - Service-to-service authentication.
+        - User authentication.
+    - Management and scalability:
+        - Extensible Service Proxy, Service Management, Service Control.
+    - Logging and monitoring:
+        - Cloud Logging.
+        - Cloud Trace.
+
+**Cloud Endpoints supports REST APIs and gRPC APIs**
+
+- Cloud Endpoints for REST APIs:
+    - JSON/REST API:
+        - Popular
+        - Easy to use
+    - API configuration: OpenAPI specification.
+- Cloud Endpoints for gRPC APIs:
+    - gRPC API:
+        - Newer technology
+        - Fast
+        - Can generate client libraries for programming languages.
+        - Enables type safety.
+    - API configuration:
+        - Service definition: Protocol buffers.
+        - Service configuration: gRPC API specification.    
+
+### Cloud Endpoints for REST APIs
+
+**Develop and deploy your API configuration ans API backend**
+
+```
+Develop API Backend > Develop API conf > Deploy API conf > Deploy API backend
+```
+
+**Use the OpenAPI specification as the Interface Definition Language**
+
+```
+swagger: "2.0"
+info:
+    description: "My new API."
+    title: "Cloud Endpoints Example"
+    version: "1.0.0"
+host: "quiz-api.endpoints.PROJECT-ID.cloud.goog:
+basePath: ...
+paths: ...
+securityDefinitions: ...
+```
+
+**Service Management API, Service Control API, and Extensible Service Proxy form the core of Cloud Endpoints**
+
+![Service Management API](gcp-img/gcp-service-mgmt-api.png "Service Management API")
+
+**Enable user authentication and service-to-service authentication**
+
+- Create a service account for service-to-service authentication.
+- Use a Google ID Token to sign the token.
+
+**You can restrict API access**
+
+- Service Consumer, [Service Controller, Viewer, Editor, Owner]:
+    - Assign Cloud IAM roles to users.
+    - Grant permissions for specific APIs.
+
+**You can deploy multiple versions of your API in production**
+
+**You can deploy your API in multiple environments**
+
+- Development: `quiz-api.endpoints.mike-dev-project.cloud.goog/v1/extract`
+- Staging: `quiz-api.endpoints.staging-project.cloud.goog/v1/extract`
+- Prod Alpha: `quiz-api.endpoints.prod-alpha-project.cloud.goog/v1/extract`
+- Prod: `quiz-api.endpoints.prod-project.cloud.goog/v1/extract`
+
+**You can view error logs and metrics from the Cloud Endpoints dashboard**
+
+**You can allow users to test and explore your API using an Endpoint Developer Portal**
+
+**Summary**
+
+- With Cloud Endpoints you can deploy REST or gRPC-based APIs.
+- You can define the API configuration using industry standard open formats such as OpenAPI for REST APIs and
+protocol buffers for gRPC-based apis. These APIs can invoke functionality in an API backend that runs on any GCP
+compute environment, such as Compute Engine, GKE or App Engine.
+- Deploying gRPC APIs in order to take advantage of bi-directional streaming with HTTP to based transport, but still want
+to allow clients to make REST API calls, you can specify special mapping roles.
+- The Extensible Server Proxy for gRPC translates RESTful JSON over HTTP into gRPC requests. This approach gives greater 
+flexibility when integrating with other systems.
+
+**Course Summary**
+
+- Federated identity management by using Firebase Authentication.
+- Use Cloud Pub/Sub to build loosely coupled apps.
+- With Cloud Pub/Sub, you can rapidly ingest large volumes of data in big data apps and fan out messages to multiple
+subscribers.
+- Cloud Pub/Sub scaled automatically depending on the volume of messages and enables you to securely integrate distributed systems.
+- Use cloud functions to build lightweight, highly scalable microservices and perform event-driven processing in 
+response to events in Cloud Pub/Sub and other GCP services.
+- Create API gateways by using cloud endpoints.
+- ML models, including the vision, speech and natural language APIs.
+
+***
+
+# App Deployment, Debugging, and Performance
+
+## Deploying Applications Using Cloud Build, Container Registry, and Deployment Manager
+
+**Implement continuous integration and delivery for reliable releases**
+
+![GCP CI](gcp-img/gcp-continuous-integration.png "GCP CI")
+
+![GCP CD](gcp-img/gcp-continuous-delivery.png "GCP CD")
+
+**Containers: an efficient way to isolate code and manage workloads**
+
+![VMs vs Containers](gcp-img/gcp-containers-vm.png "VMs vs Containers")
+
+- In Linux and Windows the memory address spaces of running processes have long been isolated from one another.
+- Take advantage of additional OS features that give processes the capability to have own name spaces and that give
+a supervisor process the ability to limit other processes. Access to resource is containers start much faster than
+virtual machines and use fewer resources is because each container does not have its own instance of the OS.
+- The container runtime also determines the image format Google Kubernetes Engine uses the docker container
+runtime.
+
+**Why use containers?**
+
+- Simplify deployments.
+- Rapid availability. Abstract just OS instead of whole physical computer.
+- The ability to create microservices.
+
+**Container features**
+
+- Consistency:
+    - Across development, testing, and prod environment.
+- Loose Coupling:
+    - Between app and OS layers.
+- Workload Migration:
+    - Simplified between on-premises and cloud environments.
+- Agility:
+    - Agile development and operations.
+
+**Kubernetes can be used to manage your containers**                
+
+**Why use Kubernetes?**
+
+- Automation:
+    - Automates deployment, scaling, load balancing, logging, monitoring.
+- Efficient:
+    - Places container based on their requirements to efficiently use compute resources (CPU, memory).
+- Declarative Configuration:
+    - Maintains the desired state.
+- Self-healing:
+    - Automatically replaces unhealthy or failed containers.
+    
+```
+Google Kubernetes Engine (GKE) is Google Cloud's fully managed service
+for managing containers and the compute nodes they run on
+```    
+
+**Use Cloud Build and Container Registry to create application images**
+
+![Use Cloud Build and Container Registry](gcp-img/gcp-cloud-build.png "Use Cloud Build and Container Registry")
+
+*cloudbuild.yaml*
+
+```yaml
+steps:
+- name: 'grc.io/cloud-builders/docker'
+  args: [ 'build', '-t', 'grc.io/$PROJECT_ID/cb-demo-img', '.' ]
+images:
+- 'gcr.io/$PROJECT_ID/cb-demo-img'
+tags:
+- "test"
+- "2.0b35"
+```            
+
+**Use Deployment Manager to launch your Google Cloud Platform resources**
+
+```yaml
+imports:
+- path: path/to/template.jinja
+  name: my-template
+- path: path/to/another/template.py
+
+resources:
+  - name: resource-a
+    type: type-of-resource
+    properties:
+      property-a: value
+      property-b: value
+      ... 
+```
+
+- Define template properties and environment variables.
+- Define conditions to create different deployments based on a single configuration.
+- Specify dependencies between resources.
+- Specify startup scripts to run when VM launches.
+- Define outputs.
+
+**Summary**
+
+- Implement CI and CD pipelines to enable repeatable and reliable deployments treat your infrastructure as code.
+- This approach will enable you to create and store versions of your infrastructure.
+- In case of unexpected problems you can roll back to a previous version of the infrastructure and app image that works.
+- Using cloud build you can build Docker images for your app from source code located in cloud storage,
+cloud source repo, GitHub or Bitbucket.
+- Cloud build automatically pushes these images to container registry.
+- You can use deployment manager to stand up your GCP infrastructure, including Compute Engine VMs, GKE and more.
+
+***
+
+## Introduction to Execution Environments in Google Cloud
+
+**You have a choice of app execution environments**
+
+- Google Cloud Dataflow
+- Google Cloud Functions
+- Cloud Run
+- Google App Engine Flexible Environment
+- Google Kubernetes Engine
+- Google Compute Engine
+
+### Dataflow
+
+**Create serverless, elastic data pipelines with Cloud Dataflow**
+
+- Apache Beam SDK (Java and Python).
+
+**Cloud Dataflow removes operational overhead**
+
+- Autoscaling:
+    - Based on metrics: CPU utilization, throughput and the amount of work remaining.
+    - Rate of Game Events
+    - Number of Workers
+- Dynamic Workload Rebalancing    
+
+**Use Dataflow for high-volume data processing**
+
+- (Batch, Stream) --> Dataflow:
+    - Any Combination of basic and custom transformations
+    - Filtered
+    - Filtered and Grouped
+    - Filtered, Grouped and Windowed
+- Use cases:
+    - Click-stream point of sale and segmentation analysis in the retail industry.
+    - Fraud detection in the financial service industry.
+    - Personalized user experience in the gaming industry.
+    - IoT Analytics in manufacturing, healthcare and logistics industries.
+
+**Consider other compute environments**
+
+```
+Apache Beam SDK 2.x for Java and Python
+```
+
+### Cloud Functions
+
+**Develop event-driven, serverless, highly scalable microservices with Cloud Functions**
+
+![Cloud Functions](gcp-img/gcp-event-driven-cloud-functions.png "Cloud Functions")
+
+**Use Cloud Functions to enable event-driven processing or to develop lightweight microservices**
+
+- Lightweight ETL:
+    - Cloud Storage
+    - Cloud Functions
+    - Dtastore
+- Messaging:
+    - Pub/Sub
+    - Cloud Functions
+- Webhooks:
+    - HTTP
+    - Cloud Functions        
+
+**Focus on code: Node.js and Cloud Client Library**
+
+*index.js*
+
+```js
+exports.subscribe = function subscribe(event, callback) {
+    // The Cloud Pub/Sub Message object.
+    const pubsubMessage = event.data;
+
+    console.log(Buffer.from(pubsubMessage.data, 'base64').toString());
+
+    callback();
+};
+```
+
+*package.json*
+
+```json
+{
+  "name": "simple-pubsub",
+  "version": "0.0.1"
+}
+```
+
+**Consider other compute environment**
+
+- Large or complex codebase.
+- Languages other than Node.js, Python, Go, or Java.
+
+### App Engine Flexible Environment
+
+**Deploy scalable web and mobile backends in any language with App Engine flexible environment**
+
+**Develop and deploy microservices**
+
+**Go from code to production with a single command**
+
+```console
+$> gcloud app deploy
+```
+
+- Sets up LB.
+- 3 zones.
+- Autoscale
+
+**Deploy safely with zero downtime**
+
+**Use App Engine flexible environment for highly scalable web-focused apps**
+
+- Applications that are based on HTTP/s request-responses.
+- Applications that deploy public endpoints.
+- Continuous integration and delivery (CI/CD) pipelines with Jenkins or Spinnaker.
+
+**Consider other compute environment**
+
+- Protocol Other Than HTTP/S.
+- Persistent Disks.
+- Spiky or Very Low Traffic.
+
+**App Engine standard environment is an option for apps with spiky orr very low traffic**
+
+- App Engine Standard Environment:
+    - App Engine Standard APIs.
+- App Engine flexible environment:
+    - Google Cloud Client Library.    
+
+### Google Kubernetes Engine
+
+**Kubernetes is an open-source platform for deploying, scalingm and operating containers**
+
+![Kubernetes](gcp-img/gcp-kube.png "Kubernetes")
+
+- Provides a framework to run distributed, containerized systems resiliently and at scale.
+- It takes care of many operational tasks, such as: scaling app components, providing stable network abstractions, 
+orchestrating failovers, rolling out deployments, Storage Orchestration, and management of secrets and configs.
+- A Kubernetes cluster contains control plane and worker nodes.
+- The nodes in the cluster are the machines such as virtual machines, physical servers etc. that tun your apps.
+- The Kubernetes control-plane manages the worker nodes and the pods in the cluster. 
+- A pod is a group of containers that share networking and storage resources on the node.
+
+**GKE is managed service for Kubernetes**
+
+- Google maintains:
+    - Operating systems
+    - Nodes (including control plane)
+    - Monitoring and logging
+    - Kubernetes upgrades
+
+**GKE features**
+
+- Fully managed
+- Container-optimized OS
+- Auto upgrade
+- Auto repair
+- Cluster scaling
+- Seamless integration: Cloud Build, Container Registry
+- Identity and Access Management
+- Integrated logging and monitoring
+- Integrated networking
+- Cloud Console
+
+**Use GKE for complex, portable apps**
+
+- Any app runtime packaged as a Docker container image.
+- Hybrid or multi-cloud apps.
+- Protocol other than HTTP/S
+
+**GKE simplifies infrastructure service provisioning for your apps**
+
+- Google Cloud persistent disks.
+- Google Cloud network load balancers.
+- Integration with Google Cloud's operations suite.
+
+**Use GKE for greater control over how Google Cloud resources are deployed for your apps**
+
+```console
+gcloud container cluster create
+    --machine-type=MACHINE_TYPE
+    --disk-size=DISK_SIZE
+    --num-nodes=NUM_NODES
+
+gcloud container cluster create
+    --num-nodes 30
+    --enable-autoscaling
+    --min-nodes 15
+    --max-nodes 50
+```
+
+**Deploy apps using standard Kubernetes tools**
+
+```yaml
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+    name: quiz-frontend
+spec:
+    replicas: 3
+    template:
+      spec:
+        containers:
+        - name: quiz-frontend
+          image: gcr.io/.../quizapp
+          ports:
+          - name: http-server
+            containerPort: 8080
+```
+
+```console
+$> kubectl create -f ./frontend-deployment.yaml
+```
+
+**Use GKE as a part of your CI/CD pipeline**
+
+- Cloud Build, Container Registry, and GKE can be used to create a strong CI/CD system.
+
+**Consider other compute environments**
+
+- If your app cannot be packaged as a container.
+
+### Cloud Run
+
+**Cloud Run lets you focus on development**
+
+- Run stateless containers that are invokable via web requests or Cloud Pub/Sub events.
+- Cloud Run is serverless, it abstracts away all infrastructure management.
+
+**Cloud Run doesn't restrict the way you code**
+
+**Focus on writing code**
+
+- Charges for the resources you use calculated down to the nearest 100 milliseconds.
+
+**Deploy automatically scaled containerized apps with a single command**
+
+```console
+$> gcloud beta run deploy --image gcr.io/PROJECT-ID/helloworld --platform managed
+```
+
+**Consider other compute environments**
+
+- If your app cannot be packaged as a container.
+- If your app is not stateless, or must respond to requests or events delivered using protocol other than HTTP.
+
+### Compute Engine
+
+- Gives you the greatest amount of control over your infrastructure.
+
+**Run your app on high-performance, scalable VMs with Compute Engine**
+
+- Predefined and Custom Machine Types.
+- Persistent Disks and Local SSDs.
+- Pre-emptible VMs.
+- Windows, Linux OS, or your own.
+
+**Use Compute Engine for full control of infrastructure**
+
+- Machine Type and OS
+- Software
+- Instance Groups with Global Load Balancing
+
+**Use Compute Engine for maximum flexibility**
+
+- Third-party software
+- Graphics Processing Unit
+- TensorFlow Processing Unit (TPU)
+
+**Use Compute Engine for lift-and-shift migration**
+
+**Consider startup time**
+
+![VM Startup Phases](gcp-img/gcp-compute-engine-startup-time.png "VM Startup Phases")
+
+- Profile startup scripts.
+- Consider custom image.
+- Set appropriate target usage levels in autoscaling policy.
+
+### Summary
+
+- Google Cloud Client Libraries are the recommended way to programmatically interact with GCP services.
+- With this approach, you are not boxed into one execution environment.
+
+***
+
+## Debugging, Monitoring, and Performance Tuning
+
+**Google Cloud's operations suite, a multi-cloud service**
+
+- Cloud Logging:
+    - Platform/system/app logs.
+    - Log search/view/filter.
+    - Log-based metrics.
+- Cloud Monitoring:
+    - Platform/system/app metrics.
+    - Uptime/health checks.
+    - Dashboards.
+    - Alerts.
+- Error Reporting:
+    - Error notifications.
+    - Error dashboard.
+- Cloud Trace:
+    - Latency reporting.
+    - Per-URL latency sampling.
+- Cloud Debugger:
+    - Production debug snapshots.
+    - Conditional snapshots.
+    - IDE integration.
+- Cloud Profiler:
+    - Low-impact profiling of apps in production.            
+
+```
+Error Reporting displays errors that have occurred in your applications. 
+You can view the stack trace to determine where the error occurred. 
+```
+
+**Cloud Monitoring enables you to increase app reliability**
+
+- Monitor Google Cloud, AWS, and multi-cloud environments.
+- Identify trends and prevent issues.
+- Reduce monitoring overhead.
+- Improve signal-to-noise.
+- Fix problems faster.
+
+### Debugging Application
+
+**Application Performance Management (APM) tools**
+
+- Cloud Trace
+- Cloud Debugger
+- Cloud Profiler
+
+**Cloud Trace - Distributed tracing for everyone**
+
+**Cloud Trace can help answer questions**
+
+- How long does it take my application to handle a given request?
+- Why is it taking my app so long to handle a request?
+- Why do some of my requests take longer than others?
+- What is the overall latency of requests to my app?
+- Has latency from my app increased or decreased over time?
+- What can I do to reduce app latency?
+- What are my app's dependencies?
+
+**View and analyze trace data in the Cloud Trace interface**
+
+**Cloud Profiler - Continuous profiling to improve performance and reduce costs**
+
+**The Cloud Profiler UI provides flame charts to correlate statistics with app areas and components**
+
+**Debug your app in development and production**
+
+**Debugger automatically creates debug snapshots**
+
+### Logging
+
+**Install the Cloud Logging agent to capture logs**
+
+- Compute Engine
+- Amazon EC2
+
+```
+Fluentd
+
+You can install Cloud Logging Agent on Compute Engine and Amazon EC2 instances to stream logs from third-party 
+applications into Cloud Logging.
+```
+
+**Cloud Logging is preconfigured in other compute environments**
+
+- Dataflow
+- App Engine (Flexible and standard environments)
+- Cloud Functions
+- Google Kubernetes Engine
+
+**Set up log-based metrics and alerts**
+
+- Cloud Logging and Cloud Monitoring
+
+### Monitoring and Tuning Performance
+
+**Monitor to compare results over time or between experimental configurations**
+
+**Monitor to raise alerts when something is broken or about to be broken**
+
+**Monitor to perform ad hoc retrospective analysis**
+
+**Identify APIs and resources that you want to monitor**
+
+- Public and private endpoints.
+- Multi-cloud resources, such as Compute Engine VM instances, Cloud Storage buckets, Amazon EC2 instances, and
+Amazon RDS databases.
+
+**Identify service-level indicators and objectives**
+
+- Service-Level Indicator (SLI): Latency.
+- Service-Level Objective (SLO): 99.9% of requests over 30 days have latency <100ms
+
+**Create dashboards that include four golden signals**
+
+- Latency: Amount of time it takes to serve a request.
+- Traffic: How much demand is placed on your system.
+- Error: Indicate the number of failed requests.
+- Saturation: How full your app is, or what resources are being stretched in reaching target capacity.
+
+### Identifying and Troubleshoot Performance Issues
+
+**Monitor performance in development and production**
+
+**In Development: Add performance tests to your test suite**
+
+**In Development: Check performance watchpoints related to incoming requests**
+
+- A watch point is a potential area of configuration or app code that could indicate a performance issue.
+- Web authoring:
+    - Web page design and implementation.
+- Cloud-boot performance:
+    - Operations during initial boot of VM.
+- Self-inflicted load:
+    - Service-to-service or browser-to-service calls.
+
+**In Development: Review application code and logs**
+
+- Application errors:
+    - HTTP errors and other exceptions.
+- Runtime code gen:
+    - Aspect-oriented programming.    
+- Static resources:
+    - Static web pages, images.
+- Caching:
+    - Database retrieval and computation.
+- One-at-a-time retrieval:
+    - Multiple serial requests.
+- Error-handling:
+    - Exponential backoff.    
+
+**In Production: Check performance watchpoints related to incoming requests in production**
+
+- External user load:
+    - Most frequent and slowest requests.
+- Periodic load:
+    - Traffic over an extended period of time.    
+- Malicious load:
+    - Source of traffic is expected and legitimate.
+
+**In Production: Review deployment settings**
+
+- Scaling:
+    - Autoscaling
+- Region:
+    - Source of traffic
+- Cron Jobs:
+    - Schedule
+
+**Traditional SRE blessing**
+
+```
+May the queries flow, and the pager stay silent
+```
+
+### Summary
+
+- Google Cloud's operation suite is a multi cloud service.
+- You can use error reporting and cloud debugger to debug and troubleshoot your app in development and production.
+- Develop strong suite of performance tests to monitor your app performance as it evolves.
+- Identify service level indicators an objectives.
+- Setup dashboards with the four golder signals, latency, traffic, errors, and saturation.
 
 
 
