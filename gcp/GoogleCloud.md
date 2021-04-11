@@ -3103,7 +3103,45 @@ mvn compile exec:java@worker
 
 #### Quiz
 
-**Summary**
+**1. Sales data is published to a Cloud Pub/Sub topic called SalesTopic. The Finance application subscribes to the topic 
+and begins receiving sales data messages. Later, the Inventory team creates another subscription to the topic to receive 
+the Sales data as well. However, the Inventory team's data does not tally with the Finance team's data. 
+What could the reason be?**
+
+- The Inventory team's subscriber only receives messages that are published after the subscription was created.
+
+**2. Why is Cloud Pub/Sub used in the architecture of an application that performs real-time data analysis 
+of Twitter data?**
+
+- Cloud Pub/Sub is used to buffer the high volume of incoming tweets.
+
+**3. When a new employee joins your organization, HR needs to notify the security, facilities, and training teams so that 
+those teams can perform their tasks related to new employees. You need to design an application architecture that 
+notifies all teams promptly and reliably. Select the four steps that create the most effective design for this scenario.**
+
+- Create a Cloud Pub/Sub topic called NewEmployee.
+- Create a separate subscription for security, facilities, and training.
+- Create an HRPublisher service that publishes messages to the NewEmployee topic.
+- Create SecuritySubscriber, FacilitiesSubscriber, and TrainingSubscriber services that subscribe to messages in 
+the NewEmployee topic.
+
+**4. How does Cloud Pub/Sub enable you to build scalable and reliable applications?**
+
+- Cloud Pub/Sub enables you to scalably and reliably ingest large volumes of data.
+- By using Cloud Pub/Sub, you can avoid brittle point-to-point connections between applications.
+
+**5. Review the following diagram. Which of the following statements is accurate?**
+
+- Multiple instances of the Orders service are publishing unique orders.
+- The Orders service publishes orders to the Orders topic.
+- Subscribers can process orders at a reasonable pace because the Orders topic acts as a buffer to hold data that is coming in rapidly. 
+
+**6. Review the following diagram. Which of the following statements is accurate?**
+
+- Each subscriber processes every order in the Orders topic.
+- The architecture solves the problem of point-to-point connections between applications.
+
+### Summary
 
 - In general avoid point-to-point communications between applications:
     - Such integrations can make your system brittle and difficult to manage.
@@ -3123,8 +3161,8 @@ subscribers.
 **Use pre-trained machine learning (ML) models to add intelligence to your apps**
 
 - Use pre-trained ML models:
-    - Vision API
-    - Speech API
+    - Vision API: Complex image detection.
+    - Speech API: Convert audio to text.
     - Video Intelligence API
     - Translation API
     - Natural Language API
@@ -3143,7 +3181,37 @@ subscribers.
 - Face Detection
 - Explicit Content Detection
 
-**Summary**
+#### Quiz
+
+**1. Which of the following statements about the Vision API are accurate?**
+
+- The Vision API can categorize objects under labels and perform optical character recognition (OCR).
+- The Vision API can detect landmarks, logos, faces, and explicit content.
+
+**2. What API would you use to transcribe audio into text?**
+
+- Cloud Speech API
+ 
+**3. What API would you use in an Expense Report application to extract text from images of receipts?**
+
+- Cloud Vision API.
+
+**4. Identify two ways to invoke the pre-trained machine learning APIs such as the Vision API or Natural Language API 
+in your application?**
+
+- Use Cloud Client Libraries when available for production use.
+- Use the REST API.
+
+**5. What pre-trained machine learning APIs would you use in this image processing pipeline?**
+
+- Cloud Vision API, Cloud Speech API, Cloud Video Intelligence API.
+
+**6. Your support database contains feedback data from customers. You want to analyze customer sentiment for the 
+last quarter. What property and pre-trained machine learning API can you use to gauge customer sentiment?**
+
+- Sentiment score and magnitude from Cloud Natural Language API.
+
+### Summary
 
 - Invoke Google's machine learning APIs, using Google Cloud Client Libraries in programming language you choose.
 
@@ -3157,6 +3225,8 @@ subscribers.
 - Functions can write back to the cloud or call other APIs.
 
 **Cloud Functions enable event-driven, serverless, highly scalable microservices**
+
+- Each function is lightweight microservice.
 
 **Cloud Functions use cases**
 
@@ -3231,7 +3301,40 @@ Errors thrown or reported manually
 Number of invocations, execution time, memory usege
 ```
 
-**Summary**
+#### Quiz
+
+**1. Identify two ways of invoking Cloud Functions.**
+
+- Invoke synchronously as a web hook.
+- Invoke asynchronously when triggered by an event.
+
+**2. Cloud Functions is ideal for which of the following use cases?**
+
+- Light-weight, event-driven, serverless, microservices.
+
+**3. You can view the output from your console.log and console.error messages in which of the following services?**
+
+- Cloud Logging. 
+
+**4. Identify the events that trigger Cloud Functions in the following architecture.**
+
+- Media asset is uploaded to a Cloud Storage bucket.
+- A message is received in Cloud Pub/Sub.
+
+**5. Identify two key aspects of this application's architecture**
+
+- When media content is uploaded to a Cloud Storage bucket, the system generates a Cloud Pub/Sub notification message 
+and sends it to the configured Cloud Pub/Sub topic. This message triggers Cloud Functions.
+- Cloud Storage can generate notification messages based on events in a Cloud Storage bucket.
+- Cloud Functions save classification information in BigQuery.
+- Cloud Functions invoke the Vision API and Cloud Video Intelligence API to classify the uploaded media  based on logos, 
+labels, text, and safe search results.
+
+**6. Which one of the following statements is accurate?**
+
+- You can deploy Cloud Functions directly from a Google Cloud Source Repository.
+
+### Summary
 
 - Cloud Functions are ideal for lightweight microservices and event-driven processing.
 - Cloud Functions can serve as WebHooks when invoked by using the direct HTTP request response method.
@@ -3335,7 +3438,25 @@ securityDefinitions: ...
 
 **You can allow users to test and explore your API using an Endpoint Developer Portal**
 
-**Summary**
+#### Quiz
+
+**1. To create an order, a client application must send requests to create an order entry, update inventory, and send a 
+transaction to a payment gateway. The client must be updated and redeployed each time any of these backend services changes. 
+What is the best way to streamline the client's requests to the backend services?**
+
+- Create an API gateway called "order" that acts as a facade and handles all the backend API invocations.
+  
+**2. You’ve updated your API backend. The changes are not backward compatible and will break consumers of your current API. 
+What approach would best serve your customers?**  
+
+- Deploy two versions of your Cloud Endpoints API by creating a separate API configuration for each version.
+  
+**3. A small number of customers are reporting that your API gateway is slow. What data can you view to begin 
+troubleshooting the problem?**
+
+- In the Cloud Endpoints dashboard, review the latency for the median, 95th, and 98th percentile of requests.
+
+### Summary
 
 - With Cloud Endpoints you can deploy REST or gRPC-based APIs.
 - You can define the API configuration using industry standard open formats such as OpenAPI for REST APIs and
@@ -3346,7 +3467,7 @@ to allow clients to make REST API calls, you can specify special mapping roles.
 - The Extensible Server Proxy for gRPC translates RESTful JSON over HTTP into gRPC requests. This approach gives greater 
 flexibility when integrating with other systems.
 
-**Course Summary**
+### Course Summary
 
 - Federated identity management by using Firebase Authentication.
 - Use Cloud Pub/Sub to build loosely coupled apps.
@@ -3363,6 +3484,8 @@ response to events in Cloud Pub/Sub and other GCP services.
 # App Deployment, Debugging, and Performance
 
 ## Deploying Applications Using Cloud Build, Container Registry, and Deployment Manager
+
+### Deploying Applications
 
 **Implement continuous integration and delivery for reliable releases**
 
@@ -3397,8 +3520,7 @@ runtime.
     - Simplified between on-premises and cloud environments.
 - Agility:
     - Agile development and operations.
-
-**Kubernetes can be used to manage your containers**                
+- **Kubernetes can be used to manage your containers**                
 
 **Why use Kubernetes?**
 
@@ -3435,6 +3557,8 @@ tags:
 
 **Use Deployment Manager to launch your Google Cloud Platform resources**
 
+`Deployment Configuration (YAML file)`
+
 ```yaml
 imports:
 - path: path/to/template.jinja
@@ -3456,7 +3580,67 @@ resources:
 - Specify startup scripts to run when VM launches.
 - Define outputs.
 
-**Summary**
+#### Quiz
+
+**1. Which of the following statements about continuous integration and delivery are accurate?**
+
+- Continuous integration is a developer workflow in which developers frequently pull from the master and commit their 
+changes into a feature branch in a source code repository.
+- Continuous delivery is a workflow that is triggered when changes are pushed to the master repository.
+
+**2. How can Container Builder and Container Registry help you build a continuous integration and delivery pipeline?**
+
+- Container Builder is a fully managed service. You do not need to download all build tools and container images 
+to a build machine or manage build infrastructure.
+- By using Container Registry and Container Builder, you can create build pipelines that are automatically triggered 
+when you commit code to a repository. 
+
+**3. What is the primary use case for Deployment Manager?**
+
+- Deployment Manager enables you to stand up Google Cloud Platform infrastructure. You can treat infrastructure as code.
+
+**4. Review the following Container Builder build configuration file. Which of the following statements accurately 
+describes the build steps in this configuration?**
+
+```yaml
+steps:
+- name: gcr.io/cloud-builders/git
+  args: ['clone', 'https://github.com/GoogleCloudPlatform/cloud-builders']
+  env: ['PROJECT_ROOT=hello']
+- name: gcr.io/cloud-builders/docker
+  args: ['build', '-t', 'gcr.io/my-project-id/myimage', '.']
+```
+
+- There are two steps. The first step clones a GitHub repository. The second step builds a Docker image based on the 
+contents of the repository.
+
+**5. Review the following Deployment Manager configuration. Which of the following statements are accurate?**
+
+```yaml
+imports:
+- path: vm_template.jinja
+
+resources:
+- name: my-vm
+  type: vm_template.jinja
+  properties:
+    zone: us-central1-a
+    startup-script: |
+      #!/bin/bash
+      python -m SimpleHTTPServer 8080
+```
+
+- The deployment configuration launches a Google Compute Engine instance.
+- A web server will be launched and server traffic at port 8080.
+- The "zone" property is passed to the template.
+
+**6. Which of the following statements about a Container Builder, Container Registry, and Deployment Manager are accurate?**
+
+- Build triggers can be helpful when building a continuous integration and delivery pipeline using 
+Container Builder and Container Registry.
+- Cloud Container Builder and Deployment Manager enable you to treat infrastructure as code.
+
+### Summary
 
 - Implement CI and CD pipelines to enable repeatable and reliable deployments treat your infrastructure as code.
 - This approach will enable you to create and store versions of your infrastructure.
@@ -3472,12 +3656,12 @@ cloud source repo, GitHub or Bitbucket.
 
 **You have a choice of app execution environments**
 
-- Google Cloud Dataflow
+- Google Cloud Dataflow: Fully Managed.
 - Google Cloud Functions
 - Cloud Run
 - Google App Engine Flexible Environment
 - Google Kubernetes Engine
-- Google Compute Engine
+- Google Compute Engine: Highly customizable.
 
 ### Dataflow
 
@@ -3647,12 +3831,12 @@ orchestrating failovers, rolling out deployments, Storage Orchestration, and man
 **Use GKE for greater control over how Google Cloud resources are deployed for your apps**
 
 ```console
-gcloud container cluster create
+$> gcloud container cluster create
     --machine-type=MACHINE_TYPE
     --disk-size=DISK_SIZE
     --num-nodes=NUM_NODES
 
-gcloud container cluster create
+$> gcloud container cluster create
     --num-nodes 30
     --enable-autoscaling
     --min-nodes 15
@@ -3660,6 +3844,8 @@ gcloud container cluster create
 ```
 
 **Deploy apps using standard Kubernetes tools**
+
+*frontend-deployment.yaml*
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -3696,6 +3882,7 @@ $> kubectl create -f ./frontend-deployment.yaml
 
 - Run stateless containers that are invokable via web requests or Cloud Pub/Sub events.
 - Cloud Run is serverless, it abstracts away all infrastructure management.
+- Built on K native.
 
 **Cloud Run doesn't restrict the way you code**
 
@@ -3746,6 +3933,37 @@ $> gcloud beta run deploy --image gcr.io/PROJECT-ID/helloworld --platform manage
 - Profile startup scripts.
 - Consider custom image.
 - Set appropriate target usage levels in autoscaling policy.
+
+#### Quiz
+
+**1. What is the programming framework used with Cloud Dataflow?**
+
+- Apache Beam SDK
+
+**2. For what types of applications should you consider an execution environment other than Cloud Functions?**
+
+- Applications that have a large and complex codebase. 
+- Applications that are written in a programming framework other than Node.js.
+
+**3. Your application requires highly customized VMs for specialized applications that have specific operating system 
+requirements. Which execution environment should you consider?**
+
+- Google Compute Engine. 
+
+**4. Your application executes parallel data processing pipelines to analyze IoT manufacturing data. 
+Which would be the ideal execution environment for your application?**
+
+- Cloud Dataflow.
+
+**5. Your application will create and save a thumbnail of an image every time the user initiates an upload. 
+What execution environment should you consider?**
+
+- Google Cloud Functions.
+
+**6. Your application uses network protocols other than HTTP/S, and the application is run partially on-premises 
+and partially in the cloud. What execution environment should you consider?**
+
+- Google Kubernetes Engine. 
 
 ### Summary
 
@@ -3850,6 +4068,8 @@ applications into Cloud Logging.
 
 ### Monitoring and Tuning Performance
 
+**Monitor to analyze long-term trends**
+
 **Monitor to compare results over time or between experimental configurations**
 
 **Monitor to raise alerts when something is broken or about to be broken**
@@ -3889,13 +4109,14 @@ Amazon RDS databases.
     - Operations during initial boot of VM.
 - Self-inflicted load:
     - Service-to-service or browser-to-service calls.
+    - cron jobs, batch, ajax.
 
 **In Development: Review application code and logs**
 
 - Application errors:
     - HTTP errors and other exceptions.
-- Runtime code gen:
-    - Aspect-oriented programming.    
+- Runtime code generation:
+    - Aspect-oriented programming. Consider compile time code generated itself.
 - Static resources:
     - Static web pages, images.
 - Caching:
@@ -3904,6 +4125,8 @@ Amazon RDS databases.
     - Multiple serial requests.
 - Error-handling:
     - Exponential backoff.    
+    - Circuit braker after some number of retries.
+    - No retry in case 5xx errors and malformed URL errors.
 
 **In Production: Check performance watchpoints related to incoming requests in production**
 
@@ -3929,6 +4152,39 @@ Amazon RDS databases.
 May the queries flow, and the pager stay silent
 ```
 
+#### Quiz
+
+**1. Users are encountering errors in your application. You want to view the stack trace to determine where the error 
+occurred. What service would help you view the error?**
+
+- Error Reporting.
+
+**2. You want to stream logs into Cloud Logging from third-party applications running on Compute Engine instances. 
+What service should you consider?**
+
+- Cloud Logging Agent. You can install Cloud Logging Agent on Compute Engine and Amazon EC2 instances to stream logs 
+from third-party applications into Cloud Logging.
+
+**3. What are the benefits of monitoring your application?**
+
+- You can analyze long-term trends in performance.
+- You can compare results over time or between experimental configurations.
+- You can raise alerts when something is broken or about to be broken.
+
+**4. You want to set up monitoring for your mission-critical application. What signals should you monitor in your 
+dashboards?**
+
+- Saturation, Latency, Traffic, Errors.
+
+**5. After a few minor releases, certain aspects of your application seem to be running slower than before in production. 
+What is the best way to detect performance issues earlier in the release cycle?**
+
+- You can add performance tests to your test suite.
+
+**6. You can execute the gRPC calls for Cloud Datastore and Cloud Pub/Sub in series.**
+
+- You can execute the gRPC calls for Cloud Datastore and Cloud Pub/Sub in parallel.
+ 
 ### Summary
 
 - Google Cloud's operation suite is a multi cloud service.
@@ -3936,25 +4192,3 @@ May the queries flow, and the pager stay silent
 - Develop strong suite of performance tests to monitor your app performance as it evolves.
 - Identify service level indicators an objectives.
 - Setup dashboards with the four golder signals, latency, traffic, errors, and saturation.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
