@@ -234,7 +234,33 @@ meaning that the latency to a CDN's servers will almost always be far better tha
 servers are often referred to as PoPs (Points of Presence). Two of the most popular CDNs are Cloudflare and Google 
 Cloud Platform.     
 
+### Load Balancers
 
+**Reverse Proxy**
+
+- A server that sits between clients and servers and acts on behalf of the servers, typically used for logging,
+load balancing or caching.
+
+**Load Balancer**
+
+- A type of **reverse proxy** that distributes traffic across servers. Load balancers can be found in many part of the 
+systems, from the DNS layer all the way to the database layer.
+
+**Server-Selection Strategy**
+
+- How a **load balancer** chooses servers when distributing traffic amongst multiple servers. Commonly used strategies
+include round-robin, random selection, performance-based selection (choosing server with the best performance metrics,
+like the fastest response time or the least amount of traffic), and IP-based routing.
+
+**Hot Spot**
+
+- When distributing a workload across a set of servers, that workload might be spread unevenly. This can happen if your 
+**sharding key** or **hashing function** are suboptimal, or if your workload is naturally skewed; some servers will receive
+more traffic than other, thus creating a "hot spot".
+
+**Nginx**
+
+- Nginx is very popular webserver that's often used as a **reverse proxy** and **load balancer**.
 
 
 

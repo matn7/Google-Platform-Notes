@@ -215,8 +215,8 @@ $> sudo /sbin/ifconfig
     - Protocols
     - Ports
 - Action:
-    - Allow: permit the matching egress connection.
-    - Deny: block the matching egress connection.
+    - Allow: Permit the matching egress connection.
+    - Deny: Block the matching egress connection.
 
 ![GCP firewall use case: Egress](gcp-img/gcp-firewall-egress.png "GCP firewall use case: Egress")  
     
@@ -227,8 +227,8 @@ $> sudo /sbin/ifconfig
     - Protocols
     - Ports
 - Action:
-    - Allow: permit the matching ingress connection.
-    - Deny: block the matching ingress connection.    
+    - Allow: Permit the matching ingress connection.
+    - Deny: Block the matching ingress connection.    
 
 ![GCP firewall use case: Ingress](gcp-img/gcp-firewall-ingress.png "GCP firewall use case: Ingress")  
 
@@ -259,7 +259,7 @@ $> sudo /sbin/ifconfig
 
 - Configure when you create instance.
 - Each interface in different network.
-- Networks' IP range cannot overlap.
+- Networks IP range cannot overlap.
 - Networks must exists to create VM.
 - Cannot delete interface without deleting VM.
 - Internal DNS only associated to nic0
@@ -334,7 +334,7 @@ Who can do what on which resources.
     - Configure services
     - And... **Viewer** roles
 - **Viewer**:
-    - Read-only access.
+    - Read-only access
 - **Billing Administrator**:
     - Manage billing
     - Add and remove administrators
@@ -349,13 +349,13 @@ A project can have multiple owners, editors, viewers, and billing administrators
     - Google Groups
     - Network Viewer Role:
         - List of Permissions:
-            - `compute.addresses.get`
-            - `compute.addresses.list`
-            - `compute.globalAddresses.get`
-            - `compute.globalAddresses.list`
-            - `compute.backendBuckets.get`
-            - `compute.backendBuckets.list`
-            - `compute.networks.list`
+            - :heavy_check_mark: `compute.addresses.get`
+            - :heavy_check_mark: `compute.addresses.list`
+            - :heavy_check_mark: `compute.globalAddresses.get`
+            - :heavy_check_mark: `compute.globalAddresses.list`
+            - :heavy_check_mark: `compute.backendBuckets.get`
+            - :heavy_check_mark: `compute.backendBuckets.list`
+            - :heavy_check_mark: `compute.networks.list`
             - `...`
     - **project_a**            
 
@@ -570,7 +570,7 @@ A project can have multiple owners, editors, viewers, and billing administrators
 
 **Security policies with deny and allow rules**
 
-- Denying: Block source IPa address or CIDR range.
+- Denying: Block source IP address or CIDR range.
 - Allowing: Allow source IP address or CIDR range.
 - IPv4 and IPv6 addresses.
 - Deny rule: 403, 404, or 504 error code.
@@ -696,8 +696,8 @@ A project can have multiple owners, editors, viewers, and billing administrators
 |---|---|---|---|---|
 | HTTP(S) | HTTP or HTTPS | Global IPv4, IPv6 | External | HTTP on 80 or 8080; HTTPS on 443 |
 | SSL Proxy | TCP with SSL offload | --- | --- | 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 |
-| TCP Proxy | * TCP without SSL offload. * Does not preserve client IP addresses. | --- | --- | 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 |
-| Network TCP/UDP | * TCP/UDP without SSL offload. * Preserves client IP addresses | Regional IPv4 | --- | Any |
+| TCP Proxy | TCP without SSL offload. Does not preserve client IP addresses. | --- | --- | 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 |
+| Network TCP/UDP | TCP/UDP without SSL offload. Preserves client IP addresses | Regional IPv4 | --- | Any |
 | Internal TCP/UDP | TCP or UDP | --- | Internal | Any |
 | Internal HTTP(S) | HTTP or HTTPS | --- | --- | HTTP on 80 or 8080; HTTPS on 443 |
 
@@ -813,9 +813,9 @@ service provider network.
 **Estimate costs with the GCP Pricing Calculator**
 
 ```
-Compute Engin               Cloud Network
+Compute Engine              Cloud Network
 n1-standard-1       +       100 GB egress/monthly
-us-central 1                Americas and EMEA
+us-central-1                Americas and EMEA
 ```
 
 **General network pricing**
@@ -936,7 +936,7 @@ of Google APIs and services.
  - **Private Google AccessConnect**
     - **Connection**: Connect to the public IP addresses if Google APIs and services through the VPC network's default 
     internet gateway.
-    - **Usage**: Connect to Google APIs and services without giving your external IP addresses |
+    - **Usage**: Connect to Google APIs and services without giving your external IP addresses.
 - **Private Google Access for on-premises**:
     - **Connection**: Connect to the public IP addresses of Google APIs and services through a VPN tunnel, or 
     interconnect by using a restricted IP address range.
@@ -1056,7 +1056,7 @@ resources:
 
 - Other fields:
     - Start/end time
-    - bytes/packets sent
+    - Bytes/packets sent
     - Instance details
     - VPC details
     - Geographic details
@@ -1070,22 +1070,3 @@ resources:
     - When a packet is dropped because no port was available for NAT.
 
 **Analyze logs in BigQuery and visualize in Data Studio**
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
