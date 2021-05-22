@@ -168,7 +168,7 @@ Absorbing the largest attacks requires the bandwidth needed to watch half a mill
 
 - Homogenous custom-built servers with security in mind:
     - Purpose-built servers and network equipment.
-- Stripped-down and hardened cersion of Linux software stack.
+- Stripped-down and hardened version of Linux software stack.
     - Continually monitored binary modifications.
 - Trusted server boot:
     - Titan security chip.            
@@ -332,7 +332,7 @@ engineering.
 
 - Managed Service for Microsoft Active Directory:
     - Runs actual Microsoft AD controllers.
-    - Is vistually maintenance-free.
+    - Is virtually maintenance-free.
     - Supports both hybrid cloud and standalone cloud domains.    
     
 **Managed Service for Microsoft Active Directory includes many useful features**
@@ -392,7 +392,7 @@ engineering.
 **Identity and Access Management**
 
 ```
-Who can do wjat on which resource
+Who can do what on which resource
 ``` 
    
 **GCP Resource Manager**
@@ -445,7 +445,7 @@ Who can do wjat on which resource
 - Service accounts:
     - Control server-to-server interactions:
         - Used to authenticate from one service to another.
-        - Used to control provileges used by resources.   
+        - Used to control privileges used by resources.   
    
 **There are two types of Google Service Accounts**
 
@@ -488,7 +488,7 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
  
 **Many Google products and services currently support the use of labels**   
    
-### IAM Roles   
+### IAM Roles
    
 **There are three kinds of IAM roles in Google Cloud**
 
@@ -584,7 +584,7 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
    
 ### IAM recommender
 
-**Recommender helps hone permissions for Cloud IAM and other Google Cloud services**
+**Recommender helps home permissions for Cloud IAM and other Google Cloud services**
 
 - Recommender compares project-level role grants with permissions used within the last 90 days.
 - If a permission has not been used within that time, recommender will suggest revoking it.
@@ -622,7 +622,7 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
     - Reports on whether that member's roles include that permission to that resource.
     - Reports on which policies bind that member to those roles.   
    
-**Policy Troubleshooter will only access policies that the iser has permissions to view**
+**Policy Troubleshooter will only access policies that the user has permissions to view**
 
 - Policy Troubleshooter may not always fully explain resource access.
 - If you do not have access to a resource policy, it will not be analyzed.
@@ -713,9 +713,9 @@ required to get the job done.
 **All VPCs have 2 implied firewall rules**
 
 - **1. Allow all outgoing traffic:**
-    - An egress rule, action is allow, destination is 0.0.0.0/0, and lowest priority (65535).
+    - An egress rule, action is allow, destination is `0.0.0.0/0`, and lowest priority (65535).
 - **2. Block all incoming traffic:**
-    - An ingress rule, action is deny, source is 0.0.0.0/0, and lowest priority (65535).
+    - An ingress rule, action is deny, source is `0.0.0.0/0`, and lowest priority (65535).
    
 **Default VPCs have additional allow rules**
 
@@ -723,8 +723,8 @@ required to get the job done.
 - `default-allow-ssh`
 - `default-allow-rdp`: Remote desktop protocol.
 - `default-allow-icmp`
-- **All with the second lowest priority (65534)**
-- **These rules should be deleted or modified as needed**
+- **All with the second lowest priority (65534).**
+- **These rules should be deleted or modified as needed.**
    
 **Some VPC network traffic is always blocked**
 
@@ -781,17 +781,17 @@ By default apply to all VMs and all projects under the organization or folder wh
 **Defining an SSL policy**
 
 - SSL policies specify:
-    - The minimum TLS version clients can connect with: TLS 1.0, 1.0, or 1.2
+    - The minimum TLS version clients can connect with: TLS 1.0, 1.0, or 1.2.
     - A profile of SSL policy features.
  
 **Pre-configured SSL policy profiles**
 
 - GCP offers three managed SSL profiles.
-- **1. COMPATIBLE**
+- **1. COMPATIBLE**:
     - Allows the broadest set of clients.
-- **2. MODERN**
+- **2. MODERN**:
     - Supports a wide set of SSL/TLS features, allowing modern clients to negotiate SSL/TLS.  
-- **3. RESTRICTED**
+- **3. RESTRICTED**:
     - Supports a reduces set of SSL/TLS features, intended to meet stricter compliance requirements.  
   
 **Custom SSL policy profiles**
@@ -802,7 +802,7 @@ By default apply to all VMs and all projects under the organization or folder wh
   
 **VPC peering**
 
-- Can connect two nonoverlapping VPC networks.  
+- Can connect two non-overlapping VPC networks.  
 - Networks do not need to be in the same project.
 - A network can have multiple peers.
 
@@ -921,11 +921,11 @@ two peers for the entire network.
 
 **Access Context Manager reduces the size of your privileged network using defined access attributes**
 
-- Access Policies.
+- Access Policies
 - Access Levels:
-    - IP address.
-    - Device type.
-    - User identity.
+    - IP address
+    - Device type
+    - User identity
 
 **Service Perimeter configuration takes place in four stages**
 
@@ -945,7 +945,7 @@ two peers for the entire network.
 
 **VPC Flow Logs**
 
-- Is enabled on VPC subnets.
+- Is enabled on VPC subnets:
     - Disabled by default.
 - No performance penalty.
 
@@ -975,7 +975,7 @@ two peers for the entire network.
 
 **Scopes control what VMs can do**
 
-- The default service account has Project Editor role--
+- The default service account has Project Editor role:
     - This can be dangerous.
 - Scopes are used to limit permissions when using the defualt service accounts.    
 
@@ -993,7 +993,7 @@ two peers for the entire network.
 
 **Connecting to Virtual Machines**
 
-- Linux machines are accessed using SSH.
+- Linux machines are accessed using SSH:
     - Requires an SSH key.
 - Windows machines are accessed using RDP:
     - Requires a username and password.  
@@ -1010,7 +1010,7 @@ two peers for the entire network.
 - Install and initialize the Google Cloud SDK.
 - Connect with **gcloud** tool:
     - Requires the VM to have an external IP.
-    - Keys are automatically generated and placed in your local home/.ssh folder.
+    - Keys are automatically generated and placed in your local `home/.ssh` folder.
     
 ```console
 :~$ gcloud compute ssh web-server --zone us-central1-c
@@ -1151,7 +1151,7 @@ This allows you to host organization-approved, hardened images in your GCP envir
 - All data in GCP is encrypted with a unique data encryption key (DEK).
 
 ```
-Data is                 Data is chunked and             Chunks are distributed across Gogle's
+Data is                 Data is chunked and             Chunks are distributed across Google's
 uploaded to     --->    each chunk              --->    storage infrastructure
 GCP                     encrypted with its
                         Own key
@@ -1360,7 +1360,7 @@ Console.
 
 - DEKs are encrypted with ("wrapped" by) key encryption keys (KEKs) and stored with the data.
 - KEKs are exclusively stored and used inside Google's central Key Management Service (KMS).
-- Desrypting data requires the unwrapped data encryption key (DEK) for that data chunk.
+- Decrypting data requires the unwrapped data encryption key (DEK) for that data chunk.
 
 **GCP encryption by default**
 
@@ -1506,10 +1506,10 @@ individual objects.
 **Cloud Security Scanner checks your applications for common vulnerabilities**
 
 - XSS
-- Flash injection.
-- Mixed content.
-- Clear text passwords.
-- Use of insecure JavaScript libraries.
+- Flash injection
+- Mixed content
+- Clear text passwords
+- Use of insecure JavaScript libraries
 
 **How the scanner works**
 
@@ -2050,8 +2050,8 @@ such as the Vision API.
     
 **Security Command Center requires two IAM administrative permissions to set up**
 
-- **Organization Administrator** role - roles/resourcemanager.organizationAdmin.
-- **Security Center Admin** role - roles/securitycenter.admin.
+- **Organization Administrator** role - `roles/resourcemanager.organizationAdmin`.
+- **Security Center Admin** role - `roles/securitycenter.admin`.
 
 **Security Command Center prices vary by the amount of data transferred**
 
@@ -2093,9 +2093,9 @@ such as the Vision API.
 
 **Built-in monitoring**
 
-- App Engine Flexible and Standard Environments.
-- Kubernetes Engine.
-- Istio.
+- App Engine Flexible and Standard Environments
+- Kubernetes Engine
+- Istio
 
 **Cloud Monitoring Agent**
 
@@ -2140,11 +2140,11 @@ such as the Vision API.
 
 **Cloud Logging is preconfigured in many environments**
 
-- App Engine Flexible and Standard Environments.
-- Kubernetes Engine.
-- Istio.
-- Cloud Functions.
-- Cloud Dataflow.
+- App Engine Flexible and Standard Environments
+- Kubernetes Engine
+- Istio
+- Cloud Functions
+- Cloud Dataflow
 
 **Cloud Logging Agent**
 
@@ -2165,9 +2165,9 @@ such as the Vision API.
 
 **Analyzing logs**
 
-- Advanced logs filters.
-- BigQuery.
-- Third-party analysis tools.
+- Advanced logs filters
+- BigQuery
+- Third-party analysis tools
 
 ### Cloud audit logging
 
@@ -2283,20 +2283,5 @@ are disabled by default because they can become quite large and incur extra char
 
 **3. Which ONE of the following statements about Forseti Security is TRUE?**
 
-- If something in your system changes unexpectedly, Forseti Security can revert a potentially compromised resource back to a known safe state.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
+- If something in your system changes unexpectedly, Forseti Security can revert a potentially compromised resource 
+back to a known safe state.

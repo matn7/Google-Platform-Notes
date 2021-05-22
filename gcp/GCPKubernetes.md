@@ -139,7 +139,7 @@ that control user access to resources.
 **Quotas are helpful limits**
 
 - Limits unforeseen extra billing charges.
-- Designed to prevent the overconsumption or resource. Apply at GCP project level.
+- Designed to prevent the over-consumption or resource. Apply at GCP project level.
 - Rate quota: `GKE API: 1,000 requests per 100 seconds`
 - Allocation quotas: `5 networks per project`
 - Many quotas are changeable.
@@ -285,7 +285,7 @@ directory trees, IP addresses and more.
 
 **How can you get containers?**
 
-- Download containerized software from a container registry such as gcr.io.
+- Download containerized software from a container registry such as `gcr.io`.
 - Build your own container using open-source docker command.
 - Builds your own container using Cloud Build.
 
@@ -317,11 +317,11 @@ you want to achieve, instead of issuing a series of commands to achieve that des
 
 **Kubernetes features**
 
-- Supports both stateful and stateless apps.
-- Autoscaling.
-- Resource limits.
-- Extensibility.
-- Portability.
+- Supports both stateful and stateless apps
+- Autoscaling
+- Resource limits
+- Extensibility
+- Portability
 
 ### Introduction to Google Kubernetes Engine
 
@@ -468,7 +468,7 @@ management to be.
 
 - Kubernetes assigns each pod a unique IP address. 
 - Every container within a pod shares the network namespace, including IP address and net ports.
-- Containers within the same pod can communicate through local host 127.0.0.1.
+- Containers within the same pod can communicate through local host `127.0.0.1`.
 - A pod can also specify a set of storage volumes, to be shared amongst its containers.
 
 **Running three nginx containers**
@@ -512,7 +512,7 @@ the pods on the nodes.
 **GKE: More about nodes**
 
 - Kubernetes doesn't create nodes.
-- Cluster admins create nodes and add them to  Kubernetes.
+- Cluster admins create nodes and add them to Kubernetes.
 - GKE manages this by deploying and registering Compute Engine instances as nodes.
 
 **GKE: More about nodes**
@@ -602,7 +602,7 @@ $> kubectl get pods --selector=app-nginx
 
 **Pods have a life cycle**
 
-- Pod is "bord"
+- Pod is "born"
 - Pod is running
 - Pod is broken
 - Pod "dies"
@@ -752,7 +752,7 @@ $> kubectl apply -f deployment_spec.yaml
 
 ## Kubernetes Workloads
 
-- Understand the Kubectl command.
+- Understand the `kubectl` command.
 - Understand how Deployments are used in Kubernetes.
 - Understand the networking architecture of Pods.
 - Understand Kubernetes storage abstractions.
@@ -1234,21 +1234,3 @@ balancing or caching.
 **Nginx**
 
 - Nginx is a very popular webserver that's often used as a **severse proxy** and **load balancer**.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

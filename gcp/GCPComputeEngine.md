@@ -35,7 +35,7 @@
 
 ### Migration strategies
 
-- Lift and Shift.
+- Lift and Shift
 - Rebuild
 - Remain On-premises
 - Improve and Move
@@ -90,7 +90,7 @@ determine **migration type**, **level of effort**, and **application groups**.
     - Technical assumptions
     - Security approval for tooling
 - Activities:
-    - Automated discovery.
+    - Automated discovery
 - Output:
     - Workload grouping
     - First mover workloads identified
@@ -219,7 +219,7 @@ and spot migration challenges and obstacles?**
     - KVM
     - XEN
 - AWS:
-    - Amazon Elastic Compute Cloud.
+    - Amazon Elastic Compute Cloud
 - GCP:
     - Compute Engine    
 
@@ -278,8 +278,8 @@ and spot migration challenges and obstacles?**
 
 - The organization node is the root node for Google Cloud resources.
 - Notable organization roles:
-    - **Organization Policy Administrator:** Broad control over all cloud resources.
-    - **Project Creator:** Fine-grained control of project creation.
+    - **Organization Policy Administrator**: Broad control over all cloud resources.
+    - **Project Creator**: Fine-grained control of project creation.
 
 **An example IAM resource hierarchy**
 
@@ -312,10 +312,10 @@ which functions as the payment method for these resources.
 
 **Who: IAM policies can apply to any of four types of principals**
 
-- Google account: test@gmail.com
-- Service account: test@project_id.iam.gserviceaccount.com
-- Google group: test@googlegroups.com
-- Cloud Identity: example.com
+- Google account: `test@gmail.com`
+- Service account: `test@project_id.iam.gserviceaccount.com`
+- Google group: `test@googlegroups.com`
+- Cloud Identity: `example.com`
 
 **Can do what: IAM roles are collections of related permissions**
 
@@ -352,12 +352,12 @@ which functions as the payment method for these resources.
 
 - Google Group:
     - InstanceAdmin Role:
-        - compute.instances.delete
-        - compute.instances.get
-        - compute.instances.list
-        - compute.instances.setMachineType
-        - compute.instances.start
-        - compute.instances.stop
+        - `compute.instances.delete`
+        - `compute.instances.get`
+        - `compute.instances.list`
+        - `compute.instances.setMachineType`
+        - `compute.instances.start`
+        - `compute.instances.stop`
         
 **Compute Engine IAM roles**
 
@@ -371,10 +371,10 @@ which functions as the payment method for these resources.
 
 - Google Group:
     - InstanceOperator Role:
-        - compute.instances.get
-        - compute.instances.list
-        - compute.instances.start
-        - compute.instances.stop
+        - `compute.instances.get`
+        - `compute.instances.list`
+        - `compute.instances.start`
+        - `compute.instances.stop`
         - ...
 
 **On which resource: Users get roles on specific items in the hierarchy**
@@ -430,7 +430,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 - Centralized GUI-based console for all project data.
 - Developer tools:
-    - Cloud Source Respositories.
+    - Cloud Source Repositories.
     - Cloud Shell.
     - Test Lab (mobile app testing).
 - Access to product APIs.
@@ -439,7 +439,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 **The Cloud SDK and Cloud Shell**
 
 - The Cloud SDK includes CLI tools for Google Cloud products and services:
-    - gcloud, gsutil (Cloud Storage), bg (Big Query).
+    - `gcloud`, `gsutil` (Cloud Storage), `bg` (Big Query).
 - Available as Docker image.
 - Available via Cloud Shell:
     - Centralized version of the Cloud SDK on Compute Engine instance.    
@@ -587,7 +587,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 **Compute Engine Features**
 
 - Infrastructure as a Service (IaaS).
-- No upfornt cost.
+- No upfront cost.
 - Customizable and flexible.
 - Fast startup time.
 
@@ -686,12 +686,12 @@ Highest performance per vCPU
 
 - Network storage appearing as a block device:
     - Zonal or regional resource.
-    - Durable storage: can survive VM terminate.
-    - Bootable: you can attach to a VM and boot from it.
+    - Durable storage: Can survive VM terminate.
+    - Bootable: You can attach to a VM and boot from it.
     - Performance: Scales with size.
 - Features:
     - HDD (magnetic) or SSD (faster, solid-state) options.
-    - Disk resizing: even running and attached!
+    - Disk resizing: Even running and attached!
     - Can be attached in read-only mode to multiple VMs.
     - Encryption keys:
         - Google-managed
@@ -703,7 +703,7 @@ Highest performance per vCPU
 - More IOPS, lower latency, higher throughput than persistent disk.
 - 375-GB disk up to eight, total of 3 TB.
 - Data survives a reset, but not a VM stop or terminate.
-- VM-specific: cannot be reattached to a different VM.
+- VM-specific: Cannot be reattached to a different VM.
 
 **Summary of disk options**
 
@@ -845,17 +845,3 @@ service provider.
 - Synchronizes user password from Active Directory to Cloud Identity as they are changed (in real time).
 - GSPS intercepts the raw password and applies a salted SHA512 hash.
 - Encrypted via TLS, the salted hash is sent to Cloud Identity using the Directory API.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
