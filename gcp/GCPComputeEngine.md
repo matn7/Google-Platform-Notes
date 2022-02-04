@@ -4,16 +4,11 @@
 
 ### What is cloud computing?
 
-- On-demand self-service.
-    - No human intervention needed to get resources.
-- Broad network access:
-    - Access from anywhere.
-- Resource pooling:
-    - Provider shares resources to customers.
-- Rapid elasticity:
-    - Get more resources quickly as needed.
-- Measured service:
-    - Pay only for waht you consume.    
+- On-demand self-service: No human intervention needed to get resources.
+- Broad network access: Access from anywhere.
+- Resource pooling: Provider shares resources to customers.
+- Rapid elasticity: Get more resources quickly as needed.
+- Measured service: Pay only for what you consume.    
     
 **On-premises total cost of ownership**
 
@@ -53,14 +48,10 @@
 
 **The VM migration process**
 
-- Assess:
-    - Evaluate Your Environment.
-- Prepare:
-    - Understand the platform.
-- Migrate:
-    - Move virtual machines.        
-- Optimize:
-    - Tune your operations and save on costs.
+- Assess: Evaluate Your Environment.
+- Prepare: Understand the platform.
+- Migrate: Move virtual machines.        
+- Optimize: Tune your operations and save on costs.
     
 #### Quiz
 
@@ -72,9 +63,11 @@
 
 - Assess, Prepare, Migrate, Optimize.
 
-**3. What’s the purpose of the Optimize stage of the migration process?**
+**3. What’s the purpose of optimize stage of the migration process?**
     
 - Tune your operations and save on costs.
+
+***
 
 ## Assessing the source environment 
     
@@ -82,8 +75,10 @@
 
 **Assess overview**
 
-- The Assess phase helps uncover the existing workloads that need to be migrated and the information necessary to 
-determine **migration type**, **level of effort**, and **application groups**.
+- Assess phase helps uncover the existing workloads that need to be migrated, and the information necessary to determine: 
+    - **Migration type**
+    - **Level of effort**
+    - **Application groups**
 - Input:
     - Business objectives
     - Key stakeholders
@@ -115,7 +110,7 @@ determine **migration type**, **level of effort**, and **application groups**.
 
 - Estimate costs of GCP for any instance in any location, with no commitment to migrate using actual utilization data.
 
-**AWS and vSphare support**
+### AWS and vSphare support
 
 **Requirements**
 
@@ -172,7 +167,7 @@ determine **migration type**, **level of effort**, and **application groups**.
 
 - Guest OS migration indications:
     - Indicates End of Support OSs.
-    - Helps tag/untag VMs based on their OS versions.
+    - Helps tag/un-tag VMs based on their OS versions.
     - Power On/Off/Suspend.
     
 **On-Prem IT Cloud Simulator Card**
@@ -180,12 +175,12 @@ determine **migration type**, **level of effort**, and **application groups**.
 **GCP Cloud Simulator Card**
 
 - Users can choose or adjust:
-    - GCP Data Center Locations.
-    - Storage Type and Performance.
-    - Rightsizing.
-    - Additional Capacity options.
-    - Term Lengths.
-    - Instance Classes.
+    - GCP Data Center Locations
+    - Storage Type and Performance
+    - Rightsizing
+    - Additional Capacity options
+    - Term Lengths
+    - Instance Classes
     
 **Rightsizing**
 
@@ -252,7 +247,7 @@ and spot migration challenges and obstacles?**
 - Group your resources according to your organization structure.
 - Levels of the hierarchy provide trust boundaries and resource isolation.
 
-**All GCP services you use are associated with a Project**
+**All GCP services you use associated with a Project**
 
 - Track resource and quota usage.
 - Enable billing.
@@ -278,23 +273,23 @@ and spot migration challenges and obstacles?**
 
 - The organization node is the root node for Google Cloud resources.
 - Notable organization roles:
-    - **Organization Policy Administrator**: Broad control over all cloud resources.
-    - **Project Creator**: Fine-grained control of project creation.
+    - **Organization Policy Administrator:** Broad controls over all cloud resources.
+    - **Project Creator:** Fine-grained control of project creation.
 
 **An example IAM resource hierarchy**
 
-- A policy is set on a resource:
+- A policy set on a resource:
     - Each policy contains a set of roles and role members.
-- Resources inherit policies from parent:
+- Resources inherit policies from a parent:
     - Resource policies are a union of parent and resource.    
 - A less restrictive parent policy overrides a more restrictive resource policy.
 
 #### Quiz
 
-**1. True or False: All Google Cloud resources are associated with a project.**
+**1. True or False: All Google Cloud resources associated with a project.**
 
-- True. All Google Cloud resources are associated with a project. Each project is associated with a billing account, 
-which functions as the payment method for these resources.
+- True, all Google Cloud resources associated with a project. 
+- Each project associated with a billing account, which functions as the payment method for these resources.
 
 ### Identity and Access Management (IAM)
 
@@ -306,9 +301,9 @@ which functions as the payment method for these resources.
 
 **Identity and Access Management**
 
-- Who
-- can do what
-- on which resource
+- `Who`
+- `Can do what`
+- `On which resource`
 
 **Who: IAM policies can apply to any of four types of principals**
 
@@ -325,7 +320,7 @@ which functions as the payment method for these resources.
 
 **IAM basic roles apply across all Google Cloud services in a project**
 
-- can do what on all resources.
+- Can do what on all resources.
 
 **IAM basic roles offer fixed, coarse-grained levels of access**
 
@@ -346,12 +341,12 @@ which functions as the payment method for these resources.
 
 **IAM predefined roles apply to a particular Google Cloud service in a project**
 
-- can do what on Compute Engine resources in this project, or folder, or org.
+- Can do what on Compute Engine resources in this project, or folder, or org.
 
 **IAM predefined roles offer more fine-grained permissions on particular services**
 
 - Google Group:
-    - InstanceAdmin Role:
+    - **InstanceAdmin Role:**
         - `compute.instances.delete`
         - `compute.instances.get`
         - `compute.instances.list`
@@ -370,21 +365,21 @@ which functions as the payment method for these resources.
 **IAM custom roles let you define a precise set of permissions**
 
 - Google Group:
-    - InstanceOperator Role:
+    - **InstanceOperator Role:**
         - `compute.instances.get`
         - `compute.instances.list`
         - `compute.instances.start`
         - `compute.instances.stop`
-        - ...
+        - `...`
 
 **On which resource: Users get roles on specific items in the hierarchy**
 
-- on which resource
+- On which resource
 
 **Service accounts provide an identity for carrying out server-to-server interactions**
 
 - Programs running within Compute Engine instances can automatically acquire access tokens with credentials.
-- Tokens are used to access any service API in your project and any other services that granted access to that service
+- Tokens used to access any service API in your project and any other services that granted access to that service
 account.
 - Service accounts are convenient when you're not accessing used data.
 
@@ -393,10 +388,10 @@ account.
 **1. True or False: If a Google Cloud IAM policy gives you Owner permissions at the project level, 
 your access to a resource in the project may be restricted by a more restrictive policy on that resource.**
 
-- False. Policies are a union of the parent and the resource. If a parent policy is less restrictive, 
-it overrides a more restrictive resource policy.
+- False, policies are a union of the parent and the resource. 
+- If a parent policy is less restrictive, it overrides a more restrictive resource policy.
 
-**2. Service accounts are used to provide which of the following?**
+**2. Service accounts used to provide which of the following?**
 
 - Authentication between Google Cloud services.
 - Key generation and rotation when used with App Engine and Compute Engine.
@@ -407,8 +402,8 @@ it overrides a more restrictive resource policy.
 
 - Gmail account, Cloud Identity/Google Workspace, Service Account: 
     - Can be part of a group.
-        - User@gmail.com, Project A, Owner
-        - User@yourcompany.com, Project B, Instance Admin
+        - `User@gmail.com`, `Project A`, `Owner`
+        - `User@yourcompany.com`, `Project B`, `Instance Admin`
 - Note: You cannot use Cloud IAM to create or manage your users or groups.
 
 **What if you already have a different corporate directory?**
@@ -430,9 +425,9 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 - Centralized GUI-based console for all project data.
 - Developer tools:
-    - Cloud Source Repositories.
-    - Cloud Shell.
-    - Test Lab (mobile app testing).
+    - Cloud Source Repositories
+    - Cloud Shell
+    - Test Lab (mobile app testing)
 - Access to product APIs.
 - Manage and create projects.    
 
@@ -447,7 +442,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 **RESTful APIs**
 
 - Programmatic access to products and services:
-    - Typically use JSON as an interchange format.
+    - Typically, use JSON as an interchange format.
     - Use OAuth 2.0 for authentication and authorization.
 - Enabled through the Google Cloud Platform Console.
 - To help you control spend, most include daily quotas and rates (limits):
@@ -462,13 +457,12 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 ### Billing, labels, and quotas
 
-**Resource Manager lets you hierarchically manage resources**
-
-- **Billing and Resource Monitoring**:
+- **Resource Manager lets you hierarchically manage resources.**
+- **Billing and Resource Monitoring:**
     - Organization contains all billing accounts.
-    - Project is associated with one billing account.
+    - Project associated with one billing account.
     - A resource belongs to one and only one project.
-- **Identity and Access Management**:
+- **Identity and Access Management:**
     - Child policies cannot restrict access granted at the parent level.
 
 **Resource quotas**
@@ -478,7 +472,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
         - Can be indicators of bad code.
     - Other poorly behaved GCP customers.
 - **Default quotas** may **increase as your use** of Google Cloud Platform expands over time.
-- Most quotas are applied **per project**, based on **resource type and allocation**.             
+- Most quotas applied **per project**, based on **resource type and allocation**.             
 
 **Why use Project quotas?**
 
@@ -493,17 +487,17 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 **Labels are a utility for organizing GCP resources**
 
 - Attached to resources: VM, disk, snapshot, image:
-    - GCP Console, gcloud, or API.
+    - GCP Console, `gcloud`, or API.
 - Example uses of labels:
-    - Inventory.
-    - Filter resources.
+    - Inventory
+    - Filter resources
     - In scripts:
-        - Help analyze costs.
-        - Run bulk operations.    
+        - Help analyze costs
+        - Run bulk operations
 
 **Use labels for ...**
 
-- Team or Cost Center.
+- Team or Cost Center:
     - `team:marketing`
     - `team:research`
 - Components:
@@ -519,7 +513,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
     - `state:inuse`
     - `state:readyfordelete`                
 
-**Visualize Google Cloud spend with Data Studio**
+**Visualize Google Cloud spend with Data Studio.**
 
 ***
 
@@ -529,8 +523,11 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 **GCP is organized into regions and zones**
 
-- Region: europe-west2
-- Zone: europe-west2-a, europe-west2-b, europe-west2-c 
+- Region: `europe-west2`
+- Zone: 
+    - `europe-west2-a`
+    - `europe-west2-b`
+    - `europe-west2-c` 
 
 **Spreading resources across zones in a region**
 
@@ -550,8 +547,8 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
     - Default network
     - One subnet per region
     - Regional IP allocation
-    - Fixed /20 subnetwork per region
-    - Expandable up to /16    
+    - Fixed `/20` sub-network per region
+    - Expandable up to `/16`    
 - Custom Mode:
     - No default subnets created
     - Full control of IP ranges
@@ -565,22 +562,22 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 - Firewall rules are stateful.
 - Implied deny all ingress and allow all egress.
 
-**A firewall rule is composed of...**
+**A firewall rule composed of...**
 
-- `direction`:
-    - Inbound connections are matched against `ingress` rules only.
-    - Outbound connections are matched against `egress` rules only.
-- `source or destination`:
+- `direction:`
+    - Inbound connections matched against `ingress` rules only.
+    - Outbound connections matched against `egress` rules only.
+- `source or destination:`
     - For the `ingress` direction, `sources` can be specified as part of the rule with IP addresses, source tags, or a
     source service account.
     - For the `egress` direction, `destinations` can be specified as part of the rule with one or more ranges of 
     IP addresses.
-- `protocol` and `port`:
+- `protocol and port:`
     - Any rule can be restricted to apply to specific protocols only or specific combinations of protocols and ports only.
-- `action`:
+- `action:`
     - To allow or deny packets that match the direction, protocol, port, and source or destination of the rule.
-- `priority`:
-    - Governs the order in which rules are evaluated; the first matching rule is applied.
+- `priority:`
+    - Governs the order in which rules evaluated; the first matching rule applied.
 
 ### Compute Engine Virtual Machines
 
@@ -596,7 +593,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 **Internal IP**
 
 - Allocated from subnet range to VMs by DHCP.
-- DHCP lease is renewed every 24 hours.
+- DHCP lease renewed every 24 hours.
 - VM name + IP is registered with network-scoped DNS.
 
 **External IP**
@@ -642,7 +639,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 ```
 Highest performance per vCPU 
-(up to 3.8 Ghz sustained all-core turbo
+(up to 3.8 Ghz sustained all-core turbo)
 ```
 
 **Shared-core machine types**
@@ -698,7 +695,7 @@ Highest performance per vCPU
         - Customer-managed
         - Customer-supplied
 
-**Local SSD disks are physically attached to a VM**
+**Local SSD disks physically attached to a VM**
 
 - More IOPS, lower latency, higher throughput than persistent disk.
 - 375-GB disk up to eight, total of 3 TB.
@@ -714,7 +711,7 @@ Highest performance per vCPU
 | Bootable | Yes | Yes | No |
 | Use case | General, bulk file storage | Random IOPS | High IOPS and low latency |
 
-**Persistent disk maagement differences**
+**Persistent disk management differences**
 
 - Cloud Persistent Disk:
     - Single file system is best
@@ -736,16 +733,16 @@ Highest performance per vCPU
     - Max throughput of 32 Gbps with 16 vCPU.
     - Including persistent disk IOPS throughput.
 - Up to 8 NIC, connected to different networks.
-- Can not modify after creation.
+- Can't modify after creation.
 
 ### Interconnecting networks
 
 **Google Cloud offers many interconnect options**    
 
-- **VPN**: Secure multi-Gbps connection over VPN tunnels.
-- **Dedicated Interconnect**: Connect up to 8 x 10 Gbps or 2 x 100 Gbps transport circuits for private cloud traffic to
+- **VPN:** Secure multi-Gbps connection over VPN tunnels.
+- **Dedicated Interconnect:** Connect up to 8 x 10 Gbps or 2 x 100 Gbps transport circuits for private cloud traffic to
 Google Cloud at Google POPs.
-- **Partner Interconnect**: Connectivity between your on-premises network and your VPC network through a supported
+- **Partner Interconnect:** Connectivity between your on-premises network, and your VPC network through a supported
 service provider.
 
 **Cloud VPN securely connects your on-premises network to your Google Cloud VPC network**
@@ -832,7 +829,7 @@ service provider.
 
 - One-way synchronization.
 - Only synchronizes deltas for faster possible provisioning.
-- Configure which users accounts to sync.
+- Configure which users account to sync.
 
 **User authentication options**
 
@@ -844,4 +841,4 @@ service provider.
 
 - Synchronizes user password from Active Directory to Cloud Identity as they are changed (in real time).
 - GSPS intercepts the raw password and applies a salted SHA512 hash.
-- Encrypted via TLS, the salted hash is sent to Cloud Identity using the Directory API.
+- Encrypted via TLS, the salted hash sent to Cloud Identity using the Directory API.

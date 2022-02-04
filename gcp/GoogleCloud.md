@@ -4,21 +4,21 @@
 
 ### What is Cloud Computing?
 
-- **On-demand self-service**: No human intervention needed to get resources.
-- **Broad network access**: Access from anywhere.
-- **Resource pooling**: Provider shares resources to customers.
-- **Rapid elasticity**: Get more resources quickly as needed.
-- **Measured service**: Pay only for what you consume.
+- **On-demand self-service:** No human intervention needed to get resources.
+- **Broad network access:** Access from anywhere.
+- **Resource pooling:** Provider shares resources to customers.
+- **Rapid elasticity:** Get more resources quickly as needed.
+- **Measured service:** Pay only for what you consume.
 
 ### Before cloud
 
-- **Physical/Colocation**:
+- **Physical/Collocation:**
     - Storage, Processing, Memory, Network.
     - User-configured, managed and maintained.
-- **Virtualized**: 
+- **Virtualized:** 
     - Storage, Processing, Memory, Network.
     - User-configured Provider-manages and maintained.
-- **Serverless**: 
+- **Serverless:** 
     - Fully automated.
 
 ### GCP computing architectures
@@ -33,24 +33,24 @@
 
 ### GCP regions and zones
 
-**Google Cloud Platform is organized into regions and zones**
+**Google Cloud Platform organized into regions and zones**
 
 - A zone is a deployment area for Google Cloud Platform Resources.
-- Zones are grouped into regions, independent geographic areas, and you can choose what region your GCP resources are in.
+- Zones grouped into regions, independent geographic areas, and you can choose what region your GCP resources are in.
 - All the zones within a region have fast network connectivity among them.
 - Locations within regions usually have round trip network latency of under 5 milliseconds.
-- Think of a zone as a single failure domain within a region. As part of building a fault tolerant application, you can 
-spread their resources across multiple zones in a region.
+- Think of a zone as a single failure domain within a region. 
+- As part of building a fault tolerant application, you can spread their resources across multiple zones in a region.
 
 ![GCP regions and zones](gcp-img/gcp-zone-regions.png "GCP regions and zones")
 
 ### Pricing
 
-- **Billing in sub-hour increments**: For compute, data processing and services.
-- **Discounts for sustained use**: Automatically applied to virtual machine use over 25% of a month.
-- **Discounts for committed use**: Pay less for steady, long-term workloads.
-- **Discounts for preemptible use**: Pay less for interruptible workloads.
-- **Custom VM instance types**: Pay only for the resources you need for your application.
+- **Billing in sub-hour increments:** For compute, data processing and services.
+- **Discounts for sustained use:** Automatically applied to virtual machine use over 25% of a month.
+- **Discounts for committed use:** Pay less for steady, long-term workloads.
+- **Discounts for preemptible use:** Pay less for interruptible workloads.
+- **Custom VM instance types:** Pay only for the resources you need for your application.
 
 ### Open APIs
 
@@ -77,24 +77,24 @@ and scalable infrastructure.
 
 **Google Cloud Platform offers a range of compute services, storage services, data services**
 
-- **GCP compute services**:
+- **GCP compute services:**
     - Compute Engine
     - Kubernetes Engine
     - App Engine
     - Cloud Functions
-- **GCP storage services**:
+- **GCP storage services:**
     - Bigtable
     - Cloud Storage
     - Cloud SQL
     - Cloud Spanner
     - Cloud Datastore
-- **GCP Big Data services**:
+- **GCP Big Data services:**
     - Big Query
     - Pub/Sub
     - Data flow
     - Data proc
     - Data lab
-- **GCP Machine Learning services**:
+- **GCP Machine Learning services:**
     - Natural Language API
     - Vision API
     - Machine Learning
@@ -120,13 +120,15 @@ and scalable infrastructure.
 - Billing export allows you to store detailed billing information.
 - Reports is a visual tool to monitor expenditure.
 - Quotas limits:
-    - **Rate quota**: GKE API: 1,000 requests per 100 seconds. Resets after specific time.
-    - **Allocation quota**: 5 networks per project.
+    - **Rate quota:** 
+        - GKE API: 1,000 requests per 100 seconds. 
+        - Resets after specific time.
+    - **Allocation quota:** 5 networks per project.
 - Many quotas are changeable.
 
 #### Quiz
 
-**1.Choose fundamental characteristics of cloud computing. Mark all that are correct (4 correct responses).**
+**1. Choose fundamental characteristics of cloud computing. Mark all that are correct (4 correct responses).**
 
 - Resources are available from anywhere over the network.
 - Computing resources available on-demand and self-service.
@@ -166,7 +168,7 @@ from physical data centers?**
 - Google helps with best practices, templates, products and solutions.
 - Upper layers are Customers responsibility.
 
-| Resposibilities | IaaS | Paas | Manages services |
+| Responsibilities | IaaS (Compute Engine) | Paas (App Engine) | Manages services |
 |---|---|---|---|
 | Content | C | C | C
 | Access Policies | C | C | C |
@@ -188,11 +190,11 @@ from physical data centers?**
 
 - Group your resources according to your organization structure.
 - Levels of the hierarchy provide trust boundaries and resource isolation.
-- Policies are inherited downwards in hierarchy.
+- Policies inherited downwards in a hierarchy.
 
 ![GCP resource hierarchy](gcp-img/gcp-resource-hierarchy.png "GCP resource hierarchy")
 
-**All GCP services you use are associated with a project**
+**All GCP services you use associated with a project**
 
 - Track resource and quota usage.
 - Enable billing.
@@ -231,9 +233,9 @@ from physical data centers?**
 
 **An example IAM resource hierarchy**
 
-- A policy is set on a resource.
+- A policy set on a resource.
     - Each policy contains a set of roles and role members.
-- Resources inherit policies from parent.
+- Resources inherit policies from a parent.
     - Resource policies are a union of parent and resource.
 - **A less restrictive parent policy overrides a more restrictive resource policy.**
 
@@ -241,11 +243,11 @@ from physical data centers?**
 
 **1. Choose the correct completion: Services and APIs are enabled on a per-__________ basis.**
 
-- Project.
+- Project
 
 **2. True or false: Google manages every aspect of Google Cloud Platform customers' security.**
 
-- False.
+- False
 
 **3. Your company has two GCP projects, and you want them to share policies. What is the less error-prone way to set this up?**
 
@@ -262,10 +264,10 @@ from physical data centers?**
 **IAM policies can apply to any of four types of principals**
 
 - **Who:**
-    - Google account or Cloud Identity user: `test@gmail.com`.
-    - Service account: `test@project_id.iam.gserviceaccount.com`.
-    - Google group: `test@googlegroups.com`.
-    - Cloud Identity or G Suite domain: `example.com`.
+    - Google account or Cloud Identity user: `test@gmail.com`
+    - Service account: `test@project_id.iam.gserviceaccount.com`
+    - Google group: `test@googlegroups.com`
+    - Cloud Identity or G Suite domain: `example.com`
     
 **Three types of IAM roles**
 
@@ -291,7 +293,7 @@ from physical data centers?**
 
 **IAM predefined roles apply to a particular GCP service in a project**
 
-- **can do what**: On Compute Engine resources in this project, or folder, or org.
+- **can do what:** On Compute Engine resources in this project, or folder, or org.
 
 **IAM predefined roles offer more find-grained permissions on particular services**
 
@@ -310,7 +312,8 @@ from physical data centers?**
     - `compute.instance.list`
     - `compute.instance.start`
     - `compute.instance.stop`
-- Custom roles can only be used at the project or organization levels. They can't be used at folder level.
+- Custom roles can only be used at the project or organization levels. 
+- They can't be used at folder level.
 
 **Service Accounts control server-to-server interactions**
 
@@ -358,10 +361,10 @@ lower-level policies?**
 
 **There are four ways to interact with GCP**
 
-- **Cloud Platform Console**: Web-based administrative user interface.
-- **Cloud Shell and Cloud SDK**: Command-line interface.
-- **Cloud Console Mobile App**: For iOS and Android.
-- **REST-based API**: For custom applications.
+- **Cloud Platform Console:** Web-based administrative user interface.
+- **Cloud Shell and Cloud SDK:** Command-line interface.
+- **Cloud Console Mobile App:** For iOS and Android.
+- **REST-based API:** For custom applications.
 
 **Cloud Platform Console**
 
@@ -373,9 +376,9 @@ lower-level policies?**
 **Google Cloud SDK**
 
 - Includes command-line tools for Cloud Platform products and services:
-    - `gcloud`: Main command line interface for GCP products and services.
-    - `gsutil`: Cloud Storage.
-    - `bq`: BigQuery.
+    - `gcloud:` Main command line interface for GCP products and services.
+    - `gsutil:` Cloud Storage
+    - `bq:` BigQuery
 - Available via Cloud Shell.
 - Available as docker image.
 
@@ -408,7 +411,7 @@ lower-level policies?**
 
 **Cloud Console Mobile App**
 
-- Manage VM and database instances.
+- Manage a VM and database instances.
 - Manage apps in Google App Engine.
 - Manage billing.
 - Virtualize projects with a customizable dashboard.
@@ -421,13 +424,13 @@ lower-level policies?**
 
 #### Quiz
 
-**1. True or False: In Google Cloud IAM: if a policy applied at the project level gives you Owner permissions, 
+**1. True or False: In Google Cloud IAM: if a policy applied at the project level gives you Owners permissions, 
 your access to an individual resource in that project might be restricted to View permission if someone applies a more 
 restrictive policy directly to that resource.**
 
 - False
 
-**2. True or False: All Google Cloud Platform resources are associated with a project.**
+**2. True or False: All Google Cloud Platform resources associated with a project.**
 
 - True
 
@@ -470,13 +473,13 @@ licensed software.
 
 **Virtual Private Cloud Networking**
 
-- Each VPC network is contained in a GCP project.
+- Each VPC network contained in a GCP project.
 - You can provision Cloud Platform resources, connect them to each other, and isolate them from one another.
 
 **Google Cloud VPC networks are global; subnets are regional**
 
-- Resilient.
-- Simple network layout.
+- Resilient
+- Simple network layout
 
 ![Google Cloud VPC networks](gcp-img/gcp-vpc-network.png "Google Cloud VPC networks")
 
@@ -497,7 +500,7 @@ already on that subnet might be affected.**
 
 - No upfront investment.
 - Fast and consistent performance.
-- Create VMs with GCP Console or **gcloud**.
+- Create VMs with GCP Console or `gcloud`.
 - Run images of Linux or Windows Server.
 - Pick memory and CPU, use predefined types, or make a custom VM.
 - Pick GPUs if you need them.
@@ -511,7 +514,7 @@ already on that subnet might be affected.**
 
 - Per-second billing, sustained use discounts.
 - Preemptilbe instances:
-    - You've given compute engine permission to terminate it if it's resources are needed elsewhere.
+    - You've given compute engine permission to terminate it if it's resources needed elsewhere.
 - High throughput to storage at no extra cost.
 - Custom machine types: Only pay for the hardware you need.
 
@@ -532,13 +535,14 @@ already on that subnet might be affected.**
 
 ### Important VPC capabilities
 
-- VPCs have routing tables. These are used to forward traffic from one instance to another instance within the same
-network. Even across sub-networks and even between GCP zones without requiring an external IP address.
+- VPCs have routing tables. 
+- These are used to forward traffic from one instance to another instance within the same network. 
+- Even across sub-networks and even between GCP zones without requiring an external IP address.
 
 **You control the topology of your VPC network**
 
 - Use its route table to forward traffic within the network, even across subnets.
-- Use its firewall to control what network traffic is allowed.
+- Use its firewall to control what network traffic allowed.
     - Tagging FW rules example: Traffic at port 80 or 443 is allowed into all VMs with the "web" tag.
 - Use Shared VPC to share a network, or individual subnets, with other GCP projects.
 - Use VPC Peering to interconnect networks in GCP projects.
@@ -547,25 +551,25 @@ network. Even across sub-networks and even between GCP zones without requiring a
 
 - Users get a single, global anycast IP address.
 - Traffic goes over the Google backbone from the closest point-of-presence to the user.
-- Backends are selected based on load.
+- Backends selected based on load.
 - Only healthy backends receive traffic.
 - No pre-warming is required.
 
 **Google VPC offers a suite of load-balancing options**
 
-- **Global HTTP(S)**:
+- **Global HTTP(S):**
     - Layer 7 load balancing based on load.
     - Can route different URLs to different back ends.
-- **Global SSL Proxy**:
+- **Global SSL Proxy:**
     - Layer 4 load balancing of non-HTTPS SSL traffic based load.
     - Supported on specific port numbers.
-- **Global TCP Proxy**:
+- **Global TCP Proxy:**
     - Layer 4 load balancing of non-SSL TCP traffic.
     - Supported on specific port numbers.
-- **Regional**:
+- **Regional:**
     - Load balancing of any traffic (TCP, UDP).
     - Supported on any port number.
-- **Regional internal**:
+- **Regional internal:**
     - Load balancing of traffic inside a VPC.
     - Use for the internal tiers of multi-tier apps.                
 
@@ -582,11 +586,12 @@ network. Even across sub-networks and even between GCP zones without requiring a
 
 **Google Cloud Platform offers many interconnect options**
 
-- **VPN**: Secure multi-Gbps connection over VPN tunnels. Cloud Router.
-- **Direct Peering**: Private connection between you and Google for your hybrid cloud workloads.
-- **Carrier Peering**: Connection through the largest partner network of service providers.
-- **Dedicated Interconnect**: Connect N X 10G transport circuits for private cloud traffic to Google Cloud 
-at Google POPs.
+- **VPN:** 
+    - Secure multi-Gbps connection over VPN tunnels. 
+    - Cloud Router.
+- **Direct Peering:** Private connection between you and Google for your hybrid cloud workloads.
+- **Carrier Peering:** Connection through the largest partner network of service providers.
+- **Dedicated Interconnect:** Connect `n x 10G` transport circuits for private cloud traffic to Google Cloud at Google POPs.
 
 #### Quiz
 
@@ -639,7 +644,7 @@ Which load-balancing option should this customer choose?**
 - Data encryption in transit by default from Google to endpoint.    
 - Online and offline import services are available.
 
-**Cloud Storage files are organized into buckets**
+**Cloud Storage files organized into buckets**
 
 | Bucket attributes | Bucket contents |
 |---|---|
@@ -650,8 +655,8 @@ Which load-balancing option should this customer choose?**
 | Object versioning setting | |
 | Object lifecycle management rules | |
 
-- Cloud Storage is object storage rather than file storage. Compute Engine virtual machines use Persistent 
-Disk storage to contain their file systems. 
+- Cloud Storage is object storage rather than file storage. 
+- Compute Engine virtual machines use Persistent Disk storage to contain their file systems. 
 
 **Choosing among Cloud Storage classes**
 
@@ -664,22 +669,23 @@ Disk storage to contain their file systems.
 ![Cloud Storage classes](gcp-img/gcp-storage-classes.png "Cloud Storage classes")
 
 - Regional storage lets you store your data in a specific GCP region: US Central One, Europe West or Asia One.
-It is cheaper tha Multi-regional storage but it offers less redundancy. Store data close to their Compute Engine VMs, or
-their Kubernetes engine clusters.
-- Multi-regional cost a bit more but it's Geo-redundant. Appropriate for storing frequently accessed data. For example,
-website content, interactive workloads, or data that's part of mobile and gaming apps.
-- Nearline for storing infrequently accessed data. Good for scenario where you plan to read or modify your data once a 
-month or less on average.
+    - It is cheaper than Multi-regional storage, but it offers less redundancy. 
+    - Store data close to their Compute Engine VMs, or their Kubernetes engine clusters.
+- Multi-regional cost a bit more, but it's Geo-redundant. 
+    - Appropriate for storing frequently accessed data. 
+    - For example, website content, interactive workloads, or data that's part of mobile and gaming apps.
+- Nearline for storing infrequently accessed data. 
+    - Good for a scenario where you plan to read or modify your data once a month or less on average.
 - Coldline storage is a very low cost, highly durable service for data archiving, online backup, and disaster recovery.
-Access at most once a year.
+    - Access at most once a year.
 - Multi-regional: Storage price; Price Per GB stored per month highest.
 - Multi-regional: Retrieval price; Total price per GB transferred lowest.
 
 **There are several ways to bring data into Cloud Storage**
 
-- **Online transfer**: Self-managed copies using command-line tools or drag-and-drop.
-- **Storage Transfer Service**: Scheduled, managed batch transfers.
-- **Transfer Appliance (Beta)**: Rackable appliances to securely ship your data.
+- **Online transfer:** Self-managed copies using command-line tools or drag-and-drop.
+- **Storage Transfer Service:** Scheduled, managed batch transfers.
+- **Transfer Appliance (Beta):** Rackable appliances to securely ship your data.
 
 **Cloud Storage works with other GCP services**
 
@@ -710,7 +716,7 @@ Access at most once a year.
 
 **Cloud Bigtable is managed NoSQL**
 
-- Fully managed NoSQL, wide-column database service for terabyte applications.
+- A fully managed NoSQL, wide-column database service for terabyte applications.
 - Accessed using HBase API.
 - Native compatibility with big data, Hadoop ecosystems.
 
@@ -839,7 +845,7 @@ External read replicas can be configured.
     - User credentials, customer orders.
 - Cloud Spanner:
     - Large-scale database apps (> ~2 TB).
-    - Whenever high I/O, global consistency is needed.
+    - Whenever high I/O, global consistency needed.
 - BigQuery:
     - Interactive querying, offline analytics.
     - Data warehousing.                    
@@ -891,8 +897,8 @@ the long-term storage location for data?**
 
 **Introduction**
 
-- **IaaS** (Compute Engine): Servers, storage, networking.
-- **PaaS** (App Engine): Preset runtimes, managed services.
+- **IaaS (Compute Engine):** Servers, storage, networking.
+- **PaaS (App Engine):** Preset runtimes, managed services.
 
 **IaaS**
 
@@ -906,14 +912,15 @@ the long-term storage location for data?**
 
 **Kubernetes**
 
--  Containers start much faster than virtual machines and use fewer resources, because each container does not 
+- Containers start much faster than virtual machines and use fewer resources, because each container does not 
 have its own instance of the operating system.
 
 ![Containers](gcp-img/gcp-containers.png "Containers")
 
 - Process is an instance of a running program.
-- A Container starts as quickly as a new process. Much quicker than boot up entire OS.
-- In Containers we are virtualizing the operating system ratner than the hardware.
+- A Container starts as quickly as a new process. 
+- Much quicker than boot up entire OS.
+- In Containers, we are virtualizing the operating system rather than the hardware.
 - Orchestrate many containers, on many hosts.
 - Scale them, rolluot new version of them, rollback to old version when things go wrong.
 
@@ -965,7 +972,7 @@ $> docker run -d py-server
 
 - False
 
-**2. Containers are loosely coupled to their environments. What does that mean?**
+**2. Containers loosely coupled to their environments. What does that mean?**
 
 - Containers are easy to move around.
 - Deploying a containerized application consumes less resources and is less error-prone than deploying an application 
@@ -985,7 +992,8 @@ in virtual machines.
 
 ![Kubernetes pod](gcp-img/gcp-kubernetes-pod.png "Kubernetes pod")
 
-- **pod**: Smallest deployable unit in Kubernetes. Think of a pod as if it were a running process on your cluster.
+- **pod:** The smallest deployable unit in Kubernetes. 
+    - Think of a pod as if it were a running process on your cluster.
 - Each pod in Kubernetes gets a unique IP address and set of ports for your containers.
 
 ```console
@@ -997,7 +1005,9 @@ $> kubectl run nginx --image=nginx:1.15.7
 
 **Deployment**
 
-- Group of replicas with the same pod. Keeps pod running. Contain component of your application, or entire app.
+- Group of replicas with the same pod. 
+- Keeps pod running. 
+- Contain component of your application, or entire app.
 
 ```console
 # see running nginx pods
@@ -1010,7 +1020,8 @@ $> kubectl expose deployments nginx --port=80 --type=LoadBalancer
 
 ![Kubernetes Service](gcp-img/gcp-kubernetes-service.png "Kubernetes Service")
 
-- Service group couple pods together. Provides an endpoint for them.
+- Service group couple pods together. 
+- Provides an endpoint for them.
 - Services provide that stable endpoint you need.
 
 ```console
@@ -1032,7 +1043,7 @@ $> kubectl autoscale nginx --min=10 --max=15 --cpu=80
 $> kubectl get pods -l "app=nginx" -o yaml
 ```
 
-- Declarative way. Instead of issuing commands, you provide a configuration file that tells Kubernetes what you want your
+- **Declarative way:** Instead of issuing commands, you provide a configuration file that tells Kubernetes what you want your
 desired state to look like and Kubernetes figures out how to do it.
 
 ```yaml
@@ -1085,7 +1096,8 @@ nginx       5           5           5           5               12m
 
 **Kubernetes rollingUpdate**
 
-- Manages new-versions. Spare users from experiencing downtime.
+- Manages new-versions. 
+- Spare users from experiencing downtime.
 - Kubernetes will create pods of the new version one-by-one, waiting for each new version pod to become available
 before destroying one of the old version pods.
 
@@ -1109,12 +1121,13 @@ spec:
 
 **2. What is a Kubernetes cluster?**
 
-- A group of machines where Kubernetes can schedule workloads. A Kubernetes cluster is a group of machines where 
-Kubernetes can schedule containers in pods. The machines in the cluster are called “nodes.” 
+- A group of machines where Kubernetes can schedule workloads. 
+- A Kubernetes cluster is a group of machines where Kubernetes can schedule containers in pods. 
+- The machines in the cluster called “nodes.” 
 
 **3. Where do the resources used to build Kubernetes Engine clusters come from?**
 
-- Compute Engine. Because the resources used to build Kubernetes Engine clusters come from Compute Engine, 
+- Compute Engine: Because the resources used to build Kubernetes Engine clusters come from Compute Engine, 
 Kubernetes Engine gets to take advantage of Compute Engine’s and Google VPC’s capabilities.
 
 **4. Google keeps Kubernetes Engine refreshed with successive versions of Kubernetes.**
@@ -1141,7 +1154,7 @@ versions of Kubernetes, and you can enable automatic node upgrades too.
 
 **9. Does Google Cloud Platform offer its own tool for building containers.**
 
-- Yes; the GCP-provided tool is an option, but customers may choose not use it.
+- Yes; the GCP-provided tool is an option, but customers may choose not to use it.
 
 **10. Where do your Kubernetes Engine workloads run?**
 
@@ -1169,8 +1182,8 @@ versions of Kubernetes, and you can enable automatic node upgrades too.
 
 - Kubernetes and GKE On-Prem create the foundation.
 - On-premises and Cloud environments stay in sync.
-- A rich set of tools is provided for:
-    - Managing services on-premises an in the Cloud.
+- A rich set of tools provided for:
+    - Managing services on-premises and in the Cloud.
     - Monitoring systems and services.
     - Migrating apps from VMs into your clusters.
     - Maintaining consistent policies across all clusters, whether on-premises ot in the CLoud.
@@ -1216,21 +1229,21 @@ versions of Kubernetes, and you can enable automatic node upgrades too.
 
 **App Engine standard environment: Requirements**
 
-- Specific versions of Java, Python, PHP and Go are supported.
+- Specific versions of Java, Python, PHP and Go supported.
 
 **Sandbox constraints**
 
 - "Sandbox" software construct that's independent of the hardware, operating system, or physical location of the server
-ot runs on.
+it runs on.
 - No writing to local files.
 - All requests time out at 60s.
 - Limits on third-party software.
  
 **App Engine standard workflow: Web apps**
  
- - **1**: Develop & test the web app locally.
- - **2**: Use the SDK to deploy to App Engine.
- - **3**: App Engine automatically scales & reliably serves your web app.
+ - **1:** Develop & test the web app locally.
+ - **2:** Use the SDK to deploy to App Engine.
+ - **3:** App Engine automatically scales & reliably serves your web app.
     - App Engine can access a variety of services using dedicated APIs.
 
 ### App Engine Flexible Environment
@@ -1264,8 +1277,9 @@ ot runs on.
 **1. Which of these criteria would make you choose App Engine Flexible Environment, rather than Standard Environment, 
 for your application?**
 
-- Wider range of choices for application language. App Engine Standard Environment supports Java, Python, PHP, and Go, 
-but in the Flexible Environment, you upload your own runtime to run code in a language of your choice.
+- Wider range of choices for application language. 
+- App Engine Standard Environment supports Java, Python, PHP, and Go, but in the Flexible Environment, you upload your 
+own runtime to run code in a language of your choice.
 - Ability to ssh in.  
 
 **2. App Engine Flexible Environment applications let their owners control the geographic region where they run.**
@@ -1324,11 +1338,11 @@ but in the Flexible Environment, you upload your own runtime to run code in a la
 
 **4. You want to do business analytics and billing on a customer-facing API. Which GCP service should you choose?**
 
-- Apigee Edge.
+- Apigee Edge
 
 **5. You want to support developers who are building services in GCP through API logging and monitoring.**
 
-- Cloud Endpoints.
+- Cloud Endpoints
 
 **6. You want to gradually decompose a pre-existing monolithic application, not implemented in GCP, into microservices. 
 Which GCP service should you choose?**
@@ -1352,23 +1366,25 @@ Which GCP service should you choose?**
 
 **1. Why would a developer choose to store source code in Cloud Source Repositories?**
 
-- To reduce work. Cloud Source Repositories manages the hosting infrastructure for you.
-- To keep code private to a GCP project. Cloud Source Repositories integrates with Google Cloud IAM.
+- To reduce work. 
+- Cloud Source Repositories manages the hosting infrastructure for you.
+- To keep code private to a GCP project. 
+- Cloud Source Repositories integrates with Google Cloud IAM.
 
 ### Deployment: Infrastructure as code
 
 **Deployment Manager**
 
 - Provides repeatable deployments.
-- Create a .yaml template describing your environment and use Deployment Manager to create resources.
+- Create a `.yaml` template describing your environment and use Deployment Manager to create resources.
 
 #### Quiz
 
 **1. What is the advantage of putting event-driven components of your application into Cloud Functions?**
 
-- Cloud Functions handles scaling these components seamlessly. Your code executes whenever an event triggers it, 
-no matter whether it happens rarely or many times per second. That means you don't have to provision compute resources 
-to handle these operations.
+- Cloud Functions handles scaling these components seamlessly. 
+- Your code executes whenever an event triggers it, no matter whether it happen rarely or many times per second. 
+- That means you don't have to provision compute resources to handle these operations.
 
 ### Monitoring: Proactive instrumentation
 
@@ -1383,23 +1399,23 @@ to handle these operations.
 
 **Stackdriver offers capabilities in six areas**
 
-- **Monitoring**:
+- **Monitoring:**
     - Platform, system, and app metrics.
     - Uptime / health checks.
     - Dashboards and alerts.
-- **Logging**:
+- **Logging:**
     - Platform, system, and app logs.
     - Log search, view, filter, and export.
     - Log-based metrics.
-- **Trace**:
+- **Trace:**
     - Latency reporting and sampling.
     - Per-URL latency and statistics.
-- **Error Reporting**:
-    - Error notifications.
-    - Error dashboard.
-- **Debugger**:
-    - Debug apps.
-- **Profiler (Beta)**:
+- **Error Reporting:**
+    - Error notifications
+    - Error dashboard
+- **Debugger:**
+    - Debug apps
+- **Profiler (Beta):**
     - Continuous profiling of CPU and memory consumption.                    
 
 #### Quiz
@@ -1419,7 +1435,7 @@ to handle these operations.
 **4. You want to define alerts on your GCP resources, such as when health checks fail. 
 Which is the best GCP product to use?**
 
-- Stackdriver Monitoring.
+- Stackdriver Monitoring
 
 **5. Which statements are true about Stackdriver Logging?**
 
@@ -1428,17 +1444,17 @@ Which is the best GCP product to use?**
 
 ***
 
-## Big Data and Machine Learning
+## BigData and MachineLearning
 
-### Google Cloud Big Data Platform
+### Google Cloud BigData Platform
 
-**Google Cloud's big data services are fully managed and scalable**
+**Google Cloud's big data services fully managed and scalable**
 
-- **Cloud Dataproc**: Managed Hadoop MapReduce, Spark, Pig, and Hive service.
-- **Cloud Dataflow**: Stream and batch processing; unified and simplified pipelines.
-- **BigQuery**: Analytics database; stream data at 100,000 rows per second.
-- **Cloud Pub/Sub**: Scalable and flexible enterprise messaging.
-- **Cloud Datalab**: Interactive data exploration.
+- **Cloud Dataproc:** Managed Hadoop MapReduce, Spark, Pig, and Hive service.
+- **Cloud Dataflow:** Stream and batch processing; unified and simplified pipelines.
+- **BigQuery:** Analytics database; stream data at 100,000 rows per second.
+- **Cloud Pub/Sub:** Scalable and flexible enterprise messaging.
+- **Cloud Datalab:** Interactive data exploration.
 
 **Cloud Dataproc is managed Hadoop**
 
@@ -1457,11 +1473,11 @@ Which is the best GCP product to use?**
 **Cloud Dataflow offers managed data pipelines**
 
 - Processes data using Compute Engine instances:
-    - Clusters are sized for you.
+    - Clusters sized for you.
     - Automated scaling, no instance provisioning required.
 - Write code once and get batch and streaming.
     - Transform-based programming model.
-- **Dataflow pipeline flow data from a source through transforms**
+- **Dataflow pipeline flow data from a source through transforms.**
 
 **Why use Cloud Dataflow?**
 
@@ -1480,7 +1496,7 @@ Which is the best GCP product to use?**
 
 **BigQuery runs on Google's infrastructure**
 
-- Compute and storage are separated with a terabit network in between.
+- Compute and storage separated with a terabit network in between.
 - You only pay for storage and processing used.
 - Automatic discount for long-term data storage.
 
@@ -1494,14 +1510,14 @@ Which is the best GCP product to use?**
 
 **Why use Cloud Pub/Sub?**
 
-- Building block for data ingestion in Dataflow, IoT, Marketing Analytics.
+- A building block for data ingestion in Dataflow, IoT, Marketing Analytics.
 - Foundation for Dataflow streaming.
 - Push notifications for cloud-based apps.
 - Connect apps across GCP (push/pull between Compute Engine and App Engine).
 
 **Cloud Datalab offers interactive data exploration**
 
-- Interactive tool for large-scale data exploration, transformation, analysis and visualization.
+- An interactive tool for large-scale data exploration, transformation, analysis and visualization.
 - Integrated, open source:
     - Built in Jupyter (formerly IPython).
 - Analyze data in BigQuery, Compute Engine, and Cloud Storage using Python, SQL, and JavaScript.
@@ -1524,11 +1540,11 @@ Which is the best GCP product to use?**
 
 **Why use the Cloud Machine Learning platform?**
 
-- **For structured data**:
+- **For structured data:**
     - Classification and regression
     - Recommendation
     - Anomaly detection
-- **For unstructured data**:
+- **For unstructured data:**
     - Image and video analytics
     - Text analytics
 
@@ -1574,13 +1590,13 @@ Which is the best GCP product to use?**
 **2. Name two use cases for Google Cloud Dataflow.**
 
 - Extract, Transform, and Load (ETL).
-- Orchestration.
+- Orchestration
 
 **3. Name three use cases for the Google Cloud Machine Learning Platform.**
 
-- Fraud detection.
-- Sentiment analysis.
-- Content personalization.
+- Fraud detection
+- Sentiment analysis
+- Content personalization
 
 **4. Which statements are true about BigQuery?**
 
@@ -1603,30 +1619,35 @@ Which is the best GCP product to use?**
 
 **Terms**
 
-- **Datasets**: A dataset is a grouping mechanism that holds zero or more tables. 
-A dataset is the lowest level unit of access control. Datasets are owned by GCP projects. 
-Each dataset can be shared with individual users.
-- **Tables**: A table is a row-column structure that contains actual data. 
-Each table has a schema that describes strongly typed columns of values. 
-Each table belongs to a dataset.
+- **Datasets:** 
+    - A dataset is a grouping mechanism that holds zero or more tables. 
+    - A dataset is the lowest level unit of access control. 
+    - Datasets owned by GCP projects. 
+    - Each dataset can be shared with individual users.
+- **Tables:** 
+    - A table is a row-column structure that contains actual data. 
+    - Each table has a schema that describes strongly typed columns of values. 
+    - Each table belongs to a dataset.
 
 ### Summary
 
-- Continuum between managed infrastructure and dynamic infrastructure. GCP Compute Services are arranged along this
-continuum.
+- Continuum between managed infrastructure and dynamic infrastructure. 
+- GCP Compute Services arranged along this continuum.
 - Choose Compute Engine if you want to deploy your application in VMs that run on Google's infrastructure.
-- Choose Kubernetes Engine if you want instead to deploy your app in containers that run on Google's infrastructure. In a
-Kubernetes cluster you're defining control.
+- Choose Kubernetes Engine if you want instead to deploy your app in containers that run on Google's infrastructure. 
+- In a Kubernetes cluster you're defining control.
 - Choose App Engine instead if you just want to focus on your code, leaving most infrastructure and provisioning to Google.
     - App Engine flexible environment lets you use any runtime you want, and gives you full control of the environment
     in which your app runs.
     - App Engine standard environment lets you choose from a set of standard runtimes and offers finer-grained scaling and 
     scaled to zero.
-- Cloud Functions, you supply chunks of code for business logic and your code get spun up on demand in response to events.
+- Cloud Functions, you supply chunks of code for business logic, and your code get spun up on demand in response to events.
 - Variety of ways to load balance inbound traffic:
-    - Global HTTP(S) LB to put your Web app behind a single anycast IP to the entire internet. It load balances traffic 
-    among all your backend instances in regions around the world. And it's integrated with GCP's Content Delivery Network.
-    - Global TCP or SSL Proxy for traffic on many ports. For other ports or UDP traffic, use regional LB.
+    - Global HTTP(S) LB to put your Web app behind a single anycast IP to the entire internet. 
+    - It load balances traffic among all your backend instances in regions around the world. 
+    - It's integrated with GCP's Content Delivery Network.
+    - Global TCP or SSL Proxy for traffic on many ports. 
+    - For other ports or UDP traffic, use a regional LB.
     - To load balance the internal tiers of a multi-tier application, use the internal load balancer.
 - Variety of ways for you to interconnect your on-premises or other network with your Google VPC.
     - Setup VPN and use Cloud Router to make it dynamic.
@@ -1637,14 +1658,16 @@ Kubernetes cluster you're defining control.
     queries.
     - Cloud Bigtable if you need to store a large amount of single-keyed data, especially structured objects.
     - Cloud Storage if you need to store immutable binary objects.
-    - Cloud SQL or Cloud Spanner if you need full SQL support for an online transaction processing system. Cloud SQL
-    provides terabytes of capacity while Cloud Spanner provides petabytes and horizontal scalability.
+    - Cloud SQL or Cloud Spanner if you need full SQL support for an online transaction processing system. 
+    - Cloud SQL provides terabytes of capacity while Cloud Spanner provides petabytes and horizontal scalability.
     - BigQuery if you need interactive querying in an online analytical processing system with petabytes of scale. 
 - Cloud Storage, Four Storage Class:
-    - Multi-regional and Regional are the classes for warm and hot data. Use Multi-regional especially for content that's 
-    being served to a global Web audience. Use Regional for working storage for compute operations.
-    - Nearline and Coldline are the classes for. Nearline for backups and for infrequently accessed content. Coldline
-    for archiving and disaster recovery.
+    - Multi-regional and Regional are the classes for warm and hot data. 
+    - Use Multi-regional especially for content that being served to a global Web audience. 
+    - Use Regional for working storage for compute operations.
+    - Nearline and Coldline are the classes for: 
+        - Nearline for backups and for infrequently accessed content. 
+        - Coldline for archiving and disaster recovery.
     
 #### Quiz
 
@@ -1732,7 +1755,7 @@ on infrastructure wholly managed by Google?**
 
 - Keep UI responsive; perform backend operations asynchronously.
 - Use event-driven processing.
-    - Cloud Storage: User uploads image, Cloud Function is triggered.
+    - Cloud Storage: User uploads image, Cloud Function triggered.
     - Cloud Function: Uploads output image.
 
 **Design for loose coupling**
@@ -1747,8 +1770,10 @@ on infrastructure wholly managed by Google?**
 
 **Implement stateless components for scalability**
 
-- Worker pattern: Workers perform compute tasks without sharing state. Can scale up and down reliably.
-    - IoT data streams into Pub/Sub topic, Cloud Function is triggered.
+- Worker pattern: 
+    - Workers perform compute tasks without sharing state. 
+    - Can scale up and down reliably.
+    - IoT data streams into Pub/Sub topic, Cloud Function triggered.
 
 ![Worker pattern](gcp-img/gcp-worker-pattern.png "Worker pattern")
 
@@ -1760,9 +1785,9 @@ on infrastructure wholly managed by Google?**
 
 **Cache frontend content**
 
-- Cloud CDN.
-- Cache load-balanced frontend content that comes from Compute Engine VM instance group.
-- Cache static content that is served from Cloud Storage.
+- Cloud CDN
+- Cache load-balanced frontend content comes from Compute Engine VM instance group.
+- Cache static content is served from Cloud Storage.
 
 **Implement API gateway to make backend functionality available to consumer apps**
 
@@ -1779,7 +1804,7 @@ on infrastructure wholly managed by Google?**
 **Implement health-check endpoints**
 
 - Health Monitoring Agent (Stackdriver Monitoring):
-    - `/health`:
+    - `/health:`
         - Storage
         - Database
         - Network connections
@@ -1796,7 +1821,7 @@ on infrastructure wholly managed by Google?**
 
 **Handle transient and long-lasting errors gracefully**
 
-- Transient errors: Retry with exponential backoff.
+- Transient errors: Retry with an exponential backoff.
 - Service availability errors: Implement a circuit breaker.
 
 **Consider data sovereignty and compliance requirements**
@@ -1805,12 +1830,12 @@ on infrastructure wholly managed by Google?**
 
 **Perform high availability testing and develop disaster recovery plans**
 
-- In addition to functional and performance testing, perform high-availability testing and develop disaster 
-recovery plans.
+- In addition to functional and performance testing, perform high-availability testing and develop disaster recovery plans.
 - Testing:
     - Identify failure scenarios.
     - Create disaster recovery plans (people, processes, tools).
-    - Perform tabletop tests. Team discuss how to react of unexpected situations.
+    - Perform tabletop tests. 
+    - Team discuss how to react of unexpected situations.
 - Production:
     - Perform canary testing and blue/green deployments.
     - Validate your disaster recovery plan.    
@@ -1818,7 +1843,7 @@ recovery plans.
 **Example failure Scenario**
 
 - Connectivity failure.
-- On-premises data center ot other cloud-provider failure.
+- On-premises data center or other cloud-provider failure.
 - GCP zonal or regional failure.
 - Deployment rollback.
 - Data corruption caused by network or application issues.
@@ -1847,22 +1872,22 @@ is able to serve traffic reliably. What is the best way to check if your applica
 
 **3. Which of the following statements is true?**
 
-- For transient network errors, applications should implement retry logic with exponential backoff and fail gracefully 
+- For transient network errors, applications should implement retry logic with an exponential backoff and fail gracefully 
 if the errors persist.
 
 **4. Identify two key aspects of this application's architecture.**
 
-- The application will require longer development and QAcycles as the system grows in features and complexity.
+- The application will require longer development and QA cycles as the system grows in features and complexity.
 - The application is monolithic because all layers need to be deployed as a single unit.
 
 **5. Identify three key aspects of a sound architecture for a continuous integration and delivery (CI / CD) system.**
 
 - When a developer commits code into the code repository, a continuous integration tool such as Jenkins builds a 
 container image for the application. 
-- Builds are tested in the development environment and canary deployment before promoting to the production deployment.
-- Canary deployments can help catch unexpected issues before they affect a large number of users in production.
+- Builds tested in the development environment and canary deployment before promoting to the production deployment.
+- Canary deployments can help catch unexpected issues before they affect many users in production.
 
-**6. Which of the following is considered a best practice when developing cloud-native applications?**
+**6. Which of the following considered a best practice when developing cloud-native applications?**
 
 - Implement API gateways to make backend functionality available to consumer applications.
 
@@ -1919,7 +1944,7 @@ print('Saved {}: {}'.format(task.key.name, task['description']))
         - Interactively
         - In automated scripts         
 
-**Cloud SDK: gcloud**
+**Cloud SDK: `gcloud`**
 
 - Is a command-line tool.
 - Allows you to perform common tasks on GCP.
@@ -1933,7 +1958,7 @@ example-1       us-central1-a   n1-standard-1   10.240.95.198   10.167.182.XX   
 example-2       eu-west1-c      n1-standard-1   10.240.173.253  23.251.148.XX   RUNNING
 ```
 
-**Cloud SDK: bq**
+**Cloud SDK: `bq`**
 
 - Is a command-line tool to work with BigQuery.
 - Allows you to manage datasets, tables, and other BigQuery entities.
@@ -1943,7 +1968,7 @@ example-2       eu-west1-c      n1-standard-1   10.240.173.253  23.251.148.XX   
 $> bq query "SELECT word, SUM(word_count) as count FROM data:sample.ferris WHERE word CONTAINS 'Arnold' GROUP BY word"
 ```
 
-**Cloud SDK: gsutil**
+**Cloud SDK: `gsutil`**
 
 - Is a command-line tool to perform tasks in Cloud Storage.
 - Allows you to:
@@ -1960,8 +1985,8 @@ $> gsutil cp /home/mike/pictures/cloud-logo.png gs://my-bucket
 
 - Initialize: `gcloud init`
 - Manage components.
-- Use gcloud Interactive Shell.
-- Script gcloud commands.
+- Use `gcloud` Interactive Shell.
+- Script `gcloud` commands.
 
 **Cloud Shell**
 
@@ -2009,11 +2034,11 @@ $> gsutil cp /home/mike/pictures/cloud-logo.png gs://my-bucket
 
 **2. What tools does the Google Cloud SDK include?**
 
-- bq, gsutil, gcloud
+- `bq`, `gsutil`, `gcloud`
     
-**3. What is the gcloud command to list compute instances?**
+**3. What is the `gcloud` command to list compute instances?**
 
-- gcloud compute instances list
+- `gcloud compute instances list`
 
 **4. Which of the following statements about Google Cloud Client Libraries are accurate?**
 
@@ -2030,14 +2055,13 @@ minimal effort to determine the response data?**
 ### Summary
 
 - Use API Explorer as a sandbox to try out Google Cloud APIs.
-- When you are ready to write your app, use Google Cloud Client Libraries to programmatically interact with GCP 
-services. 
+- When you are ready to write your app, use Google Cloud Client Libraries to programmatically interact with GCP services. 
 - If you need to write quick scripts to work with GCP services use the Google Cloud SDK.
 - Implement Federated identity management using Firebase Authentication.
     
 ### :star: Run Java App
 
-- This command (above) to configure the IP tables redirects requests on Port 80 to Port 8080 - 
+- This command to configure the IP tables redirects requests on Port 80 to Port 8080 - 
 the Java Web application listens on Port 8080.
 
 ```
@@ -2060,7 +2084,7 @@ mvn spring-boot:run
 Cloud Storage, Firestore, Datastore, Cloud Bigtable, Cloud SQL, Cloud Spanner, BigQuery
 ```
 
-- Cost-effective.
+- Cost-effective
 - Varied choices based on your:
     - Application
     - Workload
@@ -2104,7 +2128,7 @@ Cloud Storage, Firestore, Datastore, Cloud Bigtable, Cloud SQL, Cloud Spanner, B
 |---|---|
 | High performance wide column NoSQL database service | Operational applications |
 | Sparsely populated table | Analytical applications |
-| Can scala to billions of rows and thousands of columns | Storing large amounts of single-keyed data |
+| Can scale to billions of rows and thousands of columns | Storing large amounts of single-keyed data |
 | Can store TB to PB of data | MapReduce operations |
 
 **Cloud SQL**
@@ -2141,7 +2165,7 @@ Cloud Storage, Firestore, Datastore, Cloud Bigtable, Cloud SQL, Cloud Spanner, B
 
 - SQL images on Google Compute Engine.
 - Compute Engine VMs can be preloaded with SQL Server.
-- Licensing from Microsoft is included automatically.
+- Licensing from Microsoft included automatically.
 - Supported versions:
     - SQL Server Standard
     - SQL Server Web
@@ -2180,7 +2204,7 @@ Cloud Storage, Firestore, Datastore, Cloud Bigtable, Cloud SQL, Cloud Spanner, B
 
 **Cache your application data**
 
-- Memorystore automates complex tasks for Redis and Memcached caching engine.
+- MemoryStore automates complex tasks for Redis and Memcached caching engine.
 - Fully protocol compatible with each engine.
 - Ideal for high-performance, scalable web applications, gaming, and stream processing.
 - Fully managed service.
@@ -2249,8 +2273,8 @@ use Spanner.
 **Datastore = Firestore in Datastore mode**
 
 - Fully backward compatibile with original Datastore but uses Firestore's improved storage layer.
-- The Datastore page is used to manage the database.
-- A project can have onlt a Firestore Native mode database or Datastore mode database, but not both.
+- The Datastore page used to manage the database.
+- A project can have only a Firestore Native mode database or Datastore mode database, but not both.
 - How to decide:
     - Choose Datastore mode when creating a new server application.
         - Automatically scales to millions of writes per second.
@@ -2259,8 +2283,8 @@ use Spanner.
 
 **Datastore concepts**
 
-- Data objects are called entities.
-- Entities are made up of one or more properties.
+- Data objects called entities.
+- Entities made up of one or more properties.
 - Each entity has a key that uniquely identifies it, composed of:
     - Namespace
     - Entity kind
@@ -2277,7 +2301,7 @@ use Spanner.
 - Complete key of Pencil entity:
 
 ```yaml
-[Customer:John, Invoice: April, Product: Pencil]
+[Customer: John, Invoice: April, Product: Pencil]
 ```
 
 **Datastore has two types of indexes**
@@ -2347,7 +2371,7 @@ key = client.key('Task', 'hard/task')
 
 - Reduce contention by building a shared counter, breaking the counter up into N different counters in N entities.
 - To increment, pick a shard at random and increment its counter.
-- To retrieve the count, read all of the sharded entities and sum their individual counts.
+- To retrieve the count, read all the sharded entities and sum their individual counts.
 
 **Use replication to read a portion of the key range**
 
@@ -2372,7 +2396,7 @@ key = client.key('Task', 'hard/task')
     - Return results at lower latency and cost (free).
     - `SELECT priority, percent_complete FROM Task`    
 - Ancestor:
-    - Limits results to the specified entity and its descendants.
+    - Limit results to the specified entity and its descendants.
     - `SELECT * FROM Task WHERE __key__ HAS ANCESTOR KEY(TaskList, 'default')`
 - Entity:
     - Retrieve an entity kind, zero or more filters, and zero or more sort orders.
@@ -2399,12 +2423,12 @@ key = client.key('Task', 'hard/task')
 
 - Atomic:
     - All are applied or.
-    - None are applied.
+    - None applied.
 - Max duration: 270 sec.
 - Idle expiration: 60 sec.
 - Can fail when:
-    - Too many concurrent modifications are attempted on the same entity.
-    - A resource limits is exceeded.
+    - Too many concurrent modifications attempted on the same entity.
+    - A resource limits exceeded.
     - Datastore encounters an internal error.
 
 > Make your Datastore transaction idempotent whenever possible!
@@ -2451,16 +2475,17 @@ Child entity of ExpenseReport is Expense: Key = 11111
 
 ### Summary   
 
-- Cloud Datastore is a fully managed, NoSQL database service that you can use to store structured or semi-structured
-app data.
-- Data objects in Cloud Datastore are called entities. Each entity is of a particular kind.
+- Cloud Datastore is a fully managed, NoSQL database service that you can use to store structured or semi-structured app data.
+- Data objects in Cloud Datastore called entities. 
+- Each entity is of a particular kind.
 - You can specify ancestor path relationships between entities to create entity groups.
 - Ancestor queries of entity groups give you a strongly consistent view of the data.
 - By creating entity group you can ensure that all related entities can be updated in a single transaction.
-- Cloud Datastore automatically build indexes for individual properties in an entity. Composite index for more
-complex queries.
+- Cloud Datastore automatically build indexes for individual properties in an entity. 
+- Composite index for more complex queries.
 - Cloud Datastore can scale seamlessly with zero down time, make sure to ramp up traffic gradually.
-- General guideline is to use the 500-50-5 rule to ramp up traffic. (500 write per minute, increase 50% every 5 minutes).
+- General guideline is to use the 500-50-5 rule to ramp up traffic. 
+    - 500 write per minute, increase 50% every 5 minutes.
 - Distribute your writes across a key range.
 
 ***
@@ -2479,12 +2504,12 @@ complex queries.
 **Multi-Regional**
 
 - Characteristics:
-    - 99.95% availability.
-    - Geo-redundant.
+    - 99.95% availability
+    - Geo-redundant
 - Use Cases:
-    - Serving website content.
-    - Streaming videos.
-    - Mobile apps.
+    - Serving website content
+    - Streaming videos
+    - Mobile apps
 - Price (per GB per month):
     - $0.026
 - APIs name:    
@@ -2493,10 +2518,10 @@ complex queries.
 **Regional Storage**
 
 - Characteristics:
-    - 99.9% availability.
+    - 99.9% availability
     - Data stored in a narrow geographic region.
 - Use Cases:
-    - Data analytics.
+    - Data analytics
 - Price (per GB per month):
     - $0.02    
 - APIs name:
@@ -2505,12 +2530,12 @@ complex queries.
 **Nearline Storage**
 
 - Characteristics:
-    - 99.0% availability.
+    - 99.0% availability
     - Data retrieval costs.
     - Higher per-operation costs.
     - 30-day minimum storage duration.
 - Use Cases:
-    - Back-up.
+    - Back-up
     - Serving long-tail multimedia content.
 - Price (per GB per month):
     - $0.01
@@ -2520,13 +2545,13 @@ complex queries.
 **Coldline Storage**
 
 - Characteristics:
-    - 99.0% availability.
+    - 99.0% availability
     - Data retrieval costs.
     - Higher per-operation costs.
     - 90-day minimum storage duration.
 - Use Cases:
-    - Disaster recovery.
-    - Data archiving.
+    - Disaster recovery
+    - Data archiving
 - Price (per GB per month):
     - $0.007
 - APIs name:
@@ -2546,7 +2571,7 @@ immediately available for download and metadata operations.
 - Read-after-delete
 - Bucket listing
 - Object listing
-- Granting access to resources.
+- Granting access to resources
 
 **The following operations are eventually consistent**
 
@@ -2577,7 +2602,7 @@ Eventually consistent: When you perform an operation, it may take some time for 
     any temporary objects.
     - Uploading data to a temporary new object, composing it with the object you want to append to it, and delete
     the temporary object.
-- Compose object of smaller chunks using `gsutil`:
+- Compose an object of smaller chunks using `gsutil`:
 
 ```
 gsutil compose gs://example-bucket/component-obj-1
@@ -2594,7 +2619,6 @@ gs://example-bucket/composite-object
 
 ```python
 @retry(wait_exponential_multiplier=1000, wait_exponential_max=10000)
-
 def wait_exponential_1000():
     print "Wait 2^x * 1000 milliseconds between each retry, up to 10 seconds, then 10 seconds afterwards"
 ```    
@@ -2622,7 +2646,7 @@ def wait_exponential_1000():
     - Cache control
 - Design your app to minimize spikes in traffic.
 - Use a exponential backoff if you get an error.
-- For request rates > **1000 write requests/second** or **5000 read requests/second**:
+- For request rates > `1000 write requests/second` or `5000 read requests/second`:
     - Start with a request rate below or near the threshold.
     - Double the request rate no faster than every 20 minutes.   
 
@@ -2647,10 +2671,10 @@ def wait_exponential_1000():
     - Bulk access to a bucket's objects.
 - Use Access Control Lists (ACLs) to grant:
     - Read or write access to users for individual buckets or objects.
-    - Access when fine-grained control over individual objects is required.
+    - Access when fine-grained control over individual objects required.
 - Signed URLs (query string authentication):
     - Provide time-limited read or write access to an object through a generated URL.        
-    - Can be created using **gsutil** or programmatically.
+    - Can be created using `gsutil` or programmatically.
 - Use Signed Policy Documents to:
     - Specify what can be uploaded to a bucket.
     - Control size, content type, and other upload characteristics.
@@ -2682,13 +2706,13 @@ def wait_exponential_1000():
 **Uniformly control access to Cloud Storage resources**
 
 - Uniform bucket-level access allows you to uniformly control access to Cloud Storage resources.
-- The feature disables ACLs. Only IAM permissions grant access to the bucket and it's objects.
-- Uniform bucket-level access is recommended, because it unifies and simplifies how you grant access to your 
+- The feature disables ACLs. Only IAM permissions grant access to the bucket, and it's objects.
+- Uniform bucket-level access recommended, because it unifies and simplifies how you grant access to your 
 Cloud Storage resources.
 
 **Best practices for uploading data**
 
-- If using `XMLHttpRequests`:
+- If using `XMLHttpRequests:`
     - Don't close and re-open the connection.
     - Set reasonably long timeouts for upload traffic.
 - Make the request to create the resumable upload URL from the same region as the bucket and upload location.    
@@ -2700,7 +2724,7 @@ Cloud Storage resources.
 **Consider the following when using gsutil for Cloud Storage**
 
 - `gsutil -D` will include OAuth2 refresh and access tokens in the output.
-- `gsutil --trace-token` will include OAuth2 tokens and the contents of any files accessed during the trace.
+- `gsutil --trace-token` will include OAuth2 tokens, and the contents of any files accessed during the trace.
 - Customer-supplied encryption key information in **.boto** config security-sensitive.
 - In a production environment, use a service account for `gsutil`.
 
@@ -2720,7 +2744,7 @@ Cloud Storage resources.
             - Boost for C++
             - crcmod for Python
             - digest-crc for Ruby
-        - gsutil automatically performs integrity checks on all uploads and downloads.
+        - `gsutil` automatically performs integrity checks on all uploads and downloads.
     - MD5 Hash:
         - Is supported for non-composite objects.
         - Cannot be used for partial downloads.                                
@@ -2735,18 +2759,18 @@ Cloud Storage.
 
 **1. Which of the following bucket names are valid?**
 
-- **vanilla-bucket**:
+- `vanilla-bucket:`
     - A bucket name can contain lowercase alphanumeric characters, hyphens, and underscores. 
-It can contain dots (.) if it forms a valid domain name with a top-level domain (such as .com). Bucket names must start 
-and end with an alphanumeric character.
-- bucket_for_my_web_app
+    - It can contain dots (.) if it forms a valid domain name with a top-level domain (such as .com). 
+    - Bucket names must start and end with an alphanumeric character.
+- `bucket_for_my_web_app`
 
 **2. What are the advantages of hosting static websites on Google Cloud Storage?**
 
 - You get automatic scaling with no additional effort.
-- You don't need to set up and run a Compute Engine instance.
+- You don't need to set up and run Compute Engine instance.
 
-**3. Review the following gsutil command. What is the result when the command is executed?**
+**3. Review the following gsutil command. What is the result when the command executed?**
 
 ```console
 $> gsutil mb -c regional -l us-central1  gs://parent-bucket
@@ -2754,7 +2778,7 @@ $> gsutil mb -c regional -l us-central1  gs://parent-bucket
 
 - The command creates a bucket called "parent-bucket" in the "us-central1" location with "regional" storage class.
 
-**4. You are tasked with designing a disaster recovery system in your organization. You need to make sure that all 
+**4. You are tasked with designing a disaster recovery system in your organization. You need to make sure all 
 applications recover and become available as quickly as possible. What storage class is ideal for storing backups of 
 your data if the data is to be stored for two years and is unlikely to be accessed?**
 
@@ -2765,7 +2789,7 @@ your data if the data is to be stored for two years and is unlikely to be access
 - The build system stores build artifacts in Cloud Storage.
 - As the build artifacts get older, they move through various storage classes to limit their retention cost.
 
-**6. Review the following gsutil command. What is the result when the command is executed?**
+**6. Review the following `gsutil` command. What is the result when the command executed?**
 
 ```console
 $> gsutil mb -c regional -l us-central1  gs://parent-bucket
@@ -2784,8 +2808,8 @@ What is the best way to combine the chunks into a single file?**
 - Cloud Storage is the ideal solution for file storage in the Cloud.
 - Storage classes and object lifecycle management enable you to optimally store and archive data depending on frequency
 of access.
-- You can compose large objects using smaller fragments that are uploaded separately. With this approach, you don't have 
-to worry about intermittent network failures during uploads. 
+- You can compose large objects using smaller fragments that are uploaded separately. 
+- With this approach, you don't have to worry about intermittent network failures during uploads. 
 - Leverage parallel uploads to speed up the upload process.
 - Cloud Storage enables you to secure and so rich content such as audio and video with high availability and throughput.
 - Use Cloud Storage as a key component of your data analytics pipelines and ML apps.
@@ -2825,9 +2849,9 @@ to worry about intermittent network failures during uploads.
     - Cloud Storage buckets.
     - Pub/Sub topics.
 
-**Specify what operations are allowed on resources**
+**Specify what operations allowed on resources**
 
-- Permissions are represented with the following syntax:
+- Permissions represented with the following syntax:
     - `<service>.<resource>.<verb>`
 - Examples:
     - `pubsub.subscriptions.consume`
@@ -2842,11 +2866,11 @@ to worry about intermittent network failures during uploads.
 
 | Role name | Role title | Permissions |
 |---|---|---|
-| roles/viewer | Viewer | Read-only actions that preserve state |
-| roles/editor | Editor | Viewer permissions plus actions that modify state |
-| roles/owner | Owner | Editor permissions plus ability to: |
-| | | * Manage access control for a project and all its resources |
-| | | * Set up billing for a project |
+| `roles/viewer` | Viewer | Read-only actions that preserve state |
+| `roles/editor` | Editor | Viewer permissions plus actions that modify state |
+| `roles/owner` | Owner | Editor permissions plus ability to: |
+| | | Manage access control for a project and all its resources |
+| | | Set up billing for a project |
 
 **Apply predefined roles for granular access to Google Cloud resources**
 
@@ -2854,7 +2878,7 @@ to worry about intermittent network failures during uploads.
 
 **IAM custom roles let you define a precise set of permissions**
 
-- InstanceOperator Role:
+- `InstanceOperatorRole:`
     - :heavy_check_mark: `compute.instances.get`
     - :heavy_check_mark: `compute.instances.list`
     - :heavy_check_mark: `compute.instances.start`
@@ -2906,8 +2930,8 @@ to worry about intermittent network failures during uploads.
 - Can be created for use from outside GCP.
 - Require that you be responsible for security of the private key and other management operations such as key rotation.
 - Are manageable through the:
-    - IAM API.
-    - gcloud command-line tool.
+    - IAM API
+    - `gcloud` command-line tool.
     - Service Accounts page in the GCP Console.
 
 **You can define many service accounts in a project**
@@ -2954,7 +2978,7 @@ def implicit():
 
 - Use cases include:
     - Your app needs to access BigQuery datasets that belong to users.
-    - Your app needs to authenticate as s user to create projects on their behalf.
+    - Your app needs to authenticate as a user to create projects on their behalf.
     
 **Identity-Aware Proxy (IAP)**
 
@@ -2985,23 +3009,25 @@ Firebase services.
 
 **Notes**
 
-- A service account is a special Google account that belongs to your application or a VM instance, 
-instead of to an individual end user. Use a service account to call the Google API of a service.
+- A service account is a special Google accounts that belongs to your application, or a VM instance, 
+instead of to an individual end user. 
+- Use a service account to call the Google API of a service.
 
 #### Quiz
 
 **1. Review the following permission: bigquery.jobs.create**
 
-- This permission is related to the BigQuery service, "jobs" resource, and "create" action. 
-Cloud IAM permissions have the following format: `<service>.<resource>.<verb>`. This permission is related to the 
-Google BigQuery service, its "jobs" resource, and its "create" action. IAM members with this permission can create 
-new jobs in BigQuery.
+- This permission related to the BigQuery service, "jobs" resource, and "create" action. 
+- Cloud IAM permissions have the following format: `<service>.<resource>.<verb>`. 
+- This permission related to the Google BigQuery service, its "jobs" resource, and its "create" action. 
 - IAM members with this permission can create new jobs in BigQuery.
                                                                                             
 **2. What mechanism should you use to authenticate your applications when invoking Google APIs?**
 
-- Service account. A service account is a special Google account that belongs to your application or a VM instance, 
-instead of to an individual end user. Use a service account to call the Google API of a service.
+- Service account. 
+- A service account is a special Google accounts that belongs to your application, or a VM instance, instead of to 
+an individual end user. 
+- Use a service account to call the Google API of a service.
 
 **3. Your enterprise has an online expense reporting application. Employees must be able to access the application 
 without having to log into the corporate VPN. How can you enable this type of access?**
@@ -3015,17 +3041,17 @@ that stores usernames and passwords. What is the best way to authenticate your u
 
 **5. What is the best way to apply the principle of least privilege when granting access to Google Cloud Platform resources?**
 
-- Grant restricted permissions at the at the top of the resource hierarchy. Then, for specific users, grant additional 
-granular permissions as you go down the hierarchy.
+- Grant restricted permissions at the top of the resource hierarchy. 
+- Then, for specific users, grant additional granular permissions as you go down the hierarchy.
 
 ### Summary
 
 - You can control user access to the resources in your app by creating IAM members with the appropriate permissions.
-- App access to GCP APIs is controlled using service accounts.
+- App access to GCP APIs controlled using service accounts.
 - Your app assumes the identity of the service account to invoke GCP APIs.
 - You can create one or more service accounts to restrict access to different resources in your app.
-- Cloud Identity Aware Proxy, enables you to control access to your app. It verifies the user's identity and checks 
-whether that user should be allowed to access the app.
+- Cloud Identity Aware Proxy, enables you to control access to your app. 
+- It verifies the user's identity and checks whether that user should be allowed to access the app.
 - End users, simply use an internet accessible URL to access Cloud IAP secured apps. No more VPN.
 - Use Firebase Authentication to authenticate your users using their preferred identity provider such as; 
 GitHub, Google, Facebook, or Twitter.
@@ -3059,8 +3085,8 @@ be configured or multiple topics must be processed by the same web-hook.
 **Choice of execution environments for subscribers**
 
 - Develop highly-scalable subscribers with Cloud Functions or Dataflow.
-- Deploy subscriber on Compute Engine, Google Kubernetes Engine, or App Engine flexible environment. Autoscale based
-on Cloud Monitoring metrics.
+- Deploy a subscriber on Compute Engine, Google Kubernetes Engine, or App Engine flexible environment. 
+- Autoscale based on Cloud Monitoring metrics.
 
 ### Pub/Sub use cases
 
@@ -3081,13 +3107,14 @@ on Cloud Monitoring metrics.
 - Ensure that messages contain identifying attributes that subscribers can use to perform idempotent operations.
 - Publish messages that contain a unique ID.
 - Check previously saved messages to see whether the incoming message is new and needs to be processed.
-- Store information about messages that have already been processed. Use the unique ID as key.
+- Store information about messages that have already been processed. 
+- Use the unique ID as key.
 
 **For scalability, reduce, or eliminate dependencies on message ordering**
 
-- **Scenarios**:
+- **Scenarios:**
     - Ordering is irrelevant:
-        - Collections of statistics about event.
+        - Collections of statistics about an event.
         - Notification when somebody comes online.
     - Final order is important; processed message order is not:
         - Log messages.
@@ -3106,12 +3133,12 @@ mvn compile exec:java@worker
 
 #### Quiz
 
-**1. Sales data is published to a Cloud Pub/Sub topic called SalesTopic. The Finance application subscribes to the topic 
+**1. Sales data published to a Cloud Pub/Sub topic called SalesTopic. The Finance application subscribes to the topic 
 and begins receiving sales data messages. Later, the Inventory team creates another subscription to the topic to receive 
 the Sales data as well. However, the Inventory team's data does not tally with the Finance team's data. 
 What could the reason be?**
 
-- The Inventory team's subscriber only receives messages that are published after the subscription was created.
+- The Inventory team's subscriber only receives messages that are published after the subscription created.
 
 **2. Why is Cloud Pub/Sub used in the architecture of an application that performs real-time data analysis 
 of Twitter data?**
@@ -3173,7 +3200,7 @@ subscribers.
     - TensorFlow
     - Cloud API Platform    
 
-**Invoke REST APIs to use machine learning APIs; no machine learning knowledge is required**
+**Invoke REST APIs to use machine learning APIs; no machine learning knowledge required**
 
 **Analyze images**
 
@@ -3229,7 +3256,7 @@ last quarter. What property and pre-trained machine learning API can you use to 
 
 **Cloud Functions enable event-driven, serverless, highly scalable microservices**
 
-- Each function is lightweight microservice.
+- Each function is a lightweight microservice.
 
 **Cloud Functions use cases**
 
@@ -3237,7 +3264,7 @@ last quarter. What property and pre-trained machine learning API can you use to 
     - You can set up a webhook that is invoked automatically after each commit to a Git repository.
     - External and internal clients can make direct HTTP calls to invoke microservices that are deployed as cloud functions.
 - For lightweight extract, transform, load or ETL operations:
-    - File is uploaded to Cloud Storage, a cloud function can be triggered to transform and upload the contents to
+    - File uploaded to Cloud Storage, a cloud function can be triggered to transform and upload the contents to
     a database.
 - Process IoT streaming data or other application messages that are published to a pub/sub topic.
 
@@ -3321,12 +3348,12 @@ Number of invocations, execution time, memory usege
 
 **4. Identify the events that trigger Cloud Functions in the following architecture.**
 
-- Media asset is uploaded to a Cloud Storage bucket.
-- A message is received in Cloud Pub/Sub.
+- Media assets uploaded to a Cloud Storage bucket.
+- A message received in Cloud Pub/Sub.
 
 **5. Identify two key aspects of this application's architecture**
 
-- When media content is uploaded to a Cloud Storage bucket, the system generates a Cloud Pub/Sub notification message 
+- When media content uploaded to a Cloud Storage bucket, the system generates a Cloud Pub/Sub notification message 
 and sends it to the configured Cloud Pub/Sub topic. This message triggers Cloud Functions.
 - Cloud Storage can generate notification messages based on events in a Cloud Storage bucket.
 - Cloud Functions save classification information in BigQuery.
@@ -3367,12 +3394,12 @@ or process IoT Streaming Data.
         - gRPC API
     - Authentication and authorization:
         - Service-to-service authentication.
-        - User authentication.
+        - User authentication
     - Management and scalability:
         - Extensible Service Proxy, Service Management, Service Control.
     - Logging and monitoring:
-        - Cloud Logging.
-        - Cloud Trace.
+        - Cloud Logging
+        - Cloud Trace
 
 **Cloud Endpoints supports REST APIs and gRPC APIs**
 
@@ -3444,7 +3471,7 @@ securityDefinitions: ...
 #### Quiz
 
 **1. To create an order, a client application must send requests to create an order entry, update inventory, and send a 
-transaction to a payment gateway. The client must be updated and redeployed each time any of these backend services changes. 
+transaction to a payment gateway. The client must be updated and redeployed each time any of backend services changes. 
 What is the best way to streamline the client's requests to the backend services?**
 
 - Create an API gateway called "order" that acts as a facade and handles all the backend API invocations.
@@ -3454,7 +3481,7 @@ What approach would best serve your customers?**
 
 - Deploy two versions of your Cloud Endpoints API by creating a separate API configuration for each version.
   
-**3. A small number of customers are reporting that your API gateway is slow. What data can you view to begin 
+**3. A few customers are reporting that your API gateway is slow. What data can you view to begin 
 troubleshooting the problem?**
 
 - In the Cloud Endpoints dashboard, review the latency for the median, 95th, and 98th percentile of requests.
@@ -3510,7 +3537,8 @@ runtime.
 **Why use containers?**
 
 - Simplify deployments.
-- Rapid availability. Abstract just OS instead of whole physical computer.
+- Rapid availability. 
+- Abstract just OS instead of whole physical computer.
 - The ability to create microservices.
 
 **Container features**
@@ -3560,7 +3588,7 @@ tags:
 
 **Use Deployment Manager to launch your Google Cloud Platform resources**
 
-`Deployment Configuration (YAML file)`
+- Deployment Configuration (YAML file).
 
 ```yaml
 imports:
@@ -3589,7 +3617,7 @@ resources:
 
 - Continuous integration is a developer workflow in which developers frequently pull from the master and commit their 
 changes into a feature branch in a source code repository.
-- Continuous delivery is a workflow that is triggered when changes are pushed to the master repository.
+- Continuous delivery is a workflow that is triggered when changes pushed to the master repository.
 
 **2. How can Container Builder and Container Registry help you build a continuous integration and delivery pipeline?**
 
@@ -3635,7 +3663,7 @@ resources:
 
 - The deployment configuration launches a Google Compute Engine instance.
 - A web server will be launched and server traffic at port 8080.
-- The "zone" property is passed to the template.
+- The "zone" property passed to the template.
 
 **6. Which of the following statements about a Container Builder, Container Registry, and Deployment Manager are accurate?**
 
@@ -3749,7 +3777,7 @@ exports.subscribe = function subscribe(event, callback) {
 
 ### App Engine Flexible Environment
 
-**Deploy scalable web and mobile backends in any language with App Engine flexible environment**
+**Deploy a scalable web and mobile backends in any language with App Engine flexible environment**
 
 **Develop and deploy microservices**
 
@@ -3777,7 +3805,7 @@ $> gcloud app deploy
 - Persistent Disks.
 - Spiky or Very Low Traffic.
 
-**App Engine standard environment is an option for apps with spiky orr very low traffic**
+**App Engine standard environment is an option for apps with spiky or very low traffic**
 
 - App Engine Standard Environment:
     - App Engine Standard APIs.
@@ -3786,7 +3814,7 @@ $> gcloud app deploy
 
 ### Google Kubernetes Engine
 
-**Kubernetes is an open-source platform for deploying, scalingm and operating containers**
+**Kubernetes is an open-source platform for deploying, scaling and operating containers**
 
 ![Kubernetes](gcp-img/gcp-kube.png "Kubernetes")
 
@@ -3912,7 +3940,7 @@ $> gcloud beta run deploy --image gcr.io/PROJECT-ID/helloworld --platform manage
 
 - Predefined and Custom Machine Types.
 - Persistent Disks and Local SSDs.
-- Pre-emptible VMs.
+- Preemptible VMs.
 - Windows, Linux OS, or your own.
 
 **Use Compute Engine for full control of infrastructure**
@@ -3963,7 +3991,7 @@ What execution environment should you consider?**
 
 - Google Cloud Functions
 
-**6. Your application uses network protocols other than HTTP/S, and the application is run partially on-premises 
+**6. Your application uses network protocols other than HTTP/S, and the application run partially on-premises 
 and partially in the cloud. What execution environment should you consider?**
 
 - Google Kubernetes Engine
@@ -4093,9 +4121,9 @@ Amazon RDS databases.
 **Create dashboards that include four golden signals**
 
 - Latency: Amount of time it takes to serve a request.
-- Traffic: How much demand is placed on your system.
+- Traffic: How much demand placed on your system.
 - Error: Indicate the number of failed requests.
-- Saturation: How full your app is, or what resources are being stretched in reaching target capacity.
+- Saturation: How full your app is, or what resources being stretched in reaching target capacity.
 
 ### Identifying and Troubleshoot Performance Issues
 
@@ -4117,9 +4145,10 @@ Amazon RDS databases.
 **In Development: Review application code and logs**
 
 - Application errors:
-    - HTTP errors and other exceptions.
+    - HTTPs error and other exceptions.
 - Runtime code generation:
-    - Aspect-oriented programming. Consider compile time code generated itself.
+    - Aspect-oriented programming. 
+    - Consider compile time code generated itself.
 - Static resources:
     - Static web pages, images.
 - Caching:
@@ -4136,9 +4165,9 @@ Amazon RDS databases.
 - External user load:
     - Most frequent and slowest requests.
 - Periodic load:
-    - Traffic over an extended period of time.    
+    - Traffic over an extended period.    
 - Malicious load:
-    - Source of traffic is expected and legitimate.
+    - Source of traffic expected and legitimate.
 
 **In Production: Review deployment settings**
 
@@ -4172,7 +4201,7 @@ from third-party applications into Cloud Logging.
 
 - You can analyze long-term trends in performance.
 - You can compare results over time or between experimental configurations.
-- You can raise alerts when something is broken or about to be broken.
+- You can raise alerts when something is broken, or about to be broken.
 
 **4. You want to set up monitoring for your mission-critical application. What signals should you monitor in your 
 dashboards?**
@@ -4192,6 +4221,6 @@ What is the best way to detect performance issues earlier in the release cycle?*
 
 - Google Cloud's operation suite is a multi cloud service.
 - You can use error reporting and cloud debugger to debug and troubleshoot your app in development and production.
-- Develop strong suite of performance tests to monitor your app performance as it evolves.
+- Develop a strong suite of performance tests to monitor your app performance as it evolves.
 - Identify service level indicators an objectives.
 - Setup dashboards with the four golder signals, latency, traffic, errors, and saturation.

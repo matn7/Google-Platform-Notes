@@ -2,13 +2,12 @@
 
 ## Google Cloud Platform's approach to security
 
-### Google Cloud Platform's approach to security
-
 **Security at Google**
 
-- Security empowers innovation. If you put security first, everything else will follow.
+- Security empowers innovation. 
+- If you put security first, everything else will follow.
 - Security is paramount at Google.
-- Seven apps with more than a billion users are protected from threats everyday.
+- Seven apps with more than a billion users protected from threats every day.
 
 **Google's technical infrastructure**
 
@@ -49,7 +48,7 @@
     
 **Secure user identity**
 
-- Authentication.
+- Authentication
 - Login abuse protection.
    
 **Secure data storage**
@@ -110,7 +109,7 @@ certifications:
 **Data access**
 
 - You must control who has access to your data.
-- API requests for data are done via a REST service call:
+- API requests for data done via a REST service call:
     - Authentication information must be included with requests.    
     
 **Security assessments**
@@ -135,7 +134,7 @@ Absorbing the largest attacks requires the bandwidth needed to watch half a mill
 - Whole Internet: 200 Tb/sec
 - SINGLE Google data center: 1300 Tb/sec    
 - GCP global HTTP(S) load balancing provides a built-in defense against infrastructure DDoS attacks.
-- No additional configuration is required to activate this DDoS defense.    
+- No additional configuration required to activate this DDoS defense.    
     
 **Cloud Armor**
 
@@ -144,15 +143,15 @@ Absorbing the largest attacks requires the bandwidth needed to watch half a mill
     
 **Physical Security**
 
-- Data centers are protected with a layered security model.
-- All access is tracked and monitored:
+- Data centers protected with a layered security model.
+- All access tracked and monitored:
     - Access logs, activity records, and camera footage.    
 - Limited access:
     - Less than 1% of Googlers will ever enter a data center.    
 
 **Data access security: Data at rest**
 
-- All data at rest is chunked and encrypted automatically.
+- All data at rest chunked and encrypted automatically.
 - Additional options are also available:
     - Customer managed keys (CMEK)
     - Customer supplied keys (CSEK)    
@@ -183,9 +182,9 @@ went about their business with no impact.
     
 **Data disposal**
 
-- When data is deleted by customer:
+- When data deleted by a customer:
     - The data is no longer accessible by the service.
-    - Data is deleted from all Google's systems:
+    - Data deleted from all Google's systems:
         - In accordance with applicable laws.
         - Within a maximum of 180 days.    
     
@@ -195,7 +194,7 @@ went about their business with no impact.
 
 - GCP customers own their own data.
 - Google will not process data for any purpose other than to fulfill contractual obligations:
-    - Data is not scanned for advertisments or sold to third parties.
+    - Data not scanned for advertisments or sold to third parties.
 - The inability to audit cloud provider access is often a barrier to moving to the cloud.
 
 ```
@@ -211,7 +210,7 @@ engineering.
     
 **Exporting data**
 
-- Data can also be exported from Google Cloud without penalty.
+- Data can also be exported from Google Cloud without a penalty.
 - Standard egress charges will apply.
 
 **Access Approval API allows you even more control over access to your data**
@@ -219,9 +218,9 @@ engineering.
 - Works with Access Transparency to give customers even greater control.
 - Allows you to require **explicit** approval for Google support and engineering to access your project's data.
     
-**Access Approval quickly alerts you by sending messages when access is required**
+**Access Approval quickly alerts you by sending messages when access required**
 
-- Access Approval is set up on a project level.
+- Access Approval set up on a project level.
 - Access request messages sent via email of Pub/Sub.
 - Google Cloud Console or Access Approval API used to approve request.    
 
@@ -237,7 +236,7 @@ engineering.
     
 **Access Approval requests will not be triggered for certain actions**
 
-- These exclusions inculde:
+- These exclusions include:
     - System access to user content.
     - Accesses to lower level storage.
     - Manual access for legal reasons.
@@ -269,7 +268,7 @@ engineering.
     
 **Google Admin Console**
 
-- Centralized console to manage users, groups, and security settings.    
+- A centralized console to manage users, groups, and security settings.    
 - Cloud Identity allows free accounts to be created for each user.
 
 **Support for Cloud Identity**
@@ -297,7 +296,7 @@ engineering.
 
 - Assign roles to users or groups in Google Cloud IAM:
     - Can use any Google Workspace or Cloud Identity user or group.
-    - And any Google accounts and groups (@gmail, @google).     
+    - And any Google accounts and groups (`@gmail`, `@google`).     
     
 ### Google Cloud Directory Sync
 
@@ -309,16 +308,16 @@ engineering.
 
 ![Cloud Directory Sync](gcp-img/security/gcp-sec-cloud-directory-sync.png "Cloud Directory Sync")    
     
-**How GCDS workd**
+**How GCDS works**
 
-- Data is exported from your LDAP server to Active Directory.
+- Data exported from your LDAP server to Active Directory.
 - GCDS connects to the Google domain and generates a list of Google uses, groups, and shared contacts that you specify.
 - GCDS compares these lists and updates your Google domain to match the data.    
-- When the synchronization is complete, a report is emailed.    
+- When the synchronization is complete, a report emailed.    
   
 **Google Cloud Directory Sync (GCDS)**
 
-- One-way synchronization; the data in your directory server is never modified or compromised.    
+- One-way synchronization; the data in your directory server never modified or compromised.    
     
 **GCDS runs in your server environment**
 
@@ -376,7 +375,7 @@ engineering.
 **Number of Org admins**
 
 - You should have at least two Organization admins, but not many more.
-- Remove these permissions to start locking down access at a finer granurality.
+- Remove these permissions to start locking down access at a finer granularity.
 
 **Multiple domains**
 
@@ -403,7 +402,7 @@ Who can do what on which resource
 **GCP Objects**
 
 - Objects are the various resources members can access and use on GCP.
-- Objects hold data and applications, and also help to organize it and secure it.   
+- Objects hold data and applications, and help to organize it and secure it.   
    
 **IAM objects**
 
@@ -436,9 +435,9 @@ Who can do what on which resource
    
 **Member roles are collections of permissions**
 
-- Permissions are given to members by granting roles.
-- Roles define which permissions are granted.
-- GCP provides predefined roles and also the ability to create custom roles.   
+- Permissions given to members by granting roles.
+- Roles define which permissions granted.
+- GCP provides predefined roles, and the ability to create custom roles.   
    
 **Service accounts**
 
@@ -454,7 +453,7 @@ Who can do what on which resource
 | All service accounts have Google-managed keys | Google only stores the public portion of a user-managed key |
 | Google stores both the public and private portion of the key | Users are responsible for private key security |
 | Each public key can be used for signing for a max of two weeks | Can create up to 10 user-managed service accounts keys per service |
-| Private keys are never directly accessible | Can be administered via Cloud IAM API, gcloud, or the Console |   
+| Private keys are never directly accessible | Can be administered via Cloud IAM API, `gcloud`, or the Console |   
    
 **Keeping your User-managed keys safe is vital - and is the creator's responsibility**
 
@@ -483,7 +482,8 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
 - Keys cannot be empty and must be between 1-63 characters.
 - Values may be empty but cannot exceed 63 characters.
 - Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes.
-- The key portion of a label must be unique. However, you can use the same key with multiple resources.
+- The key portion of a label must be unique. 
+- However, you can use the same key with multiple resources.
 - Keys must start with a lowercase letter or international character.   
  
 **Many Google products and services currently support the use of labels**   
@@ -496,7 +496,7 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
 - Predefined
 - Custom
    
-**IAM basic roles are applied at the project level**
+**IAM basic roles applied at the project level**
 
 `can do what on all resources`   
 
@@ -519,19 +519,19 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
 
 **IAM predefined roles**
 
-- Predefined roles are designed to map to job functions: Compute Network Admin, Security Reviewer, etc.
+- Predefined roles designed to map to job functions: Compute Network Admin, Security Reviewer, etc.
 
 `can do what on Compute Engine resources in this project, or folder, or org`                      
    
 **IAM predefined roles offer more fine-grained permissions on particular services**
 
 - **InstanceAdmin Role**:
-    - *compute.instances.delete*
-    - *compute.instances.get*
-    - *compute.instances.list*
-    - *compute.instances.setMachineType*
-    - *compute.instances.start*
-    - *compute.instances.stop*
+    - `compute.instances.delete`
+    - `compute.instances.get`
+    - `compute.instances.list`
+    - `compute.instances.setMachineType`
+    - `compute.instances.start`
+    - `compute.instances.stop`
     - ...
     
 **The predefined Browser role**
@@ -543,14 +543,14 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
 - IAM custom roles let you define a precise set of permissions:
 - **Google Group**:
     - **PrivacyReviewer Role**:
-        - *storage.buckets.list*   
-        - *storage.objects.list*
-        - *storage.objects.get*
-        - *spanner.database.get* 
-        - *spanner.database.list*
-        - *bigtable.tables.get*
-        - *bigtable.tables.list*
-        - *bigtable.tables.readRows*
+        - `storage.buckets.list`   
+        - `storage.objects.list`
+        - `storage.objects.get`
+        - `spanner.database.get` 
+        - `spanner.database.list`
+        - `bigtable.tables.get`
+        - `bigtable.tables.list`
+        - `bigtable.tables.readRows`
         - ...                 
 
 ### IAM Policies   
@@ -576,7 +576,7 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
    
 **Constraints**
 
-- A constraint is a type of restriction against a GCP service. Examples:
+- A constraint is a type of restriction against a GCP service:
     - Disable VM serial port access.
     - Disable service account creation.
     - Disable VM nested virtualization.
@@ -631,7 +631,7 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
 **Policy Troubleshooter can be accessed via the Cloud Console, `gcloud`, or REST API**
 
 - For simple queries, the Cloud Console is usually the best option.
-- For more complicated scenarion, try the `gcloud` command-line tool or the Policy Troubleshooter REST API.   
+- For more complicated scenarios, try the `gcloud` command-line tool, or the Policy Troubleshooter REST API.   
    
 ### IAM Audit Logs   
    
@@ -644,8 +644,8 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
 **Admin activity audit logs record API calls that modify your resources**
 
 - Created when administrative actions modify configurations or metadata.
-- Logs are always written and cannot be disabled.
-- Must have Cloud IAM role Logging/Logs Viewer or Project/Viewer.
+- Logs always written and cannot be disabled.
+- Must have Cloud IAM role `Logging/Logs Viewer` or `Project/Viewer`.
    
 **Data access audit logs record read, modify, or create activity on your resource metadata or user-provided data**
 
@@ -663,14 +663,14 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
 
 - Basic log viewer.
 - Advanced log viewer.
-- **gcloud** command-line tool.
+- `gcloud` command-line tool.
 - Audit Logs API.
    
 ### IAM Best Practices
 
 **IAM best practices**
 
-- Adhere to the Principle of Least Privilege, which means you should always apply only the minimal access level 
+- Adhere to the Principle of The Least Privilege, which means you should always apply only the minimal access level 
 required to get the job done.   
 - Use groups when configuring Google Cloud access.
 - Assign roles to the groups instead of individual users.
@@ -719,14 +719,14 @@ required to get the job done.
    
 **Default VPCs have additional allow rules**
 
-- `default-allow-internal`: Allow in-bound connections between VM instances in the same network.
+- `default-allow-internal:` Allow in-bound connections between VM instances in the same network.
 - `default-allow-ssh`
-- `default-allow-rdp`: Remote desktop protocol.
+- `default-allow-rdp:` Remote desktop protocol.
 - `default-allow-icmp`
 - **All with the second lowest priority (65534).**
 - **These rules should be deleted or modified as needed.**
    
-**Some VPC network traffic is always blocked**
+**Some VPC network traffic always blocked**
 
 - There is some traffic that is always blocked.
 - Firewall rules cannot be used to un-block this traffic.   
@@ -738,9 +738,9 @@ required to get the job done.
     through protocol forwarding.
 - Protocols other than TCP, UDP, ICMP, ESP, AH, SCTP, and IPIP:
     - Traffic between:
-        - Instances and the internet
+        - Instances and the internet.
         - Instances if they are addressed with external IP address.
-        - Instances if a load balancer with an external IP address is involved.
+        - Instances if a load balancer with an external IP address involved.
 - Egress traffic on TCP port 25 (SMTP):
     - Traffic from:
         - Instances to the internet.
@@ -786,12 +786,13 @@ By default apply to all VMs and all projects under the organization or folder wh
  
 **Pre-configured SSL policy profiles**
 
-- GCP offers three managed SSL profiles.
-- **1. COMPATIBLE**:
+**GCP offers three managed SSL profiles.**
+
+- **1. COMPATIBLE:**
     - Allows the broadest set of clients.
-- **2. MODERN**:
+- **2. MODERN:**
     - Supports a wide set of SSL/TLS features, allowing modern clients to negotiate SSL/TLS.  
-- **3. RESTRICTED**:
+- **3. RESTRICTED:**
     - Supports a reduces set of SSL/TLS features, intended to meet stricter compliance requirements.  
   
 **Custom SSL policy profiles**
@@ -809,7 +810,7 @@ By default apply to all VMs and all projects under the organization or folder wh
 **VPC peering**
 
 - Once networks have peered, every internal private IP is accessible across the peered networks.
-- VPC network peering gives you several advantages over using external IP addresses or VPNs to connect to networks:
+- VPC network peering gives several advantages over using external IP addresses or VPNs to connect to networks:
     - Decrease network latency.
     - Increased network security.
     - Lower network cost.
@@ -842,7 +843,7 @@ By default apply to all VMs and all projects under the organization or folder wh
 - A Cloud Router enables you to dynamically exchange routes between your VPC network an on-premise network by using
 Border Gateway Protocol or BGP.
 - Changes to the network topology would no longer have to be managed through static routes.
-- New subnets added to GCP or added to on-prem network are discovered and shared, enabling connectivity between the 
+- New subnets added to GCP or added to on-prem network discovered and shared, enabling connectivity between the 
 two peers for the entire network.
   
 **Cloud Interconnect**
@@ -853,7 +854,7 @@ two peers for the entire network.
   
 **Dedicated Interconnect**
 
-- Provides direct physical connections between your on-premises network and your VPC network. 
+- Provides direct physical connections between your on-premises network, and your VPC network. 
   
 **Partner Interconnect**
 
@@ -877,8 +878,8 @@ two peers for the entire network.
 - Dedicated Interconnect:
     - Google provides an end-to-end SLA for the connection.
 - Partner Interconnect:
-    - Google provides an SLA for the connection between Google and service provider. An end-to-end SLA for the connection depends
-    on the service provider.    
+    - Google provides an SLA for the connection between Google and service provider. 
+    - An end-to-end SLA for the connection depends on the service provider.    
 
 ### Best Practices for VPN Networks
 
@@ -891,7 +892,7 @@ two peers for the entire network.
 **Private Google API access**
 
 - Allows Compute Engine instances without an external IP address to reach Google APIs and services.
-- API call is still resolved to a public IP address, but the traffic is all internal and private.
+- API call still resolved to a public IP address, but the traffic is all internal and private.
 
 **Private Google API access**
 
@@ -961,7 +962,7 @@ two peers for the entire network.
 
 **Default service account**
 
-- Created automatically when the Compute Engine is enabled.
+- Created automatically when Compute Engine is enabled.
 - Assigned the Project Editor role.
 - Used by default when creating a VM.
 
@@ -971,7 +972,7 @@ two peers for the entire network.
 
 - Access to APIs controlled by the roles, not by scopes:
     - Assign 1 or more roles to those service accounts.
-    - Scopes are only used by default service accounts.
+    - Scopes only used by default service accounts.
 
 **Scopes control what VMs can do**
 
@@ -981,7 +982,7 @@ two peers for the entire network.
 
 **Allow default access scope**
 
-- The default access scope is very limited:
+- The default access scope very limited:
     - Read-only access to storage.
     - Access to Cloud Logging and Monitoring.
 
@@ -993,7 +994,7 @@ two peers for the entire network.
 
 **Connecting to Virtual Machines**
 
-- Linux machines are accessed using SSH:
+- Linux machines accessed using SSH:
     - Requires an SSH key.
 - Windows machines are accessed using RDP:
     - Requires a username and password.  
@@ -1001,16 +1002,16 @@ two peers for the entire network.
 **SSH from the GCP Console**
 
 - Click the SSH control:
-    - Keys are automatically generated.
+    - Keys automatically generated.
     - SSH terminal session opens in a new browser tab.
     - Requires the VM to have an external IP.
   
 **SSH using Google Cloud SDK**
 
 - Install and initialize the Google Cloud SDK.
-- Connect with **gcloud** tool:
+- Connect with `gcloud` tool:
     - Requires the VM to have an external IP.
-    - Keys are automatically generated and placed in your local `home/.ssh` folder.
+    - Keys automatically generated and placed in your local `home/.ssh` folder.
     
 ```console
 :~$ gcloud compute ssh web-server --zone us-central1-c
@@ -1045,7 +1046,7 @@ two peers for the entire network.
 
 ![No external IP](gcp-img/security/gcp-sec-connect-no-external-ip.png "No external IP")  
   
-- Even bettern practice would be to use a VPN or some other more secure form of connection, such as Cloud
+- Even better practice would be to use a VPN, or some other more secure form of connection, such as Cloud
 Interconnect for ordinary activity.
   
 **Connecting to Windows with RDP**
@@ -1058,7 +1059,7 @@ Interconnect for ordinary activity.
 **Organization Policy Service**
 
 - Allows you to set constraints that apply to all resources in your organization's hierarchy.
-- All descendents inherit the policy constraints.
+- All descendants inherit the policy constraints.
 
 **Organization Policy constraint types**
 
@@ -1103,14 +1104,14 @@ This allows you to host organization-approved, hardened images in your GCP envir
 **Using Shield VMs helps protect workloads from remote attacks, privilege escalation, and malicious insiders**
 
 - Protect against advanced threats with just a few clicks.
-- Ensure that workloads are trusted and verifiable.
-- Protect secrets against reply and exfiltration.  
+- Ensure that workloads trusted and verifiable.
+- Protect secrets against reply, and exfiltration.  
 - Secure boot prevents loading of malicious code during bootup:
     - Shielded VM instances accomplish this with UEFI firmware.
 - Measured boot checks for modified components during bootup:
     - Measured boot uses a virtualized Trusted Platform Model (vTPM).    
   
-**Shielded VMs create logged events so you can monitor your VM's integrity using Cloud Monitoring**
+**Shielded VMs create logged events, so you can monitor your VM's integrity using Cloud Monitoring**
 
 - clearTPMEvent
 - earlyBootReportEvent
@@ -1120,15 +1121,15 @@ This allows you to host organization-approved, hardened images in your GCP envir
 - startupEvent
 - updateShieldedInstanceConfig    
     
-**Shield VM is available in all of the same regions as Compute Engine, with no added charges for use**
+**Shield VM is available in all the same regions as Compute Engine, with no added charges for use**
 
-- Shielded VM Google-curated images:
+- A shielded VM Google-curated images:
     - CentOS7
     - RedHat Enterprise 7.
     - Ubuntu 16.04 and 18.04 LTS.
     - `...`    
     
-**Integrity Monitoring uses Cloud IAM Compute ENgine permissions and roles for authorization**
+**Integrity Monitoring uses Cloud IAM Compute Engine permissions and roles for authorization**
 
 - `compute.instances.updateShieldedInstanceConfig`  
 - `compute.instances.setShieldedInstanceIntegrityPolicy`  
@@ -1144,7 +1145,7 @@ This allows you to host organization-approved, hardened images in your GCP envir
 
 - All data stored on GCP is encrypted at rest by default.
     - Includes data in Storage, Persistent disks, Cloud SQL etc.
-    - Also includes disk snapshots and custom images.
+    - Includes disk snapshots and custom images.
 
 **GCP encryption at rest**
 
@@ -1174,7 +1175,7 @@ with wrapped DEK
 - The actual rotation schedule for a KEK varies by service:
     - The standard rotation period is 90 days.
 - Google stores up to 20 versions.    
-- Re-encryption of data is required at least once every 5 yeras.
+- Re-encryption of data required at least once every 5 years.
     
 **Customer-managed keys**
 
@@ -1222,7 +1223,7 @@ with wrapped DEK
 
 - Organization Policy Services allow centralized control for how your organization’s resources can be used.
 - To define an Organization Policy, you will choose and then define a constraint against either a Google Cloud 
-service or a group of Google Cloud services.
+service, or a group of Google Cloud services.
 
 ***
 
@@ -1250,7 +1251,7 @@ service or a group of Google Cloud services.
 **Setting IAM permissions on buckets**
 
 - Use IAM roles to grant permissions to Storage buckets.
-    - Permissions are inherited from higher levels.
+    - Permissions inherited from higher levels.
 
 **Cloud Storage ACLs**
 
@@ -1260,7 +1261,7 @@ service or a group of Google Cloud services.
 
 - To make a bucket public, grant `allUsers` to **Storage Object Viewer** role.
 - To make an object public, grant `allUsers` **Reader** access.
-- Only for publicly accesible web content:
+- Only for publicly accessible web content:
     - **Use with caution!**
 
 ### Auditing cloud data
@@ -1273,8 +1274,8 @@ service or a group of Google Cloud services.
 - Make a bucket to hold the logs.
 - Allow write access to the bucket.
 - Set logging on and specify the log bucket:
-    - Storage logs are created once a day.
-    - Usage logs are created every hour.
+    - Storage logs created once a day.
+    - Usage logs created every hour.
 
 ```console
 $> gsutil mb gs://example-logs-buckt
@@ -1311,7 +1312,7 @@ gs://example-logs-bucket/example-bucket_storage_2021
     - Temporary access with a timeout.
     - Anyone with the signed URL has access.
 
-**Creating a signed URL with gsutil**
+**Creating a signed URL with `gsutil`**
 
 - Create a service account with rights to storage.
 - Create a service account key.
@@ -1349,8 +1350,7 @@ $> gsutil signurl -d 10m ~/key.sjon gs://super-secure-bucket/noir.jpg
 
 - Ensure sure the policy document is UTF-8 encoded.
 - Encode the policy document as a Base64 representation.
-- Sign your policy document using RSA with SHA-256 using the secret key provided to you in the Google Cloud Platform
-Console.
+- Sign your policy document using RSA with SHA-256 using the secret key provided to you in the Google Cloud Platform Console.
 - Encode the message digest as a Base64 representation.
 - Add the policy document information to the HTML form.
 
@@ -1369,14 +1369,14 @@ Console.
 - The actual rotation schedule for a KEK varies by service:
     - The standard rotation period is 90 days.
 - Google stores up to 20 versions.
-- Re-encryption of data is required at least once every 5 years.    
+- Re-encryption of data required at least once every 5 years.    
 
 ### Cloud HSM
 
 **What is an HSM (hardware security module)?**
 
 - An HSM (hardware security module) is a physical device that manages digital keys.
-- The HMS encrypts and decrypts data with secure cryptoprocessor chips.
+- The HMS encrypts and decrypts data with secure crypto-processor chips.
 - Using an HSM adds an extra layer of security to keys and data.
 
 **Cloud HSM**
@@ -1391,10 +1391,10 @@ Console.
 
 **Cloud HSM leverages Cloud KSM**
 
-- Cloud HSM is fully integrated with Cloud KSM.
+- Cloud HSM, fully integrated with Cloud KSM.
 - For the **Protection level**, specify **HSM**.
 
-**Attestation statements show that keys are protected**
+**Attestation statements show that keys protected**
 
 - For keys created in Cloud HSM, an attestation statement can be generated.
 - The attestation statement:
@@ -1404,7 +1404,7 @@ Console.
     
 ### BigQuery IAM roles and authorized views
     
-**Permissions are granted to BigQuery datasets**
+**Permissions granted to BigQuery datasets**
 
 - Cannot grant permissions at the table, row or column level.
 - Use IAM roles to control access to data.
@@ -1444,8 +1444,8 @@ What if I want admins or super users to see all the data in a table, and others 
 
 ### Cloud Storage best practices
 
-- Don't use personally identifible information (PII) in bucket names.
-- Don't use PII in object names, because object names appeat in URLs.
+- Don't use personally identifiable information (PII) in bucket names.
+- Don't use PII in object names, because object names repeat in URLs.
 - Set default object ACLs on buckets.
 - Use signed URLs to provide access for users with no account.
 - Don't allow buckets to be publicly writable.
@@ -1456,7 +1456,7 @@ What if I want admins or super users to see all the data in a table, and others 
 - Use IAM roles to separate who can create and manage Datasets versus who can process the data:
     - Be careful when giving all authenticated users access to data.
 - Use authorized views to restrict access to sensitive data:
-    - Principle of least privilege.    
+    - Principle of the least privilege.    
 - Use the expiration settings to remove unneeded tables and partitions.
   
 #### Quiz
@@ -1472,7 +1472,7 @@ individual objects.
 - Do not use any personally identifiable information as object names.
 - One option to serve content securely to outside users is to use signed URLs.
 
-**3. Which TWO of the following statements is TRUE with regards to security in BigQuery and its datasets?**
+**3. Which TWO of the following statements are TRUE in regard to security in BigQuery and its datasets?**
 
 - A BigQuery Authorized View allows administrators to restrict users to viewing only subsets of a dataset.
 - BigQuery has its own list of assignable IAM roles. 
@@ -1486,15 +1486,15 @@ individual objects.
 **Applications are common targets**
 
 - Developer's main objective is often features and functionality:
-    - Security id often neglected.
+    - Security often neglected.
 - Applications have become the most common target of attackers.
 
 **Common application vulnerabilities**
 
 - Injection:
-    - SQL injection.
-    - LDAP injection.
-    - HTML injection.
+    - SQL injection
+    - LDAP injection
+    - HTML injection
 - Cross-site scripting (XSS).
 - Weak authentication and access control.
 - Sensitive data exposure.
@@ -1517,7 +1517,7 @@ individual objects.
 - Activates every control and input.
 - Logs in with specified credentials.
 - User-agent and maximum QPS can be configured.
-- Scanner is optimized to avoid false positives.
+- Scanner optimized to avoid false positives.
 
 **Scan scheduling**
 
@@ -1561,7 +1561,7 @@ user accounts.
 **Cloud Identity-Aware Proxy (Cloud IAP)**
 
 - Provides authentication and authorization layer for your applications over HTTPS.
-- Cloud IAP replaces end user VPN tunnels or the need to apply an authentication authorization layer in front of your
+- Cloud IAP replaces end user VPN tunnels, or the need to apply an authentication authorization layer in front of your
 web application hosted on GCP.
 - Controls access to your cloud applications running on GCP.
 - Verifies a user's identity.
@@ -1584,25 +1584,24 @@ web application hosted on GCP.
 **Secret Manager features**
 
 - Global names and replication.
-- Versioning.
-- Follows principles of least knowledge.
-- Audit logging.
-- Strong encryption.
+- Versioning
+- Follows principles of the least knowledge.
+- Audit logging
+- Strong encryption
 - Accessible from hybrid environments, using VPC Service Controls.
 - Integration with Cloud KMS.
 
 **Access control using Cloud IAM**
 
 - By default, only project owners can create and access secrets within their project.
-- Use Cloud IAM to grant roles and permissions at the level of the Google Cloud organization, folder, project, or
-secret.
+- Use Cloud IAM to grant roles and permissions at the level of the Google Cloud organization, folder, project, or secret.
 
 **Working with Cloud IAM roles**
 
 - Cloud IAM roles:
-    - **secretmanager.admin**: Can view, edit, and access a secret.
-    - **secretmanager.secretAccessor**: Can only access secret data.
-    - **secretmanager.viewer**: Can view a secret's metadata and its versions, but can't edit or access secret data.
+    - `secretmanager.admin:` Can view, edit, and access a secret.
+    - `secretmanager.secretAccessor:` Can only access secret data.
+    - `secretmanager.viewer:` Can view a secret's metadata and its versions, but can't edit or access secret data.
 - Always apply permissions at the lowest level in the resource hierarchy.
 
 **Using Cloud Console**
@@ -1615,8 +1614,8 @@ secret.
 
 - Secret names are global.
 - Secret data is regional.
-- If you have no preference where secret data is stored, use **automatic replication**.
-- To pick the regions in which the secret data is stored, use **manual replication**.
+- If you have no preference where secret data stored, use **automatic replication**.
+- To pick the regions in which the secret data stored, use **manual replication**.
 
 **Secret Manager API**
 
@@ -1627,9 +1626,9 @@ secret.
 **Versioning**
 
 - Secrets can be versioned.
-- Each version is assigned a version ID.
-- The most recent version is automatically assigned the label **latest**.
-- Secrets cannot be modified, but they can ve disabled or deleted.
+- Each version assigned a version ID.
+- The most recent version automatically assigned the label **latest**.
+- Secrets cannot be modified, but they can be disabled or deleted.
 - Individual versions can be selected and disabled or destroyed.
 
 **Secret rotation**
@@ -1637,18 +1636,18 @@ secret.
 - To rotate a secret, add a new version to it.
 - Any enabled version can be accessed.
 - Secret Manager does not have an automatic rotation feature:
-    - Use Google Cloud Functions and the Secret Manager API to perform automatic rotation.
+    - Use Google Cloud Functions, and the Secret Manager API to perform automatic rotation.
 
 **Admin Activity Access audit logs**
 
 - Admin Activity Access audit logs cannot be disabled.
-- All activity that creates or changes secret data is logged here.
-- Setting or getting IAM policy information about secrets is logged.
+- All activity that creates or changes secret data logged here.
+- Setting or getting IAM policy information about secrets logged.
 
 **Data Access audit logs**
 
 - Data Access audit logs are disabled by default.
-- If logs are enabled, all access to the secret data is logged.
+- If logs enabled, all access to the secret data logged.
 
 #### Quiz
 
@@ -1657,7 +1656,7 @@ secret.
 - Applications are the most common target of cyberattack.
 - Applications in general, including many web applications, do not properly protect sensitive user data.
 
-**2. Which TWO of the following vulnerabilities are scanned for when you use Cloud Security Scanner?**
+**2. Which TWO of the following vulnerabilities scanned for when you use Cloud Security Scanner?**
 
 - Mixed content.
 - Outdated or insecure libraries.
@@ -1684,9 +1683,9 @@ site's account settings.
 
 - Containers execute within **pods**.
 - A pod makes its environment available to containers; for example its:
-    - Network ports.
-    - IP address.
-    - Namespace.
+    - Network ports
+    - IP address
+    - Namespace
 - The term **workload** is sometimes used for how to deploy a pod.    
 
 ![Pods and workloads](gcp-img/security/gcp-sec-pods-workloads.png "Pods and workloads")  
@@ -1730,7 +1729,7 @@ site's account settings.
     - Can be granted permissions to clusters and other Cloud resources.
     - Use Cloud IAM to manage permissions.
 
-**Role-based access control (RBAC) gives your resources finer access granurality**
+**Role-based access control (RBAC) gives your resources finer access granularity**
 
 ### Hardening Your Clusters
 
@@ -1809,7 +1808,7 @@ with traffic from multiple sources.
 - Load balancing: Using proxy-based load balancing to distribute load across resources.
 - Attack surface: Reducing the attack surface on by reducing externally facing resources.
 - Internal traffic: Isolating internal traffic from the outside world by restricting access.
-- API management: Monitor and manage APIs to spot and throttle DDoS attacks.
+- APIs management: Monitor and manage APIs to spot and throttle DDoS attacks.
 - CDN Offloading: Offloading static content to a CDN to minimize impact.
 - Specialized DDoS protection: Deploying applications that specifically provide deeper DDoS protection.
 
@@ -1825,7 +1824,7 @@ with traffic from multiple sources.
 **Leveraging Google's load balancer**
 
 - GCP Load Balancing provides built-in defense against infrastructure DDoS attacks.
-    - No additional configuration is required to activate this DDoS defense.
+    - No additional configuration required to activate this DDoS defense.
 - Leverages Google's central DoS mitigation service.
     - If the system detects an attack, it can configure load balancers to drop or throttle traffic.    
 
@@ -1845,7 +1844,7 @@ with traffic from multiple sources.
 **Using Cloud CDN**
 
 - Caches content between your users and your servers.
-    - Requests for cached content are routed to POPs.
+    - Requests for cached content routed to POPs.
     - Google's massive infrastructure can absorb attacks.
 
 **API management and monitoring**
@@ -1858,7 +1857,7 @@ with traffic from multiple sources.
 
 **Google Cloud Armor**
 
-- Google Cloud Armor protection is delivered at the edge of Google's network and blocks attacks close to their source.
+- Google Cloud Armor protection delivered at the edge of Google's network and blocks attacks close to their source.
 - Enables IP deny list/allow list security policies.
 
 **Creating Google Cloud Armor security policies**
@@ -1890,10 +1889,10 @@ with traffic from multiple sources.
 
 **1. Choose the FOUR correct DDoS Mitigation Layers from the list below.**
 
-- CDN Offloading. Offload static content to a CDN to minimize impact.
-- Load Balancing. Use proxy-based load balancing to distribute load across resources.
-- Attack Surface. Reduce the attack surface by reducing externally facing resources.
-- Internal Traffic. Isolate internal traffic from the outside world by restricting access.
+- CDN Offloading: Offload static content to a CDN to minimize impact.
+- Load Balancing: Use proxy-based load balancing to distribute load across resources.
+- Attack Surface: Reduce the attack surface by reducing externally facing resources.
+- Internal Traffic: Isolate internal traffic from the outside world by restricting access.
 
 **2. Choose from the list below the TWO ways that Google Cloud helps mitigate the risk of DDoS for its customers.**
 
@@ -1906,7 +1905,7 @@ of security at the hardware layers than most of our customers could afford to do
 
 - Google Cloud Armor enforces access control based on IPv4 and IPv6 addresses or CIDRs. Google Cloud Armor assists you 
 in customizing your defenses and mitigating multi-vector attacks.
-- Google Cloud Armor protection is delivered at the edge of Google’s network. In this manner, it functions like a CDN 
+- Google Cloud Armor protection delivered at the edge of Google’s network. In this manner, it functions like a CDN 
 and can block attacks close to their source, before they have a chance to affect your applications.
   
 ***
@@ -1922,12 +1921,12 @@ and can block attacks close to their source, before they have a chance to affect
 ### Ransomware Mitigations
 
 - GCP provides multiple layers of protection.
-- Most protections are automated and available by default.
+- Most protections automated and available by default.
 
 **Automated mitigations**
 
 - Google has global visibility into malicious sites and content.
-- This visibility makes the detection of incomming attacks very effective.
+- This visibility makes the detection of incoming attacks very effective.
 
 **End-user protection**
 
@@ -1950,13 +1949,13 @@ and can block attacks close to their source, before they have a chance to affect
 **Data-related mitigations: IAM Best Practices**
 
 - Restrict administrative access:
-    - Principle of least privilege.
+    - Principle of the least privilege.
 - Restrict code execution:
     - Use service accounts with appropriate roles.
 
 **Data-related mitigations: Data Loss Prevention API**
 
-- Ensure that sensitive data is not accidentally exposed.
+- Ensure that sensitive data not accidentally exposed.
 - Leverage the Google Data Loss Prevention API:
     - Scan all documents for sensitive data before publication.
 
@@ -1977,9 +1976,9 @@ and can block attacks close to their source, before they have a chance to affect
 **Privacy violations**
 
 - Accidentally exposing sensitive data can have additional ramifications:
-    - Credibility loss.
-    - Identity theft.
-    - Legal/regulatory risk.
+    - Credibility loss
+    - Identity theft
+    - Legal/regulatory risk
 
 ### Content Related Mitigations
 
@@ -1996,9 +1995,8 @@ and can block attacks close to their source, before they have a chance to affect
     
 **Mitigation: Detecting unacceptable content**
 
-- Moderate contant and detect inappropriate content.
-- Google Vision API easily detects different types of inappropriate content, from adult to violent content.    
-    
+- Moderate content and detect inappropriate content.
+- Google Vision API easily detects different types of inappropriate content, from adult to violent content.       
     
 **Mitigation: Scanning and redacting content**
 
@@ -2011,7 +2009,7 @@ and can block attacks close to their source, before they have a chance to affect
 **1. Which TWO of the following statements are TRUE when speaking about content-related security threats?**    
     
 - Ransomware is a type of malicious software exploit that threatens to publish or perpetually block access to data 
-unless money is paid.
+unless money paid.
 - Screenshots or other images that are made public without redaction can trigger a content-related cyber attack threat.
     
 **2. Which TWO of the following options are ways that Google Cloud automates for customers the mitigation of many 
@@ -2038,7 +2036,7 @@ such as the Vision API.
 **Security Command Center helps prevent, detect, and respond to threats**
 
 - Gives centralized visibility into your cloud resources.
-- Uncovers machines that are being used for malicious purposes.
+- Uncover machines that are being used for malicious purposes.
 - Integrates with both Google and third-party security tools.
 - Helps meet compliance requirements.    
     
@@ -2050,8 +2048,8 @@ such as the Vision API.
     
 **Security Command Center requires two IAM administrative permissions to set up**
 
-- **Organization Administrator** role - `roles/resourcemanager.organizationAdmin`.
-- **Security Center Admin** role - `roles/securitycenter.admin`.
+- **OrganizationAdministrator:** `roles/resourcemanager.organizationAdmin`.
+- **SecurityCenterAdmin:** - `roles/securitycenter.admin`.
 
 **Security Command Center prices vary by the amount of data transferred**
 
@@ -2068,7 +2066,7 @@ such as the Vision API.
  
 **User trust depends on incident response**
 
-**An effective incident response includes...***
+**An effective incident response includes...**
 
 - Monitoring dashboard.
 - Altering regimen.
@@ -2102,7 +2100,7 @@ such as the Vision API.
 - Can install Cloud Monitoring Agent in other environments.
     - Compute Engine: Amazon EC2
 
-**Monitoring thrid-party applications**
+**Monitoring third-party applications**
 
 - Apache web server
 - Cassandra
@@ -2174,9 +2172,9 @@ such as the Vision API.
 - Logs written by a GCP service to record administrative or user actions.
 - Who did what where and when.
 - Cloud Audit Logging maintains three audit logs:
-    - Admin Activity.
-    - System Events.
-    - Data Access.
+    - Admin Activity
+    - System Events
+    - Data Access
 
 **Admin Activity Logs**
 
@@ -2201,10 +2199,10 @@ such as the Vision API.
 **Viewing Audit Logs**
 
 - Log can be viewed in:
-    - Project's Activity page.
-    - Cloud Logging.
-    - Cloud Logging API.
-    - Cloud SDK.
+    - Project's Activity page
+    - Cloud Logging
+    - Cloud Logging API
+    - Cloud SDK
 
 **Audit Log retention**
 
@@ -2223,9 +2221,9 @@ such as the Vision API.
 
 **Analyzing Audit Logs**
 
-- Advanced logs filters.
-- BigQuery.
-- Third-party analysis tools.
+- Advanced logs filters
+- BigQuery
+- Third-party analysis tools
 
 ### Deploying and using Forseti
 
@@ -2265,8 +2263,8 @@ such as the Vision API.
 **Forseti Notifier**
 
 - Provides ability to notify:
-    - Inventory summary.
-    - Violations.
+    - Inventory summary
+    - Violations
 
 #### Quiz
 
@@ -2275,11 +2273,11 @@ such as the Vision API.
 - You can analyze log data in BigQuery.
 - The Cloud Logging Agent can be installed on both Compute Engine and AWS EC2 instances.
 
-**2. Which TWO of the following statements about Cloud Audit Logs are TRUE? **
+**2. Which TWO of the following statements about Cloud Audit Logs are TRUE?**
 
 - Cloud Audit Logs maintains three audit logs for each project, folder, and organization.
-- Enabling Data Access audit logs might result in your project being charged for the additional logs usage. These logs 
-are disabled by default because they can become quite large and incur extra charges.
+- Enabling Data Access audit logs might result in your project charged for the additional logs usage. 
+- These logs disabled by default because they can become quite large and incur extra charges.
 
 **3. Which ONE of the following statements about Forseti Security is TRUE?**
 
