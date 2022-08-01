@@ -30,13 +30,13 @@ $> nc 127.0.0.1 8081    // another computer, create communication channel at thi
 **Client**
 
 - A machine or process that requests data or service from a server.
-- Note that a single machine or piece of software can be both a client and s server at the same time. 
+- Note that a single machine or piece of software can be both a client, and a server at the same time. 
 - For instance, a single machine could act as a server for end user and as a client for a database.
 
 **Server**
 
 - A machine or process that provides data or service for a client, usually by listening for incoming network calls.
-- Note that a single machine or piece of software can be both a client and s server at the same time. 
+- Note that a single machine or piece of software can be both a client, and a server at the same time. 
 - For instance, a single machine could act as a server for end user and as a client for a database.
 
 **Client-Server Model**
@@ -138,7 +138,7 @@ body: opaque sequence of bytes
 
 ```
 status code: integer (example: 200, 401)
-headers: pair list (example: :Content-Length" => 1238)
+headers: pair list (example: "Content-Length" => 1238)
 body: opaque sequence of bytes
 ```
 
@@ -354,7 +354,7 @@ http {
 
         location / {
             proxy_set_header systemexpert-tutorial true;
-            proxy_[ass http://nodejs-backend;
+            proxy_pass http://nodejs-backend;
         }
     }
 }
@@ -642,7 +642,7 @@ specific data.
 
 - When distributing a workload across a set of servers, that workload might spread unevenly.
 - This can happen if your **sharding key**, or your **hashing function** are suboptimal, or if workload is naturally
-skewed: some servers will receive a lot more traffic than others, thus creating a "hot spot".****
+skewed: some servers will receive a lot more traffic than others, thus creating a "hot spot".
 
 ***
 
@@ -858,7 +858,7 @@ developed.
 
 ![Security And HTTPS](img/security-and-https.png "Security And HTTPS")
 
-**Man-In_The-Middle Attack**
+**Man In The Middle Attack**
 
 - An attack in which the  attacker intercepts a line of communication that thought to be private by its two 
 communicating parties.
@@ -1174,11 +1174,11 @@ PushLocation(userId: string, location: L)
 - channel info
 - follow
 - subscribe (SubInfo)
-- live chat (![#ff0000](emotes/banned))
+- live chat 
 - live stream video (VideoInfo)
 - concurrent viewers (~30s)
 - ~~recommended channels~~
-- ![#0000ff](user token passed by default)
+- user token passed by default
 
 ```
 GetChannelInfo(channelId: string)
