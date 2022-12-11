@@ -1208,19 +1208,278 @@ GerRelToChannel(channelId: str)
     => RelToChannel { isBanned: bool, isFollowing: bool, subscription: Sub | null }
 ```
 
+***
+
+**Q1: The following is often used as an index for spatial data that needs to be queried with low latency:**
+
+- A quadtree
+
+**Q2: The following statements are correct (check all that apply):**
+
+- HTTP is a network protocol built on top of TCP.
+- TCP is a network protocol built on top of IP.
+- HTTP is a network protocol that exposes a more human-readable interface than those exposed by protocols like TCP and IP.
+
+**Q3: The following is an example of horizontal scaling:**
+
+- Increasing the number of machines performing a task to improve throughput.
+
+**Q4: A typical TLS handshake can be best summarized as:**
+
+- Generating symmetric-encryption session keys, to be used by both the server and the client to encrypt and decrypt 
+future communication.
+
+**Q5: Consistent hashing is used to:**
+
+- Minimize the number of requests that get forwarded to different servers when new servers are added or when existing 
+servers are brought down.
+
+**Q6: The following are actual types of databases (check all that apply):**
+
+- Graph database.
+- Time series database.
+
+**Q7: If you wanted to minimize latency in a system, you would want to do the following (check all that apply):**
+
+- Move system servers closer to clients.
+- Maximize cache hits.
+
+**Q8: A man-in-the-middle attack is:**
+
+- An attack where the attacker secretly intercepts communications between two parties.
+
+**Q9: Pub/Sub systems typically come with the following guarantees (check all that apply):**
+
+- At-least-once delivery of messages.
+- Replayability of messages.
+- Ordering of messages.
+
+**Q10: You're designing Facebook News Feed—specifically, the system that handles sharing new posts on relevant people's 
+news feeds in real time. You're most likely to support this functionality by using:**
+
+- A Pub/Sub pipeline.
+
+**Q11: You're designing Dropbox, a service that allows users to store "primary" data like video files, images, 
+text documents, etc., as well as metadata about the primary data like how large the data is, who uploaded it, 
+when it was last edited, etc.. You're most likely to use the following storage solutions to store the primary data 
+and its accompanying metadata:**
+
+- A blob store for the primary data and a key-value store for the metadata.
+
+**Q12: You're designing a system; the following questions are worth asking before diving in (check all that apply):**
+
+- What kind of latencies are we targeting for the various parts of this system?
+- What kind of availability are we targeting for the various parts of this system?
+- Are we designing this system for a global audience or for a region-specific one?
+- How many users are we designing this system for?
+
+**Q13: The following statement is correct:**
+
+- Idempotent operations aren't problematic in a Pub/Sub system.
+
+**Q14: The following system is most likely to be highly available:**
+
+- A messaging system used by air traffic controllers to communicate with pilots while they're in flight.
+
+**Q15: The following statements are correct (check all that apply):**
+
+- Without proper defense, an entire system can be taken down by a DoS attack.
+  
+**Q16: Caching is less likely to be advisable if:**
+
+- Accessed data is frequently updated.
+
+**Q17: The following are common server-selection strategies for load balancers (check all that apply):**
+
+- Client-IP-based.
+- Server-health-based.
+- Round-robin.
+
+**Q18: The following pair is an outlier amongst the rest:**
+
+- Polling | availability. 
+
+**Q19: The following are typically decent sharding strategies (check all that apply):**
+
+- Sharding based on the type of data being stored.
+- Sharding based on a client's region.
+- Sharding based on a customer's username.
+  
+**Q20: Leader election is used in systems to achieve the following goal:**
+
+- High availability.
+
+**Q21: The following are realistic examples of config (check all that apply):**
+
+```yaml
+locations:
+  - us-central-1
+  - europe-west-1
+  - europe-west-2
+restrictionsOn: true
+```
+
+```json
+{
+  "apiKey": "HgebdkUGFkkwrl148jD",
+  "displayAccountExpiration": true,
+  "expirationDate": "2020-09-15T00:00:00Z",
+  "updatePollInterval": 100000
+}
+```
+
+**Q22: The following are reasons to replicate a database in a system (check all that apply):**
+
+- To move data closer to a set of clients so as to improve latency for those clients.
+- To make the system more fault-tolerant.
+  
+**Q23: The following are the three primary entities in a SQL database:**
+
+- Tables, rows, and columns.
+
+**Q24: You're designing a chat application like WhatsApp. You're most likely to have the following things 
+in this system (check all that apply):**
+
+- A persistent-storage solution to store all historical messages.
+- One or multiple load balancers to handle read and write requests of messages.
+- A Pub/Sub system to send and receive messages and read-receipts.
+
+**Q25: The following technologies are storage solutions (check all that apply):**
+
+- MySQL.
+- Neo4j.
+- Prometheus.
+
+**Q26: When designing an API endpoint to list some arbitrary entities, like comments on a video or posts on a news feed, 
+you typically want the endpoint to support:**
+
+- Pagination.
+
+**Q27: You would likely want to use a cache in the following systems-design scenarios (check all that apply):**
+
+- Users accessing static content on the home page of a website.
+- Users accessing their saved credit-card information on Amazon.
+  
+**Q28: A hot spot can occur in a system when (check all that apply):**
+
+- A sharding key for a set of databases is suboptimal.
+- A hashing function for a set of destination servers is suboptimal.
+- The system's workload is naturally skewed.
+  
+**Q29: The following statement is correct:**
+
+- With asymmetric encryption, the private key is used to encrypt data and the public key is used to decrypt it. 
+  
+**Q30: The following statement is correct:**
+
+- Hitting the same API endpoint every ten minutes is an example of polling.
+
+**Q31: The following are legitimate use cases of proxies (check all that apply):**
+
+- Logging client information.
+- Load balancing requests across servers.
+- Masking a client's identity.
+- Caching server responses.
+  
+**Q32: The following functionality is not typically supported in a standard CRUD API:**
+
+- Move
+  
+**Q33: The following statements are correct (check all that apply):**
+
+- SLAs are made up of one or multiple SLOs.
+- SLA stands for "service-level agreement".
+- SLO stands for "service-level objective".
+  
+**Q34: The following operations are ordered from fastest to slowest:**
+
+- Reading 1 MB from RAM `<` Reading 1 MB from SSD `<`  Transferring 1 MB over Network `<` Douing an Inter-Continental Round Trip.  
+
+**Q35: An asynchronous MapReduce job would likely be used to (check all that apply):**
+
+- Aggregate North-American YouTube-channel view counts.
+- Find the most commonly-occuring errors in a web application.
+  
+**Q36: The following are properties of peer-to-peer systems (check all that apply):**
+  
+- They remove throughput bottlenecks that centralized solutions have.
+- They're able to use a lot more of a network's bandwidth.
+  
+**Q37: The following are examples of idempotent operations (check all that apply):**
+
+- Updating a phone number in a bank account.
+- Making a Slack channel private.
+- Marking an email as read.
+- Unsubscribing from a email list.
+  
+**Q38: The following is a popular use case for a peer-to-peer network:**
+
+- Sending a large file to thousands of machines at once.
+
+**Q39: The following statement is correct:**
+
+- An eventually consistent database might return stale data on reads.
+  
+**Q40: You're designing a stock-trading platform where users need to get immediate stock-price updates as well 
+as immediate feedback that their trades have been executed. You want the system to have especially low:**
+
+- Latency
+
+**Q41: The following statements are correct (check all that apply):**
+
+- Paxos and Raft are consensus algorithms.
+- Etcd and ZooKeeper are key-value stores.
+  
+**Q42: The following technologies are key-value stores (check all that apply):**
+
+- Redis
+- ZooKeeper
+- Etcd
+
+**Q43: The following features lend themselves well to streaming (check all that apply):**
+
+- Sending and receiving messages on Slack.
+- Watching videos on YouTube.
+  
+**Q44: The following are scenarios that could realistically introduce a hot spot in a system (check all that apply):**
+
+- The system gets a sudden surge of traffic from a particular region in the world.
+- A new social-media trend encourages everyone named "Alex" or "Alexa" to tweet "Hello World!".
+  
+**Q45: Google Cloud Storage (GCS) and Amazon S3 are both storage solutions best used to store:**
+  
+- Large, unstructured data.
+
+**Q46: The following API endpoint makes the most sense to be rate-limited:**
+
+- An endpoint to post a comment.
+
+**Q47: The following concepts are fake and don't exist (check all that apply):**
+
+- Relational idempotency.
+- Distributed denial-of-sharding attack.
+- Rendezvous caching.
+  
+**Q48: When designing an API, you should always (check all that apply):**
+
+- Think of the functionality that the API needs to support.
+- Think of who will be consuming the API.
+  
+**Q49: The following are all real acronyms in the field of systems design (check all that apply):**
+
+- TCP, SLO, S3, and HDFS.
+- CDN, SQL, DNS, and IP.
+- DoS, YAML, PoP, and RAM.
+  
+**Q50: The following is an example of load balancing software:**
+
+- NginX  
+  
+  
+
+  
+  
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
