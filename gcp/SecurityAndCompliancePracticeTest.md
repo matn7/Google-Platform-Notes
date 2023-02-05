@@ -7,11 +7,12 @@ ensure you have command-line tools installed?**
 - `apt-get install bigtable-tools`
 - `gcloud components install bigtable-tools`
 - `apt-get install cbt`
-- :white_check_mark: **gcloud components install cbt**
+- :white_check_mark: **`gcloud components install cbt`**
 
 ```
-The correct command is gcloud components install cbt to install the Bigtable apt-get is used to install packages on some 
-Linux systems but is not specific to GCP. There is no such command as bigtable-tools.
+* The correct command is 'gcloud components install cbt` to install the Bigtable.
+* 'apt-get' is used to install packages on some Linux systems but is not specific to GCP. 
+* There is no such command as bigtable-tools.
 ```
 
 **Question 2: You are the lead developer on a medical application that uses patients’ smartphones to capture biometric data. 
@@ -25,10 +26,12 @@ smartphones and backend data stores. Which data store option should you recommen
 - :white_check_mark: **Cloud Firestore**
 
 ```
-Cloud Firestore is a mobile database service that can synchronize data between mobile devices and centralized storage. 
-Spanner is a global relational database for large-scale applications that require transaction support in highly scaled databases.
-Datastore and Cloud SQL could be used but would require more custom development to synchronize data between mobile devices 
-and the centralized data store.
+* Cloud Firestore is a mobile database service that can synchronize data between mobile devices 
+and centralized storage. 
+* Spanner is a global relational database for large-scale applications that require transaction support in highly 
+scaled databases.
+* Datastore and Cloud SQL could be used but would require more custom development to synchronize data between 
+mobile devices and the centralized data store.
 ```
 
 **Question 3: Once a GCP Cloud dataproc cluster is created , it can be:**
@@ -39,7 +42,8 @@ and the centralized data store.
 - :white_check_mark: **Scaled down**
 
 ```
-Once a cluster is created, it can be scaled up or down. Only the number of worker nodes can change—master nodes are fixed.
+* Once a cluster is created, it can be scaled up or down. 
+* Only the number of worker nodes can change—master nodes are fixed.
 ```
 
 **Question 4: A team of mobile developers is developing a new application. It will require synchronizing data between 
@@ -50,10 +54,11 @@ mobile devices and a backend database. Which database service would you recommen
 - :white_check_mark: **Firestore**
 
 ```
-Firestore is a document database that has mobile supporting features, like data synchronization, so it is the right answer. 
-BigQuery is for analytics, not mobile or transactional applications. Spanner is a global relational database but does not 
-have mobile-specific features. 
-Bigtable could be used with mobile devices, but it does not have mobile-specific features like synchronization.
+* Firestore is a document database that has mobile supporting features, like data synchronization, so it is 
+the right answer. 
+* BigQuery is for analytics, not mobile or transactional applications. 
+* Spanner is a global relational database but does not have mobile-specific features. 
+* Bigtable could be used with mobile devices, but it does not have mobile-specific features like synchronization.
 ```
 
 **Question 5: A team of data scientists have asked for your help setting up an Apache Spark cluster. 
@@ -66,8 +71,10 @@ The service they would use is:**
 - :white_check_mark: **Cloud Dataproc**
 
 ```
-Cloud Dataproc is the managed Spark service. Cloud Dataflow is for stream and batch processing of data, 
-BigQuery is for analytics, and Cloud Hadoop is not a GCP service.
+* Cloud Dataproc is the managed Spark service. 
+* Cloud Dataflow is for stream and batch processing of data.
+* BigQuery is for analytics.
+* Cloud Hadoop is not a GCP service.
 ```
 
 **Question 6: You are working with a startup developing analytics software for IoT data. You have to be able to ingest 
@@ -80,11 +87,11 @@ to query this data. Volumes are expected to grow to petabyte volumes. Which data
 - Cloud Spanner
 
 ```
-Bigtable is a wide-column database that can ingest large volumes of data consistently. It also supports low-millisecond 
-latency, making it a good choice for supporting querying. Cloud Spanner is a global relational database that is not 
-suitable for high-speed ingestion of large volumes of data. Datastore is an object data model and not a good fit for IoT 
-or other time series data. BigQuery is an analytics database and not designed for ingestion of large volumes of data in 
-short periods of time.
+* Bigtable is a wide-column database that can ingest large volumes of data consistently. 
+* It also supports low-millisecond latency, making it a good choice for supporting querying. 
+* Cloud Spanner is a global relational database that is not suitable for high-speed ingestion of large volumes of data. 
+* Datastore is an object data model and not a good fit for IoT or other time series data. 
+* BigQuery is an analytics database and not designed for ingestion of large volumes of data in short periods of time.
 ```
 
 **Question 7: You need to store data for X and therefore you are using a cache for Y. How will the cache affect data retrieval?**
@@ -95,11 +102,13 @@ short periods of time.
 - A cache improves the execution of client-side JavaScript.
 
 ```
-Caches use memory, and that makes them the fastest storage type for reading data. Caches are data stores on the backend 
-of distributed systems, not the clients. A cache would have no effect on client-side JavaScript execution. 
-Caches do not store data in a cache if power is lost; the data would have to be reloaded. 
-Caches can get out of sync with the system of truth because the system of truth could be updated, but the cache may 
-not be updated. Caches have faster read times than SSDs and HDDs.
+* Caches use memory, and that makes them the fastest storage type for reading data. 
+* Caches are data stores on the backend of distributed systems, not the clients. 
+* A cache would have no effect on client-side JavaScript execution. 
+* Caches do not store data in a cache if power is lost; the data would have to be reloaded. 
+* Caches can get out of sync with the system of truth because the system of truth could be updated, but the cache may 
+not be updated. 
+* Caches have faster read times than SSDs and HDDs.
 ```
 
 **Question 8: A software developer on your team is asking for your help improving the query performance of a database 
@@ -111,10 +120,12 @@ application. The developer is using a Cloud SQL MySQL, Second Generation instanc
 - Memorystore and HDD persistent disks.
 
 ```
-Memorystore is a managed Redis cache. The cache can be used to store the results of queries. 
-Follow-on queries that reference the data stored in the cache can read it from the cache, which is much faster than 
-reading from persistent disks. SSDs have significantly lower latency than hard disk drives and should be used for 
-performance-sensitive applications like databases. Datastore is a managed NoSQL database.
+* Memorystore is a managed Redis cache. The cache can be used to store the results of queries. 
+* Follow-on queries that reference the data stored in the cache can read it from the cache, which is much faster than 
+reading from persistent disks. 
+* SSDs have significantly lower latency than hard disk drives and should be used for performance-sensitive 
+applications like databases. 
+* Datastore is a managed NoSQL database.
 ```
 
 **Question 9: As required by your company’s policy, you need to back up your Datastore database at least once per day. 
@@ -127,7 +138,8 @@ produces what outputs?**
 - A single entity file.
 
 ```
-The export process creates a metadata file with information about the data exported and a folder that has the data itself.
+The export process creates a metadata file with information about the data exported and a folder that has 
+the data itself.
 ```
 
 **Question 10: You have just created a Cloud Spanner instance. You have been tasked with creating a way to store data 
@@ -135,7 +147,7 @@ about a product catalog. What is the next step after creating a Cloud Spanner in
 
 - Create tables to hold the data.
 - Use the Cloud Spanner console to import data into tables created with the instance.
-- **Create a database within the instance.**
+- :white_check_mark: **Create a database within the instance.**
 - Run `gcloud spanner update-security-patches`
 
 ```
@@ -145,7 +157,7 @@ You can’t create tables without first having created a database
 ```
 
 **Question 11: A software developer asks for your help exporting data from a Cloud SQL database. 
-he developer tells you which database to export and which bucket to store the export file in, but hasn’t mentioned which 
+The developer tells you which database to export and which bucket to store the export file in, but hasn’t mentioned which 
 file format should be used for the export file. What are the options for the export file format?**
 
 - JSON and SQL
@@ -161,7 +173,7 @@ When exporting a database from Cloud SQL, the export file format options are CSV
 
 - EXT4
 - XFS
-- **Network File System (NFS)**
+- :white_check_mark: **Network File System (NFS)**
 - ReiserFS
 
 ```
@@ -198,7 +210,7 @@ By defining a retention policy - we ensure that the data is not deleted, as requ
 Assume you have Cloud SDK installed on your local computer.**
 
 - `gcloud storage objects copy`
-- :white_check_mark: **gsutil cp**
+- :white_check_mark: **`gsutil cp`**
 - `gsutil copy`
 - `gcloud cp`
 
@@ -226,9 +238,11 @@ messaging systems. What are the two resources within Pub/Sub you will need to cr
 - :white_check_mark: **Topics and subscriptions**
 
 ```
-Pub/Sub works with topics, which receive and hold messages, and subscriptions, which make messages available to consuming 
-applications. Tables are data structures in relational databases, not message queues. Databases exist in instances of 
-database management systems, not messaging systems. Tables are not a resource in messaging systems.
+* Pub/Sub works with topics, which receive and hold messages, and subscriptions, which make messages available 
+to consuming applications. 
+* Tables are data structures in relational databases, not message queues. 
+* Databases exist in instances of database management systems, not messaging systems. 
+* Tables are not a resource in messaging systems.
 ```
 
 **Question 18: You want to estimate the cost of running a BigQuery query. What two services within 
@@ -240,20 +254,21 @@ Google Cloud Platform will you need to use?**
 - Billing and Pricing Calculator
 
 ```
-BigQuery provides an estimate of the amount of data scanned, and the Pricing Calculator gives a cost estimate for scanning 
-that volume of data. The Billing service tracks charges incurred. It is not used to estimate future or potential charges.
+* BigQuery provides an estimate of the amount of data scanned, and the Pricing Calculator gives a cost estimate 
+for scanning that volume of data. 
+* The Billing service tracks charges incurred. It is not used to estimate future or potential charges.
 ```
 
 **Question 19: The correct command to create a Pub/Sub topic is which of the following?**
 
-- :white_check_mark: **gcloud pubsub topics create**
+- :white_check_mark: **`gcloud pubsub topics create`**
 - `cbt pubsub topics create`
 - `gcloud pubsub create topics`
 - `bq pubsub create topics`
 
 ```
-gcloud followed by the service, in this case pubsub, followed by the resource, in this case topics; and finally the verb, 
-in this case create
+gcloud followed by the service, in this case pubsub, followed by the resource, in this case topics,
+and finally the verb, in this case create.
 ```
 
 **Question 20: You have received a large data set from an Internet of Things (IoT) system. You want to use BigQuery to 
@@ -261,7 +276,7 @@ analyze the data. What command-line command would you use to make data available
 
 - `gcloud BigQuery load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`
 - `bq import load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`
-- :white_check_mark: **bq load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]**
+- :white_check_mark: **`bq load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`**
 - `gcloud BigQuery load --autodetect --source_format=[FORMAT][DATASET].[TABLE][PATH_TO_SOURCE]`
 
 ```
@@ -277,17 +292,17 @@ To work with Bigquery we use bq and "load" is the right option and not import.
 - DataFrames
 
 ```
-Datastore uses a SQL-like query language called GQL. 
-SQL is not used. 
-MDX is a query language for online analytic processing (OLAP) systems. 
-DataFrames is a data structure used in Spark.
+* Datastore uses a SQL-like query language called GQL. 
+* SQL is not used. 
+* MDX is a query language for online analytic processing (OLAP) systems. 
+* DataFrames is a data structure used in Spark.
 ```
 
 **Question 22: When you enter a query into the BigQuery query form, BigQuery analyzes the query and displays an estimate 
 of what metric?**
 
 - Cost of the query.
-- **Amount of data scanned.**
+- :white_check_mark: **Amount of data scanned.**
 - Number of bytes passed between servers in the BigQuery cluster.
 - Time required to enter the query.
 
@@ -327,7 +342,7 @@ Block size is established when a file system is created. 4KB block sizes are com
 - It increases security.
 - It supports more programming languages.
 - It stores messages until they are ready by default.
-- **It decouples services, so if one lags, it does not cause other services to lag.**
+- :white_check_mark: **It decouples services, so if one lags, it does not cause other services to lag.**
 
 ```
 Using a message queue between services decouples the services, so if one lags it does not cause other services to lag. 
@@ -351,7 +366,7 @@ Bigtable is a wide-column database.
 **Question 27: Which of the following commands will create a subscription on the topic ace-exam-topic1?**
 
 - `gcloud pubsub create --topic=ace-exam-topic1 ace-exam-sub1`
-- :white_check_mark: **gcloud pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1**
+- :white_check_mark: **`gcloud pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1`**
 - `gsutil pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1`
 - `gcloud pubsub subscriptions create --topic=ace-exam-topic1`
 
@@ -379,7 +394,8 @@ spark-nightly-analysis in the us-west2-a zone?**
 
 - `bq dataproc clusters create spark-nightly-analysis --zone us-west2-a`
 - `gcloud dataproc clusters spark-nightly-analysis --zone us-west2-a`
-- :white_check_mark: **gcloud dataproc clusters create spark-nightly-analysis --zone us-west2-a**
+- :white_check_mark: **`gcloud dataproc clusters create spark-nightly-analysis --zone us-west2-a`
+**
 
 ```
 The correct command is gcloud dataproc clusters create followed by the name of the cluster and the a --zone parameter. 

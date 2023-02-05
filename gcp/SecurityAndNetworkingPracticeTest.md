@@ -9,8 +9,9 @@ What level of network service should you choose?**
 - Non-internet
 
 ```
-Premium is the network service level that routes all traffic over the Google network. Standard tier may use the public 
-Internet when routing traffic. There are no service tiers called Google-only or non-Internet.
+* Premium is the network service level that routes all traffic over the Google network. 
+* Standard tier may use the public Internet when routing traffic. 
+* There are no service tiers called Google-only or non-Internet.
 ```
 
 **Question 2: You have a website hosted on a Compute Engine VM. Users can access the website using the domain name you 
@@ -23,10 +24,11 @@ No other changes have occurred on the subnet. What might be the cause of the pro
 - You do not have enough addresses available on your subnet.
 
 ```
-Stopping and starting a VM will release ephemeral IP addresses. Use a static IP address to have the same IP address across 
-reboots. Rebooting a VM does not change a DNS record. If you had enough addresses to get an address when you first started 
-the VM and you then released that IP address, there should be at least one IP address assuming no other devices are added 
-to the subnet.
+* Stopping and starting a VM will release ephemeral IP addresses. 
+* Use a static IP address to have the same IP address across reboots. 
+* Rebooting a VM does not change a DNS record. 
+* If you had enough addresses to get an address when you first started the VM and you then released that IP address, 
+there should be at least one IP address assuming no other devices are added to the subnet.
 ```
 
 **Question 3: You are using Cloud Console to create a VPN. You want to configure the GCP end of the VPN. What section of 
@@ -38,10 +40,11 @@ the Create VPN form would you use?**
 - IKE Version
 
 ```
-The Google Compute Engine VPN is where you specify information about the Google Cloud end of the VPN connection, 
-so it is correct. You specify name, description, network, region, and IP address. Other options are incoorect because
-tunnels are about the connections between the cloud and the remote network, routing options is about how to configure 
-routers, IKE Version is about exchanging secret keys.
+* The Google Compute Engine VPN is where you specify information about the Google Cloud end of the VPN connection, 
+so it is correct. 
+* You specify name, description, network, region, and IP address. 
+* Other options are incoorect because tunnels are about the connections between the cloud and the remote network, 
+routing options is about how to configure routers, IKE Version is about exchanging secret keys.
 ```
 
 **Question 4: A health check is used to check what resources?**
@@ -52,8 +55,8 @@ routers, IKE Version is about exchanging secret keys.
 - Storage buckets
 
 ```
-Health checks monitor the health of VMs used with load balancersnear line storage is a type of Cloud Storage, 
-storage devices or buckets are not health checked.
+* Health checks monitor the health of VMs used with load balancers.
+* Near line storage is a type of Cloud Storage, storage devices or buckets are not health checked.
 ```
 
 **Question 5: What record type is used to specify the IPv4 address of a domain?**
@@ -64,8 +67,10 @@ storage devices or buckets are not health checked.
 - SOA
 
 ```
-The A record is used to map a domain name to an IPv4 address. AAAA record is used for IPv6 addresses. 
-NS is a name server record. SOA is a start of authority record.
+* The A record is used to map a domain name to an IPv4 address. 
+* AAAA record is used for IPv6 addresses. 
+* NS is a name server record. 
+* SOA is a start of authority record.
 ```
 
 **Question 6: When setting up a network in GCP, your network the resources in it are treated as what?**
@@ -76,9 +81,10 @@ NS is a name server record. SOA is a start of authority record.
 - Non of the above
 
 ```
-When you create a network, it is treated as a virtual private cloud. Resources are added to the VPC and are not accessible 
-outside the VPC unless you explicitly configure them to be. A subdomain is related to web domains and not related to GPC 
-network configuration. Clusters, such as Kubernetes clusters, may be in your network, but are not a characteristic of the network.
+* When you create a network, it is treated as a virtual private cloud. 
+* Resources are added to the VPC and are not accessible outside the VPC unless you explicitly configure them to be. 
+* A subdomain is related to web domains and not related to GPC network configuration. 
+* Clusters, such as Kubernetes clusters, may be in your network, but are not a characteristic of the network.
 ```
 
 **Question 7: A VM instance is trying to read from a Cloud Storage bucket. Reading the bucket is allowed by IAM roles 
@@ -98,7 +104,7 @@ Also, the most permissive permission is not used.
 
 **Question 8: The gcloud command to create a custom role is what?**
 
-- :white_check_mark: **gcloud iam roles create**
+- :white_check_mark: **`gcloud iam roles create`**
 - `gcloud project roles create`
 - `gcloud project create roles`
 - `gcloud iam create roles`
@@ -119,20 +125,22 @@ poisoning. What would you recommend?**
 - Adding CNAME records
 
 ```
-DNSSEC is a secure protocol designed to prevent spoofing and cache poisoning. SOA and CNAME records contain data about 
-the DNS record; they are not an additional security measure. Deleting a CNAME record does not improve security.
+* DNSSEC is a secure protocol designed to prevent spoofing and cache poisoning. 
+* SOA and CNAME records contain data about the DNS record; they are not an additional security measure.
+* Deleting a CNAME record does not improve security.
 ```
 
 **Question 10: What command is used to create a network load balancer at the command line?**
 
-- :white_check_mark: **gcloud compute forwarding-rules create**
+- :white_check_mark: **`gcloud compute forwarding-rules create`**
 - `gcloud compute create forwarding-rules`
 - `gcloud network create forwarding-rules`
 - `gcloud network forwarding-rules create`
 
 ```
-The correct answer, is gcloud compute forwarding-rules create. Other options are incorrect, service should be compute, 
-not network. Also create comes after forwarding-rules.
+* The correct answer, is gcloud compute forwarding-rules create. 
+* Other options are incorrect, service should be compute, not network. 
+* Also create comes after forwarding-rules.
 ```
 
 **Question 11: You want to create a VPN using Cloud Console. What section of Cloud Console should you use?**
@@ -166,9 +174,11 @@ The four launch stages available are alpha, beta, general availability, and disa
 - :white_check_mark: **Permissions**
 
 ```
-Roles are used to group permissions that can then be assigned to identities, roles do not have identities, 
-but identities can be granted roles. Roles do not use access control lists. 
-Roles do not include audit logs. Logs are collected and managed by Stackdriver Logging.
+* Roles are used to group permissions that can then be assigned to identities, roles do not have identities, 
+but identities can be granted roles. 
+* Roles do not use access control lists. 
+* Roles do not include audit logs. 
+* Logs are collected and managed by Stackdriver Logging.
 ```
 
 **Question 14: When you navigate to IAM & Admin in Cloud Console, what appears in the main body of the page?**
@@ -191,15 +201,15 @@ foreseeable future. What type of IP address would you assign?**
 - Internal
 
 ```
-Static addresses are assigned until they are released. Internal and External addresses determine whether traffic is 
-routed into and out of the subnet. 
-External addresses can have traffic reach them from the Internet; internal addresses cannot. 
-Ephemeral addresses are released when a VM shuts down or is deleted.
+* Static addresses are assigned until they are released. 
+* Internal and External addresses determine whether traffic is routed into and out of the subnet. 
+* External addresses can have traffic reach them from the Internet; internal addresses cannot. 
+* Ephemeral addresses are released when a VM shuts down or is deleted.
 ```
 
 **Question 16: What gcloud command would you use to assign a service account when creating a VM?**
 
-- **gcloud compute instance create [INSTANCE_NAME] --service-account [SERVICE_ACCOUNT_EMAIL]**
+- :white_check_mark: **`gcloud compute instance create [INSTANCE_NAME] --service-account [SERVICE_ACCOUNT_EMAIL]`**
 - `gcloud compute instance create [INSTANCE_NAME] [SERVICE_ACCOUNT_EMAIL]`
 - `gcloud compute create instances-service-account [INSTANCE_NAME] [SERVICE_ACCOUNT_EMAIL]`
 - `gcloud compute instances define-service-account [INSTANCE_NAME] [SERVICE_ACCOUNT_EMAIL]*`
@@ -213,12 +223,14 @@ Note: there is no create-service-account or define-service-account or instances-
 
 - Backend
 - Network Services section
-- **Frontend**
+- :white_check_mark: **Frontend**
 - VPC
 
 ```
-You specify ports to forward when configuring the frontend The backend is where you configure how traffic is routed to VMs. 
-Network Services is a high-level area of the console. VPCs are not where you specify load balancer configurations.
+* You specify ports to forward when configuring the frontend. 
+* The backend is where you configure how traffic is routed to VMs. 
+* Network Services is a high-level area of the console. 
+* VPCs are not where you specify load balancer configurations.
 ```
 
 **Question 18: VPCs are ______________ resources.**
@@ -241,9 +253,11 @@ What part of a firewall rule can reference the network tag to determine the set 
 - Action
 
 ```
-The target can be all instances in a network, instances with particular network tags, or instances using a specific 
-service account. Action is either allow or deny. Priority determines which of all the matching rules is applied.
-Direction specifies whether the rule is applied to incoming or outgoing traffic.
+* The target can be all instances in a network, instances with particular network tags, or instances using a specific 
+service account. 
+* Action is either allow or deny. 
+* Priority determines which of all the matching rules is applied.
+* Direction specifies whether the rule is applied to incoming or outgoing traffic.
 ```
 
 **Question 20: You are deploying a new custom application and want to delegate some administration tasks to DevOps engineers. 
@@ -256,9 +270,9 @@ What kind of role should you use to grant those privileges?**
 - advanced
 
 ```
-Primitive roles only include the Owner, Editor, and View permissions. 
-Predefined roles are designed for GCP products and services, like App Engine and BigQuery. 
-For a custom application, you can create sets of privileges that give the user with that role as much permission 
+* Primitive roles only include the Owner, Editor, and View permissions. 
+* Predefined roles are designed for GCP products and services, like App Engine and BigQuery. 
+* For a custom application, you can create sets of privileges that give the user with that role as much permission 
 as needed but not more.
 ```
 
@@ -270,12 +284,12 @@ Which of the following commands would you use?**
 - `gcloud compute firewall-rules create fwr1 --direction=ingress`
 - `gcloud network firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress`
 - `gcloud compute firewall-rules create fwr1 --allow=udp`
-- :white_check_mark: **gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress**
+- :white_check_mark: **`gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress`**
 
 ```
-The rule in "gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress" 
-uses the correct gcloud command and specifies the allow and direction parameters. 
-Other options are incorrect because they references gcloud network instead of gcloud compute or because it does not 
+* The rule in "gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress" uses the 
+correct gcloud command and specifies the allow and direction parameters. 
+* Other options are incorrect because they references gcloud network instead of gcloud compute or because it does not 
 specify the port range or because it does not specify the protocol or port range.
 ```
 
@@ -286,9 +300,10 @@ specify the port range or because it does not specify the protocol or port range
 - Compute Manager role
 
 ```
-Compute Engine Admin Role is the role that gives users complete control over instances. 
-Compute Engine Security Admin gives users the privileges to create, modify, and delete SSL certificates and firewall rules. 
-Other options are ficticious role
+* Compute Engine Admin Role is the role that gives users complete control over instances. 
+* Compute Engine Security Admin gives users the privileges to create, modify, and delete SSL certificates 
+and firewall rules. 
+* Other options are ficticious role
 ```
 
 **Question 23: What part of a firewall rule determines whether a rule applies to incoming or outgoing traffic?**
@@ -299,9 +314,10 @@ Other options are ficticious role
 - :white_check_mark: **Direction**
 
 ```
-Direction specifies whether the rule is applied to incoming or outgoing traffic, which makes it the right answer. 
-Action is either allow or deny. Target specifies the set of instances that the rule applies to. 
-Priority determines which of all matching rules is applied.
+* Direction specifies whether the rule is applied to incoming or outgoing traffic, which makes it the right answer. 
+* Action is either allow or deny. 
+* Target specifies the set of instances that the rule applies to. 
+* Priority determines which of all matching rules is applied.
 ```
 
 **Question 24: Which regional load balancer allows for load balancing based on IP protocol, address, and port?**
@@ -312,8 +328,8 @@ Priority determines which of all matching rules is applied.
 - HTTP(S)
 
 ```
-Network TCP/UDP enables balancing based on IP protocol, address, and port. Other options are all global load balancers,
-not regional ones.
+* Network TCP/UDP enables balancing based on IP protocol, address, and port. 
+* Other options are all global load balancers, not regional ones.
 ```
 
 **Question 25: What are the options for setting scopes in a VM?**
@@ -346,8 +362,9 @@ Logs can be filtered by resource, type of logs, log level, and period of time on
 - :white_check_mark: **Frontend and backend.**
 
 ```
-TCP Proxy load balancers require you to configure both the frontend and backend. forwarding rules are the one component 
-specified with network load balancing. There is no component known as a traffic rule.
+* TCP Proxy load balancers require you to configure both the frontend and backend. 
+* Forwarding rules are the one component specified with network load balancing. 
+* There is no component known as a traffic rule.
 ```
 
 **Question 28: You are designing an application that uses a series of services to transform data from its original form 
@@ -361,21 +378,21 @@ You could allow the application to write to the message queue by using which of 
 - :white_check_mark: **Service account**
 
 ```
-Service accounts are designed to give applications or VMs permission to perform tasks. 
-Billing accounts are for associating charges with a payment method. 
-Folders are part of resource hierarchies and have nothing to do with enabling an application to perform a task. 
-Messaging accounts are a fictitious option.
+* Service accounts are designed to give applications or VMs permission to perform tasks. 
+* Billing accounts are for associating charges with a payment method. 
+* Folders are part of resource hierarchies and have nothing to do with enabling an application to perform a task. 
+* Messaging accounts are a fictitious option.
 ```
 
 **Question 29: You are configuring a load balancer and want to implement private load balancing. Which option would you select?**
 
-- **Only Between My VMs**
+- :white_check_mark: **Only Between My VMs**
 - Enable Private
 - Disable Public
 - Local Only
 
 ```
-In the console there is an option to select between From Internet To My VMs and Only Between My VMs. 
+In the console there is an option to select between 'From Internet To My VMs' and 'Only Between My VMs'. 
 This is the option to indicate private or public. Other options are all fictitious parameters.
 ```
 
@@ -383,7 +400,7 @@ This is the option to indicate private or public. Other options are all fictitio
 You are granting each person a primitive role for different levels of access, depending on their responsibilities in the project.
 Which of the following are not included as primitive roles in Google Cloud Platform?**
 
-- **publisher**
+- :white_check_mark: **publisher**
 - editor
 - owner
 - viewer
@@ -427,20 +444,23 @@ What feature of GCP routing would you enable?**
 - Firewall rules
 
 ```
-Global dynamic routing is used to learn all routes on a network. Regional routing would learn only routes in a region. 
-Other options are incorrect because they are not used to configure routing options.
+* Global dynamic routing is used to learn all routes on a network. 
+* Regional routing would learn only routes in a region. 
+* Other options are incorrect because they are not used to configure routing options.
 ```
 
 **Question 34: The command to create a VPC from the command line is:**
 
 - `gcloud networks vpc create`
 - `gcloud compute create networks`
-- :white_check_mark: **gcloud compute networks create**
+- :white_check_mark: **`gcloud compute networks create`**
 - `gsutil networks vpc create`
 
 ```
-The correct answer is gcloud compute networks create. networks vpc is not a correct part of the command. 
-gsutil is the command used to work with Cloud Storage. There is no such thing as network create.
+* The correct answer is 'gcloud compute networks create'. 
+* 'networks vpc' is not a correct part of the command. 
+* 'gsutil' is the command used to work with Cloud Storage. 
+* There is no such thing as network create.
 ```
 
 **Question 35: Which load balancers provide global load balancing?**
@@ -464,23 +484,26 @@ You decide to create a custom role. When defining custom roles, you should follo
 - Least principle.
 
 ```
-Users should have only the privileges that are needed to carry out their duties. 
-This is the principle of least privilege. 
-Rotation of duties is another security principle related to having different people perform a task at a different times. 
-Defense in depth is the practice of using multiple security controls to protect the same asset. 
-Least Principle is not a real security principal. This make "Least privilege" the correct answer
+* Users should have only the privileges that are needed to carry out their duties, 
+this is the principle of least privilege. 
+* Rotation of duties is another security principle related to having different people perform a task at 
+a different times. 
+* Defense in depth is the practice of using multiple security controls to protect the same asset. 
+* Least Principle is not a real security principal. 
+* This make "Least privilege" the correct answer
 ```
 
 **Question 37: During an incident that has caused an application to fail, you suspect some resource may not have 
 appropriate roles granted. The command to list roles granted to a resource is:**
 
-- :white_check_mark: **gcloud iam list-grantable-roles**
+- :white_check_mark: **`gcloud iam list-grantable-roles`**
 - `gcloud resources grantable-roles`
 - `gcloud list-grantable-roles`
 - `gutil iam list-grantable-roles`
 
 ```
-gcloud is the command-line tool and for working with IAM we need to add "iam", and list-grantable-roles is the correct command.
+gcloud is the command-line tool and for working with IAM we need to add "iam", and list-grantable-roles 
+is the correct command.
 ```
 
 **Question 38: _____________________ routes traffic only over Google’s global network.**
@@ -488,12 +511,13 @@ gcloud is the command-line tool and for working with IAM we need to add "iam", a
 - Advanced Tier
 - Basic Tier
 - Flexible Tier
-- **Premium Tier**
+- :white_check_mark: **Premium Tier**
 - Standard Tier
 
 ```
-Premium Tier routes traffic only over Google’s global network. When using the Standard Tier, your data is subject 
-to the reliability of the public Internet. Rest all not Valid Options for networking tier in GCP.
+* Premium Tier routes traffic only over Google’s global network. 
+* When using the Standard Tier, your data is subject to the reliability of the public Internet. 
+* Rest all not Valid Options for networking tier in GCP.
 ```
 
 **Question 39: You are using gcloud to create a firewall rule. Which command would you use?**
@@ -501,12 +525,13 @@ to the reliability of the public Internet. Rest all not Valid Options for networ
 - `gcloud network firewall-rules create`
 - `gcloud network rules create`
 - `gcloud compute rules create`
-- :white_check_mark: **gcloud compute firewall-rules create**
+- :white_check_mark: **`gcloud compute firewall-rules create`**
 
 ```
-The product you are working with is compute and the resource you are creating is a firewall rule, so 
-"gcloud compute firewall-rules create" is correct. Other options references network instead of compute.
-One option references rules instead of firewall-rules, which makes it incorrect.
+* The product you are working with is compute and the resource you are creating is a firewall rule, so 
+'gcloud compute firewall-rules create' is correct. 
+* Other options references network instead of compute.
+* One option references rules instead of firewall-rules, which makes it incorrect.
 ```
 
 **Question 40: What command is used to create a DNS zone in the command line?**
@@ -514,11 +539,12 @@ One option references rules instead of firewall-rules, which makes it incorrect.
 - `gcloud beta managed-zones create`
 - `gcloud beta dns create managed zones`
 - `gsutil dns managed-zones create`
-- :white_check_mark: **gcloud beta dns managed-zones create**
+- :white_check_mark: **`gcloud beta dns managed-zones create`**
 
 ```
-The correct answer, is gcloud beta dns managed-zones create. gsutil command which is used to work with Cloud Storage. 
-Other options are incorrect, it is missing the term dns or the ordering of terms is incorrect.
+* The correct answer, is 'gcloud beta dns managed-zones create'. 
+* gsutil command which is used to work with Cloud Storage. 
+* Other options are incorrect, it is missing the term dns or the ordering of terms is incorrect.
 ```
 
 **Question 41: You have been asked to create a network with 1,000 IP addresses. In the interest of minimizing unused 
@@ -526,14 +552,18 @@ IP addresses, which CIDR suffix would you use to create a network with at least 
 
 - `/20`
 - `/28`
-- :white_check_mark: **/22**
+- :white_check_mark: **`/22`**
 - `/28`
 
 ```
+32 - 22 = 10
+2^10 = 1024
+1024 - 2 = 1022 (- 2 is broadcast and ??? address)
 The /22 suffix produces 1,022 usable IP addresses.
 ```
 
-**Question 42: The /22 suffix produces 1,022 usable IP addresses.**
+**Question 42: You have created a subnet called sn1 using 192.168.0.0. You want it to have 14 addresses. 
+What prefix length would you use?**
 
 - 32
 - 20
@@ -541,9 +571,12 @@ The /22 suffix produces 1,022 usable IP addresses.
 - 16
 
 ```
-The prefix length specifies the length in bits of the subnet mask. The remaining bits of the IP address are used for 
-device addresses. Since there are 32 bits in an IP address, you subtract the length of the mask to get the number of 
-bits used to represent the address. 16 is equal to 24, so you need 4 bits to represent 14 addresses. 32-4 is 28 is the correct answer.
+* The prefix length specifies the length in bits of the subnet mask. 
+* The remaining bits of the IP address are used for device addresses. 
+* Since there are 32 bits in an IP address, you subtract the length of the mask to get the number of bits used to 
+represent the address. 
+* 16 is equal to 24, so you need 4 bits to represent 14 addresses. 
+* 32-4 is 28 is the correct answer.
 ```
 
 **Question 43: You are meeting with an auditor to discuss security practices in the cloud. The auditor asks how you 
@@ -555,11 +588,12 @@ implement several best practices. You describe how IAM predefined roles help to 
 - Separation of duties
 
 ```
-Predefined roles help implement both least privilege and separation of duties. Predefined roles do not implement defense 
-in depth by themselves but could be used with other security controls to implement defense in depth.
+* Predefined roles help implement both least privilege and separation of duties. 
+* Predefined roles do not implement defense in depth by themselves but could be used with other security controls to 
+implement defense in depth.
 ```
 
-**Question 44: _________________________ uses the public Internet network to transfer data between Google data centers**
+**Question 44: ___________ uses the public Internet network to transfer data between Google data centers**
 
 - Premium Tier
 - Basic Tier
@@ -568,8 +602,9 @@ in depth by themselves but could be used with other security controls to impleme
 - Flexible Tier
 
 ```
-When using the Standard Tier, your data is subject to the reliability of the public Internet. Premium Tier routes 
-traffic only over Google’s global network. Rest all not Valid Options for networking tier in GCP.
+* When using the Standard Tier, your data is subject to the reliability of the public Internet. 
+* Premium Tier routes traffic only over Google’s global network. 
+* Rest all not Valid Options for networking tier in GCP.
 ```
 
 **Question 45: You are tasked with mapping the authentication and authorization policies of your on-premises applications 
@@ -582,8 +617,10 @@ in order to grant privileges to that identity. What does the term identity refer
 - VM ID
 
 ```
-Identities are abstractions of users. They can also represent characteristics of processes that run on behalf of a human 
-user or a VM in the GCP. Identities are not related to VM IDs. Roles are collections of privileges that can be granted to identities.
+* Identities are abstractions of users. 
+* They can also represent characteristics of processes that run on behalf of a human user or a VM in the GCP. 
+* Identities are not related to VM IDs. 
+* Roles are collections of privileges that can be granted to identities.
 ```
 
 **Question 46: At what levels of the resource hierarchy can a shared VPC be created?**
@@ -594,8 +631,9 @@ user or a VM in the GCP. Identities are not related to VM IDs. Roles are collect
 - :white_check_mark: **Organization and folders**
 
 ```
-Shared VPCs can be created at the organization or folder level of the resource hierarchy. Shared VPCs are not created at 
-the resource or project levels. Shared VPCs are not applied at subnets, which are resources in the resource hierarchy.
+* Shared VPCs can be created at the organization or folder level of the resource hierarchy. 
+* Shared VPCs are not created at the resource or project levels. 
+* Shared VPCs are not applied at subnets, which are resources in the resource hierarchy.
 ```
 
 **Question 47: You want to implement interproject communication between VPCs. Which feature of VPCs would you use to implement this?**
@@ -606,8 +644,9 @@ the resource or project levels. Shared VPCs are not applied at subnets, which ar
 - Interproject peering
 
 ```
-VPC is used for interproject communications. There is no interproject peering. VPN and Interconnect have to do with 
-linking on-premise networks with networks in GCP.
+* VPC is used for interproject communications. 
+* There is no interproject peering. 
+* VPN and Interconnect have to do with linking on-premise networks with networks in GCP.
 ```
 
 **Question 48: Why are primitive roles classified in a category in addition to IAM?**
@@ -618,7 +657,8 @@ linking on-premise networks with networks in GCP.
 - They are part of IAM.
 
 ```
-Primitive roles were created before IAM and provided coarse-grained access controls. IAM is the newer form of access control.
+* Primitive roles were created before IAM and provided coarse-grained access controls. 
+* IAM is the newer form of access control.
 ```
 
 **Question 49: You have been asked to set up network security in a virtual private cloud. Your company wants to have 
@@ -631,11 +671,12 @@ the flow of traffic between subnets?**
 - Identity access management
 
 ```
-Firewalls in Google Cloud Platform (GCP) are software-defined network controls that limit the flow of traffic into and 
-out of a network or subnetwork. 
-Routers are used to move traffic to appropriate destinations on the network. 
-Identity access management is used for authenticating and authorizing users; it is not relevant to network controls 
-between subnetworks. IP address tables are not a security control.
+* Firewalls in Google Cloud Platform (GCP) are software-defined network controls that limit the flow of traffic 
+into and out of a network or subnetwork. 
+* Routers are used to move traffic to appropriate destinations on the network. 
+* Identity access management is used for authenticating and authorizing users; it is not relevant to network controls 
+between subnetworks. 
+* IP address tables are not a security control.
 ```
 
 **Question 50: Your company has just started using GCP, and executives want to have a dedicated connection from your data 
@@ -647,6 +688,6 @@ center to the GCP to allow for large data transfers. Which networking service wo
 - :white_check_mark: **Google Cloud Interconnect - Dedicated**
 
 ```
-Google Cloud Interconnect – Dedicated is the only option for a dedicated connection between a customer’s data center and 
-a Google data center.
+Google Cloud Interconnect – Dedicated is the only option for a dedicated connection between a customer’s
+data center and a Google data center.
 ```

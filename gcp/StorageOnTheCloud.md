@@ -21,8 +21,8 @@ from regional storage to nearline storage 90 days after the object is created. T
 - Create a cloud function to copy objects from regional storage to nearline storage.
 
 ```
-The lifecycle configuration policy allows administrators to specify criteria for migrating data to other storage systems 
-without having to concern themselves with running jobs to actually execute the necessary steps. 
+The lifecycle configuration policy allows administrators to specify criteria for migrating data to other storage 
+systems without having to concern themselves with running jobs to actually execute the necessary steps. 
 The other options are inefficient or do not exist.
 ```
 
@@ -49,8 +49,9 @@ choose?**
 - :white_check_mark: **Cloud BigTable**
 
 ```
-Big table supports semi-structured data which is accessed using row key and works well at dataset which are larger than 1 TB.
-Cloud SQL cannot scale upto 50 TB and works well on structured data. Cloud Spanner too works on structured data.
+Big table supports semi-structured data which is accessed using row key and works well at dataset which are larger 
+than 1 TB. Cloud SQL cannot scale upto 50 TB and works well on structured data. Cloud Spanner too works on 
+structured data.
 ```
 
 **Question 5: As a developer on a project using Bigtable for an IoT application, you will need to export data from Bigtable 
@@ -446,7 +447,7 @@ bq is the command-line tool for BigQuery, not Dataproc. Other combination of gcl
 **Question 35: Which of the following Cloud Spanner configurations would have the highest hourly cost?**
 
 - Located in us-central1
-- **Located in nam-eur-asia1**
+- :white_check_mark: **Located in nam-eur-asia1**
 - Located in name3
 - Located in us-west1-a
 
@@ -458,13 +459,13 @@ The multiregional and multi-super-regional location of nam-eur-aisa1 is the most
 but you want to minimize the cost of storing it. You decide to change the storage class to coldline for each of 
 those buckets. What is the command structure that you would use?**
 
-- **gsutil rewrite -s [STORAGE_CLASS] gs://[PATH_TO_OBJECT]**
+- :white_check_mark:  **gsutil rewrite -s [STORAGE_CLASS] gs://[PATH_TO_OBJECT]**
 - `bq rewrite -s [STORAGE_CLASS] gs://[PATH_TO_OBJECT]`
 - `cbt rewrite -s [STORAGE_CLASS] gs://[PATH_TO_OBJECT]`
 - `gcloud rewrite -s [STORAGE_CLASS] gs://[PATH_TO_OBJECT]`
 
 ```
-gsutil is the correct command, gcloud commands are not used to manage Cloud Storage. "cbt and bq" command sare for 
+gsutil is the correct command, gcloud commands are not used to manage Cloud Storage. "cbt and bq" commands are for 
 Bigtable and BigQuery, respectively.
 ```
 
@@ -477,7 +478,8 @@ Bigtable and BigQuery, respectively.
 
 ```
 When running the BigTable cluster across multiple region - you will ensure higher availability as you can handle region 
-level failure. But it will also increase replication latency as data needs to be replicated across cluster in different region
+level failure. But it will also increase replication latency as data needs to be replicated across cluster in different 
+region.
 ```
 
 **Question 38: You are working with a startup developing analytics software for IoT data. You have to be able to ingest 
@@ -490,10 +492,11 @@ to query this data. Volumes are expected to grow to petabyte volumes. Which data
 - :white_check_mark: **Bigtable**
 
 ```
-Bigtable is a wide-column database that can ingest large volumes of data consistently. It also supports low-millisecond 
-latency, making it a good choice for supporting querying. Cloud Spanner is a global relational database that is not suitable 
-for high-speed ingestion of large volumes of data. Datastore is an object data model and not a good fit for IoT or other 
-time series data. BigQuery is an analytics database and not designed for ingestion of large volumes of data in short periods of time.
+* Bigtable is a wide-column database that can ingest large volumes of data consistently. It also supports 
+low-millisecond latency, making it a good choice for supporting querying. 
+* Cloud Spanner is a global relational database that is not suitable for high-speed ingestion of large volumes of data. 
+* Datastore is an object data model and not a good fit for IoT or other time series data. 
+* BigQuery is an analytics database and not designed for ingestion of large volumes of data in short periods of time.
 ```
 
 **Question 39: You want to get an estimate of the volume of data scanned by BigQuery from the command line. 
@@ -501,12 +504,12 @@ Which option shows the command structure you should use?**
 
 - `gsutil --location=[LOCATION] query --use_legacy_sql=false --dry_run [SQL_QUERY]`
 - `cbt BigQuery query estimate [SQL_QUERY]`
-- :white_check_mark: **bq --location=[LOCATION] query --use_legacy_sql=false --dry_run [SQL_QUERY]**
+- :white_check_mark: **`bq --location=[LOCATION] query --use_legacy_sql=false --dry_run [SQL_QUERY]`**
 - `gcloud BigQuery query estimate [SQL_QUERY]`
 
 ```
 It shows the correct bq command structure, which includes location and the ––dry_run option. This option calculates an 
-estimate without actually running the query.gcloud and gsutil are not used with BigQuery. cbt is a tool for working 
+estimate without actually running the query. gcloud and gsutil are not used with BigQuery. cbt is a tool for working 
 with Bigtable, not BigQuery. Be careful not to confuse the two because their names are similar.
 ```
 
@@ -531,7 +534,8 @@ completed jobs, and jobs that generated errors. Note : you can get job status in
 - Firebase and Datastore
 
 ```
-BigQuery, Datastore, and Firebase are all fully managed services that do not require you to specify configuration information for VMs
+BigQuery, Datastore, and Firebase are all fully managed services that do not require you to specify configuration 
+information for VMs
 ```
 
 **Question 42: You have been hired as a consultant to a startup in the Internet of Things (IoT) space. 
@@ -544,9 +548,10 @@ and analyzed before being stored in GCP Datastore. A good option for the stream 
 - Cloud Endpoints
 
 ```
-Cloud Dataflow allows for stream and batch processing of data and is well suited for this kind of ETL work. 
-Dataproc is a managed Hadoop and Spark service that is used for big data analytics. 
-Cloud Endpoints is an API service, and Cloud Interconnect is a network service.
+* Cloud Dataflow allows for stream and batch processing of data and is well suited for this kind of ETL work. 
+* Dataproc is a managed Hadoop and Spark service that is used for big data analytics. 
+* Cloud Endpoints is an API service.
+* Cloud Interconnect is a network service.
 ```
 
 **Question 43: You have set up a Cloud Spanner process to export data to Cloud Storage. You notice that each time the 
@@ -568,11 +573,11 @@ gcp-exam-mysql-export.sql in a bucket named gcp-exam-bucket1?**
 - `gcloud sql export sql gcp-exam-mysql1 gs://gcp-exam-mysql-export.sql/gcp-exam-bucket1/ \ --database=mysql`
 - `gcloud storage export sql gcp-exam-mysql1 gs://gcp-exam-mysql-export.sql/gcp-exam-bucket1/ \ --database=mysql`
 - `gcloud sql export gcp-exam-mysql1 gs://gcp-exam-mysql-export.sql/gcp-exam-bucket1/ \ --database=mysql`
-- :white_check_mark: **gcloud sql export sql gcp-exam-mysql1 gs://gcp-exam-bucket1/gcp-mysql-export.sql \ --database=mysql**
+- :white_check_mark: **`gcloud sql export sql gcp-exam-mysql1 gs://gcp-exam-bucket1/gcp-mysql-export.sql \ --database=mysql`**
 
 ```
-gcloud sql export sql, indicating that the service is Cloud SQL, the operation is export, and the export file format is SQL. 
-The filename and target bucket are correctly formed
+gcloud sql export sql, indicating that the service is Cloud SQL, the operation is export, and the export file format 
+is SQL. The filename and target bucket are correctly formed.
 ```
 
 **Question 45: A software developer on your team is asking for your help improving the query performance of a database 
@@ -598,7 +603,9 @@ performance-sensitive applications like databases. Datastore is a managed NoSQL 
 - Wide-column
 
 ```
-Datastore is a document database. Cloud SQL and Spanner are relational databases. Bigtable is a wide-column database.
+* Datastore is a document database. 
+* Cloud SQL and Spanner are relational databases. 
+* Bigtable is a wide-column database.
 ```
 
 **Question 47: Cloud Storage provides 99.999999999 percent (eleven 9s) annual availability ?**
@@ -607,8 +614,9 @@ Datastore is a document database. Cloud SQL and Spanner are relational databases
 - TRUE
 
 ```
-Cloud Storage provides 99.999999999 percent (eleven 9s) annual durability and not availability. 
-Availability is the ability to access an object when you want it. An object can be durably stored but unavailable. 
+* Cloud Storage provides 99.999999999 percent (eleven 9s) annual durability and not availability. 
+* Availability is the ability to access an object when you want it. 
+* An object can be durably stored but unavailable. 
 For example, a network outage in a region would prevent you from accessing an object stored in that region, although 
 it would continue to be stored in multiple zones.
 ```
@@ -625,7 +633,8 @@ What file format would you recommend for this task?**
 
 ```
 SQL format, exports a database as a series of SQL data definition commands. These commands can be executed in another 
-relational database without having to first create a schema. CSV would require additoinal work and JSON & XML are not an option.
+relational database without having to first create a schema. 
+CSV would require additoinal work and JSON & XML are not an option.
 ```
 
 **Question 49: You need to store data for X and therefore you are using a cache for Y. How will the cache affect data retrieval?**
@@ -636,11 +645,13 @@ relational database without having to first create a schema. CSV would require a
 - :white_check_mark: **Using a cache will reduce latency, since retrieving from a cache is faster than retrieving from SSDs or HDDs.**
 
 ```
-Caches use memory, and that makes them the fastest storage type for reading data. Caches are data stores on the backend of 
-distributed systems, not the clients. A cache would have no effect on client-side JavaScript execution. 
-Caches do not store data in a cache if power is lost; the data would have to be reloaded. 
-Caches can get out of sync with the system of truth because the system of truth could be updated, 
-but the cache may not be updated. Caches have faster read times than SSDs and HDDs.
+* Caches use memory, and that makes them the fastest storage type for reading data. 
+* Caches are data stores on the backend of distributed systems, not the clients. 
+* A cache would have no effect on client-side JavaScript execution. 
+* Caches do not store data in a cache if power is lost; the data would have to be reloaded. 
+* Caches can get out of sync with the system of truth because the system of truth could be updated, but the cache may 
+not be updated. 
+* Caches have faster read times than SSDs and HDDs.
 ```
 
 **Question 50: Your department is deploying an application that has a database backend. You are concerned about the read 
@@ -653,8 +664,8 @@ reduce the load on the database server. Which GCP service would you use to keep 
 - Cloud Spanner
 
 ```
-Cloud Memorystore is the only GCP designed to cache data in memory. Cloud SQL is a relational database service and might 
-be a good option for the backend database. Cloud Spanner is a global relational database and is a good option when you 
-need a globally consistent database. Cloud Datastore is a document database suitable for product catalogs, user profiles, 
-and other semistructured data.
+* Cloud Memorystore is the only GCP designed to cache data in memory. 
+* Cloud SQL is a relational database service and might be a good option for the backend database. 
+* Cloud Spanner is a global relational database and is a good option when you need a globally consistent database. 
+* Cloud Datastore is a document database suitable for product catalogs, user profiles, and other semistructured data.
 ```

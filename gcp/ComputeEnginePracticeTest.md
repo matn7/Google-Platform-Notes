@@ -8,7 +8,8 @@
 - Container image
 
 ```
-Time to Live is not an attribute of deployments. Application name, container image, and initial command can all be specified.
+Time to Live is not an attribute of deployments. 
+Application name, container image, and initial command can all be specified.
 ```
 
 **Question 2: Stackdriver Monitoring collects metrics such as query counts, execution times, scanned bytes, 
@@ -33,10 +34,11 @@ Which of these Compute Engine components will help achieve scalability and high 
 - Cloud Storage
 
 ```
-Instance groups are sets of VMs that can be configured to scale and are used with load balancers, which contribute to 
-improving availability. Preemptible instances are not highly available because they can be shut down at any time by GCP. 
-Cloud Storage is not a Compute Engine component. GPUs can help improve throughput for math-intensive operations but 
-do not contribute to high availability.
+* Instance groups are sets of VMs that can be configured to scale and are used with load balancers, 
+which contribute to improving availability. 
+* Preemptible instances are not highly available because they can be shut down at any time by GCP. 
+* Cloud Storage is not a Compute Engine component. 
+* GPUs can help improve throughput for math-intensive operations but do not contribute to high availability.
 ```
 
 **Question 4: Customers are complaining of long waits while booking airline tickets. There are many microservices in your 
@@ -49,10 +51,10 @@ What Stackdriver service would you use?**
 - :white_check_mark: **Stackdriver Trace**
 
 ```
-Stackdriver Trace is used to collect information about the time required to execute functions in a call stack. 
-Stackdriver Logging is used to collect semi-structured data about events. 
-Stackdriver Monitoring collects performance metrics. 
-Stackdriver Debugger is used to inspect the state of running code.
+* Stackdriver Trace is used to collect information about the time required to execute functions in a call stack. 
+* Stackdriver Logging is used to collect semi-structured data about events. 
+* Stackdriver Monitoring collects performance metrics. 
+* Stackdriver Debugger is used to inspect the state of running code.
 ```
 
 **Question 5: An architect has suggested a particular machine type for your workload. You are in the console creating 
@@ -66,8 +68,10 @@ a VM and you don’t see the machine type in the list of available machine types
 ```
 Different zones may have different machine types available, so you will need to specify a region first and then a zone 
 to determine the set of machine types available. If the machine type does not appear in the list, it is not available 
-in that zone. Subnets and IP addresses are not related to the machine types available. Unless you are specifying a 
-custom machine type, you do not specify the amount of memory; that is defined by the machine type.
+in that zone. 
+Subnets and IP addresses are not related to the machine types available. 
+Unless you are specifying a custom machine type, you do not specify the amount of memory; 
+that is defined by the machine type.
 ```
 
 **Question 6: What are the categories of Cloud Launcher solutions?**
@@ -78,7 +82,8 @@ custom machine type, you do not specify the amount of memory; that is defined by
 - :white_check_mark: **Data sets, operating systems, and developer tools**
 
 ```
-Categories of solutions include all of the categories mentioned, so "Data sets, operating systems, and developer tools". 
+Categories of solutions include all of the categories mentioned, so "Data sets, operating systems, 
+and developer tools". 
 Others include Kubernetes Apps, API & Services, and Databases.
 ```
 
@@ -91,8 +96,8 @@ What feature of managed instance groups is at work here?**
 - Redundancy
 
 ```
-Autoscaling adds or removes instances based on instance metrics and workloads. Others are features of managed instances
-group but serves a different functions
+Autoscaling adds or removes instances based on instance metrics and workloads. 
+Others are features of managed instances group but serves a different functions
 ```
 
 **Question 8: You are deploying a Python web application to GCP. The application uses only custom code and basic 
@@ -106,10 +111,12 @@ Which computing service is the best option for running the application?**
 - App Engine flexible environment
 
 ```
-The App Engine standard environment can run Python applications, which can autoscale down to no instances when there 
-is no load and thereby minimize costs. Compute Engine and the App Engine flexible environment both require more 
-configuration management than the App Engine standard environment. Kubernetes Engine is used when a cluster of servers 
-is needed to support large or multiple applications using the same computing resources.
+* The App Engine standard environment can run Python applications, which can autoscale down to no instances when there 
+is no load and thereby minimize costs. 
+* Compute Engine and the App Engine flexible environment both require more configuration management than 
+the App Engine standard environment. 
+* Kubernetes Engine is used when a cluster of servers is needed to support large or multiple applications using the 
+same computing resources.
 ```
 
 **Question 9: The amount of time GCP will wait before collecting performance statistics from the instance for 
@@ -150,8 +157,8 @@ not having any effect. You suspect that a Kubernetes component is not functionin
 - :white_check_mark: **The Kubernetes API**
 
 ```
-All interactions with the cluster are done through the master using the Kubernetes API. If an action is to be taken on 
-a node, the command is issued by the cluster master.
+All interactions with the cluster are done through the master using the Kubernetes API. 
+If an action is to be taken on a node, the command is issued by the cluster master.
 ```
 
 **Question 12: You need to create multiple VMs which needs heterogeneous configurations as part of instance group. 
@@ -163,7 +170,8 @@ How can we achieve that ?**
 - :white_check_mark: **Create an unmanaged instance group**
 
 ```
-Managed instance groups (MIGs) consist of identically configured VMs; unmanaged instance groups allow for heterogeneous VMs.
+* Managed instance groups (MIGs) consist of identically configured VMs. 
+* Unmanaged instance groups allow for heterogeneous VMs.
 ```
 
 **Question 13: CPU utilization exceeding 70 percent for three minutes is an example of ?**
@@ -186,7 +194,8 @@ In Stackdriver Monitoring, alerts are created using an alerting policy. CPU Util
 
 ```
 When running the BigTable cluster across multiple region - you will ensure higher availability as you can handle region 
-level failure. But it will also increase replication latency as data needs to be replicated across cluster in different region.
+level failure. 
+But it will also increase replication latency as data needs to be replicated across cluster in different region.
 ```
 
 **Question 15: Your application is running on Kubernetes cluster on GCP. You have configured autoscaling when the CPU 
@@ -198,7 +207,7 @@ utilizations exceeds 75 percent. How is the CPU Utilizations calculated ?**
 - Based on all CPU utilization of the most CPU-intensive pod.
 
 ```
-Replicas are added to the deployment and hence CPU Utilizations should be check at deployment level . 
+Replicas are added to the deployment and hence CPU Utilizations should be check at deployment level. 
 It would be incorrect to check the CPU at Cluster level as it would have one or more deployment running on it.
 ```
 
@@ -214,9 +223,11 @@ What GCP Compute Engine resource would you recommended using?**
 - :white_check_mark: **Unmanaged instance groups**
 
 ```
-Unmanaged instance groups are available for limited use cases such as this. Unmanaged instance groups are not recommended 
-in general. Managed instance groups are the recommended way to use instance groups, but the two different configurations 
-prevents their use. Preemptible instances and GPUs are not relevant to this scenario.
+* Unmanaged instance groups are available for limited use cases such as this. 
+* Unmanaged instance groups are not recommended in general. 
+* Managed instance groups are the recommended way to use instance groups, but the two different configurations 
+prevents their use. 
+* Preemptible instances and GPUs are not relevant to this scenario.
 ```
 
 **Question 17: Your company is based in X and will be running a virtual server for Y. What factor determines the unit per minute cost.**
@@ -227,8 +238,9 @@ prevents their use. Preemptible instances and GPUs are not relevant to this scen
 - None of the above
 
 ```
-The characteristics of the server, such as the number of virtual servers, the amount of memory, and the region where you 
-run the VM, influence the cost. Time of day is not a factor, nor is the type of application you run on the VM.
+* The characteristics of the server, such as the number of virtual servers, the amount of memory, 
+and the region where you run the VM, influence the cost. 
+* Time of day is not a factor, nor is the type of application you run on the VM.
 ```
 
 **Question 18: What can be the basis for scaling up an instance group?**
@@ -239,9 +251,9 @@ run the VM, influence the cost. Time of day is not a factor, nor is the type of 
 - CPU utilization and operating system updates
 
 ```
-You can configure an autoscaling policy to trigger adding or removing instances based on CPU utilization, monitoring metric, 
-load balancing capacity, or queue-based workloads. Disk, network latency, and memory can trigger scaling if monitoring 
-metrics on those resources are configured.
+* You can configure an autoscaling policy to trigger adding or removing instances based on CPU utilization, 
+monitoring metric, load balancing capacity, or queue-based workloads. 
+* Disk, network latency, and memory can trigger scaling if monitoring metrics on those resources are configured.
 ```
 
 **Question 19: If a pod is terminated for being unhealthy—then the ____ will add pods until the desired state is reached**
@@ -252,8 +264,8 @@ metrics on those resources are configured.
 - :white_check_mark: **Kubernetes Replicasets**
 
 ```
-A ReplicaSet is a controller that manages the number of pods running for a deployment. A deployment is a higher-level 
-concept that manages ReplicaSets and provides declarative updates
+* A ReplicaSet is a controller that manages the number of pods running for a deployment. 
+* A deployment is a higher-level concept that manages ReplicaSets and provides declarative updates.
 ```
 
 **Question 20: Cloud Dataflow does require you to specify machine types when configuring a pipeline ?**
@@ -276,15 +288,16 @@ on DevOps engineers. You describe several features, including all of the followi
 - Automatic scaling of nodes in the cluster.
 
 ```
-Kubernetes provides load balancing, scaling, and automatic upgrading of software. It does not provide vulnerability scanning. 
-GCP does have a Cloud Security Scanner product, but that is designed to work with App Engine to identify common application 
-vulnerabilities.
+* Kubernetes provides load balancing, scaling, and automatic upgrading of software. 
+* It does not provide vulnerability scanning. 
+* GCP does have a Cloud Security Scanner product, but that is designed to work with App Engine to identify common 
+application vulnerabilities.
 ```
 
 **Question 22: A DevOps engineer is noticing a spike in CPU utilization on your servers. You explain you have just launched 
 a deployment. You’d like to show the DevOps engineer the details of a deployment you just launched. What command would you use?**
 
-- :white_check_mark: **gcloud deployment-manager deployments describe**
+- :white_check_mark: **`gcloud deployment-manager deployments describe`**
 - `gcloud cloud-launcher deployments list`
 - `gcloud cloud-launcher deployments describe`
 - `gcloud deployment-manage deployments list`
@@ -298,14 +311,15 @@ Note: list displays a brief summary of each deployment and describe displays a d
 You create a second snapshot. How much storage is used in total for the two snapshots (assume no compression)?**
 
 - 210 GB, with 100 GB for the first and 110 GB for the second.
-- **110 GB, with 100 GB for the first and 10 GB for the second.**
+- :white_check_mark: **110 GB, with 100 GB for the first and 10 GB for the second.**
 - 221 GB, with 100 GB for the first, 110 GB for the second, plus 10 percent of the second snapshot (11 GB) for metadata overhead.
 - 110 GB, with 110 for the second (the first snapshot is deleted automatically).
 
 ```
-When you first create a snapshot, GCP will make a full copy of the data on the persistent disk. The next time you create 
-a snapshot from that disk, GCP will only copy the data that has changed since the last snapshot. Note : GCP does not 
-store a full copy of the second snapshot and the first snapshot is not deleted automatically. 
+When you first create a snapshot, GCP will make a full copy of the data on the persistent disk. 
+The next time you create a snapshot from that disk, GCP will only copy the data that has changed since 
+the last snapshot. 
+Note : GCP does not store a full copy of the second snapshot and the first snapshot is not deleted automatically. 
 Also, subsequent snapshots do not incur 10 percent overhead.
 ```
 
@@ -317,9 +331,9 @@ Also, subsequent snapshots do not incur 10 percent overhead.
 - Boot disk image
 
 ```
-An instance group template is used to specify how the instance group should be created. Note: instances are created 
-automatically when an instance group is created. Boot disk images and snapshots do not have to be created before 
-creating an instance group.
+An instance group template is used to specify how the instance group should be created. 
+Note: instances are created automatically when an instance group is created. 
+Boot disk images and snapshots do not have to be created before creating an instance group.
 ```
 
 **Question 25: You need to set up a server with a high level of security. You want to be prepared in case of attacks 
@@ -332,9 +346,10 @@ Which option should you select when creating a VM?**
 - Boot disk integrity check
 
 ```
-Shield VM is an advanced set of security controls that includes Integrity Monitoring, a check to ensure boot images have 
-not been tampered with, which makes it the right answer. Firewalls are used to control ingress and egress of network 
-traffic to a server or subnet. Project-wide SSH keys are used for authenticating users across servers within a project. 
+Shield VM is an advanced set of security controls that includes Integrity Monitoring, a check to ensure 
+boot images have not been tampered with, which makes it the right answer. 
+Firewalls are used to control ingress and egress of network traffic to a server or subnet. 
+Project-wide SSH keys are used for authenticating users across servers within a project. 
 Boot disk integrity check is a fictional feature.
 ```
 
@@ -391,8 +406,8 @@ a WordPress site using Cloud Launcher?**
 - :white_check_mark: **All of the above**
 
 ```
-You can change the configuration of any of the items listed, so option D is correct. You can also specify firewall rules 
-to allow both HTTP and HTTPS traffic or change the zone in which the VM runs.
+You can change the configuration of any of the items listed, so option D is correct. 
+You can also specify firewall rules to allow both HTTP and HTTPS traffic or change the zone in which the VM runs.
 ```
 
 **Question 30: You have acquired a 10 GB data set from a third-party research firm. A group of data scientists would 
@@ -438,9 +453,9 @@ manage servers or clusters. A good option for them is:**
 - Cloud Functions
 
 ```
-App Engine is a PaaS that allows developers to deploy full applications without having to manage servers or clusters. 
-Compute Engine and Kubernetes Engine require management of servers. 
-Cloud Functions is suitable for short-running Node.js or Python functions but not full applications.
+* App Engine is a PaaS that allows developers to deploy full applications without having to manage servers or clusters. 
+* Compute Engine and Kubernetes Engine require management of servers. 
+* Cloud Functions is suitable for short-running Node.js or Python functions but not full applications.
 ```
 
 **Question 33: The GCP service for storing and managing Docker containers is:**
@@ -451,8 +466,9 @@ Cloud Functions is suitable for short-running Node.js or Python functions but no
 - :white_check_mark: **Container Registry**
 
 ```
-The GCP service for storing and managing Docker containers is Container Registry. Cloud Build is for creating images. 
-The others are not GCP services.
+* The GCP service for storing and managing Docker containers is Container Registry. 
+* Cloud Build is for creating images. 
+* The others are not GCP services.
 ```
 
 **Question 34: When we are moving services from "n1-standard-1" to "n1-standard-4" it is called as Vertical Scaling**
@@ -461,7 +477,7 @@ The others are not GCP services.
 - FALSE
 
 ```
-vertical scaling, requires moving services from one VM to another VM with more or fewer resources
+Vertical scaling, requires moving services from one VM to another VM with more or fewer resources
 ```
 
 **Question 35: Your team is developing a new pipeline to analyze a stream of data from sensors on manufacturing devices. 
@@ -475,9 +491,10 @@ prevent multiple invocations of the function from interfering with each other?**
 - Schedule each invocation to run in a separate thread.
 
 ```
-Each invocation of a cloud function runs in a secure, isolated runtime environment. There is no need to check whether 
-other invocations are running. With the Cloud Functions service, there is no way for a developer to control code execution 
-at the process or thread level.
+* Each invocation of a cloud function runs in a secure, isolated runtime environment. 
+* There is no need to check whether other invocations are running. 
+* With the Cloud Functions service, there is no way for a developer to control code execution at the process 
+or thread level.
 ```
 
 **Question 36: A new engineer is asking for clarification about when it is best to use Kubernetes and when to use 
@@ -489,9 +506,9 @@ instance groups. You point out that Kubernetes uses instance groups. What purpos
 - They create pods and deployments.
 
 ```
-Kubernetes creates instance groups as part of the process of creating a cluster, which makes it the correct answer. 
-Stackdriver, not instance groups, is used to monitor the health of nodes and to create alerts and notifications. 
-Kubernetes creates pods and deployments; they are not provided by instance groups.
+* Kubernetes creates instance groups as part of the process of creating a cluster, which makes it the correct answer. 
+* Stackdriver, not instance groups, is used to monitor the health of nodes and to create alerts and notifications. 
+* Kubernetes creates pods and deployments; they are not provided by instance groups.
 ```
 
 **Question 37: Your company is about to release a new online service that builds on a new user interface experience 
@@ -505,12 +522,15 @@ highly reliable and scale to meet demand. Which of the GCP services is the best 
 - :white_check_mark: **Kubernetes Engine** 
   
 ```
-The scenario described is a good fit for Kubernetes. Each of the groups of services can be structured in pods and deployed 
-using Kubernetes deployment. Kubernetes Engine manages node health, load balancing, and scaling. App Engine Standard 
-Edition has language-specific sandboxes and is not a good fit for this use case. Cloud Functions is designed for 
-short-running event processing and is not the kind of continuous processing needed in this scenario. Compute Engine could 
-meet the requirements of this use case, but it would require more effort on the part of application administrators and 
-DevOps professionals to configure load balancers, monitor health, and manage software deployments.
+* The scenario described is a good fit for Kubernetes. 
+* Each of the groups of services can be structured in pods and deployed using Kubernetes deployment. 
+* Kubernetes Engine manages node health, load balancing, and scaling. 
+* App Engine Standard Edition has language-specific sandboxes and is not a good fit for this use case. 
+* Cloud Functions is designed for short-running event processing and is not the kind of continuous processing needed 
+in this scenario. 
+* Compute Engine could meet the requirements of this use case, but it would require more effort on the part of 
+application administrators and DevOps professionals to configure load balancers, monitor health, 
+and manage software deployments.
 ```
 
 **Question 38: Adding virtual machines to an instance group can be triggered in an autoscaling policy by all of the 
@@ -540,7 +560,7 @@ VMs are provisioned using the cloud console, the command-line SDK, or the REST A
 **Question 40: What command is used to run a Docker image on a cluster?**
 
 - `kubectl beta run`
-- :white_check_mark: **kubectl run**
+- :white_check_mark: **`kubectl run`**
 - `gcloud beta container run`
 - `gcloud container run`
 
@@ -563,7 +583,7 @@ to specify a router or change firewall rules on the Network tab.
 
 **Question 42: What command would you use to have 10 replicas of a deployment named ch07-app-deploy?**
 
-- :white_check_mark: **kubectl scale deployment ch07-app-deploy --replicas=10**
+- :white_check_mark: **`kubectl scale deployment ch07-app-deploy --replicas=10`**
 - `kubectl scale deployment ch07-app-deploy --pods=5`
 - `kubectl upgrade deployment ch07-app-deploy --replicas=5`
 - `gcloud containers deployment ch07-app-deploy --replicas=5`
@@ -572,7 +592,8 @@ to specify a router or change firewall rules on the Network tab.
 Use of gcloud and upgrade is incorrect. "scale" is the right command along with replicas.
 ```
 
-**Question 43: You have deployed an application to a Kubernetes cluster. You have noticed that several pods are starved 
+**Question 43: 
+You have deployed an application to a Kubernetes cluster. You have noticed that several pods are starved 
 for resources for a period of time and the pods are shut down. When resources are available, new instantiations of those 
 pods are created. Clients are still able to connect to pods even though the new pods have different IP addresses from the 
 pods that were terminated. What Kubernetes component makes this possible?**
@@ -583,8 +604,11 @@ pods that were terminated. What Kubernetes component makes this possible?**
 - ReplicaSet
 
 ```
-Services provide a level of indirection to accessing pods. Pods are ephemeral. Clients connect to services, which can 
-discover pods. ReplicaSets and StatefulSets provide managed pods. Alerts are for reporting on the state of resources.
+* Services provide a level of indirection to accessing pods. 
+* Pods are ephemeral. 
+* Clients connect to services, which can discover pods. 
+* ReplicaSets and StatefulSets provide managed pods. 
+* Alerts are for reporting on the state of resources.
 ```
 
 **Question 44: You have just opened the GCP console at console.google.com. You have authenticated with the user you want 
@@ -596,12 +620,14 @@ to use. What is one of the first things you should do before performing tasks on
 - Verify you can SSH into a VM.
 
 ```
-You should verify the project selected because all operations you perform will apply to resources in the selected project, 
-making it the correct answer. You do not need to open Cloud Shell unless you want to work with the command line, 
-and if you did, you should verify that the project is correctly selected first. Logging into a VM using SSH is one of 
-the tasks that requires you to be working with the correct project, so logging in via SSH should not happen before 
-verifying the project. The list of VMs in the VM Instance window is a list of VMs in the current project. 
-You should verify which project you are using to ensure you are viewing the set of VMs you think you are using.
+* You should verify the project selected because all operations you perform will apply to resources 
+in the selected project, making it the correct answer. 
+* You do not need to open Cloud Shell unless you want to work with the command line, and if you did, you should 
+verify that the project is correctly selected first. 
+* Logging into a VM using SSH is one of the tasks that requires you to be working with the correct project, 
+so logging in via SSH should not happen before verifying the project. 
+* The list of VMs in the VM Instance window is a list of VMs in the current project. 
+* You should verify which project you are using to ensure you are viewing the set of VMs you think you are using.
 ```
 
 **Question 45: A software engineer comes to you for a recommendation. She has implemented a machine learning algorithm 
@@ -615,16 +641,17 @@ What kind of Compute Engine configuration would you recommend?**
 - High memory, high CPU
 
 ```
-A computationally intensive application obviously requires high CPUs, but the fact that there are many mathematical 
-calculations indicates that a GPU should be used. You might consider running this in a cluster, but the work is not 
-easily distributed over multiple servers, so you will need to have a single server capable of handling the load. 
-Immediate access to large amounts of data indicates that a high-memory machine should be recommended.
+* A computationally intensive application obviously requires high CPUs, but the fact that there are many mathematical 
+calculations indicates that a GPU should be used. 
+* You might consider running this in a cluster, but the work is not easily distributed over multiple servers, 
+so you will need to have a single server capable of handling the load. 
+* Immediate access to large amounts of data indicates that a high-memory machine should be recommended.
 ```
 
 **Question 46: Which command will delete an instance named ch06-instance-3?**
 
 - `gcloud compute delete ch06-instance-3`
-- :white_check_mark: **gcloud compute instances delete ch06-instance-3**
+- :white_check_mark: **`gcloud compute instances delete ch06-instance-3`**
 - `gcloud compute instance stop ch06-instance-3`
 - `gcloud compute inetances delete instance=ch06-instance-3`
 
@@ -638,17 +665,19 @@ processed by another application. The application that consumes messages from th
 after completing the task. It takes approximately 10 seconds to complete a task. It is not a problem if two or more VMs 
 perform the same task. What is a cost-effective configuration for processing this workload?**
 
-- **Use preemptible VMs**
+- :white_check_mark: **Use preemptible VMs**
 - Use Spanner
 - Use DataProc
 - Use standard VMs
 
 ```
-This is a good use case for preemptible VMs because they could reduce the cost of running the second application without 
-the risk of losing work. Since tasks are deleted from the queue only after they are completed if a preemptible VM is shut 
-down before completing the task, another VM can perform the task. Also, there is no harm in running a task more than once, 
-so if two VMs do the same task, it will not adversely affect the output of the application. DataProc and Spanner are not 
-appropriate products for this task.
+* This is a good use case for preemptible VMs because they could reduce the cost of running 
+the second application without the risk of losing work. 
+* Since tasks are deleted from the queue only after they are completed if a preemptible VM is shut down before 
+completing the task, another VM can perform the task. 
+* Also, there is no harm in running a task more than once, so if two VMs do the same task, it will not adversely 
+affect the output of the application. 
+* DataProc and Spanner are not appropriate products for this task.
 ```
 
 **Question 48: Your team is very new to Kubernetes and are migrating to GCP. Developers of the team are unfamiliar with 
@@ -685,7 +714,9 @@ information you will need?**
 - A name for the VM, a machine type, a region, a zone, and an IP address.
 
 ```
-The name of the VM, the region and zone, and the machine type can all be specified in the console along with other parameters. 
-Option A is missing required parameters. A CIDR block is a range of IP addresses that is associated with a subnet and not 
-needed to create a VM. An IP address is assigned automatically so it is not required.
+* The name of the VM, the region and zone, and the machine type can all be specified in the console along 
+with other parameters. 
+* Option A is missing required parameters. 
+* A CIDR block is a range of IP addresses that is associated with a subnet and not needed to create a VM. 
+* An IP address is assigned automatically so it is not required.
 ```

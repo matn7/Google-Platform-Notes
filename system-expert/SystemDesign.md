@@ -286,7 +286,7 @@ Below are the downtimes expected per year depending on those 9s:
 
 **Cache**
 
-- A piece of hardware of software that stores data, typically meant to retrieve that data faster than otherwise.
+- A piece of hardware or software that stores data, typically meant to retrieve that data faster than otherwise.
 - Caches often used to store responses to network requests as well as result of computationally-long operations.
 - Note that data in a cache can become stale if the main source of truth for that data (i.e. the main database
 behind the cache) gets updated, and the cache doesn't.

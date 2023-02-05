@@ -1,0 +1,105 @@
+## Google Questions
+
+- Sorting: 
+    - Insertion sort  x
+    - Radix sort x
+    - Quick sort x
+    - Merge sort x
+    - Heap sort x
+- Searching x
+- Binary Search x 
+- Divide and conquer x 
+- Dynamic Programming - memoization x 
+- Greediness x
+- Recursion x
+- Dijkstra  `O(V log V + E)` x 
+- A * `O(w*h*low(w*h)) time | O(w*h) space` x
+- Data structures:
+    - Arrays x
+    - Linked Lists: x
+        - Reverse link-list x 
+    - Stacks x
+    - Queues x
+    - Hash-sets x
+    - Hash-maps x
+    - Hash-tables x
+    - Dictionary x
+    - Trees:
+        - Red black tree x
+    - Binary Trees x
+    - Heaps x
+    - Graphs x
+- Math:
+    - Discrete match questions x
+    - Essentials of elementary probability theory and combinatorics x
+    - n - choose - k x
+- Graphs:
+    - Distance
+    - Search
+    - Connectivity
+    - Cycle detection
+    - Graph representation in memory: x
+        - Objects and pointers x
+        - Matrix x
+        - Adjacency list x
+    - Graph traversal:
+        - Depth-first
+        - Breadth-first
+    - Run - time complexity of graphs
+    - Topological sort
+    - Famous algorithms: (complexity what doing)
+        - Prims x
+        - Dijkstras x
+        - Kruskal x
+        - Hamilton (NP proble cannot find complexity) x
+        - Bellman-Ford (shortest-path negative weighted graph) x
+- Recursion
+- System design:
+    - Design policies
+    - Processes
+    - Methods
+    - Tests
+    - Components
+- Topics:
+    - Feature sets x
+    - Interfaces 
+    - Class hierarchies
+    - Distributed systems x
+        - Design system under certain constraints x
+        - Simplicity x
+        - Limitations x
+        - Robustness x
+        - Tradeoffs x
+    - Routers x
+    - Domain name servers x
+    - Load balancers x
+    - Firewalls x
+    - Distributed hash table systems x
+    - Resource estimations with real systems
+    - Big product design picture
+    - Translation of an abstract problem to a system
+    - API discussion
+    - Binary tree
+    - Cache x
+    - Mapreduce x
+    - For loop problems x
+    - Index (database?) x
+    - Compilers x
+    - Memory cache x
+    - Networks x
+    - VPN x
+- Operating Systems:
+    - Processes x
+    - Threads x
+    - Concurrency issues x
+    - Locks x
+    - Mutexes x
+    - Semaphores x
+    - Monitors x
+    - Deadlock (how to avoid) x
+    - Livelock (how to avoid) x
+    - What resource process needs and thread needs x
+    - How context switch works x
+    - How context switch is initiated by system the OS and hardware x
+    - Scheduling x
+    - Multi-core, modern concurrency constraints x
