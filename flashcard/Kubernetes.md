@@ -767,32 +767,51 @@ handling capacity. Vertical scaling (scaling up/down), on the other hand, means 
 existing Pods. Horizontal scaling is about changing the number of components, while vertical scaling is about changing 
 the size of each component.
 
-9) Can Kubernetes Autoscaling Work with Stateful Applications?
-   Answer: While Kubernetes autoscaling is generally more suited for stateless applications, it can also work with stateful applications. However, this requires careful management to ensure that the scaling actions do not disrupt the stateful nature of the application, such as persistent storage requirements, session management, etc.
+9) Can Kubernetes Autoscaling Work with Stateful Applications? 
+Answer: While Kubernetes autoscaling is generally more suited for stateless applications, it can also work with stateful 
+applications. However, this requires careful management to ensure that the scaling actions do not disrupt the stateful 
+nature of the application, such as persistent storage requirements, session management, etc.
 
-10) What Factors Should Be Considered When Setting Up Autoscaling?
-    Answer: When setting up autoscaling, it’s important to consider factors like the type of workload (stateful or stateless), the metrics to be used for scaling decisions, minimum and maximum thresholds for scaling, the responsiveness of the application to scaling actions, and the impact on costs. It's also crucial to monitor and tweak the autoscaling setup to align with the actual workload patterns.
+10) What Factors Should Be Considered When Setting Up Autoscaling? 
+Answer: When setting up autoscaling, it’s important to consider factors like the type of workload (stateful or stateless), 
+the metrics to be used for scaling decisions, minimum and maximum thresholds for scaling, the responsiveness of the 
+application to scaling actions, and the impact on costs. It's also crucial to monitor and tweak the autoscaling setup to 
+align with the actual workload patterns.
 
 
 15. NEW SECTION - SECURITY
 
-1) What are Kubernetes Namespaces and How Do They Relate to Security?
-   Answer: Kubernetes namespaces are a way to divide cluster resources between multiple users. From a security perspective, they provide a logical separation of cluster resources, allowing for the implementation of policies, limits, and permissions on a per-namespace basis. This helps in creating a multi-tenant environment with controlled access to resources.
+1) What are Kubernetes Namespaces and How Do They Relate to Security? 
+Answer: Kubernetes namespaces are a way to divide cluster resources between multiple users. From a security perspective, 
+they provide a logical separation of cluster resources, allowing for the implementation of policies, limits, and permissions 
+on a per-namespace basis. This helps in creating a multi-tenant environment with controlled access to resources.
 
-2) Explain Role-Based Access Control (RBAC) in Kubernetes.
-   Answer: RBAC in Kubernetes is a method of regulating access to resources based on the roles of individual users within an organization. It allows administrators to define roles with specific permissions (like read, write, delete) and bind these roles to users, groups, or service accounts. RBAC ensures that users have access only to the resources they need, following the principle of least privilege.
+2) Explain Role-Based Access Control (RBAC) in Kubernetes. 
+Answer: RBAC in Kubernetes is a method of regulating access to resources based on the roles of individual users within an 
+organization. It allows administrators to define roles with specific permissions (like read, write, delete) and bind these 
+roles to users, groups, or service accounts. RBAC ensures that users have access only to the resources they need, 
+following the principle of least privilege.
 
-3) What is a Pod Security Policy (PSP) in Kubernetes?
-   Answer: A Pod Security Policy is a cluster-level resource that controls security-sensitive aspects of the pod specification. PSPs define a set of conditions that a pod must run with to be accepted into the system, including privileges, access to host resources, and other security-related aspects. They are crucial for maintaining a secure Kubernetes environment.
+3) What is a Pod Security Policy (PSP) in Kubernetes? 
+Answer: A Pod Security Policy is a cluster-level resource that controls security-sensitive aspects of the pod specification. 
+PSPs define a set of conditions that a pod must run with to be accepted into the system, including privileges, access to 
+host resources, and other security-related aspects. They are crucial for maintaining a secure Kubernetes environment.
 
-4) How Do Network Policies Work in Kubernetes?
-   Answer: Network policies in Kubernetes enable the definition of rules about which pods can communicate with each other and other network endpoints. They are used to isolate and control the flow of traffic between pods and external services, thereby enhancing the security of the Kubernetes cluster.
+4) How Do Network Policies Work in Kubernetes? 
+Answer: Network policies in Kubernetes enable the definition of rules about which pods can communicate with each other 
+and other network endpoints. They are used to isolate and control the flow of traffic between pods and external services, 
+thereby enhancing the security of the Kubernetes cluster.
 
-5) What is the Importance of Secrets Management in Kubernetes?
-   Answer: Secrets management in Kubernetes involves securely storing and managing sensitive information like passwords, OAuth tokens, and SSH keys. Using Kubernetes Secrets, you can control and securely distribute these sensitive data to the applications running in the cluster, without exposing them in your application's code or configuration files.
+5) What is the Importance of Secrets Management in Kubernetes? 
+Answer: Secrets management in Kubernetes involves securely storing and managing sensitive information like passwords, 
+OAuth tokens, and SSH keys. Using Kubernetes Secrets, you can control and securely distribute these sensitive data to 
+the applications running in the cluster, without exposing them in your application's code or configuration files.
 
-6) How Does Kubernetes Certificate Management Work?
-   Answer: Kubernetes manages TLS certificates for various components to ensure secure communication within the cluster. The Kubernetes Certificate Authority (CA) issues certificates for nodes, API server, and other components. Administrators can also manage and rotate these certificates, ensuring that the communication remains secure and that the certificates are always valid.
+6) How Does Kubernetes Certificate Management Work? 
+Answer: Kubernetes manages TLS certificates for various components to ensure secure communication within the cluster. 
+The Kubernetes Certificate Authority (CA) issues certificates for nodes, API server, and other components. Administrators 
+can also manage and rotate these certificates, ensuring that the communication remains secure and that the certificates 
+are always valid.
 
 7) Discuss the Best Practices for Kubernetes Security. 
 Answer: Best practices for Kubernetes security include using RBAC for access control, limiting resource permissions using 
