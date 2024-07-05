@@ -1575,3 +1575,1089 @@ by offering integrated and intelligent monitoring, logging, and diagnostics. It 
 that include performance metrics, dashboards, uptime checks, and alerting systems. The suite also offers extensive logging 
 capabilities, error reporting, and trace analysis for understanding application performance and health in depth, 
 facilitating proactive management and optimization of cloud resources.
+
+
+NEW SECTION - Mine Flashcard
+
+1) Service Level Indicator (SLI)?
+Answer: Quantitive measure of an aspect of a service. Categories: availability, latencies, throughput, durability, 
+correctness (error rate). Typically aggregated - :Over 1 minute".
+
+2) What is the easiest way to implement authentication and authorization for your apps deployed in App Engine, 
+Cloud Run and GKE?
+Answer: Identity-Aware Proxy (IAP).
+
+3) Your microservices are going to be deployed to GKE. You want to give common permissions to Cloud Logging 
+and Cloud Monitoring?
+Answer: Node Pool Service Account.
+
+4) Which GGoogle Cloud Service is recommended for implementing CI-CD pipeline?
+Answer: Cloud Build.
+
+5) Designing API gRPC?
+Answer: gRPC: Based on Remote Procedure Call (RPC) model. 
+a) 'createTodo(username, description)' - todo_id. Addressable entities - procedures.
+b) Advantages: Hides HTTP details from developers (uses HTTP/2 in background). Generate gRPC stubs and skeletons. Clients
+use stubs to make gRPC calls. Service providers use skeletons to implement services. Provides very good performance:
+use binary payload - Protobuff. Efficient management of connections (because of HTTP2).
+c) Disadvantages: REST API are easier to consume, does not require any special framework/libraries.
+
+6) In memory databases / caches?
+Answer: Cloud Memorystore. Applications needing microsecond responses.
+
+7) NoSQL Databases?
+Answer: Cloud Firestore (Datastore), Cloud BigTable. Apps needing quickly evolving structure (schema-less).
+Cloud Firestore: Serverless transactional document Database supporting mobile and web apps. Small to medium database
+(0 to few Tera Bytes). Cloud BigTable: Large databases (10 TB - PBs). Streaming (IOT), analytical and operational workloads. 
+NOT serverless.
+
+8) Relational OLAP databases?
+Answer: BigQuery. CColumnar storage with predefined schema. Data warehousing and BigData workloads.
+
+9) Relational OLTP databases?
+Answer: CloudSQL, Cloud Spanner. Transactional use cases needing predefined schema and very strong transactional
+capabilities (row storage). CloudSQL: MySQL, PostgreSQL, SQL server DBs. Cloud Spanner: Unlimited scale and 99.999%
+availability for global apps with horizontal scaling.
+
+10) Cloud SQL Auth Proxy?
+Answer: How to simplify connection management and ensure secure (HTTPS) between clients and SQL server? Cloud SQL Auth Proxy.
+Communication encrypted with TLS1.2 with a 128 - bit AES cipher. Do not worry about certificates. Easier connection manager.
+Needs isolation of Proxy Client on the client machine. Can be used to connect from local env. Works with both private and public
+IP addresses. Cloud SQL Auth proxy is automatically supported on some GCP services. App Engine Standard, Cloud Run.
+
+11) Cloud SQL - High Availability?
+Answer: Create a High Availability (HA) configuration. Choose Primary and Secondary zones with a region. You will have two
+instances: Primary and Secondary instances. Changes from Primary are replicated synchronously to secondary. In case of
+zonal failure, automatic failover to secondary instance: If primary zone becomes available, failover to secondary 
+instance. If primary zone becomes available, failover does not revert automatically. Remember, High Availability setup
+cannot be used as a Read Replica.
+
+12) Cloud Storage Scenarios. Regulatory compliance: Object should not be modified for 2 years.
+Answer: Configure and lock data retention policy.
+
+13) Cloud Storage Scenarios. Customer wants to manage their keys.
+Answer: Customer managed keys, managed by customer in Cloud KMS.
+
+14) Cloud Storage Scenarios. I will frequently access objects in a bucket for 30 days. After that I don't expect to access
+objects at all. We have compliance requirements to store objects for 4 years. How can I minimize my costs?
+Answer: Initial Storage Class: Standard. Lifecycle policy: Move to Archive class after 30 days. Delete after 4 years.
+
+15) Consuming Google Cloud APIs?
+Answer: How does authentication for client libraries work?
+a) Client libraries look for env variable GOOGLE_APPLICATION_CREDENTIALS - if present, the service account tagged is used.
+b) Use Service account attached to the resource where your code is running. Else throw an error.
+Recommended if you are using Compute Engine, Google Kubernetes Engine, App Engine, Cloud Run or Cloud Functions to run
+your app: assign service account to the resources.
+
+16) Which Cloud Spanner Transaction modes is recommended for ensuring that a table does NOT get locked during bulk update?
+Answer: Partitioned DML.
+
+17) Connect to Cloud SQL from serverless environments using Private IP address?
+Answer: Use serverless VPC Access.
+
+18) How to connect from a VM instance inside a VPC to a Cloud SQL instance using private address?
+Answer: Create a Private Service Connection.
+
+19) Connect to Cloud SQL from GCP VM or GKE using public IP address?
+Answer: Use Cloud SQL Auth Proxy.
+
+20) Recommended for new mobile and web apps that need real-time updates and offline features?
+Answer: Firestore in Native mode.
+
+21) Cloud Dataflow?
+Answer: Used to export data from BigTable to CloudStorage. For example: Cloud BigTable to Cloud Storage Avro, 
+Cloud BigTable to Cloud Storage Parquet.
+
+22) Use case for Anthos Service Mesh?
+Answer: Canary deployments (Distribute traffic to two versions of the same microservice). mTLS: two way TLS between pods.
+SLO monitoring.
+
+23) Get an overall security picture of your project?
+Answer: Security Command Center.
+
+24) Detect container threats at runtime?
+Answer: Container Threat Detection.
+
+25) Three Pillars of Observability?
+Answer: Logs, metrics, traces.
+
+26) Recommended flow for handling streaming data in Google CLoud?
+Answer: Pub/Sub, Dataflow, BigQuery.
+
+27) Services to schedule asynchronous tasks (from your microservices) with an explicit invocation in Google Cloud?
+Answer: Cloud Task.
+
+28) Simple architecture to execute real-time simple pre-defined queries on a single table containing huge volume of time 
+series data that is continuously streamed in?
+Answer: Pub/Sub, Dataflow, BigTable.
+
+29) Which services can be used to create dashboards and visualization around data stored in BigQuery?
+Answer: Cloud Data Studio.
+
+30) Which service can be used to clean data on-boarded from external sources?
+Answer: Cloud Dataprep.
+
+31) Docker Images, Best Practices?
+Answer: Use light-weight images (prefer Alpine linux to ubuntu). Do not copy anything that's unnecessary (node-modules
+for example). Move things that change less often to top to enable layer reuse.
+
+32) Creating Docker Images - Dockerfile?
+Answer: Instruction to create Docker image:
+FROM: sets a base image. WORKDIR: sets working directory. RUN: execute a command. EXPOSE: Informs docker about the part
+that the container listens on at runtime. COPY: copies new files or directories into image. CMD: default command for an
+executing container.
+
+33) Which is recommended for advanced cross-cloud deployments?
+Answer: Spinnaker.
+
+34) Which deployment approaches gives the ability to test if your users like a feature in production?
+Answer: A/B testing.
+
+35) Which deployment approaches allows you to perform zero-downtime deployment without using any additional infrastructure?
+Answer: Canary Deployment.
+
+36) GKE - Releasing New Versions. Spinnaker versus Cloud Build?
+Answer: Cloud Build or Spinnaker can be used for building Docker Image (CI). Cloud Build can perform simple deployments.
+For advanced automated cross cloud deployments, Spinnaker is recommended.
+
+37) GKE - Releasing New Version. Canary Deployment?
+Answer: Create new deployment. Use Service Mesh like Istio. Anthos service mesh is GCP service for Istio, or you can use
+Spinnaker.
+
+38) GKE - Releasing New Versions. Blue Green Deployment?
+Answer: Create new deployment. Control traffic using Ingress (or service) or you can use Spinnaker.
+
+39) GKE - Releasing New Versions. Rolling Update and Recreate?
+Answer: Set strategy type on Deployment.
+
+40) App Engine - Releasing new versions?
+Answer: 
+a) Deploy and Shift all traffic at once: 'gcloud app deploy'.
+b) Deploy v2 without shifting traffic: '--no-promote'.
+c) Shift traffic to v2 all at once: 'gcloud app service set-traffic s1 --splits v1=1'.
+d) Gradual migration: Add --migrate option to previous command.
+e) A/B testing: 'gcloud app series set-traffic s1 --splits=v2=.5,v1=.5'.
+
+41) Deployment Approaches MIG - Blue Green Deployment?
+Answer: Create a new MIG and make manual adjustments to load balancer backends as needed.
+
+42) Deploy only trusted container images to Google Cloud?
+Answer: Binary Authorization.
+
+43) Scan your container images for vulnerabilities?
+Answer: Container Scanning API.
+
+44) Detect if your VM is being used for Bitcoin mining?
+Answer: Anomaly Detection.
+
+45) Protect your apps from DDoS and common vulnerabilities?
+Answer: Cloud Armour.
+
+46) Scan and find common vulnerabilities like cross-site-scripting (XSS) in your App Engine apps.
+Answer: Web security scanner.
+
+47) Find out which storage bucket contains sensitive data?
+Answer: Cloud DLP (Data Loss Prevention).
+
+48) You want to solve performance bottlenecks by identifying parts of the app consuming the most resources?
+Answer: Cloud Profiler.
+
+49) You want to look at the logs for a specific request?
+Answer: Cloud Logging.
+
+50) Cloud Firestore Best Practices?
+Answer: Cloud Firestore is a document store with flexible schema: Recommended for storing things like user profiles.
+Index for object stored in Cloud Storage (like profile image). Design keys and indexes carefully: distribute every keys,
+avoid monotonically increasing key values. Create DB nearest to users and compute resources. Prefer batch operations.
+Firestore soft limits: 1 write per sec per doc, 1 million concurrent connection per database. Gradually ramp up traffic
+500/50/5 rule. Start max 500 operations, increase by 50% every 5 minute.
+
+51) You want to debug a problem in production by conditionally adding in a log-point or capturing a snapshot?
+Answer: Cloud Debugger.
+
+52) You want to Trace a request across multiple microservices?
+Answer: Cloud Trace.
+
+53) You want to identify prominent exceptions (or errors) for a specific microservice.
+Answer: Error Reporting.
+
+54) You want to create a dashboard with how many times a substring occurs in a log?
+Answer: Create a log-based counter metrics.
+
+55) How can you trigger an alert when your app is unavailable?
+Answer: Configure a Cloud Monitoring uptime check.
+
+56) Cloud SQL best practices?
+Answer: 
+a) Use cloud SQL auth proxy when possible.
+b) Use connection pooling & exponential backoff.
+c) Keep transactions short and small.
+d) Use internal IP as much as possible.
+e) Understand scalability: Enable HA configuration for HA: primary instance and standby instance created in the same region
+(remember - regional). Read replicas help offload read workloads (reporting, analytics etc.). Remember Read Replicas do not
+increase availability. Prefer a number of small cloud sql instances to having one large instance.
+
+57) How to connect to Cloud SQL instance?
+Answer: Prefer private IP address to public IP addresses. Use serverless VPC access for private IP connections for
+serverless environment. App Engine, Cloud Functions, Cloud Run. Use Cloud SQL, Auth proxy for these scenarios: Connecting
+with Public IP from Serverless Environments (App Engine, Cloud Functions, Cloud Run). Connecting with Public/Private IPs
+from other environments GCE VMs, GKE etc. If you are NOT using Cloud SQL Auth Proxy, it is recommended to use self-managed
+SSL/TLS certificates.
+
+58) IAM Best Practices?
+Answer: Principle of Least Privilege: Give least possible privilege needed for a role. Separation of Duties - Involve 
+at least 2 people in sensitive tasks. Example have separate deployer ad traffic migrator roles. Constant Monitoring.
+Use Groups when possible.
+
+59) Which options would you enable on a subnet to allows VM's in a subnet to connect to GGoogle APIs using private IPs.
+Answer: Enable Private Google Access.
+
+60) Cloud VPN.
+Answer: Cloud VPN - Connect on-premise network to the GCP network. Implemented using IPsec VPN Tunnel. Traffic through
+internet (public). Traffic encrypted using Internet Key. Exchange protocol. Two types of Cloud VPN: HA VPN - only
+dynamic routing BGP supported. Classic VPN - supports static routing policy based, route-based and dynamic routing BGP.
+
+61) Direct Peering.
+Answer: Hybrid Cloud. Connect customer network to google network using network peering. Direct path from on-premises
+network to Google services. Not a GCP service: lower level network connection outside of GCP. Not recommended: use cloud 
+interconnect and Cloud VPN.
+
+62) Cloud Interconnect.
+Answer: Hybrid Cloud. High Speed physical connection between on-premise and VPC network. High available and high 
+throughput. Two types: Dedicated interconnect - 10 Giga Bytes per seconds or 100 Giga Bytes per second. Partner 
+Interconnect - 50 Mega bytes per second to 10 Giga bytes per seconds. Data exchange happens through a private network.
+Use only for high bandwidth needs: for low bandwidth, cloud VPN is recommended.
+
+63) How to connect VPC networks across different organizations?
+Answer: VPC Peering. Networks in same project, different projects and across projects in different organizations can 
+be peered.
+
+64) What can be used to create Kubernetes - style CI/CD pipeline that run as an extension on a Kubernetes cluster?
+Answer: Tekton Pipelines,
+
+65) Options to share files between Cloud Build steps?
+Answer: Use '/workspace' folder.
+
+66) SRE - Best Practices.
+Answer: Handling Excess load: load shedding, reduced Quality of Service. Avoid cascading failures: Plan to avoid 
+thrashing. Penetration Testing (Ethical Hacking). Load Testing. Resilience Testing - "How does an app behaves under 
+stress?". Resilience - "Ability of system to provide acceptable behavior even when one or more parts of the system fails".
+Approaches: Chaos Testing, Add huge stress on one of the layer, Include network in your testing, DIRT (Disaster Recovery
+testing in Google).
+
+67) Error budgets - SRE Metrics.
+Answer: 100% - SLO. How well is a team meeting their reliability objectives? Used to manage development velocity.
+
+68) Service Level Agreement (SLA).
+Answer: SLO plus consequences (contract). What is the consequence of NOT meeting an SLO? (Defined in contract). Have
+stricter internal SLOs than external SLAs.
+
+69) Your microservices are going to be deployed to GKE. You want to give each microservice specific access to 
+Google Cloud resources.
+Answer: Workload Identity.
+
+70) Kubernetes Security Best Practices?
+Answer: Enable Node Auto Upgrade for GKE nodes. Use Shielded GKE nodes with secure boot. Enable Workload Identity. Use
+namespace and RBAC to restrict user access to cluster resources. Restrict traffic among Pods with a network policy.
+Use Kubernetes secrets or Secret Manager for Secret management: Consider HashiCorp Vault if you need multi-cloud
+secrets management.
+
+71) Important Predefined GKE Roles?
+Answer: Kubernetes Engine Admin: Complete access to cluster and kubernetes API objects. Kubernetes Engine Cluster Admin -
+Provides access to management of clusters. Kubernetes Engine Cluster Viewer - Read only access to cluster. Kubernetes
+Engine Developer - Manage Kubernetes API Objects (and read cluster info). Kubernetes Engine Viewer - get/list cluster
+and Kubernetes api objects.
+
+72) Kubernetes RBAC?
+Answer: Fine grained access controls at a individual cluster and namespace level. Control access at Kubernetes
+resource levels (deployment, service, pod, secrets, configMap).
+
+73) Authorization for Kubernetes Workload?
+Answer: Option 1: Assign permissions at Node (Compute Engine VM) level. Option 2: Assign permissions at Pod (individual
+microservice) level, Using Kubernetes Secrets or Using Workload Identity. Recommend option is to use Workload Identity:
+Follows principle of least privilege. Fo not need any secret management.
+
+74) How can you assign a Service Account to a microservice (or a pod)?
+Answer: Option 1: Using Kubernetes Secrets (or secrets management). Option 2: Using Workload Identity.
+
+75) Kubernetes Node Level permission. Default service account assigned to a node?
+Answer: Compute Engine Default service account.
+
+76) Is Service Account an identity or a resource?
+Answer: It is both. You can attach roles with Service Account (identity). You can let other member access a Service 
+Account by granting them a role on the Service Account (resource).
+
+77) Service to Service auth?
+Answer: OpenID Connect ID tokens.
+
+78) IAM Concepts?
+Answer: Member: Who? Roles: Permissions (What actions? What resources?). Policy: Assign permissions to members. Map Roles
+(What?), Members (Who?) and Conditions (which Resources?, When?, From Where?). Remember: Permissions are NOT directly
+assigned to member. Permissions are represented by a Role. Member gets permissions through Role! A role can have multiple
+permissions. You can assign multiple roles to a Member.
+
+79) IAM identities?
+Answer: A GCP User (Google Account or Externally Authenticated User). A Group of GCP Users. An Application running in GCP.
+An Application running in your data center. Unauthenticated user.
+
+80) Cloud console set project.
+Answer: 'gcloud config set project PRJ_NAME'.
+
+81) Object Lifecycle Management Allowed Transitions.
+Answer: Standard or Multi-Regional or Regional to Nearline or Coldline or Archive. Nearline to Coldline or Archive.
+Coldline to Archive.
+
+82) Features across storage classes.
+Answer: High durability. Low latency. Unlimited storage: Autoscaling, no min object size. Same API across storage classes.
+Committed SLA - No committed SLA for Archive Storage.
+
+83) Google KMS options?
+Answer: Google-managed key: No configuration required. Customer-managed key: Use key from KMS. Customer-supplied key: 
+Provide your own key.
+
+84) Which platform enables you to run your Kubernetes Cluster across multiple platforms (multi-cloud and on-premises)?
+Answer: Anthos.
+
+85) Cloud Function, cold Start.
+Answer: New function instance initialization from scratch can take time. Solution configure min number of instances 
+(increases cost).
+
+86) Cloud Functions, events are triggered from?
+Answer: Cloud Storage. Cloud Pub/Sub. HTTP POST/GET/DELETE/PUT/OPTIONS. Firebase. Cloud Firestore. Stack driver logging.
+
+87) How can a service in Kubernetes cluster talk to another service in the same Kubernetes cluster without using its URL?
+Answer: Kubernetes Service Discovery.
+
+88) How can you divide one physical Kubernetes cluster into multiple virtual clusters with customized access to 
+different teams?
+Answer: Create Separate Namespace.
+
+89) Recommended approach for providing external access to services in a cluster (One Load Balancer serves multiple 
+microservices)?
+Answer: Ingress.
+
+90) What is the default deployment strategy in Kubernetes?
+Answer: RollingUpdates.
+
+91) GKE - Remember CPU?
+Answer: Some CPU on the nodes is reserved by Control Plane. First core - 6%, second core - 1%, third and fourth - 0.5%,
+rest - 0.25%.
+
+92) Kubernetes Status - PodUnschedulable?
+Answer: Pod cannot be scheduled. Are there sufficient resources on the cluster?
+
+93) Kubernetes Status - CrashLoopBackOff?
+Answer: Container is repeatedly crashing. Look at the logs to find out why container is crashing. 
+'kubectl logs POD_NAME'. You can also try to connect to the pod and execute commands. 'kubectl exec -it POD_NAME -- ls'.
+
+94) Troubleshooting Kubernetes?
+Answer: 'kubectl describe pods POD_NAME'. Gives you current state of the POD and recent events.
+
+95) Kubernetes status - ImagePullBackOff, ErrImagePull?
+Answer: Is image name correct? Is image tag correct? Does the node pool service account have access to the container
+registry image?
+
+96) Global, Regional and Zonal Resources?
+Answer:
+a) Global: Image, Snapshots, Instance Templates (unless you use zonal resources in your template).
+b) Regional: Regional managed instance group, Regional persistent disks.
+c) Zonal: Zonal managed instance groups, Instances, Persistent disks: you can attach a disk only to instances in the same
+zone as the disk.
+
+97) You want very high IOPs but your data can be lost without a problem?
+Answer: Local SSDs.
+
+98) You want to create a high performance file sharing system in GCP which can be attached with multiple VMs?
+Answer: Filestore.
+
+99) You want to backup your VM configuration along with all its attached Persistent Disks?
+Answer: Create a Machine Image.
+
+100) You want to make it easy to launch VMs with hardened OS and customized software?
+Answer: Create a Custom Image.
+
+101) The Persistent network block, storage service in GCP?
+Answer: Persistent Disk.
+
+102) Which contains everything you need to create a VM instance - VM configuration, Metadata, Boot disk and data from
+one or more persistent disk?
+Answer: Machine Image.
+
+103) Cloud Storage?
+Answer: Must popular, very flexible and inexpensive storage service. Serverless: Autoscaling and infinite scale.
+Store large objects using a key-value approach: Treats entire object as a unit (Partial Updates not allowed). Recommended
+when you operate on entire object most of the time. Access control at object level. Also called Object storage.
+Provides REST API to access and modify objects. Also provides CLI (gsutil) and Client Libraries (C++, C#, Java, Node.js, 
+PHP, Python and Ruby). Store all file types - text, binary, backup and archives: Media files and archives. App packages 
+and logs. Backup of your databases or storage devices. Staging data during on-premise to cloud database migration.
+
+104) Cloud Storage - Objects and Buckets?
+Answer: Objects are stored in buckets. Bucket names are globally unique. Bucket names are used as part of object URLs, 
+can contain only lowercase letters, numbers, hyphens, underscores and periods. 3 to 63 characters max. Can't start with 
+goog prefix or should not contain google (even misspelled). Unlimited objects in a bucket. Each bucket is associated 
+with a project. Each object is identified by a unique key - key is unique in a bucket. Max object size is 5 Tera Bytes.
+But you can store unlimited number of such objects.
+
+105) IAM - Roles?
+Answer: Roles are Permissions: perform some set of actions on some set of resources. Three Types:
+a) Basic Roles (or Primitive roles): Owner, Editor, Viewer. Viewer (roles.viewer) - Read-only actions. Editor 
+(roles.editor) - Viewer plus Edit actions. Owner (roles.owner) - Editor plus Manage Roles and Permissions plus Billing.
+Earliest version: created before IAM. Not recommended: don't use in production. 
+b) Predefined Roles - Fine grained roles predefined and managed by Google. Different roles for different purposes. 
+Examples: Storage Admin, Storage Object Admin, Storage Object Viewer, Storage Object Creator.
+c) Custom Roles: When predefined roles are not sufficient, you can create your own custom roles.
+
+106) Cloud Identity and Access Management (IAM)?
+Answer: Authentication (is it the right user?) and Authorization (do they have the right access?). 
+Identities can be: A GCP User (Google Account or Externally Authenticated User). A Group of GCP Users. An Application
+running in GCP. An Application running in your data center. Unauthenticated user. Provides very granular control.
+Limit a single user: to perform single action, on a specific resource, from a specific IP address, during a specific 
+time window.
+
+107) Typical identity management in the cloud?
+Answer: You have resources in the cloud (examples - a virtual server, a database etc.). You have identities (human, and
+non-human) that need to access those resources and perform actions. For example: Launch (start, stop or terminate) a 
+virtual server. How do you identify users in the cloud? How do you configure resources they can access?
+How can you configure what actions to allow? In GCP: Identity and Access management (Cloud IAM) provides this service.
+
+108) Cloud Storage - Encryption?
+Answer: Cloud storage allows encryption of data on the server side. Configure server side encryption: Encryption performed
+by Cloud Storage. Google managed encryption key: Default (no configuration required). Customer managed encryption key:
+Created using Cloud Key Management Service (KMS). Managed by customer in KMS. Cloud Storage Service Account should have
+access to keys in KMS for encrypting and decrypting using customer-managed encryption keys. (Optional) Client-Side 
+encryption: Encryption performed by customer before upload. GCP does not know about the keys used.
+
+109) Object Versioning?
+Answer: Prevents accidental deletion and provides history. Enabled at bucket level. Can be turned on/off at any time.
+Live version is the latest version. If delete live object, it becomes non-current object version. If delete non-current
+object version, it is deleted. Older versions are uniquely identified by / object key plus a generation number. Reduce 
+cost by deleting older (non-current) versions!
+
+110) Cloud Filestore?
+Answer: Shared Cloud File Storage: Supports NFS v3 protocol. Provisioned Capacity. Suitable for high performance 
+workloads: Up to 320 Tera Bytes with throughput of 16 Giga Bytes per seconds and 480 thousands IOPS. Supports HDD
+(general purpose) and SSD (performance-critical workloads). Use cases: File share, media workflows and client 
+management.
+
+111) You want to delete old snapshots created by scheduled snapshots?
+Answer: Configure it as part of your snapshot scheduling!
+
+112) You want to improve performance of persistent disk (PD)?
+Answer: Increase size of PD and Add more PDs. Increase vCPUs in your VM.
+
+113) You want to increase durability of Persistent Disk (PD)?
+Answer: Go for regional PDs (2 times cost but replicated in 2 zones).
+
+114) You want to take hourly backup of Persistent Disks (PD) for disaster recovery?
+Answer: Schedule hourly snapshots!
+
+115) Access Control - Overview?
+Answer: How do you control access to objects in a Cloud Storage bucket? Two types of access control: Uniform (Recommended)
+Uniform bucket level access using IAM. Fine-grained - Use IAM and ACLs to control access: Both bucket level and 
+individual object level permissions. Use uniform access when all users have same level of access across all objects in
+bucket. Fine grained access with ACLs can be used when you need to customize the access at an object level. GGive a user 
+specific access to edit specific objects in a bucket.
+
+116) ACL - Access Control Lists?
+Answer: ACL: Define Who has access to your buckets and objects, as well as what level of access they have. How is this
+different from IAM? IAM permissions apply to all objects within a bucket. ACLs can be used to customize specific accesses 
+to different objects. Users gets access if he is allowed by either IAM of ACL! Remember - Use IAM for common permissions
+to all objects in a bucket. Remember - Use ACLs if you need to customize access to individual objects.
+
+117) VM instance with default service account in Project-A needs to access CLoud Storage bucket in Project-B?
+Answer: In Project-B, add the service account from Project-A and assign Storage Object Viewer Permission on the bucket.
+
+118) Is Service Account an Identity or a resource?
+Answer: It is both. You can attach roles with Service Account (identity). You can let other members to access a SA by 
+granting them a role on the Service Account (resource).
+
+119) Service Account - Application on a VM wants to put a message on a Pub/Sub Topic?
+Answer: Configure the VM to use a Service Account with right permissions.
+
+120) Service Account - Application on a VM wants to talk to a Cloud Storage bucket?
+Answer: Configure the VM to use a Service Account with right permissions.
+
+121) Service Account - Use Case On Perm to Google Cloud APIs (short-lived)?
+Answer: Make calls from outside GCP to Google Cloud APIs with short-lived permissions. Few hours or shorter. Less risk
+compared to sharing service account keys! Credential Types: OAuth 2.0 access token. OpenID Connect ID tokens. Self-signed
+JSON Web Tokens (JWTs). Examples: When a member needs elevated permissions, he can assume the service account role (create
+OAuth2.0 access token for service account). OpenID connect ID tokens is recommended for service to service authentications:
+A service in GCP needs to authenticate itself to a service in other cloud.
+
+122) Service Account - Use Case on Prem to Google Storage (long-lived)?
+Answer: You cannot assign Service Account directly to an on PremApp. One: Create a Service Account with right permissions.
+Two: Create a Service Account User Managed key: 'gcloud iam service-accounts keys create'. Download the service account
+key file, keep it secure (it can be used to impersonate service account)! Three: Make the service account key file
+accessible to your app: Set environment variable GOOGLE_APPLICATION_CREDENTIALS. Four: Use Google Client Libraries - 
+Google Cloud Client Libraries - App Default Credentials/ADC.
+
+123) Service Account - Use Case VM to Cloud Storage?
+Answer: One: Create a Service Account Role with the right permissions. Two: Assign Service Account role to VM instance.
+Use Google Cloud-Managed Keys: Key generation and use are automatically handled by IAM when we assign a service account 
+to the instance. Automatically rotated. No need to store credentials in config files. Do not delete service accounts used 
+by running instances. App running on those instances will lose access!
+
+124) Service Accounts?
+Answer: Scenario: An application on a VM needs access to cloud storage. You don't want to use personal credentials to 
+allow access. Recommended - Use Service Accounts: Identified by an email address 
+(example: id-compute@developer.gserviceaccount.com). Does not have password: Has a private/public RSA key-pair. Can't
+log in via browsers or cookies. Service account types: Default service account - Automatically created when some services
+are used. Not-Recommended - has Editor role by default. User Managed - User created: Recommended Provides fine-grained
+access control. Google-Managed service accounts - Created and managed by Google. Used by GCP to perform operations on 
+user's behalf. In general, we do not need to worry about them.
+
+125) New-Scenario: Reporting and Analytics Applications.
+Answer: New reporting and analytics apps are being launched using the same database. These apps will only read data.
+Within a few days you see that the db performance is impacted. How can we fix the problem? Vertically scale the database -
+increase CPU and memory. Create a database cluster (distribute the database) - Typically database clusters are expensive 
+to setup. Create read replicas - Run read only apps against read replicas. 
+
+126) Database - Read Replica?
+Answer: Add read replica. Connect reporting and analytics apps to read replica. Reduces load on the master database. 
+Upgrade read replica to master database (supported by some databases). Create read replicas in multiple regions. Take
+snapshots from read replicas.
+
+127) Relational OLTP databases summary.
+Answer: Cloud SQL, Cloud Spanner. Transactional use cases needing predefined schema and very strong transactional 
+capabilities (Row storage). Cloud SQL: MySQL, PostgreSQL, SQL server DBs. Cloud Spanner: Unlimited scale and 99.999% 
+availability for global apps with horizontal scaling.
+
+128) Consistency?
+Answer: How do you ensure that data in multiple databases instances (stand by and replicas) is updated simultaneously?
+Storing Consistency - Synchronous replication to all replicas. Will be slow if you have multiple replicas or standbys.
+Eventual Consistency - Asynchronous replication. A little lag - few seconds - before the change is available in all 
+replicas. In the intermediate period, different replicas might return different values. Used when scalability is more
+important than data integrity. Examples: Social Media Posts, Facebook status messages, Twitter tweets, LinkedIn posts etc.
+Read-after-write consistency: Inserts are immediately available. However, updates would have eventual consistency.
+
+129) IAM most important concepts?
+Answer: Member: Who? Roles: Permissions (What Actions? What resources?). Policy: Assign Permissions to Members: 
+Map Roles (What?), Members (Who?) and Conditions (Which Resources?, When?, FFrom Where?). Remember: Permissions are NOT
+directly assigned to Member: Permissions are represented by a Role. Member gets permissions through Role! A Role can
+have multiple permissions. You can assign multiple roles and a Member.
+
+130) IAM Policy?
+Answer: Roles are assigned to users through IAM Policy documents. Represented by a policy object. Policy object has list 
+of bindings. A binding, binds a role to list of members. Member type is identified by prefix: Example: user, 
+service account, group or domain.
+
+131) You are running an app in VM instance storing its data on a persistent data storage. Yoy are taking snapshots every
+48 hours. If the VM instance crashes, you can manually bring it back up inj 45 minutes from snapshot. What is your RTO
+and RPO?
+Answer: RTO (Recovery Time Objective): 45 minutes. RPO (Recovery Point Objective): 48 hours.
+
+132) RTO and RPO. Very small data loss (RPO - 1 minute), Very small downtime (RTO - 5 minutes)?
+Answer: Hot standby - Automatically synchronize data. Have standby ready to pick up load. Use automatic failover from 
+master to standby.
+
+133) RTO and RPO. Very small data loss (RPO - 1 minute). But I can tolerate some downtime (RTO - 15 minutes)?
+Answer: Warm standby - Automatically synchronize data. Have a standby with minimum infrastructure. Scale it up when a 
+failure happens.
+
+134) RTO and RPO. Data is critical (RPO - 1 minute) but can tolerate downtime of a few hours (RTO - few hours)?
+Answer: Create regular data snapshots and transaction logs. Create database from snapshots and transaction logs when a
+failure happens.
+
+135) RTO and RPO. Data can be lost without a problem (for example: cached data)?
+Answer: Failover to a completely new server.
+
+136) Database for storing huge volumes stream data from IOT devices?
+Answer: BigTable.
+
+137) Database for storing huge streams of time series data?
+Answer: BigTable.
+
+138) Database for analytics processing of petabytes of data?
+Answer: BigQuery.
+
+139) Cache data (from database) for a web application?
+Answer: Memorystore.
+
+140) Transactional global database with predefined schema needing to process a million of transactions per second?
+Answer: Cloud Spanner.
+
+141) Transactional local database processing thousands of transactions per second?
+Answer: Cloud SQL.
+
+142) A startup with quickly evolving schema (table-structure)?
+Answer: Cloud Datastore / Firestore.
+
+143) Non-relational database with less storage (10 Giga Bytes)?
+Answer: Cloud Datastore.
+
+144) In memory database caches?
+Answer: Cloud Memorystore. Applications needing microseconds responses.
+
+145) NoSQL Databases?
+Answer: Cloud Firestore (Datastore), Cloud BigTable. Apps needing quickly evolving structure (schema-less). 
+CLoud Firestore:Serverless transactional document database supporting mobile and web apps. Small to medium databases 
+(0 to few Tera Bytes). Cloud BigTable: Large databases (10 Tera Bytes to Petabytes). Streaming IoT, analytical and 
+operational workloads. Not Serverless.
+
+146) Relational OLAP database summary?
+Answer: BigQuery. Columnar storage with predefined schema. Data warehousing and BigData workloads.
+
+147) Cloud BigTable?
+Answer: Petabytes scale, wide column NoSQL Database (HBase API compatible). Designed for huge volumes of analytical and
+operational data. IOT streams, Analytics, Time Series Data etc. Handle millions of read / write TPS at very low latency.
+Single row transactions (multi row transactions NOT supported). Not Serverless: You need to create a server instance (Use
+SSD or HDD). Scale horizontally with multiple nodes (no downtime for cluster resizing). Cannot export data using cloud
+console or gcloud: Either use a Java app (java-jar JAR export/import). Use HBase commands. Use cbt command line tool to 
+work with BigTable (Not gcloud). Example: 'cbt createtable my-table'.
+
+148) Cloud BigTable - Wide Column Database?
+Answer: At the most basic level, each table is a sorted key/value map. Each value in a row is indexed using a key-row key.
+Related columns are grouped into columns families. Each column is identified by using column-family:column-qualifier
+(or name). This structure supports high read and write throughput at low latency. Advantages: Scalable to petabytes of 
+data with milliseconds responses up to millions of TPS. Use cases: IOT streams, graph data and real time analytics 
+(time-series data, financial data, transaction histories, stock prices etc.) CLoud Dataflow: Used to export data from 
+BigTable to CloudStorage.
+
+149) Memorystore?
+Answer: In memory data store: Reduce access time. Fully managed (Provisioning, Replication, Failover, Patching).
+Highly available with 99.9% availability SLA. Monitoring can be easily setup using Cloud Monitoring. Supports for Redis
+and Memcached. Use Memcached for Caching: Reference data, database query, caching, session store etc. Use Redis for low 
+latency access with persistence and high availability. Gaming Leader Board, Player Profiles, In memory stream processing.
+
+150) Firewall Rules - Ingress and Egress Rules?
+Answer: Ingress Rules: Incoming traffic from outside to GCP targets. Target (defines the destination): All instances or
+instances with TAG / SA. Source (defines where the traffic is coming from): CIDR or All instances / instances with 
+TAG / SA (service account). Egress Rules: Outgoing traffic to destination from GCP targets. Target (defines the source):
+All instances or instances with TAG / SA. Destination CIDR block. Along with each rule, you can also define: 
+a) Priority: Lower the number, higher the priority.
+b) Action on match: Allow or Deny traffic.
+c) Protocol: example TCP or UDP or ICMP.
+d) Enforcement Status: Enable or Disable the rules.
+
+151) Shared VPC?
+Answer: Scenario: Your organization has multiple projects. You want resources in different projects to talk to each other?
+How to allow resources in different projects to talk with internal IPs securely and efficiently? 
+Enter Shared VPS: Created at organization or shared folder level (Access Needed: Shared VPC Admin). Allows VPC Network to
+be shared between projects in same organization. Shared VPC contains one host project and multiple service projects. 
+Host Project: Contains shared VPC Network. Service Projects: Attached to host projects. Helps you achieve separation of
+concerns: Network admins responsible for Host projects and Resource users use service project.
+
+152) VPC Peering?
+Answer: Scenario: How to connect VPC network across different organizations? Enter VPC Peering: Networks in same project,
+different projects and across projects in different organizations can be peered. All communication happens using internal 
+IP address. Highly efficient because all communication happens inside Google Network. Highly Secure because not accessible
+from internet. No data transfer charges for data transfer between services. Remember: network administration is Not 
+changesL Admin of one VPC do not get the role automatically in a peered network.
+
+153) Cloud VPN?
+Answer: Cloud VPN - Connect on-premise network to the GCP network. Implemented using IPSec VPN Tunnel. Traffic through
+internet (public). Traffic encrypted using Internet Key Exchange protocol. Two types of Cloud VPN solutions: 
+a) HA VPN (SLA of 99.99% service availability with two external IP addresses). Only dynamic routing (BGP) supported.
+b) Classic VPN (SLA of 99.9% service availability, a single external IP address). Supports Static Routing (policy-based,
+route-based) and dynamic routing using BGP.
+
+154) Cloud Interconnect?
+Answer: High Speed physical connection between on premise and VPC networks. Highly available and high throughput. 
+Two types of connection possible. Dedicated interconnect: 10 Giga Bits per second or 100 Giga Bits per second 
+configuration. Partner Interconnect: 10 Mega Bits per Second to 10 Giga Bits per Seconds configurations.
+Data exchange happens through a private network: Communicate using VPC Networks internal IP address from on-premise 
+network. Reduces egress cost. As public internet is not used. Supported Google API's and services can be privately
+addressed from on-premise. Used only for high bandwidth needs: For low bandwidth, Cloud VPN is recommended.
+
+155) Direct Peering?
+Answer: Connect customer network to Google network using network peering. Direct path from on-premises network to Google
+Services. Not a GCP Service: Lower level network connection outside GCP. Not Recommended: Use Cloud Interconnect and
+Cloud VPN.
+
+156) Cloud Datastore and Firestore?
+Answer: Datastore: Highly scalable NoSQL Document Database. Automatically scales and partitions data as it grows.
+Recommended for up to a few Tera Bytes of data. For bigger volume, BigTable is recommended. Supports Transactions,
+Indexes and SQL like queries (GQL). Does not support Joins or Aggregate (sum or count) operations. For use cases needing
+flexible schema with transactions. Examples: User Profile and Product Catalogs. Structure: Kind > Entity (use namespaces
+to group entities). You can only export data from gcloud (not from console). Export contains a metadata file and a folder
+with the data.
+Firestore: Datastore++: Optimized for multi device access. Offline mode and data synchronization across multiple devices
+mobile, IoT etc. Provides client side libraries: Web, iOS, Android and more. Offers Datastore and Native modes.
+
+157) Google Cloud VPC (Virtual Private Cloud)?
+Answer: Your own isolated network in GCP Cloud. Network traffic within a VPC is isolated (not visible) from all other
+Google Cloud VPCs. You control all the traffic coming in and going outside a VPC. Best practice create all your GCP 
+resources (Compute, Storage, databases etc.) within a VPC. Secure resources from unauthorized access. Enable secure 
+communication between your cloud resources. VPC is a global resource and contains subnets in one or more region. 
+Not tied to a region or a zone. VPC resources can be in any region or zone.
+
+158) Need for VPC Subnets?
+Answer: Different types of resources are created on cloud, databases, compute. Each type of resource has its own needs.
+Load Balancers are accessible from internet (public resources). Databases or VM instances should not be accessible from
+internet. Only apps within your network (VPC) should be able to access them (private resources). How do you separate
+public resources from private resources inside a VPC? Create Separate Subnets! Additional reason, you want to distribute
+resources across multiple regions for high availability.
+
+159) VPC Subnets?
+Answer: Solution, create different subnets for public and private resources. Resources in a public subnet can be accessed
+from internet. Resources in a private subnets cannot be accessed from internet. But resources in public subnet can tak to 
+resources in private subnet. Each subnet is created in a region. Example: VPC-demo-vpc, subnets region us-central1, 
+europe-west1 or us-west1.
+
+160) Creating VPCs and Subnets?
+Answer: By default, every project has a different VPC. You can create your own VPCs
+Option1: Auto mode VPC network. Subnets are automatically created in each region. Default VPC created automatically in 
+the project uses auto mode!
+Option2: Custom mode VPC network. No subnets are automatically created. You have complete control over subnets and their
+IP ranges. Recommended for Production. 
+Options when you create a subnet. Enable Private Google Access - Allows VM's to connect to Google API's using private IPs.
+Enable Flowlogs to troubleshoot any VPC related network issues.
+
+161) CIDR (Classless Inter-Domain Routing) Blocks?
+Answer: Resources in a network us continuous IP addresses to make routing easy. Example: resource inside a specific 
+network can use IP address form '69.208.0.0' to '69.208.0.15'. How do you express a range of addresses that resources in
+a network can have? A CIDR block consists of starting IP address (69.208.0.0) and a range (/28). Example: CIDR block
+'69.208.0.0/28' represents addresses from '69.208.0.0' to '69.208.0.15' a total of 16 addresses. Quick tip:
+'69.208.0.0/28' indicates that the first 28 bits (out of 32) are fixed. Last 4 bits can change, 2 to the power of 4 is
+equal to 16 addresses.
+
+162) How many addresses does '69.208.0.0/26' represents?
+Answer: 2 to the power 6 is 64 addresses. From '69.208.0.0' to '69.208.0.63'.
+
+163) How many addresses does '69.208.0.0/30' represents?
+Answer: 2 to the power 2 is 4 addresses. From '69.208.0.0' to '69.208.0.3'.
+
+164) What is the difference between '0.0.0.0/0' and '0.0.0.0/32'?
+Answer: '0.0.0.0/0' represents all IP addresses. '0.0.0.0/32' represent just one IP address '0.0.0.0'.
+
+165) Firewall Rules?
+Answer: Configure Firewall Rules to control traffic going in or out of the network. Stateful. Each firewall rule has
+priority (0 to 65535) assigned to it. 0 has highest priority. 65535 has the lowest priority. Default implied rule with
+the lowest priority (65535). Allow all egress. Deny all ingress. Default rules can't be deleted. You can override
+default rules by defining new rules with priority 0-65534. Default VPC has 4 additional rules with priority 65534.
+default-allow-internal, default-allow-rdp, default-allow-ssh, default-allow-icmp.
+
+166) System Event Logs?
+Answer: Google administrative actions. Enabled by default. Examples: On host maintenance, instance preemption, automatic 
+restart. Access Needed: Logging, Logs Viewer or Project Viewer.
+
+167) Admin Activity Logs?
+Answer: API calls or other actions that modify the config of resources. Enabled by default. Example: VM creation, 
+patching resources, change in IAM permissions. Cloud Storage: Modify bucket or object. Access Needed: Logging, Logs
+Viewer or Project Viewer.
+
+168) Cloud Logging - Export Use Cases?
+Answer: Use Case1: Troubleshoot using VM Logs. Install Cloud Logging agent in all VMs and send logs to Cloud Logging.
+Search for logs in Cloud Logging. 
+Use Case2: Export VM logs to BigQuery for querying using SQL like queries. Install
+Cloud Logging agent in all VM;s and send logs to Cloud Logging. CCreate a BigQuery datasets for storing the logs.
+Create an export sink in Cloud Logging with BigQuery dataset as sink destination. 
+Use Case3: You want to retain audit logs for external auditors at min cost. Create an export sink in CLoud Logging with
+Cloud Storage buckets as sink destination. Provide auditors with Storage Object Viewer role on the bucket.
+
+169) Cloud Logging - Export?
+Answer: Logs are ideally stored in Cloud Logging for limited periods: For long term retention (compliance, audit) logs
+can be exported to: Cloud storage bucket (example bucket/syslog/20250505). Big Query dataset (example tables 
+syslog-20250505 > columns, timestamp, log). CLoud Pub/Sub topic (base 64encoding log entries).
+How do you export logs? Create sinks to these destinations using Log Router: You can create include or exclude filters to
+limit the logs.
+
+170) Cloud Logging - Controlling & Routing?
+Answer: How do you manage your logs? Logs from various sources reaches Log Router. Log Router checks against configured
+rules: What to ingest? What to discard? Where to route?
+Two types of logs buckets:
+a) '_Required': Holds Admins activity, System Events and Access Transparency Logs (retained for 400 days). Zero charge,
+you cannot delete the bucket. You cannot change retention period.
+b) '_Default': All other logs (retained for 30 days). You are billed based on Cloud Logging pricing. You cannot delete 
+the bucket: But you can disable the '_Default' log sink route to disable ingestion. You can edit retention settings
+(1 to 3650 days).
+
+171) Cloud Logging - Audit and Security Logs?
+Answer: Access Transparency Log: Captures Actions performed by GCP team on your content (not supported by all services).
+Only for organizations with Global support level and above. Cloud Audit Logs: Answers who did what, when and where:
+Admin activity logs. Data Access Logs. System Event Audit Logs. Policy Denied Audit Logs.
+
+172) Need for Google Cloud VPC?
+Answer: In a corporate network or on-premises data center: Can anyone on the internet see the data exchange between apps 
+and the database? No. CCan anyone from internet directly connect to your database? Typically, No. Corporate network
+provides a secure internal network protecting your resources, data and communication for external users. How do you
+create your private network in the cloud? Enter Virtual Private Cloud (VPC).
+
+173) Pub/Sub - Sending and Receiving a Message?
+Answer: Publisher Sends a message to Topic. Message individually delivered to each and every subscription. Subscribers
+can receive a message either by. Push: Pub/Sub sends the message to subscriber. Pull: Subscribers poll for messages.
+Subscribers send acknowledgement(s). Message(s) are removed form subscriptions message queue: Pub/Sub ensures for 
+messages is retained per subscription until it is acknowledged.
+
+174) Cloud Monitoring?
+Answer: Tools to monitor your infrastructure. Measures key aspects of services (Metrics). Create visualization (Graphs
+and Dashboards). CConfigure Alerts (when metrics are Not healthy). Define Alerting Policies: Condition, Notifications - 
+Multiple Channels, Documentation. Workspaces are needed to organize monitoring information. Step1: Create workspace in 
+a specific project (Host Project). Step2: Add other GCP projects (or AWS accounts) to the workspace. Default metrics
+monitored (VMs): CPU utilization, Some disk traffic metrics, Network traffic, Uptime info. Install Cloud Monitoring
+Agent on the VM to get more disk, CPU, network, and process metrics: collect-d based daemon. Gathers metrics from VM
+and sends them to Cloud Monitoring.
+
+175) Data Access Logs?
+Answer: Reading config of resources. Disabled by default. Examples: Listing resources (vms, images etc.). Cloud Storage:
+Modify/Read bucket or object. Access Needed: Logging/Private Logs Viewer or Project/Viewer.
+
+176) Policy Denied Logs?
+Answer: When user or service account in derived access. Enabled by default. Examples: Security policy violation logs.
+Access Needed: Logging/Logs Viewer or Project/Viewer.
+
+177) Cloud Logging?
+Answer: Real time log management and analytics tool. Allows to store, search, analyze and alert on massive volume of data.
+Exabyte Scale, fully managed service - No server provisioning, patching. Ingest log data from any source. Key features:
+Logs Explorer: Search, sort and analyze using flexible queries. Logs Dashboard: Rich visualization. Logs Metrics: Capture
+metrics from logs (using queries/matching strings). Logs Router: Route different log entries to different destinations.
+
+178) Cloud Logging - Collection?
+Answer: Most GCP Managed Services automatically send logs to Cloud Logging: GKE, App Engine, Cloud Run. Ingest logs from 
+GCE VMs: Install Logging Agent (based on fluentd). Run logging Agent on all VM instances. Ingest logs from on-premises:
+Use the BindPlane tool from Blue Medora. Use Cloud Logging API.
+
+179) Pub/Sub - Getting Ready with Topic and Subscriptions?
+Answer: Step1: Topic is created. Step2: Subscription(s) are created. Subscribers register to the topic. Each Subscription
+represents discrete pull of messages from a topic. Multiple clients pull same subscription, message split between
+clients. Multiple clients create a subscription each client will get every message.
+
+180) Cloud Pub/Sub?
+Answer: Reliable, scalable, fully-managed synchronous messaging service. Backbone for Highly Available and Highly 
+scalable solutions. Auto-scale to process billions of messages per day. Low cost (pay for use). Use cases: Event 
+registration and delivery for streaming analytics pipeline. Supports push and pull message deliveries.
+
+181) Pub/Sub - How does it work?
+Answer: Publisher sender of message. Publishers send messages by making HTTPs request to 'pubsub.googleapis.com'.
+Subscriber: Receiver of messages. Pull: Subscriber pulls messages when ready. Subscriber makes HTTPs request to 
+'pubsub.googleapis.com'. Push - Messages are sent to subscribers. Subscribers provide a web hook endpoint at the time of
+registration. When a message is received on the topic. A HTTPs POST request is sent to the web hook endpoints.
+Very Flexible Publisher(s) and Subscriber(s) Relationship: One to Many, Many to One, Many to Many.
+
+182) Relational Database - Import and Export?
+Answer: Cloud SQL: to/from Cloud Storage (gcloud sql/csv export/import). From console/gcloud/REST API. SQL and CSV format.
+For large database, use serverless made. Reduces performance impact off export on the live database.
+Cloud Spanner: to/from Cloud Storage. From Console (uses Cloud Data Flow).
+BigQuery: to/from Cloud Storage and Others (bq extract/load). From Console/bq. Formats: CSV/JSON (with gzip compression),
+Avro (with deflate or snoppy compression). Variety of options to import data. Load data from Cloud Storage Datastore,
+CLoud Storage, BigQuery. Batch loading with BigQuery Data Transfer Service. Dataflow to setup streaming pipeline.
+
+183) NoSQL Databases - Import and Export?
+Answer: Cloud Datastore/Firestore: to/from CLoud Storage. From console/gcloud/REST API.
+'gcloud datastore/firestore export/import --kinds --namespaces'. CLoud BigTable: to/from Cloud Storage. Create Dataflow 
+jobs. Formats: Avro/Parquet/SequenceFiles. Remember ensure that service accounts have access to Cloud Storage Buckets. 
+ACL (gcloud acl ch -U SERVICE_ACCOUNT:W BUCKET). Roles Storage Admin or Storage Object Admin or Storage Object Creator.
+
+184) Databases - important things to remember?
+Answer: BigQuery, Datastore, Firebase does NOT need VM configuration. Whereas Cloud SQL and BigTable need VM configuration.
+Relational Databases: small local databases: Cloud SQL. Highly scalable global databases: Cloud Spanner. Data warehouse:
+BigQuery. 
+NoSQL Databases: Transactional databases for a few terabytes of data - CLoud Datastore. Huge volume of IoT or streaming
+analytics data - CLoud BigTable.
+
+185) Synchronous Communication?
+Answer: Applications on your web server makes synchronous calls to the logging service. What if your logging service goes
+down? Will your apps go down too? What if all sudden, there is high load and there are a lot of logs coming in? Log
+Service is not able to handle the load and goes down very often.
+
+186) Need for Asynchronous Communication?
+Answer: Create a topic and have your apps put log messages on the topic. Logging service picks them up for processing 
+when ready. Advantages: Decoupling: Publisher (Apps) don't care about who is listening. Availability: Publisher (App) up
+even if a subscriber (logging service) is down. Scalability: Scale consumer instances (logging service) under high load.
+Durability: Message is not lost even if subscriber (logging service) is down.
+
+187) In-memory Databases?
+Answer: Retrieving data from memory is much faster than retrieving data from disk. In-memory database like Redis deliver
+microsecond latency by storing persistent data in memory. Recommended GCP Managed Service: Memory Store. Use cases: 
+Caching, session management, gaming leader boards, geospatial apps.
+
+188) Cloud SQL?
+Answer: Fully Managed Relational DB Service: Configure your needs and do NOT worry about managing the database. Supports
+MySQL, PostgreSQL, and SQL Server. Regional Service providing High Availability (99.95%). Use SSDs or HDDs for best
+performance use SSDs. Up to 416 Giga Bytes RAM and 30 Tera Bytes of data storage. Use CloudSQL for simple relational use 
+cases: To migrate local MySQL, PostgreSQL and SQL Server database. To reduce your maintenance cost for a simple relational
+database. Remember use CloudSpanner instead of CloudSQL if: Huge volumes of relational data (Tera Bytes). You need infinite
+scaling. Higher Availability (99.999%). You need global DB.
+
+189) Cloud SQL Features?
+Answer: Automatic encryption (tables/backups), maintenance and updates. High availability and failover. Create a standby
+with automatic failover. Pre-requisites: Automated backups and Binary Logging. Read replicas for read workloads: Options:
+Cross-zone, cross-region, and External (non cloud SQL DB). Automatic storage increase without downtime (for newer versions).
+Point-in-time recovery: Enable binary logging. Backups (Automated and on-demand backups). Supports migration for other
+sources: Use database migration service (DMD). You can export data from UI (console) or gcloud formats: SQL or CSV.
+
+190) Cloud SQL - High Availability?
+Answer: Create a High Availability (HA) Configuration. Choose Primary and Secondary zones within a region. You will have
+two instances: Primary and Secondary. Changes from primary are replicated synchronously to secondary. In case of zonal
+failure, automatic failover to secondary instance: If primary zone becomes available, failover does not revert automatically.
+Remember High Availability setup cannot be used as Read Replica.
+
+191) Cloud Spanner?
+Answer: Fully managed, mission-critical, relational SQL, globally distributed with very high availability (99.999%).
+Strong transactional consistency at global scale. Scaled to PBs of data with automatic sharding. Cloud Spanner
+scales horizontally for reads and writes. Configure no of nodes. Remember in comparison, Cloud SQL provides read replicas:
+But you cannot horizontally scale write operations with Cloud SQL! Regional and Multi-Regional configurations. Expensive
+(compared to Cloud SQL): Pay for nodes and storage. Data Export: Use Cloud Console to export data: Other option is to
+use Data Flow to automate export.
+
+192) BigQuery Data warehouse?
+Answer: Exabytes scale modern Data warehousing solution for GCP. Relational database (SQL, schema, consistency). Use sql
+like commands to query massive datasets. Traditional (storage + compute) _ Modern (Realtime + Serverless).
+When we are talking about a Data warehouse, importing and exporting data (and formats) becomes very important. Load data
+from a variety of services, including streaming data. Variety of import formats - CSV, JSON, Avro, Parquet, ORC, 
+Datastore backups. Export to Cloud Storage (long term storage) and Data Studio (visualization). Formats - CSV/JSON (with
+Gzip comparison), Avro (with deflate or snoppy compression). Automatically expire data (configurable table expiration).
+Query external data sources without storing data in BigQuery. Cloud Storage, Cloud SQL, BigTable, Google Drive. Use
+Permanent or Temporary external tables.
+
+193) BigQuery - Accessing and Querying Data?
+Answer: Access database using: Cloud console. 'bq' command-line tool (not gcloud). BigQuery Rest API. HBase API based
+libraries (Java, .NET and Python). Remember BigQuery queries can be expensive as you are running them on large data sets!
+Best Practice Estimate BigQuery queries before running: Use UI (console) / 'bq' (--dry-run) - get scanned data volume
+(estimate). Use Pricing Calculator: Find price for scanning 1 Mega Bytes data. Calculate cost.
+
+194) Cloud Firestore (Datastore) vs Cloud BigTable?
+Answer: Cloud Datastore: Managed serverless NoSQL document database. Provides ACID transactions, SQL-like queries indexes.
+Design for transactional mobile and web applications. Firestore (next version of Datastore) adds: Strong Consistency. 
+Mobile and Web Client libraries. Recommended for small to medium databases (0 to a few Terabytes). 
+Cloud BigTable: Managed, Scalable NoSQL wide column database. Not serverless (you need to create instances). Recommended
+for data size > 10 Terabytes to several Petabytes. Recommended for large analytical and operational workloads. Not
+recommended for transactional workloads (does not support multi row transactions - supports only single-row transactions).
+
+195) NoSQL Databases?
+Answer: NoSQL = not only SQL. Flexible schema. Structure data the way your app needs it. Let the schema evolve with time.
+Horizontally scale to petabytes of data with millions of TPS. Not a 100% accurate generalization but a great starting
+point. Typical NoSQL databases trade-off "Strong Consistency and SQL features" to achieve "Scalability and high-performance".
+Google Managed Services: Cloud Firestore (Datastore), Cloud BigTable.
+
+196) Relational Databases - OLAP vs OLTP?
+Answer: OLAP and OLTP use similar data structures. But very different approach in how data is stored. OLTP databases use
+row storage. Each table row is stored together. Efficient for processing small transactions. OLAP databases use columnar
+storage. Each table column is stored together. High compression - store petabytes of data efficiently. Distribute data -
+one table in multiple cluster nodes. Execute single query across multiple nodes - complex queries can be executed 
+efficiently.
+
+197) Relational Database - OLAP (Online Analytics Processing)?
+Answer: Apps allowing users to analyze petabytes of data. Examples: Reporting apps, data warehouses, business 
+intelligence apps, analytics systems. Sample application: Decide insurance premiums analyzing data from last hundred
+years. Data is consolidated from multiple transactional databases. Recommended GCP Managed Service - BigQuery, Petabyte
+scale distributed data warehouse.
+
+198) Relational Database - OLTP (Online Transaction Processing)?
+Answer: Applications where large number of users make large number of small transactions. Small data reads, updates and 
+deletes. Use cases: Most traditional apps, ERP, CRM, e-commerce, banking. Popular databases: MySQL, Oracle, SQL Server etc.
+Recommended Google Managed Services: CloudSQL supports PostgreSQL, MySQL and SQL server for regional databases (up to
+a few Terabytes). CloudSpanner unlimited scale (multiple Petabytes) and 99.999% availability for global apps with
+horizontal scaling.
+
+199) Relational Databases?
+Answer: It was only options decades back! Most popular type of databases. Predefined schemas with tables and relationships.
+Very strong transactional capabilities. Used for: OLTP (Online Transaction Processing) use cases. OLAP (Online Analytics
+Processing) use cases.
+
+200) Which destinations can be used as sinks for reporting log data from Cloud Logging?
+Answer: Cloud Storage, CLoud BigQuery, Cloud Pub/Sub.
+
+201) Which log buckets receive logs from the (two) Default log sinks?
+Answer: '_Default', '_Required'.
+
+202) Types of Cloud Audit Logs?
+Answer: Admin Activity Logs. Data Access Audit Logs. Policy Denied Audit Logs.
+
+203) You want to look at the logs for a specific request?
+Answer: Cloud Logging.
+
+204) You want to identify prominent exceptions (or errors) for a specific microservice?
+Answer: Error Reporting.
+
+205) You want to trace a request across multiple microservices?
+Answer: Cloud Trace.
+
+206) You would like to record all operations/requests on all objects in a bucket (for auditing)?
+Answer: Turn on data across audit logging for the bucket.
+
+207) Cloud Storage - Static Website?
+Answer: 
+a) Create a bucket with the same name as website name (Name of bucket should match DNS name off the website). Verify that
+the domain is owned by you.
+b) Copy the files to the bucket. Add index and error html files for better user experience.
+c) Add member allUsers and grant storage Object Viewer option. Select Allow Public Access.
+
+208) Database Primer?
+Answer: Databases provide organized and persistent storage for your data. To choose between different databases types, we
+would need to understand: Availability, Durability, RTO,. RPO, Consistency, Transactions.
+
+209) Database - snapshots?
+Answer: Let's automate taking copy of the database (take a snapshots) every hour to another data center in London. Lets 
+consider some challenges. 
+Challenge 1: Your database will go down if the data center crashes. 
+Challenge 2 (Partially Solved): You will lose data if the database crashes. You can setup database from latest snapshot. 
+But depending on when failure occurs you can lose up to an hour of data.
+Challenge 3: Database will be slow when you take snapshots.
+
+210) Cloud Storage Signed Url?
+Answer: You would want to allow a user limited time access to your objects: Users do not need Google accounts.
+Use Signed Url functionality. A URL that gives permissions for limited time duration to perform specific actions.
+To create a signed url: One create a key (YOUR_KEY) for the service Account / User with the desired permissions.
+Two create Signed URL with the key: 'gsutil signurl -d 10m YOUR_KEY gs://BUCKET_NAME/OBJECT_PATH'.
+
+211) Database - Transaction Log?
+Answer: Let's add transaction logs to database and create a process to copy it over to the second data center. Let's 
+consider challenges:
+Challenge 1: Your database will go down if the data center crashes.
+Challenge 2 (Solved): You will lose data, if the database crashes. You cas setup database from latest snapshot and apply
+transaction logs.
+Challenge 3: Database will be slow when you take snapshots.
+
+212) Database - Add a standby?
+Answer: Let's add a standby database in the second data center with replication. Some challenges:
+Challenge 1 (SOLVED): Your database will go down if the data center crashes. You can switch to the standby database.
+Challenge 2 (SOLVED): You will lose data if the database crashes.
+Challenge 3 (SOLVED): Database will be slow when you take snapshots. Take snapshots from standby. Apps connecting to 
+master will get good performance always.
+
+213) Availability and Durability?
+Answer: Availability: Will I be able to access my data now and when I need it? Percentages of time an application provides
+the operations expected of it.
+Durability: Will my data be available after 10 or 100 or 1000 years? Examples of measuring availability and durability:
+4, 9's - 99.99, 11, 9;s - 99.999999999. Typically, an availability of four nines is considered very good. Typically,
+a durability of eleven nines is considered very good.
+
+214) Durability?
+Answer: What does a durability of 11 9's mean? If you store one million files for then million years, you would expect to
+lose one file. Why should, durability be high? Because we hate losing data. Once we lose dara, it is gone.
+
+215) Increasing Availability and Durability of Databases?
+Answer: Increase Availability: Have multiple standbys available or distribute the database: in multiple regions, in multiple
+zones. Increase Durability: Multiple copies of data (standbys, snapshots, transaction logs and replicas). In multiple
+zones, in multiple regions. Replicating data comes with its own challenges.
+
+216) RTO and RPO?
+Answer: Imagine a financial transaction being lost. Imagine a trade being lost. Imaging a stock exchange going down for
+an hour. Typically business are fine with some downtime but they hate losing data. Availability and Durability are 
+technical measures. How do we measure how quickly we can recover from failure? RPO (Recovery Point Objective): Max acceptable
+period of data loss. RTO (Recovery Time Objective): Max acceptable downtime. Achieving minimum RTO and RPO is expensive.
+Trade off based on the criticality of the data.
+
+217) Database Categories?
+Answer: Relational (OLTP and OLAP), Document, Key Value, Graph, In Memory.
+Choosing Database factors: Do you want a fixed schema? Do you want flexibility in defining and changing your schema?
+(Schemaless). What level of transaction properties do you need? (atomicity and consistency). What kind of latency do you
+want? (second, millisecond or microseconds). How many transactions do you expect? (hundreds, thousands, millions transactions
+per second). How much data will be stored? (Megabytes, Gigabytes, Terabytes, Petabytes).
+
+218) Cloud Trace?
+Answer: Distributed Tracing System for GCP: Collect latency data from: Supported Google Cloud services. Instrumented
+applications (using tracing libraries) using Cloud Traces API. Find out: How long does a service take to handle requests?
+What is the average latency of requests? How are we doing over time? (increasing / decreasing trend). Supported for:
+Compute Engine, GKE, App Engine (Flexible/Standard) etc. Trace CClient Libraries available for: C#, Go, Java, Node.js, 
+PHP, Python, Ruby.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1509,3 +1509,59 @@ Answer: If a pod in a ReplicaSet fails (due to a node failure or termination), t
 number of replicas and creates a new pod to replace it. The new pod is created based on the pod template defined in the ReplicaSet.
 
 
+NEW SECTION - Kubernetes Masterclass
+
+1) Kubernetes Cluster?
+Answer: Master (aka control-plane): 1 / more (for prod environments for high availability). Nodes: Up to 5000.
+
+2) Kubernetes Cluster Components?
+Answer: First component master / control plane contains:
+a) api-server: APIs for clients to talk to the cluster and create workloads (workload is application mysql, nginx etc).
+b) etcd (et-c-d): A distributed key-value store to store cluster data.
+c) controller-manager: A process which continuously monitors workloads / nodes etc.
+d) scheduler: Workload scheduler.
+Second component: node contains:
+a) kubelet: An agent which creates containers and monitors.
+b) container runtime (docker): To create container, we need to have container runtime on the node.
+c) kube-proxy: Maintains the network rules on the node for communication among workloads in the cluster.
+
+3) Kubernetes Tools?
+Answer: 
+a) kind / minikube: To set up a kubernetes cluster for learning.
+b) kubectl: CLI tool to interact with kubernetes master / api-server.
+
+4) Kube Config?
+Answer: A config file to organize cluster info. Location at '$HOME/.kube/config'. Environment variable KUBECONFIG.
+
+5) Kubernetes Summary?
+Answer: Kubernetes Cluster:
+a) master / control-plane (1 or more): api-server, etcd, scheduler, controller-manager.
+b) node / worker (1 or more): container runtime, kubelet, kube-proxy.
+Kubectl is a CLI tool to talk to api-server. Kube config is a file which stores the cluster information. Kins is a tool
+to create kubernetes cluster for learning.
+
+6) What is a Pod?
+Answer: Workload is an application running on your k8s cluster. Pos is the basic building block to create workload.
+Smallest deployable unit in k8s. Pod can run one or more containers. Only one of the containers in your app container!
+Other containers are helpers! Pod represents a VM and containers represent the process.
+
+7) What is a Docker?
+Answer: We package the app / any executable along with all the dependencies as docker image. We create an instance of the
+image - container. We treat each container like a VM. Containers can talk to each other via IP address / service name.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
