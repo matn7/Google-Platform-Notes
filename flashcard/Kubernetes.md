@@ -38,7 +38,7 @@ Answer: A container image is a lightweight, standalone, executable package that 
 of software. It consists of the code, runtime, system tools, libraries, and settings. A container, on the other hand, 
 is a runtime instance of an image. When an image is run, it exists in memory and has a state, whereas an image is a static file.
 
-8) Explain the Role of Dockerfile. 
+8) Explain the Role of Dockerfile?
 Answer: A Dockerfile is a script containing a series of instructions and commands used for creating a container image. 
 It automates the process of building a Docker image. A Dockerfile defines what goes on in the environment inside a container. 
 It can include instructions to install specific software, environmental variables, and startup commands.
@@ -61,33 +61,33 @@ Answer: A Kubernetes cluster has two main types of components: the control plane
 includes components like the 'kube-apiserver', 'etcd', 'kube-scheduler', and 'kube-controller-manager'. Worker nodes run 
 kubelet, kube-proxy, and container runtime. The control plane manages the cluster, while worker nodes run the applications.
 
-2) Explain the Role of the kube-apiserver in Kubernetes. 
-Answer: The 'kube-apiserver' is the front end of the Kubernetes control plane and serves as the main interface for the 
+2) Explain the Role of the 'kube-apiserver' in Kubernetes?
+Answer: The 'KubeApiServer' is the front end of the Kubernetes control plane and serves as the main interface for the 
 Kubernetes API. It processes RESTful requests to manage Kubernetes resources like pods, services, replication controllers, 
 and others. It acts as a gateway to the etcd store and ensures that the cluster state matches the desired state described by the API.
 
-3) What is etcd and Why is it Important in Kubernetes? 
-Answer: etcd is a distributed key-value store used by Kubernetes to store all cluster data. It’s a critical part of 
+3) What is 'etcd' and Why is it Important in Kubernetes? 
+Answer: 'etcd' is a distributed key-value store used by Kubernetes to store all cluster data. It’s a critical part of 
 Kubernetes as it holds the entire state of the cluster, including node information, pods, configurations, secrets, and more. 
 Being distributed ensures high availability and reliability.
 
-4) Describe the Function of the kube-scheduler. 
+4) Describe the Function of the 'kube-scheduler'? 
 Answer: The 'kube-scheduler' is responsible for assigning new pods to nodes. It selects the most suitable node for a pod 
 based on several criteria, including resource requirements, quality of service requirements, affinity and anti-affinity 
 specifications, and other constraints. The scheduler ensures that workloads are placed on the appropriate nodes to maintain 
 efficiency.
 
-5) How Does the kube-controller-manager Work? 
+5) How Does the 'kube-controller-manager' Work? 
 Answer: The 'kube-controller-manager' runs various controller processes in the background. These controllers include 
 the node controller, replication controller, endpoints controller, and others. Each controller watches the state of the 
 cluster through the 'kube-apiserver' and makes changes to move the current state towards the desired state.
 
-6) What is the kubelet and What is its Role in a Kubernetes Node? 
+6) What is the 'kubelet' and What is its Role in a Kubernetes Node? 
 Answer: The 'kubelet' is an agent running on each node in the cluster. It ensures that containers are running in a Pod. 
 The 'kubelet' takes a set of PodSpecs provided by the 'apiserver' and ensures that the containers described in those 
 PodSpecs are running and healthy. It communicates with the container runtime to manage container lifecycle.
 
-7) Explain the Function of kube-proxy in Kubernetes. 
+7) Explain the Function of 'kube-proxy' in Kubernetes. 
 Answer: 'kube-proxy' is a network proxy that runs on each node in the cluster, maintaining network rules that allow network 
 communication to the Pods from network sessions inside or outside the cluster. It ensures that the networking environment 
 is predictable and accessible, but also isolated where necessary.
@@ -95,7 +95,8 @@ is predictable and accessible, but also isolated where necessary.
 8) What is a Kubernetes Pod and How Does it Relate to Containers? 
 Answer: A Pod is the smallest deployable unit created and managed by Kubernetes. A Pod is a group of one or more containers, 
 with shared storage/network, and a specification for how to run the containers. Containers in a Pod share an IP Address 
-and port space, and can find each other via localhost. They also have access to shared volumes, allowing data to be shared between them.
+and port space, and can find each other via localhost. They also have access to shared volumes, allowing data to be shared 
+between them.
 
 9) Describe the Role of Container Runtime in Kubernetes. 
 Answer: The container runtime is the software responsible for running containers. Kubernetes supports several container 
@@ -113,14 +114,15 @@ and with the outside world. It assigns a fixed IP address to a group of Pods for
 1) What are the Prerequisites for Installing Kubernetes? 
 Answer: Before installing Kubernetes, you need a set of machines (physical or virtual) to run the Kubernetes components. 
 These machines should have a compatible Linux operating system, a container runtime like Docker, and network connectivity 
-between them. Additionally, you should have a way to access the cluster, typically through 'kubectl', Kubernetes’ command-line tool.
+between them. Additionally, you should have a way to access the cluster, typically through 'kubectl', Kubernetes 
+command-line tool.
 
-2) What is kubeadm and How is it Used in Kubernetes Installation? 
+2) What is 'kubeadm' and How is it Used in Kubernetes Installation? 
 Answer: 'kubeadm' is a tool provided by Kubernetes to help set up and bootstrap a Kubernetes cluster in a simple, 
 standardized way. It automates many of the tasks involved in setting up a cluster, such as creating the necessary 
-certificates, setting up the control plane, and configuring the kubelet.
+certificates, setting up the control plane, and configuring the 'kubelet'.
 
-3) Explain the Steps to Install a Kubernetes Cluster Using kubeadm. 
+3) Explain the Steps to Install a Kubernetes Cluster Using 'kubeadm'. 
 Answer: The basic steps to install a Kubernetes cluster with 'kubeadm' include:
 a) Installing 'kubeadm', 'kubelet', and 'kubectl' on all nodes.
 b) Initializing the cluster on the master node with 'kubeadm init'.
@@ -138,9 +140,9 @@ Answer: After initializing a Kubernetes cluster, you need to install a network p
 This is done by applying a network plugin’s YAML configuration file using 'kubectl apply'. There are several network plugins 
 available like Calico, Flannel, Weave, etc., each with its configuration and installation instructions.
 
-6) What are the Considerations for Setting Up High Availability (H A) in Kubernetes? 
+6) What are the Considerations for Setting Up High Availability (HA) in Kubernetes? 
 Answer: For high availability in Kubernetes, you need to set up multiple master nodes. This involves configuring a load 
-balancer that directs traffic to all active master nodes, setting up an etcd cluster across multiple nodes for state storage, 
+balancer that directs traffic to all active master nodes, setting up an 'etcd cluster' across multiple nodes for state storage, 
 and ensuring that the control plane components are replicated and synchronized across these nodes.
 
 7) Can Kubernetes be Installed on any Cloud Platform? How? 
@@ -150,12 +152,12 @@ Kubernetes using 'kubeadm' or other tools by setting up virtual machines or inst
 
 8) What is Helm and How Does it Relate to Kubernetes Installation? 
 Answer: Helm is a package manager for Kubernetes that simplifies installing, configuring, and updating applications on 
-Kubernetes clusters. While it doesn’t install Kubernetes itself, it is used to manage applications running on a Kubernetes 
+Kubernetes clusters. While it does not install Kubernetes itself, it is used to manage applications running on a Kubernetes 
 cluster. Helm uses a packaging format called charts, which are pre-configured Kubernetes resources.
 
 9) How Do You Upgrade a Kubernetes Cluster? 
 Answer: To upgrade a Kubernetes cluster, you typically upgrade the control plane components first, followed by the worker 
-nodes. Tools like kubeadm can automate parts of this process. It’s important to follow the specific upgrade instructions 
+nodes. Tools like 'kubeadm' can automate parts of this process. It’s important to follow the specific upgrade instructions 
 for your Kubernetes version, as the process may vary slightly between versions.
 
 10) What Are Some Common Challenges Encountered During Kubernetes Installation? 
@@ -197,8 +199,8 @@ Answer: The status of a Kubernetes Deployment can be monitored using kubectl com
 to check the deployment status, 'kubectl describe deployment' to get detailed information, and 'kubectl rollout status' 
 to watch the status of a deployment update.
 
-7) Can You Explain the Concept of 'Desired State' in Kubernetes Deployments? 
-Answer: The 'desired state' in Kubernetes Deployments refers to the state described in the Deployment’s configuration. 
+7) Can You Explain the Concept of Desired State in Kubernetes Deployments? 
+Answer: The desired state in Kubernetes Deployments refers to the state described in the Deployment’s configuration. 
 This includes aspects like the number of replicas, container images, and resource limits. Kubernetes continuously works 
 to ensure that the actual state of the Deployment matches this desired state.
 
@@ -228,7 +230,7 @@ unique network identifiers, persistent storage, and ordered, graceful deployment
 
 2) How Does Kubernetes Manage the Pod Identity in a StatefulSet? 
 Answer: In a StatefulSet, each pod gets a unique, ordinal index and a stable network identity based on this index. 
-The names of the pods are consistent and follow the pattern: '[statefulset name]-[ordinal index].' This identity persists 
+The names of the pods are consistent and follow the pattern: 'STATEFUL-NAME ORDINAL-INDEX'. This identity persists 
 even if the pod gets rescheduled onto another node.
 
 3) Explain How StatefulSets Handle Scaling and Updates. 
@@ -253,9 +255,9 @@ ensuring that each pod is created and terminated in a predictable order.
 
 7) What Happens to a StatefulSet When a Node Fails? 
 Answer: When a node fails, the pods in a StatefulSet on that node become unavailable. Kubernetes doesn't automatically 
-reschedule these pods to other nodes. Instead, if the failed node returns to a functional state, the pods are restarted on it, 
-preserving their state. For automatic failover, additional mechanisms like pod disruption budgets or node health checks 
-should be implemented.
+reschedule these pods to other nodes. Instead, if the failed node returns to a functional state, the pods are restarted 
+on it, preserving their state. For automatic failover, additional mechanisms like pod disruption budgets or node health 
+checks should be implemented.
 
 8) How Do You Update a StatefulSet, and What Are the Risks Involved? 
 Answer: StatefulSets are updated using a rolling update strategy by default. You update the StatefulSet configuration, 
@@ -271,7 +273,8 @@ OrderedReady is the default and ensures orderly deployment and scaling.
 10) What are the Best Practices for Backing Up Data in a StatefulSet? 
 Answer: Best practices for backing up data in a StatefulSet include regularly snapshotting the Persistent Volumes using 
 tools like Velero, implementing a robust replication strategy if the application supports it (like in databases), and 
-ensuring data consistency during backups. It's also advisable to store backups in a location independent of the Kubernetes cluster.
+ensuring data consistency during backups. It's also advisable to store backups in a location independent of the 
+Kubernetes cluster.
 
 
 6. NEW SECTION - ReplicaSet
@@ -289,7 +292,7 @@ can select a broader range of pods based on labels.
 3) How Do You Define and Use a ReplicaSet in Kubernetes? 
 Answer: A ReplicaSet is defined using a YAML file, which specifies the number of replicas and the pod template to use. 
 It includes a selector to identify the pods it should manage. You use a ReplicaSet by creating it with 
-'kubectl apply -f [file.yaml]'. The ReplicaSet then ensures that the specified number of replicas of the pod are running.
+'kubectl apply -f file.yaml'. The ReplicaSet then ensures that the specified number of replicas of the pod are running.
 
 4) What Happens if a Pod in a ReplicaSet Fails? 
 Answer: If a pod in a ReplicaSet fails (due to a node failure or termination), the ReplicaSet notices the decrease in 
@@ -298,8 +301,8 @@ the ReplicaSet.
 
 5) Can You Scale a ReplicaSet? How? 
 Answer: Yes, you can scale a ReplicaSet by changing the replicas field in the ReplicaSet definition and then applying 
-the update. Alternatively, you can use the 'kubectl scale' command to change the number of replicas, e.g., 
-'kubectl scale replicaset [replicaset-name] --replicas=[number]'.
+the update. Alternatively, you can use the 'kubectl scale' command to change the number of replicas, example:
+'kubectl scale replicaset replicaset-name --replicas=number'.
 
 6) How Does a ReplicaSet Work with a Deployment in Kubernetes? 
 Answer: In Kubernetes, Deployments are higher-level concepts that manage ReplicaSets. When you create a Deployment, 
@@ -1517,7 +1520,7 @@ Answer: Master (aka control-plane): 1 / more (for prod environments for high ava
 2) Kubernetes Cluster Components?
 Answer: First component master / control plane contains:
 a) api-server: APIs for clients to talk to the cluster and create workloads (workload is application mysql, nginx etc).
-b) etcd (et-c-d): A distributed key-value store to store cluster data.
+b) etcd: A distributed key-value store to store cluster data.
 c) controller-manager: A process which continuously monitors workloads / nodes etc.
 d) scheduler: Workload scheduler.
 Second component: node contains:
@@ -1537,27 +1540,169 @@ Answer: A config file to organize cluster info. Location at '$HOME/.kube/config'
 Answer: Kubernetes Cluster:
 a) master / control-plane (1 or more): api-server, etcd, scheduler, controller-manager.
 b) node / worker (1 or more): container runtime, kubelet, kube-proxy.
-Kubectl is a CLI tool to talk to api-server. Kube config is a file which stores the cluster information. Kins is a tool
+Kubectl is a CLI tool to talk to api-server. Kube config is a file which stores the cluster information. Kind is a tool
 to create kubernetes cluster for learning.
 
 6) What is a Pod?
-Answer: Workload is an application running on your k8s cluster. Pos is the basic building block to create workload.
+Answer: Workload is an application running on your k8s cluster. Pod is the basic building block to create workload.
 Smallest deployable unit in k8s. Pod can run one or more containers. Only one of the containers in your app container!
 Other containers are helpers! Pod represents a VM and containers represent the process.
 
 7) What is a Docker?
-Answer: We package the app / any executable along with all the dependencies as docker image. We create an instance of the
+Answer: We package the app, any executable along with all the dependencies as docker image. We create an instance of the
 image - container. We treat each container like a VM. Containers can talk to each other via IP address / service name.
 
+8) Pod Status?
+Answer:
+a) Pending: Node is yet to be assigned.
+b) ContainerCreating: Kubelet is working on creating container.
+c) Running: Kubelet started the container.
+d) ErrImagePull / ImagePullBackOff: Failed pulling image. Kubelet will retry with some delay.
+e) Completed: Container exited Successfully. 
+f) Error: Container exited with error.
+g) CrashLoopBackOff: There is a problem in running the container. Kubelet is retrying with delay. (no issues in pulling
+the image).
+h) Terminating: Pod is getting deleted.
 
+9) Pod Labels. Get pod by label command?
+Answer: 'kubectl get pod -l dept=dep-1,team=team-a'.
 
+10) Pod, Formatting output?
+Answer: 'kubectl get pod -o wide'.
 
+11) Pod, Formatting output in yaml file?
+Answer: 'kubectl get pod pod-1 -o yaml'.
 
+12) Pod, delete pods using file?
+Answer: 'kubectl delete -f 03-multiple-pods.yaml'.
 
+13) Pod, delete single pod?
+Answer: 'kubectl delete pod pod-2'.
 
+14) Port-Forward?
+Answer: 'kubectl port-forward my-pod 8080:80'
 
+15) ENTRYPOINT vs CMD?
+Answer: We can not override ENTRYPOINT by issuing override: docker run IMAGE OVERRIDE.
+We can override CMD: docker run IMAGE OVERRIDE.
 
+16) Docker - Kubernetes?
+Answer: ENTRYPOINT is command. CMD is args.
 
+17) Pod Container Restart Policy?
+Answer:
+a) Never: Completed / Error - Do NOT Restart.
+b) Always: Completed / Error - Restart.
+c) OnFailure: Error - Restart.
+
+18) Kubectl Commands!
+Answer:
+a) 'kubectl get nodes': To list nodes in the cluster.
+b) 'kubectl create -f FILE-NAME': To create resources in the given yaml.
+c) 'kubectl delete -f FILE-NAME': To delete resources in the given yaml.
+d) 'kubectl get pod': To list all the pods (in the default namespace).
+e) 'kubectl get pod --show-label': To list pod labels.
+f) 'kubectl get pod -l team=team-a', 'kubectl get pod -l team!=team-a': To query pods based on labels.
+g) 'kubectl get pod POD-NAME -o yaml': To provide pod info in the yaml format.
+h) 'kubectl describe pod POD-NAME': To describe pod.
+i) 'kubectl delete pod POD-NAME': To delete the given pod.
+j) 'kubectl delete pod --all': To delete all pods.
+k) 'kubectl logs POD-NAME': To check the pod log (assuming single container).
+l) 'kubectl logs POD-NAME -c CONTAINER-NAME': To check the specific container log for a pod when there are multiple
+containers.
+m) 'kubectl exec -it POD-NAME -c CONTAINER-NAME -- bash': To access the container of the pod.
+n) 'kubectl port-forward POD-NAME 8080:80': To access our application APIs from our host for debugging.
+
+19) ReplicaSet?
+Answer: Manages Pod. It ensures that our desired replicas for the given pod spec are running. 
+ReplicaSet - 'restartPolicy: Always'. In a cluster, a node might die, entire zone could be down due to network issues. 
+ReplicaSet ensures that desired count is met. A lower level resource and not recommended to be created by us directly!
+Deployment manages ReplicaSet. To manage resources, we will use 'metadata.label'!
+
+20) Deployment?
+Answer: Manages ReplicaSet. This is what we would use mostly to create workload! To deploy stateless application.
+One deployment - One microservice. Deployment - List of ReplicaSet - List Pod.
+
+21) Create versus Apply?
+Answer: Kubectl create:
+'kubectl create -f FILE-NAME': Top create resources in the given file.
+'kubectl create -f .': To create resources from all the yamls in the current directory.
+'kubectl create -f http://somesite.com/k8s.yaml': To create resources in the given url.
+Kubectl apply:
+'kubectl apply -f FILE-NAME': To create / update resources in the given file.
+'kubectl apply -f .': To create / update resources from all the yamls in the current directory.
+'kubectl apply -f http://somesite.com/k8s.yaml': To create / update resources in the given url.
+
+22) Deployment Strategy?
+Answer: 
+a) recreate: Terminate the old pods and create the new pods.
+b) rolling update: Gradually roll out the changes. We can have a mix of old and new pods temporarily. Below properties
+can be a number or %. 
+maxSurge: Max number of additional pods that can be created. 
+maxUnavailable: Max number of pods that can be terminated.
+
+23) Service?
+Answer: Logical abstraction for a set of Pods. A single reliable network endpoint to access Pods. Stable IP address.
+DNS name.
+
+24) Service / kube-proxy?
+Answer: A simple proxy. k8s resource Service does not consume CPU/memory. Not round-robin Load Balancer. It is random.
+Do not expect URL rewriting / path based routing..etc.. (It is Ingress in k8s).
+
+25) Service Types?
+Answer: 
+a) ClusterIP: For communication within the k8s cluster. Can not be accessed from outside the cluster. (AWS / GCP cloud -
+private subnet communication). This is the default option if we do not specify. Mostly this is what we would use.
+b) NodePort: Can be accessed from outside via k8s master/node via Specific port (can be used for testing).
+c) To be used in AWS / GCP / Azure .. cloud providers. Can be used to receive traffic from outside.
+
+26) NodePort?
+Answer: Allowed node port ranges are 30000-32767. Each node is set to listen on specific port. Any request to one of the 
+nodes on the port is forwarded to the pod.
+
+27) LoadBalancer?
+Answer: To be used in the cloud provider. To receive external traffic and forward to pods.
+
+28) Namespace?
+Answer: Virtual cluster / Partitioning within a cluster. Isolating a group of resources within a cluster. Use Cases:
+Dev / QA environments. Isolating separate team resources. Namespaces can also be used to set resource quotas by the
+administrators.
+
+29) Probes?
+Answer: Problem: Pods are considered to be live & ready as soon as the containers are started. If the Pod is ready,
+the Service will send the requests to the Pod. RollingUpdate will terminate old pods. We should ensure that our Pods
+are live and ready to avoid surprises! Probes are tools/utilities to measure the health of the pod. Has it started?
+Is it alive? Is it ready to serve requests?
+
+30) Probe Types?
+Answer: Terms: Live - Is the Pod alive? Ready - can the Pod serve the request?
+a) 'startupProbe': To check if the application inside the container has started. Action if fails, restart.
+b) 'livenessProbe': To check if the application is still alive. Action if fails, restart.
+c) 'redinessProbe': To check if the application is ready to take the requests from service. Action if fails, remove 
+from service.
+
+31) Probe Execution Phase?
+Answer: 
+a) 'startupProbe': It starts as soon as container started! If the check passes, startupProbe stops.
+b) 'livenessProbe': It starts once startupProbe completes. It is executed through the pod lifecycle.
+c) 'redinessProbe': It starts once startupProbe completes. It is executed through the pod lifecycle.
+
+32) Probe Options?
+Answer:
+a) 'exec': Execute any command to check. For example: 'cat /tmp/app.log'.
+b) 'httpGet': To invoke a http endpoint. For example: '/health'.
+c) 'tcpSocket': To check if the app started listening on specific port.
+
+33) Probe Properties?
+Answer: 
+a) 'initialDelaySeconds': 0.
+b) 'periodSeconds': 10.
+c) 'timeoutSeconds': 1.
+d) 'successThreshold': 1.
+e) 'failureThreshold': 3.
+
+34) ConfigMap & Secret?
+Answer:
 
 
 

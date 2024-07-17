@@ -21,10 +21,15 @@ Answer: Increase batch size. Setting a compression type as snoppy. Increase ling
 Answer: In Application Service. Domain Layer should not know about how to fire the event.
 
 6) When to choose synchronous vs asynchronous communication? 
-Answer: Synchronous:  a) Immediate responses are critical. b) Request response interactions. c) Performance bottleneck 
-and reduced fault tolerance. Asynchronous: a) Real-time responses are not necessary, and you want to decouple components 
-for scalability, reliability and fault-tolerance. b) Background processing, event-driven architecture. c) Introduce 
-complexity in handling eventual consistency and message passing.
+Answer: 
+Synchronous:  
+a) Immediate responses are critical. 
+b) Request response interactions. 
+c) Performance bottleneck and reduced fault tolerance. 
+Asynchronous: 
+a) Real-time responses are not necessary, and you want to decouple components for scalability, reliability and fault-tolerance. 
+b) Background processing, event-driven architecture. 
+c) Introduce complexity in handling eventual consistency and message passing.
 
 7) What is a Microservice? 
 Answer: A Web Service. Small and Responsible for one thing (Search, Password Reset, Email Verification). Configured 
@@ -47,7 +52,10 @@ number of page faults. This can happen if we run too many processes, allocate to
 Answer: Communication, Resilience, New Microservices. Operations: Logs, Metrics, Configuration, Deployment.
 
 12) What are some roles of OS? 
-Answer: a) Memory management. b) Isolation between processes. c) Schedule process and their threads on CPU cores. 
+Answer: 
+a) Memory management. 
+b) Isolation between processes. 
+c) Schedule process and their threads on CPU cores. 
 d) Provide security and interface for accessing the hardware.
 
 13) What are arguments for a higher number of partitions? 
@@ -55,7 +63,8 @@ Answer: More opportunity for concurrency.
 
 14) Web Service W3C Definition? 
 Answer: Software system designed to support interoperable machine-to-machine interaction over network. 3 Keys: 
-a) Designed for machine-to-machine (or app to app) interaction. b) Should be interoperable, not platform dependent. 
+a) Designed for machine-to-machine (or app to app) interaction. 
+b) Should be interoperable, not platform dependent. 
 c) Should allow communication over a network.
 
 15) We have a computer with a single core? 
@@ -78,24 +87,39 @@ Answer: Transport layer in OSI. Reliable connection, ordered sending of data. Fu
 repeat of data. Reliable way of sending data. Bytes stream, segments (header, data).
 
 19) System Design step-by-step process? 
-Answer: First: Ask Questions to capture: a) Functional Requirements. b) Non-functional Requirements. c) System Constraints. 
-Second: Define the System APIs. Third: Create a Software Architecture Diagram to fulfill the Functional Requirements. 
-Fourth: Refine the Software Architecture Diagram to address the Non-Functional Requirements.
+Answer: Ask Questions to capture: 
+a) Functional Requirements. 
+b) Non-functional Requirements. 
+c) System Constraints. 
+Define the System APIs. Create a Software Architecture Diagram to fulfill the Functional Requirements. 
+Refine the Software Architecture Diagram to address the Non-Functional Requirements.
 
 20) System Design Software Extensibility Architecture Pattern? 
-Answer: a) Sidecar & Ambassador. b) Anti-corruption Adapter pattern. c) Backends for Frontends pattern.
+Answer: 
+a) Sidecar & Ambassador. 
+b) Anti-corruption Adapter pattern. 
+c) Backends for Frontends pattern.
 
 21) System Design Latency? 
-Answer: Time required to send packets between two points in computer network. Measured in MS. Caused by propagation time, 
-waiting for free resources. The lower, the better.
+Answer: Time required to send packets between two points in computer network. Measured in milliseconds. Caused by 
+propagation time, waiting for free resources. The lower, the better.
 
 22) System Design Cloud Scalability Pattern? 
-Answer: a) Load Balancing. b) Pipes and Filters. c) Scatter Gather. d) Execution Orchestrator for Microservices Architecture. 
+Answer: 
+a) Load Balancing. 
+b) Pipes and Filters. 
+c) Scatter Gather. 
+d) Execution Orchestrator for Microservices Architecture. 
 e) Choreography for Microservices Architecture.
 
 23) System Design Cloud Performance Pattern for Data Intensive Systems? 
-Answer: a) Map Reduce. b) The Saga Pattern. c) Transactional Outbox Pattern: Reliability in Event Driven Architecture. 
-d) Materialized View Pattern: Architecting High Performance Systems. e) CQRS. f) CQRS + Materialized View. 
+Answer: 
+a) Map Reduce. 
+b) The Saga Pattern. 
+c) Transactional Outbox Pattern: Reliability in Event Driven Architecture. 
+d) Materialized View Pattern: Architecting High Performance Systems. 
+e) CQRS. 
+f) CQRS + Materialized View. 
 g) Event Sourcing Pattern.
 
 24) What is a symmetric encryption? 
@@ -106,11 +130,15 @@ Answer: Process Table, Thread Table, File Table, IPC (Inter Process Communicatio
 
 26) What are difference between Strategic DDD and Tactical DDD? 
 Answer: Strategic DDD: Introduces boundaries from domain model. Single bounded context per each domain. What is a Domain? 
-Operational area of your application. e.g. online food ordering. Unbounded Context: Central Pattern in DDD. Boundary 
-within a Domain. Tactical DDD: Implementation patterns: a) Entities: Core domain objects with a unique identifiers.
-b) Aggregates: Group of Entity objects which always need to be in consistent state. c) Aggregate Root (AR).
-d) Value Objects: Immutable objects without identity. Only value matters. Bring context to the value. e) Domain Service.
-f) Application Service. g) Domain Event.
+Operational area of your application (example online food ordering). Unbounded Context: Central Pattern in DDD. 
+Boundary within a Domain. Tactical DDD: Implementation patterns: 
+a) Entities: Core domain objects with a unique identifiers.
+b) Aggregates: Group of Entity objects which always need to be in consistent state. 
+c) Aggregate Root (AR).
+d) Value Objects: Immutable objects without identity. Only value matters. Bring context to the value. 
+e) Domain Service.
+f) Application Service. 
+g) Domain Event.
 
 27) Difference between SQL and NoSQL? 
 Answer: SQL table-based relational DB. Data is stored in precisely defined structures and the relationships between them 
@@ -119,13 +147,16 @@ consistency and security. NoSQL allows you to store data in various formats, suc
 More flexible and scalable than SQL. Good for projects with a lot of load data. Error-resistant because the data is replicated.
 
 28) What are different Specialized Storage Paradigm? 
-Answer: a) Blob Storage: GCS or S3. b) Time Series Database: Special kind of database optimized for storing and analyzing 
-time-indexed data. Data points that specifically occur at a given moment in time. InfluxDB, Prometheus and Graphana. 
-c) Graph Database: Social Networks Neo4j. d) Cypher: Graph query language that was originally developed for the Neo4j 
-graph database. e) Spatial Database: Storing spacial data like locations on a map. Spatial indexes like quadtrees.
+Answer: 
+a) Blob Storage: GCS or S3. 
+b) Time Series Database: Special kind of database optimized for storing and analyzing time-indexed data. Data points that 
+specifically occur at a given moment in time. InfluxDB, Prometheus and Graphana. 
+c) Graph Database: Social Networks Neo4j. 
+d) Cypher: Graph query language that was originally developed for the Neo4j graph database. 
+e) Spatial Database: Storing spacial data like locations on a map. Spatial indexes like quad-trees.
 
 29) What is SOAP? 
-Answer: Data Format: SOAP XML Request. SOAP XML Response. Transport: SOAP over MQ. SOAP over HTTP 
+Answer: Data Format: SOAP XML Request. SOAP XML Response. Transport: SOAP over MQ. SOAP over HTTP.
 Service Definition: WSDL defines: Endpoint, All Operations, Request Structure, Response Structure.
 
 30) What is Smoke Testing? 
@@ -134,18 +165,29 @@ that core functionalities of a software applications are operational after a new
 build is stable enough for more extensive testing. Identifies major issues. Prevents wasting time on comprehensive testing.
 
 31) Set Based Consistency CQRS? 
-Answer: How to check if record already exists in a database table? How to check if User already exists? Solution Lookup database table.
-Message Dispatch Interceptor: a) Will intercept a command before it is processed by the command handler. b) Use JPA to query 
-lookup table. c) Event handler to persist productID and title in lookup table.
+Answer: How to check if record already exists in a database table? How to check if User already exists? Solution Lookup 
+database table. Message Dispatch Interceptor: 
+a) Will intercept a command before it is processed by the command handler. 
+b) Use JPA to query lookup table. 
+c) Event handler to persist productID and title in lookup table.
 
-32) Service Discovery and LB in Microservices? 
-Answer: Service Discovery: a) Simplifies service-to-service communication. b) Facilitates stability and fault tolerance.
-c) Supports dynamic environments. Load Balancing: a) Enhances Reliability. b) Improves Scalability. c) Fault Tolerance.
-Tools and Technologies: Service Discovery: consul, etcd, zookeeper, kubernetes. Load Balancing: Reverse Proxy: Nginx, HaProxy. 
-Service Mesh: Istio, Linkerd/ Load Balancers: Google Cloud LB
+32) Service Discovery and Load Balancing in Microservices? 
+Answer: Service Discovery: 
+a) Simplifies service-to-service communication. 
+b) Facilitates stability and fault tolerance.
+c) Supports dynamic environments. 
+Load Balancing: 
+a) Enhances Reliability. 
+b) Improves Scalability. 
+c) Fault Tolerance.
+Tools and Technologies: 
+Service Discovery: consul, etcd, zookeeper, kubernetes. 
+Load Balancing: Reverse Proxy: Nginx, HaProxy. 
+Service Mesh: Istio, Linkerd. 
+Load Balancers: Google Cloud LB.
 
 33) SOAP Service Definition? 
-Answer: Request / Response Format. Request Structure. Response Structure. Endpoint.
+Answer: Request / Response Format, Request Structure, Response Structure, Endpoint.
 
 34) What are Self-Contained Systems (SCS)? 
 Answer: SCS is a type of microservice that specifies elements of macro architecture.
@@ -171,8 +213,15 @@ ACID Transactions: Guarantees that a database will be in consistent state after 
 Outbox: Help to use of local ACID transactions to let consistent (eventual) distributed transactions.
 
 40) Robustness ways to ensure? 
-Answer: a) Error Handling. b) Monitoring and logging. c) Versioning and rollback. d) Testing and validation. 
-e) Redundancy and Failover. f) Communication protocols. g) Service Discovery. h) Circuit Braking: Preventing cascading errors.
+Answer: 
+a) Error Handling. 
+b) Monitoring and logging. 
+c) Versioning and rollback. 
+d) Testing and validation. 
+e) Redundancy and Fail-over. 
+f) Communication protocols. 
+g) Service Discovery. 
+h) Circuit Braking: Preventing cascading errors.
 i) Graceful Degradation: The application works even at reduced levels.
 
 41) Robust system, what does it mean? 
@@ -181,15 +230,21 @@ Analogy to a 2-engine airplane. Key Features: Fault Tolerance, High Availability
 Efficiency, Manageability, Flexibility.
 
 42) REST key abstraction? 
-Answer: A resource has an URI. A resource can have different representations: XML, JSON, HTML.
+Answer: A resource has URI. A resource can have different representations: XML, JSON, HTML.
 
 43) What are Rest API Resources - Best practices? 
-Answer: a) Naming resources using nouns. b) Making a distinction between collection resources and simple resources. 
-c) Giving the resources clear and meaningful names. d) The resource identifiers should be unique and URL friendly.
+Answer: 
+a) Naming resources using nouns. 
+b) Making a distinction between collection resources and simple resources. 
+c) Giving the resources clear and meaningful names. 
+d) The resource identifiers should be unique and URL friendly.
 
 44) What are Rest API Important Concepts? 
-Answer: a) HATEOAS. b) Statelessness: Scalability and High Availability. c) Cacheability: Performance.d) Named Resource: 
-Simple Resource, Collection Resource.
+Answer: 
+a) HATEOAS. 
+b) Statelessness: Scalability and High Availability. 
+c) Cache-ability: Performance.
+d) Named Resource: Simple Resource, Collection Resource.
 
 45) What are Replication and Sharding? 
 Answer: Replication and sharding are techniques used in DB systems, allow scaling and increase of performance. 
@@ -202,16 +257,18 @@ faster reclaim data from big databases. Big performance and scalability, merchan
 Answer: Create a new consumer group. It will read the events from start by default.
 
 47) Remote Procedure Call Technologies? 
-Answer: gRPC. Apache Thrift. Java Remote Method Invocation (RMI).
+Answer: gRPC, Apache Thrift, Java Remote Method Invocation (RMI).
 
 48) What is Redis? 
 Answer: An in-memory key-value store. Does offer some persistent storage options but is typically used as a really fast 
 the best effort caching solutions. Redis is also used to implement rate limiting.
 
 49) What is Reactive Programming? 
-Answer: a) Responsive: System responds as fast as possible. b) Resilient: System remains available, even if parts fail.
-c) Elastic: System can deal with different level of load, for instance by using additional resources. d) Asynchronous 
-communication: System uses asynchronous communication (message-driven).
+Answer: 
+a) Responsive: System responds as fast as possible. 
+b) Resilient: System remains available, even if parts fail.
+c) Elastic: System can deal with different level of load, for instance by using additional resources. 
+d) Asynchronous communication: System uses asynchronous communication (message-driven).
 
 50) What is a Quorum in Kafka? 
 Answer: Set the minimum number of brokers to create a network, prevent split brain.
@@ -225,8 +282,8 @@ Answer: Push model where Postgres notifies the other apps for each change.
 53)  Difference between Processes and Threads? 
 Answer: Process independent execution unit, contains own address space, file descriptor, memory space, virtual devices.
 Threads use system resources to which belongs. In process there are multiple threads, thread can have one process.
-Processes require more time and system resources to start and communicate with other processes, because requires context switch.
-Threads are more performant, requires less resources.
+Processes require more time and system resources to start and communicate with other processes, because requires context 
+switch. Threads are more performant, requires less resources.
 
 54) Describe Processes in Operating System? 
 Answer: Programs executed on computer. Contains own resources as address space, threads, memory. Contains unique PID.
@@ -239,7 +296,7 @@ Example of industry Tools: consul, etcd, zookeeper, kubernetes, netflix eureka, 
 
 56) What is POSIX? 
 Answer: Portable OS interface. Standard how app can use system functions. Example of system functions: 
-open(), read(), write(), fork(), exec(), pthread_create(). Alternative Win32.
+'open()', 'read()', 'write()', 'fork()', 'exec()', 'pthread_create()'. Alternative Win32.
 
 57) Popular Service Discovery Tools and Techniques? 
 Answer: 
@@ -304,7 +361,8 @@ Resource Owner, Client, Authorization Server, Resource Server, Authorization Gra
 Access Token, OpenID token.
 
 68) What are NoSQL use cases? 
-Answer: Superior when it comes to query speed. Perfect choice for caching. Handling real-time big data. Data is not structured.
+Answer: Superior when it comes to query speed. Perfect choice for caching. Handling real-time big data. Data is not 
+structured.
 
 69) NoSQL Solutions? 
 Answer: 
@@ -322,8 +380,8 @@ e) Durability: Replication and Backups.
 
 71) Non-functional requirements example? 
 Answer: 
-a) Scalability: millions of daily users. 
-b) Performance: less than 500ms response time 99%. 
+a) Scalability: Millions of daily users. 
+b) Performance: Less than 500ms response time 99%. 
 c) Fault Tolerance / High Availability: 99.9% (3 nines) time available. 
 d) Availability + Partition Tolerance: AP over CP.  
 e) Durability.
@@ -789,15 +847,17 @@ Support for Confluent Schema Registry. Source connectors for various database. P
 'io.debezium.connector.postgresql.PostgresConnector'.
 
 161) DDD Strategic Design & Common Patterns? 
-Answer: Customer / Supplier Pattern: Supplier is upstream and consumer is downstream. For example uses the model of the 
-order process. However, payment defines requirements for the order Process. Conformist Pattern: Bounded context simply 
-uses a domain model for another bounded context. The anti-corruption layer: Bounded context does not directly use the 
-domain model of the other bounded context. The Separate Way Pattern: Bounded Contexts are not related at the software 
-level although a relation would be conceivable. The Shared Kernel Pattern: Describes a common core that is shared by 
-multiple bounded contexts, Microservices anti-pattern. The Open Host Service Pattern: Bounded context offers a generic 
-interface with several services, Frequently found at public APIs on the internet. The publishing language model: Is a 
-domain model accessible by all bounded contexts. For example standard format like EDIFAC for transaction between
-companies.
+Answer: 
+a) Customer / Supplier Pattern: Supplier is upstream and consumer is downstream. For example uses the model of the 
+order process. However, payment defines requirements for the order Process. 
+b) Conformist Pattern: Bounded context simply uses a domain model for another bounded context. 
+c) The anti-corruption layer: Bounded context does not directly use the domain model of the other bounded context. 
+d) The Separate Way Pattern: Bounded Contexts are not related at the software level although a relation would be conceivable. 
+e) The Shared Kernel Pattern: Describes a common core that is shared by multiple bounded contexts, Microservices anti-pattern. 
+f) The Open Host Service Pattern: Bounded context offers a generic interface with several services, Frequently found at 
+public APIs on the internet. 
+g) The publishing language model: Is a domain model accessible by all bounded contexts. For example standard format like 
+EDIFAC for transaction between companies.
 
 162) Detailed testing plan? 
 Answer: Requirements Review. Risk Assessment. Test Planning. Testing Types: Unit, Integration, System, Safety, 
@@ -832,11 +892,13 @@ as the read part is updated asynchronously. Once the write operation is persiste
 Events can be replayed multiple times based on requirements to create different type of query store.
 
 167) Context switch system calls? 
-Answer: 'shed.h': Header file containing definitions of structures and functions related to process and thread 
-scheduling.'clone()': A system call that creates a new thread or process. 'pthread_create()': C function, creates a new 
-thread.'pthread_yield()': C function, allows a thread to voluntarily donate CPU time to another thread waiting for 
-execution.'sem_wait()' and 'sem_post()': C function, synchronization by using semaphores. 'mutex_lock()' and 
-'mutex_unlock()': C function, synchronization by using mutexes.
+Answer: 
+a) 'shed.h': Header file containing definitions of structures and functions related to process and thread scheduling. 
+b) 'clone()': A system call that creates a new thread or process. 
+c) 'pthread_create()': C function, creates a new thread.
+d) 'pthread_yield()': C function, allows a thread to voluntarily donate CPU time to another thread waiting for execution.
+e) 'sem_wait()' and 'sem_post()': C function, synchronization by using semaphores. 
+f) 'mutex_lock()' and 'mutex_unlock()': C function, synchronization by using mutexes.
 
 168) Context Switch Algorithms? 
 Answer: Round-Robin: Divides CPU time to each task in order with a fixed time cycle. Priority-Based: Processor time is 
@@ -850,20 +912,20 @@ Portability, Scalability.
 
 170) What is a Container Orchestration? 
 Answer: Automated management of containerized apps, including tasks like deployment, scaling, Load Balancing 
-and service discovery. Significance of Microservice Management: Deployment. Scaling. Service Discovery. Load Balancing. 
-Self-Healing. Rolling Updates. Examples: Kubernetes, Docker Swarm, Amazon ECS.
+and service discovery. Significance of Microservice Management: Deployment, Scaling, Service Discovery, Load Balancing, 
+Self-Healing, Rolling Updates. Examples: Kubernetes, Docker Swarm, Amazon ECS.
 
 171) What is a Consistent Hashing? 
 Answer: A type of hashing that minimizes the number of keys that must be remapped when the hash table changes. 
-Used by LB to distribute traffic, it minimizes the number of requests that will be transferred to another server if 
-the existing server goes down.
+Used by Load Balancer to distribute traffic, it minimizes the number of requests that will be transferred to another 
+server if the existing server goes down.
 
 172) Concept of service mesh in microservice architecture? 
 Answer: A service mesh is a network of proxies (sidecars) deployed alongside microservices to handle communication, 
 monitoring, and security concerns. It acts as a control plane for managing traffic and enforcing policies.
 Improves communication, Load Balancing, routing and retries. Enhance observability, centralized logging, 
 metrics collection, and tracing. Strengthens security with features like authentication, authorization and encryption. 
-Benefits of service mesh: Traffic management: Load Balancing, circuit braking, routing. Observability. Security. 
+Benefits of service mesh: Traffic management, Load Balancing, circuit braking, routing, Observability, Security.
 Resilience: Circuit Braking, Retries. Policy Enforcement. Tools Example: Istio.
 
 173) Concept of event-driven architecture in the context of microservices? 
@@ -875,15 +937,16 @@ Loose coupling between services. Enables real-time responsiveness. Supports scal
 Answer: Distributed databases are databases that store data across multiple nodes or servers, often geographically 
 distributed. Each node holds a portion of the data, and these nodes work together to provide data access and redundancy. 
 Enable to access data while maintaining CAP. Supports horizontal scalability. Enforce fault tolerance. Benefits of 
-Distributed Databases: Scalability. High Availability: Data replication. Reduced Latency. Data Consistency: Thorough 
-quorum-based systems or eventual consistency model. Challenges: Complexity. Latency. Consistency Trade-offs: Strong 
-consistency across all nodes at cost of increased latency or decreased availability.
+Distributed Databases: Scalability, High Availability, Data replication, Reduced Latency, Data Consistency: 
+Thorough quorum-based systems or eventual consistency model. 
+Challenges: Complexity, Latency, Consistency Trade-offs" Strong consistency across all nodes at cost of increased latency 
+or decreased availability.
 
 175) Concept of containerization in the context of microservices architecture using Kubernetes? 
 Answer: Containerization involves building an application and its dependencies into a single, portable container image. 
 Containers run consistently across different environments, from dev to prod. Simplifies packaging and deployment.
 Ensures consistency between dev, testing and prod environments. Isolates apps, preventing conflicts between dependencies.
-Benefits: Portability. Resource Efficiency. Consistency. Isolation. Kubernetes is an open-source container orchestration 
+Benefits: Portability, Resource Efficiency, Consistency, Isolation. Kubernetes is an open-source container orchestration 
 platform that automates the deployment, scaling and management of containerized apps. It provides features like load 
 balancing, scaling, self-healing, and rolling updates. Containerization. Kubernetes Deployment: Management desired state 
 of an app, num of replicas, resource allocation, scaling policies. Scaling: Based on resource utilization. 
@@ -932,9 +995,9 @@ Transaction Log is called as Write Ahead Log (WAL). Provides near real-time data
 Transaction Logs and sending to target source (Kafka) immediately.
 
 183) Challenges and solutions related to maintaining data consistency?
-Answer: Challenges: Data Ownership. Distributed Transactions. Data Synchronization. Data Duplication.
-Solutions: Event-Driven Architecture. Saga Pattern. Caching. API Design. Idempotent Operations. Data Versioning.
-Consistency Level. Distributed Tracing and Monitoring. Compensating Actions. Testing and chaos engineering.
+Answer: Challenges: Data Ownership, Distributed Transactions, Data Synchronization, Data Duplication.
+Solutions: Event-Driven Architecture, Saga Pattern, Caching. API Design, Idempotent Operations, Data Versioning.
+Consistency Level, Distributed Tracing and Monitoring, Compensating Actions, Testing and chaos engineering.
 
 184) CDN Solutions & Cloud Technologies? 
 Answer: Cloud Technology: Cloudflare, Fastly, Akamai, Amazon Cloud Front, Google Cloud Platform CDN, Microsoft Azure 
@@ -946,11 +1009,11 @@ Push Strategy: If our content doesn't change frequently we can simply push it on
 
 186) Can you explain challenges associated with data management in microservices architecture, strategy + pattern? 
 Answer: Challenges: Data Consistency, Data Ownership, Data Integrity, Data Access Pattern, Data Volume.
-Strategies: Database per service. Shared Database. Event Sourcing. CQRS: Separate the command (write) and query (read) 
+Strategies: Database per service, Shared Database, Event Sourcing, CQRS: Separate the command (write) and query (read) 
 responsibilities into different components. Command side updates data, and query side retrieves data. 
-API Composition: Service retrieve data from multiple sources and compose it into a single response before sending it to the client. 
-Distribute Cache Redis. Data Versioning and Compatibility: To manage changes to data structures while maintaining 
-backward compatibility for existing services. Data Governance and Ownership.
+API Composition: Service retrieve data from multiple sources and compose it into a single response before sending it to 
+the client. Distribute Cache Redis. Data Versioning and Compatibility: To manage changes to data structures while 
+maintaining backward compatibility for existing services. Data Governance and Ownership.
 
 187) What is Caching? 
 Answer: Hardware or software that stores data. They are used to store responses to network requests, 
@@ -982,7 +1045,8 @@ To achieve: Accuracy, Security, Quality.
 
 193) Black-Box vs White-Box testing, when use? 
 Answer: Black-Box: In the early stages of testing to validate that the software meets its functional requirements.
-White-box: When you need to delve deep into the code to identify defects, security vulnerabilities, or performance bottlenecks.
+White-box: When you need to delve deep into the code to identify defects, security vulnerabilities, or performance 
+bottlenecks.
 
 194) Black-Box Testing Example? 
 Answer: Testing a web apps login page without knowing the underlying code. Testers provide various inputs 
@@ -999,7 +1063,7 @@ This ensures that deployment, logging, and monitoring all conform to the defined
 Such test is called a black-box-test, which checks the behavior of the microservice from the outside.
 
 196) Describe a Bankers Algorithm? 
-Answer: Algorithm used in OS to avoid deadlocks in a multi-processors systems.
+Answer: Algorithm used in OS to avoid deadlocks in multi-processors systems.
 Assumptions: Process has to declare max number of resources which will need. All resources assigned to process at the 
 beginning, but can be released and assigned to other processes. Maintains actual lists of available and used resources. 
 If process want to acquire a resource, algorithm checks whether allocation won't lead to deadlock. Simulates assign 
@@ -1009,9 +1073,13 @@ resources and checks.
 Answer: Compact, fast, binary data format that relies on schemas.
 
 198) Availability how is it obtained? 
-Answer: Load Balancing: distributing the load among multiple servers. Redundancy.
-Data Replication: copying data between several servers. Monitoring and warnings. Automatic failover.
-Disaster Recovery: A plan to restore your system after a disaster.
+Answer: 
+a) Load Balancing: distributing the load among multiple servers. 
+b) Redundancy.
+c) Data Replication: copying data between several servers. 
+d) Monitoring and warnings. 
+e) Automatic failover.
+f) Disaster Recovery: A plan to restore your system after a disaster.
 
 199) Automated Testing in software development and its advantages? 
 Answer: Advantages: Efficiency, Consistency, Regression Testing, Coverage, Continuous Integration.
@@ -1035,22 +1103,27 @@ Query Params Versioning, Media Type Versioning.
 
 203) API Gateways (Definition + Challenges)? 
 Answer: Central entry point for managing and exposing API (Reverse Proxy).
-Security. Simplified Client Interface. Load Balancing. Caching. Analytics and Monitoring.
-Challenges: Service Discovery. Latency. Complexity. Security Config. Scalability. Rate Limiting. Monitoring and Logging.
+Security, Simplified Client Interface, Load Balancing, Caching, Analytics and Monitoring.
+Challenges: Service Discovery, Latency, Complexity, Security Config, Scalability, Rate Limiting. Monitoring and Logging,
 API Versioning. Example, netflix eureka
 
 204) API Gateway Solutions & Cloud Technologies? 
 Answer: Netflix Zuul. Amazon API Gateway. Google Cloud Platform API Gateway. Microsoft Azure API Management.
 
 205) API Definition Example? 
-Answer: REST API over HTTP: Identifying Entities. Mapping Entities to URIs. Defining Resources Representation. 
-Assigning HTTP Methods to operations on resources.
+Answer: REST API over HTTP: 
+a) Identifying Entities. 
+b) Mapping Entities to URIs. 
+c) Defining Resources Representation. 
+d) Assigning HTTP Methods to operations on resources.
 
 206) Apache Kafka Performance? 
-Answer: Partitioning: Data separated into multiple partitions. Replication: Replicating partitions across multiple nodes, 
-improving system reliability and availability. Scalability: Scalable vertically and horizontally. You can increase the 
-number of nodes in the cluster to increase throughput and processing speed. Multiple consumers within one partition. 
-High Throughput: Utilizes memory caching, high-performance communication protocols and data processing algorithms. 
+Answer: 
+a) Partitioning: Data separated into multiple partitions. 
+b) Replication: Replicating partitions across multiple nodes, improving system reliability and availability. 
+c) Scalability: Scalable vertically and horizontally. You can increase the number of nodes in the cluster to increase 
+throughput and processing speed. Multiple consumers within one partition. 
+d) High Throughput: Utilizes memory caching, high-performance communication protocols and data processing algorithms. 
 Low network overhead (data compression). Flexibility (integration with other tools).
 
 207) Apache Kafka data formats? 
@@ -1058,8 +1131,9 @@ Answer: Apache Kafka transmits data in the form of messages, which are usually s
 JSON: readable, easy to process, less efficient than more optimized formats, and takes up more space.
 Avro: A data serialization format that is used in big data projects such as Apache Hadoop. 
 The advantage of avro is that it is very efficient and has a small size compared to other data formats. 
-The disadvantage is that it is more complicated and requires more code to support. Protobuf: Data serialization format 
-offered by Google. MessagePack: Designed to be easy to read by humans and very efficient to process by programs.
+The disadvantage is that it is more complicated and requires more code to support. 
+Protobuf: Data serialization format offered by Google. 
+MessagePack: Designed to be easy to read by humans and very efficient to process by programs.
 In some cases like Kafka Streams, you can also use other data formats such as Java Object Serialization or Apache Trift.
 
 208) Apache Kafka commit offset? 
@@ -1069,8 +1143,8 @@ It ensures that each consumer reads the message only once. Thanks to this, when 
 message has already been processed. Automatic and manual committing of offsets.
 
 209) Apache Avro? 
-Answer: The data serialization system allows data to be transferred between various programming languages and computer systems.
-Avro defines a data serialization format in the form of schemas that describe the structure of the data.
+Answer: The data serialization system allows data to be transferred between various programming languages and computer 
+systems. Avro defines a data serialization format in the form of schemas that describe the structure of the data.
 Schemas are independent of the programming language. Application: distributed systems, data warehouses, stream processing 
 systems, Big Data. Apache Hadoop, Apache Kafka, Apache Spark. Advantages: Compact data format. Independence from programming language.
 Availability of many tools: rich library in various programming languages. In short, Avro is a system that allows you to 
@@ -1082,8 +1156,8 @@ algorithms (AES-128, AES-192, and AES-256). Off note AES considered to be the "g
 used by the U.S. National Security Agency to encrypt top secret information.
 
 211) Advantages and challenges of using microservices architecture in the development of distributed systems?
-Answer: Advantages of microservices: Scalability. Modularity. Flexibility. Rapid Development. Fault isolation.
-Challenges: Complexity. Inter-Service communication. Data Consistency. Deployment and Monitoring. Testing.
+Answer: Advantages of microservices: Scalability, Modularity, Flexibility, Rapid Development, Fault isolation.
+Challenges: Complexity, Inter-Service communication, Data Consistency, Deployment and Monitoring, Testing.
 
 212) What are some of the purposes of a message broker? 
 Answer: Temporarily/permanently store messages between a producer and a consumer Decouple the producers from the consumers.
@@ -1108,12 +1182,14 @@ Answer: It routes users to different locations for higher availability.
 218) What is the most correct statement regarding an API Gateway? 
 Answer: An API Gateway routes user requests to different microservices based on the request's API.
 
-219) Please select the features that an API Gateway typically provides. 
+219) Please select the features that an API Gateway typically provides?
 Answer: Rate Limiting, Protocol Translation, Monitoring, Authorization.
 
 220) What are the benefits of making an application stateless? 
-Answer: a) Lower memory footprint of the application. b) We can easily scale our system horizontally by running a group 
-of identical application instances behind a load balancer. c) Seamless integration and implementation with HTTP protocol.
+Answer: 
+a) Lower memory footprint of the application. 
+b) We can easily scale our system horizontally by running a group of identical application instances behind a load balancer. 
+c) Seamless integration and implementation with HTTP protocol.
 
 221) What is the main purpose of a CDN? 
 Answer: To speed up the delivery of static content to end-users
@@ -1123,15 +1199,17 @@ Answer: The static content is stored on the CDN's edge servers, which are physic
 strategically located in terms of network.
 
 223) How does a CDN improve the availability of our system? 
-Answer: When our data centers are experiencing degraded performance or reduced network capacity, 
-it becomes less noticeable for the users since most of the traffic is going to the CDN.
+Answer: When our data centers are experiencing degraded performance or reduced network capacity, it becomes less noticeable 
+for the users since most of the traffic is going to the CDN.
 
 224) Our security experts were notified that our system is under a DDoS (Distributed Denial of Service) Attack. 
 Which options will be an effective measure to reduce our vulnerability to it? 
-Answer: a) Incorporate a CDN. b) Add rate-limiting to the API Gateway. Incorporating a CDN will help distribute the 
-attack across a very large number of edge servers outside our organization. Additionally, adding rate-limiting will 
-limit the number of traffic our services get at a given time period, eliminating the possibility of one of our services 
-getting overloaded, which may lead to a cascade of failures.
+Answer: 
+a) Incorporate a CDN. 
+b) Add rate-limiting to the API Gateway. 
+Incorporating a CDN will help distribute the attack across a very large number of edge servers outside our organization. 
+Additionally, adding rate-limiting will limit the number of traffic our services get at a given time period, eliminating 
+the possibility of one of our services getting overloaded, which may lead to a cascade of failures.
 
 225) What is a database transaction? 
 Answer: A set of operations that, for an external observer, appears as a single operation that either commits or aborts.
@@ -1144,13 +1222,13 @@ violate any constraints we set on our data.
 Answer: Durability guarantees that once a transaction is complete, its final state will persist and remain inside the database.
 Since this rating record is missing, Durability is the property that was violated by this specific database technology.
 
-228) statements regarding SQL and NoSQL databases? 
+228) Statements regarding SQL and NoSQL databases? 
 Answer: NoSQL databases typically use the same data structures as most programming languages, while SQL databases do not.
 SQL databases are optimized for efficient storage. NoSQL databases are optimized for efficient queries. NoSQL databases 
 are easier to scale horizontally than SQL.
 
 229) Which database operations are typically more limited in NoSQL databases than in SQL databases? 
-Answer: ACID Transactions. Join operations.
+Answer: ACID Transactions and Join operations.
 
 230) Example of use cases for a graph database? 
 Answer: Storing the data about businesses, their locations within zip codes, cities, and countries, and what customers 
@@ -1160,32 +1238,37 @@ have visited those businesses.
 Answer: We get faster read operations at the expense of additional space and slower insert operations.
 
 232) What are the benefits of database replication? 
-Answer: Prevention of a Single Point of Failure. Higher Availability. Potential higher query throughput.
+Answer: Prevention of a Single Point of Failure, Higher Availability, Potential higher query throughput.
 
 233) What is NOT a step in capturing functional requirements? 
 Answer: Deciding which programming language or technology is best for this situation.
 
 234) An API is a contract between? 
-Answer: The engineers who implement the system and the clients that use the system
+Answer: The engineers who implement the system and the clients that use the system.
 
 235) Examples of idempotent operations? 
-Answer: a) Delete a user by ID from the database. b) Update the user's phone number to 902-3232-1111. c) Checking the 
-account balance of a user by ID. d) Multiplying a number by 0.
+Answer: 
+a) Delete a user by ID from the database. 
+b) Update the user's phone number to 902-3232-1111. 
+c) Checking the account balance of a user by ID. 
+d) Multiplying a number by 0.
 
 236) Why are idempotent operations preferable over non-idempotent operations? 
 Answer: Idempotent operations allow safe retries. In a distributed system with unreliable components communicating with 
-each other over an unreliable network, idempotent operations allow us to safely retry them without worrying about adverse effects.
+each other over an unreliable network, idempotent operations allow us to safely retry them without worrying about adverse 
+effects.
 
 237) Examples of scenarios where we need to use API Pagination? 
-Answer: a) An API endpoint that provides a social media feed for a user. b) An API endpoint that provides a list of 
-products in an online store that matches a keyword. c) An API endpoint that provides all the financial transactions in a 
-user's bank account
+Answer: 
+a) An API endpoint that provides a social media feed for a user. 
+b) An API endpoint that provides a list of products in an online store that matches a keyword. 
+c) An API endpoint that provides all the financial transactions in a user's bank account
 
 238) What is the correct statement when comparing between REST and RPC? 
 Answer: RPC looks and feels more like a local method invocation than a REST API call.A Remote Procedure Call uses Location 
-Transparency and abstracts away all the complexities of the marshaling/unmarshaling of data and the management of the network 
-communication between the client and the server. Therefore, a typical RPC looks like a simple method call, no different 
-from any other local method.
+Transparency and abstracts away all the complexities of the marshalling/unmarshalling of data and the management of the 
+network communication between the client and the server. Therefore, a typical RPC looks like a simple method call, no 
+different from any other local method.
 
 239) Statements regarding RPC invocations when compared to local method invocations. 
 Answer: RPC calls are generally slower than local method invocations. RPC calls are generally less reliable than local 
@@ -1295,19 +1378,20 @@ j) Monitoring and Management Patterns: Health Check: Regularly checking the heal
 Circuit Breaker: Preventing repeated attempts to access a service that is known to be failing. Throttling: Controlling 
 the rate at which services are called to avoid overloading. Log Aggregation: Collecting and aggregating logs from different 
 parts of the system. 
-These patterns are often used in combination to address complex integration requirements in a 
-structured and maintainable way. Understanding and implementing these patterns can help ensure that systems are integrated 
-efficiently and can handle the demands of modern, distributed applications.
+These patterns are often used in combination to address complex integration requirements in a structured and maintainable
+way. Understanding and implementing these patterns can help ensure that systems are integrated efficiently and can handle 
+the demands of modern, distributed applications.
 
 256) Database Indexes?
 Answer: A database index is a data structure that improves the performance of database operations by providing quick access
-to specific rows in a table. Indices are used to optimize the performance of `SELECT`, `UPDATE`, and `DELETE` statements.
+to specific rows in a table. Indices are used to optimize the performance of 'SELECT', 'UPDATE', and 'DELETE' statements.
 There are several types of indexes that can be used in a database, including:
 a) B-Tree index: This is the most common type of index used in relational databases. It is a balanced tree data structure 
 that allows for fast searching, insertion, and deletion of data. B-Tree index can be used for both small and large tables, 
 and it's effective for both exact-match and range queries.
 b) Bitmap index: This type of index uses a bitmap to represent the presence or absence of a value in a specific column.
-Bitmap indexes are useful for data warehousing and business intelligence (BI) applications, where queries often involve multiple conditions.
+Bitmap indexes are useful for data warehousing and business intelligence (B-I) applications, where queries often involve 
+multiple conditions.
 c) Hash index: This type of index uses a hash function to map the values in a column to a specific location in the index.
 Hash indexes are useful for exact-match queries, but they are not suitable for range queries.
 d) Clustered index: This type of index determines the physical order of the data in the table. A table can have only one 
@@ -1344,12 +1428,15 @@ tree begins by breaking the data set into smaller blocks and then computing the 
 These hashes are then organized into a binary tree, with each leaf node containing the hash of a data block, and each 
 non-leaf node containing the hash of its child nodes. This structure allows for a very efficient way to verify the integrity 
 of the data set, because a change in any single data block will result in a change to the hash at the root of the tree.
-Merkle trees are used in a variety of applications, such as: a) Cryptocurrency: Merkle trees are used in blockchain 
-technology to ensure the integrity of transactions and to prevent double-spending.
+Merkle-trees are used in a variety of applications, such as: 
+a) Cryptocurrency: Merkle trees are used in blockchain technology to ensure the integrity of transactions and to prevent 
+double-spending.
 b) Distributed systems: Merkle trees are used in distributed systems to efficiently verify the integrity of data that is 
-stored across multiple nodes. c) File systems: Merkle trees are used in file systems to ensure the integrity of large 
-files and to enable efficient detection of changes to the file. d) Cloud storage: Merkle trees are used in cloud storage 
-to ensure the integrity of data that is stored across multiple servers and to enable efficient detection of changes to the data.
+stored across multiple nodes. 
+c) File systems: Merkle trees are used in file systems to ensure the integrity of large 
+files and to enable efficient detection of changes to the file. 
+d) Cloud storage: Merkle trees are used in cloud storage to ensure the integrity of data that is stored across multiple 
+servers and to enable efficient detection of changes to the data.
 In summary, Merkle Trees are used to efficiently verify the integrity of large amounts of data, it works by breaking the 
 data into smaller blocks, computing the hash of each block, and then organizing these hashes into a binary tree. The root 
 node of the tree represents the hash of the entire data set. This structure allows for a very efficient way to verify the 
@@ -1380,17 +1467,15 @@ Reliability: Ensure system uptime and fault tolerance.
 Security: Protect sensitive financial data.
 Compliance: Adhere to financial regulations and logging.
 b) Key Components:
-Market Data Ingestion,Trade Execution Engine, Order Management System (OMS), Risk Management, Monitoring and Alerting.
+Market Data Ingestion, Trade Execution Engine, Order Management System (OMS), Risk Management, Monitoring and Alerting.
 c) System Architecture:
 Market Data Ingestion: Data Sources: Connect to various exchanges and data providers.
 Low Latency Feed Handlers: Process and normalize incoming data streams.
 Message Queue: Use a high-performance message queue (e.g., Kafka) to decouple data ingestion from processing.
-Trade Execution Engine:
-Order Book: Maintain real-time order books for various securities.
+Trade Execution Engine: Order Book: Maintain real-time order books for various securities.
 Matching Engine: Match buy and sell orders with minimal latency.
 Smart Order Routing: Route orders to the best available market considering factors like price, latency, and volume.
-Order Management System (OMS):
-Order Lifecycle Management: Track the state of each order from creation to completion.
+Order Management System (OMS): Order Lifecycle Management: Track the state of each order from creation to completion.
 Persistence: Store order data in a high-performance database (e.g., in-memory databases like Redis for speed, 
 with persistent backups).
 d) Risk Management:
@@ -1417,90 +1502,88 @@ Use a rules engine for dynamic risk evaluation.
 Real-Time Monitoring: Continuously update and monitor risk metrics. Implement circuit breakers to halt trading on anomalies.
 Monitoring and Alerting: Real-Time Monitoring: Collect metrics from all components (CPU, memory, latency, order rates).
 Visualize metrics using Grafana dashboards.
-Alerting:
-Define thresholds and rules for alerts.
-Integrate with incident management tools for prompt response.
-Scalability and Reliability Considerations:
-Load Balancing: Distribute incoming market data and order processing across multiple servers.
-Horizontal Scaling: Add more instances of feed handlers, execution engines, and databases to handle increased load.
-Fault Tolerance: Implement redundancy at each layer to ensure high availability (e.g., multiple data centers).
+Alerting: Define thresholds and rules for alerts. Integrate with incident management tools for prompt response.
+Scalability and Reliability Considerations: Load Balancing: Distribute incoming market data and order processing across 
+multiple servers. Horizontal Scaling: Add more instances of feed handlers, execution engines, and databases to handle 
+increased load.
+Fault Tolerance: Implement redundancy at each layer to ensure high availability (example, multiple data centers).
 Data Consistency: Use distributed transactions or eventual consistency models as appropriate.
 Disaster Recovery: Regularly backup data and have a failover strategy. 
 Security Considerations:
-Encryption: Encrypt sensitive data both at rest and in transit.
-Access Control: Implement fine-grained access controls and authentication mechanisms.
-Regular Audits: Conduct regular security audits and penetration testing.
+a) Encryption: Encrypt sensitive data both at rest and in transit.
+b) Access Control: Implement fine-grained access controls and authentication mechanisms.
+c) Regular Audits: Conduct regular security audits and penetration testing.
 Regulatory Compliance:
-Logging and Auditing: Maintain detailed logs of all trading activities for audit purposes.
-Data Retention: Adhere to regulatory requirements for data retention periods.
-Reporting: Implement automated reporting mechanisms to regulatory bodies.
+a) Logging and Auditing: Maintain detailed logs of all trading activities for audit purposes.
+b) Data Retention: Adhere to regulatory requirements for data retention periods.
+c) Reporting: Implement automated reporting mechanisms to regulatory bodies.
 
 261) Design a real-time fraud detection system for credit card transactions.
 Answer:
-One, Understand the Requirements:
+Understand the Requirements:
 a) Real-Time Processing: Detect fraud as transactions occur.
 b) Scalability: Handle a large volume of transactions.
 c) Accuracy: Minimize false positives and false negatives.
 d) Latency: Ensure minimal impact on transaction processing time.
 e) Flexibility: Update fraud detection models and rules easily.
-Two, Key Components: Transaction Ingestion, Feature Extraction, Fraud Detection Engine, Alerting and Reporting,
+Key Components: Transaction Ingestion, Feature Extraction, Fraud Detection Engine, Alerting and Reporting,
 Model Training and Updating, Monitoring and Logging.
-Three, System Architecture:
-a) Transaction Ingestion: Data Sources: Receive transactions from multiple sources (e.g., POS terminals, online transactions).
+System Architecture:
+a) Transaction Ingestion: Data Sources: Receive transactions from multiple sources (example, POS terminals, online transactions).
 Stream Processing Framework: Use Apache Kafka or AWS Kinesis for handling incoming transaction streams.
-b) Feature Extraction: Data Enrichment: Enhance transaction data with additional information (e.g., user profile, 
+b) Feature Extraction: Data Enrichment: Enhance transaction data with additional information (example, user profile, 
 historical transactions). Real-Time Feature Engineering: Compute features relevant to fraud detection (e.g., transaction 
 amount, frequency, location).
-c) Fraud Detection Engine: Rules-Based Engine: Implement initial rules for simple fraud checks (e.g., transaction amount 
-thresholds). Machine Learning Models: Use pre-trained models to identify complex fraud patterns. Decision Making: Combine 
+c) Fraud Detection Engine: Rules-Based Engine: Implement initial rules for simple fraud checks (example, transaction amount 
+thresholds). Machine Learning Models: Use pre-trained models to identify complex fraud patterns. Decision-Making: Combine 
 results from rules engine and ML models to make a final fraud decision.
-d) Alerting and Reporting: Real-Time Alerts: Notify relevant parties (e.g., fraud analysts, customers) of suspicious 
+d) Alerting and Reporting: Real-Time Alerts: Notify relevant parties (example, fraud analysts, customers) of suspicious 
 transactions. Reporting Dashboard: Provide a dashboard for monitoring fraud detection metrics and trends.
 e) Model Training and Updating: Data Collection: Collect labeled data (fraud/non-fraud) for model training.
 Model Training Pipeline: Use frameworks like Apache Spark for training models on large datasets.
 Continuous Improvement: Regularly update models with new data and feedback.
 d) Monitoring and Logging: System Health Monitoring: Track system performance and health metrics. Transaction Logging: 
 Log details of each transaction and fraud decision for auditing purposes.
-Four, Detailed Design:
+Detailed Design:
 a) Transaction Ingestion: Stream Processing: Use Kafka for handling high-throughput transaction streams.
 Partition transactions by user or region for parallel processing.
 b) Feature Extraction: Data Enrichment: Integrate with user profile databases and historical transaction databases.
 Use Redis for fast lookups of user and transaction history.  
-Feature Engineering: Implement feature extraction in a stream processing framework (e.g., Apache Flink, Spark Streaming).
+Feature Engineering: Implement feature extraction in a stream processing framework (example, Apache Flink, Spark Streaming).
 Example features: average transaction amount, transaction frequency, geographical distance between transactions.
-c) Fraud Detection Engine: Rules-Based Engine: Implement simple rules in a rule engine (e.g., Drools).
+c) Fraud Detection Engine: Rules-Based Engine: Implement simple rules in a rule engine (example, Drools).
 Examples: transactions over a certain amount, transactions from high-risk countries.
 Machine Learning Models: Train models using historical transaction data. Use algorithms suitable for real-time scoring 
-(e.g., logistic regression, random forests). Deploy models using a scalable serving framework (e.g., TensorFlow Serving).
-Decision Making: Use a scoring system to combine rule-based and model-based results. Apply thresholds to classify 
+(example, logistic regression, random forests). Deploy models using a scalable serving framework (example, TensorFlow Serving).
+Decision-Making: Use a scoring system to combine rule-based and model-based results. Apply thresholds to classify 
 transactions as fraudulent or non-fraudulent.
-d) Alerting and Reporting: Real-Time Alerts: Integrate with messaging systems (e.g., email, SMS) for alerts.
-Use a notification service (e.g., AWS SNS) to send alerts.  Reporting Dashboard: Build dashboards using visualization 
-tools (e.g., Grafana, Kibana). Display metrics like number of fraudulent transactions, false positives/negatives.
+d) Alerting and Reporting: Real-Time Alerts: Integrate with messaging systems (example, email, SMS) for alerts.
+Use a notification service (example, AWS SNS) to send alerts. Reporting Dashboard: Build dashboards using visualization 
+tools (example, Grafana, Kibana). Display metrics like number of fraudulent transactions, false positives/negatives.
 e) Model Training and Updating: Data Collection: Collect labeled data from transaction logs and feedback from fraud analysts.
-Model Training Pipeline: Use batch processing frameworks (e.g., Apache Spark) for model training. Automate feature 
+Model Training Pipeline: Use batch processing frameworks (example, Apache Spark) for model training. Automate feature 
 engineering and model evaluation processes. Continuous Improvement: Implement A/B testing to evaluate new models.
 Continuously integrate feedback and update models.
-f) Monitoring and Logging: System Health Monitoring: Use monitoring tools (e.g., Prometheus, Grafana) to track metrics 
+f) Monitoring and Logging: System Health Monitoring: Use monitoring tools (example, Prometheus, Grafana) to track metrics 
 like latency, throughput. Set up alerts for system anomalies. Transaction Logging: Log detailed information about each 
-transaction and fraud decision. Store logs in a scalable storage solution (e.g., Elasticsearch, AWS S3).
-Five, Scalability and Reliability Considerations:
-Horizontal Scaling: Add more instances of stream processors and ML model servers to handle increased load.
-Fault Tolerance: Use Kafka's replication and failover features to ensure message durability.
-Data Consistency: Ensure consistency between transaction data, user profiles, and historical data.
-Disaster Recovery: Implement regular backups and failover strategies.
-Six, Security ConsiderationsL 
-Encryption: Encrypt transaction data both at rest and in transit.
-Access Control: Implement role-based access control for sensitive data and system components.
-Regular Audits: Conduct security audits and penetration testing.
-Seven, Regulatory Compliance:
-Logging and Auditing: Maintain detailed logs of all transactions and fraud detection decisions.
-Data Retention: Comply with data retention policies and regulations.
-Reporting: Implement automated reporting for regulatory compliance.
+transaction and fraud decision. Store logs in a scalable storage solution (example, Elasticsearch, AWS S3).
+Scalability and Reliability Considerations:
+a) Horizontal Scaling: Add more instances of stream processors and ML model servers to handle increased load.
+b) Fault Tolerance: Use Kafka's replication and failover features to ensure message durability.
+c) Data Consistency: Ensure consistency between transaction data, user profiles, and historical data.
+d) Disaster Recovery: Implement regular backups and failover strategies.
+Security Considerations: 
+a) Encryption: Encrypt transaction data both at rest and in transit.
+b) Access Control: Implement role-based access control for sensitive data and system components.
+c) Regular Audits: Conduct security audits and penetration testing.
+Regulatory Compliance:
+a) Logging and Auditing: Maintain detailed logs of all transactions and fraud detection decisions.
+b) Data Retention: Comply with data retention policies and regulations.
+c) Reporting: Implement automated reporting for regulatory compliance.
 
 262) Design a peer-to-peer (P2P) lending platform.
 Answer:
-Step One, Understand the Requirements:
+Understand the Requirements:
 a) User Management: Handle borrower and lender accounts.
 b) Loan Management: Manage loan applications, approvals, and repayments.
 c) Transaction Processing: Handle financial transactions securely.
@@ -1508,9 +1591,9 @@ d) Matching Engine: Match borrowers with lenders based on criteria.
 e) Scalability: Support a growing number of users and transactions.
 f) Security: Ensure data and transaction security.
 g) Compliance: Adhere to financial regulations.
-Step Two, Key Components: User Management System, Loan Management System, Transaction Processing System, Matching Engine,
+Key Components: User Management System, Loan Management System, Transaction Processing System, Matching Engine,
 Notification System, Analytics and Reporting, Monitoring and Logging.
-Step Three, System Architecture:
+System Architecture:
 a) User Management System: User Profiles: Store personal and financial information. Authentication and Authorization: 
 Secure login and role-based access. KYC (Know Your Customer): Verify user identity for compliance.
 b) Loan Management System: Loan Application: Capture loan details and borrower information.  Credit Scoring: Assess 
@@ -1520,23 +1603,23 @@ c) Transaction Processing System: Payment Gateway Integration: Handle deposits a
 funds during loan processing. Ledger: Maintain transaction records.
 d) Matching Engine: Matching Criteria: Match borrowers and lenders based on amount, interest rate, and risk profile.
 Automated Matching: Automatically connect borrowers and lenders.
-e) Notification System: Real-Time Notifications: Notify users of important events (e.g., loan approval, repayment due).
+e) Notification System: Real-Time Notifications: Notify users of important events (example, loan approval, repayment due).
 Communication Channels: Support email, SMS, and in-app notifications.
-f)  Analytics and Reporting: User Analytics: Track user behavior and platform usage. Financial Reports: Generate reports 
+f) Analytics and Reporting: User Analytics: Track user behavior and platform usage. Financial Reports: Generate reports 
 on loans, repayments, and defaults. Compliance Reporting: Ensure adherence to regulatory requirements.
 g) Monitoring and Logging: System Health Monitoring: Track performance and uptime. Transaction Logging: Maintain detailed 
 logs for auditing and compliance.
-Step Four, Detailed Design:
-a) User Management System: User Profiles: Use a relational database (e.g., PostgreSQL) to store user data.
-Ensure data encryption at rest and in transit. Authentication and Authorization:Implement OAuth 2.0 for secure 
-authentication. Use JWT (JSON Web Tokens) for session management. KYC:Integrate with third-party KYC providers 
-(e.g., Jumio, Onfido) for identity verification.
+Detailed Design:
+a) User Management System: User Profiles: Use a relational database (example, PostgreSQL) to store user data.
+Ensure data encryption at rest and in transit. Authentication and Authorization: Implement OAuth 2.0 for secure 
+authentication. Use JWT (JSON Web Tokens) for session management. KYC: Integrate with third-party KYC providers 
+(example, Jumio, Onfido) for identity verification.
 b) Loan Management System: Loan Application: Design a form to capture necessary loan details. Validate input data and 
-store it in a database. Credit Scoring: Integrate with credit bureaus (e.g., Experian, TransUnion) to fetch credit scores.
+store it in a database. Credit Scoring: Integrate with credit bureaus (example, Experian, TransUnion) to fetch credit scores.
 Implement custom algorithms for assessing credit risk. Loan Approval: Define rules and workflows for loan approval.
 Store loan statuses and approval decisions. Repayment Schedule: Generate repayment schedules based on loan terms.
 Send reminders to borrowers for upcoming payments.
-c) Transaction Processing System: Payment Gateway Integration: Use APIs from payment gateways (e.g., Stripe, PayPal) for 
+c) Transaction Processing System: Payment Gateway Integration: Use APIs from payment gateways (example, Stripe, PayPal) for 
 handling transactions. Securely manage payment credentials and transaction data. Escrow Management:
 Implement an escrow system to hold funds until loan disbursement. Release funds based on predefined conditions.
 Ledger: Maintain an immutable ledger of all transactions. Use blockchain technology for added security and transparency 
@@ -1544,26 +1627,27 @@ if required.
 d) Matching Engine: Matching Criteria: Define criteria such as loan amount, interest rate, and risk profile.
 Store borrower and lender preferences. Automated Matching: Implement algorithms to match borrowers with lenders.
 Optimize for minimal matching time and user satisfaction.
-e) Notification System: Real-Time Notifications: Use a message queue (e.g., RabbitMQ, Kafka) to handle notification events.
+e) Notification System: Real-Time Notifications: Use a message queue (example, RabbitMQ, Kafka) to handle notification events.
 Send notifications through email, SMS, or in-app messages. Communication Channels: Integrate with third-party services 
-for email (e.g., SendGrid) and SMS (e.g., Twilio).
+for email (example, SendGrid) and SMS (example, Twilio).
 f) Analytics and Reporting: User Analytics: Collect and analyze user activity data. Use tools like Google Analytics or 
 custom-built solutions. Financial Reports: Generate regular reports on loan performance, repayments, and defaults.
-Use business intelligence tools (e.g., Tableau, Power BI). Compliance Reporting: Implement automated reporting for 
+Use business intelligence tools (example, Tableau, Power BI). Compliance Reporting: Implement automated reporting for 
 regulatory compliance. Ensure data is easily retrievable for audits.
-g) Monitoring and Logging: System Health Monitoring: Use monitoring tools (e.g., Prometheus, Grafana) to track system 
+g) Monitoring and Logging: System Health Monitoring: Use monitoring tools (example, Prometheus, Grafana) to track system 
 metrics. Set up alerts for system anomalies. Transaction Logging: Log all transactions in a secure, immutable storage.
-Use logging frameworks (e.g., ELK stack) for efficient log management.
-Step Five, Scalability and Reliability Considerations: Horizontal Scaling: Deploy microservices architecture to scale 
-individual components independently. Load Balancing: Use load balancers (e.g., AWS ELB) to distribute traffic evenly.
-Fault Tolerance: Implement redundancy and failover mechanisms. Data Consistency: Use distributed databases and ensure 
-eventual consistency. Disaster Recovery: Regularly backup data and have a recovery plan.
-Step Six, Security Considerations: Encryption: Use TLS for data in transit and AES for data at rest.
-Access Control: Implement role-based access control (RBAC). Regular Audits: Conduct security audits and vulnerability 
-assessments.
-Step Seven,  Regulatory Compliance: Data Privacy: Ensure compliance with data protection laws (e.g., GDPR, CCPA).
-Reporting: Automate reporting to regulatory bodies. Audit Trails: Maintain detailed logs for all financial transactions 
-and user activities.
+Use logging frameworks (example, ELK stack) for efficient log management.
+Scalability and Reliability Considerations: Horizontal Scaling: Deploy microservices architecture to scale 
+individual components independently. Load Balancing: Use load balancers (example, AWS ELB) to distribute traffic evenly.
+Fault Tolerance: Implement redundancy and failover mechanisms. 
+Data Consistency: Use distributed databases and ensure eventual consistency. 
+Disaster Recovery: Regularly backup data and have a recovery plan.
+Security Considerations: Encryption: Use TLS for data in transit and AES for data at rest.
+Access Control: Implement role-based access control (RBAC). 
+Regular Audits: Conduct security audits and vulnerability assessments.
+Regulatory Compliance: Data Privacy: Ensure compliance with data protection laws (e.g., GDPR, CCPA).
+Reporting: Automate reporting to regulatory bodies. 
+Audit Trails: Maintain detailed logs for all financial transactions and user activities.
 
 263) How to achieve data consistency in distributed systems?
 Answer: Achieving data consistency in a distributed system is a complex challenge due to the nature of distributed 
@@ -1571,7 +1655,7 @@ computing environments. The key is to ensure that all nodes in the system see th
 least in a way that meets the application's requirements for consistency. Here are several strategies and techniques to 
 achieve data consistency in distributed systems:
 a) Consistency Models: Different consistency models offer various guarantees about the visibility and ordering of updates:
-Strong Consistency: Guarantees that once a write is completed, all subsequent reads will reflect that write. Implementing 
+Strong Consistency: Guarantees that once write is completed, all subsequent reads will reflect that write. Implementing 
 strong consistency often involves techniques like:
 Two-Phase Commit (2PC): Ensures all participating nodes agree on a transaction's commit or abort.
 Paxos/Raft: Consensus algorithms used for ensuring agreement among a distributed set of nodes.
@@ -1586,29 +1670,30 @@ Version Vectors: Track the causal relationships between updates.
 Logical Clocks: Use timestamps or vector clocks to capture causal relationships.
 Read/Write Quorums: Using quorum-based approaches, a read or write operation must obtain permission from a majority of nodes.
 Quorum Reads/Writes: Require reads to contact a majority of replicas and writes to contact a different majority.
-Tunable Consistency: Allowing clients to specify the level of consistency required for a particular operation (e.g., in Cassandra).
-b)Techniques for Data Consistency
+Tunable Consistency: Allowing clients to specify the level of consistency required for a particular operation (example in Cassandra).
+b)Techniques for Data Consistency.
 Replication Protocols: Ensure that all replicas of a piece of data are consistent with each other.
-Synchronous Replication: Writes are replicated to all nodes before acknowledging the write to the client.
+Synchronous Replication: Writes are replicated to all nodes before acknowledging write to the client.
 Asynchronous Replication: Writes are acknowledged immediately, and replication occurs in the background.
 Conflict Detection and Resolution: In eventual consistency models, conflicts may arise and need to be resolved.
 Last Write Wins (LWW): The most recent write is considered authoritative.
 Custom Conflict Resolution Logic: Application-specific rules to resolve conflicts.
-Operational Transformation (OT) or CRDTs: Structures that allow concurrent updates without conflicts (e.g., Conflict-Free 
-Replicated Data Types).
+Operational Transformation (OT) or CRDTs: Structures that allow concurrent updates without conflicts (example
+Conflict-Free Replicated Data Types).
 Atomicity and Isolation:
-Distributed Locking: Ensure that only one node can modify a piece of data at a time (e.g., using ZooKeeper).
+Distributed Locking: Ensure that only one node can modify a piece of data at a time (example, using ZooKeeper).
 Optimistic Concurrency Control: Allow concurrent transactions but check for conflicts before committing.
 Pessimistic Concurrency Control: Lock data before transaction processing to prevent conflicts.
 c) CAP Theorem:
 The CAP theorem states that a distributed system can provide only two of the following three guarantees at the same time:
 Consistency: Every read receives the most recent write.
 Availability: Every request receives a response, without guarantee that it contains the most recent write.
-Partition Tolerance: The system continues to operate despite an arbitrary number of messages being dropped or delayed by the network.
+Partition Tolerance: The system continues to operate despite an arbitrary number of messages being dropped or delayed 
+by the network.
 In practice, systems must balance these trade-offs based on their specific requirements. For instance:
-CP Systems: Prioritize consistency and partition tolerance (e.g., HBase).
-AP Systems: Prioritize availability and partition tolerance (e.g., Cassandra).
-d) Practical Examples
+CP Systems: Prioritize consistency and partition tolerance (example, HBase).
+AP Systems: Prioritize availability and partition tolerance (example, Cassandra).
+d) Practical Examples:
 Apache Kafka: Uses replication and configurable consistency settings to balance consistency and availability.
 Apache Cassandra: Uses tunable consistency levels, allowing users to choose between consistency and availability.
 Google Spanner: Uses TrueTime API to provide strong consistency across distributed nodes.
@@ -1660,32 +1745,33 @@ Denormalization: In some cases, to optimize read performance, denormalization mi
 tables to reduce the number of joins, at the cost of increased redundancy and potential data anomalies.
 
 266) Databases Choosing the Right Database?
-Answer: Relational vs. NoSQL: Choose the type of database that best fits your use case.
-Relational Databases (RDBMS): Use for structured data with relationships, requiring ACID compliance (e.g., MySQL, PostgreSQL).
-NoSQL Databases: Use for unstructured or semi-structured data, scalability, and flexibility (e.g., MongoDB, Cassandra, Redis).
+Answer: Relational versus NoSQL: Choose the type of database that best fits your use case.
+Relational Databases (RDBMS): Use for structured data with relationships, requiring ACID compliance (example, MySQL, PostgreSQL).
+NoSQL Databases: Use for unstructured or semi-structured data, scalability, and flexibility (example, MongoDB, Cassandra, Redis).
 
 267) Databases Schema Design?
-Answer: Data Modeling: Create an Entity-Relationship Diagram (ERD) to visualize entities, attributes, and relationships.
+Answer: Data Modeling: Create an Entity-Relationship Diagram (E-R-D) to visualize entities, attributes, and relationships.
 Primary Keys: Ensure every table has a primary key that uniquely identifies each record.
 Foreign Keys: Use foreign keys to maintain referential integrity between tables.
 
 268) Databases Indexing?
-Answer: Indexes: Use indexes to improve query performance. Create indexes on columns frequently used in WHERE clauses, 
-JOIN operations, and ORDER BY clauses. Composite Indexes: Sometimes, a combination of columns might be needed for 
-indexing to cover specific queries. Avoid Over-Indexing: Too many indexes can slow down write operations (INSERT, UPDATE, DELETE).
+Answer: Indexes: Use indexes to improve query performance. Create indexes on columns frequently used in 'WHERE' clauses, 
+'JOIN' operations, and 'ORDER BY' clauses. Composite Indexes: Sometimes, a combination of columns might be needed for 
+indexing to cover specific queries. Avoid Over-Indexing: Too many indexes can slow down write operations ('INSERT', 
+'UPDATE', 'DELETE').
 
 269) Databases Data Integrity?
-Answer: Constraints: Use constraints (e.g., NOT NULL, UNIQUE, CHECK) to enforce rules at the database level.
+Answer: Constraints: Use constraints (example 'NOT NULL', 'UNIQUE', 'CHECK') to enforce rules at the database level.
 Transactions: Use transactions to ensure a series of operations either completely succeed or fail (ACID properties: 
 Atomicity, Consistency, Isolation, Durability).
 
 270) Databases Scalability?
-Answer: Vertical Scaling: Increase the capacity of a single server (e.g., adding more CPU, RAM).
-Horizontal Scaling: Distribute the load across multiple servers (e.g., sharding in NoSQL databases, database clustering).
+Answer: Vertical Scaling: Increase the capacity of a single server (example, adding more CPU, RAM).
+Horizontal Scaling: Distribute the load across multiple servers (example, sharding in NoSQL databases, database clustering).
 
 271) Databases Backup and Recovery?
-Answer: Regular Backups: Schedule regular backups to prevent data loss.
-Disaster Recovery Plan: Have a plan for recovering data in case of a failure.
+Answer: Regular Backups: Schedule regular backups to prevent data loss. Disaster Recovery Plan: Have a plan for 
+recovering data in case of a failure.
 
 272) Databases Security?
 Answer: Authentication and Authorization: Ensure proper user authentication and authorization to control access.
@@ -1695,21 +1781,21 @@ SQL Injection: Protect against SQL injection attacks by using prepared statement
 273) Databases Performance Optimization?
 Answer: Query Optimization: Write efficient queries and use query optimization tools provided by the database.
 Load Balancing: Distribute database requests to balance the load and improve performance.
-Caching: Implement caching strategies to reduce database load (e.g., using Redis or Memcached).
+Caching: Implement caching strategies to reduce database load (example, using Redis or Memcached).
 
 274) Databases Monitoring and Maintenance?
-Answer: Monitoring Tools: Use monitoring tools to track database performance and health (e.g., slow query logs, 
+Answer: Monitoring Tools: Use monitoring tools to track database performance and health (example, slow query logs, 
 performance dashboards). Regular Maintenance: Perform regular maintenance tasks such as updating statistics, reindexing, 
 and purging old data.
 
 275) Databases Monitoring and Maintenance?
-Answer: Monitoring Tools: Use monitoring tools to track database performance and health (e.g., slow query logs, 
+Answer: Monitoring Tools: Use monitoring tools to track database performance and health (example, slow query logs, 
 performance dashboards). Regular Maintenance: Perform regular maintenance tasks such as updating statistics, reindexing, 
 and purging old data. 
 
 276) Databases Compliance?
 Answer: Regulatory Requirements: Ensure your database design and data handling practices comply with relevant regulations 
-and standards (e.g., GDPR, HIPAA).
+and standards (example, GDPR, HIPAA).
 
 277) Can you explain concept of oauth?
 Answer: OAuth (Open Authorization) is an open standard for access delegation, commonly used as a way to grant websites 
@@ -1740,7 +1826,7 @@ Authorization Code Grant: Used for server-side applications where the client sec
 exchanges an authorization code for an access token.
 Steps: The client directs the user to the authorization server. The user logs in and consents. The authorization server 
 redirects the user back to the client with an authorization code. The client exchanges the code for an access token.
-Implicit Grant: Used for client-side applications (e.g., single-page apps) where the client secret cannot be securely 
+Implicit Grant: Used for client-side applications (example, single-page apps) where the client secret cannot be securely 
 stored. The access token is returned directly to the client without an authorization code.
 Steps: The client directs the user to the authorization server. The user logs in and consents.
 The authorization server redirects the user back to the client with an access token in the URL fragment.
