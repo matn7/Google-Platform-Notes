@@ -1702,7 +1702,77 @@ d) 'successThreshold': 1.
 e) 'failureThreshold': 3.
 
 34) ConfigMap & Secret?
+Answer: To keep the configuration data separately from the application: ConfigMap, Secret.
+ConfigMap: non-sensitive data, 'application.properties'.
+Secret: sensitive data, 'credentials'.
+Inject all the key/value pairs as env variables. Inject one of the key value as env variable value. Inject key's value
+as a file in a specific location.
+
+35) ConfigMap?
+Answer: Properties as Key/Value. Properties as file. Store any binary file. Max size 1MB.
+
+36) Secret?
+Answer: Same as ConfigMap - but for sensitive data. Value is base64 encoded. Use cases: ssh hey files, basic credentials,
+service accounts, etc.
+
+37) Cluster?
+Answer: Workload requires: Compute instances. Storage: Life cycle of storage should be separated from Pod life cycle.
+
+38) Persistent Volumes?
+Answer: Aka PV. Storage abstraction, Volume plugins. Provides storage - Similar to node in the cluster which provides
+CPU/Memory.
+
+39) Storage Terminologies?
 Answer:
+a) Storage Class: Type of storage. Example: AWS EBS SSD - super-fast. AWS EBS disk based - slow. GCP - PD standard.
+GCP - PD ssd. GCP - PD extreme.
+b) Persistent Volume Claim: Request to create PV. Resource which links PV and Pod. Example: Request to create 5 GB of 
+GCP PD ssd for application.
+c) Persistent Volume: Actual storage created for a specific storage class. Example: 5 GB of GCP PD ssd. 100 GB of GCP
+PD standard.
+
+40) Access Modes?
+Answer:
+a) ReadWriteOnce - per node.
+b) ReadWriteOncePod - per pod.
+c) ReadOnlyMany.
+d) ReadWriteMany.
+
+41) StatefulSet?
+Answer: Same as Deployment - but for a Stateful workload. Each pod will have unique / stable hostname. StatefulSet is
+NOT just for databases. Instead, it is for any workload which wants sticky identity.
+
+42) Headless Service?
+Answer: Service will not have any IP & Kube-proxy does NOT do any load balancing. DNS entries would be created for
+<POD-NAME>.<SVC-NAME>.
+
+43) Consequences of Exceeding Limit?
+Answer: 
+a) Memory: Kubelet will kill the container and restart.
+b) CPU: Container will NOT be killed. Throttled.
+
+44) Ingress?
+Answer: Service: ClusterIP, NodePort (30000-32767), LoadBalancer (AWS, GCP, etc.).
+Smart Router / Proxy to bring traffic into the cluster. Contains a set of routing rules. We need Ingress Controller to
+manage Ingress.
+
+45) Ingress Controller?
+Answer: Ingress Controller manages Ingress resources (like Deployment Controller). Implements the Ingress Rules.
+There are multiple implementations: AWS, GCP.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

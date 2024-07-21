@@ -1851,10 +1851,25 @@ Delegated Access: Allowing applications to perform actions on behalf of the user
 calendar data).
 
 
+NEW SECTION - Microservice Architecture Patterns
 
+1) Design Patterns!
+Answer: A set of best practices / solutions / structured approach for problems in Software Design. OOP / Functional /
+Cloud / Integration / Resilience / Event Driven Architecture.
 
+2) Integration Patterns?
+Answer: Gateway Aggregator Pattern, Scatter Gather Pattern, Orchestrator Pattern (parallel workflow), Orchestrator
+Pattern (sequential workflow), Splitter Pattern.
 
+3) Resilient Pattern?
+Answer: Timeout Pattern, Retry Pattern, Circuit Breaker Pattern, Rate Limiter Pattern, Bulkhead Pattern.
 
+4) Scatter Gather Pattern?
+Answer: ~aggregator. It broadcasts the message to all the recipients and then collects the response. Use case:
+Flight App (Google Flight), collecting flights from Frontier Airlines, Delta, United.
+
+5) Orchestrator Pattern?
+Answer: Aggregator + additional business logic to provide a workflow.
 
 
 
