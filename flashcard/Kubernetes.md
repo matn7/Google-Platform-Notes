@@ -1761,7 +1761,14 @@ Answer: Ingress Controller manages Ingress resources (like Deployment Controller
 There are multiple implementations: AWS, GCP.
 
 
+NEW SECTION - Docker From Scratch
 
+1) Kernel?
+Answer: Heart of the OS. Like Car Chassis.
+
+2) What is Docker?
+Answer: An open source platform for: packaging the app + all the dependencies + run time. Running the (dockerized)
+applications. Separate applications from the underlying host.
 
 
 

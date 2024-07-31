@@ -1105,7 +1105,7 @@ Query Params Versioning, Media Type Versioning.
 Answer: Central entry point for managing and exposing API (Reverse Proxy).
 Security, Simplified Client Interface, Load Balancing, Caching, Analytics and Monitoring.
 Challenges: Service Discovery, Latency, Complexity, Security Config, Scalability, Rate Limiting. Monitoring and Logging,
-API Versioning. Example, netflix eureka
+API Versioning. Example, netflix eureka.
 
 204) API Gateway Solutions & Cloud Technologies? 
 Answer: Netflix Zuul. Amazon API Gateway. Google Cloud Platform API Gateway. Microsoft Azure API Management.
@@ -1850,6 +1850,512 @@ Facebook APIs).
 Delegated Access: Allowing applications to perform actions on behalf of the user (e.g., a calendar app accessing your 
 calendar data).
 
+278) Cache?
+Answer: A cache is a small and fast memory storage that is used to temporarily store frequently accessed data.
+The main purpose of a cache is to reduce the number of times that a slower memory or storage device
+(such as a hard drive or a remote server) needs to be accessed.
+By keeping a copy of frequently accessed data in a cache, the system can quickly retrieve the data from the cache
+instead of having to access the slower memory or storage device.
+Caching is a common technique used in system design to improve the performance of a system.
+Caches can be implemented at various levels of a system, such as at the hardware level (e.g. CPU cache),
+the operating system level (e.g. file system cache), and the application level (e.g. web application cache).
+In system design, it is important to consider the size of the cache and the replacement policy used to decide which
+data should be evicted from the cache when it becomes full.
+Some common replacement policies include: Least Recently Used (LRU), Most Recently Used (MRU), Least Frequently Used (LFU).
+Caching can also include distributed caching systems, where a group of caching servers work together to cache data and
+distribute the load.
+This can be beneficial in a distributed system where data needs to be quickly accessible from multiple locations.
+Overall, the use of cache in system design can greatly improve the performance of a system by reducing the number of
+times that slow memory or storage devices need to be accessed.
+
+279) Distributed Hash Table?
+Answer: A Distributed Hash Table (DHT) is a type of distributed system that provides a lookup service similar to a hash table.
+It allows a group of nodes to efficiently and fault-tolerantly store and retrieve key-value pairs.
+In a DHT, each key is associated with a unique value, and keys are distributed among the nodes in the network in a way
+that allows for efficient lookups.
+When a key is added to the DHT, it is assigned to a specific node, called a "successor," which is responsible for
+Storing the key-value pair.
+DHTs are particularly useful in distributed systems, such as peer-to-peer networks, where the nodes may join or leave
+the network dynamically.
+They provide a way for nodes to efficiently find the nodes responsible for storing a particular key without the need
+for a centralized directory or lookup service.
+Some popular DHTs are Chord, Pastry, and Kademlia.
+They are used in various P2P systems like BitTorrent, BitSwap, and IPFS.
+DHTs are also used in distributed databases, Cloud storage, Content delivery networks, and other distributed systems
+where data needs to be accessible and retrievable from multiple locations.
+
+280) Routers?
+Answer: A router is a networking device that forwards data packets between computer networks.
+It is connected to at least two networks, commonly two LANs (Local Area Networks) or WANs (Wide Area Networks),
+and decides which route to send information packets based on its current understanding of the state of the networks
+it is connected to.
+Routers use routing tables to determine the best path for forwarding the packets, and can also perform other functions
+such as network address translation (NAT) and VPN support.
+Routers use protocols such as the Border Gateway Protocol (BGP) and Open Shortest Path First (OSPF) to communicate
+with other routers and build a map of the network.
+Routers use various algorithms to determine the best path for forwarding packets.
+Some commonly used algorithms include:
+a) Distance-vector algorithms: These algorithms use metrics such as hop count to determine the best path.
+Examples include Routing Information Protocol (RIP) and Interior Gateway Routing Protocol (IGRP).
+b) Link-state algorithms: These algorithms maintain a complete map of the network, including the state of all links,
+and use this information to determine the best path. Examples include Open Shortest Path First (OSPF) and 
+Intermediate System to Intermediate System (IS-IS).
+c) Hybrid algorithms: These algorithms combine elements of both distance-vector and link-state algorithms.
+Examples include Enhanced Interior Gateway Routing Protocol (EIGRP).
+d) Path-vector algorithms: These algorithms are based on Border Gateway Protocol (BGP) and use the path information to 
+determine the best path. Bellman-Ford Algorithm: It is a distance-vector algorithm which is used to find the shortest 
+path from a single source node to all other nodes in a graph.
+Dijkstra Algorithm: It is also a distance-vector algorithm but it is used for finding the shortest path from a single 
+source node to all other nodes in a weighted graph where the edges have non-negative weights.
+These are some of the algorithms that are used in routers to find paths, and the choice of algorithm depends on the
+specific requirements of the network and the routing protocol being used.
+
+281) Java Compiler?
+Answer: The Java compiler is a program that translates Java source code into Java bytecode, which is a platform-independent
+representation of the source code.
+The Java bytecode can then be executed by the Java Virtual Machine (JVM) on any platform.
+The basic steps of how the Java compiler works are:
+a) Lexical analysis: The Java source code is scanned, and the compiler divides it into a sequence of tokens.
+Tokens are the basic building blocks of the source code, such as keywords, operators, and identifiers.
+b) Syntactic analysis: The compiler builds a tree-like structure called a parse tree from the sequence of tokens.
+This parse tree represents the syntactic structure of the source code, and is used to check for grammatical
+errors in the code.
+c) Semantic analysis: The compiler performs semantic analysis on the parse tree, checking for semantic errors such as 
+type mismatches and undefined variables.
+d) Intermediate code generation: The compiler generates Java bytecode, which is a platform-independent representation of 
+the source code.
+e) Code optimization: The compiler performs various optimizations on the bytecode, such as removing dead code, 
+constant folding, and inlining functions. 
+f) Class file generation: The compiler generates a class file, which is a file that contains the bytecode and metadata 
+required by the JVM to execute the code.
+g) Linking: The compiler links the generated class file with any required libraries and creates an executable file.
+Java compiler is a multi-pass compiler, which goes through the input source code multiple times, and at each pass,
+it performs a specific task such as lexical analysis, semantic analysis, and bytecode generation.
+
+282) Compilers?
+Answer: A compiler is a program that translates source code written in a high-level programming language into machine code
+that can be executed by a computer. The process of translation is known as compilation.
+The basic steps of how a compiler works are:
+a) Lexical analysis: The source code is scanned, and the compiler divides it into a sequence of tokens.
+Tokens are the basic building blocks of the source code, such as keywords, operators, and identifiers.
+b) Syntactic analysis: The compiler builds a tree-like structure called a parse tree from the sequence of tokens.
+This parse tree represents the syntactic structure of the source code, and is used to check for grammatical errors in the code.
+c) Semantic analysis: The compiler performs semantic analysis on the parse tree, checking for semantic errors such as 
+type mismatches and undefined variables.
+d) Intermediate code generation: The compiler generates an intermediate code representation of the source code, such as 
+assembly language or bytecode.
+e) Code optimization: The compiler performs various optimizations on the intermediate code, such as removing dead code,
+constant folding, and inlining functions.
+f) Code generation: The compiler generates machine code from the optimized intermediate code.
+g) Linking: The compiler links the generated machine code with any required libraries and creates an executable file.
+Some compilers are single pass compiler, other are multi-pass, the multi-pass compiler goes through the input source
+code multiple times, and at each pass, it performs a specific task such as lexical analysis, semantic analysis, and code
+generation.
+
+283) MapReduce?
+Answer: MapReduce is a programming model and an associated implementation for processing and generating large data sets.
+It was developed by Google and is a core component of the Apache Hadoop project.
+The key concept of MapReduce is to split a large data set into smaller chunks, which are then processed in parallel
+by multiple machines.
+The "Map" step applies a user-specified function to each data chunk to transform it into a set of intermediate
+key-value pairs.
+The "Reduce" step takes these intermediate key-value pairs and combines them to produce a smaller set of final
+key-value pairs.
+MapReduce is widely used in industry for big data processing, including tasks such as data mining, machine learning,
+and log processing.
+It is also used for processing large data sets in fields such as finance, e-commerce, and social media.
+The distributed computing nature of MapReduce makes it a popular choice for processing large data sets that cannot be
+handled by a single machine.
+
+284) For loop problem?
+Answer: The "for loop problem" is a term used to describe a specific type of performance issue that can occur when using
+a for loop in a programming language like Java.
+The problem arises when a loop iterates over a large number of elements, such as a large array or a collection,
+and performs a significant amount of computation or I/O on each element.
+The problem is that, as the number of elements increases, the total time spent in the loop increases linearly,
+which leads to poor performance and long wait times for the operation to complete.
+This can be particularly problematic in concurrent or multithreaded environments, where multiple threads may be blocked
+waiting for the loop to complete.
+There are several ways to solve the for loop problem:
+a) Parallelize the loop: By using a parallel for-loop construct or a parallel stream API, you can divide the work of
+the loop across multiple threads or processors, which can significantly speed up the loop.
+b) Optimize the loop: By optimizing the operations performed within the loop, such as reducing the number of function
+calls or minimizing the amount of memory allocation, you can reduce the overall time spent in the loop.
+c) Use an iterator: Instead of using a for-loop, you can use an iterator, which allows you to access elements
+one at a time, rather than loading all elements into memory at once.
+d) Use a database or external storage: If the data is very large, it may be more efficient to store it in a database
+or external storage system, and retrieve it in smaller chunks using a database cursor or pagination.
+e) Use a specialized library: There are libraries available that are specifically designed to handle large data sets
+and perform operations on them in a more efficient way.
+f) It's worth noting that the "for loop problem" is not always a problem and can be perfectly fine for small data sets or
+for operations that are not performance-critical.
+g) However, for large data sets or for operations that need to be performed quickly, it can be important to consider
+alternative solutions to avoid poor performance.
+
+285) Feature sets?
+Answer: A feature set is a collection of features, or variables, that are used as input for a machine learning model.
+These features are chosen because they are believed to be relevant to the problem being solved, and they are used to
+represent the data in a way that the model can understand and learn from.
+For example, in a machine learning model that is used to predict the price of a house, the feature set might include
+variables such as the number of bedrooms, the square footage of the house, the age of the house, and the neighborhood it
+is located in.
+The feature set is one of the most important aspects of building a machine learning model, as the quality and relevance
+of the features can greatly impact the performance of the model.
+Choosing the right features for a model can be a challenging task, and it often requires domain expertise and
+experimentation.
+Feature sets can be classified into two types:
+a) Numeric Feature: They are numerical values that can be used as input for a model, such as age, salary, etc.
+b) Categorical Feature: They are non-numerical values, such as name, color, etc.
+Additionally, there are other types of Feature sets like:
+a) Binary Feature : They take only two values (0 or 1)
+b) One-Hot Encoding : This is used to represent a categorical variable with n levels as n binary variables
+c) Polynomial Feature : This is used to add non-linearity to a model 
+When creating a feature set, it is also important to consider the size of the feature set, as including too many
+features can lead to overfitting, where the model performs well on the training data but poorly on new, unseen data.
+
+286) Load Balancers?
+Answer: Load balancers are network devices that distribute incoming network traffic across multiple servers.
+They work by routing client requests to different servers based on a set of rules or algorithms.
+The goal is to distribute the workload evenly across servers and ensure that no single server is overwhelmed with too
+many requests.
+Here's a general overview of how a load balancer works:
+a) A client sends a request to the load balancer's IP address or hostname.
+b) The load balancer receives the request and uses an algorithm to determine which server should handle the request.
+c) The algorithm can be based on the current server load, the number of active connections, or the geographic
+location of the client.
+d) The load balancer routes the request to the chosen server.
+e) The server processes the request and sends a response back to the load balancer.
+f) The load balancer forwards the response back to the client. 
+There are several types of load balancers and algorithms that can be used, such as:
+a) Round-robin: it distributes requests to servers in a circular fashion, sending the first request to the first
+server, the second request to the second server, and so on.
+b) Least connections: it distributes requests to the server with the least number of active connections.
+c) IP hash: it distributes requests to servers based on the hash value of the client's IP address.
+d) Least response time: it distributes requests to the server with the lowest response time.
+e) Layer 7 Load Balancing: it distributes requests based on application layer data, such as the URI or the hostname.
+f) DNS Load balancing: it distributes requests based on the DNS resolution, it can be used for global load balancing.
+Load balancers can also provide other features such as SSL offloading, caching, compression, and health checks to
+ensure that only healthy servers are receiving traffic.
+There are several types of load balancers, including:
+a) Hardware load balancers: These are physical appliances that are installed on-premises. They are typically more 
+expensive than software load balancers, but offer better performance and more advanced features.
+Examples include F5 BIG-IP and Cisco ACE.
+b) Software load balancers: These are load balancers that run on software, and can be installed on a server or in the cloud.
+They are typically less expensive than hardware load balancers, but may not offer the same level of performance or features.
+Examples include HAProxy, NGINX, and Amazon Elastic Load Balancer.
+c) Cloud-based load balancers: These load balancers are offered by cloud providers, and are typically easy to set up and manage.
+Examples include Amazon Elastic Load Balancer, Google Cloud Load Balancer, and Microsoft Azure Load Balancer.
+
+287) Domain name servers?
+Answer: A Domain Name Server (DNS) is a system that translates human-friendly domain names, such as 'www.example.com',
+into the IP addresses that computers use to locate each other on the internet.
+DNS servers work by maintaining a database of domain names and their corresponding IP addresses.
+When a client, such as a web browser, needs to resolve a domain name to an IP address, it sends a request to a DNS server.
+The DNS server then looks up the IP address associated with the domain name in its database and returns it to the client.
+DNS servers are organized in a hierarchical structure, with different levels of servers responsible for different
+levels of the domain name system.
+At the top level, there are the root servers, which maintain a list of the top-level domains (TLDs)
+such as **.com**, **.org**, and **.edu**.
+Below the root servers are the TLD servers, which are responsible for maintaining a list of the domain names within a
+specific TLD.
+These servers are also responsible for providing the IP address of the authoritative DNS server for a specific
+domain name.
+Finally, at the bottom level, there are the authoritative DNS servers, which are responsible for maintaining the
+records for a specific domain name and providing the IP addresses associated with that domain name.
+When a client sends a request to resolve a domain name, the request is sent to the root servers, which then directs
+the request to the TLD servers, and then to the authoritative DNS server for the specific domain name.
+Caching DNS servers are also used to speed up the resolution process by storing recently looked-up domain names and
+their corresponding IP addresses.
+This way, if a client requests the same domain name again, the caching DNS server can return the IP address without
+having to query the authoritative DNS server again.
+It's important to note that DNS servers also have a role in providing security by making sure requests are coming from
+authorized sources and also by providing additional security features like DNSSEC which ensures that the response from
+the DNS server is authentic and not tampered.
+There are several Linux commands that can be used to troubleshoot DNS issues:
+a) 'nslookup': This command allows you to query DNS servers and retrieve information about a domain name.
+For example, 'nslookup www.example.com' will return the IP address associated with the domain name.
+b) 'dig': This command is similar to nslookup and allows you to query DNS servers and retrieve information about a
+domain name. For example, 'dig www.example.com' will return the IP address associated with the domain name.
+c) 'host': This command is similar to 'nslookup' and 'dig', it allows you to query DNS servers and retrieve information
+about a domain name. For example, 'host www.example.com' will return the IP address associated with the domain name.
+d) 'ping': This command allows you to test the reachability of a host by sending ICMP echo request packets and measuring
+the response time. For example, 'ping www.example.com' will test the reachability of the host associated with the domain name.
+e) 'traceroute': This command shows the path a packet takes to reach the destination. It's useful to troubleshoot routing issues.
+For example, 'traceroute www.example.com' will show the path a packet takes to reach the host associated with the domain name.
+f) 'nsupdate': This command allows you to update DNS records dynamically, useful for cases when you need to update
+the IP address associated with a domain name.
+g) 'resolvectl': This command is useful to check the DNS configuration and status on a Linux system. For example, 
+'resolvectl query example.com' will show the DNS server the system is using to resolve the domain name.
+It's important to note that these commands are just a small subset of the available commands and the specific options
+available can vary depending on the Linux distribution.
+It's also a good practice to check the system's log files to get additional information on what's happening,
+the log files usually are in '/var/log/' directory, and you can use commands like 'tail -f /var/log/messages'
+to see the log files in real-time.
+
+288) Firewalls?
+Answer: A firewall is a security device that controls incoming and outgoing network traffic based on a set of rules and other
+criteria. Firewalls are typically deployed at the gateway to a network and are designed to block unauthorized access while
+allowing authorized communications.
+There are several different types of firewalls, including network firewalls, host-based firewalls, and application-based firewalls.
+a) Network firewalls are typically hardware devices that sit at the edge of a network and control traffic based on
+IP addresses and ports.
+b) Host-based firewalls are software applications that run on individual hosts and control traffic based on the
+application that is generating or receiving the traffic.
+c) Application-based firewalls are specialized firewalls that are designed to control traffic for specific
+applications, such as a web server or a database server.
+To configure a firewall, you will typically need to access the firewall's management interface,
+which can be a web-based interface, a command-line interface, or a combination of both.
+From the management interface, you can create and edit firewall rules, view logs, and perform other tasks.
+The specific steps involved in configuring a firewall will depend on the type of firewall and the vendor that
+provided it, but some general steps include:
+a) Defining the firewall's role and scope (e.g. perimeter firewall, internal firewall)
+b) Configuring the interfaces and zones
+c) Creating rules and policies to control traffic
+d) Enabling logging and monitoring for security events
+It's also important to regularly review and update the firewall configuration to ensure it remains aligned with the
+organization's security policies and to address any security threats that may have emerged.
+In Linux, firewall configuration is typically stored in the **iptables** configuration file, which is usually located
+at '/etc/sysconfig/iptables' or '/etc/iptables/iptables.rules'.
+This file contains the rules that are loaded into the iptables firewall when the system starts up.
+Another way to persist firewall rules is using service that loads iptables rules on startup like iptables-persistent
+(for Ubuntu and Debian) or firewalld (for Red Hat and CentOS) which provides a convenient way to manage firewall rules
+and automatically load the rules at boot time.
+In the case of firewalld, firewall rules are stored in XML files in the '/usr/lib/firewalld/zones/' directory,
+and the active zone's configuration can be found in '/etc/firewalld/zone/'.
+It's important to note that different Linux distributions may store firewall configuration in different locations,
+so it's always a good idea to consult the documentation for your specific distribution to determine the location of the
+iptables configuration file.
+
+289) VPN?
+Answer: A Virtual Private Network (VPN) is a technology that allows users to securely connect to a private network over
+the Internet. It creates a secure, encrypted "tunnel" between a user's device and the VPN server, which protects the data as it
+travels over the public network. When a user connects to a VPN, the user's device establishes a connection with the VPN server.
+The VPN server then authenticates the user and assigns the device a new IP address from the VPN server's IP address pool.
+Once the connection is established, all of the user's internet traffic is routed through the VPN server,
+and the VPN server acts as a proxy for the user's internet requests.
+Because the VPN server encrypts the data before it leaves the user's device, and decrypts it after it arrives
+at the VPN server, any third-party that intercepts the data in transit (such as a hacker or government agency)
+will only see encrypted data and not be able to read the user's data.
+VPN also enables users to access content that is blocked in their geographic location, by assigning a new IP address
+of a different location.
+There are two main types of VPNs:Remote access VPNs and site-to-site VPNs: A remote access VPN allows individual users 
+to securely connect to a private network from a remote location. While a site-to-site VPN allows multiple remote locations 
+to securely connect to a central private network.
+
+290) Multi-core, modern concurrency constraints?
+Answer: Modern computers have multiple cores, which allows them to perform multiple tasks at the same time.
+This is known as concurrency. However, concurrency can also introduce new challenges and constraints that need to be 
+addressed in order to take full advantage of the multiple cores.
+Data Race: When multiple threads are accessing and modifying the same shared data simultaneously without proper
+synchronization, it can lead to unexpected and inconsistent results.
+a) Deadlock: When two or more threads are blocked, waiting for each other to release a resource, it can lead to a deadlock.
+Deadlocks can cause the program to hang indefinitely and can be difficult to detect and diagnose.
+b) Starvation: When a thread is not able to access a shared resource because other threads are holding the resource, 
+it can lead to starvation. Starvation can cause a thread to be blocked indefinitely and can lead to poor performance.
+c) Priority Inversion: When a high-priority thread is blocked by a low-priority thread, it can lead to a priority inversion.
+Priority inversion can cause a high-priority thread to be blocked indefinitely, leading to poor performance.
+d) Memory Consistency: With multiple cores, it is possible that different cores may have different views of memory.
+This can lead to unexpected behavior and can be difficult to debug.
+To address these constraints, various synchronization constructs such as locks, semaphores, and monitors are used to
+ensure that shared resources are accessed in a safe and predictable manner.
+Furthermore, programming languages and frameworks such as Java and .NET provide built-in support for multi-threading
+and concurrency, making it easier for developers to write concurrent code.
+Additionally, modern processors also have built-in support for concurrency through features such as simultaneous
+multithreading (SMT), which allows a single core to execute multiple threads at the same time.
+It's worth noting that, while concurrency can improve performance, it is not always the best solution,
+and it's important to consider the trade-offs between concurrency and performance.
+
+291) Swap space?
+Answer: Swap space is a portion of a computer's storage (such as a hard drive or SSD) that is used as virtual memory when the
+physical RAM (Random Access Memory) is fully utilized. It acts as an overflow area where the operating system can
+temporarily store data that is not currently being used by active processes, freeing up RAM for other tasks.
+Here are some key points about swap space:
+a) Virtual Memory Extension: Swap space extends the available memory beyond the physical RAM, allowing the system to
+handle more applications or larger data sets simultaneously.
+b) Performance Implications: While swap space can help prevent system crashes due to memory shortages, accessing data
+from swap space is much slower than accessing it from RAM because disk read/write speeds are significantly lower than RAM speeds.
+c) Types of Swap Space: Swap Partition: A dedicated partition on a storage device specifically reserved for swap space.
+Swap File: A regular file on the filesystem that serves the same purpose as a swap partition.
+d) Operating System Management: Most modern operating systems, such as Linux, Windows, and macOS, can manage swap space
+automatically, but users can also configure its size and location.
+e) Usage Scenarios: Swap space is particularly useful in systems with limited RAM or in scenarios where memory usage can
+occasionally spike, such as during complex computations or when running memory-intensive applications.
+f) Swappiness: In Linux systems, the "swappiness" parameter controls the tendency of the kernel to move data from RAM to
+swap space. A lower value means the system will prefer to keep data in RAM, while a higher value means it will use swap
+space more readily.
+In summary, swap space is a critical component of modern operating systems that enhances memory management capabilities
+by providing a backup area for data when RAM is insufficient. However, reliance on swap space can impact system performance
+due to the slower nature of disk-based storage compared to RAM.
+
+292) Memory cache?
+Answer: Memory cache, also known as cache memory, is a small, high-speed memory storage that is used to temporarily hold data
+that is frequently accessed by a computer's central processing unit (CPU).
+The purpose of cache memory is to speed up the access time to frequently used data, by reducing the need to access
+the main memory or storage devices.
+There are several key concepts related to memory cache:
+a) Cache Hierarchy: Memory cache is typically organized in a hierarchical fashion, with multiple levels of cache memory,
+each with a different size and speed.
+The lowest level of cache memory is the L1 cache, which is the smallest and fastest, followed by the L2 cache,
+and so on.
+b) Cache Replacement Policy: Memory cache is typically implemented using a cache replacement policy, which determines which data should be
+removed from the cache when it becomes full.
+The most common cache replacement policies include the least recently used (LRU) policy, which removes the
+data that has been accessed least recently, and the first in, first out (FIFO) policy, which removes the data
+that was added to the cache first.
+c) Cache Miss: A cache miss occurs when the CPU requests data that is not present in the cache memory.
+This can happen when the data has been replaced by a more recently used piece of data, or when the data
+is being accessed for the first time.
+d) Cache Hit: A cache hit occurs when the CPU requests data that is present in the cache memory.
+This results in faster access to the data, as the CPU does not need to access the main memory or storage device.
+Memory caches are widely used in many industries, such as:
+a) Computer Industry: Memory caches are used in processors and computer systems to speed up the access time to frequently used data.
+For example, Intel processors have a built-in L1 and L2 cache to speed up the data access.
+b) Storage Industry: Memory caches are used in storage devices such as hard disk drives and solid-state drives to speed up the
+access time to frequently used data. For example, many SSDs have a built-in cache memory to speed up the access time to frequently used data.
+c) Network Industry: Memory caches are used in networking equipment such as routers and switches to speed up the access time to
+frequently used data.
+For example, many routers use a cache to store the most recently accessed web pages, reducing the need to
+request the same web page multiple times.
+d) Web Industry: Memory caches are used in web servers and web applications to speed up the access time to frequently used data.
+For example, many web servers use caching mechanisms to store the most recently accessed web pages,
+reducing the need to generate the same web page multiple times.
+Overall, memory caches play a key role in improving the performance of systems by reducing the access time to
+frequently used data, it's important to consider the trade-off between the size of the cache and the performance,
+a bigger cache can store more data but it can also consume more resources.
+
+293) Scheduling?
+Answer: Operating system scheduling refers to the way in which the operating system allocates CPU time to different processes.
+There are several scheduling algorithms that are commonly used, including:
+a) First-Come, First-Served (FCFS): Processes are executed in the order in which they arrive in the ready queue.
+b) Shortest Job First (SJF): Processes are executed in order of their burst time (the amount of time they need to execute).
+c) Priority Scheduling: Processes are executed based on their priority level, with higher priority processes being executed before
+lower priority ones.
+d) Round Robin (RR): Processes are executed in a circular fashion, with each process being given a fixed time slice (quantum)
+before being moved to the back of the queue.
+e) Multilevel Queue: Processes are divided into different queues based on some criteria (e.g. priority, type), and different
+scheduling algorithms are applied to each queue.
+f) Multilevel Feedback Queue :Is an extension of the multilevel queue scheduling algorithm, but process can move between queues.
+
+294) What resource process needs and thread needs?
+Answer: A resource is any item or capability that a computer system uses, such as memory, disk space, or network bandwidth.
+A process is an instance of a program that is being executed by a computer system.
+Threads are a way for a process to divide itself into multiple execution units.
+Each thread runs in its own context and shares the process's resources, including memory and open files.
+A process can create multiple threads to perform different tasks simultaneously.
+In summary, a process needs resources such as memory and disk space to execute, while threads within a process share
+those resources and can run multiple tasks simultaneously.
+
+295) Livelock and how to avoid?
+Answer: A livelock is a situation in which two or more threads are actively trying to acquire a resource but none of them can
+proceed because the resource is constantly being acquired and released by the other threads.
+This results in the threads continuously changing their state in response to the state of the other threads,
+but no progress is made.
+Here are several ways to avoid livelock:
+a) Prioritizing resources:
+By prioritizing resources, a thread can be made to wait for a higher-priority resource instead of constantly
+trying to acquire a lower-priority resource that is constantly being acquired and released by other threads.
+b) Using a timeout:
+A timeout can be set for acquiring a resource, so if a thread is unable to acquire the resource within a
+certain period, it can move on to other tasks.
+c) Preempting a resource:
+A thread can be allowed to temporarily take control of a resource, even if another thread is currently
+using it, to break the livelock. 
+d) Breaking symmetry:Introducing randomness into the resource acquisition process can break symmetry, allowing one thread to proceed while 
+the others are blocked.
+e) Using a signaling mechanism: A signaling mechanism can be used to inform other threads when a resource is available, 
+so they do not have to constantly check for its availability.
+f) Resource hierarchy: Similar to lock hierarchy, using a resource hierarchy can help avoid livelock by ensuring that a thread always
+acquires resources in a consistent order.
+g) Deadlock Detection: Similarly to deadlock, livelock detection algorithms can be used to detect livelocks and take appropriate
+action to resolve them.
+It's important to note that, as with deadlocks, avoiding livelocks completely may not be possible, but they can be
+mitigated by following the above techniques.
+
+296) Deadlock and how to avoid?
+Answer: There are several ways to avoid deadlock in multithreading:
+a) Avoiding the use of nested locks: Nested locks can lead to deadlocks if the order of locking is not consistent across 
+all threads.
+b) Using lock timeouts: Setting a timeout for acquiring a lock can help prevent deadlocks by allowing a thread to move 
+on if it is unable to acquire a lock.
+c) Using a lock hierarchy: Establishing a hierarchy for locks can help prevent deadlocks by ensuring that a thread always 
+acquires locks in a consistent order.
+d) Avoiding circular wait: Deadlocks can occur when two or more threads are waiting for each other to release a resource.
+To avoid this, ensure that a thread never waits for a resource that is held by another thread that is also
+waiting for a resource held by the first thread.
+e) Using a global lock: If a system has multiple locks, using a global lock can help prevent deadlocks by ensuring that all threads
+acquire the global lock before attempting to acquire other locks.
+f) Using non-blocking algorithm: Some algorithm such as lock-free, wait-free and compare-and-swap can help avoid deadlock 
+by allowing multiple threads to access shared resources simultaneously.
+g) Using a deadlock detection algorithm: Deadlock detection algorithms can be used to detect deadlocks and take appropriate 
+action to resolve them.
+It's important to note that avoiding deadlocks completely is not always possible, but they can be mitigated by
+following the above techniques.
+
+297) B-trees?
+Answer: A B-Tree is a type of balanced tree data structure that is widely used in computer science for indexing and storage of
+large amounts of data.
+The "B" in B-Tree stands for balanced, which refers to the fact that the tree is designed to maintain a balance between
+the number of elements in its subtrees in order to keep the height of the tree as low as possible.
+B-Trees are typically used in databases, file systems, and other applications that need to store and retrieve large
+amounts of data in an efficient manner.
+One of the main advantages of B-Trees is that they allow for fast searching, insertion, and deletion of elements,
+even when the number of elements in the tree is very large.
+A B-Tree is made up of a set of nodes, each of which contains a number of keys and associated values.
+The keys in a B-Tree are used to organize the elements in the tree in a way that allows for fast searching
+and traversal.
+Each node also contains a set of pointers to other nodes, which are used to navigate the tree.
+The structure of a B-Tree is designed to keep the height of the tree as low as possible, which helps to ensure that
+operations on the tree are performed quickly.
+This is accomplished by ensuring that each node contains a large number of keys and by allowing for the creation of
+additional nodes when the number of keys in a node exceeds a certain threshold.
+B-Trees are widely used in database systems and filesystems such as NTFS, ext3, ext4 and many more.
+They are also used in various NoSQL databases like MongoDB, Cassandra, and Hbase.
+B-Trees are also useful in the external memory algorithms, where the size of data is too large to fit into
+internal memory, B-Trees are used to store the data in an external memory and read it into the internal memory as needed.
+
+298) AVL Trees?
+Answer: 
+An AVL tree is a self-balancing binary search tree.
+It is a variation of the more common binary search tree, but it is more balanced, which means that the height of the
+tree is always kept as small as possible.
+AVL trees maintain balance by enforcing the following property:
+For every node in the tree, the height of its left and right subtrees can differ by at most 1.
+This is accomplished by performing rotations on the tree when a node becomes unbalanced.
+There are four types of rotations in AVL tree:
+Left-Left Rotation (LL Rotation).
+Right-Right Rotation (RR Rotation).
+Left-Right Rotation (LR Rotation).
+Right-Left Rotation (RL Rotation).
+
+299) Red Black Trees?
+Answer: A Red-Black Tree is a type of self-balancing binary search tree, where each node has an extra bit that represents
+the color of the node: red or black.
+The tree is designed to maintain balance in such a way that the height of the tree is always 'O(log n)' where n is
+the number of nodes in the tree.
+The balance is achieved by enforcing a set of properties, known as the red-black properties:
+Every node is either red or black. The root is black. Every leaf (NIL) is black.
+If a node is red, then both its children are black. For each node, all simple paths from the node to descendant leaves 
+contain the same number of black nodes. The main advantage of the Red-Black Tree is its ability to keep the height of 
+the tree balanced, which results in faster search, insertion and deletion operations.
+The Java collections framework includes several classes that use balanced tree algorithms, such as:
+a) 'java.util.TreeMap':
+This class implements the SortedMap interface, which stores its elements in a red-black tree.
+The elements are ordered by their natural ordering or by a Comparator provided at the time of creation.
+This class provides guaranteed 'log(n)' time cost for the basic operations like get, put and remove.
+b) 'java.util.concurrent.ConcurrentSkipListMap':
+This class is an implementation of the ConcurrentNavigableMap interface and stores its elements in a skip list. 
+A skip list is a data structure that is similar to a balanced tree and provides guaranteed 'log(n)' time cost
+for the basic operations like get, put and remove.
+c) 'java.util.concurrent.ConcurrentHashMap':
+This class is an implementation of the ConcurrentMap interface and uses a technique called lock striping
+to achieve high concurrency.
+It uses a balanced tree data structure called red-black tree to store the elements when the size of the map grows.
+In addition to the HashMap class, which uses a technique called open addressing to store its elements and does not
+use a balanced tree algorithm.
+It uses an array as the underlying data structure and can have a worst-case time complexity of 'O(n)' for certain
+operations like put and get.
+It's worth noting that the actual implementation of these classes can change between different versions of the
+Java API and other libraries, but the basic principles and algorithms remain the same.
 
 NEW SECTION - Microservice Architecture Patterns
 
@@ -1870,6 +2376,95 @@ Flight App (Google Flight), collecting flights from Frontier Airlines, Delta, Un
 
 5) Orchestrator Pattern?
 Answer: Aggregator + additional business logic to provide a workflow.
+
+6) Orchestrator Pattern (Chained / Sequential workflow)?
+Answer: Chained Pattern. There is no special aggregator. Any service can assume the role of aggregation.
+Pros: Easy to implement. Cons: Increased Latency. Very difficult to debug. Very Difficult to maintain/implement change
+in requirements. Better use Orchestrator For Chained Workflows: Orchestrator to provide a chained workflow.
+Pros: Easy to debug. Easy to maintain / implement change in requirements. Cons: Increased Latency.
+
+7) Resilience?
+Answer: Reactive systems should be responsive. Resilience = Responsiveness under failure.
+
+8) Timeout Pattern?
+Answer: One of the simplest resilience patterns to implement. Treat the request as failed if the response was not received
+within the given timeout.
+
+9) Retry Pattern?
+Answer: Transient failure. Anything could happen in the network. Recover from Transient failures. It might increase the
+overall response time. Do not forget to set Timeout. Do not retry for 4xx error.
+
+10) Circuit Breaker Terms?
+Answer: 
+CLOSED: Dependent service is UP. All requests are sent. 
+OPEN: Dependent service is DOWN. Requests are NOT sent.
+HALF OPEN: Dependent service is MIGHT BE UP??. Only few requests are sent to check.
+
+11) Circuit Breaker?
+Answer: To allow the client service to operate normally when the upstream service is not healthy. You can use it along 
+with Retry + Timeout. Resilience4j: Spring, reactor support. Rate limiter, Bulkhead etc. Config using yaml / Overriding
+via Bean.
+
+12) Rate Limiter Pattern?
+Answer: 
+Server Side Rate Limiter: To limit the number of requests being served by a server node. To protect system resources from
+overload. Very Important for CPU intensive tasks.
+Client Side Rate Limiter: To limit the number of requests sent by client to the server. To reduce the cost / respect the 
+contract.
+
+13) Distributed Rate Limiter?
+Answer: Do not get confused this (resilience) rate-limiter with your application feature. Guest user: 5 per second.
+Standard user: 50 per second. Prime user: 500 per second. Performance !!.
+
+14) Server Side Rate Limiter?
+Answer: To limit the number of requests being served by a server node.
+
+15) Client Side Rate Limiter?
+Answer: To limit the upstream calls.
+
+16) RateLimiter vs Bulkhead Pattern?
+Answer: RateLimiter: Number of requests per time window. Reject other calls.
+Bulkhead: Number of concurrent calls. Queue other calls.
+
+
+NEW SECTION - Kafka Event Driven Microservices With Java + Spring
+
+1) Need for Event Driven Architecture / Kafka?
+Answer: Synchronous complex communication. One service performance might affect another. Downstream services need to be 
+aware of upstream services, request/response data structures. Not flexible (Introducing new services in the workflow). 
+Upstream Services have to be available. We might lose the request.
+
+2) Kafka?
+Answer: Distributed event streaming platform. Key features: Highly available, Horizontally scalable, Ingest large volume
+of data, High throughput, Low latency, Fault tolerance.
+Open source distributed event streaming platform. Capturing any events in real time and storing for later retrieval /
+processing events in real time.
+
+3) Event?
+Answer: Anything that happened. For example: sam liked a tweet (likes-event), sam placed an order (order-event).
+Also known as: Records, Messages.
+
+4) Topic?
+Answer: It is a way to organizing data within a Kafka CLuster. Similar to a Table in a RDBMS. Similar to a Message Queue.
+We can have thousands of topics! For example: user-clicks, taxi-location, order-event.
+
+5) Kafka Cluster?
+Answer: Kafka Server:
+a) Broker (read + write).
+b) Controller (managing the cluster).
+c) Broker + Controller.
+
+6) Bootstrap-server?
+Answer: A kafka cluster can have N number of servers. A set of servers can act like a bootstrap-servers to provide initial
+metadata.
+
+
+
+
+
+
+
+
 
 
 
