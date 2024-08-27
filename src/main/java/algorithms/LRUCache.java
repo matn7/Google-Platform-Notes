@@ -5,7 +5,6 @@ import java.util.*;
 public class LRUCache {
 
     public static void main(String[] args) {
-
         LRUCache lruCache = new LRUCache();
         lruCache.initialize(4);
 
@@ -15,7 +14,6 @@ public class LRUCache {
         lruCache.put(4, 1111);
 
         System.out.println(lruCache);
-
     }
 
     Map<Integer, Integer> keyToValue;

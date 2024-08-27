@@ -11,7 +11,7 @@ public class AnagramsInAString {
         String str = "acdbacdacbabc";
         String anagram = "abc";
 
-        List<Integer> anagrams = findAnagramsMy(str, anagram);
+        List<Integer> anagrams = findAnagramsOptimal(str, anagram);
         System.out.println(anagrams);
     }
 

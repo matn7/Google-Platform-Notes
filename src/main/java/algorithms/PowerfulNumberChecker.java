@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PowerfulNumberChecker {
+
+    public static void main(String[] args) {
+
+        List<Integer> integers = powerfulNumber(0, 100);
+        System.out.println(integers);
+
+    }
+
     // O(n*Math.sqrt(n) + (end - start)*Math.sqrt(n)) time | O(n / log(n)) space
     public static List<Integer> powerfulNumber(int start, int end) {
         List<Integer> result = new ArrayList<>();

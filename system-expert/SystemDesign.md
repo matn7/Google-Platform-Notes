@@ -127,7 +127,7 @@ data through an open connection.
 - Requests typically have the following schema:
 
 ```
-host: string (example: pandatronik.com)
+host: string (example: designpatterns.com)
 port: integer (example: 80 or 443)
 method: string (example: GET, PUT, POST, DELETE, OPTIONS or PATCH)
 headers: pair list (example: "Content-Type" => "application/json")
@@ -158,7 +158,7 @@ const httpRequest = {
 const httpResponse = {
     statusCode: 200,
     headers: {
-        'access-control-allow-origin': 'https://pandatronik.com',
+        'access-control-allow-origin': 'https://designpatterns.com',
         'content-type': 'application/json',
     },
     body: '{}'

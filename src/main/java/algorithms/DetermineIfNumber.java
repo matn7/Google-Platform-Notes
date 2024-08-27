@@ -2,12 +2,13 @@ package algorithms;
 
 import java.util.*;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 public class DetermineIfNumber {
 
     static Map<DigitState, List<DigitState>> PATHS = new HashMap<>();
 
-    static Map<DigitState, Function<Character, Boolean>> STATE_VALIDATOR = new HashMap<>();
+    static Map<DigitState, Predicate<Character>> STATE_VALIDATOR = new HashMap<>();
 
     static {
         PATHS.put(DigitState.BEGIN, Arrays.asList(DigitState.NEGATIVE1, DigitState.DIGIT1));
@@ -40,10 +41,6 @@ public class DetermineIfNumber {
 
     }
 
-    // ********
-    // * STAR *
-    // ********
-
     // O(n) time | O(k) space (build finite state machine or O(1))
     public boolean parse_number(String str) {
         DigitState state = DigitState.BEGIN;
@@ -51,7 +48,7 @@ public class DetermineIfNumber {
         for (char c : str.toCharArray()) {
             boolean found = false;
             for (DigitState next_state : PATHS.get(state)) {
-                Boolean apply = STATE_VALIDATOR.get(next_state).apply(c);
+                Boolean apply = STATE_VALIDATOR.get(next_state).test(c);
                 if (apply) {
                     state = next_state;
                     found = true;
@@ -70,20 +67,14 @@ public class DetermineIfNumber {
     }
 
     enum DigitState {
-        BEGIN(0),
-        NEGATIVE1(1),
-        DIGIT1(2),
-        DOT(3),
-        DIGIT2(4),
-        E(5),
-        NEGATIVE2(6),
-        DIGIT3(7);
-
-        private final int value;
-
-        DigitState(int value) {
-            this.value = value;
-        }
+        BEGIN,
+        NEGATIVE1,
+        DIGIT1,
+        DOT,
+        DIGIT2,
+        E,
+        NEGATIVE2,
+        DIGIT3
     }
 
 }

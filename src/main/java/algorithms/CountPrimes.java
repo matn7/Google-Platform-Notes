@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class CountPrimes {
 
     public static void main(String[] args) {
-        int result = countPrimes(10);
+        int result = countPrimes(100);
         System.out.println(result);
     }
 

@@ -19,6 +19,7 @@ public class ZigZagLevelOrderTraversal {
 
         List<List<Integer>> result = zigZagLevelOrderTraversal(node);
         System.out.println(result);
+
     }
 
     // O(n) time | O(n) space

@@ -4,6 +4,13 @@ import java.util.Stack;
 
 public class CollidingAsteroids {
 
+    public static void main(String[] args) {
+        int[] asteroids = {-3, 5, -8, 6, 7, -4, -7};
+
+        Stack<Integer> integers = collidingAsteroids(asteroids);
+        System.out.println(integers);
+    }
+
     // O(n) time | O(n) space
     public static Stack<Integer> collidingAsteroids(int[] asteroids) {
         Stack<Integer> resultStack = new Stack<>();
@@ -20,7 +27,8 @@ public class CollidingAsteroids {
                 int asteroidSize = Math.abs(asteroid);
                 if (resultStack.peek() > asteroidSize) {
                     break;
-                } if (resultStack.peek() == asteroidSize) {
+                }
+                if (resultStack.peek() == asteroidSize) {
                     resultStack.pop();
                     break;
                 }

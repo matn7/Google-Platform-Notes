@@ -15,7 +15,6 @@ public class PostOrderTraversal {
         node.right.left = new Node(4);
         node.right.right = new Node(6);
 
-
         List<Integer> integers = postOrderTraversal(node);
         System.out.println(integers);
     }

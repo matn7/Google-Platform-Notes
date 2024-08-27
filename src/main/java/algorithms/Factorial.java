@@ -5,8 +5,9 @@ import java.math.BigInteger;
 public class Factorial {
 
     public static void main(String[] args) {
-        BigInteger factorial = factorial(123);
+        BigInteger factorial = factorial(12);
         System.out.println(factorial);
+        System.out.println(factorialTailRecursion(12));
     }
 
     // O(n^2 log^2(n)) time | O(nlog(n)) space

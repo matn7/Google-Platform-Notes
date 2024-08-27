@@ -8,7 +8,6 @@ public class SearchMatrix {
                 {10, 11, 15, 16},
                 {24, 27, 30, 31}
         };
-
         int value = 10;
         boolean search = search(matrix, value);
         System.out.println(search);

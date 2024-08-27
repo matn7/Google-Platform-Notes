@@ -2357,6 +2357,675 @@ operations like put and get.
 It's worth noting that the actual implementation of these classes can change between different versions of the
 Java API and other libraries, but the basic principles and algorithms remain the same.
 
+300) Can you explain the different levels of testing (unit, integration, system, and acceptance)? 
+Answer: 
+a) Unit Testing. Definition:Unit testing involves testing individual components or functions of the software in isolation. 
+The goal is to validate that each unit of the software performs as expected.
+Key Points:
+Scope: Smallest testable parts of the application, such as functions, methods, or classes.
+Performed By: Developers during the development phase.
+Tools: JUnit, NUnit, pytest, etc.
+Benefits: Catches bugs early, simplifies debugging, ensures code correctness, and facilitates code refactoring.
+Example: Testing a function that calculates the sum of two numbers to ensure it returns the correct result.
+b) Integration Testing. Definition: Integration testing focuses on verifying the interactions and data flow between 
+integrated units or components. It ensures that combined parts of the application work together as intended.
+Key Points:
+Scope: Groups of units or modules that are integrated to perform a set of functions.
+Performed By: Developers or testers after unit testing.
+Approaches: Top-down, bottom-up, sandwich (hybrid), big bang.
+Tools: JUnit, NUnit, pytest (for integration testing), or specialized integration testing tools like Postman for API testing.
+Benefits: Identifies issues with interfaces, interactions, and dependencies between modules.
+Example: Testing the interaction between a user authentication module and a database module. 
+c) System Testing. Definition: System testing involves testing the complete and integrated software application to evaluate 
+the system's compliance with the specified requirements. It is performed in an environment that closely mirrors production.
+Key Points:
+Scope: Entire system, including end-to-end scenarios.
+Performed By: Independent testing team.
+Types: Functional testing, performance testing, security testing, usability testing, etc.
+Tools: Selenium, LoadRunner, JMeter, etc.
+Benefits: Validates the entire system’s functionality, performance, and reliability.
+Example: Testing an e-commerce application to ensure it handles user registrations, product searches, and transactions correctly. 
+d) Acceptance Testing. Definition: Acceptance testing is conducted to determine whether the system meets the business 
+requirements and is ready for deployment. It is often the final level of testing before the software goes live.
+Key Points:
+Scope: Entire system, with a focus on business requirements and user needs.
+Performed By: End users, clients, or a QA team on behalf of users.
+Types: User Acceptance Testing (UAT), Operational Acceptance Testing (OAT), Contract Acceptance Testing.
+Tools: May use the same tools as system testing, along with specific UAT tools like TestRail.
+Benefits: Ensures the software meets business needs, reduces the risk of post-release issues, and validates user satisfaction.
+Example: End users testing a new feature in a CRM system to ensure it meets their workflow requirements.
+Summary. Unit Testing: Tests individual components for correctness.
+Integration Testing: Tests interactions between integrated units.
+System Testing: Tests the complete system for overall functionality and performance.
+Acceptance Testing: Validates the system against business requirements and user expectations.
+Each level of testing plays a crucial role in ensuring the quality and reliability of the software, ultimately leading 
+to a robust and user-friendly product.
+
+301) How do you ensure that your test cases are comprehensive?
+Answer: 
+a) Requirements Analysis. Understand Requirements: Thoroughly analyze the functional and non-functional requirements. 
+Ensure all aspects of the requirements are understood.
+Traceability Matrix: Create a traceability matrix to map test cases to requirements. This ensures all requirements 
+are covered by test cases.
+b) Test Design Techniques. Equivalence Partitioning: Divide input data into equivalent partitions that can be tested with 
+a single test case, reducing the number of test cases while maintaining coverage.
+Boundary Value Analysis: Focus on the boundaries of input ranges, as these are common sources of errors.
+Decision Table Testing: Use decision tables to cover combinations of inputs and their corresponding outputs.
+State Transition Testing: Test different states and transitions, especially for systems with finite states.
+Use Case Testing: Develop test cases based on user stories or use cases to ensure end-to-end scenarios are covered. 
+c) Coverage Analysis.
+Code Coverage Tools: Use code coverage tools to measure the percentage of code executed by your test cases (e.g., line, 
+branch, method coverage).
+Requirement Coverage: Ensure each requirement, user story, and acceptance criterion is covered by at least one test case.
+d) Reviewing and Refining Test Cases.
+Peer Reviews: Have test cases reviewed by peers to identify missing scenarios or edge cases.
+Walkthroughs: Conduct walkthroughs with stakeholders to validate that test cases align with requirements and expectations.
+Refinement: Continuously refine test cases based on feedback from reviews, defect reports, and changes in requirements.
+e) Negative and Edge Case Testing.
+Negative Testing: Develop test cases that include invalid inputs, incorrect data, and erroneous user actions to ensure 
+the system handles them gracefully.
+Edge Cases: Identify and test edge cases that occur at the extreme ends of input ranges or system states.
+f) Test Case Prioritization.
+Risk-Based Testing: Prioritize test cases based on the risk and impact of potential failures. Focus on high-risk areas 
+for more intensive testing.
+Critical Path Testing: Identify and prioritize test cases for the critical paths in the application where failures would 
+have the most significant impact.
+g) Automation.
+Automated Testing: Automate repetitive and regression test cases to ensure they are consistently executed and cover 
+various scenarios without human error.
+Continuous Integration: Integrate automated tests into the CI/CD pipeline to ensure tests are run frequently, and any 
+issues are detected early.
+h) Use of Test Data.
+Varied Test Data: Use a variety of test data to cover different scenarios, including edge cases, typical cases, and error cases.
+Data-Driven Testing: Implement data-driven testing where test cases are executed with multiple sets of data to validate 
+the application's behavior under different conditions.
+i) Monitoring and Metrics/
+Defect Analysis: Analyze defects found during testing to identify any gaps in test coverage and create additional test 
+cases to cover these gaps.
+Test Metrics: Track metrics such as test coverage, defect density, and test execution trends to gauge the effectiveness 
+and comprehensiveness of your test cases.
+j) Continuous Improvement.
+Feedback Loop: Use feedback from production issues, user feedback, and test results to continuously improve and expand your test cases.
+Learning and Adaptation: Stay updated with the latest testing techniques, tools, and best practices to enhance your 
+testing approach continually. By employing these strategies, you can ensure that your test cases are comprehensive, 
+thoroughly covering the application's functionality and reducing the likelihood of defects reaching production.
+
+302) Explain the different phases of the SDLC?
+Answer: a) Planning. Objective: Define project scope, objectives, resources, timeline, and feasibility.
+Outcome: Project plan and feasibility study.
+b) Requirements Analysis. Objective: Gather and analyze business and user requirements.
+Outcome: Requirement specifications document (functional and non-functional).
+c) Design. Objective: Create the architecture and design of the software.
+Outcome: System architecture, detailed design documents, and prototypes.
+d) Implementation (Coding). Objective: Develop and code the software based on design specifications.
+Outcome: Source code and executable software components.
+e) Testing. Objective: Verify that the software works as intended and meets requirements.
+Outcome: Test plans, test cases, bug reports, and validated software.
+f) Deployment. Objective: Install and configure the software in the production environment.
+Outcome: Deployed software and deployment documentation.
+g) Maintenance. Objective: Provide ongoing support and make necessary updates or improvements.
+Outcome: Updated software, maintenance logs, and support documentation.
+These phases ensure a systematic approach to software development, improving the quality and reliability of the final product.
+
+303) What are the key principles of Continuous Integration/Continuous Deployment (CI/CD)?
+Answer:
+The key principles of Continuous Integration/Continuous Deployment (CI/CD) are:
+Continuous Integration (CI).
+a) Frequent Commits: Developers integrate code into a shared repository multiple times a day.
+b) Automated Builds: Every commit triggers an automated build to ensure the code compiles and functions correctly.
+c) Automated Testing: Automated tests run with each build to detect defects early.
+d) Immediate Feedback: Developers receive instant feedback on their code, allowing for quick identification and resolution of issues.
+e) Consistent Environment: Use of consistent environments for development, testing, and production to avoid configuration issues.
+Continuous Deployment (CD)
+a) Automated Deployment: Automated tools deploy the application to production without human intervention.
+b) Continuous Delivery: Code is always in a deployable state, and updates are automatically delivered to users.
+c) Rollback Mechanisms: Ability to quickly roll back changes if something goes wrong in production.
+d) Monitoring and Logging: Continuous monitoring and logging to track application performance and detect issues in real-time.
+e) Incremental Updates: Deploy small, incremental changes to reduce risk and simplify troubleshooting.
+These principles help streamline the development process, ensure high code quality, and accelerate the delivery of software to users.
+
+304) What is Software Development Life Cycle (SDLC)?
+Answer:
+The software development lifecycle (SDLC) is the cost-effective and time-efficient process that development team use to
+design and build high-quality software. Steps:
+a) Requirement gathering and planning.
+b) Design.
+c) Development.
+d) Testing.
+e) Deployment.
+f) Maintenance.
+
+305) Explain different types of SQL Joins?
+Answer: SQL Joins are used to combine rows from two or more tables based on a related column between them:
+a) INNER JOIN: Returns only the rows where there is a match in both tables on the specified condition.
+b) LEFT JOIN: Returns all the rows from the left table and the matching rows from the right table. If there is no match,
+NULL values are returned from columns from the right table.
+c) RIGHT JOIN: Returns all the rows from the right table and the matching rows from the left table. If there is no match,
+NULL values are returned from columns from the left table.
+d) FULL JOIN: Returns all the rows when there is a match in either the left or right table. If there is no match, NULL
+values are returned for columns from the table without a match.
+
+306) What are the primary key and foreign key in SQL?
+Answer: The primary key and foreign key are define relationships between tables in a relational database. A primary key
+is a column in a table that uniquely identifies each record in that table. A foreign key in a column or set of columns
+in a table that refers to the primary key or another table.
+
+307) What is the difference between SQL and NoSQL databases?
+Answer: SQL databases: MySQL, PostgreSQL and Oracle. NoSQL databases: MongoDB, Cassandra, CouchDB and Redis.
+The differences: SQL databases are relational databases, which means they use structured schema and organize data into 
+tables with rows and columns. NoSQL databases are non-relational and can store unstructured or semi-structured data.
+They don't require a fixed schema, and data can be stored in various formats like key-value pairs, document, and graphs.
+Scaling vertically (adding more resources to a single server) is the traditional way of scaling SQL databases. NoSQL
+databases are designed to scale horizontally by adding more servers to the database.
+SQL databases follow the ACID properties (Atomicity, Consistency, Isolation, Durability), ensuring transactions are
+reliable and consistent. NoSQL databases often sacrifice strict consistency in favor of availability and partition
+tolerance, following AP.
+
+308) What is the difference between 'git fetch' and 'git pull'?
+Answer: 'git fetch' is used to get the latest changes from remote repository without merging them into your local
+repository changes. 'git pull' is used to get the latest changes from the remote repository and immediately merges them.
+It is a combination of two commands 'git fetch' and 'git merge'.
+
+309) How does the RestAssured library work? Give me an example?
+Answer: RestAssured is a popular Java library designed for simplifying the testing of REST APIs. It provides a behavioral
+driven style for constructing expensive and readable API tests.
+
+310) What is the request body / payload in API?
+Answer: The request body, also known as the payload, is part of an API request where data is sent from the client to the
+server. The common formats are JSON and XML.
+
+311) What is the difference between the query parameter and the path parameter?
+Answer: The path parameter is part of the URL path itself. The query parameter is key-value pair data that can include
+together with our request to pass data to the server. They are appended to the end of the URL after '?' symbol and are
+separated by '&'.
+
+312) What is the query parameter in API?
+Answer: The query parameters are key-value pair data structure that we include together with our request to pass data to
+server. They are appended to the end of the URL after '?' symbol and separated by '&'.
+
+313) How does authentication work in API?
+Answer: 
+a) Basic Authentication: The client includes a username and password in the request header using the "Authorization"
+header, with the credentials base-64 encoded.
+b) Token-base Authorization: Users authenticate with a server to obtain a token. The token is then included in the request
+headers for subsequent API calls. For example Bearer Token and OAuth (Open Authorization).
+c) Certificate-based Authentication: Clients present a digital certificate during the authentication process. The server
+validates the certificate to ensure the client identity.
+
+314) What status code responses do you know?
+Answer: 
+a) 1xx: Informational response. Informational responses are used to indicate that task is in progress.
+b) 2xx: Success.
+c) 3xx: Redirected.
+d) 4xx: Client error.
+e) 5xx: Server error. A valid request was made by the client but the server failed to complete the task?
+For example: 200 OK, 201 Created, 404 Not Found, 403 Forbidden.
+
+315) What is difference between PUT and PATCH?
+Answer: PUT means replace the entire resource with given data, while PATCH means replace only specified fields.
+
+316) What API methods do you know?
+Answer: 
+a) GET method: reads data.
+b) POST method: saves data.
+c) PUT method: edits data.
+d) DELETE method: deletes data.
+e) PATCH method: can be used to partially update specified data.
+f) OPTIONS method: request information from the endpoint.
+g) HEAD method: retrieves only the header of a response without the response body.
+h) CONNECT method: establishes a network connection to a resource, typically used for SSL/TLS tunneling.
+i) TRACE method: the web server will respond to requests that us the TRACE method by echoing in the responses tha exact
+request that was received for diagnostic purposes.
+
+317) What is the difference between SOAP and REST API?
+Answer: SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two different architectural
+styled for designing a web services.
+a) SOAP: uses XML and the message format where REST can use multiple formats, but JSON is more commonly used.
+b) REST is inherently stateless where SOAP can be stateful or stateless, however, often relies on session and
+maintains state.
+SOAP may be more suitable for scenarios where strict standards and security are essential, while REST is often preferred
+for its simplicity, flexibility and efficiency in web and mobile apps.
+
+318) How do tou do API testing?
+Answer: 
+a) Analyze API documentation.
+b) Send request.
+c) Validate response: Verify status code, Verify response body (if applicable).
+
+319) What is HTTP and HTTPS?
+Answer: HTTP (Hyper Text Transfer Protocol) and HTTPS (Hyper Text Transfer Protocol Secure).
+HTTP and HTTPS are protocol used for communication between a client (such as a web browser) and a server over the internet.
+They define how data transferred and formatted during the exchange information. The key differences between HTTP and
+HTTPS are related to security. HTTPS adds a layer of encryption, making it more secure.
+
+320) What is API?
+Answer: API stands for Application Programming Interface. It is a bridge between data layer and app client. Also, APIs 
+define how different software components should interact, allowing them to communicate with each other.
+REST (Representational State Transfer) and SOAP (Simple Object Access Protocol) are common architectural style of 
+Web APIs.
+
+321) What's a singleton design pattern and why you might need to use it in your framework.
+Answer: Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing
+a global access point to this instance. We need singleton to have one instance of Driver during the execution.
+
+322) What kind of reports do you generate from your framework?
+Answer: My framework generates maven-cucumber-reporting (cucumber reports) reports.
+
+323) How do you manage test data in your framework?
+Answer: The majority of my test data exists in cucumber scenarios. If test data is not suitable for cucumber scenario,
+I keep it under resources' folder. For some instances I use external storage like S3 buckets.
+
+324) How do you manage running in different environments?
+Answer: I got the value from maven system properties and use it to differentiate environment url.
+
+325) How do you manage credentials in your framework?
+Answer: I manage credentials by using Maven System Properties.
+'mvn test -Dusername=john_dow@gmail.com -Dpassword=12345a'.
+
+326) How does your code run as part of CI and what is your CI strategy?
+Answer: We have two different automated suits we run as part of the CI process. First is a smoke suite. We maintain a small
+set of critical test which we run for every release. In Dev and for every changes to make sure new changes will not break
+core features and have quick feedback. This Jenkins Job is part of the dev pipeline and triggered after the Dev environment
+deployment. Second is the regression unit suite with all our automated tests. We run this suite in Jenkins manually against
+the Test environment before each release as part of the regression test execution.
+
+327) What is Continuous Integration?
+Answer: CI is a DevOps software development practice where developers regularly merge their code changes into a central 
+repository, after which automated build and tests are run. CI most often refers to the build or integration stage of the
+software release process and entails both an automation component and a cultural components (learning to integrate 
+frequently). The key goals of CI are to find and address bugs quicker, improve software quality, and reduce the time it 
+takes to validate and release new software updates.
+
+328) How can you pass value from maven command to your code?
+Answer: Maven command with System Property: 'mvn test -Denv=PROD'.
+
+329) What Maven Lifecycle do you know?
+Answer: There are three built-in build lifecycles: default, clean and site. The default lifecycle handles your project
+deployment, the clean lifecycle handles project cleaning, while the site lifecycle handles the creation of your project's
+website.
+a) Clean lifecycle. 'clean' remove all files generated by the previous build.
+b) Default lifecycle. 'validate' - validate the project is correct and all necessary information is available.
+'compile' - compile the source code of the project. 'test' - test, the compiled source code by using a suitable testing
+framework. 'package' - take the compiled code and package it in its distributable format, such as JAR. 'verify' - run
+any checks on results of integration tests to ensure quality criteria are met.
+c) Site lifecycle. 'site' - generate the project's site documentation.
+
+330) What is Maven? And what rule does it play in your framework?
+Answer: Maven is a build process automation and project management tool for Java projects. Maven automates the build 
+process, including tasks such as compiling source code, running tests, packaging binaries, and creating artifacts.
+Maven follows a convention over configuration approach, defining a standard project structure. This makes it easier for
+developers to understand and contribute to projects, as they where to find source code, resources and configuration files.
+Maven manages project dependencies, retrieving and resolving them from remote repositories.
+
+331) What is the difference between soft and hard assert?
+Answer: A hard assert is a traditional assertion mechanism that stops the test execution immediately upon encountering the
+first assertion failures. But soft assert allows the test execution to continue even if assertion fails. All assertions
+are executed, and the results are collected in the end.
+
+332) Why do you need JUnit / TestNG in your framework?
+Answer: My framework is a Java - based framework with Maven, Selenium, Cucumber, and JUnit tools. The main role of JUnit
+is to assert tests and provide a run engine.
+
+333) What are JUnit and TestNG?
+Answer: JUnit and TestNG are both frameworks for Java programming language, designed to facilitate the development of
+automated tests and simplify the testing process.
+JUnit was primarily created to use for unit testing in Java.
+TestNG is a testing framework that extends JUnit and introduces new features.
+
+334) How would you run only smoke test scenarios or only regression test scenarios in Cucumber?
+Answer: We can use Cucumber tags. 'mvn test -Dcucumber.options="--tag @smoke"'.
+
+335) How does parametrized step work in Cucumber?
+Answer: You can pass values to the step definition method from your scenario step. Numbers are parametrized by default.
+Strings between double quotes are parametrized. You can use Data Tables to pass multiple values.
+
+336) What are the Hooks in Cucumber?
+Answer: Hooks are blocks of code that can run at various points of the Cucumber execution cycle. They are typically used
+for setup and teardown of the environment before and after each scenario.
+Scenario hooks: @Before, @After.
+Step hooks: @BeforeStep, @AfterStep.
+
+337) What is the Background in Cucumber?
+Answer: We can create the Background steps which run before each scenario, but after Hook. We can use Background steps
+to avoid duplication. It is good practice to keep it short.
+
+338) What is Scenario Outline in Cucumber?
+Answer: The scenario outline keyword can be used to run the same scenario multiple times, with different combinations
+of values.
+
+339) What is the Step Definition?
+Answer: A Step Definition is a method with an expression that links it to one or more Cucumber Steps. When Step is
+executed, it will look for a matching step definition to execute.
+
+340) What are the Feature, Scenario and Steps keywords?
+Answer: Feature keyword is to provide a high-level description of a software feature and to group related scenarios.
+Scenario (example) keyword illustrates a business rule for your test. It consists of a list of steps.
+Steps: Given, When, Then, And, and But. They represent the actual steps of your test case. Cucumber executes each step
+one by one in the sequence.
+
+341) What does the runner class do? Can you describe what is inside?
+Answer: It is execution point for Cucumber. It connects Feature files with their Step Definitions.
+
+342) What are the main components of Cucumber?
+Answer: Feature files. That's where we write our tests as Cucumber Scenarios with steps. 
+Step Definitions: The implementation of steps with actual automation script.
+Runner: It is execution point for Cucumber. It connects Feature files with their Step Definitions.
+
+343) What is Gherkin language?
+Answer: It is a language we use to write Cucumber Scenarios.
+
+344) What are the benefits of using Cucumber?
+Answer: The code becomes reusable once the framework matures. Easier understanding of the test logic from readable 
+Scenarios.
+
+345) What is Cucumber in test automation?
+Answer: Cucumber is a tool for running automated tests, written in plain language. Cucumber was built to support
+Behavior-Driven-Development (BDD).
+
+346) What is SauceLabs and BrowserStack?
+Answer: SauceLabs and BrowserStack are both cloud-based platforms that provide infrastructure for testing web and mobile
+apps across different browsers, operating systems, and devices. They offer tools and services that enable dev and qa
+teams to test their apps in different environments to ensure compatibility and functionality. They provide a platform
+that offers a cloud-based Selenium grid for automated testing of web and mobile apps.
+
+347) What is Selenium Grid?
+Answer: Selenium Grid allows the execution of WebDrivers script on remote machines by routing commands sent by the client
+to remote browser instances. Grid aims to: Provide an easy way to run tests in parallel on multiple machines. Allows
+testing on different browser versions. Enable cross-platform library.
+
+348) What is Page Object Model (POM)?
+Answer: POM is a design pattern in Selenium that creates an object repository for storing web elements. In POM, we have
+each web page of an app as a class. Each class will contain only corresponding web page elements and methods to work
+with this page. It helps reduce code duplication.
+
+349) What does Actions class do in Selenium?
+Answer: Actions class provides an ability to handle keyboards events, mouse events, and special actions. Some common 
+actions: Drag and Drop, Mouse hover, Double click, Right click.
+
+350) How do you type text in an input box in Selenium?
+Answer: We do it by using sendKeys(text) method.
+
+351) How do you work with popups in Selenium?
+Answer: We use Alert class to work with alert based popups in Selenium. We can accept, dismiss, getText, and sendKeys
+using Alert class. We need to switchTo alert. However, we need to wait for alert to be present (explicit wait).
+
+352) How do you work with UI dropdown in Selenium?
+Answer: When dropdown is based on select tag then we can use select class to work with it.
+
+353) How do you work with iFrames in Selenium?
+Answer: Switch to iFrame first by using switchTo() method. You can switch by index, id and name. Once you completed your
+task in the iFrame, you can switch back by using default content.
+
+354) How do you work with multiple Windows in Selenium?
+Answer: Each window has unique window handle (sort od ID of the window). We can read these window handles via Selenium
+and Switch between windows.
+
+355) What do you check if element exist in the DOM?
+Answer: We can try to locate this element and catch an exception if it fails. We use findElements method to check if
+element in the DOM. If it returns empty list then element doesn't exist in the DOM.
+
+356) What's the difference between findElement and findElements?
+Answer: findElement method returns a single WebElement. It throws NoSuchElement exception if element doesn't exist. 
+findElements method returns the list of WebElements. It returns empty list if elements don't exist.
+
+357) What is the difference between implicit and explicit waits?
+Answer: Implicit wait is a global wait. We need to declare it once at the beginning of the execution. It gets applied
+to all element locators. We use explicit wait in special cases where we need to await special event to occur, like:
+elements appears, element disappears etc.
+
+358) What is fluent wait in Selenium?
+Answer: It is used to wait for certain events. We can configure pooling time. We can configure specific exceptions to
+be ignored.
+
+359) What's the main disadvantages of implicit wait?
+Answer: Since it applies to all element locators, it can slow down overall execution time.
+
+360) How do you handle dynamic elements?
+Answer: By using xpath's contains method by finding a static part of the element. Another way is by finding a static 
+element and building my path from that element in my dynamic element.
+
+361) What is the difference between xpath and css?
+Answer: The main differences: CSS is faster than xpath. Xpath has more features to build complex path. It has many
+useful methods. For example: finding via text, text contains, and text equals. Xpath can traverse the DOM in any
+direction (upwards, downwards) where CSS only downwards.
+
+362) What's the difference between absolute and relative paths?
+Answer: The absolute path starts at the root of the HTML and uses the Single Slash to navigate to the target element.
+The relative path can start from any place in the HTML and uses double slash to navigate to target element. The relative
+path is more widely used than the absolute path.
+
+363) Which Selenium locator do you prefer?
+Answer: I prefer ID and name when they are unique. The next preferable locator is CSS, the if I need to write more complex
+locators I will work with xpath.
+
+364) What kind of locators do you know in Selenium?
+Answer: ID, Name, Class name, xpath, css, link text and partial link text, tag name.
+
+365) What is Document Object Model (DOM) in the UI?
+Answer: DOM is an object representation of HTML. We can say it is an object model of the HTML document. The HTML and DOM
+are in synced. MOD - Model Object Document.
+
+366) What are the advantages and disadvantages of Selenium?
+Answer: The advantages: 
+a) Cross-browser compatibility. Selenium supports multiple browsers, making it great fit for testing web apps. 
+b) Open Source: Selenium is free to use and has a large community of users and developers.
+c) Extensive Ecosystem: Selenium offers a wide range of tools and frameworks for different testing needs.
+The disadvantages:
+a) It is not suitable for testing desktop apps.
+b) Selenium primarily focuses on web apps and has limited support for mobile app testing.
+
+367) How do you do regression test in your project?
+Answer: The big portion of our regression suite is automated for our project, and we execute them in Jenkins before each
+release. The rest of the not automated test, we execute manually.
+
+368) What do you do when your automated suite is failed?
+Answer: First, we check if the automated test failed because of the automation script itself of it failed because of
+unexpected behavior from apps. Usually it is easy to look into screenshots or video if framework produce them.
+If it is an issue with the script itself, I open the ticket with the details of failure and in the next sprint lifecycle
+we will fix it. Meanwhile, I will test this manually and attach the details in overall test automation run reports.
+If it is an issue with app, then I will reproduce it manually and open defect ticket.
+
+369) How do you determine which test to automate?
+Answer: The test should be part of the regression suite because we automate to reduce manual effort for regression suite.
+The test should be automat-able. The tools we use can automate this test. The test is repeatable.
+
+370) How do you create test data for your app?
+Answer: Asked Supplier for an example. Generate our own to check basic processing (in acceptance test).
+
+371) Tell me about your latest defect you discovered?
+Answer: Malformed response from Supplier cause our app returned error instead xml payload (missing namespace in response).
+I noticed that our deployment tool didn't show change ticket if they were placed at the same minute (UI issue).
+
+372) What is a performance testing?
+Answer: Performance testing is a non-functional testing that determines how the stability, speed, scalability and 
+responsiveness of an app. Some examples: processing speed, data transfer velocity, network bandwidth usage, maximum
+concurrent users, memory utilization, workload efficiency and latency times.
+
+373) What are the black and white box testing?
+Answer: The black box testing is when we test without a knowledge of how app works internally (code structure,
+implementation details). However, we know the requirements and what our app should do.
+The white box testing is when we know the internal code structure and implementation details, and we do our testing by
+reviewing them and looking for potential defects. We need to have corresponding technical skills to perform a white box
+testing.
+
+374) What kind of different testing techniques do you know and use it?
+Answer: There are a bunch of different test types. Let's focus on most used once.
+a) Positive testing: It determines that your app works as expected.
+b) Negative testing: It ensures that your app can handle invalid input unexpected user behavior.
+c) Equivalence partitioning: It is testing techniques that divides input data of a unit into partitions of equivalent
+data from which test cases can be derived.
+d) Boundary value testing: It is testing technique for the edge inputs. The behavior at the edge if the equivalence
+partitions is more likely to be incorrect than the behavior within partition.
+e) Ad hoc testing. It is an informal or unstructured software testing type that aims to break the testing process in
+order to find possible defects.
+
+375) What is a smoke test?
+Answer: The smoke test is initial testing to reveal simple failures. They are a subset of test cases that cover the most
+important functionality. From my experience, it is useful when automated to catch issues earlier in the development.
+For example, it can be integrated with developers CI pipeline and catch the issues before even going to QA environment.
+
+376) How do you determine which test case should be part of regression suite?
+Answer: Test case should be part of the important functionality. It should be a repeatable test case.
+
+377) What is a regression suite and why do we need it?
+Answer: The regression suite is a collection of test scenarios that address the various functionality that are important
+to the software. We typically create a regression suite from existing tests that have already been executed in previous 
+release cycles. The reason, we execute test is that new changes can break existing working functionalities, so before
+releasing new changes to our customers, we need to execute our regression suite.
+
+378) What is Requirements Traceability Matrix (RTM) in testing?
+Answer: RTM is a document that maps and traces user requirement with test cases. The main purpose of RTM is to validate
+that all requirements are checked via test cases such that no functionality is unchecked during software testing.
+
+379) What is a defect life cycle?
+Answer: It is a specific stage that defect goes through from opening to resolution:
+a) Defect is raised and assigned for a fix.
+b) Fixed.
+c) Retest.
+d) If the defect is still there, reopen and start with step1.
+e) Otherwise coded.
+
+380) What is a software testing life cycle STLC for your team?
+Answer: Usually each team adopts own STLC that works best for them. STLC is a testing process that has specific steps to
+be executed in a sequence to ensure that the quality goals have been met. My team's phases of STLC:
+a) Requirement (prod specs) analysis.
+b) Crafting and reviewing a test plan.
+c) QA handoff.
+d) Execution / Testing.
+e) QA sign-off.
+
+381) What is a test case and what does an excellent test case include?
+Answer: A test case describes steps to perform a test for specific factor or functionality. A good test case includes
+detailed steps, test data, expected results, test environment, and all the prerequisites to perform a test.
+
+382) What is a test plan and what does a good test plan include?
+Answer: A test plan is a detailed document that includes the entrance criteria, the scope of testing, the test strategies,
+objectives, schedule, deadlines, resources required to complete the testing, and exit criteria. It is the point of the
+reference based on which testing activities are executed and coordinated among the QA Team. The test plan is shared with
+Business Analytics, Project Manager, Developers to offer transparency into testing activities so that all stakeholders know
+how the software will be tested. The ultimate goal of the test planning process is communicating (not recording) the
+software test team's intent, its expectations and its understanding of the testing that's being performed.
+
+383) What is a defect?
+Answer: The defect is when the actual result doesn't match with the expected result. Usually, we have our expected
+results from the product specification document includes all the aspects of the product. For example, if software is
+difficult to understand, hard to use, slow, or just not right and it wasn't mentioned in product specification, it is
+a valid defect.
+
+384) Mock Functionality?
+Answer:
+a) Use mocks, mock method.
+b) given/willReturn and when/then methods.
+c) then/should and verify methods.
+d) ArgumentMatcher and willThrow.
+e) Argument Captor.
+f) willDoNothing, willAnswer, willCallRealMethod methods.
+g) @InjectMock, @Mock, and @Captor annotations.
+h) Spy objects.
+
+385) FIRST principle?
+Answer: Fast - Unit tests run fast. Independent - Unit tests are independent. Repeatable - Unit tests are repeatable.
+Self-Validating: Unit tests validates itself. Thorough & Timely: Cover edge cases.
+
+386) JUnit 5?
+Answer: JUnit5 = JUnit Platform + JUnit Jupiter + JUnit Vintage.
+JUnit Platform: The JUnit Platform serves as a foundation for launching testing frameworks in the JVM.
+JUnit Jupiter: Is the combination of the new programming model and extension model for writing tests and extensions in
+JUnit5. 
+JUnit Vintage: TestEngine for running JUnit3 and JUnit4 based tests on the platform.
+
+387) Test Driven Development (TDD)?
+Answer: Test driven development life cycle (Red, Green, Refactor, Repeat).
+a) Red: Write Unit test that fails.
+b) Green: Write Application code to make Unit Test pass.
+c) Refactor: Clean up. Improve Unit test and Application code.
+d) Repeat: Repeat above steps until all your functionality is implemented.
+
+388) Mocking Frameworks?
+Answer: The Java ecosystem includes a number of Mocking frameworks.
+Features: Minimize hand-coding of mocks... leverage annotations. Set expectations for mock responses. Verify the calls
+to methods including the number of calls. Programmatic support for throwing exceptions.
+Spring-boot-starter-test: Transitive Dependency for Mocking.
+
+389) Mocks with Mockito and Spring Boot?
+Answer: The technique of using test doubles is known as "mocking". Benefits of Mocking: Allows us to test a given class
+in isolation. Test interaction between given class and its dependencies. Minimizes configuration/availability of 
+dependencies. For example DAO, DB, REST API etc.: We can mock the DAO to give a response. We can mock a REST API to
+give a response.
+
+390) Spring Boot support for unit testing?
+Answer: What do you need for Spring Boot unit testing? Access to the Spring Application Context. Support for Spring
+dependency injection. Retrieve data from Spring 'application.properties'. Mock object support for web, data, REST APIs.
+@SpringBootTest: Loads the application context. Support for Spring dependency injection. You can access data from Spring
+'application.properties'.
+
+391) Testing using Reflection?
+Answer: Need to access non-public fields. Read the field's value. Set the field's value. Invoke non-public methods.
+Testing legacy code... can't change code due to corporate policy. In general, testing non-public fields and methods is
+controversial, use sparingly.
+
+392) MockBean Annotation?
+Answer: Instead of using Mockito: '@Mock' and '@InjectMock'. Use Spring Boot support: '@MockBean' and '@Autowired'.
+'@MockBean': Includes Mockito '@Mock' functionality. Also adds mock bean to Spring ApplicationContext. If existing bean
+is there, the mock bean will replace it. This mocking the mock bean available for injections with '@Autowired'.
+Use Spring Boot '@MockBean' when you need to inject mocks AND inject regular beans from app context.
+
+393) Parametrized Tests?
+Answer: JUnit provides '@ParametrizedTest'. Run a test multiple times and provide different parameter values. 
+'@ParametrizedTest' source of values? '@ValueSource', '@CsvSource', '@CsvFileSource', '@EnumSource', '@MethodSource'.
+
+394) Vertical Scaling Means?
+Answer: Scaling a system by upgrading to more powerful machines.
+Vertical scaling means using one server and just making that server more and more powerful as your traffic grows. 
+This can result in a single point of failure and has an upper bound of how far you can scale. But for small, 
+non-critical systems it may be a simple and cost-effective choice.
+
+395) Horizontal Scaling requires?
+Answer: Stateless servers where any server can handle any request.
+In a horizontally scalable system, every server should be "stateless" and assume that any request could have been 
+handled by itself or by any other server.
+
+396) A database host that is replicated to a backup that's always ready to take over is an example of?
+Answer: Warm standby.
+When dealing with monolithic relational database hosts, replication is a common backup technique. However scalable 
+systems generally rely on distributed key/value data stores, or more generally object stores, AKA "NoSQL" - as these can 
+be horizontally scaled with backups on each shard.
+
+397) Which NoSQL database has no master node?
+Answer: Cassandra.
+Cassandra consists of nodes where any node can serve as the master. It accomplishes this at the expense of consistency.
+
+398) A downside of denormalized data is?
+Answer: Handling updates can be expensive.
+Updates in a denormalized table can involve iterating through every row, looking for copies of data that must be updated. 
+They also take up more space.
+
+399) Distributed "NoSQL" databases with a master node that distributes transactions fall on which side of the CAP triangle?
+Answer: Consistency and Partition Tolerance (sacrificing Availability).
+Single-master designs favor consistency and partition tolerance. Although in principle availability it what's given up, 
+in practice modern NoSQL databases have highly redundant master nodes that can quickly replace themselves in the event 
+of failure.
+
+400) When designing a cache that discards the data accessed the longest time ago, which eviction policy is appropriate?
+Answer: LRU.
+A "least recently used" policy is most commonly used, and evicts data that hasn't been accessed in the longest amount 
+of time once memory for the cache fills up.
+
+401) If you need to minimize client latency for retrieving static data around the world at any cost, you would use:
+Answer: A CDN.
+Content Delivery Networks (CDN's) are aimed at the problem of global traffic and minimizing latency due to long network 
+hops. Load balancers and caching technologies such as Redis can also be parts of low-latency designs, but are not 
+specifically for the problem of global traffic.
+
+403) An SLA of 100ms at "three nines" means?
+Answer: My system will respond in less than 100 mn 99.9% of the time.
+
+404) In HDFS, the server responsible for coordinating requests is called the?
+Answer: Name node.
+In the Hadoop Distributed File System, the name node coordinates how files are broken into blocks, and where those blocks 
+are stored. In high availability settings, multiple name nodes may be present for failover.
+
+
 NEW SECTION - Microservice Architecture Patterns
 
 1) Design Patterns!
@@ -2371,7 +3040,7 @@ Pattern (sequential workflow), Splitter Pattern.
 Answer: Timeout Pattern, Retry Pattern, Circuit Breaker Pattern, Rate Limiter Pattern, Bulkhead Pattern.
 
 4) Scatter Gather Pattern?
-Answer: ~aggregator. It broadcasts the message to all the recipients and then collects the response. Use case:
+Answer: aggregator. It broadcasts the message to all the recipients and then collects the response. Use case:
 Flight App (Google Flight), collecting flights from Frontier Airlines, Delta, United.
 
 5) Orchestrator Pattern?

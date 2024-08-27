@@ -8,6 +8,9 @@ public class CombinationSum {
     public static void main(String[] args) {
         int[] nums = {2, 3, 6};
         int target = 8;
+
+        List<List<Integer>> result = combinationSum(nums, target);
+        System.out.println(result);
     }
 
     // O(2^n) time | O(2^n) space

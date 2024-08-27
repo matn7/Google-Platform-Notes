@@ -14,6 +14,7 @@ public class RemoveZeroSumConsecutiveNodes {
         node.next.next.next.next = new Node(-2);
         node.next.next.next.next.next = new Node(4);
         node.next.next.next.next.next.next = new Node(1);
+
     }
 
     // O(n) time | O(n) space

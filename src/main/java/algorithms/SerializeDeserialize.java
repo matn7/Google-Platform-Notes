@@ -17,6 +17,7 @@ public class SerializeDeserialize {
         String serialize = serialize(node);
         Node deserialize = deserialize(serialize);
         System.out.println(deserialize);
+
     }
 
     // O(n) time | O(n) space

@@ -15,7 +15,6 @@ public class MinimumWindowSubstring {
 
     // O(max(n,m)) time | O(max(n,m)) space
     public static String minWindow(String s, String t) {
-
         int len1 = s.length();
         int len2 = t.length();
 
@@ -37,7 +36,6 @@ public class MinimumWindowSubstring {
         int minLength = Integer.MAX_VALUE;
 
         for (int right = 0; right < len1; right++) {
-
             char c = s.charAt(right);
             hashStr.put(c, hashStr.getOrDefault(c, 0) + 1);
 

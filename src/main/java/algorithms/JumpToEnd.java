@@ -9,6 +9,8 @@ public class JumpToEnd {
 
         int result = jumpToEnd(nums);
         System.out.println(result);
+
+        System.out.println(minNumberOfJumps(nums));
     }
 
     // O(n^2) time | O(n) space
@@ -35,10 +37,7 @@ public class JumpToEnd {
         if (array.length == 1) {
             return 0;
         }
-        //  0  1  2  3  4  5  6  7
-        // [3, 2, 5, 1, 1, 9, 3, 4]
-        //                       *
-        // jumps = 1
+
         int jumps = 0;
         int maxReach = array[0]; // 7
         int steps = array[0]; // 1

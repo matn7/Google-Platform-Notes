@@ -20,6 +20,8 @@ public class TwoUniqueNumbers {
         }
         int pos = 0;
         int temp = result;
+        // find the right most bit 1 in result
+        // where num1 and num2 differ
         while ((temp & 1) == 0) {
             pos++;
             temp = temp >> 1;
@@ -28,6 +30,7 @@ public class TwoUniqueNumbers {
         int setB = 0;
         int mask = (1 << pos);
         for (int i = 0; i < arr.length; i++) {
+            // nums where bit at pos is either 1 (setA) or 0 (setB)
             if ((arr[i] & mask) > 0) {
                 setA = setA ^ arr[i];
             } else {

@@ -3,10 +3,6 @@ import java.util.*;
 
 public class CourseSchedule {
 
-    // ********
-    // * STAR *
-    // ********
-
     // O(n^2) time | O(n) space
     // with cache
     // O(n) time | O(n) space

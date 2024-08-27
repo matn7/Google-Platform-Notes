@@ -15,7 +15,6 @@ public class FindCousins {
         node.left.left.left = new Node(9);
         node.left.right.left = new Node(8);
         node.right.right = new Node(5);
-
         numberOfCousins(node, node.right.right);
         numberOfCousinsIter(node, node.right.right);
     }

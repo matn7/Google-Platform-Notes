@@ -41,5 +41,4 @@ public class RemoveBrackets {
         }
         return builder.toString();
     }
-
 }

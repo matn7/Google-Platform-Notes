@@ -7,8 +7,8 @@ public class NextGreaterElement {
 
     public static void main(String[] args) {
         int[] arr = {2, 5, -3, -4, 6, 7, 2};
-
         int[] result = nextGreaterElement(arr);
+
         System.out.println(result);
     }
 

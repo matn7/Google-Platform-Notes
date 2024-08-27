@@ -17,12 +17,11 @@ public class InorderSuccessor {
 
         node2.parent = node4;
         node2.left = node1;
+        node1.parent = node2;
 
         node8.parent = node4;
         node8.left = node5;
         node8.right = node9;
-
-        node1.parent = node2;
 
         node5.parent = node8;
         node5.right = node7a;
@@ -36,7 +35,7 @@ public class InorderSuccessor {
 
 //        inOrder(node4);
 
-        Node result = inOrderSuccessor(node9);
+        Node result = inOrderSuccessor(node7b);
         System.out.println(result);
 
     }

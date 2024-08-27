@@ -3,17 +3,15 @@ package algorithms;
 public class ConsecutiveBitOnes {
 
     public static void main(String[] args) {
-        int num = 99999;
+        int num = -7;
         ConsecutiveBitOnes consecutiveBitOnes = new ConsecutiveBitOnes();
         int result = consecutiveBitOnes.longest_run(num);
         System.out.println(result);
         int result2 = consecutiveBitOnes.longest_run2(num);
         System.out.println(result2);
-    }
 
-    // ********
-    // * STAR *
-    // ********
+        System.out.println(consecutiveBitOnes.countBits(num));
+    }
 
     // O(log(n)) time | O(1) space
     public int longest_run(int n) {
@@ -58,6 +56,25 @@ public class ConsecutiveBitOnes {
             num = num >> 1;
         }
         return max;
+    }
+
+    // O(log(n)) time | O(1) space
+    public int countBits(int num) {
+        int maxLen = 0;
+
+        int BIT_MASK = 1;
+
+        while (num != 0) {
+            int curr = 0;
+            while ((num & BIT_MASK) == 1) {
+                curr++;
+                num = num >> 1;
+            }
+            maxLen = Math.max(maxLen, curr);
+            num = num >> 1;
+        }
+
+        return maxLen;
     }
 
 }
