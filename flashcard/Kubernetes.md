@@ -1236,7 +1236,6 @@ Answer: In a CI/CD pipeline, it’s best to keep base configurations and overlay
 the final manifests dynamically during the CI/CD process, and apply the generated manifests to the appropriate Kubernetes 
 clusters. It's also important to validate and test the generated configurations in the CI process before deploying them.
 
-
 23. NEW SECTION - GitOps
 
 1) What is GitOps and How Does it Differ from Traditional DevOps? 
@@ -2188,19 +2187,15 @@ Answer: A path on your host machine, which you know and specified, that is mappe
 Answer: Location on host file system, not tied to any specific container. Survives container shutdown / restart - removal 
 on host file system. Can be shared across containers. Can be re-used for some container (across restarts).
 
-88) Named Volumes?
-Answer: Created in general - not tied to any specific container. Survives container shutdown / restart - removal via
-Docker CLI. CCan be shared across containers. Can be re-used for some container (across restarts).
-
-89) Anonymous Volumes?
+88) Anonymous Volumes?
 Answer: Created specifically for a single container. Survives container shutdown / restart unless '--rm' is used.
 Cannot be shared across containers. Since it's anonymous, it can't be re-used (even on same image).
 
-90) Environment Variables with Docker Compose?
+89) Environment Variables with Docker Compose?
 Answer: 'variableName = value': Sets a variable in the container ar run-time.
 'variableName': Sets a variable in the container ar run-time. Values is taken from your computer.
 
-91) Docker Two Types of External Data Storages?
+90) Docker Two Types of External Data Storages?
 Answer: 
 Volumes managed by Docker. 
 Bind Mounts managed by You.
@@ -2210,51 +2205,51 @@ b) Named Volumes: A defined path in the container is mapped to the created volum
 hosting machine is mapped to '/app/data'. Great for data which should be persistent but which you don't need to edit
 directly.
 
-92) Kubernetes Service Discovery?
+91) Kubernetes Service Discovery?
 Answer: A service makes the replica set accessible.
 a) The service provides the Pod with an IP address and a DNS record.
 b) Other Pods communicate with the service by reading the IP address from the DNS record.
 c) Thereby, Kubernetes implements service discovery with DNS. In addition, microservices receive the IP addresses of 
 other microservices via environment variables.
 
-93) Kubernetes' namespaces?
+92) Kubernetes' namespaces?
 Answer: Namespaces are virtual clusters so that services and deployments are completely separated. Separate the 
 microservices from infrastructure/
 
-94) Kubernetes Apps with states?
+93) Kubernetes Apps with states?
 Answer: Persistent Volumes and Stateful Sets Operators.
 
-95) What is the role of Docker daemon in a container environment?
+94) What is the role of Docker daemon in a container environment?
 Answer: The Docker daemon manages the containers and images.
 
-96) Kubernetes Advantage of namespaces?
+95) Kubernetes Advantage of namespaces?
 Answer: They allow different environment to co-exist. They allow separation of the microservices from the infrastructure.
 
-97) What is the difference between a Docker registry and a Docker repository?
+96) What is the difference between a Docker registry and a Docker repository?
 Answer: A Docker registry is a collection of repositories, while a Docker repository is a collection of images.
 
-98) Namespacing?
+97) Namespacing?
 Answer: Isolating resources per process (or group of processes). mProcess, Hard Drive, Network, Users, Hostnames, IPC.
 
-99) In Kubernetes Engine, a node pool is?
+98) In Kubernetes Engine, a node pool is?
 Answer: A subset of node instances within a cluster that all have the same configuration.
 
-100) How much memory of a node does Kubernetes required as overhead?
+99) How much memory of a node does Kubernetes required as overhead?
 Answer: A scaled amount starting at 25 percent of memory and decreasing to 2 percent of marginal memory as the total
 amount of memory increases.
 
-101) Command to have 10 replicas of a deployment named 'ch07-app-deploy'?
+100) Command to have 10 replicas of a deployment named 'ch07-app-deploy'?
 Answer: 'kubectl scale deployment ch07-app-deploy --replicas=10'.
 
-102) Kubernetes' deployments can be in which states?
+101) Kubernetes' deployments can be in which states?
 Answer: Processing, Completed, Failed.
 
-103) Volumes?
+102) Volumes?
 Answer: Volumes are folders on your host machine hard drive which are mounted ("made available", mapped) into container.
 A container can write data into volume and read data from it. Volumes persist if a container shuts down. If a container
 restarts and mounts a volume, and data inside the volume is available in the container.
 
-104) Docker Data?
+103) Docker Data?
 Answer: Application (code + environment variables). Written and provided by developer. Added to image and container in
 build phase. "Fixed": Can't be changed once image is built. Read-only, hence stored in Images.
 Temporarily App Data (example entered used input). Fetched / Produced in running container. Stored in memory or temporary
@@ -2262,51 +2257,40 @@ files. Dynamic and changing, but cleared regularly. Read + Write temporary, henc
 Permanent App Data (example User Account). Fetched / Produced in running container. Stored in files or a database.
 Must not be lost if container stops / restarts. Read + write, permanent, stored with containers and volumes.
 
-105) What is the Docker image naming convention?
+104) What is the Docker image naming convention?
 Answer: 'username/repository:tag'.
 
-106) What is a Docker container checkpoint?
+105) What is a Docker container checkpoint?
 Answer: A Docker container checkpoint is a saved state of a container, including its configuration and data.
 
-107) Kubernetes delete commands?
+106) Kubernetes delete commands?
 Answer:
 a) 'kubectl delete -f kafka-client.yaml'.
 b) 'helm uninstall gke-container-kafka'.
 c) 'gcloud container cluster delete panda-cluster --zone europe-west4-a'.
 
-108) How does Docker handle resources constraints for containers?
+107) How does Docker handle resources constraints for containers?
 Answer: Docker sets resource limits through configuration flags or resource management commands, such as '--memory' and
 '--cup-shares', allowing for control over the resources that a container can use.
 
-109) Google Cloud Kubernetes?
+108) Google Cloud Kubernetes?
 Answer: 
 a) 'gcloud auth login'.
 b) 'gcloud config set project'.
 c) 'gcloud container cluster create'.
 d) 'kubectl get nodes'.
 
-110) Kubernetes namespace?
+109) Kubernetes namespace?
 Answer: Provides a mechanism for isolating groups of resources within a single cluster.
 
-111) Kubernetes Pods, Services?
+110) Kubernetes Pods, Services?
 Answer: A Pod is the smallest deployable unit. A Pod can consist of one or more containers.
 Services are used to expose deployment through NodePort or LoadBalancer.
 
-112) Kubernetes Concepts?
-Answer: 
-a) Open Source: container orchestration to allow automating deployment, management and scaling.
-b) Nodes: The physical server or VMs that creates a Kubernetes cluster.
-c) Pods: The smallest unit of execution in Kubernetes. They are deployable units, and consists of one or more containers,
-which internally consists of one or more apps.
-d) Controllers: Used to deploy, manage and scale the Pods.
-e) Services: Used to expose deployments through NodePort or LoadBalancer.
-f) NodePort: Exposes the service on a static port on the nodeIP address. Node ports are in the 30000-32767 range by default.
-g) LoadBalancer: Exposes a single external IP, and internally holds multiple ports to distribute the load.
-
-113) Exposing a Kubernetes Service?
+111) Exposing a Kubernetes Service?
 Answer: Point the external IP to nodes, set firewall rules to access to node.
 
-114) Virtual Machine vs Docker Container?
+112) Virtual Machine vs Docker Container?
 Answer: 
 a) Virtual Machines: PROS: Separated environments. Environment-specific configurations are possible. Environment configs 
 can be shared and reduced reliably.
@@ -2317,27 +2301,20 @@ machines" instead of just apps / envs.
 b) Docker Containers: Low impact on OS, very fast, minimal disk space usage. Sharing, re-building and distribution 
 is easy. Encapsulate apps / environments instead of "whole machines".
 
-115) What's the idea behind image tag?
+113) What's the idea behind image tag?
 Answer: An image can have a name and then multiple "versions" of that image attached on the same name.
 
-116) What is the difference between CMD and ENTRYPOINT in a Dockerfile?
+114) What is the difference between CMD and ENTRYPOINT in a Dockerfile?
 Answer: ENTRYPOINT is a default command to run when a container is started, while CMD is the command that must be run
 when a container is started.
 
-117) What are the various states that a Docker container can be in at any given point in time?
+115) What are the various states that a Docker container can be in at any given point in time?
 Answer: Running, Exited, Paused.
 
 
 NEW SECTION - Docker From Scratch
 
-1) Kernel?
-Answer: Heart of the OS. Like Car Chassis.
-
-2) What is Docker?
-Answer: An open source platform for: packaging the app + all the dependencies + run time. Running the (dockerized)
-applications. Separate applications from the underlying host.
-
-3) Docker Terminologies?
+1) Docker Terminologies?
 Answer: 
 a) Dockerfile (no extensions): Human readable instructions for the app to run (dependencies + runtime). 
 '.java' Human readable instructions for the app behavior.
@@ -2348,40 +2325,19 @@ e) Container: Instance of image. Running lightweight VM. We can create multiple 
 objects. 'Person p1 = new Person()';.
 f) DockerHub: Image Registry. Maven Repository.
 
-4) Docker Commands?
-Answer: 
-a) docker images: To show the list of images you have in your machine.
-b) docker run IMAGE-NAME: To create a container of the image. Something like 'Person p1 = new Person();'.
-c) docker pull IMAGE-NAME: To pull the image from Dockerhub.
-
-5) Docker Run Options?
-Answer: docker run -it ubuntu: To start container interactive mode: -i: std-input, -t: std-output, attach terminal.
-
-6) Docker Exec?
+2) Docker Exec?
 Answer: docker exec CONTAINER-NAME COMMAND: To start a command on a running container. 
 'run' - creates new container & executes the command. 
 'exec' - does the similar thing on a running container.
 
-7) Docker Port Mapping?
-Answer: 
-a) 'docker run -p host-port:container-port nginx': To map the host port to a container port.
-b) 'docker run -p host-port-1:container-port-1 -p host-port-2:container-port-2 IMAGE-NAME': To map multiple ports for a
-container.
-
-8) Docker Volume Mapping?
-Answer:
-a) 'docker run -v /HOST-PATH:/CONTAINER-PATH IMAGE': To map specific directory to a container (use absolute paths).
-b) 'docker run -v /Users/vins/temp1:/a/b/c -v /Users/vins/temp2:/a/b/c IMAGE-NAME': To map multiple host paths to
-container paths.
-
-9) Docker Network Drivers?
+3) Docker Network Drivers?
 Answer: 
 a) Bridge: Default, Custom / User defined. 
 b) None (disable all the network).
 c) Host (works only on Linux machines).
 d) Overlay (for docker swarm).
 
-10) Dockerfile commands?
+4) Dockerfile commands?
 Answer:
 a) 'FROM image': The base image for your docker image. Any image should extend another image.
 b) 'ADD host-dir container-dir': Adds files from your host directory to the image. ADD can also accept url.
@@ -2395,16 +2351,7 @@ created. You can override command.
 h) 'ENTRYPOINT [command to execute when container starts]': The command to be executed, process to be started when the 
 container is created. You cannot override command.
 
-11) Shell Form vs Exec Form?
-Answer:
-a) Shell form: 'CMD cat hello-world.txt'.
-b) Exec form: 'CMD [ "cat", "hello-world.txt" ]'
-
-12) Docker compose?
-Answer: Docker utility to create docker containers, networks, volume/port mappings, passive environment variables etc in
-a Declarative way.
-
-13) Docker Compose Commands?
+7) Docker Compose Commands?
 Answer:
 a) 'docker-compose up': Spins up all the containers with custom bridge network.
 b) 'docker-compose down': Brings the app down, removes containers and networks.
@@ -2412,6 +2359,14 @@ c) 'docker-compose ps': To check service status.
 d) 'docker-compose logs SERVICE-NAME': Check the service logs for debugging.
 
 
+NEW SECTION - Kubernetes in Action
 
-
+1) List namespaces in Linux?
+Answer:
+a) Mount - mnt.
+b) Process ID - PID.
+c) Network - net.
+d) Inter-process communication - IPC.
+e) Work station and domain - UTS.
+f) User ID - user.
 

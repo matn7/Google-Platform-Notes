@@ -105,7 +105,7 @@ Data:
 **TCP**
 
 ```
-Ment to solve issue with separate data into multiple IP packets:
+Meant to solve issue with separate data into multiple IP packets:
     - Guaranteen order of packet sent.
     - Reliable way, guaranteed that those packets actually received by the destination.
     - Error free way, resend failed packets.
@@ -131,7 +131,7 @@ host: string (example: designpatterns.com)
 port: integer (example: 80 or 443)
 method: string (example: GET, PUT, POST, DELETE, OPTIONS or PATCH)
 headers: pair list (example: "Content-Type" => "application/json")
-body: opaque sequence of bytes
+body: opaque (nieprzejrzysty) sequence of bytes
 ```
 
 - Responses typically have the following schema:
@@ -243,14 +243,14 @@ managing it dies.
 
 **Availability**
 
-- The odds of a particular server or service being up and running at any point in time, usually measured in percentages.
+- The odds (szanse) of a particular server or service being up and running at any point in time, usually measured in percentages.
 - A server that has 99% availability will be operational 99% of the time (this would be described as having two nines of
 availability).
 
 **High Availability**
 
 - Used to describe systems that have particular high levels of availability, typically 5 nines or more; sometimes
-abbreviated "HA".
+abbreviated (skrócony) "HA".
 
 **Nines**
 
@@ -439,7 +439,7 @@ mappings when a server goes down.
 
 **Non-Relational Database**
 
-- In contrast with a relational database (DQL databases), a type of database that is free of imposed, 
+- In contrast with a relational database (DQL databases), a type of database that is free of imposed (narzucony), 
 tabular-like structure.
 - Non-relational databases often referred to as NoSQL databases.
 
@@ -839,7 +839,7 @@ one large file system.
 System** (HDFS).
 - Typically, DFSs take care of the classic **availability** and **replication** guarantees that can be tricky to obtain
 in a distributed-system setting.
-- The overarching idea is that files split into chunks of a certain size (4MB or 64MB, for instance), and those
+- The overarching (nadrzędna) idea is that files split into chunks of a certain size (4MB or 64MB, for instance), and those
 chunks shared across a large cluster of machines.
 - A central control plane is in charge of deciding where each chunk resides, routing reads to the right nodes, 
 and handling communication between machines.
@@ -862,7 +862,7 @@ developed.
 
 - An attack in which the  attacker intercepts a line of communication that thought to be private by its two 
 communicating parties.
-- If a malicious actor intercepted and mutated an IP packet on its way from a client to a server, that would be a
+- If a malicious (złośliwy) actor intercepted and mutated an IP packet on its way from a client to a server, that would be a
 man-in-the-middle attack.
 - MITM attacks are the primary threat that encryption and **HTTPS** aim to defend against.
 
@@ -871,7 +871,7 @@ man-in-the-middle attack.
 - A type of encryption that relies on only a single key to both encrypt and decrypt data.
 - The key must be known to all parties involved in communication and must therefore typically be shared between 
 the parties at one point or another.
-- Symmetric-key algorithms tend to be faster than their asymmetric counterparts.
+- Symmetric-key algorithms tend to be faster than their asymmetric counterparts (odpowiedniki).
 - The most widely used symmetric-key algorithms are part of the Advanced Encryption Standard (**AES**).
 
 **Asymmetric Encryption** 
@@ -880,7 +880,7 @@ the parties at one point or another.
 to encrypt and decrypt data.
 - The keys are generated using cryptographic algorithms and are mathematically connected such that data encrypted  with
 the public key can only be decrypted with the private key.
-- While the private key must be kept secure to maintain the fidelity of this encryption paradigm, the public key can be
+- While the private key must be kept secure to maintain the fidelity (wierność) of this encryption paradigm, the public key can be
 openly shared.
 - Asymmetric-key algorithms tend to be slower than their symmetric counterparts.
 
@@ -993,7 +993,7 @@ the API response is **paginated**.
 **CRUD Operations**
 
 - Stands for **Create, Read, Update, Delete** Operations.
-- These four operations often serve as the bedrock of a functioning system and therefore find themselves at the core
+- These four operations often serve as the bedrock (podłoże) of a functioning system and therefore find themselves at the core
 of many APIs.
 - The term **CRUD** is very likely to come up during an API-design interview.
 
@@ -1083,7 +1083,7 @@ GiveAward(userId: string, targetId: string)
 
 ***
 
-## Design Facebook News Feed
+## Design Facebook News Feed (kanał informacyjny)
 
 ![Facebook NF](img/facebook-nf.png "Facebook NF")
 
@@ -1262,7 +1262,7 @@ news feeds in real time. You're most likely to support this functionality by usi
 **Q11: You're designing Dropbox, a service that allows users to store "primary" data like video files, images, 
 text documents, etc., as well as metadata about the primary data like how large the data is, who uploaded it, 
 when it was last edited, etc.. You're most likely to use the following storage solutions to store the primary data 
-and its accompanying metadata:**
+and its accompanying (towarzyszące) metadata:**
 
 - A blob store for the primary data and a key-value store for the metadata.
 
@@ -1285,7 +1285,7 @@ and its accompanying metadata:**
 
 - Without proper defense, an entire system can be taken down by a DoS attack.
   
-**Q16: Caching is less likely to be advisable if:**
+**Q16: Caching is less likely to be advisable (wskazane) if:**
 
 - Accessed data is frequently updated.
 
@@ -1295,7 +1295,7 @@ and its accompanying metadata:**
 - Server-health-based.
 - Round-robin.
 
-**Q18: The following pair is an outlier amongst the rest:**
+**Q18: The following pair is an outlier (odstające) amongst the rest:**
 
 - Polling | availability. 
 
@@ -1364,11 +1364,11 @@ you typically want the endpoint to support:**
 
 - A sharding key for a set of databases is suboptimal.
 - A hashing function for a set of destination servers is suboptimal.
-- The system's workload is naturally skewed.
+- The system's workload is naturally skewed (nierównomierne).
   
 **Q29: The following statement is correct:**
 
-- With asymmetric encryption, the private key is used to encrypt data and the public key is used to decrypt it. 
+- With asymmetric encryption, the private key is used to decrypt data and the public key is used to encrypt it. 
   
 **Q30: The following statement is correct:**
 
@@ -1378,7 +1378,7 @@ you typically want the endpoint to support:**
 
 - Logging client information.
 - Load balancing requests across servers.
-- Masking a client's identity.
+- Masking a client's identity (tożsamości).
 - Caching server responses.
   
 **Q32: The following functionality is not typically supported in a standard CRUD API:**
@@ -1393,12 +1393,16 @@ you typically want the endpoint to support:**
   
 **Q34: The following operations are ordered from fastest to slowest:**
 
-- Reading 1 MB from RAM `<` Reading 1 MB from SSD `<`  Transferring 1 MB over Network `<` Douing an Inter-Continental Round Trip.  
+- Fastest to slowest:
+  - Reading 1 MB from RAM. 
+  - Reading 1 MB from SSD.
+  - Transferring 1 MB over Network.
+  - Doing an Inter-Continental Round Trip.  
 
 **Q35: An asynchronous MapReduce job would likely be used to (check all that apply):**
 
 - Aggregate North-American YouTube-channel view counts.
-- Find the most commonly-occuring errors in a web application.
+- Find the most commonly-occurring errors in a web application.
   
 **Q36: The following are properties of peer-to-peer systems (check all that apply):**
   

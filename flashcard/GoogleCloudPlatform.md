@@ -72,6 +72,8 @@ b) Use Service account attached to the resource where your code is running. Else
 Recommended if you are using Compute Engine, Google Kubernetes Engine, App Engine, Cloud Run or Cloud Functions to run
 your app: assign service account to the resources.
 
+<< CONTINUE HERE >>
+
 16) Which Cloud Spanner Transaction modes is recommended for ensuring that a table does NOT get locked during bulk update?
 Answer: Partitioned DML.
 

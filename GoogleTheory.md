@@ -101,88 +101,37 @@ enough.
 - An algorithm for finding powerful numbers in Java:
 
 ```java
-public static boolean isPowerfulNumber(int n) {
-    // A powerful number is a positive integer that can be written as a^b, where a and b are positive integers 
-    // and a > 1 and b > 1.
-    for (int a = 2; a <= Math.sqrt(n); a++) {
-        for (int b = 2; b <= Math.log(n) / Math.log(a); b++) {
-            if (Math.pow(a, b) == n) {
-                return true;
+class Powerful {
+    // O(sqrt(n) * log(n)) time | O(1) space
+    public static boolean isPowerfulNumber(int n) {
+        if (n <= 0) {
+            return false;
+        }
+
+        for (int prime = 2; prime * prime <= n; prime++) {
+            int count = 0;
+            while (n % prime == 0) {
+                n /= prime;
+                count++;
+            }
+            if (count % 2 != 0) {
+                return false;
+            }
+
+            if (n > 1) {
+                int sqrtN = (int) Math.sqrt(n);
+                if (sqrtN * sqrtN != n) {
+                    return false;
+                }
             }
         }
+        return true;
     }
-    return false;
 }
 ```
 
 - This algorithm goes through all possible values of a and b, checking if a^b equals the input number. 
 - It returns true if a match is found, false otherwise.
-- It has a time complexity of `O(n^(3/4))` which is not the best solution.
-
-```java
-static boolean isPowerful(int n) {
-    // First divide the number
-    // repeatedly by 2
-    while (n % 2 == 0) {
-        int power = 0;
-        while (n % 2 == 0) {
-            n /= 2;
-            power++;
-        }
-
-        // If only 2^1 divides n (not higher powers),
-        // then return false
-        if (power == 1)
-            return false;
-    }
-
-    // if n is not a power of 2 then this loop will execute
-    // repeat above process
-    for (int factor = 3; factor <= Math.sqrt(n); factor += 2) {
-        // Find highest power of "factor" that divides n
-        int power = 0;
-        while (n % factor == 0) {
-            n = n / factor;
-            power++;
-        }
-
-        // If only factor^1 divides n (not higher powers),
-        // then return false
-        if (power == 1)
-            return false;
-    }
-
-    // n must be 1 now if it is not a prime numenr.
-    // Since prime numbers are not powerful, we return
-    // false if n is not 1.
-    return (n == 1);
-}
-```
-
-- A powerful number is a positive integer m such that for every prime factor p of m, p^2 also divides m. 
-- Here's one way to implement an algorithm in Java to determine if a number is a powerful number:
-
-```java
-public boolean isPowerfulNumber(int num) {
-    if (num <= 1) return false;
-
-    int maxFactor = (int) Math.sqrt(num);
-    for (int i = 2; i <= maxFactor; i++) {
-        if (num % i == 0) {
-            int p = num / i;
-            while (p % i == 0) p /= i;
-            if (p % i != 1) return false;
-        }
-    }
-
-    return true;
-}
-```
-
-- This algorithm first checks if the number is less than or equal to 1, in which case it returns false. 
-- It then loops through all the possible prime factors of the number, up to the square root of the number, 
-and checks if each factor and its corresponding factor meet the condition of a powerful number. 
-- If any do not, it returns false. If all the factors meet the condition, it returns true.
 
 ***
 
@@ -193,32 +142,25 @@ and checks if each factor and its corresponding factor meet the condition of a p
 - An example of an implementation of the Sieve of Eratosthenes algorithm in Java:
 
 ```java
-public static List<Integer> sieveOfEratosthenes(int n) {
-    // Create a boolean array "prime[0..n]" and initialize
-    // all entries it as true. A value in prime[i] will
-    // finally be false if i is Not a prime, else true.
-    boolean[] prime = new boolean[n+1];
-    Arrays.fill(prime, true);
+class Sieve {
+    // O(nlog(log(n))) time | O(n) space
+    public static boolean[] sieve(int n) {
+        boolean[] primes = new boolean[n];
 
-    for (int p = 2; p*p <= n; p++) {
-        // If prime[p] is not changed, then it is a prime
-        if (prime[p] == true) {
-            // Update all multiples of p
-            for (int i = p*p; i <= n; i += p) {
-                prime[i] = false;
+        Arrays.fill(primes, true);
+        primes[0] = false;
+        primes[1] = false;
+
+        for (int i = 2; i < Math.sqrt(n); i++) {
+            if (primes[i]) {
+                for (int j = i * 2; j < n; j += i) {
+                    primes[j] = false;
+                }
             }
         }
-    }
 
-    // Collect all prime numbers
-    List<Integer> primes = new ArrayList<>();
-    for (int i = 2; i <= n; i++) {
-        if (prime[i] == true) {
-            primes.add(i);
-        }
+        return primes;
     }
-
-    return primes;
 }
 ```
 
@@ -1788,166 +1730,34 @@ modification operations.
 
 **Essentials of elementary probability theory and combinatorics**
 
-```
-Elementary probability theory and combinatorics are both branches of mathematics that are used to analyze and understand random phenomena. Here are some key concepts from each area:
-
+Elementary probability theory and combinatorics are both branches of mathematics that are used to analyze and understand 
+random phenomena. Here are some key concepts from each area:
 Probability theory:
-
-Sample space: The set of all possible outcomes of an experiment
-Event: A subset of the sample space
-Probability: A measure of the likelihood of an event occurring. It is a number between 0 and 1, with 0 indicating that an event is impossible and 1 indicating that an event is certain to occur.
-Independent events: Two events are independent if the occurrence of one event does not affect the probability of the other event occurring.
-Conditional probability: The probability of an event occurring given that another event has already occurred.
-Bayes' theorem: A formula that relates the probability of an event occurring to the probability of other events that are related to it.
+- Sample space: The set of all possible outcomes of an experiment.
+- Event: A subset of the sample space.
+- Probability: A measure of the likelihood of an event occurring. It is a number between 0 and 1, with 0 indicating that 
+an event is impossible and 1 indicating that an event is certain to occur.
+- Independent events: Two events are independent if the occurrence of one event does not affect the probability of the 
+other event occurring.
+- Conditional probability: The probability of an event occurring given that another event has already occurred.
+- Bayes' theorem: A formula that relates the probability of an event occurring to the probability of other events that 
+are related to it.
 Combinatorics:
-
-Permutations: The number of ways of arranging a set of items in a specific order.
-Combinations: The number of ways of choosing a subset of items from a set, without regard to the order of the items.
-Binomial coefficients: The number of ways of choosing k items from a set of n items, where order does not matter.
-Pigeonhole principle: If n items are placed into m containers, where n > m, then at least one container must contain more than one item.
-Probability theory and combinatorics are often used together in order to analyze the behavior of random systems. For example, the binomial coefficients can be used to calculate the probability of getting a specific number of heads in a coin toss experiment, while permutations and combinations can be used to count the number of different possible outcomes of an experiment.
-```
-
-**Discrete match questions**
-
-```
-Prove by induction that the sum of the first n odd integers is equal to n^2.
-Base case: When n = 1, the sum of the first odd integer is 1^2 = 1.
-Inductive step: Assume that the statement holds for n = k, that is, the sum of the first k odd integers is equal to k^2.
-We want to show that it holds for n = k+1.
-The sum of the first k+1 odd integers is (k^2) + (2k + 1) = k^2 + 2k + 1 = (k+1)^2.
-Thus, by induction, the statement holds for all positive integers n.
-
-Prove that the product of two consecutive integers is always even.
-Let x and y be two consecutive integers. x will be the smaller one and y will be the larger one.
-Since y = x + 1, the product of x and y can be written as xy = x(x+1) = x^2 + x.
-Since x and x+1 are both integers, x^2 and x are also integers.
-Since the sum of two integers is always an integer, x^2 + x is also an integer.
-And since the sum of an even and an odd integer is always an even, the product of two consecutive integers is always even.
-
-Prove that the sum of the first n even integers is equal to n(n+1).
-The first n even integers are 2, 4, 6, ..., 2n.
-Their sum is 2 + 4 + 6 + ... + 2n = 2(1 + 2 + 3 + ... + n) = 2(n(n+1)/2) = n(n+1).
-
-Prove that the sum of the first n perfect squares is equal to n(n+1)(2n+1)/6.
-The first n perfect squares are 1, 4, 9, ..., n^2.
-Their sum is 1 + 4 + 9 + ... + n^2 = 1^2 + 2^2 + 3^2 + ... + n^2
-Using the formula for the sum of the first n squares (n(n+1)(2n+1))/6, we can say that the sum of the first n perfect squares is equal to n(n+1)(2n+1)/6.
-
-Prove that for any positive integer n, the sum of the first n positive integers is equal to n(n+1)/2.
-The first n positive integers are 1, 2, 3, ..., n.
-Their sum is 1 + 2 + 3 + ... + n = n(n+1)/2.
-
-Prove that the sum of the first n positive integers is equal to the sum of the first n odd integers plus the sum of the first n even integers.
-The first n positive integers are 1, 2, 3, ..., n.
-Their sum is 1 + 2 + 3 + ... + n = n(n+1)/2.
-The first n odd integers are 1, 3, 5, ..., 2n-1.
-Their sum is 1 + 3 + 5 + ... + (2n-1) = n^2.
-The first n even integers are 2, 4, 6, ..., 2n.
-Their sum is 2 + 4 + 6 + ... + 2n = n(n+1).
-Adding the sum of the first n odd integers and the sum of the first n even integers, we get n^2 + n(n+1) = n(n+1)/2 + n^2 + n(n+1) = (n^2 + n(n+1)) + (n(n+1)/2) = (n^2 + n^2 + n(n+1)) = 2n^2 + n(n+1) = n(2n+1) = n(n+1)
-
-So we have proved that the sum of the first n positive integers is equal to the sum of the first n odd integers plus the sum of the first n even integers.
-
-Prove that for any positive integer n, the sum of the first n positive integers is equal to the sum of the first n odd integers plus the sum of the first n even integers.
-We can prove this statement by mathematical induction.
-
-Base case:
-For n = 1, the sum of the first 1 positive integer is 1, which is equal to the sum of the first 1 odd integer (1) plus the sum of the first 1 even integer (0).
-
-Inductive step:
-Assume that the statement holds for some positive integer k, i.e. the sum of the first k positive integers is equal to the sum of the first k odd integers plus the sum of the first k even integers.
-
-Now, we need to prove that the statement holds for n = k+1.
-The sum of the first k+1 positive integers is equal to the sum of the first k positive integers plus (k+1).
-The sum of the first k odd integers is equal to k^2 and the sum of the first k even integers is equal to k(k+1)
-Therefore, we have:
-
-(k^2) + (k(k+1)) + (k+1) = (k^2) + k(k+1) + k + 1 = k^2 + k^2 + k(k+1) + k + 1 = 2k^2 + k(k+1) + k + 1 = (2k+1)k + (k+1) = (k+1)(2k+1) = (k+1)^2
-
-Which shows that the statement holds for n = k+1, and by mathematical induction, it holds for all positive integers.
-
-Therefore, we have proven that for any positive integer n, the sum of the first n positive integers is equal to the sum of the first n odd integers plus the sum of the first n even integers.
-
-
-Prove that if a set A has n elements, then the number of subsets of A is 2^n
-We can prove this statement by mathematical induction.
-
-Base case:
-For n = 1, let A = {a}. The number of subsets of A is 2^1 = 2, which is equal to the power set of A, which is the set of all subsets of A, { {}, {a} }.
-
-Inductive step:
-Assume that the statement holds for some positive integer k, i.e. if a set A has k elements, then the number of subsets of A is 2^k.
-
-Now, we need to prove that the statement holds for n = k+1.
-Let A be a set with k+1 elements, and let a be an element of A. Then, we can partition the subsets of A into two sets:
-
-The subsets of A that contain a
-The subsets of A that do not contain a
-The first set is the power set of A - {a}, and by the assumption, it has 2^k subsets.
-The second set is the power set of {a} complement in A, and by the assumption it has 2^(k-1) subsets.
-
-Therefore, the number of subsets of A is equal to 2^k + 2^(k-1) = 2^k (1+2^-1) = 2^k * 2^1 = 2^k * 2 = 2^(k+1)
-
-Which shows that the statement holds for n = k+1, and by mathematical induction, it holds for all positive integers.
-
-Therefore, we have proven that if a set A has n elements, then the number of subsets of A is 2^n.
-
-
-Prove that the number of ways to choose k items from a set of n items is n choose k (written as C(n,k))
-We can prove this statement by mathematical induction.
-
-Base case:
-For k = 0, C(n,0) = 1, which is the number of ways to choose 0 items from a set of n items, which is exactly 1 (the empty set).
-
-Inductive step:
-Assume that the statement holds for some positive integer k, i.e. the number of ways to choose k items from a set of n items is C(n,k)
-
-Now, we need to prove that the statement holds for k+1.
-Let A be a set with n items. To choose k+1 items from A, we can either:
-
-Choose one of the n items from A, and then choose k items from the remaining n-1 items
-Choose one of the remaining n-1 items, and then choose k items from the remaining n-2 items
-and so on, until we choose one of the last k+1 items and choose 0 items from the remaining k items.
-
-Therefore, the number of ways to choose k+1 items from a set of n items is the sum of the number of ways to choose k items from each of the n-k subsets of A, which is
-
-C(n,k+1) = C(n-1,k) + C(n-2,k) + ... + C(k+1,k) + C(k,k)
-
-By the assumption, C(n-1,k) = C(n,k), C(n-2,k) = C(n-1,k) = C(n,k), ... and C(k,k) = 1
-
-Therefore,
-C(n,k+1) = C(n,k) + C(n,k) + ... + C(n,k) + 1 = (n-k)C(n,k) + 1
-
-Which shows that the statement holds for k+1, and by mathematical induction, it holds for all positive integers.
-
-Therefore, we have proven that the number of ways to choose k items from a set of n items is n choose k (written as C(n,k))
-
-
-Prove that the number of ways to choose k items from a set of n items is the same as the number of ways to choose n-k items from the same set.
-Let A be a set with n items.
-If we choose k items from A, we have n-k items left in A that we did not choose. Therefore, choosing n-k items from A is the same as not choosing k items from A.
-
-Formally, we can prove this statement by showing that the number of subsets of A with k items is the same as the number of subsets of A with n-k items.
-
-We know that the number of subsets of A is 2^n. Therefore, the number of subsets of A with k items is C(n,k) and the number of subsets of A with n-k items is C(n,n-k)
-
-So we just have to prove that C(n,k) = C(n,n-k)
-
-Using the formula of C(n,k) = n! / (k! * (n-k)!)
-
-C(n,k) = n! / (k! * (n-k)!) = n! / (k! * (n-k)!)
-C(n,n-k) = n! / ((n-k)! * k!) = n! / (k! * (n-k)!)
-
-As we can see the formula of C(n,k) and C(n,n-k) are equivalent, So we can say that C(n,k) = C(n,n-k)
-
-Therefore, the number of ways to choose k items from a set of n items is the same as the number of ways to choose n-k items from the same set.
-```
+- Permutations: The number of ways of arranging a set of items in a specific order.
+- Combinations: The number of ways of choosing a subset of items from a set, without regard to the order of the items.
+- Binomial coefficients: The number of ways of choosing k items from a set of n items, where order does not matter.
+- Pigeonhole principle: If n items are placed into m containers, where n > m, then at least one container must contain 
+more than one item.
+- Probability theory and combinatorics are often used together in order to analyze the behavior of random systems. 
+For example, the binomial coefficients can be used to calculate the probability of getting a specific number of heads in 
+a coin toss experiment, while permutations and combinations can be used to count the number of different possible outcomes 
+of an experiment.
 
 **n choose k**
 
-```
-"n choose k" problems refer to the concept of selecting k items from a set of n items without replacement, and is also known as "combination". 
-The number of possible combinations is given by the formula "C(n,k) = n! / (k! * (n-k)!)", where "!" represents the factorial function. 
-This formula can be used in various fields such as probability, statistics, and combinatorics.
-```
+- "n choose k" problems refer to the concept of selecting k items from a set of n items without replacement, and is also 
+known as "combination". 
+- The number of possible combinations is given by the formula "C(n,k) = n! / (k! * (n-k)!)", where "!" represents the 
+factorial function. 
+- This formula can be used in various fields such as probability, statistics, and combinatorics.
+- 

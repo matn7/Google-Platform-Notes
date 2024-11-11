@@ -279,7 +279,7 @@ Answer: Time between a client sending a request and receiving a response. Respon
 52) Describe Push model in Postgres?
 Answer: Push model where Postgres notifies the other apps for each change.
 
-53)  Difference between Processes and Threads? 
+53) Difference between Processes and Threads? 
 Answer: Process independent execution unit, contains own address space, file descriptor, memory space, virtual devices.
 Threads use system resources to which belongs. In process there are multiple threads, thread can have one process.
 Processes require more time and system resources to start and communicate with other processes, because requires context 
@@ -471,7 +471,7 @@ c) Least Connection: Task associated with long term connections (SQL, LDAP).
 
 87) Leader Algorithm? 
 Answer: Consensus Algorithm: A type of complex algorithm used to have multiple entities agree on a single data value, 
-like who the "leader" is amongst a group of machines. Paxos, Raft. Tools used to implement / perform leader election. 
+like who the leader is amongst a group of machines. Paxos, Raft. Tools used to implement / perform leader election. 
 etcd, zookeeper.
 
 88) Latency and Throughput? 
@@ -726,9 +726,9 @@ successfully completed, or none of them are. This ensures data consistency acros
 Two phase commit (2PC) protocol: Is a distributed transaction management protocol used to ensure that distributed 
 transactions are either committed or rolled back consistently across multiple services or databases.
 Two phase commit (2PC) protocol phases: 
-a) Prepare Phase: Coordinator asks all participants if they are ready to commit. When agrees, they respond with "prepared" message. 
+a) Prepare Phase: Coordinator asks all participants if they are ready to commit. When agrees, they respond with prepared message. 
 b) Commit Phase: If all participants respond positively in the 
-prepare phase, coordinator sends a "commit" message to all participants. If any participant response negatively or not at all, 
+prepare phase, coordinator sends a commit message to all participants. If any participant response negatively or not at all, 
 coordinator sends rollback message to undo transactions. Data consistency across services or databases is critical. 
 Complex business process. 
 Challenges: Performance Overhead. Blocking. Single Point of Failure. Complexity. Resource Locking. 
@@ -1442,267 +1442,7 @@ data into smaller blocks, computing the hash of each block, and then organizing 
 node of the tree represents the hash of the entire data set. This structure allows for a very efficient way to verify the 
 integrity of the data set, because a change in any single data block will result in a change to the hash at the root of the tree.
 
-259) Dining Philosopher?
-The Dining Philosophers problem is a classic problem in the field of concurrent programming and computer science.
-It was first introduced by Edsger Dijkstra in 1965 as a way to illustrate the challenges of concurrent programming
-and the use of semaphores to solve synchronization problems. The problem describes a scenario where five philosophers 
-are sitting at a round table with five plates of spaghetti. Each philosopher has a fork to their left and right, and they 
-spend their time thinking and eating. In order to eat, a philosopher must pick up the fork on their left and the fork on 
-their right. The problem is to design a protocol that ensures that the philosophers can eat without getting into a deadlock or
-a starvation state. If any philosopher is unable to acquire both forks, they will be unable to eat and the others will 
-also be blocked. There are several solutions to the Dining Philosophers problem, one of them is to use semaphores to control 
-access to the forks. Each fork can be represented by a semaphore, and a philosopher can acquire a fork by waiting on the 
-semaphore. When a philosopher is done eating, they release the semaphore, allowing another philosopher to acquire the fork.
-Another solution is using the "Chandy/Misra" solution where each philosopher is given a unique priority and philosopher 
-with the lowest number has the first chance to pick up the fork, this solution also solves the problem of Deadlock and starvation.
-The Dining Philosophers problem is often used as a teaching tool to demonstrate the importance of proper synchronization 
-in concurrent programming and the challenges of designing correct and efficient concurrent algorithms.
-
-260) Design a high-frequency trading (HFT) platform.
-Answer: 
-a) Understand the Requirements: 
-High Performance: The system must execute trades with minimal latency.
-Scalability: Handle a large number of trades and data streams.
-Reliability: Ensure system uptime and fault tolerance.
-Security: Protect sensitive financial data.
-Compliance: Adhere to financial regulations and logging.
-b) Key Components:
-Market Data Ingestion, Trade Execution Engine, Order Management System (OMS), Risk Management, Monitoring and Alerting.
-c) System Architecture:
-Market Data Ingestion: Data Sources: Connect to various exchanges and data providers.
-Low Latency Feed Handlers: Process and normalize incoming data streams.
-Message Queue: Use a high-performance message queue (e.g., Kafka) to decouple data ingestion from processing.
-Trade Execution Engine: Order Book: Maintain real-time order books for various securities.
-Matching Engine: Match buy and sell orders with minimal latency.
-Smart Order Routing: Route orders to the best available market considering factors like price, latency, and volume.
-Order Management System (OMS): Order Lifecycle Management: Track the state of each order from creation to completion.
-Persistence: Store order data in a high-performance database (e.g., in-memory databases like Redis for speed, 
-with persistent backups).
-d) Risk Management:
-Pre-Trade Risk Checks: Validate trades against risk parameters before execution.
-Real-Time Monitoring: Continuously monitor positions and exposure.
-Post-Trade Analysis: Analyze completed trades for compliance and risk evaluation.
-e) Monitoring and Alerting:
-Real-Time Monitoring: Use monitoring tools (e.g., Prometheus, Grafana) to track system performance and health.
-Alerting: Set up alerts for anomalies or failures (e.g., using tools like PagerDuty). 
-Detailed Design:
-One Market Data Ingestion: Low Latency Feed Handlers: Use direct connections and co-located servers to minimize latency.
-Implement efficient parsers to handle different data formats.
-Message Queue: Kafka configured for low latency with appropriate partitioning and replication.
-In-memory processing for immediate actions, with disk-based storage for historical data.
-Trade Execution Engine: Order Book: Use data structures optimized for fast insertions and lookups, such as red-black 
-trees or skip lists. Maintain separate order books for different asset classes.
-Matching Engine:
-Implement efficient algorithms to match orders (e.g., continuous double auction). Ensure atomicity and consistency of transactions.
-Order Management System (OMS): Order Lifecycle Management: Use state machines to manage the lifecycle of each order.
-Implement audit trails for compliance.
-Persistence: Primary in-memory database (Redis) for speed. Secondary persistent storage (SQL/NoSQL database) for durability.
-Risk Management: Pre-Trade Risk Checks: Implement checks for order size, credit limits, and regulatory compliance.
-Use a rules engine for dynamic risk evaluation.
-Real-Time Monitoring: Continuously update and monitor risk metrics. Implement circuit breakers to halt trading on anomalies.
-Monitoring and Alerting: Real-Time Monitoring: Collect metrics from all components (CPU, memory, latency, order rates).
-Visualize metrics using Grafana dashboards.
-Alerting: Define thresholds and rules for alerts. Integrate with incident management tools for prompt response.
-Scalability and Reliability Considerations: Load Balancing: Distribute incoming market data and order processing across 
-multiple servers. Horizontal Scaling: Add more instances of feed handlers, execution engines, and databases to handle 
-increased load.
-Fault Tolerance: Implement redundancy at each layer to ensure high availability (example, multiple data centers).
-Data Consistency: Use distributed transactions or eventual consistency models as appropriate.
-Disaster Recovery: Regularly backup data and have a failover strategy. 
-Security Considerations:
-a) Encryption: Encrypt sensitive data both at rest and in transit.
-b) Access Control: Implement fine-grained access controls and authentication mechanisms.
-c) Regular Audits: Conduct regular security audits and penetration testing.
-Regulatory Compliance:
-a) Logging and Auditing: Maintain detailed logs of all trading activities for audit purposes.
-b) Data Retention: Adhere to regulatory requirements for data retention periods.
-c) Reporting: Implement automated reporting mechanisms to regulatory bodies.
-
-261) Design a real-time fraud detection system for credit card transactions.
-Answer:
-Understand the Requirements:
-a) Real-Time Processing: Detect fraud as transactions occur.
-b) Scalability: Handle a large volume of transactions.
-c) Accuracy: Minimize false positives and false negatives.
-d) Latency: Ensure minimal impact on transaction processing time.
-e) Flexibility: Update fraud detection models and rules easily.
-Key Components: Transaction Ingestion, Feature Extraction, Fraud Detection Engine, Alerting and Reporting,
-Model Training and Updating, Monitoring and Logging.
-System Architecture:
-a) Transaction Ingestion: Data Sources: Receive transactions from multiple sources (example, POS terminals, online transactions).
-Stream Processing Framework: Use Apache Kafka or AWS Kinesis for handling incoming transaction streams.
-b) Feature Extraction: Data Enrichment: Enhance transaction data with additional information (example, user profile, 
-historical transactions). Real-Time Feature Engineering: Compute features relevant to fraud detection (e.g., transaction 
-amount, frequency, location).
-c) Fraud Detection Engine: Rules-Based Engine: Implement initial rules for simple fraud checks (example, transaction amount 
-thresholds). Machine Learning Models: Use pre-trained models to identify complex fraud patterns. Decision-Making: Combine 
-results from rules engine and ML models to make a final fraud decision.
-d) Alerting and Reporting: Real-Time Alerts: Notify relevant parties (example, fraud analysts, customers) of suspicious 
-transactions. Reporting Dashboard: Provide a dashboard for monitoring fraud detection metrics and trends.
-e) Model Training and Updating: Data Collection: Collect labeled data (fraud/non-fraud) for model training.
-Model Training Pipeline: Use frameworks like Apache Spark for training models on large datasets.
-Continuous Improvement: Regularly update models with new data and feedback.
-d) Monitoring and Logging: System Health Monitoring: Track system performance and health metrics. Transaction Logging: 
-Log details of each transaction and fraud decision for auditing purposes.
-Detailed Design:
-a) Transaction Ingestion: Stream Processing: Use Kafka for handling high-throughput transaction streams.
-Partition transactions by user or region for parallel processing.
-b) Feature Extraction: Data Enrichment: Integrate with user profile databases and historical transaction databases.
-Use Redis for fast lookups of user and transaction history.  
-Feature Engineering: Implement feature extraction in a stream processing framework (example, Apache Flink, Spark Streaming).
-Example features: average transaction amount, transaction frequency, geographical distance between transactions.
-c) Fraud Detection Engine: Rules-Based Engine: Implement simple rules in a rule engine (example, Drools).
-Examples: transactions over a certain amount, transactions from high-risk countries.
-Machine Learning Models: Train models using historical transaction data. Use algorithms suitable for real-time scoring 
-(example, logistic regression, random forests). Deploy models using a scalable serving framework (example, TensorFlow Serving).
-Decision-Making: Use a scoring system to combine rule-based and model-based results. Apply thresholds to classify 
-transactions as fraudulent or non-fraudulent.
-d) Alerting and Reporting: Real-Time Alerts: Integrate with messaging systems (example, email, SMS) for alerts.
-Use a notification service (example, AWS SNS) to send alerts. Reporting Dashboard: Build dashboards using visualization 
-tools (example, Grafana, Kibana). Display metrics like number of fraudulent transactions, false positives/negatives.
-e) Model Training and Updating: Data Collection: Collect labeled data from transaction logs and feedback from fraud analysts.
-Model Training Pipeline: Use batch processing frameworks (example, Apache Spark) for model training. Automate feature 
-engineering and model evaluation processes. Continuous Improvement: Implement A/B testing to evaluate new models.
-Continuously integrate feedback and update models.
-f) Monitoring and Logging: System Health Monitoring: Use monitoring tools (example, Prometheus, Grafana) to track metrics 
-like latency, throughput. Set up alerts for system anomalies. Transaction Logging: Log detailed information about each 
-transaction and fraud decision. Store logs in a scalable storage solution (example, Elasticsearch, AWS S3).
-Scalability and Reliability Considerations:
-a) Horizontal Scaling: Add more instances of stream processors and ML model servers to handle increased load.
-b) Fault Tolerance: Use Kafka's replication and failover features to ensure message durability.
-c) Data Consistency: Ensure consistency between transaction data, user profiles, and historical data.
-d) Disaster Recovery: Implement regular backups and failover strategies.
-Security Considerations: 
-a) Encryption: Encrypt transaction data both at rest and in transit.
-b) Access Control: Implement role-based access control for sensitive data and system components.
-c) Regular Audits: Conduct security audits and penetration testing.
-Regulatory Compliance:
-a) Logging and Auditing: Maintain detailed logs of all transactions and fraud detection decisions.
-b) Data Retention: Comply with data retention policies and regulations.
-c) Reporting: Implement automated reporting for regulatory compliance.
-
-262) Design a peer-to-peer (P2P) lending platform.
-Answer:
-Understand the Requirements:
-a) User Management: Handle borrower and lender accounts.
-b) Loan Management: Manage loan applications, approvals, and repayments.
-c) Transaction Processing: Handle financial transactions securely.
-d) Matching Engine: Match borrowers with lenders based on criteria.
-e) Scalability: Support a growing number of users and transactions.
-f) Security: Ensure data and transaction security.
-g) Compliance: Adhere to financial regulations.
-Key Components: User Management System, Loan Management System, Transaction Processing System, Matching Engine,
-Notification System, Analytics and Reporting, Monitoring and Logging.
-System Architecture:
-a) User Management System: User Profiles: Store personal and financial information. Authentication and Authorization: 
-Secure login and role-based access. KYC (Know Your Customer): Verify user identity for compliance.
-b) Loan Management System: Loan Application: Capture loan details and borrower information.  Credit Scoring: Assess 
-borrower creditworthiness. Loan Approval: Process loan applications and approvals. Repayment Schedule: Manage loan 
-repayment plans.
-c) Transaction Processing System: Payment Gateway Integration: Handle deposits and withdrawals. Escrow Management: Secure 
-funds during loan processing. Ledger: Maintain transaction records.
-d) Matching Engine: Matching Criteria: Match borrowers and lenders based on amount, interest rate, and risk profile.
-Automated Matching: Automatically connect borrowers and lenders.
-e) Notification System: Real-Time Notifications: Notify users of important events (example, loan approval, repayment due).
-Communication Channels: Support email, SMS, and in-app notifications.
-f) Analytics and Reporting: User Analytics: Track user behavior and platform usage. Financial Reports: Generate reports 
-on loans, repayments, and defaults. Compliance Reporting: Ensure adherence to regulatory requirements.
-g) Monitoring and Logging: System Health Monitoring: Track performance and uptime. Transaction Logging: Maintain detailed 
-logs for auditing and compliance.
-Detailed Design:
-a) User Management System: User Profiles: Use a relational database (example, PostgreSQL) to store user data.
-Ensure data encryption at rest and in transit. Authentication and Authorization: Implement OAuth 2.0 for secure 
-authentication. Use JWT (JSON Web Tokens) for session management. KYC: Integrate with third-party KYC providers 
-(example, Jumio, Onfido) for identity verification.
-b) Loan Management System: Loan Application: Design a form to capture necessary loan details. Validate input data and 
-store it in a database. Credit Scoring: Integrate with credit bureaus (example, Experian, TransUnion) to fetch credit scores.
-Implement custom algorithms for assessing credit risk. Loan Approval: Define rules and workflows for loan approval.
-Store loan statuses and approval decisions. Repayment Schedule: Generate repayment schedules based on loan terms.
-Send reminders to borrowers for upcoming payments.
-c) Transaction Processing System: Payment Gateway Integration: Use APIs from payment gateways (example, Stripe, PayPal) for 
-handling transactions. Securely manage payment credentials and transaction data. Escrow Management:
-Implement an escrow system to hold funds until loan disbursement. Release funds based on predefined conditions.
-Ledger: Maintain an immutable ledger of all transactions. Use blockchain technology for added security and transparency 
-if required.
-d) Matching Engine: Matching Criteria: Define criteria such as loan amount, interest rate, and risk profile.
-Store borrower and lender preferences. Automated Matching: Implement algorithms to match borrowers with lenders.
-Optimize for minimal matching time and user satisfaction.
-e) Notification System: Real-Time Notifications: Use a message queue (example, RabbitMQ, Kafka) to handle notification events.
-Send notifications through email, SMS, or in-app messages. Communication Channels: Integrate with third-party services 
-for email (example, SendGrid) and SMS (example, Twilio).
-f) Analytics and Reporting: User Analytics: Collect and analyze user activity data. Use tools like Google Analytics or 
-custom-built solutions. Financial Reports: Generate regular reports on loan performance, repayments, and defaults.
-Use business intelligence tools (example, Tableau, Power BI). Compliance Reporting: Implement automated reporting for 
-regulatory compliance. Ensure data is easily retrievable for audits.
-g) Monitoring and Logging: System Health Monitoring: Use monitoring tools (example, Prometheus, Grafana) to track system 
-metrics. Set up alerts for system anomalies. Transaction Logging: Log all transactions in a secure, immutable storage.
-Use logging frameworks (example, ELK stack) for efficient log management.
-Scalability and Reliability Considerations: Horizontal Scaling: Deploy microservices architecture to scale 
-individual components independently. Load Balancing: Use load balancers (example, AWS ELB) to distribute traffic evenly.
-Fault Tolerance: Implement redundancy and failover mechanisms. 
-Data Consistency: Use distributed databases and ensure eventual consistency. 
-Disaster Recovery: Regularly backup data and have a recovery plan.
-Security Considerations: Encryption: Use TLS for data in transit and AES for data at rest.
-Access Control: Implement role-based access control (RBAC). 
-Regular Audits: Conduct security audits and vulnerability assessments.
-Regulatory Compliance: Data Privacy: Ensure compliance with data protection laws (e.g., GDPR, CCPA).
-Reporting: Automate reporting to regulatory bodies. 
-Audit Trails: Maintain detailed logs for all financial transactions and user activities.
-
-263) How to achieve data consistency in distributed systems?
-Answer: Achieving data consistency in a distributed system is a complex challenge due to the nature of distributed 
-computing environments. The key is to ensure that all nodes in the system see the same data at the same time, or at 
-least in a way that meets the application's requirements for consistency. Here are several strategies and techniques to 
-achieve data consistency in distributed systems:
-a) Consistency Models: Different consistency models offer various guarantees about the visibility and ordering of updates:
-Strong Consistency: Guarantees that once write is completed, all subsequent reads will reflect that write. Implementing 
-strong consistency often involves techniques like:
-Two-Phase Commit (2PC): Ensures all participating nodes agree on a transaction's commit or abort.
-Paxos/Raft: Consensus algorithms used for ensuring agreement among a distributed set of nodes.
-Distributed Transactions: Coordinating transactions across multiple nodes, often using 2PC.
-Eventual Consistency: Guarantees that if no new updates are made, eventually all nodes will converge to the same value. 
-Suitable for systems where absolute immediate consistency is not required.
-Gossip Protocols: Nodes communicate with each other randomly to propagate data changes.
-Anti-Entropy Protocols: Nodes reconcile differences to converge towards consistency.
-Conflict Resolution Strategies: Use techniques like last write wins (LWW), vector clocks, or custom conflict resolution logic.
-Causal Consistency: Guarantees that operations that are causally related are seen by all nodes in the same order.
-Version Vectors: Track the causal relationships between updates.
-Logical Clocks: Use timestamps or vector clocks to capture causal relationships.
-Read/Write Quorums: Using quorum-based approaches, a read or write operation must obtain permission from a majority of nodes.
-Quorum Reads/Writes: Require reads to contact a majority of replicas and writes to contact a different majority.
-Tunable Consistency: Allowing clients to specify the level of consistency required for a particular operation (example in Cassandra).
-b)Techniques for Data Consistency.
-Replication Protocols: Ensure that all replicas of a piece of data are consistent with each other.
-Synchronous Replication: Writes are replicated to all nodes before acknowledging write to the client.
-Asynchronous Replication: Writes are acknowledged immediately, and replication occurs in the background.
-Conflict Detection and Resolution: In eventual consistency models, conflicts may arise and need to be resolved.
-Last Write Wins (LWW): The most recent write is considered authoritative.
-Custom Conflict Resolution Logic: Application-specific rules to resolve conflicts.
-Operational Transformation (OT) or CRDTs: Structures that allow concurrent updates without conflicts (example
-Conflict-Free Replicated Data Types).
-Atomicity and Isolation:
-Distributed Locking: Ensure that only one node can modify a piece of data at a time (example, using ZooKeeper).
-Optimistic Concurrency Control: Allow concurrent transactions but check for conflicts before committing.
-Pessimistic Concurrency Control: Lock data before transaction processing to prevent conflicts.
-c) CAP Theorem:
-The CAP theorem states that a distributed system can provide only two of the following three guarantees at the same time:
-Consistency: Every read receives the most recent write.
-Availability: Every request receives a response, without guarantee that it contains the most recent write.
-Partition Tolerance: The system continues to operate despite an arbitrary number of messages being dropped or delayed 
-by the network.
-In practice, systems must balance these trade-offs based on their specific requirements. For instance:
-CP Systems: Prioritize consistency and partition tolerance (example, HBase).
-AP Systems: Prioritize availability and partition tolerance (example, Cassandra).
-d) Practical Examples:
-Apache Kafka: Uses replication and configurable consistency settings to balance consistency and availability.
-Apache Cassandra: Uses tunable consistency levels, allowing users to choose between consistency and availability.
-Google Spanner: Uses TrueTime API to provide strong consistency across distributed nodes.
-e) Design Patterns:
-Event Sourcing: Record state changes as a sequence of events, ensuring that all events are processed in order.
-Command Query Responsibility Segregation (CQRS): Separate the operations that read data from the operations that update 
-data to handle consistency in a more scalable way.
-
-264) Why do we need pub/sub in distributed systems?
+259) Why do we need pub/sub in distributed systems?
 Answer: Publish-subscribe (pub-sub) is a messaging pattern used in distributed systems that provides several benefits 
 and solves key challenges. Here's why pub-sub is needed in distributed systems:
 a) Decoupling of Components: Loose Coupling: Pub-sub decouples the components in a system, allowing publishers and 
@@ -1735,7 +1475,7 @@ or in social media for notifications. Logging and Monitoring: Collecting logs an
 and sending them to a central monitoring system. Microservices Communication: In microservices architecture, pub-sub 
 facilitates communication between services without tight coupling, promoting better service isolation and resilience.
 
-265) Databases Normalization and Denormalization?
+260) Databases Normalization and Denormalization?
 Answer: Normalization: Start by normalizing your database to eliminate redundancy and ensure data integrity. This process 
 involves organizing data into tables to reduce data redundancy and improve data integrity.
 First Normal Form (1NF): Ensure each table column contains atomic, indivisible values.
@@ -1744,60 +1484,55 @@ Third Normal Form (3NF): Eliminate transitive dependencies; non-key columns shou
 Denormalization: In some cases, to optimize read performance, denormalization might be necessary. This involves combining 
 tables to reduce the number of joins, at the cost of increased redundancy and potential data anomalies.
 
-266) Databases Choosing the Right Database?
+261) Databases Choosing the Right Database?
 Answer: Relational versus NoSQL: Choose the type of database that best fits your use case.
 Relational Databases (RDBMS): Use for structured data with relationships, requiring ACID compliance (example, MySQL, PostgreSQL).
 NoSQL Databases: Use for unstructured or semi-structured data, scalability, and flexibility (example, MongoDB, Cassandra, Redis).
 
-267) Databases Schema Design?
+262) Databases Schema Design?
 Answer: Data Modeling: Create an Entity-Relationship Diagram (E-R-D) to visualize entities, attributes, and relationships.
 Primary Keys: Ensure every table has a primary key that uniquely identifies each record.
 Foreign Keys: Use foreign keys to maintain referential integrity between tables.
 
-268) Databases Indexing?
+263) Databases Indexing?
 Answer: Indexes: Use indexes to improve query performance. Create indexes on columns frequently used in 'WHERE' clauses, 
 'JOIN' operations, and 'ORDER BY' clauses. Composite Indexes: Sometimes, a combination of columns might be needed for 
 indexing to cover specific queries. Avoid Over-Indexing: Too many indexes can slow down write operations ('INSERT', 
 'UPDATE', 'DELETE').
 
-269) Databases Data Integrity?
+264) Databases Data Integrity?
 Answer: Constraints: Use constraints (example 'NOT NULL', 'UNIQUE', 'CHECK') to enforce rules at the database level.
 Transactions: Use transactions to ensure a series of operations either completely succeed or fail (ACID properties: 
 Atomicity, Consistency, Isolation, Durability).
 
-270) Databases Scalability?
+265) Databases Scalability?
 Answer: Vertical Scaling: Increase the capacity of a single server (example, adding more CPU, RAM).
 Horizontal Scaling: Distribute the load across multiple servers (example, sharding in NoSQL databases, database clustering).
 
-271) Databases Backup and Recovery?
+266) Databases Backup and Recovery?
 Answer: Regular Backups: Schedule regular backups to prevent data loss. Disaster Recovery Plan: Have a plan for 
 recovering data in case of a failure.
 
-272) Databases Security?
+267) Databases Security?
 Answer: Authentication and Authorization: Ensure proper user authentication and authorization to control access.
 Encryption: Encrypt sensitive data both at rest and in transit.
 SQL Injection: Protect against SQL injection attacks by using prepared statements and parameterized queries.
 
-273) Databases Performance Optimization?
+268) Databases Performance Optimization?
 Answer: Query Optimization: Write efficient queries and use query optimization tools provided by the database.
 Load Balancing: Distribute database requests to balance the load and improve performance.
 Caching: Implement caching strategies to reduce database load (example, using Redis or Memcached).
 
-274) Databases Monitoring and Maintenance?
+269) Databases Monitoring and Maintenance?
 Answer: Monitoring Tools: Use monitoring tools to track database performance and health (example, slow query logs, 
 performance dashboards). Regular Maintenance: Perform regular maintenance tasks such as updating statistics, reindexing, 
 and purging old data.
 
-275) Databases Monitoring and Maintenance?
-Answer: Monitoring Tools: Use monitoring tools to track database performance and health (example, slow query logs, 
-performance dashboards). Regular Maintenance: Perform regular maintenance tasks such as updating statistics, reindexing, 
-and purging old data. 
-
-276) Databases Compliance?
+270) Databases Compliance?
 Answer: Regulatory Requirements: Ensure your database design and data handling practices comply with relevant regulations 
 and standards (example, GDPR, HIPAA).
 
-277) Can you explain concept of oauth?
+271) Can you explain concept of oauth?
 Answer: OAuth (Open Authorization) is an open standard for access delegation, commonly used as a way to grant websites 
 or applications limited access to a user's information without exposing the user's password. OAuth allows third-party 
 services to exchange access tokens for accessing resources on behalf of a user.
@@ -1850,7 +1585,7 @@ Facebook APIs).
 Delegated Access: Allowing applications to perform actions on behalf of the user (e.g., a calendar app accessing your 
 calendar data).
 
-278) Cache?
+272) Cache?
 Answer: A cache is a small and fast memory storage that is used to temporarily store frequently accessed data.
 The main purpose of a cache is to reduce the number of times that a slower memory or storage device
 (such as a hard drive or a remote server) needs to be accessed.
@@ -1868,7 +1603,7 @@ This can be beneficial in a distributed system where data needs to be quickly ac
 Overall, the use of cache in system design can greatly improve the performance of a system by reducing the number of
 times that slow memory or storage devices need to be accessed.
 
-279) Distributed Hash Table?
+273) Distributed Hash Table?
 Answer: A Distributed Hash Table (DHT) is a type of distributed system that provides a lookup service similar to a hash table.
 It allows a group of nodes to efficiently and fault-tolerantly store and retrieve key-value pairs.
 In a DHT, each key is associated with a unique value, and keys are distributed among the nodes in the network in a way
@@ -1884,7 +1619,7 @@ They are used in various P2P systems like BitTorrent, BitSwap, and IPFS.
 DHTs are also used in distributed databases, Cloud storage, Content delivery networks, and other distributed systems
 where data needs to be accessible and retrievable from multiple locations.
 
-280) Routers?
+274) Routers?
 Answer: A router is a networking device that forwards data packets between computer networks.
 It is connected to at least two networks, commonly two LANs (Local Area Networks) or WANs (Wide Area Networks),
 and decides which route to send information packets based on its current understanding of the state of the networks
@@ -1910,7 +1645,7 @@ source node to all other nodes in a weighted graph where the edges have non-nega
 These are some of the algorithms that are used in routers to find paths, and the choice of algorithm depends on the
 specific requirements of the network and the routing protocol being used.
 
-281) Java Compiler?
+275) Java Compiler?
 Answer: The Java compiler is a program that translates Java source code into Java bytecode, which is a platform-independent
 representation of the source code.
 The Java bytecode can then be executed by the Java Virtual Machine (JVM) on any platform.
@@ -1932,7 +1667,7 @@ g) Linking: The compiler links the generated class file with any required librar
 Java compiler is a multi-pass compiler, which goes through the input source code multiple times, and at each pass,
 it performs a specific task such as lexical analysis, semantic analysis, and bytecode generation.
 
-282) Compilers?
+276) Compilers?
 Answer: A compiler is a program that translates source code written in a high-level programming language into machine code
 that can be executed by a computer. The process of translation is known as compilation.
 The basic steps of how a compiler works are:
@@ -1952,7 +1687,7 @@ Some compilers are single pass compiler, other are multi-pass, the multi-pass co
 code multiple times, and at each pass, it performs a specific task such as lexical analysis, semantic analysis, and code
 generation.
 
-283) MapReduce?
+277) MapReduce?
 Answer: MapReduce is a programming model and an associated implementation for processing and generating large data sets.
 It was developed by Google and is a core component of the Apache Hadoop project.
 The key concept of MapReduce is to split a large data set into smaller chunks, which are then processed in parallel
@@ -1967,7 +1702,7 @@ It is also used for processing large data sets in fields such as finance, e-comm
 The distributed computing nature of MapReduce makes it a popular choice for processing large data sets that cannot be
 handled by a single machine.
 
-284) For loop problem?
+278) For loop problem?
 Answer: The "for loop problem" is a term used to describe a specific type of performance issue that can occur when using
 a for loop in a programming language like Java.
 The problem arises when a loop iterates over a large number of elements, such as a large array or a collection,
@@ -1992,7 +1727,7 @@ for operations that are not performance-critical.
 g) However, for large data sets or for operations that need to be performed quickly, it can be important to consider
 alternative solutions to avoid poor performance.
 
-285) Feature sets?
+279) Feature sets?
 Answer: A feature set is a collection of features, or variables, that are used as input for a machine learning model.
 These features are chosen because they are believed to be relevant to the problem being solved, and they are used to
 represent the data in a way that the model can understand and learn from.
@@ -2013,7 +1748,7 @@ c) Polynomial Feature : This is used to add non-linearity to a model
 When creating a feature set, it is also important to consider the size of the feature set, as including too many
 features can lead to overfitting, where the model performs well on the training data but poorly on new, unseen data.
 
-286) Load Balancers?
+280) Load Balancers?
 Answer: Load balancers are network devices that distribute incoming network traffic across multiple servers.
 They work by routing client requests to different servers based on a set of rules or algorithms.
 The goal is to distribute the workload evenly across servers and ensure that no single server is overwhelmed with too
@@ -2046,7 +1781,7 @@ Examples include HAProxy, NGINX, and Amazon Elastic Load Balancer.
 c) Cloud-based load balancers: These load balancers are offered by cloud providers, and are typically easy to set up and manage.
 Examples include Amazon Elastic Load Balancer, Google Cloud Load Balancer, and Microsoft Azure Load Balancer.
 
-287) Domain name servers?
+281) Domain name servers?
 Answer: A Domain Name Server (DNS) is a system that translates human-friendly domain names, such as 'www.example.com',
 into the IP addresses that computers use to locate each other on the internet.
 DNS servers work by maintaining a database of domain names and their corresponding IP addresses.
@@ -2092,7 +1827,7 @@ It's also a good practice to check the system's log files to get additional info
 the log files usually are in '/var/log/' directory, and you can use commands like 'tail -f /var/log/messages'
 to see the log files in real-time.
 
-288) Firewalls?
+282) Firewalls?
 Answer: A firewall is a security device that controls incoming and outgoing network traffic based on a set of rules and other
 criteria. Firewalls are typically deployed at the gateway to a network and are designed to block unauthorized access while
 allowing authorized communications.
@@ -2126,7 +1861,7 @@ It's important to note that different Linux distributions may store firewall con
 so it's always a good idea to consult the documentation for your specific distribution to determine the location of the
 iptables configuration file.
 
-289) VPN?
+283) VPN?
 Answer: A Virtual Private Network (VPN) is a technology that allows users to securely connect to a private network over
 the Internet. It creates a secure, encrypted "tunnel" between a user's device and the VPN server, which protects the data as it
 travels over the public network. When a user connects to a VPN, the user's device establishes a connection with the VPN server.
@@ -2142,7 +1877,7 @@ There are two main types of VPNs:Remote access VPNs and site-to-site VPNs: A rem
 to securely connect to a private network from a remote location. While a site-to-site VPN allows multiple remote locations 
 to securely connect to a central private network.
 
-290) Multi-core, modern concurrency constraints?
+284) Multi-core, modern concurrency constraints?
 Answer: Modern computers have multiple cores, which allows them to perform multiple tasks at the same time.
 This is known as concurrency. However, concurrency can also introduce new challenges and constraints that need to be 
 addressed in order to take full advantage of the multiple cores.
@@ -2165,7 +1900,7 @@ multithreading (SMT), which allows a single core to execute multiple threads at 
 It's worth noting that, while concurrency can improve performance, it is not always the best solution,
 and it's important to consider the trade-offs between concurrency and performance.
 
-291) Swap space?
+285) Swap space?
 Answer: Swap space is a portion of a computer's storage (such as a hard drive or SSD) that is used as virtual memory when the
 physical RAM (Random Access Memory) is fully utilized. It acts as an overflow area where the operating system can
 temporarily store data that is not currently being used by active processes, freeing up RAM for other tasks.
@@ -2187,7 +1922,7 @@ In summary, swap space is a critical component of modern operating systems that 
 by providing a backup area for data when RAM is insufficient. However, reliance on swap space can impact system performance
 due to the slower nature of disk-based storage compared to RAM.
 
-292) Memory cache?
+286) Memory cache?
 Answer: Memory cache, also known as cache memory, is a small, high-speed memory storage that is used to temporarily hold data
 that is frequently accessed by a computer's central processing unit (CPU).
 The purpose of cache memory is to speed up the access time to frequently used data, by reducing the need to access
@@ -2223,7 +1958,7 @@ Overall, memory caches play a key role in improving the performance of systems b
 frequently used data, it's important to consider the trade-off between the size of the cache and the performance,
 a bigger cache can store more data but it can also consume more resources.
 
-293) Scheduling?
+287) Scheduling?
 Answer: Operating system scheduling refers to the way in which the operating system allocates CPU time to different processes.
 There are several scheduling algorithms that are commonly used, including:
 a) First-Come, First-Served (FCFS): Processes are executed in the order in which they arrive in the ready queue.
@@ -2236,7 +1971,7 @@ e) Multilevel Queue: Processes are divided into different queues based on some c
 scheduling algorithms are applied to each queue.
 f) Multilevel Feedback Queue :Is an extension of the multilevel queue scheduling algorithm, but process can move between queues.
 
-294) What resource process needs and thread needs?
+288) What resource process needs and thread needs?
 Answer: A resource is any item or capability that a computer system uses, such as memory, disk space, or network bandwidth.
 A process is an instance of a program that is being executed by a computer system.
 Threads are a way for a process to divide itself into multiple execution units.
@@ -2245,7 +1980,7 @@ A process can create multiple threads to perform different tasks simultaneously.
 In summary, a process needs resources such as memory and disk space to execute, while threads within a process share
 those resources and can run multiple tasks simultaneously.
 
-295) Livelock and how to avoid?
+289) Livelock and how to avoid?
 Answer: A livelock is a situation in which two or more threads are actively trying to acquire a resource but none of them can
 proceed because the resource is constantly being acquired and released by the other threads.
 This results in the threads continuously changing their state in response to the state of the other threads,
@@ -2271,7 +2006,7 @@ action to resolve them.
 It's important to note that, as with deadlocks, avoiding livelocks completely may not be possible, but they can be
 mitigated by following the above techniques.
 
-296) Deadlock and how to avoid?
+290) Deadlock and how to avoid?
 Answer: There are several ways to avoid deadlock in multithreading:
 a) Avoiding the use of nested locks: Nested locks can lead to deadlocks if the order of locking is not consistent across 
 all threads.
@@ -2291,7 +2026,7 @@ action to resolve them.
 It's important to note that avoiding deadlocks completely is not always possible, but they can be mitigated by
 following the above techniques.
 
-297) B-trees?
+291) B-trees?
 Answer: A B-Tree is a type of balanced tree data structure that is widely used in computer science for indexing and storage of
 large amounts of data.
 The "B" in B-Tree stands for balanced, which refers to the fact that the tree is designed to maintain a balance between
@@ -2313,7 +2048,7 @@ They are also used in various NoSQL databases like MongoDB, Cassandra, and Hbase
 B-Trees are also useful in the external memory algorithms, where the size of data is too large to fit into
 internal memory, B-Trees are used to store the data in an external memory and read it into the internal memory as needed.
 
-298) AVL Trees?
+292) AVL Trees?
 Answer: 
 An AVL tree is a self-balancing binary search tree.
 It is a variation of the more common binary search tree, but it is more balanced, which means that the height of the
@@ -2327,7 +2062,7 @@ Right-Right Rotation (RR Rotation).
 Left-Right Rotation (LR Rotation).
 Right-Left Rotation (RL Rotation).
 
-299) Red Black Trees?
+293) Red Black Trees?
 Answer: A Red-Black Tree is a type of self-balancing binary search tree, where each node has an extra bit that represents
 the color of the node: red or black.
 The tree is designed to maintain balance in such a way that the height of the tree is always 'O(log n)' where n is
@@ -2357,7 +2092,7 @@ operations like put and get.
 It's worth noting that the actual implementation of these classes can change between different versions of the
 Java API and other libraries, but the basic principles and algorithms remain the same.
 
-300) Can you explain the different levels of testing (unit, integration, system, and acceptance)? 
+294) Can you explain the different levels of testing (unit, integration, system, and acceptance)? 
 Answer: 
 a) Unit Testing. Definition:Unit testing involves testing individual components or functions of the software in isolation. 
 The goal is to validate that each unit of the software performs as expected.
@@ -2401,56 +2136,7 @@ Acceptance Testing: Validates the system against business requirements and user 
 Each level of testing plays a crucial role in ensuring the quality and reliability of the software, ultimately leading 
 to a robust and user-friendly product.
 
-301) How do you ensure that your test cases are comprehensive?
-Answer: 
-a) Requirements Analysis. Understand Requirements: Thoroughly analyze the functional and non-functional requirements. 
-Ensure all aspects of the requirements are understood.
-Traceability Matrix: Create a traceability matrix to map test cases to requirements. This ensures all requirements 
-are covered by test cases.
-b) Test Design Techniques. Equivalence Partitioning: Divide input data into equivalent partitions that can be tested with 
-a single test case, reducing the number of test cases while maintaining coverage.
-Boundary Value Analysis: Focus on the boundaries of input ranges, as these are common sources of errors.
-Decision Table Testing: Use decision tables to cover combinations of inputs and their corresponding outputs.
-State Transition Testing: Test different states and transitions, especially for systems with finite states.
-Use Case Testing: Develop test cases based on user stories or use cases to ensure end-to-end scenarios are covered. 
-c) Coverage Analysis.
-Code Coverage Tools: Use code coverage tools to measure the percentage of code executed by your test cases (e.g., line, 
-branch, method coverage).
-Requirement Coverage: Ensure each requirement, user story, and acceptance criterion is covered by at least one test case.
-d) Reviewing and Refining Test Cases.
-Peer Reviews: Have test cases reviewed by peers to identify missing scenarios or edge cases.
-Walkthroughs: Conduct walkthroughs with stakeholders to validate that test cases align with requirements and expectations.
-Refinement: Continuously refine test cases based on feedback from reviews, defect reports, and changes in requirements.
-e) Negative and Edge Case Testing.
-Negative Testing: Develop test cases that include invalid inputs, incorrect data, and erroneous user actions to ensure 
-the system handles them gracefully.
-Edge Cases: Identify and test edge cases that occur at the extreme ends of input ranges or system states.
-f) Test Case Prioritization.
-Risk-Based Testing: Prioritize test cases based on the risk and impact of potential failures. Focus on high-risk areas 
-for more intensive testing.
-Critical Path Testing: Identify and prioritize test cases for the critical paths in the application where failures would 
-have the most significant impact.
-g) Automation.
-Automated Testing: Automate repetitive and regression test cases to ensure they are consistently executed and cover 
-various scenarios without human error.
-Continuous Integration: Integrate automated tests into the CI/CD pipeline to ensure tests are run frequently, and any 
-issues are detected early.
-h) Use of Test Data.
-Varied Test Data: Use a variety of test data to cover different scenarios, including edge cases, typical cases, and error cases.
-Data-Driven Testing: Implement data-driven testing where test cases are executed with multiple sets of data to validate 
-the application's behavior under different conditions.
-i) Monitoring and Metrics/
-Defect Analysis: Analyze defects found during testing to identify any gaps in test coverage and create additional test 
-cases to cover these gaps.
-Test Metrics: Track metrics such as test coverage, defect density, and test execution trends to gauge the effectiveness 
-and comprehensiveness of your test cases.
-j) Continuous Improvement.
-Feedback Loop: Use feedback from production issues, user feedback, and test results to continuously improve and expand your test cases.
-Learning and Adaptation: Stay updated with the latest testing techniques, tools, and best practices to enhance your 
-testing approach continually. By employing these strategies, you can ensure that your test cases are comprehensive, 
-thoroughly covering the application's functionality and reducing the likelihood of defects reaching production.
-
-302) Explain the different phases of the SDLC?
+295) Explain the different phases of the SDLC?
 Answer: a) Planning. Objective: Define project scope, objectives, resources, timeline, and feasibility.
 Outcome: Project plan and feasibility study.
 b) Requirements Analysis. Objective: Gather and analyze business and user requirements.
@@ -2467,7 +2153,7 @@ g) Maintenance. Objective: Provide ongoing support and make necessary updates or
 Outcome: Updated software, maintenance logs, and support documentation.
 These phases ensure a systematic approach to software development, improving the quality and reliability of the final product.
 
-303) What are the key principles of Continuous Integration/Continuous Deployment (CI/CD)?
+296) What are the key principles of Continuous Integration/Continuous Deployment (CI/CD)?
 Answer:
 The key principles of Continuous Integration/Continuous Deployment (CI/CD) are:
 Continuous Integration (CI).
@@ -2484,7 +2170,7 @@ d) Monitoring and Logging: Continuous monitoring and logging to track applicatio
 e) Incremental Updates: Deploy small, incremental changes to reduce risk and simplify troubleshooting.
 These principles help streamline the development process, ensure high code quality, and accelerate the delivery of software to users.
 
-304) What is Software Development Life Cycle (SDLC)?
+297) What is Software Development Life Cycle (SDLC)?
 Answer:
 The software development lifecycle (SDLC) is the cost-effective and time-efficient process that development team use to
 design and build high-quality software. Steps:
@@ -2495,7 +2181,7 @@ d) Testing.
 e) Deployment.
 f) Maintenance.
 
-305) Explain different types of SQL Joins?
+298) Explain different types of SQL Joins?
 Answer: SQL Joins are used to combine rows from two or more tables based on a related column between them:
 a) INNER JOIN: Returns only the rows where there is a match in both tables on the specified condition.
 b) LEFT JOIN: Returns all the rows from the left table and the matching rows from the right table. If there is no match,
@@ -2505,12 +2191,12 @@ NULL values are returned from columns from the left table.
 d) FULL JOIN: Returns all the rows when there is a match in either the left or right table. If there is no match, NULL
 values are returned for columns from the table without a match.
 
-306) What are the primary key and foreign key in SQL?
+299) What are the primary key and foreign key in SQL?
 Answer: The primary key and foreign key are define relationships between tables in a relational database. A primary key
 is a column in a table that uniquely identifies each record in that table. A foreign key in a column or set of columns
 in a table that refers to the primary key or another table.
 
-307) What is the difference between SQL and NoSQL databases?
+300) What is the difference between SQL and NoSQL databases?
 Answer: SQL databases: MySQL, PostgreSQL and Oracle. NoSQL databases: MongoDB, Cassandra, CouchDB and Redis.
 The differences: SQL databases are relational databases, which means they use structured schema and organize data into 
 tables with rows and columns. NoSQL databases are non-relational and can store unstructured or semi-structured data.
@@ -2521,29 +2207,29 @@ SQL databases follow the ACID properties (Atomicity, Consistency, Isolation, Dur
 reliable and consistent. NoSQL databases often sacrifice strict consistency in favor of availability and partition
 tolerance, following AP.
 
-308) What is the difference between 'git fetch' and 'git pull'?
+301) What is the difference between 'git fetch' and 'git pull'?
 Answer: 'git fetch' is used to get the latest changes from remote repository without merging them into your local
 repository changes. 'git pull' is used to get the latest changes from the remote repository and immediately merges them.
 It is a combination of two commands 'git fetch' and 'git merge'.
 
-309) How does the RestAssured library work? Give me an example?
+302) How does the RestAssured library work? Give me an example?
 Answer: RestAssured is a popular Java library designed for simplifying the testing of REST APIs. It provides a behavioral
 driven style for constructing expensive and readable API tests.
 
-310) What is the request body / payload in API?
+303) What is the request body / payload in API?
 Answer: The request body, also known as the payload, is part of an API request where data is sent from the client to the
 server. The common formats are JSON and XML.
 
-311) What is the difference between the query parameter and the path parameter?
+304) What is the difference between the query parameter and the path parameter?
 Answer: The path parameter is part of the URL path itself. The query parameter is key-value pair data that can include
 together with our request to pass data to the server. They are appended to the end of the URL after '?' symbol and are
 separated by '&'.
 
-312) What is the query parameter in API?
+305) What is the query parameter in API?
 Answer: The query parameters are key-value pair data structure that we include together with our request to pass data to
 server. They are appended to the end of the URL after '?' symbol and separated by '&'.
 
-313) How does authentication work in API?
+306) How does authentication work in API?
 Answer: 
 a) Basic Authentication: The client includes a username and password in the request header using the "Authorization"
 header, with the credentials base-64 encoded.
@@ -2552,7 +2238,7 @@ headers for subsequent API calls. For example Bearer Token and OAuth (Open Autho
 c) Certificate-based Authentication: Clients present a digital certificate during the authentication process. The server
 validates the certificate to ensure the client identity.
 
-314) What status code responses do you know?
+307) What status code responses do you know?
 Answer: 
 a) 1xx: Informational response. Informational responses are used to indicate that task is in progress.
 b) 2xx: Success.
@@ -2561,10 +2247,10 @@ d) 4xx: Client error.
 e) 5xx: Server error. A valid request was made by the client but the server failed to complete the task?
 For example: 200 OK, 201 Created, 404 Not Found, 403 Forbidden.
 
-315) What is difference between PUT and PATCH?
+308) What is difference between PUT and PATCH?
 Answer: PUT means replace the entire resource with given data, while PATCH means replace only specified fields.
 
-316) What API methods do you know?
+309) What API methods do you know?
 Answer: 
 a) GET method: reads data.
 b) POST method: saves data.
@@ -2577,7 +2263,7 @@ h) CONNECT method: establishes a network connection to a resource, typically use
 i) TRACE method: the web server will respond to requests that us the TRACE method by echoing in the responses tha exact
 request that was received for diagnostic purposes.
 
-317) What is the difference between SOAP and REST API?
+310) What is the difference between SOAP and REST API?
 Answer: SOAP (Simple Object Access Protocol) and REST (Representational State Transfer) are two different architectural
 styled for designing a web services.
 a) SOAP: uses XML and the message format where REST can use multiple formats, but JSON is more commonly used.
@@ -2586,60 +2272,53 @@ maintains state.
 SOAP may be more suitable for scenarios where strict standards and security are essential, while REST is often preferred
 for its simplicity, flexibility and efficiency in web and mobile apps.
 
-318) How do tou do API testing?
+311) How do you do API testing?
 Answer: 
 a) Analyze API documentation.
 b) Send request.
 c) Validate response: Verify status code, Verify response body (if applicable).
 
-319) What is HTTP and HTTPS?
+312) What is HTTP and HTTPS?
 Answer: HTTP (Hyper Text Transfer Protocol) and HTTPS (Hyper Text Transfer Protocol Secure).
 HTTP and HTTPS are protocol used for communication between a client (such as a web browser) and a server over the internet.
 They define how data transferred and formatted during the exchange information. The key differences between HTTP and
 HTTPS are related to security. HTTPS adds a layer of encryption, making it more secure.
 
-320) What is API?
+313) What is API?
 Answer: API stands for Application Programming Interface. It is a bridge between data layer and app client. Also, APIs 
 define how different software components should interact, allowing them to communicate with each other.
 REST (Representational State Transfer) and SOAP (Simple Object Access Protocol) are common architectural style of 
 Web APIs.
 
-321) What's a singleton design pattern and why you might need to use it in your framework.
+314) What's a singleton design pattern and why you might need to use it in your framework.
 Answer: Singleton is a creational design pattern that lets you ensure that a class has only one instance, while providing
 a global access point to this instance. We need singleton to have one instance of Driver during the execution.
 
-322) What kind of reports do you generate from your framework?
+315) What kind of reports do you generate from your framework?
 Answer: My framework generates maven-cucumber-reporting (cucumber reports) reports.
 
-323) How do you manage test data in your framework?
+316) How do you manage test data in your framework?
 Answer: The majority of my test data exists in cucumber scenarios. If test data is not suitable for cucumber scenario,
 I keep it under resources' folder. For some instances I use external storage like S3 buckets.
 
-324) How do you manage running in different environments?
-Answer: I got the value from maven system properties and use it to differentiate environment url.
-
-325) How do you manage credentials in your framework?
-Answer: I manage credentials by using Maven System Properties.
-'mvn test -Dusername=john_dow@gmail.com -Dpassword=12345a'.
-
-326) How does your code run as part of CI and what is your CI strategy?
+317) How does your code run as part of CI and what is your CI strategy?
 Answer: We have two different automated suits we run as part of the CI process. First is a smoke suite. We maintain a small
 set of critical test which we run for every release. In Dev and for every changes to make sure new changes will not break
 core features and have quick feedback. This Jenkins Job is part of the dev pipeline and triggered after the Dev environment
 deployment. Second is the regression unit suite with all our automated tests. We run this suite in Jenkins manually against
 the Test environment before each release as part of the regression test execution.
 
-327) What is Continuous Integration?
+318) What is Continuous Integration?
 Answer: CI is a DevOps software development practice where developers regularly merge their code changes into a central 
 repository, after which automated build and tests are run. CI most often refers to the build or integration stage of the
 software release process and entails both an automation component and a cultural components (learning to integrate 
 frequently). The key goals of CI are to find and address bugs quicker, improve software quality, and reduce the time it 
 takes to validate and release new software updates.
 
-328) How can you pass value from maven command to your code?
+319) How can you pass value from maven command to your code?
 Answer: Maven command with System Property: 'mvn test -Denv=PROD'.
 
-329) What Maven Lifecycle do you know?
+320) What Maven Lifecycle do you know?
 Answer: There are three built-in build lifecycles: default, clean and site. The default lifecycle handles your project
 deployment, the clean lifecycle handles project cleaning, while the site lifecycle handles the creation of your project's
 website.
@@ -2650,162 +2329,162 @@ framework. 'package' - take the compiled code and package it in its distributabl
 any checks on results of integration tests to ensure quality criteria are met.
 c) Site lifecycle. 'site' - generate the project's site documentation.
 
-330) What is Maven? And what rule does it play in your framework?
+321) What is Maven? And what rule does it play in your framework?
 Answer: Maven is a build process automation and project management tool for Java projects. Maven automates the build 
 process, including tasks such as compiling source code, running tests, packaging binaries, and creating artifacts.
 Maven follows a convention over configuration approach, defining a standard project structure. This makes it easier for
 developers to understand and contribute to projects, as they where to find source code, resources and configuration files.
 Maven manages project dependencies, retrieving and resolving them from remote repositories.
 
-331) What is the difference between soft and hard assert?
+322) What is the difference between soft and hard assert?
 Answer: A hard assert is a traditional assertion mechanism that stops the test execution immediately upon encountering the
 first assertion failures. But soft assert allows the test execution to continue even if assertion fails. All assertions
 are executed, and the results are collected in the end.
 
-332) Why do you need JUnit / TestNG in your framework?
+323) Why do you need JUnit / TestNG in your framework?
 Answer: My framework is a Java - based framework with Maven, Selenium, Cucumber, and JUnit tools. The main role of JUnit
 is to assert tests and provide a run engine.
 
-333) What are JUnit and TestNG?
+324) What are JUnit and TestNG?
 Answer: JUnit and TestNG are both frameworks for Java programming language, designed to facilitate the development of
 automated tests and simplify the testing process.
 JUnit was primarily created to use for unit testing in Java.
 TestNG is a testing framework that extends JUnit and introduces new features.
 
-334) How would you run only smoke test scenarios or only regression test scenarios in Cucumber?
+325) How would you run only smoke test scenarios or only regression test scenarios in Cucumber?
 Answer: We can use Cucumber tags. 'mvn test -Dcucumber.options="--tag @smoke"'.
 
-335) How does parametrized step work in Cucumber?
+326) How does parametrized step work in Cucumber?
 Answer: You can pass values to the step definition method from your scenario step. Numbers are parametrized by default.
 Strings between double quotes are parametrized. You can use Data Tables to pass multiple values.
 
-336) What are the Hooks in Cucumber?
+327) What are the Hooks in Cucumber?
 Answer: Hooks are blocks of code that can run at various points of the Cucumber execution cycle. They are typically used
 for setup and teardown of the environment before and after each scenario.
 Scenario hooks: @Before, @After.
 Step hooks: @BeforeStep, @AfterStep.
 
-337) What is the Background in Cucumber?
+328) What is the Background in Cucumber?
 Answer: We can create the Background steps which run before each scenario, but after Hook. We can use Background steps
 to avoid duplication. It is good practice to keep it short.
 
-338) What is Scenario Outline in Cucumber?
+329) What is Scenario Outline in Cucumber?
 Answer: The scenario outline keyword can be used to run the same scenario multiple times, with different combinations
 of values.
 
-339) What is the Step Definition?
+330) What is the Step Definition?
 Answer: A Step Definition is a method with an expression that links it to one or more Cucumber Steps. When Step is
 executed, it will look for a matching step definition to execute.
 
-340) What are the Feature, Scenario and Steps keywords?
+331) What are the Feature, Scenario and Steps keywords?
 Answer: Feature keyword is to provide a high-level description of a software feature and to group related scenarios.
 Scenario (example) keyword illustrates a business rule for your test. It consists of a list of steps.
 Steps: Given, When, Then, And, and But. They represent the actual steps of your test case. Cucumber executes each step
 one by one in the sequence.
 
-341) What does the runner class do? Can you describe what is inside?
+332) What does the runner class do? Can you describe what is inside?
 Answer: It is execution point for Cucumber. It connects Feature files with their Step Definitions.
 
-342) What are the main components of Cucumber?
+333) What are the main components of Cucumber?
 Answer: Feature files. That's where we write our tests as Cucumber Scenarios with steps. 
 Step Definitions: The implementation of steps with actual automation script.
 Runner: It is execution point for Cucumber. It connects Feature files with their Step Definitions.
 
-343) What is Gherkin language?
+334) What is Gherkin language?
 Answer: It is a language we use to write Cucumber Scenarios.
 
-344) What are the benefits of using Cucumber?
+335) What are the benefits of using Cucumber?
 Answer: The code becomes reusable once the framework matures. Easier understanding of the test logic from readable 
 Scenarios.
 
-345) What is Cucumber in test automation?
+336) What is Cucumber in test automation?
 Answer: Cucumber is a tool for running automated tests, written in plain language. Cucumber was built to support
 Behavior-Driven-Development (BDD).
 
-346) What is SauceLabs and BrowserStack?
+337) What is SauceLabs and BrowserStack?
 Answer: SauceLabs and BrowserStack are both cloud-based platforms that provide infrastructure for testing web and mobile
 apps across different browsers, operating systems, and devices. They offer tools and services that enable dev and qa
 teams to test their apps in different environments to ensure compatibility and functionality. They provide a platform
 that offers a cloud-based Selenium grid for automated testing of web and mobile apps.
 
-347) What is Selenium Grid?
+338) What is Selenium Grid?
 Answer: Selenium Grid allows the execution of WebDrivers script on remote machines by routing commands sent by the client
 to remote browser instances. Grid aims to: Provide an easy way to run tests in parallel on multiple machines. Allows
 testing on different browser versions. Enable cross-platform library.
 
-348) What is Page Object Model (POM)?
+339) What is Page Object Model (POM)?
 Answer: POM is a design pattern in Selenium that creates an object repository for storing web elements. In POM, we have
 each web page of an app as a class. Each class will contain only corresponding web page elements and methods to work
 with this page. It helps reduce code duplication.
 
-349) What does Actions class do in Selenium?
+340) What does Actions class do in Selenium?
 Answer: Actions class provides an ability to handle keyboards events, mouse events, and special actions. Some common 
 actions: Drag and Drop, Mouse hover, Double click, Right click.
 
-350) How do you type text in an input box in Selenium?
+341) How do you type text in an input box in Selenium?
 Answer: We do it by using sendKeys(text) method.
 
-351) How do you work with popups in Selenium?
+342) How do you work with popups in Selenium?
 Answer: We use Alert class to work with alert based popups in Selenium. We can accept, dismiss, getText, and sendKeys
 using Alert class. We need to switchTo alert. However, we need to wait for alert to be present (explicit wait).
 
-352) How do you work with UI dropdown in Selenium?
+343) How do you work with UI dropdown in Selenium?
 Answer: When dropdown is based on select tag then we can use select class to work with it.
 
-353) How do you work with iFrames in Selenium?
+344) How do you work with iFrames in Selenium?
 Answer: Switch to iFrame first by using switchTo() method. You can switch by index, id and name. Once you completed your
 task in the iFrame, you can switch back by using default content.
 
-354) How do you work with multiple Windows in Selenium?
+345) How do you work with multiple Windows in Selenium?
 Answer: Each window has unique window handle (sort od ID of the window). We can read these window handles via Selenium
 and Switch between windows.
 
-355) What do you check if element exist in the DOM?
+346) What do you check if element exist in the DOM?
 Answer: We can try to locate this element and catch an exception if it fails. We use findElements method to check if
 element in the DOM. If it returns empty list then element doesn't exist in the DOM.
 
-356) What's the difference between findElement and findElements?
+347) What's the difference between findElement and findElements?
 Answer: findElement method returns a single WebElement. It throws NoSuchElement exception if element doesn't exist. 
 findElements method returns the list of WebElements. It returns empty list if elements don't exist.
 
-357) What is the difference between implicit and explicit waits?
+348) What is the difference between implicit and explicit waits?
 Answer: Implicit wait is a global wait. We need to declare it once at the beginning of the execution. It gets applied
 to all element locators. We use explicit wait in special cases where we need to await special event to occur, like:
 elements appears, element disappears etc.
 
-358) What is fluent wait in Selenium?
+349) What is fluent wait in Selenium?
 Answer: It is used to wait for certain events. We can configure pooling time. We can configure specific exceptions to
 be ignored.
 
-359) What's the main disadvantages of implicit wait?
+350) What's the main disadvantages of implicit wait?
 Answer: Since it applies to all element locators, it can slow down overall execution time.
 
-360) How do you handle dynamic elements?
+351) How do you handle dynamic elements?
 Answer: By using xpath's contains method by finding a static part of the element. Another way is by finding a static 
 element and building my path from that element in my dynamic element.
 
-361) What is the difference between xpath and css?
+352) What is the difference between xpath and css?
 Answer: The main differences: CSS is faster than xpath. Xpath has more features to build complex path. It has many
 useful methods. For example: finding via text, text contains, and text equals. Xpath can traverse the DOM in any
 direction (upwards, downwards) where CSS only downwards.
 
-362) What's the difference between absolute and relative paths?
+353) What's the difference between absolute and relative paths?
 Answer: The absolute path starts at the root of the HTML and uses the Single Slash to navigate to the target element.
 The relative path can start from any place in the HTML and uses double slash to navigate to target element. The relative
 path is more widely used than the absolute path.
 
-363) Which Selenium locator do you prefer?
+354) Which Selenium locator do you prefer?
 Answer: I prefer ID and name when they are unique. The next preferable locator is CSS, the if I need to write more complex
 locators I will work with xpath.
 
-364) What kind of locators do you know in Selenium?
+355) What kind of locators do you know in Selenium?
 Answer: ID, Name, Class name, xpath, css, link text and partial link text, tag name.
 
-365) What is Document Object Model (DOM) in the UI?
+356) What is Document Object Model (DOM) in the UI?
 Answer: DOM is an object representation of HTML. We can say it is an object model of the HTML document. The HTML and DOM
 are in synced. MOD - Model Object Document.
 
-366) What are the advantages and disadvantages of Selenium?
+357) What are the advantages and disadvantages of Selenium?
 Answer: The advantages: 
 a) Cross-browser compatibility. Selenium supports multiple browsers, making it great fit for testing web apps. 
 b) Open Source: Selenium is free to use and has a large community of users and developers.
@@ -2814,41 +2493,34 @@ The disadvantages:
 a) It is not suitable for testing desktop apps.
 b) Selenium primarily focuses on web apps and has limited support for mobile app testing.
 
-367) How do you do regression test in your project?
+358) How do you do regression test in your project?
 Answer: The big portion of our regression suite is automated for our project, and we execute them in Jenkins before each
 release. The rest of the not automated test, we execute manually.
 
-368) What do you do when your automated suite is failed?
+359) What do you do when your automated suite is failed?
 Answer: First, we check if the automated test failed because of the automation script itself of it failed because of
 unexpected behavior from apps. Usually it is easy to look into screenshots or video if framework produce them.
 If it is an issue with the script itself, I open the ticket with the details of failure and in the next sprint lifecycle
 we will fix it. Meanwhile, I will test this manually and attach the details in overall test automation run reports.
 If it is an issue with app, then I will reproduce it manually and open defect ticket.
 
-369) How do you determine which test to automate?
+360) How do you determine which test to automate?
 Answer: The test should be part of the regression suite because we automate to reduce manual effort for regression suite.
 The test should be automat-able. The tools we use can automate this test. The test is repeatable.
 
-370) How do you create test data for your app?
+361) How do you create test data for your app?
 Answer: Asked Supplier for an example. Generate our own to check basic processing (in acceptance test).
 
-371) Tell me about your latest defect you discovered?
+362) Tell me about your latest defect you discovered?
 Answer: Malformed response from Supplier cause our app returned error instead xml payload (missing namespace in response).
 I noticed that our deployment tool didn't show change ticket if they were placed at the same minute (UI issue).
 
-372) What is a performance testing?
+363) What is a performance testing?
 Answer: Performance testing is a non-functional testing that determines how the stability, speed, scalability and 
 responsiveness of an app. Some examples: processing speed, data transfer velocity, network bandwidth usage, maximum
 concurrent users, memory utilization, workload efficiency and latency times.
 
-373) What are the black and white box testing?
-Answer: The black box testing is when we test without a knowledge of how app works internally (code structure,
-implementation details). However, we know the requirements and what our app should do.
-The white box testing is when we know the internal code structure and implementation details, and we do our testing by
-reviewing them and looking for potential defects. We need to have corresponding technical skills to perform a white box
-testing.
-
-374) What kind of different testing techniques do you know and use it?
+364) What kind of different testing techniques do you know and use it?
 Answer: There are a bunch of different test types. Let's focus on most used once.
 a) Positive testing: It determines that your app works as expected.
 b) Negative testing: It ensures that your app can handle invalid input unexpected user behavior.
@@ -2859,25 +2531,20 @@ partitions is more likely to be incorrect than the behavior within partition.
 e) Ad hoc testing. It is an informal or unstructured software testing type that aims to break the testing process in
 order to find possible defects.
 
-375) What is a smoke test?
-Answer: The smoke test is initial testing to reveal simple failures. They are a subset of test cases that cover the most
-important functionality. From my experience, it is useful when automated to catch issues earlier in the development.
-For example, it can be integrated with developers CI pipeline and catch the issues before even going to QA environment.
-
-376) How do you determine which test case should be part of regression suite?
+365) How do you determine which test case should be part of regression suite?
 Answer: Test case should be part of the important functionality. It should be a repeatable test case.
 
-377) What is a regression suite and why do we need it?
+366) What is a regression suite and why do we need it?
 Answer: The regression suite is a collection of test scenarios that address the various functionality that are important
 to the software. We typically create a regression suite from existing tests that have already been executed in previous 
 release cycles. The reason, we execute test is that new changes can break existing working functionalities, so before
 releasing new changes to our customers, we need to execute our regression suite.
 
-378) What is Requirements Traceability Matrix (RTM) in testing?
+367) What is Requirements Traceability Matrix (RTM) in testing?
 Answer: RTM is a document that maps and traces user requirement with test cases. The main purpose of RTM is to validate
 that all requirements are checked via test cases such that no functionality is unchecked during software testing.
 
-379) What is a defect life cycle?
+368) What is a defect life cycle?
 Answer: It is a specific stage that defect goes through from opening to resolution:
 a) Defect is raised and assigned for a fix.
 b) Fixed.
@@ -2885,7 +2552,7 @@ c) Retest.
 d) If the defect is still there, reopen and start with step1.
 e) Otherwise coded.
 
-380) What is a software testing life cycle STLC for your team?
+369) What is a software testing life cycle STLC for your team?
 Answer: Usually each team adopts own STLC that works best for them. STLC is a testing process that has specific steps to
 be executed in a sequence to ensure that the quality goals have been met. My team's phases of STLC:
 a) Requirement (prod specs) analysis.
@@ -2894,11 +2561,11 @@ c) QA handoff.
 d) Execution / Testing.
 e) QA sign-off.
 
-381) What is a test case and what does an excellent test case include?
+370) What is a test case and what does an excellent test case include?
 Answer: A test case describes steps to perform a test for specific factor or functionality. A good test case includes
 detailed steps, test data, expected results, test environment, and all the prerequisites to perform a test.
 
-382) What is a test plan and what does a good test plan include?
+371) What is a test plan and what does a good test plan include?
 Answer: A test plan is a detailed document that includes the entrance criteria, the scope of testing, the test strategies,
 objectives, schedule, deadlines, resources required to complete the testing, and exit criteria. It is the point of the
 reference based on which testing activities are executed and coordinated among the QA Team. The test plan is shared with
@@ -2906,13 +2573,13 @@ Business Analytics, Project Manager, Developers to offer transparency into testi
 how the software will be tested. The ultimate goal of the test planning process is communicating (not recording) the
 software test team's intent, its expectations and its understanding of the testing that's being performed.
 
-383) What is a defect?
+372) What is a defect?
 Answer: The defect is when the actual result doesn't match with the expected result. Usually, we have our expected
 results from the product specification document includes all the aspects of the product. For example, if software is
 difficult to understand, hard to use, slow, or just not right and it wasn't mentioned in product specification, it is
 a valid defect.
 
-384) Mock Functionality?
+373) Mock Functionality?
 Answer:
 a) Use mocks, mock method.
 b) given/willReturn and when/then methods.
@@ -2923,104 +2590,104 @@ f) willDoNothing, willAnswer, willCallRealMethod methods.
 g) @InjectMock, @Mock, and @Captor annotations.
 h) Spy objects.
 
-385) FIRST principle?
+374) FIRST principle?
 Answer: Fast - Unit tests run fast. Independent - Unit tests are independent. Repeatable - Unit tests are repeatable.
 Self-Validating: Unit tests validates itself. Thorough & Timely: Cover edge cases.
 
-386) JUnit 5?
+375) JUnit 5?
 Answer: JUnit5 = JUnit Platform + JUnit Jupiter + JUnit Vintage.
 JUnit Platform: The JUnit Platform serves as a foundation for launching testing frameworks in the JVM.
 JUnit Jupiter: Is the combination of the new programming model and extension model for writing tests and extensions in
 JUnit5. 
 JUnit Vintage: TestEngine for running JUnit3 and JUnit4 based tests on the platform.
 
-387) Test Driven Development (TDD)?
+376) Test Driven Development (TDD)?
 Answer: Test driven development life cycle (Red, Green, Refactor, Repeat).
 a) Red: Write Unit test that fails.
 b) Green: Write Application code to make Unit Test pass.
 c) Refactor: Clean up. Improve Unit test and Application code.
 d) Repeat: Repeat above steps until all your functionality is implemented.
 
-388) Mocking Frameworks?
+377) Mocking Frameworks?
 Answer: The Java ecosystem includes a number of Mocking frameworks.
 Features: Minimize hand-coding of mocks... leverage annotations. Set expectations for mock responses. Verify the calls
 to methods including the number of calls. Programmatic support for throwing exceptions.
 Spring-boot-starter-test: Transitive Dependency for Mocking.
 
-389) Mocks with Mockito and Spring Boot?
+378) Mocks with Mockito and Spring Boot?
 Answer: The technique of using test doubles is known as "mocking". Benefits of Mocking: Allows us to test a given class
 in isolation. Test interaction between given class and its dependencies. Minimizes configuration/availability of 
 dependencies. For example DAO, DB, REST API etc.: We can mock the DAO to give a response. We can mock a REST API to
 give a response.
 
-390) Spring Boot support for unit testing?
+379) Spring Boot support for unit testing?
 Answer: What do you need for Spring Boot unit testing? Access to the Spring Application Context. Support for Spring
 dependency injection. Retrieve data from Spring 'application.properties'. Mock object support for web, data, REST APIs.
 @SpringBootTest: Loads the application context. Support for Spring dependency injection. You can access data from Spring
 'application.properties'.
 
-391) Testing using Reflection?
+380) Testing using Reflection?
 Answer: Need to access non-public fields. Read the field's value. Set the field's value. Invoke non-public methods.
 Testing legacy code... can't change code due to corporate policy. In general, testing non-public fields and methods is
 controversial, use sparingly.
 
-392) MockBean Annotation?
+381) MockBean Annotation?
 Answer: Instead of using Mockito: '@Mock' and '@InjectMock'. Use Spring Boot support: '@MockBean' and '@Autowired'.
 '@MockBean': Includes Mockito '@Mock' functionality. Also adds mock bean to Spring ApplicationContext. If existing bean
 is there, the mock bean will replace it. This mocking the mock bean available for injections with '@Autowired'.
 Use Spring Boot '@MockBean' when you need to inject mocks AND inject regular beans from app context.
 
-393) Parametrized Tests?
+382) Parametrized Tests?
 Answer: JUnit provides '@ParametrizedTest'. Run a test multiple times and provide different parameter values. 
 '@ParametrizedTest' source of values? '@ValueSource', '@CsvSource', '@CsvFileSource', '@EnumSource', '@MethodSource'.
 
-394) Vertical Scaling Means?
+383) Vertical Scaling Means?
 Answer: Scaling a system by upgrading to more powerful machines.
 Vertical scaling means using one server and just making that server more and more powerful as your traffic grows. 
 This can result in a single point of failure and has an upper bound of how far you can scale. But for small, 
 non-critical systems it may be a simple and cost-effective choice.
 
-395) Horizontal Scaling requires?
+384) Horizontal Scaling requires?
 Answer: Stateless servers where any server can handle any request.
 In a horizontally scalable system, every server should be "stateless" and assume that any request could have been 
 handled by itself or by any other server.
 
-396) A database host that is replicated to a backup that's always ready to take over is an example of?
+385) A database host that is replicated to a backup that's always ready to take over is an example of?
 Answer: Warm standby.
 When dealing with monolithic relational database hosts, replication is a common backup technique. However scalable 
 systems generally rely on distributed key/value data stores, or more generally object stores, AKA "NoSQL" - as these can 
 be horizontally scaled with backups on each shard.
 
-397) Which NoSQL database has no master node?
+386) Which NoSQL database has no master node?
 Answer: Cassandra.
 Cassandra consists of nodes where any node can serve as the master. It accomplishes this at the expense of consistency.
 
-398) A downside of denormalized data is?
+387) A downside of denormalized data is?
 Answer: Handling updates can be expensive.
 Updates in a denormalized table can involve iterating through every row, looking for copies of data that must be updated. 
 They also take up more space.
 
-399) Distributed "NoSQL" databases with a master node that distributes transactions fall on which side of the CAP triangle?
+388) Distributed "NoSQL" databases with a master node that distributes transactions fall on which side of the CAP triangle?
 Answer: Consistency and Partition Tolerance (sacrificing Availability).
 Single-master designs favor consistency and partition tolerance. Although in principle availability it what's given up, 
 in practice modern NoSQL databases have highly redundant master nodes that can quickly replace themselves in the event 
 of failure.
 
-400) When designing a cache that discards the data accessed the longest time ago, which eviction policy is appropriate?
+389) When designing a cache that discards the data accessed the longest time ago, which eviction policy is appropriate?
 Answer: LRU.
 A "least recently used" policy is most commonly used, and evicts data that hasn't been accessed in the longest amount 
 of time once memory for the cache fills up.
 
-401) If you need to minimize client latency for retrieving static data around the world at any cost, you would use:
+390) If you need to minimize client latency for retrieving static data around the world at any cost, you would use:
 Answer: A CDN.
 Content Delivery Networks (CDN's) are aimed at the problem of global traffic and minimizing latency due to long network 
 hops. Load balancers and caching technologies such as Redis can also be parts of low-latency designs, but are not 
 specifically for the problem of global traffic.
 
-403) An SLA of 100ms at "three nines" means?
+391) An SLA of 100ms at "three nines" means?
 Answer: My system will respond in less than 100 mn 99.9% of the time.
 
-404) In HDFS, the server responsible for coordinating requests is called the?
+392) In HDFS, the server responsible for coordinating requests is called the?
 Answer: Name node.
 In the Hadoop Distributed File System, the name node coordinates how files are broken into blocks, and where those blocks 
 are stored. In high availability settings, multiple name nodes may be present for failover.
@@ -3094,49 +2761,4 @@ Answer: To limit the upstream calls.
 16) RateLimiter vs Bulkhead Pattern?
 Answer: RateLimiter: Number of requests per time window. Reject other calls.
 Bulkhead: Number of concurrent calls. Queue other calls.
-
-
-NEW SECTION - Kafka Event Driven Microservices With Java + Spring
-
-1) Need for Event Driven Architecture / Kafka?
-Answer: Synchronous complex communication. One service performance might affect another. Downstream services need to be 
-aware of upstream services, request/response data structures. Not flexible (Introducing new services in the workflow). 
-Upstream Services have to be available. We might lose the request.
-
-2) Kafka?
-Answer: Distributed event streaming platform. Key features: Highly available, Horizontally scalable, Ingest large volume
-of data, High throughput, Low latency, Fault tolerance.
-Open source distributed event streaming platform. Capturing any events in real time and storing for later retrieval /
-processing events in real time.
-
-3) Event?
-Answer: Anything that happened. For example: sam liked a tweet (likes-event), sam placed an order (order-event).
-Also known as: Records, Messages.
-
-4) Topic?
-Answer: It is a way to organizing data within a Kafka CLuster. Similar to a Table in a RDBMS. Similar to a Message Queue.
-We can have thousands of topics! For example: user-clicks, taxi-location, order-event.
-
-5) Kafka Cluster?
-Answer: Kafka Server:
-a) Broker (read + write).
-b) Controller (managing the cluster).
-c) Broker + Controller.
-
-6) Bootstrap-server?
-Answer: A kafka cluster can have N number of servers. A set of servers can act like a bootstrap-servers to provide initial
-metadata.
-
-
-
-
-
-
-
-
-
-
-
-
-
 
