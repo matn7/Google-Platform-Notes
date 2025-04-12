@@ -35,7 +35,7 @@ modele sieciowe, takie jak sieci mostkowe ("bridge networks"), sieci nakładkowe
 hoście ("host-based networks"). Docker, na przykład, tworzy wirtualny most, umożliwiając kontenerom komunikację przez 
 niego. Kontenery mogą być również konfigurowane tak, aby udostępniały określone porty do komunikacji z zewnętrznymi systemami.
 
-7) Czym jest obraz kontenera i jak różni się od kontenera?
+7) Czym jest obraz kontenera ("container image") i jak różni się od kontenera?
 Obraz kontenera to lekki, samodzielny, wykonawczy pakiet, który zawiera wszystko, co potrzebne do uruchomienia oprogramowania. 
 Składa się z kodu, środowiska uruchomieniowego, narzędzi systemowych, bibliotek i ustawień. Kontener, z kolei, to instancja 
 obrazu uruchomiona w czasie rzeczywistym. Gdy obraz jest uruchamiany, istnieje w pamięci i ma swój stan, podczas gdy obraz 
@@ -46,14 +46,14 @@ Dockerfile to skrypt zawierający szereg instrukcji i poleceń używanych do two
 budowania obrazu Docker. Dockerfile definiuje, co dzieje się w środowisku wewnątrz kontenera. Może zawierać instrukcje do 
 instalacji określonego oprogramowania, zmienne środowiskowe oraz polecenia uruchamiające.
 
-9) Czym są mikroserwisy i w jaki sposób kontenery im służą?
-Architektura mikroserwisów to metoda tworzenia aplikacji oprogramowania jako zestawu niezależnie wdrażalnych, modułowych usług. 
-Kontenery są idealne dla mikroserwisów ze względu na swoją lekkość, umożliwiając każdej usłudze uruchomienie w oddzielnym 
+9) Czym są mikro-serwisy i w jaki sposób kontenery im służą?
+Architektura mikro-serwisów to metoda tworzenia aplikacji oprogramowania jako zestawu niezależnie wdrażalnych, modułowych usług. 
+Kontenery są idealne dla mikro-serwisów ze względu na swoją lekkość, umożliwiając każdej usłudze uruchomienie w oddzielnym 
 kontenerze z własnymi zależnościami, co zapewnia izolację, efektywność zasobów i skalowalność.
 
 10) Jak monitorujesz kontenery i ich wydajność?
 Monitorowanie kontenerów polega na śledzeniu metryk, takich jak zużycie CPU, pamięć, I/O, wykorzystanie sieci oraz status 
-zdrowia kontenerów. Narzędzia takie jak Prometheus, Grafana, Docker Monitoring, cAdvisor i inne są używane do monitorowania. 
+zdrowia kontenerów. Narzędzia takie jak Prometheus, Grafana, Docker Monitoring, "c-Advisor" i inne są używane do monitorowania. 
 Pomagają one w zrozumieniu wydajności i statusu kontenerów, co ułatwia zarządzanie wdrożeniami kontenerów na dużą skalę.
 
 11) Jakie są główne komponenty klastra Kubernetes?
@@ -66,10 +66,10 @@ zarządza klastrem, podczas gdy węzły robocze uruchamiają aplikacje.
 "Kube-apiserver" to interfejs front-end płaszczyzny sterującej Kubernetes i pełni rolę głównego interfejsu API Kubernetes. 
 Przetwarza zapytania RESTful, aby zarządzać zasobami Kubernetes, takimi jak pody ("pods"), usługi ("services"), 
 kontrolery replikacji ("replication controllers") i inne. 
-Działa jako brama do magazynu "etcd" i zapewnia, że stan klastra odpowiada pożądanym ustawieniom opisanym w API.
+Działa jako brama do magazynu "Etcd" i zapewnia, że stan klastra odpowiada pożądanym ustawieniom opisanym w API.
 
-13) Czym jest "etcd" i dlaczego jest ważne w Kubernetes?
-"etcd" to rozproszony magazyn klucz-wartość używany przez Kubernetes do przechowywania wszystkich danych klastra. Jest to 
+13) Czym jest "Etcd" i dlaczego jest ważne w Kubernetes?
+"Etcd" to rozproszony magazyn klucz-wartość używany przez Kubernetes do przechowywania wszystkich danych klastra. Jest to 
 kluczowy element Kubernetes, ponieważ przechowuje cały stan klastra, w tym informacje o węzłach, pody, konfiguracje, 
 sekrety ("secrets") i inne. Jego rozproszona natura zapewnia wysoką dostępność i niezawodność.
 
@@ -87,14 +87,14 @@ kierunku pożądanego stanu.
 
 16) Czym jest "kubelet" i jaka jest jego rola w węźle Kubernetes?
 "Kubelet" to agent uruchamiany na każdym węźle w klastrze. Zapewnia, że kontenery są uruchomione w podzie. 
-"Kubelet" pobiera zestaw "PodSpecs" dostarczonych przez "apiserver" i zapewnia, że kontenery opisane w tych "PodSpecs" 
-są uruchomione i działają prawidłowo. Komunikuje się z środowiskiem uruchomieniowym kontenerów w celu zarządzania cyklem 
+"Kubelet" pobiera zestaw "Pod-Specs" dostarczonych przez "apiserver" i zapewnia, że kontenery opisane w tych "Pod-Specs" 
+są uruchomione i działają prawidłowo. Komunikuje się ze środowiskiem uruchomieniowym kontenerów w celu zarządzania cyklem 
 życia kontenerów.
 
 17) Wyjaśnij funkcję "kube-proxy" w Kubernetes?
 "Kube-proxy" to proxy sieciowe, które działa na każdym węźle w klastrze, utrzymując zasady sieciowe, które umożliwiają 
 komunikację sieciową z podami z sesji sieciowych wewnątrz lub na zewnątrz klastra. Zapewnia, że środowisko sieciowe jest 
-przewidywalne i dostępne, ale także izolowane, tam gdzie to konieczne.
+przewidywalne i dostępne, ale także izolowane tam, gdzie to konieczne.
 
 18) Czym jest "Pod" w Kubernetes i jak odnosi się do kontenerów?
 "Pod" to najmniejsza jednostka wdrożeniowa tworzona i zarządzana przez Kubernetes. "Pod" to grupa jednego lub więcej 
@@ -102,7 +102,7 @@ kontenerów, które dzielą przestrzeń przechowywania/sieci oraz specyfikację 
 Kontenery w Podzie dzielą adres IP i przestrzeń portów, i mogą znaleźć się nawzajem przez localhost. Mają również dostęp 
 do wspólnych wolumenów ("volumes"), co umożliwia wymianę danych między nimi.
 
-19) Opisz rolę środowiska uruchomieniowego kontenerów ("container runtime") w Kubernetes.
+19) Opisz rolę środowiska uruchomieniowego kontenerów ("container runtime") w Kubernetes?
 Środowisko uruchomieniowe kontenerów to oprogramowanie odpowiedzialne za uruchamianie kontenerów. Kubernetes obsługuje 
 kilka środowisk uruchomieniowych kontenerów, takich jak "Docker", "containerd" i "CRI-O". Zapewnia ono środowisko do 
 uruchamiania kontenerów, pobiera obrazy z rejestru obrazów kontenerów oraz uruchamia i zatrzymuje kontenery.
@@ -115,7 +115,7 @@ zwykle za pomocą adresów IP. Usługi umożliwiają aplikacjom działającym w 
 21) Jakie są wymagania wstępne do instalacji Kubernetes?
 Przed instalacją Kubernetes potrzebujesz zestawu maszyn (fizycznych lub wirtualnych) do uruchomienia komponentów Kubernetes. 
 Maszyny te powinny mieć kompatybilny system operacyjny Linux, środowisko uruchomieniowe kontenerów, takie jak "Docker", 
-oraz łączność sieciową między nimi. Dodatkowo, powinieneś mieć sposób dostępu do klastra, zazwyczaj za pomocą narzędzia 
+oraz łączność sieciową między nimi. Dodatkowo powinieneś mieć sposób dostępu do klastra, zazwyczaj za pomocą narzędzia 
 linii poleceń "kubectl".
 
 22) Czym jest "kubeadm" i jak jest używane podczas instalacji Kubernetes?
@@ -144,7 +144,7 @@ i instrukcjami instalacji.
 
 26) Jakie są uwagi przy konfigurowaniu wysokiej dostępności ("HA") w Kubernetes? 
 Aby zapewnić wysoką dostępność w Kubernetes, należy skonfigurować wiele węzłów master. Wymaga to skonfigurowania 
-load balancera, który kieruje ruch do wszystkich aktywnych węzłów master, utworzenia klastra "etcd" na wielu węzłach do 
+load balansera, który kieruje ruch do wszystkich aktywnych węzłów master, utworzenia klastra "Etcd" na wielu węzłach do 
 przechowywania stanu oraz zapewnienia, że komponenty kontrolne są replikowane i synchronizowane między tymi węzłami.
 
 27) Czy Kubernetes może być zainstalowany na każdej platformie chmurowej? Jak? 
@@ -181,7 +181,7 @@ pody nowymi. Szybkość zastępowania oraz liczba podów uruchamiających starą
 konfiguracji Deploymentu.
 
 33) Wyjaśnij "Rolling Updates" i "Rollbacks" w Deploymentach Kubernetes?
-"Rolling updates" to domyślna strategia aktualizacji Deploymentu. Podczas rolling update Kubernetes stopniowo aktualizuje 
+"Rolling updates" to domyślna strategia aktualizacji Deploymentu. Podczas "Rolling update" Kubernetes stopniowo aktualizuje 
 instancje podów, zastępując je nowymi. Jeśli zostanie wykryty problem, można przywrócić Deployment do poprzedniej wersji. 
 "Rollbacks" można wywołać za pomocą poleceń "kubectl", a Kubernetes przywróci Deployment do poprzedniego, stabilnego stanu.
 
@@ -201,12 +201,12 @@ sprawdzenia statusu deploymentu, "kubectl describe deployment" do uzyskania szcz
 "kubectl rollout status" do śledzenia statusu aktualizacji deploymentu.
 
 37) Czy możesz wyjaśnić pojęcie pożądanego stanu w Deploymentach Kubernetes? 
-Pożądany stan w Deploymentach Kubernetes odnosi się do stanu opisanego w konfiguracji Deploymentu. Obejmuje to takie aspekty, 
+Pożądany stan w Deploymentach Kubernetes odnosi się do stanu opisanego w konfiguracji Deploymentu. Obejmuje to takie aspekty 
 jak liczba replik, obrazy kontenerów i limity zasobów. Kubernetes nieprzerwanie działa, aby zapewnić, że rzeczywisty stan 
 Deploymentu odpowiada temu pożądanemu stanowi.
 
-38) Jakie znaczenie mają "ReplicaSets" w Deploymentach Kubernetes? 
-"ReplicaSet" to następna generacja "ReplicationController". Zapewnia, że określona liczba replik podów jest uruchomiona 
+38) Jakie znaczenie mają "Replica-Sets" w Deploymentach Kubernetes? 
+"Replica-Set" to następna generacja "ReplicationController". Zapewnia, że określona liczba replik podów jest uruchomiona 
 w danym momencie. W Deploymentach, dla każdej nowej aktualizacji Deploymentu tworzony jest "ReplicaSet", który odpowiada 
 za zapewnienie, że odpowiednia liczba podów dla danej wersji Deploymentu jest uruchomiona.
 
@@ -221,82 +221,82 @@ jako zmienne środowiskowe, co pozwala na różne konfiguracje dla różnych śr
 kiedy kontener jest gotowy do przyjmowania ruchu. "Pprobes" pomagają zapewnić, że w deploymentach wykorzystywane są 
 tylko zdrowe kontenery.
 
-41) Czym jest "StatefulSet" w Kubernetes i jak różni się od Deploymentu? 
-"StatefulSet" to obiekt API w Kubernetes, który służy do zarządzania aplikacjami stanowymi, czyli aplikacjami, które muszą 
-utrzymywać stan lub tożsamość. W odróżnieniu od "Deployments", "StatefulSets" zapewniają, że identyfikatory podów i nazwy 
+41) Czym jest "Stateful-Set" w Kubernetes i jak różni się od Deploymentu? 
+"Stateful-Set" to obiekt API w Kubernetes, który służy do zarządzania aplikacjami stanowymi, czyli aplikacjami, które muszą 
+utrzymywać stan lub tożsamość. W odróżnieniu od "Deployments", "Stateful-Sets" zapewniają, że identyfikatory podów i nazwy 
 hostów sieciowych pozostają spójne, nawet podczas ponownego planowania. Są idealne dla aplikacji, takich jak bazy danych, 
 które wymagają stabilnych, unikalnych identyfikatorów sieciowych, trwałego magazynowania oraz uporządkowanego i łagodnego 
 wdrażania i skalowania.
 
-42) Jak Kubernetes zarządza tożsamością ("Identity") podu w "StatefulSet"? 
-W "StatefulSet" każdy pod otrzymuje unikalny, porządkowy indeks oraz stabilną tożsamość sieciową opartą na tym indeksie. 
-Nazwy podów są spójne i uzywają wzoru: 'STATEFUL-NAME ORDINAL-INDEX'. Ta tożsamość utrzymuje się, nawet jeśli pod zostanie 
+42) Jak Kubernetes zarządza tożsamością ("Identity") podu w "Stateful-Set"? 
+W "Stateful-Set" każdy pod otrzymuje unikalny, porządkowy indeks oraz stabilną tożsamość sieciową opartą na tym indeksie. 
+Nazwy podów są spójne i używają wzoru: 'Stateful-Name Ordinal-Index'. Ta tożsamość utrzymuje się, nawet jeśli pod zostanie 
 przeniesiony na inny węzeł.
 
-43) Jak "StatefulSets" obsługują skalowanie i aktualizacje? 
-"StatefulSets" skalują i aktualizują pody pojedynczo, w kolejności, od najniższego indeksu porządkowego do najwyższego. 
-Podczas skalowania w dół, pody są usuwane w odwrotnej kolejności porządkowej. W trakcie aktualizacji "StatefulSets" 
-obsługują "rolling updates", gdzie aktualizacje są propagowane sekwencyjnie od pierwszego podu do ostatniego.
+43) Jak "Stateful-Sets" obsługują skalowanie i aktualizacje? 
+"Stateful-Sets" skalują i aktualizują pody pojedynczo, w kolejności, od najniższego indeksu porządkowego do najwyższego. 
+Podczas skalowania w dół, pody są usuwane w odwrotnej kolejności porządkowej. W trakcie aktualizacji "Stateful-Sets" 
+obsługują "Rolling updates", gdzie aktualizacje są propagowane sekwencyjnie od pierwszego podu do ostatniego.
 
-44) Jaką rolę odgrywają "Persistent Volumes" w "StatefulSets"? 
-"Persistent Volumes (PVs)" są niezbędne dla "StatefulSes", aby zapewnić stabilne przechowywanie danych, które utrzymuje 
-się po zakończeniu życia poszczególnych podów. Każdy pod w "StatefulSet" może być powiązany z "Persistent Volume" za pomocą 
+44) Jaką rolę odgrywają "Persistent Volumes" w "Stateful-Sets"? 
+"Persistent Volumes (PVs)" są niezbędne dla "Stateful-Sets", aby zapewnić stabilne przechowywanie danych, które utrzymuje 
+się po zakończeniu życia poszczególnych podów. Każdy pod w "Stateful-Set" może być powiązany z "Persistent Volume" za pomocą 
 "Persistent Volume Claims (PVC)". Dzięki temu, nawet jeśli pod zostanie przeniesiony, jego dane pozostają nienaruszone 
 i przypisane do tego podu.
 
-45) Czy możesz opisać usługi "Headless" i ich zastosowanie w "StatefulSets"? 
-Usługa "Headless" w Kubernetes to usługa, której "clusterIP" jest ustawiony na "None". Jest często używana z 
-"StatefulSets", aby zapewnić unikalną tożsamość sieciową dla każdego podu. Usługa "headless" zapewnia, że każdy pod otrzyma 
+45) Czy możesz opisać usługi "Headless" i ich zastosowanie w "Stateful-Sets"? 
+Usługa "Headless" w Kubernetes to usługa, której "cluster-IP" jest ustawiony na "None". Jest często używana z 
+"Stateful-Sets", aby zapewnić unikalną tożsamość sieciową dla każdego podu. Usługa "headless" zapewnia, że każdy pod otrzyma 
 stabilny wpis "DNS", co jest kluczowe dla aplikacji stanowych, które polegają na stabilnych identyfikatorach sieciowych.
 
-46) Jak "StatefulSet" utrzymuje porządek i unikalność podów? 
-"StatefulSets" utrzymują porządek i unikalność podów za pomocą usług rządzących ("governing service,"), które są usługami 
-"headless" kontrolującymi domenę sieciową "StatefulSets". Kontroler "StatefulSet" tworzy pody na podstawie indeksu 
+46) Jak "Stateful-Set" utrzymuje porządek i unikalność podów? 
+"Stateful-Sets" utrzymują porządek i unikalność podów za pomocą usług rządzących ("governing service,"), które są usługami 
+"headless" kontrolującymi domenę sieciową "Stateful-Sets". Kontroler "Stateful-Set" tworzy pody na podstawie indeksu 
 porządkowego, zapewniając, że każdy pod jest tworzony i usuwany w przewidywalnej kolejności.
 
-47) Co się dzieje z StatefulSetem, gdy węzeł ulega awarii? 
-Gdy węzeł ulega awarii, pody w StatefulSecie na tym węźle stają się niedostępne. Kubernetes nie przeskaluje automatycznie 
+47) Co się dzieje z "Stateful-Set", gdy węzeł ulega awarii? 
+Gdy węzeł ulega awarii, pody w "Stateful-Set" na tym węźle stają się niedostępne. Kubernetes nie przeskaluje automatycznie 
 tych podów na inne węzły. Zamiast tego, jeśli awaryjny węzeł powróci do stanu funkcjonalnego, pody zostaną na nim 
 ponownie uruchomione, zachowując swój stan. Aby zapewnić automatyczne przełączanie awaryjne, należy wdrożyć dodatkowe 
 mechanizmy, takie jak "pod disruption budgets" lub "node health checks".
 
-48) Jak zaktualizować "StatefulSet" i jakie ryzyka są związane z tym procesem? 
-StatefulSety są aktualizowane domyślnie za pomocą strategii "Rolling update". Aktualizujesz konfigurację StatefulSetu, 
+48) Jak zaktualizować "Stateful-Set" i jakie ryzyka są związane z tym procesem? 
+"Stateful-Sets" są aktualizowane domyślnie za pomocą strategii "Rolling update". Aktualizujesz konfigurację "Stateful-Set", 
 a Kubernetes stosuje zmiany do każdego podu sekwencyjnie, zachowując ograniczenia porządkowe. Główne ryzyko związane z 
-aktualizacją StatefulSetów dotyczy wymagań specyficznych dla aplikacji dotyczących integralności danych i spójności, 
+aktualizacją "Stateful-Set" dotyczy wymagań specyficznych dla aplikacji dotyczących integralności danych i spójności, 
 ponieważ aplikacje te często zarządzają stanem.
 
-49) Wyjaśnij znaczenie "podManagementPolicy" w StatefulSecie? 
-"podManagementPolicy" w StatefulSecie określa sposób zarządzania podami w ramach StatefulSetu. Istnieją dwie polityki: 
+49) Wyjaśnij znaczenie "podManagementPolicy" w Stateful-Set? 
+"podManagementPolicy" w "Stateful-Set" określa sposób zarządzania podami w ramach "Stateful-Set". Istnieją dwie polityki: 
 "OrderedReady", w której pody są uruchamiane sekwencyjnie, oraz "Parallel", w której pody są uruchamiane lub usuwane 
 jednocześnie. 
 "OrderedReady" jest domyślną polityką i zapewnia uporządkowane wdrażanie oraz skalowanie.
 
-50) Jakie są najlepsze praktyki tworzenia kopii zapasowych danych w StatefulSecie? 
-Najlepsze praktyki tworzenia kopii zapasowych danych w StatefulSecie obejmują regularne tworzenie migawkowych ("snapshot") 
+50) Jakie są najlepsze praktyki tworzenia kopii zapasowych danych w "Stateful-Set"? 
+Najlepsze praktyki tworzenia kopii zapasowych danych w "Stateful-Set" obejmują regularne tworzenie migawkowych ("snapshot") 
 kopii "Persistent Volumes" przy użyciu narzędzi takich jak "Velero", wdrożenie solidnej ("robust") strategii replikacji, 
 jeśli aplikacja ją wspiera (np. w bazach danych), oraz zapewnienie spójności danych podczas tworzenia kopii zapasowych. 
 Zaleca się również przechowywanie kopii zapasowych w lokalizacji niezależnej od klastra Kubernetes.
 
-51) Czym jest ReplicaSet w Kubernetes? 
-"ReplicaSet" w Kubernetes to obiekt API służący do zapewnienia, że określona liczba replik podów jest uruchomiona w 
+51) Czym jest "Replica-Set" w Kubernetes? 
+"Replica-Set" w Kubernetes to obiekt API służący do zapewnienia, że określona liczba replik podów jest uruchomiona w 
 danym momencie. Jest głównie używany do utrzymania dostępności zestawu identycznych podów. Jeśli jest za mało replik, 
 tworzy nowe; jeśli jest ich za dużo, usuwa niektóre.
 
-52) Czym różni się ReplicaSet od ReplicationController? 
-ReplicaSet to następna generacja ReplicationController. Kluczowa różnica polega na tym, że ReplicaSety obsługują wymagania 
+52) Czym różni się "Replica-Set" od ReplicationController? 
+"Replica-Set" to następna generacja ReplicationController. Kluczowa różnica polega na tym, że "Replica-Sets" obsługują wymagania 
 selektora oparte na zbiorach, w przeciwieństwie do selektorów opartych na równości w ReplicationControllerach. 
-Oznacza to, że ReplicaSety mogą wybierać szerszy zakres podów na podstawie etykiet.
+Oznacza to, że "Replica-Sets" mogą wybierać szerszy zakres podów na podstawie etykiet.
 
-53) Jak zdefiniować i używać ReplicaSet w Kubernetes? 
+53) Jak zdefiniować i używać "Replica-Set" w Kubernetes? 
 ReplicaSet definiuje się za pomocą pliku "YAML", który określa liczbę replik i szablon podu do użycia. Zawiera on selektor 
 do identyfikacji podów, którymi ma zarządzać. Używasz ReplicaSetu, tworząc go poleceniem "kubectl apply -f file.yaml". 
 ReplicaSet następnie zapewnia, że określona liczba replik podu jest uruchomiona.
 
-54) Co się stanie, jeśli pod w ReplicaSecie ulegnie awarii? 
-Jeśli pod w ReplicaSecie ulegnie awarii (z powodu awarii węzła lub zakończenia działania), ReplicaSet zauważa spadek 
+54) Co się stanie, jeśli pod w "Replica-Set" ulegnie awarii? 
+Jeśli pod w "Replica-Set" ulegnie awarii (z powodu awarii węzła lub zakończenia działania), "Replica-Set" zauważa spadek 
 liczby replik i tworzy nowy pod, aby go zastąpić. Nowy pod jest tworzony na podstawie szablonu podu zdefiniowanego w 
-"ReplicaSet".
+"Replica-Set".
 
 55) Czy można skalować ReplicaSet? Jak to zrobić? 
 Tak, można skalować ReplicaSet, zmieniając pole replicas w definicji "ReplicaSet", a następnie stosując aktualizację. 
@@ -381,12 +381,12 @@ aktualnym i tworzy nowy Pod, aby utrzymać pożądaną liczbę replik.
 70) Czy możesz opisać proces udostępniania Podu na zewnętrzną sieć? 
 Aby udostępnić Poda na zewnętrzną sieć, zazwyczaj używa się usługi Kubernetes ("Service"). Usługa zapewnia stabilny adres 
 IP i wpis "DNS" do uzyskania dostępu do Poda. Dla dostępu zewnętrznego używana jest usługa typu "LoadBalancer" lub 
-"NodePort", która kieruje ruch zewnętrzny do Poda, korzystając z load balancera dostawcy chmurowego lub poprzez 
+"NodePort", która kieruje ruch zewnętrzny do Poda, korzystając z load balansera dostawcy chmurowego lub poprzez 
 udostępnienie portu na węzłach.
 
 71) Czym jest "Job" w Kubernetes i jaki jest jego cel? 
 "Job" w Kubernetes to zasób używany do zarządzania zadaniem, które ma zostać wykonane do końca, w przeciwieństwie do 
-długoterminowych usług. Jest używany do zadań takich jak przetwarzanie wsadowe ("atch processing"), analiza danych czy 
+długoterminowych usług. Jest używany do zadań takich jak przetwarzanie wsadowe ("Batch processing"), analiza danych czy 
 obliczenia wsadowe, które muszą zostać wykonane raz i zakończyć się pomyślnie. Kubernetes zapewnia, że "Job" będzie 
 działał do momentu osiągnięcia określonej liczby zakończeń.
 
@@ -431,8 +431,8 @@ przypadek, w którym wiele instancji przetwarza ten sam element.
 
 79) Jak radzisz sobie z awariami i ponownymi próbami "Job" w Kubernetes?
 W Kubernetes, jeśli Pody "Job" zakończą się niepowodzeniem (zakończą działanie z kodem innym niż zero), Job spróbuje 
-ponownie uruchomić Poda na podstawie swojej polityki restartu (restartPolicy). backoffLimit określa liczbę prób ponownego 
-uruchomienia, zanim "Job" zostanie oznaczony jako nieudany. Ustawienie odpowiedniego "backoffLimit" pozwala zarządzać 
+ponownie uruchomić Poda na podstawie swojej polityki restartu ("restartPolicy"). "Backoff-Limit" określa liczbę prób ponownego 
+uruchomienia, zanim "Job" zostanie oznaczony jako nieudany. Ustawienie odpowiedniego "backoff-Limit" pozwala zarządzać 
 liczbą prób ponownych, zanim Job zostanie uznany za zakończony niepowodzeniem.
 
 80) Czy "Job" w Kubernetes może zaktualizować swój szablon Poda po utworzeniu?
@@ -479,11 +479,11 @@ wyczerpaniu zasobów klastra przez jedną przestrzeń nazw.
 87) Jakie są najlepsze praktyki używania przestrzeni nazw w Kubernetes w dużej organizacji?
 W dużej organizacji najlepszą praktyką jest używanie przestrzeni nazw do oddzielania różnych zespołów, projektów lub 
 etapów rozwoju (takich jak dev, staging i produkcja). Każda przestrzeń nazw powinna mieć przypisane limity zasobów i 
-polityki sieciowe w celu zapewnienia izolacji i bezpieczeństwa. Dodatkowo, warto korzystać z RBAC (Role-Based Access Control), 
+polityki sieciowe w celu zapewnienia izolacji i bezpieczeństwa. Dodatkowo warto korzystać z RBAC (Role-Based Access Control), 
 aby kontrolować dostęp do każdej przestrzeni nazw, zapewniając użytkownikom tylko niezbędne uprawnienia.
 
-88) Jak działają etykiety i adnotacje w przestrzeniach nazw w Kubernetes?
-Etykiety i adnotacje mogą być przypisane do przestrzeni nazw, tak jak do innych zasobów Kubernetes. Etykiety służą do 
+88) Jak działają etykiety ("Labels") i adnotacje ("Annotations") w przestrzeniach nazw w Kubernetes?
+Etykiety i adnotacje mogą być przypisane do przestrzeni nazw tak jak do innych zasobów Kubernetes. Etykiety służą do 
 organizowania i wybierania podzbiorów przestrzeni nazw do określonych operacji. Z kolei adnotacje pozwalają przechowywać 
 dodatkowe, nieidentyfikujące informacje o przestrzeniach nazw, co może być przydatne dla narzędzi i bibliotek pracujących 
 z metadanymi Kubernetes.
@@ -493,7 +493,7 @@ Migracja zasobów między przestrzeniami nazw nie jest prosta, ponieważ większ
 konkretną przestrzenią nazw. Aby przeprowadzić migrację, zazwyczaj trzeba ponownie utworzyć zasób w docelowej przestrzeni 
 nazw i usunąć go z oryginalnej. Trwałe dane i konfiguracje muszą być starannie obsługiwane podczas tego procesu.
 
-90) Jak Kubernetes zarządza bezpieczeństwem w przestrzeniach nazw ("namespaces")?
+90) Jak Kubernetes zarządza bezpieczeństwem w przestrzeniach nazw ("Namespaces")?
 Kubernetes sam w sobie nie egzekwuje silnej izolacji między przestrzeniami nazw; jest to raczej narzędzie organizacyjne.
 Bezpieczeństwo w przestrzeniach nazw zależy od wdrożenia polityk sieciowych do kontrolowania ruchu między podami i 
 przestrzeniami nazw, używania RBAC (Role-Based Access Control) do kontroli dostępu oraz stosowania kontekstów bezpieczeństwa 
@@ -506,31 +506,31 @@ podami. Usługi są kluczowe w zarządzaniu dostępem klientów do aplikacji, po
 dynamicznie zmieniającego się zestawu podów.
 
 92) Wyjaśnij różne typy usług w Kubernetes?
-Główne typy usług w Kubernetes to:
+Główne typy usług ("Services") w Kubernetes to:
 a) "ClusterIP": Wystawia usługę na wewnętrznym adresie IP w klastrze, co sprawia, że jest dostępna tylko wewnątrz klastra.
 b) "NodePort": Wystawia usługę na tym samym porcie na IP każdego wybranego węzła, co pozwala na dostęp do niej spoza klastra.
-c) "LoadBalancer": Wystawia usługę na zewnątrz, korzystając z load balancera dostawcy chmurowego.
+c) "LoadBalancer": Wystawia usługę na zewnątrz, korzystając z load balansera dostawcy chmurowego.
 d) "ExternalName": Mapuje usługę na zewnętrzną nazwę DNS.
 
 93) Jak obiekty "Services" odkrywają i zarządzają ruchem do podów?
 Usługi ("Services") odkrywają Pody za pomocą selektorów etykiet ("Label Selectors"). Kiedy definiujesz usługę, określasz 
 zbiór etykiet, które pasują do grupy podów. Usługa kieruje ruch do tych podów, domyślnie używając algorytmu round-robin. 
-W miarę tworzenia i usuwania podów, usługa automatycznie aktualizuje grupę podów, do których kieruje ruch.
+W miarę tworzenia i usuwania podów usługa automatycznie aktualizuje grupę podów, do których kieruje ruch.
 
 94) Jaka jest rola "Endpoints" w usługach Kubernetes?
 "Endpoints" w usługach Kubernetes to obiekty, które śledzą adresy IP i porty podów, które pasują do selektora usługi. 
 Są one automatycznie zarządzane przez płaszczyznę sterowania Kubernetes ("Kubernetes Control Plane"). Kiedy Pody w usłudze 
 się zmieniają, obiekt Endpoints jest automatycznie aktualizowany, aby odzwierciedlić te zmiany.
 
-95) Jak działa usługa NodePort i kiedy ją stosować?
+95) Jak działa usługa ("NodePort") i kiedy ją stosować?
 Usługa NodePort udostępnia usługę na IP każdego węzła w klastrze Kubernetes na stałym porcie. Gdy klient wysyła zapytanie 
 na IP węzła i port NodePort, zapytanie jest przekazywane do jednego z podów usługi. NodePort jest zwykle stosowany, gdy 
 chcesz udostępnić usługę zewnętrznym użytkownikom spoza klastra Kubernetes, ale nie masz dostępnego "LoadBalancer".
 
-96) Czym jest usługa "LoadBalancer" i jak różni się od "NodePort" oraz "ClusterIP"?
-Usługa "LoadBalancer" udostępnia usługę na zewnątrz, korzystając z load balancera dostawcy chmurowego. Przypisuje stały, 
-zewnętrzny adres IP do usługi. W przeciwieństwie do "NodePort", który udostępnia usługę na porcie na wszystkich węzłach, 
-"LoadBalancer" zapewnia jeden punkt dostępu. Z kolei "ClusterIP" udostępnia usługę tylko wewnętrznie w klastrze.
+96) Czym jest usługa "Load-Balancer" i jak różni się od "Node-Port" oraz "Cluster-IP"?
+Usługa "Load-Balancer" udostępnia usługę na zewnątrz, korzystając z load balansera dostawcy chmurowego. Przypisuje stały, 
+zewnętrzny adres IP do usługi. W przeciwieństwie do "Node-Port", który udostępnia usługę na porcie na wszystkich węzłach, 
+"Load-Balancer" zapewnia jeden punkt dostępu. Z kolei "Cluster-IP" udostępnia usługę tylko wewnętrznie w klastrze.
 
 97) Jak zabezpieczyć usługę ("Service") w Kubernetes?
 Aby zabezpieczyć usługę ("Service") w Kubernetes, możesz:
@@ -548,9 +548,9 @@ Usługa "headless" w Kubernetes to usługa, która nie posiada adresu IP klastra
 gdy aplikacje wymagają bezpośredniego dostępu do poszczególnych Podów. Dzięki usługom "headless" możesz używać "DNS" do 
 odkrywania adresów poszczególnych Podów.
 
-100) Jak działają usługi z StatefulSets w Kubernetes?
-Usługi są często używane z StatefulSets, aby zapewnić stabilną tożsamość sieciową dla każdego poda w zestawie. Każdy pod 
-w StatefulSet otrzymuje stabilną nazwę "DNS", zarządzaną przez usługę, co jest kluczowe dla aplikacji stanowych, takich 
+100) Jak działają usługi z "Stateful-Sets" w Kubernetes?
+Usługi są często używane z "Stateful-Sets", aby zapewnić stabilną tożsamość sieciową dla każdego poda w zestawie. Każdy pod 
+w "Stateful-Set" otrzymuje stabilną nazwę "DNS", zarządzaną przez usługę, co jest kluczowe dla aplikacji stanowych, takich 
 jak bazy danych, które polegają na stabilnych identyfikatorach sieciowych dla każdej repliki.
 
 101) Czym są Proby w Kubernetes?
@@ -630,7 +630,7 @@ Chart Hooks to zaawansowana funkcja w Helm, która pozwala deweloperom chartów 
 chartów. Zdarzenia (hooki) te mogą wykonywać operacje na różnych etapach procesu instalacji, aktualizacji lub usuwania 
 chartu, takie jak migracje baz danych lub operacje czyszczenia.
 
-115) Jak zarządza się zależnościami w Helm 3?
+115) Jak zarządza się zależnościami w "Helm 3"?
 Helm 3 zarządza zależnościami za pomocą pola dependencies w pliku "Chart.yaml". Można tu wymienić wszystkie zależne 
 charty oraz ich wersje. Helm 3 upraszcza zarządzanie zależnościami, eliminując potrzebę osobnego pliku "requirements.yaml" 
 i pozwalając na umieszczanie zależności bezpośrednio w katalogu "charts/" lub dynamiczne linkowanie ich za pomocą pliku 
@@ -648,17 +648,17 @@ operacja atomowa, która umożliwia przywrócenie poprzedniej wersji w przypadku
 
 118) Czym jest Helm Rollback i jak działa?
 Helm Rollback służy do przywrócenia chartu do poprzedniej wersji. Jeśli aktualizacja Helm zakończy się niepowodzeniem lub 
-aplikacja ma problemy, można użyć polecenia "helm rollback [RELEASE] [REVISION]", aby przywrócić aplikację do poprzedniego, 
+aplikacja ma problemy, można użyć polecenia "helm rollback Release Revision", aby przywrócić aplikację do poprzedniego, 
 stabilnego stanu.
 
 119) Wyjaśnij proces tworzenia niestandardowego Helm Chart?
 Tworzenie niestandardowego Helm Chart obejmuje kilka kroków:
-a) Zainicjowanie nowego chartu za pomocą polecenia "helm create [nazwa chartu]".
+a) Zainicjowanie nowego chartu za pomocą polecenia "helm create Nazwa-Chartu".
 b) Edytowanie pliku "Chart.yaml" i zdefiniowanie metadanych.
 c) Modyfikowanie domyślnych szablonów lub dodawanie nowych szablonów obiektów Kubernetes w katalogu "templates/".
 d) Definiowanie domyślnych wartości konfiguracji w pliku "values.yaml".
 e) Opcjonalnie dodanie zależności chartów i niestandardowych hooków.
-f) Spakowanie chartu za pomocą polecenia "helm package [katalog chartu]".
+f) Spakowanie chartu za pomocą polecenia "helm package Katalog-Diagramu".
 g) Testowanie chartu za pomocą polecenia "helm install --dry-run --debug".
 
 120) Jak Helm zarządza zarządzaniem wydaniami ("Release Management") w Kubernetes?
@@ -676,7 +676,7 @@ ReplicaSet.
 
 122) Wyjaśnij wzorzec "Blue/Green" Deployment w Kubernetes.
 Wzorzec "Blue/Green" deployment to technika, która zmniejsza czas przestoju i ryzyko, uruchamiając dwa identyczne środowiska, 
-z których tylko jedno ("Blue") obsługuje ruch produkcyjny na żywo. Dla nowego wydania, nowa wersja ("Green") jest wdrażana 
+z których tylko jedno ("Blue") obsługuje ruch produkcyjny na żywo. Dla nowego wydania nowa wersja ("Green") jest wdrażana 
 obok wersji "Blue". Po przetestowaniu środowiska "Green", ruch jest przekierowywany na nowe środowisko. Jeśli pojawią się 
 problemy, ruch może zostać przekierowany z powrotem do "Blue". Kubernetes ułatwia ten wzorzec za pomocą usług, które 
 przekierowują ruch sieciowy do różnych deploymentów.
@@ -698,9 +698,9 @@ ruchu użytkowników do wersji B, podczas gdy reszta nadal korzysta z wersji A. 
 możliwości routingu oferowanych przez kontroler "ingress" lub "mesh" usługowy, taki jak Istio, który umożliwia kierowanie 
 zapytań na podstawie różnych kryteriów.
 
-126) Czym jest StatefulSet w Kubernetes i jak różni się od Deployment?
-StatefulSet to obiekt API w Kubernetes używany do zarządzania aplikacjami stanowymi. Jest podobny do Deployment, ponieważ 
-zarządza Podami, które bazują na identycznej specyfikacji kontenerów. Jednak w przeciwieństwie do Deployment, StatefulSet 
+126) Czym jest "Stateful-Set" w Kubernetes i jak różni się od Deployment?
+"Stateful-Set" to obiekt API w Kubernetes używany do zarządzania aplikacjami stanowymi. Jest podobny do Deployment, ponieważ 
+zarządza Podami, które bazują na identycznej specyfikacji kontenerów. Jednak w przeciwieństwie do Deployment, "Stateful-Set" 
 utrzymuje trwałą tożsamość dla każdego z podów. Pody te są tworzone z tej samej specyfikacji, ale nie są wymienne: każdy 
 z nich ma trwały identyfikator, który jest utrzymywany nawet po przeskalowaniu.
 
@@ -713,7 +713,7 @@ może zaimplementować ten wzorzec przy użyciu mesh usługowych, takich jak "Is
 128) Czym są "Jobs" i "CronJobs" w Kubernetes?
 Kubernetes "Jobs" to sposób na uruchomienie obciążenia (podu), które nie wymaga trwałej tożsamości ani długoterminowego 
 przechowywania danych. Tworzy on jeden lub więcej podów i zapewnia, że określona liczba z nich zakończy się pomyślnie. 
-"CronJobs", z kolei, są podobne do "Jobs", ale umożliwiają zaplanowanie wykonania jobów w określonych czasach lub interwałach. 
+"CronJobs", z kolei, są podobne do "Jobs", ale umożliwiają zaplanowanie wykonania zadań w określonych czasach lub interwałach. 
 Są przydatne do zadań takich jak kopie zapasowe, generowanie raportów i inne zadania cykliczne.
 
 129) Jak Kubernetes obsługuje rollback Deploymentu?
@@ -734,7 +734,7 @@ oraz redukcji kosztów. Autoskalowanie pomaga w obsłudze wzrostów ruchu i zmni
 
 132) Wyjaśnij "Horizontal Pod Autoscaling (HPA)" w Kubernetes.
 "Horizontal Pod Autoscaling (HPA)" automatycznie skaluje liczbę podów w "deployment", "replica set" lub "stateful set" na 
-podstawie onserwowanego wykorzystania CPU lub innych wybranych metryk. "HPA" dostosowuje liczbę podów w kontrolerze 
+podstawie obserwowanego wykorzystania CPU, lub innych wybranych metryk. "HPA" dostosowuje liczbę podów w kontrolerze 
 replikacji, "deployment" lub "replica set", w zależności od obserwowanego wykorzystania CPU lub, przy wsparciu metryk 
 niestandardowych, innych metryk.
 
@@ -764,10 +764,10 @@ dla aplikacji, zamiast tylko zużycia CPU i pamięci.
 137) Jak skonfigurować autoskalowanie w Kubernetes?
 Autoskalowanie w Kubernetes konfiguruje się za pomocą zasobów "HPA" lub "VPA". Określasz zasób docelowy (np. Deployment), 
 metryki, które mają być użyte do skalowania (np. wykorzystanie CPU), oraz minimalną i maksymalną liczbę podów. W przypadku 
-"Cluster Autoscaler", obejmuje to skonfigurowanie klastra z określonymi możliwościami dostawcy chmurowego i ustawienie 
+"Cluster Autoscaler" obejmuje to skonfigurowanie klastra z określonymi możliwościami dostawcy chmurowego i ustawienie 
 parametrów, kiedy dodawać lub usuwać węzły.
 
-138) Wyjaśnij różnicę między skalowaniem poziomym a pionowym.
+138) Wyjaśnij różnicę między skalowaniem poziomym a pionowym?
 Skalowanie poziome (scalowanie na zewnątrz/wewnątrz) polega na dodawaniu lub usuwaniu instancji podów w celu zmiany 
 pojemności obsługi. Skalowanie pionowe (scalowanie w górę/w dół) oznacza natomiast dodawanie większej ilości zasobów 
 (CPU, pamięci) do istniejących podów. Skalowanie poziome polega na zmianie liczby komponentów, podczas gdy skalowanie 
@@ -807,7 +807,7 @@ oraz z innymi punktami końcowymi w sieci. Służą do izolowania i kontrolowani
 usługami, co zwiększa bezpieczeństwo klastra Kubernetes.
 
 145) Jakie znaczenie ma zarządzanie obiektami "Secrets" w Kubernetes?
-Zarządzanie obuektami Secrets" w Kubernetes polega na bezpiecznym przechowywaniu i zarządzaniu wrażliwymi informacjami, 
+Zarządzanie obiektami "Secrets" w Kubernetes polega na bezpiecznym przechowywaniu i zarządzaniu wrażliwymi informacjami, 
 takimi jak hasła, tokeny OAuth czy klucze SSH. Dzięki Kubernetes "Secrets" możesz kontrolować i bezpiecznie dystrybuować 
 te wrażliwe dane do aplikacji uruchomionych w klastrze, bez ujawniania ich w kodzie aplikacji lub plikach konfiguracyjnych.
 
@@ -847,26 +847,26 @@ samego klastra Kubernetes. Monitorowanie pomaga w śledzeniu metryk wydajności 
 umożliwiając proaktywne rozwiązywanie problemów i optymalizację. Logowanie dostarcza informacji na temat zachowań i wyników 
 aplikacji oraz komponentów Kubernetes, co wspomaga debugowanie i audytowanie.
 
-152) Wyjaśnij kluczowe metryki do monitorowania w klastrze Kubernetes.
+152) Wyjaśnij kluczowe metryki do monitorowania w klastrze Kubernetes?
 Kluczowe metryki do monitorowania w klastrze Kubernetes obejmują wykorzystanie zasobów (CPU, pamięć, dysk, sieć), 
 status podów, stan węzłów, status wdrożenia, metryki serwera API oraz wskaźniki błędów. Monitorowanie tych metryk pomaga 
 zapewnić optymalną wydajność klastra i niezawodność uruchomionych aplikacji.
 
 153) Jakie narzędzia są powszechnie używane do monitorowania klastrów Kubernetes?
 Powszechnie używane narzędzia do monitorowania Kubernetes to "Prometheus" do zbierania metryk i generowania alertów, 
-"Grafana" do wizualizacji danych, "cAdvisor" do monitorowania kontenerów oraz wbudowane narzędzia monitorujące Kubernetes, 
+"Grafana" do wizualizacji danych, "c-Advisor" do monitorowania kontenerów oraz wbudowane narzędzia monitorujące Kubernetes, 
 takie jak "Metrics Server". Te narzędzia pomagają w zbieraniu, analizowaniu i wizualizowaniu danych o wydajności z 
 klastra Kubernetes.
 
 154) Jak działa "Prometheus" w środowisku Kubernetes?
-"Prometheus" zbiera i przechowuje metryki jako dane szeregów czasowych ("time series"). W środowisku Kubernetes, zbiera 
-metryki z skonfigurowanych punktów końcowych, takich jak metryki udostępniane przez węzły i pody Kubernetes. "Prometheus" 
+"Prometheus" zbiera i przechowuje metryki jako dane szeregów czasowych ("time series"). W środowisku Kubernetes zbiera 
+metryki ze skonfigurowanych punktów końcowych, takich jak metryki udostępniane przez węzły i pody Kubernetes. "Prometheus" 
 używa potężnego ("powerful") języka zapytań ("PromQL") do przetwarzania danych i wspiera reguły alertów, które powiadamiają 
 o określonych warunkach.
 
-155) Czym są "DaemonSets" i jak są używane w monitorowaniu?
-"DaemonSets" są używane w Kubernetes, aby zapewnić, że kopia poda działa na wszystkich (lub wybranych) węzłach w klastrze. 
-W monitorowaniu, "DaemonSets" są często używane do wdrażania agentów monitorujących na poziomie węzła, takich jak kolektory 
+155) Czym są "Daemon-Sets" i jak są używane w monitorowaniu?
+"Daemon-Sets" są używane w Kubernetes, aby zapewnić, że kopia poda działa na wszystkich (lub wybranych) węzłach w klastrze. 
+W monitorowaniu "Daemon-Sets" są często używane do wdrażania agentów monitorujących na poziomie węzła, takich jak kolektory 
 logów lub monitory użycia zasobów, zapewniając spójność monitorowania w całym klastrze.
 
 156) Opisz rolę "Grafany" w monitorowaniu Kubernetes.
@@ -887,13 +887,13 @@ Stos "EFK", składający się z "Elasticsearch", "Fluentd" i "Kibana", to popula
 wizualizacji. Stos ten jest używany do efektywnego agregowania, przechowywania i wizualizowania logów z całego klastra 
 Kubernetes.
 
-159) Wyjaśnij, jak zdarzenia Kubernetes ("Kubernetes Events") są przydatne w monitorowaniu.
+159) Wyjaśnij, jak zdarzenia Kubernetes ("Kubernetes Events") są przydatne w monitorowaniu?
 Zdarzenia Kubernetes to obiekty, które dostarczają informacji o tym, co dzieje się wewnątrz klastra, na przykład, jakie 
 decyzje zostały podjęte przez "scheduler", dlaczego niektóre pody zostały usunięte z węzła lub dlaczego niektóre pody 
 są niezdrowe. Monitorowanie tych zdarzeń pomaga w zrozumieniu zmian stanu w klastrze i może być kluczowe przy 
 rozwiązywaniu problemów.
 
-160) Omów najlepsze praktyki skutecznego monitorowania i logowania w Kubernetes.
+160) Omów najlepsze praktyki skutecznego monitorowania i logowania w Kubernetes?
 Najlepsze praktyki obejmują konfigurację kompleksowych i istotnych alertów, tworzenie pulpitów nawigacyjnych do 
 wizualizacji kluczowych metryk, logowanie na odpowiednim poziomie (ani zbyt szczegółowe, ani zbyt ogólne), zapewnienie, 
 że logi są strukturalne i scentralizowane, monitorowanie metryk na poziomie klastra i aplikacji, oraz regularne 
@@ -930,7 +930,7 @@ Mogą ustalać wartości domyślne i maksymalne dla zasobów na pod lub kontener
 pody mieszczą się w określonym zakresie. "LimitRanges" pomagają w zarządzaniu zużyciem zasobów w środowiskach 
 wielodomenowych ("multi-tenant") i zapobiegają nadmiernemu wykorzystaniu zasobów przez pojedynczą przestrzeń nazw lub aplikację.
 
-166) Opisz "Node Affinity" w Kubernetes.
+166) Opisz "Node Affinity" w Kubernetes?
 "Node Affinity" w Kubernetes to zbiór zasad używanych przez harmonogram ("scheduler") do określenia, na którym węźle pod 
 może zostać umieszczony. Pozwala to na ograniczenie, na których węzłach pod może zostać zaplanowany, w zależności od 
 etykiet przypisanych do węzłów. Na przykład, możesz zapewnić, że pod będzie uruchamiany na węźle z określoną konfiguracją 
@@ -969,25 +969,25 @@ poszczególnych użytkowników lub procesów. Jest to ważne, ponieważ umożliw
 dostęp do zasobów w klastrze i wykonywać na nich operacje, poprawiając bezpieczeństwo i minimalizując ryzyko 
 nieautoryzowanego dostępu.
 
-172) Wyjaśnij "Role" i "RoleBindings" w "RBAC" Kubernetes?
-W "RBAC" Kubernetes, rola ("Role") to zbiór uprawnień, które mają zastosowanie do konkretnej przestrzeni nazw ("namespace"). 
+172) Wyjaśnij "Role" i "Role-Bindings" w "RBAC" Kubernetes?
+W "RBAC" Kubernetes rola ("Role") to zbiór uprawnień, które mają zastosowanie do konkretnej przestrzeni nazw ("namespace"). 
 Określa ona, jakie akcje użytkownik, grupa lub konto serwisowe może wykonywać (np. odczyt, tworzenie, edytowanie, usuwanie) 
-na różnych zasobach. "RoleBinding" przyznaje uprawnienia zdefiniowane w roli ("Role") użytkownikowi, grupie lub koncie 
-serwisowemu. "RoleBindings" mają zastosowanie w obrębie konkretnej przestrzeni nazw.
+na różnych zasobach. "Role-Binding" przyznaje uprawnienia zdefiniowane w roli ("Role") użytkownikowi, grupie lub kontu 
+serwisowemu ("Service Account"). "RoleBindings" mają zastosowanie w obrębie konkretnej przestrzeni nazw.
 
-173) Czym są "ClusterRoles" i "ClusterRoleBindings"?
-"ClusterRoles" i "ClusterRoleBindings" są podobne do "Roles" i "RoleBindings", ale mają zastosowanie w całym klastrze. 
-"ClusterRole" może być używana do przyznawania uprawnień w obrębie całego klastra lub do specyficznych zasobów, które 
-nie są przestrzenią nazw (takich jak węzły). "ClusterRoleBinding" przyznaje uprawnienia zdefiniowane w "ClusterRole" 
+173) Czym są "Cluster-Roles" i "Cluster-Role-Bindings"?
+"Cluster-Roles" i "Cluster-Role-Bindings" są podobne do "Roles" i "Role-Bindings", ale mają zastosowanie w całym klastrze. 
+"Cluster-Role" może być używana do przyznawania uprawnień w obrębie całego klastra lub do specyficznych zasobów, które 
+nie są przestrzenią nazw (takich jak węzły). "Cluster-Role-Binding" przyznaje uprawnienia zdefiniowane w "Cluster-Role" 
 użytkownikom, grupom lub kontom serwisowym w całym klastrze.
 
 174) Jak tworzysz i zarządzasz politykami "RBAC" w Kubernetes?
 Polityki "RBAC" w Kubernetes są tworzone i zarządzane za pomocą plików "YAML" lub "JSON", które definiują "Roles", 
-"RoleBindings", "ClusterRoles" i "ClusterRoleBindings". Pliki te są stosowane do klastra za pomocą komendy "kubectl apply". 
+"Role-Bindings", "Cluster-Roles" i "Cluster-Role-Bindings". Pliki te są stosowane do klastra za pomocą komendy "kubectl apply". 
 Administratorzy mogą tworzyć niestandardowe role lub korzystać z predefiniowanych ról dostarczonych przez Kubernetes. 
 Zarządzanie RBAC obejmuje także regularne przeglądanie i aktualizowanie ról oraz powiązań w razie potrzeby.
 
-175) Omów zasadę najmniejszych uprawnień ("Least Privilege") w kontekście "RBAC" w Kubernetes.
+175) Omów zasadę najmniejszych uprawnień ("Least Privilege") w kontekście "RBAC" w Kubernetes?
 Zasada najmniejszych uprawnień to praktyka bezpieczeństwa, która zaleca przyznawanie użytkownikom tylko tych uprawnień, 
 które są niezbędne do wykonywania ich pracy. W Kubernetes "RBAC" zasada ta oznacza przypisywanie użytkownikom, grupom lub 
 kontom serwisowym tylko takich ról, które przyznają im minimalne niezbędne uprawnienia. Dzięki temu zmniejsza się 
@@ -1001,13 +1001,13 @@ domyślnie.
 
 177) Jak przestrzenie nazw ("Namespaces") wpływają na RBAC w Kubernetes?
 Przestrzenie nazw ("Namespaces") zapewniają zakres dla ról "RBAC" i powiązań ról. Rola ("Role") lub powiązanie roli 
-("RoleBinding") jest specyficzne dla przestrzeni nazw, co oznacza, że przyznaje dostęp tylko do zasobów w tej samej 
-przestrzeni nazw. Natomiast "ClusterRoles" i "ClusterRoleBindings" nie są ograniczone przez przestrzenie nazw i mają 
+("Role-Binding") jest specyficzne dla przestrzeni nazw, co oznacza, że przyznaje dostęp tylko do zasobów w tej samej 
+przestrzeni nazw. Natomiast "Cluster-Roles" i "Cluster-Role-Bindings" nie są ograniczone przez przestrzenie nazw i mają 
 zastosowanie do całego klastra.
 
 178) Wyjaśnij użycie kont serwisowych ("Service Accounts") z RBAC?
 Konta serwisowe w Kubernetes są używane do nadawania tożsamości procesom, które działają w Podzie. W RBAC konta serwisowe 
-mogą być przypisane do ról lub ról klastra ("ClusterRoles"), co przyznaje im określone uprawnienia. Jest to szczególnie 
+mogą być przypisane do ról lub ról klastra ("Cluster-Roles"), co przyznaje im określone uprawnienia. Jest to szczególnie 
 przydatne do nadawania odpowiedniego poziomu dostępu aplikacjom lub usługom działającym w obrębie klastra.
 
 179) Czy można rozszerzyć lub dostosować "RBAC" w Kubernetes?
@@ -1064,15 +1064,15 @@ montowania wewnątrz kontenera w sekcji "volumeMounts".
 
 188) Co to jest "Reclaim Policy" w pamięci masowej Kubernetes?
 "Reclaim Policy" w Kubernetes określa, co dzieje się z "Persistent Volume", gdy "PVC" zostaje zwolnione. Opcje to:
-"Retain" (zachowanie danych i volume w nienaruszonym stanie),
-"Delete" (usunięcie zarówno "PV", jak i powiązanej pamięci masowej w backendzie),
-"Recycle" (przestarzała opcja, która usuwa dane i ponownie udostępnia volume do nowego żądania).
+a) "Retain" (zachowanie danych i volume w nienaruszonym stanie).
+b) "Delete" (usunięcie zarówno "PV", jak i powiązanej pamięci masowej w backendzie).
+c) "Recycle" (przestarzała opcja, która usuwa dane i ponownie udostępnia volume do nowego żądania).
 
 189) Omów tryby dostępu w pamięci masowej Kubernetes ("Access Modes in Kubernetes Storage")?
 Tryby dostępu w Kubernetes określają, jak "Persistent Volume" może być dostępny z węzła. Podstawowe tryby dostępu to:
-"ReadWriteOnce" (volume może być zamontowany jako odczyt-zapis przez jeden węzeł),
-"ReadOnlyMany" (volume może być zamontowany jako tylko do odczytu przez wiele węzłów),
-"ReadWriteMany" (volume może być zamontowany jako odczyt-zapis przez wiele węzłów).
+a) "Read-Write-Once" (volume może być zamontowany jako odczyt-zapis przez jeden węzeł).
+b) "Read-Only-Many" (volume może być zamontowany jako tylko do odczytu przez wiele węzłów).
+c) "Read-Write-Many" (volume może być zamontowany jako odczyt-zapis przez wiele węzłów).
 
 190) Jak Kubernetes zapewnia trwałość danych podczas ("Rescheduling") poda?
 Kubernetes zapewnia trwałość danych podczas przekształcania ("resheduling") poda za pomocą "Persistent Volumes (PV)". 
@@ -1083,7 +1083,7 @@ danych przechowywanych w "PV".
 191) Jaka jest rola "schedulera" w Kubernetes?
 "Scheduler" w Kubernetes odpowiada za przydzielanie nowo utworzonych lub niezaplanowanych podów do węzłów w klastrze. 
 Decyzję tę podejmuje na podstawie kilku czynników, takich jak wymagania dotyczące zasobów, ograniczenia 
-sprzętowe/oprogramowania/polityk, specyfikacje "affinity" i "anti-affinity", lokalizacja danych oraz zakłócenia między 
+sprzętowe, oprogramowania, polityk, specyfikacje "affinity" i "anti-affinity", lokalizacja danych oraz zakłócenia między 
 zadaniami roboczymi.
 
 192) Jak "Scheduler" w Kubernetes zapewnia umiejscowienie poda zgodnie z wymaganiami dotyczącymi zasobów?
@@ -1118,9 +1118,9 @@ pod nie zostanie usunięty.
 
 197) Jak Kubernetes radzi sobie z niepowodzeniem w planowaniu poda ("Scheduling Failure")?
 W przypadku niepowodzenia planowania ("Scheduling Failure"), Kubernetes dostarcza informacje zwrotne na temat przyczyny, 
-dla której pod nie mógł zostać zaplanowany. Można je uzyskać za pomocą polecenia 
-"kubectl describe pod NAME", które wyświetla zdarzenia, w tym wszelkie błędy planowania. Administratorzy klastra mogą 
-wykorzystać te informacje do diagnozowania i rozwiązywania problemów związanych z planowaniem poda.
+dla której pod nie mógł zostać zaplanowany. Można je uzyskać za pomocą polecenia"kubectl describe pod NAME", 
+które wyświetla zdarzenia, w tym wszelkie błędy planowania. Administratorzy klastra mogą wykorzystać te informacje do 
+diagnozowania i rozwiązywania problemów związanych z planowaniem poda.
 
 198) Co to jest "DaemonSet" i czym wyróżnia się jego planowanie?
 "DaemonSet" zapewnia, że kopia poda działa na wszystkich (lub wybranych) węzłach w klastrze. Kiedy węzły są dodawane do 
@@ -1141,7 +1141,7 @@ ewakuacjom, które naruszałyby budżet, zapewniając wysoką dostępność podc
 201) Czym jest "kubectl" i jaka jest jego rola w Kubernetes?
 "kubectl" to narzędzie wiersza poleceń do interakcji z serwerem API Kubernetes. Umożliwia użytkownikom wdrażanie aplikacji, 
 przeglądanie i zarządzanie zasobami klastra oraz oglądanie logów. "kubectl" przekształca polecenia wiersza poleceń w 
-wywołania API i komunikuje się z klastrem Kubernetes w celu wykonania tych żądań.
+wywołanie API i komunikuje się z klastrem Kubernetes w celu wykonania tych żądań.
 
 202) Jak tworzysz i zarządzasz zasobami w Kubernetes za pomocą "kubectl"?
 Zasoby w Kubernetes można tworzyć za pomocą "kubectl", stosując pliki konfiguracyjne w formacie "YAML" lub "JSON". 
@@ -1158,13 +1158,13 @@ Te polecenia pomagają w diagnozowaniu problemów i zrozumieniu stanu klastra.
 
 204) Jak skalujesz aplikacje za pomocą "kubectl"?
 Aplikacje w Kubernetes można skalować za pomocą "kubectl scale". Na przykład, polecenie: 
-"kubectl scale deployment my-deployment --replicas=5", zmienia liczbę replik w Deployment "my-deployment" na 5. 
+"kubectl scale deployment my-deployment --replicas=5", zmienia liczbę replik w Deployment "my-deployment" na "5". 
 Dzięki temu dostosowuje się liczbę działających Podów, co umożliwia skalowanie w górę lub w dół w zależności od wymagań.
 
 205) Jaki jest proces aktualizacji aplikacji za pomocą "kubectl"?
-Aplikacje w Kubernetes są aktualizowane za pomocą tzw. "rolling updates", które zapewniają brak przestojów. Można to 
+Aplikacje w Kubernetes są aktualizowane za pomocą "Rolling Updates", które zapewniają brak przestojów. Można to 
 zrobić za pomocą "kubectl", aktualizując obraz lub konfigurację Deployment. Na przykład, polecenie: 
-"kubectl set image deployment/my-deployment my-container=newimage", aktualizuje obraz kontenera, uruchamiając "rolling update".
+"kubectl set image deployment/my-deployment my-container=newimage", aktualizuje obraz kontenera, uruchamiając "Rolling Update".
 
 206) Jak monitorować stan zdrowia i status klastra Kubernetes za pomocą "kubectl"?
 "kubectl" oferuje polecenia takie jak "kubectl get", które pozwala wyświetlić zasoby i sprawdzić ich status, 
@@ -1172,19 +1172,19 @@ zrobić za pomocą "kubectl", aktualizując obraz lub konfigurację Deployment. 
 wykorzystanie zasobów. Te polecenia pomagają monitorować stan zdrowia i wydajność klastra oraz jego komponentów.
 
 207) Czy możesz wyjaśnić, jak używać kontekstów i konfiguracji w "kubectl"?
-Konteksty w "kubectl" służą do przełączania między różnymi klastrami i przestrzeniami nazw. Polecenie "kubectl config", 
-jest używane do zarządzania plikami kubeconfig, które przechowują konfiguracje klastra, użytkownika i kontekstu. 
+Konteksty w "kubectl" służą do przełączania między różnymi klastrami i przestrzeniami nazw. Polecenie "kubectl config"
+jest używane do zarządzania plikami "kube-config", które przechowują konfiguracje klastra, użytkownika i kontekstu. 
 Na przykład, polecenie "kubectl config use-context my-context", przełącza na inny klaster lub przestrzeń nazw zapisane 
-w pliku kubeconfig.
+w pliku "kube-config".
 
 208) Jak "kubectl" współpracuje z API Kubernetes?
 "kubectl" współpracuje z API Kubernetes, wysyłając żądania HTTP do serwera API. Argumenty i flagi w poleceniach "kubectl" 
 są konwertowane na ścieżki zasobów API i parametry zapytań. "kubectl" obsługuje uwierzytelnianie ("authentication"), 
 agreguje odpowiedź API i wyświetla wynik użytkownikowi.
 
-209) Jaka jest rola "kubectl" w pipeline "CI/CD"?
-W pipeline "CI/CD", "kubectl" jest używane do wdrażania aplikacji, zarządzania zasobami i zapewnienia pożądanego stanu 
-klastra na różnych etapach pipeline'u. Może być używane w skryptach automatyzujących i zintegrowane z narzędziami "CI/CD" 
+209) Jaka jest rola "kubectl" w pipeline "CI - CD"?
+W pipeline "CI - CD", "kubectl" jest używane do wdrażania aplikacji, zarządzania zasobami i zapewnienia pożądanego stanu 
+klastra na różnych etapach pipeline'u. Może być używane w skryptach automatyzujących i zintegrowane z narzędziami "CI - CD" 
 do stosowania konfiguracji, aktualizacji obrazów i wdrażania zmian w klastrze Kubernetes.
 
 210) Omów zaawansowane polecenia "kubectl" i ich zastosowanie?
@@ -1198,7 +1198,7 @@ Te polecenia zapewniają większą kontrolę nad interakcją i zarządzaniem zas
 211) Czym jest "Kustomize" i jak jest zintegrowane z Kubernetes?
 "Kustomize" to samodzielne narzędzie do dostosowywania obiektów Kubernetes za pomocą pliku "kustomization". Wprowadza ono 
 sposób dostosowywania konfiguracji aplikacji bez szablonów, co upraszcza korzystanie z gotowych aplikacji. Zintegrowane 
-bezpośrednio z "kubectl" od wersji Kubernetes v1.14, Kustomize pozwala użytkownikom na modyfikowanie dowolnych zasobów 
+bezpośrednio z "kubectl" od wersji Kubernetes "v 1 14", Kustomize pozwala użytkownikom na modyfikowanie dowolnych zasobów 
 API w sposób deklaratywny, przy użyciu plików nakładek, które zmieniają zasoby bez konieczności modyfikowania oryginalnych 
 plików YAML.
 
@@ -1230,7 +1230,7 @@ każdego środowiska.
 216) Czy "Kustomize" może dynamicznie generować konfiguracje zasobów?
 Tak, "Kustomize" może dynamicznie generować konfiguracje zasobów. Może tworzyć nowe zasoby lub modyfikować istniejące na 
 podstawie różnych danych wejściowych i transformacji. Obejmuje to tworzenie "ConfigMap" i "Secrets" z plików, stosowanie 
-wspólnych etykiet oraz ustawianie lub zmienianie konkretnych pól w wielu zasobach.
+wspólnych etykiet ("Labels") oraz ustawianie lub zmienianie konkretnych pól w wielu zasobach.
 
 217) Jaka jest rola "Poprawek" ("Patches") w "Kustomize"?
 Poprawki ("Patches") w "Kustomize" służą do modyfikowania lub aktualizowania zasobów Kubernetes. Umożliwiają zmianę 
@@ -1244,89 +1244,89 @@ lub literali i pozwala na ich modyfikowanie za pomocą nakładek ("overlays"). "
 "ConfigMap" lub "Secret" ulegnie zmianie, dostosowuje on "hash suffix" tych zasobów, uruchamiając "rolling update", 
 jeśli jest to konieczne.
 
-219) Omów, jak "Kustomize" poprawia ponowne wykorzystanie ("Reusability") manifestów Kubernetes?
+219) Omów, jak "Kustomize" poprawia ponowne wykorzystanie ("Re-usability") manifestów Kubernetes?
 "Kustomize" poprawia ponowne wykorzystanie manifestów Kubernetes, oddzielając podstawowe konfiguracje od dostosowań 
-specyficznych dla środowisk. Ta struktura pozwala na utrzymanie jednej zbioru podstawowych manifestów, które mogą być 
+specyficznych dla środowisk. Ta struktura pozwala na utrzymanie jednego zbioru podstawowych manifestów, które mogą być 
 ponownie używane w różnych środowiskach lub scenariuszach poprzez stosowanie nakładek ("overlays"). Zmniejsza to duplikację 
 i upraszcza aktualizacje manifestów.
 
-220) Jakie są najlepsze praktyki stosowania "Kustomize" w pipeline "CI/CD"?
-W pipeline "CI/CD" najlepiej jest trzymać podstawowe konfiguracje i nakładki w systemie kontroli wersji, używać "Kustomize" 
+220) Jakie są najlepsze praktyki stosowania "Kustomize" w pipeline "CI - CD"?
+W pipeline "CI - CD" najlepiej jest trzymać podstawowe konfiguracje i nakładki w systemie kontroli wersji, używać "Kustomize" 
 do dynamicznego generowania ostatecznych manifestów podczas procesu "CI/CD", a następnie stosować wygenerowane manifesty 
 do odpowiednich klastrów Kubernetes. Ważne jest również, aby przed wdrożeniem walidować i testować wygenerowane konfiguracje 
 w procesie "CI".
 
-221) Czym jest "GitOps" i jak różni się od tradycyjnego "DevOps"?
-"GitOps" to paradygmat lub zbiór praktyk, które wykorzystują "Git" jako jedyne źródło prawdy dla deklaratywnej 
-infrastruktury i aplikacji. W "GitOps" repozytoria "Git" przechowują cały stan systemu oraz pożądany stan infrastruktury, 
+221) Czym jest "Git-Ops" i jak różni się od tradycyjnego "Dev-Ops"?
+"Git-Ops" to paradygmat lub zbiór praktyk, które wykorzystują "Git" jako jedyne źródło prawdy dla deklaratywnej 
+infrastruktury i aplikacji. W "Git-Ops" repozytoria "Git" przechowują cały stan systemu oraz pożądany stan infrastruktury, 
 który może być automatycznie stosowany i aktualizowany w docelowym środowisku. W przeciwieństwie do tradycyjnego "DevOps", 
-które często wymaga ręcznych kroków, "GitOps" automatyzuje proces wdrażania, wykorzystując oparte na "Git workflow", 
+które często wymaga ręcznych kroków, "Git-Ops" automatyzuje proces wdrażania, wykorzystując oparte na "Git workflow", 
 co zwiększa wydajność, przejrzystość ("transparency") i spójność.
 
-222) Wyjaśnij rolę Gita w "GitOps"?
-W "GitOps" Git nie jest tylko systemem kontroli wersji, ale pełni rolę centralnego źródła prawdy ("source of truth") dla 
+222) Wyjaśnij rolę Gita w "Git-Ops"?
+W "Git-Ops" Git nie jest tylko systemem kontroli wersji, ale pełni rolę centralnego źródła prawdy ("source of truth") dla 
 całego systemu. Wszystkie zmiany w infrastrukturze i aplikacjach są dokonywane za pomocą commitów Git. Te zmiany uruchamiają 
 zautomatyzowane procesy, które stosują je do środowiska produkcyjnego. To podejście zapewnia, że repozytorium Git zawsze 
 odzwierciedla aktualny stan systemu, co ułatwia śledzenie zmian, przywracanie poprzednich wersji oraz utrzymanie zgodności.
 
-223) Jak "GitOps" poprawia częstotliwość i niezawodność wdrożeń?
-"GitOps" poprawia częstotliwość i niezawodność wdrożeń poprzez automatyzację procesu wdrażania. Każda zmiana w repozytorium 
+223) Jak "Git-Ops" poprawia częstotliwość i niezawodność wdrożeń?
+"Git-Ops" poprawia częstotliwość i niezawodność wdrożeń poprzez automatyzację procesu wdrażania. Każda zmiana w repozytorium 
 Git uruchamia proces wdrożenia, co umożliwia częste i spójne aktualizacje. Zautomatyzowane testowanie i integracja w 
-ramach pipeline "GitOps" zapewniają, że zmiany są niezawodne ("reliable") i stabilne, zmniejszając prawdopodobieństwo 
+ramach pipeline "Git-Ops" zapewniają, że zmiany są niezawodne ("reliable") i stabilne, zmniejszając prawdopodobieństwo 
 błędów i przestojów.
 
-224) Jakie są korzyści z używania "GitOps" do zarządzania Kubernetes?
-"GitOps" oferuje kilka korzyści w zarządzaniu Kubernetes, w tym: 
+224) Jakie są korzyści z używania "Git-Ops" do zarządzania Kubernetes?
+"Git-Ops" oferuje kilka korzyści w zarządzaniu Kubernetes, w tym: 
 a) Zautomatyzowane wdrażanie i cofanie ("Rollback") aplikacji oraz konfiguracji. 
 b) Zwiększona widoczność i śledzenie zmian za pomocą Gita. 
 c) Poprawiona spójność i zgodność, ponieważ repozytorium Git odzwierciedla pożądany stan. 
 d) Uproszczone zarządzanie manifestami i konfiguracjami Kubernetes. 
 e) Uproszczone procesy aktualizacji i skalowania klastrów Kubernetes.
 
-225) Jak wdraża się GitOps w organizacji?
-Wdrażanie GitOps obejmuje: 
+225) Jak wdraża się "Git-Ops" w organizacji?
+Wdrażanie "Git-Ops" obejmuje: 
 a) Utworzenie repozytorium Git do przechowywania całej konfiguracji i stanu infrastruktury. 
-b) Używanie narzędzi Infrastructure as Code (IaC), takich jak "Terraform" lub "Ansible", do definiowania infrastruktury. 
+b) Używanie narzędzi Infrastructure as Code ("I a C"), takich jak "Terraform" lub "Ansible", do definiowania infrastruktury. 
 c) Konfigurowanie zautomatyzowanych pipeline'ów do testowania, integracji i wdrożenia za pomocą narzędzi takich jak 
 "Jenkins", "Argo CD" lub "Flux". 
 d) Wdrażanie polityk dotyczących przepływów pracy "Git" i zapewnienie, że wszystkie zmiany przechodzą przez Git. 
 e) Regularne przeglądanie i aktualizowanie przepływów pracy oraz konfiguracji w razie potrzeby.
 
-226) Jaka jest rola "Continuous Integration" i "Continuous Deployment (CI/CD)" w "GitOps"?
-"GitOps", "CI/CD" odgrywa kluczową rolę w automatyzacji testowania i wdrażania zmian w kodzie. "Continuous Integration (CI)" 
+226) Jaka jest rola "Continuous Integration" i "Continuous Deployment (CI/CD)" w "Git-Ops"?
+"Git-Ops", "CI/CD" odgrywa kluczową rolę w automatyzacji testowania i wdrażania zmian w kodzie. "Continuous Integration (CI)" 
 polega na automatycznym testowaniu zmian w kodzie od wielu współpracowników i łączeniu ich z główną gałęzią. 
-"Continuous Deployment (CD)" automatyzuje wdrażanie tych zmian do środowisk produkcyjnych. W "GitOps", pipeline "CI/CD" 
+"Continuous Deployment (CD)" automatyzuje wdrażanie tych zmian do środowisk produkcyjnych. W "Git-Ops", pipeline "CI/CD" 
 jest uruchamiany przez zmiany w repozytorium Git, zapewniając, że wdrożenia są spójne z kodem źródłowym.
 
-227) Omów implikacje bezpieczeństwa związane z "GitOps"?
-"GitOps" może poprawić bezpieczeństwo, zapewniając ślad audytowy zmian i umożliwiając łatwe przywracanie do znanych 
+227) Omów implikacje bezpieczeństwa związane z "Git-Ops"?
+"Git-Ops" może poprawić bezpieczeństwo, zapewniając ślad audytowy zmian i umożliwiając łatwe przywracanie do znanych 
 dobrych stanów. Niemniej jednak, wymaga to również silnych praktyk bezpieczeństwa związanych z dostępem do repozytorium 
 Git oraz jego zarządzaniem. Bezpieczne zarządzanie sekretami ("secrets"), kontrola dostępu, podpisywanie kodu ("code signing") 
 oraz regularne skanowanie w poszukiwaniu podatności w bazie kodu są niezbędne.
 
-228) Jak "GitOps" ułatwia przywracanie poprzednich wersji i odzyskiwanie po awarii?
-"GitOps" ułatwia przywracanie poprzednich wersji i odzyskiwanie po awarii, przechowując cały stan systemu w repozytorium Git. 
+228) Jak "Git-Ops" ułatwia przywracanie poprzednich wersji i odzyskiwanie po awarii?
+"Git-Ops" ułatwia przywracanie poprzednich wersji i odzyskiwanie po awarii, przechowując cały stan systemu w repozytorium Git. 
 Jeśli pojawi się problem, system może zostać szybko przywrócony do poprzedniego stanu, poprzez cofnięcie do wcześniejszego 
 commita. Takie podejście upraszcza również odzyskiwanie po awarii, ponieważ repozytorium Git może zostać użyte do 
 rekonstrukcji stanu systemu.
 
-229) Jakie narzędzia są powszechnie używane w procesie "GitOps"?
-Do najczęściej używanych narzędzi w procesach GitOps należą: 
+229) Jakie narzędzia są powszechnie używane w procesie "Git-Ops"?
+Do najczęściej używanych narzędzi w procesach Git-Ops należą: 
 a) Systemy kontroli wersji, takie jak Git ("GitHub", "GitLab", "Bitbucket").
 b) Narzędzia "Infrastructure as Code" ("Terraform", "Ansible").
 c) Narzędzia do ciągłego wdrażania ("Argo CD", "Flux").
-d) Narzędzia do orkiestracji kontenerów (Kubernetes).
+d) Narzędzia do orkiestracji kontenerów ("Kubernetes").
 e) Narzędzia do monitorowania i obserwacji ("Prometheus", "Grafana").
 
-230) Jak zarządzać konfiguracją w GitOps?
-W "GitOps" zarządzanie konfiguracją odbywa się poprzez Git. Wszystkie konfiguracje są przechowywane jako kod w repozytorium. 
+230) Jak zarządzać konfiguracją w Git-Ops?
+W "Git-Ops" zarządzanie konfiguracją odbywa się poprzez Git. Wszystkie konfiguracje są przechowywane jako kod w repozytorium. 
 Zmiany w konfiguracjach wprowadzane są za pomocą commitów i pull requestów, co zapewnia proces przeglądu i ślad audytowy 
 ("audit trail"). Narzędzia automatyczne stosują te konfiguracje do infrastruktury, zapewniając, że rzeczywisty stan zawsze 
 odpowiada stanowi zdefiniowanemu w repozytorium Git.
 
 231) Czym jest "AKS" ("Azure Kubernetes Service") i jakie są jego kluczowe cechy?
 "AKS" to zarządzana usługa orkiestracji kontenerów w chmurze "Microsoft Azure", oparta na Kubernetes. Kluczowe cechy to 
-zintegrowane doświadczenia CI/CD, bezpieczeństwo i zarządzanie na poziomie przedsiębiorstwa, uproszczone zarządzanie 
+zintegrowane doświadczenia "CI - CD", bezpieczeństwo i zarządzanie na poziomie przedsiębiorstwa, uproszczone zarządzanie 
 klastrami, automatyczne skalowanie oraz integracja z innymi usługami Azure.
 
 232) Czym różni się "EKS (Amazon Elastic Kubernetes Service)" od innych usług Kubernetes?
@@ -1359,11 +1359,11 @@ za pomocą AWS KMS.
 c) "GKE": Oferuje zintegrowane "Google Cloud IAM", używa "Container-Optimized OS" dla węzłów oraz zapewnia wbudowane 
 polityki sieciowe i funkcje automatycznej aktualizacji węzłów.
 
-237) Jak działa autoskalowanie w AKS, EKS i GKE?
-Autoskalowanie w tych usługach umożliwia automatyczne dostosowanie rozmiaru klastrów na podstawie obciążenia:
-a) "AKS": Używa zestawów skalowania maszyn wirtualnych (VM Scale Sets) w "Azure" do autoskalowania węzłów.
-b) "EKS": Wykorzystuje grupy autoskalowania "AWS (AWS Auto Scaling groups)".
-c) "GKE": Oferuje autoskalowanie klastra oraz autoskalowanie wertykalne podów.
+237) Jak działa auto-skalowanie w AKS, EKS i GKE?
+Auto-skalowanie w tych usługach umożliwia automatyczne dostosowanie rozmiaru klastrów na podstawie obciążenia:
+a) "AKS": Używa zestawów skalowania maszyn wirtualnych ("VM Scale Sets") w "Azure" do auto-skalowania węzłów.
+b) "EKS": Wykorzystuje grupy auto-skalowania "AWS (AWS Auto Scaling groups)".
+c) "GKE": Oferuje auto-skalowanie klastra oraz auto-skalowanie wertykalne podów.
 
 238) Wyjaśnienie modeli cenowych "AKS", "EKS" i "GKE"?
 a) "AKS": Nie pobiera opłat za usługę zarządzania Kubernetes; płacisz tylko za używane maszyny wirtualne (VM), 
@@ -1377,7 +1377,7 @@ strefie z ograniczonymi zasobami.
 Wszystkie trzy usługi oferują zaawansowane możliwości sieciowe:
 a) "AKS": Integruje się z "Azure Virtual Network", oferując polityki sieciowe, load balancing oraz izolację sieci.
 b) "EKS": Wspiera "Amazon VPC" do zarządzania siecią, umożliwiając szczegółową kontrolę nad ustawieniami sieciowymi.
-c) "GKE": Integruje się z "Google Cloud VPC", oferując zaawansowane polityki sieciowe oraz funkcje load balancingu.
+c) "GKE": Integruje się z "Google Cloud VPC", oferując zaawansowane polityki sieciowe oraz funkcje load balansingu.
 
 240) Jak monitorować i rejestrować klastry Kubernetes w "AKS", "EKS" i "GKE"?
 a) "AKS": Integruje się z "Azure Monitor" i "Log Analytics" do monitorowania i rejestrowania danych.
@@ -1402,28 +1402,28 @@ samym węźle i dzielą tę samą przestrzeń nazw sieci ("network namespace"), 
 
 244) Czym są "Helm Charts" i jak są przydatne?
 "Helm Charts" to pakiety w "Helm", które zawierają wszystkie niezbędne pliki i konfiguracje do wdrożenia aplikacji, 
-narzędzia lub usługi w klastrze Kubernetes. Promują one ponowne użycie i mogą encapsulować złożone zasoby Kubernetes, 
+narzędzia lub usługi w klastrze Kubernetes. Promują one ponowne użycie i mogą enkapsulować złożone zasoby Kubernetes, 
 co ułatwia dzielenie się i wdrażanie aplikacji.
 
-245) Wyjaśnij "Horizontal Pod Autoscaling (HPA)" w Kubernetes.
-"Horizontal Pod Autoscaling (HPA)" automatycznie skaluje liczbę Podów w wdrożeniu, zestawie replik lub zestawie stanowym 
-na podstawie obserwowanego wykorzystania CPU lub innych wybranych metryk. "HPA" dostosowuje liczbę Podów w kontrolerze 
-replik, wdrożeniu lub zestawie replik na podstawie obserwowanego wykorzystania CPU lub, przy wsparciu niestandardowych 
+245) Wyjaśnij "Horizontal Pod Autoscaling (HPA)" w Kubernetes?
+"Horizontal Pod Autoscaling (HPA)" automatycznie skaluje liczbę Podów we wdrożeniu, zestawie replik lub zestawie stanowym 
+na podstawie obserwowanego wykorzystania CPU, lub innych wybranych metryk. "HPA" dostosowuje liczbę Podów w kontrolerze 
+replik, wdrożeniu lub zestawie replik na podstawie obserwowanego wykorzystania CPU, lub, przy wsparciu niestandardowych 
 metryk, innych metryk.
 
-246) Czym są mikroserwisy i jak kontenery je wspierają?
-Architektura mikroserwisów to metoda tworzenia aplikacji oprogramowania jako zestawu niezależnie wdrażalnych, modułowych 
-usług. Kontenery są idealne do mikroserwisów ze względu na swoją lekkość, pozwalając na wdrożenie każdej usługi w osobnym 
+246) Czym są mikro-serwisy i jak kontenery je wspierają?
+Architektura mikro-serwisów to metoda tworzenia aplikacji oprogramowania jako zestawu niezależnie wdrażalnych, modułowych 
+usług. Kontenery są idealne do mikro-serwisów ze względu na swoją lekkość, pozwalając na wdrożenie każdej usługi w osobnym 
 kontenerze wraz z jej zależnościami, co zapewnia izolację, efektywność zasobów i skalowalność.
 
-247) Czym są mikroserwisy i jak kontenery je wspierają?
-Architektura mikroserwisów to metoda tworzenia aplikacji oprogramowania jako zestawu niezależnie wdrażalnych, modułowych 
-usług. Kontenery są idealne do mikroserwisów ze względu na swoją lekkość, pozwalając na wdrożenie każdej usługi w osobnym 
+247) Czym są mikro-serwisy i jak kontenery je wspierają?
+Architektura mikro-serwisów to metoda tworzenia aplikacji oprogramowania jako zestawu niezależnie wdrażalnych, modułowych 
+usług. Kontenery są idealne do mikro-serwisów ze względu na swoją lekkość, pozwalając na wdrożenie każdej usługi w osobnym 
 kontenerze wraz z jej zależnościami, co zapewnia izolację, efektywność zasobów i skalowalność.
 
 248) Czy Kubernetes może być zainstalowany na dowolnej platformie chmurowej? Jak?
 Tak, Kubernetes może być zainstalowany na dowolnej platformie chmurowej. Większość dostawców chmurowych oferuje zarządzane 
-usługi Kubernetes (takie jak "AWS EKS", "Azure AKS", "Google GKE"), które upraszczają proces instalacji. Alternatywnie, 
+usługi Kubernetes (takie jak "AWS - EKS", "Azure - AKS", "Google - GKE"), które upraszczają proces instalacji. Alternatywnie, 
 Kubernetes można zainstalować ręcznie przy użyciu narzędzia "kubeadm" lub innych narzędzi, konfigurując maszyny wirtualne 
 lub instancje w ramach infrastruktury dostawcy chmurowego.
 
@@ -1452,11 +1452,11 @@ są kluczowe dla zarządzania dostępem klientów do aplikacji, ponieważ zapewn
 
 253) Wyjaśnij różne typy usług w Kubernetes?
 Główne typy usług ("Services") w Kubernetes to:
-a) "ClusterIP": Udostępnia usługę na wewnętrznym adresie IP w klastrze, dzięki czemu jest dostępna tylko wewnątrz klastra.
-b) "NodePort": Udostępnia usługę na tym samym porcie każdego wybranego węzła ("Node") w klastrze, dzięki czemu jest 
+a) "Cluster-IP": Udostępnia usługę na wewnętrznym adresie IP w klastrze, dzięki czemu jest dostępna tylko wewnątrz klastra.
+b) "Node-Port": Udostępnia usługę na tym samym porcie każdego wybranego węzła ("Node") w klastrze, dzięki czemu jest 
 dostępna z zewnątrz klastra.
-c) "LoadBalancer": Udostępnia usługę na zewnątrz, korzystając z load balancera dostawcy chmurowego.
-d) "ExternalName": Mapuje usługę na zewnętrzną nazwę "DNS".
+c) "Load-Balancer": Udostępnia usługę na zewnątrz, korzystając z load balansera dostawcy chmurowego.
+d) "External-Name": Mapuje usługę na zewnętrzną nazwę "DNS".
 
 254) Jak usługi odkrywają ("Discover") i zarządzają ("Manage") ruchem do Podów?
 Usługi odkrywają Pody za pomocą selektorów etykiet ("label selectors"). Kiedy definiujesz usługę, określasz zestaw etykiet, 
@@ -1469,7 +1469,7 @@ zapewniają one logiczną separację zasobów klastra ("logical separation of cl
 polityk, limitów i uprawnień na poziomie każdej przestrzeni nazw. Pomaga to w tworzeniu środowiska wielo-tenantowego z 
 kontrolowanym dostępem do zasobów.
 
-256) Wyjaśnij "Role-Based Access Control (RBAC)" w Kubernetes.
+256) Wyjaśnij "Role-Based Access Control (RBAC)" w Kubernetes?
 "RBAC" w Kubernetes to metoda regulowania dostępu do zasobów na podstawie ról poszczególnych użytkowników w organizacji. 
 Umożliwia administratorom definiowanie ról z określonymi uprawnieniami (takimi jak odczyt, zapis, usuwanie) i przypisywanie 
 tych ról do użytkowników, grup lub kont serwisowych. "RBAC" zapewnia, że użytkownicy mają dostęp tylko do zasobów, których 
@@ -1477,7 +1477,7 @@ potrzebują, zgodnie z zasadą minimalnych uprawnień.
 
 257) Czym jest "AKS (Azure Kubernetes Service)" i jakie ma kluczowe funkcje?
 "AKS" to zarządzana usługa orkiestracji kontenerów firmy Microsoft, oparta na Kubernetes. Kluczowe funkcje to zintegrowane 
-doświadczenia "CI/CD", bezpieczeństwo i zarządzanie na poziomie przedsiębiorstwa, uproszczone zarządzanie klastrem, 
+doświadczenia "Ci - Cd", bezpieczeństwo i zarządzanie na poziomie przedsiębiorstwa, uproszczone zarządzanie klastrem, 
 automatyczne skalowanie oraz integracja z innymi usługami Azure.
 
 258) Czym jest "kubectl" i jaka jest jego rola w Kubernetes?
@@ -1515,18 +1515,18 @@ Pod w Kubernetes reprezentuje pojedynczą instancję działającego procesu, pod
 które mają zakończyć się pomyślnie (tzn. zakończyć działanie z kodem wyjścia równym zero). Pody utworzone przez "Job" są 
 przeznaczone do wykonania określonego zadania, a następnie zakończenia się sukcesem, co wskazuje na zakończenie "Job".
 
-264) Czym jest "ReplicaSet" w Kubernetes?
-"ReplicaSet" w Kubernetes to obiekt API służący do zapewnienia, że określona liczba replik Podów jest uruchomiona w danym 
+264) Czym jest "Replica-Set" w Kubernetes?
+"Replica-Set" w Kubernetes to obiekt API służący do zapewnienia, że określona liczba replik Podów jest uruchomiona w danym 
 momencie. Jest głównie używany do utrzymania dostępności zestawu identycznych Podów. Jeśli jest za mało replik, 
 tworzy więcej; jeśli jest ich za dużo, usuwa niektóre.
 
-265) Czym różni się "ReplicaSet" od "ReplicationController"?
-"ReplicaSet" to nowa generacja "ReplicationController". Kluczową różnicą jest to, że "ReplicaSets" wspierają selektory 
+265) Czym różni się "Replica-Set" od "Replication-Controller"?
+"Replica-Set" to nowa generacja "Replication-Controller". Kluczową różnicą jest to, że "Replica-Sets" wspierają selektory 
 oparte na zbiorach ("set-based selectors"), w przeciwieństwie do selektorów opartych na równości w "ReplicationController". 
-Oznacza to, że "ReplicaSets" mogą wybierać szerszy zakres Podów na podstawie etykiet.
+Oznacza to, że "Replica-Sets" mogą wybierać szerszy zakres Podów na podstawie etykiet.
 
-266) Co się stanie, jeśli Pod w "ReplicaSet" ulegnie awarii?
-Jeśli Pod w "ReplicaSet" "fail" (na skutek awarii węzła lub zakończenia), "ReplicaSet" zauważy spadek liczby replik i 
+266) Co się stanie, jeśli Pod w "Replica-Set" ulegnie awarii?
+Jeśli Pod w "Replica-Set" "fail" (na skutek awarii węzła lub zakończenia), "Replica-Set" zauważy spadek liczby replik i 
 utworzy nowy Pod, aby go zastąpić. Nowy Pod jest tworzony na podstawie szablonu Poda zdefiniowanego w "ReplicaSet".
 
 267) Kubernetes Cluster?
@@ -1547,18 +1547,18 @@ c) "kube-proxy": Utrzymuje zasady sieciowe na węźle dla komunikacji między ob
 
 269) Narzędzia Kubernetes?
 a) "kind / minikube": Do tworzenia klastra Kubernetes w celu nauki.
-b) "kubectl": Narzędzie CLI do interakcji z masterem "Kubernetes / api-server".
+b) "kubectl": Narzędzie Cli do interakcji z masterem "Kubernetes / api-server".
 
 270) Kube Config?
 Plik konfiguracyjny do organizowania informacji o klastrze. Lokalizacja: "$HOME/.kube/config". 
-Zmienna środowiskowa: "KUBECONFIG".
+Zmienna środowiskowa: "KubeConfig".
 
 271) Podsumowanie Kubernetes?
 Klastr Kubernetes:
 a) "master / control-plane" (1 lub więcej): "api-server", "etcd", "scheduler", "controller-manager".
 b) "node / worker" (1 lub więcej): "container runtime", "kubelet", "kube-proxy".
-"Kubectl" to narzędzie CLI do komunikacji z "api-server".
-"Kube config" to plik przechowujący informacje o klastrze.
+"Kubectl" to narzędzie Cli do komunikacji z "api-server".
+"Kube-config" to plik przechowujący informacje o klastrze.
 "Kind" to narzędzie do tworzenia klastra Kubernetes w celach edukacyjnych.
 
 272) Czym jest Pod?
@@ -1570,16 +1570,16 @@ a kontenery reprezentują procesy.
 273) Czym jest Docker?
 Pakujemy aplikację, wszystkie pliki wykonywalne wraz ze wszystkimi zależnościami w obrazie Docker. Tworzymy instancję 
 obrazu – kontener. Traktujemy każdy kontener jak maszynę wirtualną. Kontenery mogą komunikować się ze sobą za pomocą 
-adresu IP / nazwy usługi.
+adresu IP lub nazwy usługi.
 
 274) Status Poda?
 a) "Pending": Węzeł nie został jeszcze przydzielony.
-b) "ContainerCreating": "Kubelet" pracuje nad utworzeniem kontenera.
+b) "Container-Creating": "Kubelet" pracuje nad utworzeniem kontenera.
 c) "Running": "Kubelet" uruchomił kontener.
-d) "ErrImagePull / ImagePullBackOff": Nie udało się pobrać obrazu. "Kubelet" będzie ponawiał próbę z opóźnieniem.
+d) "Err-Image-Pull / Image-Pull-Back-Off": Nie udało się pobrać obrazu. "Kubelet" będzie ponawiał próbę z opóźnieniem.
 e) "Completed": Kontener zakończył działanie pomyślnie.
 f) "Error": Kontener zakończył działanie z błędem.
-g) "CrashLoopBackOff": Wystąpił problem z uruchomieniem kontenera. "Kubelet" ponawia próbę z opóźnieniem 
+g) "Crash-Loop-Back-Off": Wystąpił problem z uruchomieniem kontenera. "Kubelet" ponawia próbę z opóźnieniem 
 (brak problemu z pobraniem obrazu).
 h) "Terminating": Pod jest usuwany.
 
@@ -1601,14 +1601,14 @@ h) "Terminating": Pod jest usuwany.
 280) Port-Forward?
 "kubectl port-forward my-pod 8080:80".
 
-281) "ENTRYPOINT" kontra "CMD"?
-Nie możemy nadpisać "ENTRYPOINT" przez wydanie polecenia:
+281) "EntryPoint" kontra "CMD"?
+Nie możemy nadpisać "EntryPoint" przez wydanie polecenia:
 "docker run IMAGE OVERRIDE".
 Możemy nadpisać "CMD":
 "docker run IMAGE OVERRIDE".
 
 282) Docker - Kubernetes?
-"ENTRYPOINT" to polecenie.
+"EntryPoint" to polecenie.
 "CMD" to argumenty.
 
 283) Polityka ponownego uruchamiania kontenera Poda?
@@ -1632,55 +1632,55 @@ l) "kubectl logs POD-NAME -c CONTAINER-NAME": Aby sprawdzić logi konkretnego ko
 m) "kubectl exec -it POD-NAME -c CONTAINER-NAME -- bash": Aby uzyskać dostęp do kontenera poda.
 n) "kubectl port-forward POD-NAME 8080:80": Aby uzyskać dostęp do API naszej aplikacji z hosta w celach debugowania.
 
-285) "ReplicaSet"?
+285) "Replica-Set"?
 Zarządza Podami. Zapewnia, że pożądana liczba replik dla określonej specyfikacji poda jest uruchomiona.
-"ReplicaSet - restartPolicy: Always". W klastrze węzeł może ulec awarii, cała strefa może być niedostępna z powodu 
+"Replica-Set - restartPolicy: Always". W klastrze węzeł może ulec awarii, cała strefa może być niedostępna z powodu 
 problemów sieciowych.
-"ReplicaSet" zapewnia, że liczba replik jest zgodna z wymaganiami. Jest to zasób niższego poziomu i nie jest zalecane 
+"Replica-Set" zapewnia, że liczba replik jest zgodna z wymaganiami. Jest to zasób niższego poziomu i nie jest zalecane 
 tworzenie go bezpośrednio!
-"Deployment" zarządza "ReplicaSet". Aby zarządzać zasobami, będziemy używać "metadata.label".
+"Deployment" zarządza "Replica-Set". Aby zarządzać zasobami, będziemy używać "metadata.label".
 
 286) "Deployment"?
-Zarządza "ReplicaSet". To jest to, czego będziemy używać głównie do tworzenia obciążeń roboczych! Do wdrażania aplikacji 
-bezstanowych. Jeden Deployment - Jeden mikroserwis. Deployment - Lista ReplicaSet - Lista Podów.
+Zarządza "Replica-Set". To jest to, czego będziemy używać głównie do tworzenia obciążeń roboczych! Do wdrażania aplikacji 
+bezstanowych. Jeden Deployment - Jeden mikro-serwis. Deployment - Lista ReplicaSet - Lista Podów.
 
 287) "Create" kontra "Apply"?
 a) "Kubectl create: kubectl create -f FILE-NAME": Aby utworzyć zasoby z podanego pliku.
 b) "kubectl create -f .": Aby utworzyć zasoby ze wszystkich plików "YAML" w bieżącym katalogu.
-c) "kubectl create -f http://somesite.com/k8s.yaml": Aby utworzyć zasoby z podanego URL.
+c) "kubectl create -f SomeSite.com": Aby utworzyć zasoby z podanego URL.
 d) "Kubectl apply: kubectl apply -f FILE-NAME": Aby utworzyć / zaktualizować zasoby z podanego pliku.
 e) "kubectl apply -f .": Aby utworzyć / zaktualizować zasoby ze wszystkich plików "YAML" w bieżącym katalogu.
-f) "kubectl apply -f http://somesite.com/k8s.yaml": Aby utworzyć / zaktualizować zasoby z podanego URL.
+f) "kubectl apply -f SomeSite.com": Aby utworzyć / zaktualizować zasoby z podanego URL.
 
-288) Strategia Deploymentu?
+288) Strategia "Deploymentu"?
 a) "recreate": Zakończenie działania starych podów i utworzenie nowych.
 b) "rolling update": Stopniowe wprowadzanie zmian. Możemy mieć tymczasowo mieszankę starych i nowych podów. 
 Poniższe właściwości mogą być liczbą lub procentem:
-"maxSurge": Maksymalna liczba dodatkowych podów, które mogą zostać utworzone.
-"maxUnavailable": Maksymalna liczba podów, które mogą zostać zakończone.
+"max-Surge": Maksymalna liczba dodatkowych podów, które mogą zostać utworzone.
+"max-Unavailable": Maksymalna liczba podów, które mogą zostać zakończone.
 
-289) Service?
+289) "Service"?
 Logiczna abstrakcja dla zestawu Podów. Jedno niezawodne punkt końcowy sieciowy do dostępu do Podów. Stabilny adres IP.
 Nazwa "DNS".
 
 290) "Service / kube-proxy"?
-Prosty proxy. Zasób "Service" w Kubernetes nie zużywa "CPU/memory". Nie jest to load balancer działający na zasadzie 
+Prosty proxy. Zasób "Service" w Kubernetes nie zużywa "CPU / Memory". Nie jest to load balancer działający na zasadzie 
 "round-robin". Jest losowy. Nie oczekuj przepisywania URL-i / routingu opartego na ścieżkach itd. 
 (To jest "Ingress" w Kubernetes).
 
 291) Typy "Kubernetes Service"?
-a) "ClusterIP": Do komunikacji wewnątrz klastra Kubernetes. Nie można go uzyskać z zewnątrz klastra. 
+a) "Cluster-IP": Do komunikacji wewnątrz klastra Kubernetes. Nie można go uzyskać z zewnątrz klastra. 
 (W chmurach AWS / GCP - komunikacja w ramach prywatnej podsieci). Jest to domyślna opcja, jeśli nie określimy innej. 
 Zwykle to jest to, co będziemy używać.
-b) "NodePort": Może być dostępny z zewnątrz przez mastera/noda Kubernetes za pomocą określonego portu 
+b) "Node-Port": Może być dostępny z zewnątrz przez mastera/noda Kubernetes za pomocą określonego portu 
 (można używać do testowania).
-c) "LoadBalancer": Używane w chmurach takich jak "AWS / GCP / Azure". Może być używane do odbierania ruchu z zewnątrz.
+c) "Load-Balancer": Używane w chmurach takich jak "AWS / GCP / Azure". Może być używane do odbierania ruchu z zewnątrz.
 
-292) "NodePort"?
-Dozwolone zakresy portów dla "NodePort" to 30000-32767. Każdy węzeł jest ustawiony do nasłuchiwania na określonym porcie.
+292) "Node-Port"?
+Dozwolone zakresy portów dla "Node-Port" to 30000 - 32767. Każdy węzeł jest ustawiony do nasłuchiwania na określonym porcie.
 Każde zapytanie do jednego z węzłów na tym porcie jest przekazywane do podu.
 
-293) "LoadBalancer"?
+293) "Load-Balancer"?
 Używane w dostawcy chmurowym. Służy do odbierania ruchu z zewnątrz i przekazywania go do podów.
 
 294) "Namespace"?
@@ -1690,34 +1690,34 @@ zasobów przez administratorów.
 
 295) "Probes"?
 Problem: Pody są uznawane za żywe i gotowe do użycia, gdy tylko kontenery zostaną uruchomione. Jeśli pod jest gotowy, 
-serwis zacznie wysyłać zapytania do poda. "RollingUpdate" zakończy działanie starych podów. Musimy upewnić się, że nasze 
+serwis zacznie wysyłać zapytania do poda. "Rolling-Update" zakończy działanie starych podów. Musimy upewnić się, że nasze 
 pody są żywe i gotowe, aby uniknąć niespodzianek! Proby to narzędzia/usprawnienia do mierzenia stanu zdrowia poda. 
 Czy został uruchomiony? Czy jest żywy? Czy jest gotowy do obsługi zapytań?
 
 296) Probe Types?
 Terminy: Live – Czy Pod jest żywy? Ready – Czy Pod może obsługiwać zapytania?
-a) "startupProbe": Sprawdza, czy aplikacja w kontenerze została uruchomiona. Działanie w przypadku niepowodzenia: "restart".
-b) "livenessProbe": Sprawdza, czy aplikacja jest nadal żywa. Działanie w przypadku niepowodzenia: "restart".
-c) "readinessProbe": Sprawdza, czy aplikacja jest gotowa do przyjmowania zapytań od serwisu. Działanie w przypadku 
+a) "startup-Probe": Sprawdza, czy aplikacja w kontenerze została uruchomiona. Działanie w przypadku niepowodzenia: "restart".
+b) "liveness-Probe": Sprawdza, czy aplikacja jest nadal żywa. Działanie w przypadku niepowodzenia: "restart".
+c) "readiness-Probe": Sprawdza, czy aplikacja jest gotowa do przyjmowania zapytań od serwisu. Działanie w przypadku 
 niepowodzenia: usunięcie z serwisu.
 
 297) Faza Wykonania Probe ("Probe Execution Phase")?
-a) "startupProbe": Rozpoczyna się natychmiast po uruchomieniu kontenera! Jeśli test się powiedzie, "startupProbe" 
+a) "startup-Probe": Rozpoczyna się natychmiast po uruchomieniu kontenera! Jeśli test się powiedzie, "startup-Probe" 
 zatrzymuje się.
-b) "livenessProbe": Rozpoczyna się po zakończeniu "startupProbe". Jest wykonywana w trakcie cyklu życia podu.
-c) "readinessProbe": Rozpoczyna się po zakończeniu "startupProbe". Jest wykonywana w trakcie cyklu życia podu.
+b) "liveness-Probe": Rozpoczyna się po zakończeniu "startup-Probe". Jest wykonywana w trakcie cyklu życia podu.
+c) "readiness-Probe": Rozpoczyna się po zakończeniu "startup-Probe". Jest wykonywana w trakcie cyklu życia podu.
 
 298) Opcje Probe?
 a) "exec": Wykonuje dowolne polecenie w celu sprawdzenia stanu. Na przykład: "cat /tmp/app.log".
-b) "httpGet": Wywołuje punkt końcowy HTTP. Na przykład: "/health".
-c) "tcpSocket": Sprawdza, czy aplikacja zaczęła nasłuchiwać na określonym porcie.
+b) "http-Get": Wywołuje punkt końcowy HTTP. Na przykład: "/health".
+c) "tcp-Socket": Sprawdza, czy aplikacja zaczęła nasłuchiwać na określonym porcie.
 
 299) Właściwości Probe?
-a) "initialDelaySeconds": 0.
-b) "periodSeconds": 10.
-c) "timeoutSeconds": 1.
-d) "successThreshold": 1.
-e) "failureThreshold": 3.
+a) "initialDelaySeconds": "0".
+b) "periodSeconds": "10".
+c) "timeoutSeconds": "1".
+d) "successThreshold": "1".
+e) "failureThreshold": "3".
 
 300) "ConfigMap" i "Secret"?
 Aby przechowywać dane konfiguracyjne oddzielnie od aplikacji: "ConfigMap", "Secret".
@@ -1726,7 +1726,7 @@ Aby przechowywać dane konfiguracyjne oddzielnie od aplikacji: "ConfigMap", "Sec
 Wstrzyknij wszystkie pary klucz/wartość jako zmienne środowiskowe. Wstrzyknij jedną z par klucz/wartość jako zmienną 
 środowiskową. Wstrzyknij wartość klucza jako plik w określonej lokalizacji.
 
-301) "ConfigMap"?
+301) "Config-Map"?
 Właściwości jako Klucz/Wartość. Właściwości jako plik. Przechowuj dowolny plik binarny. Maksymalny rozmiar 1MB.
 
 302) "Secret"?
@@ -1752,26 +1752,26 @@ a) "5 GB GCP PD SSD"
 b) "100 GB GCP PD standard".
 
 306) "Access Modes"?
-a) "ReadWriteOnce" - na węzeł.
-b) "ReadWriteOncePod" - na pod.
-c) "ReadOnlyMany".
-d) "ReadWriteMany".
+a) "Read-Write-Once" - na węzeł.
+b) "Read-Write-Once-Pod" - na pod.
+c) "Read-Only-Many".
+d) "Read-Write-Many".
 
-307) "StatefulSet"?
+307) "Stateful-Set"?
 To samo co "Deployment" - ale dla pracy opartej na stanie. Każdy Pod będzie miał unikalną/stabilną nazwę hosta. 
-"StatefulSet" NIE jest przeznaczone tylko dla baz danych. Zamiast tego, jest to rozwiązanie dla każdej aplikacji, 
+"Stateful-Set" NIE jest przeznaczone tylko dla baz danych. Zamiast tego, jest to rozwiązanie dla każdej aplikacji, 
 która wymaga trwałej tożsamości.
 
 308) "Headless Service"?
 "Service" nie będzie miał żadnego adresu IP, a "Kube-proxy" NIE będzie przeprowadzać żadnego równoważenia obciążenia. 
-Wpisy DNS zostaną utworzone dla "POD-NAME.SVC-NAME".
+Wpisy DNS zostaną utworzone dla "pod-name.svc-name".
 
 309) Konsekwencje przekroczenia limitu, ("Consequences of Exceeding Limit")?
 a) Pamięć: "Kubelet" zabije kontener i uruchomi go ponownie.
 b) CPU: Kontener NIE zostanie zabity. Zostanie spowolniony.
 
 310) "Ingress"?
-"Service": "ClusterIP", "NodePort" (30000-32767), "LoadBalancer" (AWS, GCP, itd.).
+"Service": "Cluster-IP", "Node-Port" (30000 - 32767), "Load-Balancer" (AWS, GCP, itd.).
 Sprytny ("Smart") "router/proxy", który przekierowuje ruch do klastra. Zawiera zestaw reguł routingu. Potrzebujemy 
 "Ingress Controller" do zarządzania "Ingress".
 
@@ -1811,43 +1811,43 @@ kontrolujesz Podów bezpośrednio, tylko używasz "Deploymentów" do ustawienia 
 316) Obiekt "Service"?
 "Service" udostępnia Pody dla klastra lub zewnętrznie. Pody mają domyślnie wewnętrzny adres IP - zmienia się on, gdy Pod 
 jest zastępowany: Znalezienie Podów jest trudne, jeśli adres IP zmienia się cały czas. 
-"Services" grupują Pody z wspólnym adresem IP. "Services" mogą umożliwiać dostęp zewnętrzny do Podów: 
+"Services" grupują Pody ze wspólnym adresem IP. "Services" mogą umożliwiać dostęp zewnętrzny do Podów: 
 Domyślnie (tylko wewnętrzny) można to nadpisać. Bez "Services", Pody są bardzo trudne do osiągnięcia, a komunikacja jest 
 utrudniona. Osiągnięcie Poda z zewnątrz klastra jest niemożliwe bez "Services".
 
 317) Komenda do tworzenia Obiektu "Service" ("Kubernetes Create Service Object Command")?
 "kubectl expose deployment FIRST-APP --type=LoadBalancer --port 8080".
 
-318) Lomenda Kubernetes do tworzenia Obiektu "Deployment" (Kubernetes Create Deployment Object Command)?
-"kubectl create deployment FIRST-APP --image=mateusznowak/kub-first-app".
+318) Komenda Kubernetes do tworzenia Obiektu "Deployment" (Kubernetes Create Deployment Object Command)?
+"kubectl create deployment FIRST-APP --image=panda/kub-first-app".
 
 319) Kubernetes Autoscaling Command?
 "kubectl scale deployment/FIRST-APP --replicas=3".
 
 320) Kubernetes Updating Deployments?
 Odpowiedź: Zmiana tagu obrazu:
-a) "docker tag KUB-FIRST-APP mat/kub-first-app:2".
-b) "docker push mat/kub-first-app:2".
+a) "docker tag Kub-First-App panda/kub-first-app:2".
+b) "docker push panda/kub-first-app:2".
 Aktualizacja obrazu:
-a) "kubectl set image deployment/first-app kube-first-app=mat/kub-first-app:2".
+a) "kubectl set image deployment/first-app kube-first-app=panda/kub-first-app:2".
 b) "kubectl rollout status deployment/first-app".
 
 321) "Namespacing" i "Control Groups"?
 "Namespacing": Izolowanie zasobów dla każdego procesu (lub grupy procesów).
 "Control Groups (cgroups)": Ograniczanie ilości zasobów używanych przez każdy proces.
-"Namespacing": Proces, Sieć, Nazwy hostów, Dysk twardy, Użytkownicy, "IPC".
+"Namespacing": Proces, Sieć, Nazwy hostów, Dysk twardy, Użytkownicy, "I P C".
 "Control Groups (cgroups)": Pamięć, I/O dysku twardego, Użycie CPU, Szerokość pasma sieciowego.
 
 322) Tworzenie i uruchamianie kontenera z obrazu?
-"docker run IMAGE-NAME".
+"docker run Image-Name".
 "docker": Odniesienie do klienta Docker. 
 "run": Próba utworzenia i uruchomienia kontenera.
-"IMAGE-NAME": Nazwa obrazu, który ma być użyty do utworzenia kontenera.
+"Image-Name": Nazwa obrazu, który ma być użyty do utworzenia kontenera.
 "docker run" = "docker create + docker start".
 
 323) Zatrzymywanie działających kontenerów?
-"docker stop CONTAINER-ID". 
-"docker kill CONTAINER-ID".
+"docker stop Container-Id". 
+"docker kill Container-Id".
 Stop: "SIGTERM", "kill": "SIGKILL".
 
 324) Wykonywanie dodatkowego polecenia w kontenerze?
@@ -1875,7 +1875,7 @@ b) "docker run panda/redis".
 
 329) Ręczne tworzenie obrazu za pomocą "docker commit"?
 a) "docker run -it alpine sh".
-b) "docker commit -c CMD ["redis-server"] CONTAINER-ID".
+b) "docker commit -c Cmd Redis-server Container-Id".
 
 330) Kopiowanie plików budowania?
 "COPY ./ ./".
@@ -1883,13 +1883,13 @@ a) Pierwsze "./": Ścieżka do folderu, który ma zostać skopiowany (twoja masz
 b) Drugie "./": Miejsce, do którego mają zostać skopiowane pliki wewnątrz kontenera.
 
 331) Mapowanie portów kontenera. Uruchomienie "Docker" z mapowaniem portów?
-a) "docker run -p 8080:8080 IMAGE-ID".
+a) "docker run -p 8080:8080 Image-Id".
 
 332) Określanie katalogu roboczego?
-"WORKDIR /usr/app".
+"Workdir /usr/app".
 Każde kolejne polecenie będzie wykonywane względem ścieżki "/usr/app" w kontenerze.
 
-333) Typ obiektu "POD"?
+333) Typ obiektu "Pod"?
 Uruchamia jeden lub więcej ściśle powiązanych kontenerów.
 
 334) Typ obiektu "Service"?
@@ -1918,7 +1918,7 @@ b) "Nodes" to indywidualne maszyny (lub maszyny wirtualne), które uruchamiają 
 c) "Masters" to maszyny (lub maszyny wirtualne) z zestawem programów do zarządzania węzłami.
 d) "Kubernetes" nie tworzył naszych obrazów, tylko pobrał je z innego źródła.
 e) "Kubernetes (master)" decyduje, gdzie uruchomić każdy kontener. Każdy węzeł może uruchomić różny zestaw kontenerów.
-f) Aby coś wdrożyć, aktualizujemy pożądany stan mastera za pomocą pliku konfiguracyjnego.
+f) Aby, coś wdrożyć, aktualizujemy pożądany stan mastera za pomocą pliku konfiguracyjnego.
 g) Master działa nieustannie, aby osiągnąć pożądany stan.
 
 339) Ścieżka do produkcji w Kubernetes?
@@ -1927,9 +1927,9 @@ b) Testowanie lokalnie na "minikube".
 c) Tworzenie przepływu ("flow") w "Github/Trevis" do budowania obrazów i wdrażania.
 d) Wdrażanie aplikacji do dostawcy chmurowego.
 
-340) "NodePort" kontra "ClusterIP Service"?
+340) "NodePort" kontra "Cluster-Ip Service"?
 "Services": Ustawia sieć w klastrze Kubernetes.
-a) "ClusterIP": Udostępnia zestaw Podów innym obiektom w klastrze.
+a) "Cluster-Ip": Udostępnia zestaw Podów innym obiektom w klastrze.
 b) "NodePort": Udostępnia zestaw Podów światu zewnętrznemu (dobrze tylko do celów deweloperskich!).
 
 341) "Volume" w ogólnej terminologii kontenerów?
@@ -1939,17 +1939,17 @@ Jakikolwiek mechanizm, który pozwala kontenerowi uzyskać dostęp do systemu pl
 Obiekt, który pozwala kontenerowi przechowywać dane na poziomie Poda.
 
 343) "Persistent Volume", Tryb dostępu ("Access Mode")?
-a) "ReadWriteOne": Może być używany przez pojedynczy węzeł.
-b) "ReadOnlyMany": Wielu węzłów może odczytywać dane z tego woluminu.
-c) "ReadWriteMany": Może być odczytywany i zapisywany przez wiele węzłów.
+a) "Read-Write-One": Może być używany przez pojedynczy węzeł.
+b) "Read-Only-Many": Wielu węzłów może odczytywać dane z tego woluminu.
+c) "Read-Write-Many": Może być odczytywany i zapisywany przez wiele węzłów.
 
 344) Obiekt Kubernetes Secrets?
 Bezpieczne przechowywanie informacji w klastrze, takich jak hasło do bazy danych. Tworzenie sekretu:
-"kubectl create secret generic SECRET-NAME --from-literal key=value".
+"kubectl create secret generic Secret-Name --from-literal key=value".
 "create": Rozkaz imperatywny do tworzenia nowego obiektu.
 "secret": Typ obiektu.
 "generic": Typ sekretu.
-"SECRET-NAME": Nazwa, do późniejszego użycia w kodzie.
+"Secret-Name": Nazwa, do późniejszego użycia w kodzie.
 
 345) "Services", "Ingress", "Load Balancer"?
 a) "Ingress": Udostępnia zestaw usług światu zewnętrznemu.
@@ -1960,13 +1960,13 @@ a) "variableName=value": Ustawia zmienną w kontenerze podczas uruchamiania.
 b) "variableName": Ustawia zmienną w kontenerze podczas uruchamiania, wartość jest pobierana z twojego komputera.
 
 347) Typy obiektów Kubernetes i wersje API?
-Plik konfiguracyjny, "StatefulSet", "ReplicaController", "Pod", "Service".
+Plik konfiguracyjny, "Stateful-Set", "ReplicaController", "Pod", "Service".
 Obiekty pełnią różne funkcje, takie jak uruchamianie kontenera, monitorowanie kontenera, ustawianie sieci itp.
 
 348) Pliki konfiguracyjne usługi Kubernetes?
 "Kubernetes Node". 
 "Kube-proxy": "Service NodePort", użyję mojego 'selector component', aby znaleźć każdy obiekt z etykietą 'component'. 
-Następnie udostępnię jego port 3000 światu zewnętrznemu.
+Następnie udostępnię jego port '3000' światu zewnętrznemu.
 
 349) Rollbacki i polecenia historii Deploymentów w Kubernetes?
 a) "kubectl rollout undo deployment/first-app".
@@ -1996,9 +1996,9 @@ b) "Docker Volumes": W zasadzie zależy od wsparcia sterownika/typu. "Volumes" s
 353) Co to jest "Hypervisor"?
 Menedżer maszyn wirtualnych.
 
-354) Normalne "Normal Volumes" vs "Persistent Volumes" w Kubernetes?
+354) Normalne "Normal Volumes" kontra "Persistent Volumes" w Kubernetes?
 "Volumes" pozwalają na przechowywanie danych.
-a) "Normal Volumes": "Volume" jest przypisane do Poda i cyklu życia Poda. Zdefiniowane i tworzone razem z Podym. 
+a) "Normal Volumes": "Volume" jest przypisane do Poda i cyklu życia Poda. Zdefiniowane i tworzone razem z Podem. 
 Są powtarzalne i trudne do zarządzania na poziomie globalnym.
 b) "Persistent Volumes": "Volume" jest samodzielnym zasobem klastra (nie jest przypisane do Poda). Tworzone samodzielnie, 
 przydzielane przez "PVC". Może być zdefiniowane raz i używane wielokrotnie.
@@ -2020,29 +2020,29 @@ d) Określenie polecenia do uruchomienia przy starcie kontenera.
 358) Architektura Dockera?
 "Docker Client", "Docker Daemon", Kontenery, Lokalne obrazy, Repozytorium obrazów.
 
-359) Orkiestracja kontenerów ("Container Orchestration")?
-Wymóg: Chcę 10 instancji mikroserwisu A, 15 instancji mikroserwisu B.
+359) Orkiestracja kontenerów ('Container Orchestration')?
+Wymóg: Chcę 10 instancji mikroserwisu A, 15 instancji mikro-serwisu B.
 Typowe funkcje:
 a) Auto Skalowanie ("Auto Scaling"): Skalowanie kontenerów w zależności od zapotrzebowania.
-b) Odkrywanie usług ("Service Discovery"): Pomaga mikroserwisom znaleźć się nawzajem.
-c) "Load Balancer": Rozdzielanie obciążenia między wieloma instancjami mikroserwisu.
+b) Odkrywanie usług ("Service Discovery"): Pomaga mikro-serwisom znaleźć się nawzajem.
+c) "Load Balancer": Rozdzielanie obciążenia między wieloma instancjami mikro-serwisu.
 d) "Self Healing": Wykonywanie testów zdrowia i zastępowanie nieudanych instancji.
 e) Instalacje bez przestojów ("Zero Downtime Deployments"): Wydawanie nowych wersji bez przestojów.
 
 360) Deploymenty w Kubernetes?
-"Deployment" umożliwia deklaratywne aktualizacje dla Podów i "ReplicaSets". Jest to bardzo ważne, aby móc aktualizować 
+"Deployment" umożliwia deklaratywne aktualizacje dla Podów i "Replica-Sets". Jest to bardzo ważne, aby móc aktualizować 
 nowe wersje aplikacji bez przestojów. Strategia ta nazywa się "rolling updates". Zapewnia, że aktualizacja wersji odbywa 
 się bez problemów (bez przestojów).
 
 361) "Service" w Kubernetes?
 Zapewnia zawsze dostępny interfejs zewnętrzny do aplikacji uruchamianych wewnątrz Podów. "Service" pozwala Twojej aplikacji 
 odbierać ruch przez stały adres IP o nieograniczonym czasie życia. "Service" jest tworzony za pomocą: 
-"kubectl expose deployment". "ClusterIP" service może być dostępny tylko z wnętrza klastra.
+"kubectl expose deployment". "Cluster-IP" service może być dostępny tylko z wnętrza klastra.
 
 362) Kubernetes - "Liveness" i "Readiness Probe"?
 Kubernetes używa probes do sprawdzania zdrowia mikroserwisu. Jeśli "readiness probe" nie zakończy się sukcesem, 
 żaden ruch nie jest kierowany do aplikacji. Jeśli "liveness probe" nie zakończy się sukcesem, Pod jest restartowany. 
-"Spring Boot Actuator" (w wersji 2.3 i wyższej) oferuje wbudowane "readiness" i "liveness probes": "health/readiness", 
+"Spring Boot Actuator" (w wersji "2.3" i wyższej) oferuje wbudowane "readiness" i "liveness probes": "health/readiness", 
 "/health/liveness".
 
 363) "Scheduler (kube-scheduler)" na węźle Master?
@@ -2067,20 +2067,20 @@ Master. Jeśli Pod przestaje działać, "Node Agent" zgłasza to do "Controller 
 368) Komponent sieciowy ("kube-proxy") na węźle Worker?
 Pomaga w udostępnianiu usług wokół węzłów i Podów.
 
-369) Jaka jest różnica między "CMD" a "ENTRYPOINT" w Dockerfile?
+369) Jaka jest różnica między "CMD" a "Entrypoint" w Dockerfile?
 CMD służy do określenia polecenia, które powinno być zawsze uruchamiane, gdy kontener jest uruchamiany z obrazu.
-"ENTRYPOINT" służy do określenia domyślnego polecenia, które powinno być uruchamiane, gdy kontener jest uruchamiany z obrazu.
+"Entrypoint" służy do określenia domyślnego polecenia, które powinno być uruchamiane, gdy kontener jest uruchamiany z obrazu.
 
 370) Kontenery Docker a Sieci?
 Kontenery są izolowane, ale mogą być połączone, aby wysyłać do siebie zapytania (np. HTTPS).
-a) Opcja 1: Określenie adresu IP kontenera i używanie go. Adres IP może się zmieniać, przez co jego ustalanie staje się 
+a) Określenie adresu IP kontenera i używanie go. Adres IP może się zmieniać, przez co jego ustalanie staje się 
 niepotrzebną (ręczną) pracą.
-b) Opcja 2: Utworzenie sieci Docker i dodanie obu kontenerów. Kontenery mogą używać nazw innych kontenerów jako adresów zapytań.
+b) Utworzenie sieci Docker i dodanie obu kontenerów. Kontenery mogą używać nazw innych kontenerów jako adresów zapytań.
 
 371) Dane, Volumes i Sieci ("Data, Volumes and Networking")?
 Kontenery są izolowane i bezstanowe.
-Izolowane: Kontenery mają swoje własne dane i system plików, oddzielony od systemu plików maszyny gospodarza. Użyj 
-"BindMounts", aby połączyć foldery maszyny gospodarza: "-v /local/path:/container/path".
+Izolowane: Kontenery mają swoje własne dane i system plików, oddzielony od systemu plików maszyny gospodarza. 
+Użyj "BindMounts", aby połączyć foldery maszyny gospodarza: "-v local - path - container - path".
 Bezstanowe: Kontenery mogą przechowywać dane wewnętrznie, ale dane zostaną utracone, jeśli kontener zostanie usunięty i 
 zastąpiony nowym. Użyj "Volumes", aby przechować dane: "-v NAME:/container/path".
 
@@ -2088,7 +2088,7 @@ zastąpiony nowym. Użyj "Volumes", aby przechować dane: "-v NAME:/container/pa
 a) Budowanie obrazu na podstawie Dockerfile: "docker build -t NAME .".
 b) Uruchamianie kontenera na podstawie obrazu lokalnego lub zdalnego: "docker run --name NAME --rm -d IMAGE".
 c) Udostępnianie / Pobieranie obrazów do/z DockerHub:
-"docker push REPOSITORY/NAME', 'docker pull REPOSITORY/NAME'.
+"docker push Repository / Name', 'docker pull Repository / Name'.
 
 373) "Bind Mounts", "Volumes" i "COPY"?
 a) Obraz/Kontener to "jedno źródło prawdy".
@@ -2112,7 +2112,7 @@ Emulacja to proces naśladowania zachowań jednego systemu przy użyciu innego s
 
 378) Automatyczne restarty kontenerów Docker?
 Polityki restartu:
-a) "no": Nigdy nie próbuj ponownie uruchomić tego kontenera, jeśli zatrzyma się lub ulegnie awarii.
+a) 'no': Nigdy nie próbuj ponownie uruchomić tego kontenera, jeśli zatrzyma się lub ulegnie awarii.
 b) "always": Jeśli kontener zatrzyma się z jakiegokolwiek powodu, zawsze próbuj go ponownie uruchomić.
 c) "on-failure": Uruchom ponownie tylko wtedy, gdy kontener zatrzyma się z kodem błędu.
 d) "unless-stopped": Zawsze uruchamiaj ponownie, chyba że (my, deweloperzy) ręcznie go zatrzymamy.
@@ -2126,8 +2126,8 @@ Usługi (kontenery): Publikowanie portów. Zmienne środowiskowe. Wolumeny ("Vol
 "Docker Compose" NIE jest odpowiedni do zarządzania wieloma kontenerami na różnych hostach (maszynach).
 
 381) Tworzenie sieci kontenerów?
-W ramach sieci "Docker", wszystkie kontenery mogą ze sobą komunikować się, a adresy IP są automatycznie rozwiązywane.
-"docker run --network my-network".
+W ramach sieci "Docker" wszystkie kontenery mogą ze sobą komunikować się, a adresy IP są automatycznie rozwiązywane.
+"docker run --network nazwa-mojej-sieci".
 
 382) Czy kontenery uruchamiane na twoim systemie (za pomocą "docker run") mogą komunikować się z siecią światową?
 Tak.
@@ -2149,9 +2149,9 @@ b) Uruchomienie klastra Kubernetes:
 c) Usunięcie:
 "gcloud container clusters delete my-cluster --async --quiet".
 
-387) ARGumenty i Zmienne Środowiskowe (ENV)?
+387) Argumenty i Zmienne Środowiskowe (ENV)?
 Docker obsługuje "ARG" dla czasu budowania i "ENV" dla zmiennych środowiskowych w czasie wykonywania.
-a) "ARG": Dostępne wewnątrz "Dockerfile", NIEDOSTĘPNE w "CMD" ani w żadnym innym kodzie aplikacji. Ustawiane podczas 
+a) "ARG": Dostępne wewnątrz "Dockerfile", Niedostępne w "CMD" ani w żadnym innym kodzie aplikacji. Ustawiane podczas 
 budowania obrazu ("docker build") za pomocą "--build-arg".
 b) "ENV": Dostępne wewnątrz "Dockerfile" i w kodzie aplikacji. Ustawiane za pomocą "ENV" w "Dockerfile" lub przez 
 "--env" w "docker run".
@@ -2160,8 +2160,8 @@ b) "ENV": Dostępne wewnątrz "Dockerfile" i w kodzie aplikacji. Ustawiane za po
 Wirtualizacja działa na poziomie sprzętu, abstrahując ("abstracting") fizyczne zasoby maszyny i prezentując je systemowi 
 operacyjnemu jako zasoby wirtualne. 
 
-389) Co to jest parawirtualizacja?
-Parawirtualizacja to rodzaj wirtualizacji, w której system operacyjny gościa jest modyfikowany, aby działać w środowisku 
+389) Co to jest para-wirtualizacja?
+Para-wirtualizacja to rodzaj wirtualizacji, w której system operacyjny gościa jest modyfikowany, aby działać w środowisku 
 wirtualnym.
 
 390) Jak połączyć kontenery?
@@ -2174,11 +2174,11 @@ Polecenie "COPY" kopiuje pliki z hosta do kontenera, podczas gdy polecenie "ADD"
 a) Węzły ("Nodes"): Są to serwery, na których działa Kubernetes. Są one zorganizowane w klaster.
 b) "Pod": To wiele kontenerów Docker, które razem zapewniają usługę. Kontenery należące do jednego Pod uruchamiają się 
 na jednym węźle.
-c) "ReplicaSet": Zapewnia, że uruchamiana jest określona liczba instancji Pod. Dzięki temu obciążenie jest rozdzielane 
+c) "Replica-Set": Zapewnia, że uruchamiana jest określona liczba instancji Pod. Dzięki temu obciążenie jest rozdzielane 
 między Pod. Dodatkowo system jest odporny na awarie.
-d) "Deployment": Generuje "ReplicaSet" i zapewnia wymagane obrazy Docker.
+d) "Deployment": Generuje "Replica-Set" i zapewnia wymagane obrazy Docker.
 e) Usługi ("Services"): Umożliwiają dostęp do Pod. Usługi są rejestrowane pod jedną nazwą w DNS i mają stały adres IP, 
-pod którym można je skontaktować przez klaster. Ponadto, usługi umożliwiają routowanie z zewnątrz.
+pod którym można je skontaktować przez klaster. Ponadto usługi umożliwiają routowanie z zewnątrz.
 f) Deklaratywność: Oznacza, że konfiguracja definiuje pożądany stan. Kubernetes dba o to, by system pasował do tego stanu.
 
 393) Jaka jest różnica między repozytorium a rejestrem?
@@ -2186,7 +2186,7 @@ Repozytorium to zbiór obrazów Docker, podczas gdy rejestr to miejsce do przech
 
 394) Funkcje Kubernetes?
 Uruchamia kontenery Docker w klastrze węzłów. Zabezpieczenie przed awariami. Obsługuje równoważenie obciążenia. 
-Obsługuje wykrywanie usług ("Service Discovery"). Mikroserwisy nie mają zależności kodowych od Kubernetes.
+Obsługuje wykrywanie usług ("Service Discovery"). Mikro-serwisy nie mają zależności kodowych od Kubernetes.
 
 395) Czy anonimowe wolumeny są bezużyteczne?
 Nie, możesz je wykorzystać do nadania priorytetu ścieżkom wewnętrznym kontenera nad ścieżkami zewnętrznymi.
@@ -2219,24 +2219,24 @@ ale których nie musisz edytować bezpośrednio.
 
 401) Kubernetes "Service Discovery"?
 Usługa sprawia, że zestaw replik jest dostępny.
-a) Usługa zapewnia adres IP i rekord DNS dla Pod-a.
+a) Usługa zapewnia adres IP i rekord DNS dla Poda.
 b) Inne Pody komunikują się z usługą, odczytując adres IP z rekordu "DNS".
-c) W ten sposób Kubernetes implementuje odkrywanie usług za pomocą "DNS". Dodatkowo, mikroserwisy otrzymują adresy IP 
-innych mikroserwisów za pośrednictwem zmiennych środowiskowych.
+c) W ten sposób Kubernetes implementuje odkrywanie usług za pomocą "DNS". Dodatkowo mikro-serwisy otrzymują adresy IP 
+innych mikro-serwisów za pośrednictwem zmiennych środowiskowych.
 
 402) Kubernetes "Namespaces"?
 Odpowiedź: "Namespace""" to wirtualne klastry, które umożliwiają całkowite oddzielenie usług i wdrożeń. Dzięki nim można 
-oddzielić mikroserwisy od infrastruktury.
+oddzielić mikro-serwisy od infrastruktury.
 "Namespaces" pomagają zarządzać wieloma środowiskami w jednym klastrze Kubernetes, na przykład różnymi środowiskami 
 deweloperskimi, testowymi i produkcyjnymi, bez ryzyka pomieszania zasobów.
 
-403) Kubernetes Apps with States?
-W przypadku aplikacji, które przechowują stan (np. dane), Kubernetes oferuje "Persistent Volumes" oraz "StatefulSets" 
+403) Kubernetes Apps ze stanami ('States')?
+W przypadku aplikacji, które przechowują stan (np. dane), Kubernetes oferuje "Persistent Volumes" oraz "Stateful-Sets" 
 jako rozwiązania.
 a) "Persistent Volumes (PV)": Są to zasoby, które przechowują dane niezależnie od cyklu życia kontenerów. Mogą być używane 
 do przechowywania danych, które muszą przetrwać restart kontenera lub zmiany podów.
-b) "StatefulSets": Używane do zarządzania aplikacjami stanowymi, które wymagają unikalnych identyfikatorów (ID), trwałych 
-danych oraz zorganizowanej kolejności uruchamiania i skalowania podów. "StatefulSets" zapewniają stabilne identyfikatory 
+b) 'StatefulSets': Używane do zarządzania aplikacjami stanowymi, które wymagają unikalnych identyfikatorów (ID), trwałych 
+danych oraz zorganizowanej kolejności uruchamiania i skalowania podów. 'StatefulSets' zapewniają stabilne identyfikatory 
 sieciowe i trwałe wolumeny dla każdego z podów, dzięki czemu aplikacje stanowe, takie jak bazy danych, mogą być poprawnie 
 uruchamiane i skalowane.
 Dzięki tym mechanizmom Kubernetes umożliwia zarządzanie aplikacjami, które muszą przechowywać stan lub korzystać z 
@@ -2254,30 +2254,30 @@ c) "Zarządzanie siecią": Demon zarządza aspektami sieciowymi kontenerów, w t
 komunikacji między kontenerami oraz z otoczeniem zewnętrznym.
 d) "Zarządzanie wolumenami": Demon obsługuje tworzenie i zarządzanie wolumenami, które służą do przechowywania danych 
 poza kontenerami, co pozwala na przechowywanie danych, które przetrwają ponowne uruchomienie kontenerów.
-e) "Obsługa API": "Docker daemon" udostępnia "API REST", które pozwala klientowi Docker ("CLI" lub "GUI") lub innym 
+e) "Obsługa API": "Docker daemon" udostępnia "API REST", które pozwala klientowi Docker ("Cli" lub "Gui") lub innym 
 narzędziom automatyzacyjnym komunikować się z nim i zarządzać kontenerami.
 Podsumowując, "Docker daemon" jest centralnym elementem, który kontroluje i ułatwia operacje kontenerów oraz całe 
 środowisko Docker.
 
 405) Zaleta "namespaces" w Kubernetes?
 "Namespaces" w Kubernetes umożliwiają tworzenie odrębnych przestrzeni nazw, które pozwalają na izolację zasobów i usług 
-w ramach jednej klastra. Dzięki temu różne środowiska (np. deweloperskie, testowe, produkcyjne) mogą współistnieć w tym 
+w ramach jednego klastra. Dzięki temu różne środowiska (np. deweloperskie, testowe, produkcyjne) mogą współistnieć w tym 
 samym klastrze Kubernetes, zachowując jednocześnie swoje własne zasoby i konfiguracje. Główne zalety namespaces to:
-a) Izolacja zasobów: Każdy "namespace" może mieć własne zasoby, takie jak Pody, usługi ("Services:, konfiguracje czy 
+a) Izolacja zasobów: Każdy "namespace" może mieć własne zasoby, takie jak Pody, usługi ("Services" konfiguracje czy 
 sekretne dane ("Secrets"), co pozwala na separację środowisk i uniknięcie konfliktów między nimi.
 b) Bezpieczeństwo i kontrola dostępu: "Namespace" pozwala na precyzyjne zarządzanie dostępem do zasobów, umożliwiając 
 kontrolowanie, które aplikacje i użytkownicy mogą mieć dostęp do określonych zasobów w danym "namespace".
-c) "Łatwiejsze zarządzanie": Dzięki "namespace'owi" można łatwiej zarządzać i monitorować aplikacje, grupując je według 
+c) "Łatwiejsze zarządzanie": Dzięki "namespace" można łatwiej zarządzać i monitorować aplikacje, grupując je według 
 środowisk (np. dev, prod) i udostępniając dedykowane narzędzia do monitorowania oraz logowania dla każdego z nich.
-d) "Separation of concerns": Dzięki namespace'owi można oddzielić różne mikroserwisy i ich zależności od infrastruktury, 
+d) "Separation of concerns": Dzięki namespace można oddzielić różne mikro-serwisy i ich zależności od infrastruktury, 
 co ułatwia ich zarządzanie, aktualizacje i skalowanie w obrębie jednego klastra.
 Podsumowując, "namespace" w Kubernetes pozwala na stworzenie logicznych, odizolowanych jednostek w obrębie tego samego 
 klastra, co wspomaga zarządzanie aplikacjami, ułatwia bezpieczeństwo i wspiera organizację zasobów w bardziej 
 uporządkowany sposób.
 
 406) Jaka jest różnica między rejestrem Docker a repozytorium Docker? 
-Odpowiedź: Rejestr Docker ("Docker registry") to zbiór repozytoriów, podczas gdy repozytorium Docker ("Docker repository")
-to zbiór obrazów.
+Odpowiedź: Rejestr Docker ("Docker registry") to zbiór repozytoriów (tam gdzie jest kod), podczas gdy repozytorium Docker 
+("Docker repository") to zbiór obrazów.
 
 407) Namespacing? 
 Izolowanie zasobów per proces (lub grupa procesów). mProcess, dysk twardy, sieć, użytkownicy, nazwy hostów, IPC.
@@ -2304,15 +2304,15 @@ kontenerze.
 Dane aplikacji (kod + zmienne środowiskowe). Pisane i dostarczane przez dewelopera. Dodawane do obrazu i kontenera w 
 fazie budowania. 
 a) "Stałe" ("Fixed"): Nie można ich zmienić po zbudowaniu obrazu. Tylko do odczytu, przechowywane w obrazach.
-b) Tymczasowe ("Temporarily") dane aplikacji (np. dane wejściowe użytkownika). Pobierane / Produkowane w działającym 
+b) Tymczasowe ("Temporary") dane aplikacji (np. dane wejściowe użytkownika). Pobierane / Produkowane w działającym 
 kontenerze. Przechowywane w pamięci lub plikach tymczasowych. Dynamiczne i zmieniające się, ale regularnie usuwane. 
 Odczyt + zapis tymczasowy, przechowywane w kontenerach.
 "Stałe" dane aplikacji (np. konto użytkownika). Pobierane / Produkowane w działającym kontenerze. Przechowywane w plikach 
 lub bazie danych. Nie mogą zostać utracone, jeśli kontener zostanie zatrzymany / ponownie uruchomiony. 
 Odczyt + zapis, stałe, przechowywane z kontenerami i wolumenami.
 
-414) Jakie jest konwencja nazewnictwa obrazów Docker? 
-"username/repository:tag'.
+414) Jaka jest konwencja nazewnictwa obrazów Docker? 
+"username - repository : tag'.
 
 415) Co to jest punkt kontrolny kontenera Docker? 
 Punkt kontrolny kontenera Docker to zapisany stan kontenera, w tym jego konfiguracja i dane.
@@ -2320,7 +2320,7 @@ Punkt kontrolny kontenera Docker to zapisany stan kontenera, w tym jego konfigur
 416) Polecenia usuwania w Kubernetes? 
 a) "kubectl delete -f kafka-client.yaml".
 b) "helm uninstall gke-container-kafka".
-c)"'gcloud container clusters delete panda-cluster --zone europe-west4-a".
+c) "'gcloud container clusters delete panda-cluster --zone europe-west4-a".
 
 417) Jak Docker obsługuje ograniczenia zasobów dla kontenerów? 
 Docker ustawia limity zasobów za pomocą flag konfiguracyjnych lub poleceń zarządzania zasobami, takich jak "--memory" i 
@@ -2337,7 +2337,7 @@ Zapewnia mechanizm izolowania grup zasobów w obrębie jednego klastra.
 
 420) Kubernetes "Pods", "Services"?
 Pod to najmniejsza jednostka wdrożeniowa. Pod może składać się z jednego lub więcej kontenerów.
-Usługi ("Services") służą do udostępniania wdrożenia poprzez "NodePort" lub "LoadBalancer".
+Usługi ("Services") służą do udostępniania wdrożenia poprzez "Node-Port" lub "Load-Balancer".
 
 421) Udostępnianie usługi Kubernetes ("Exposing a Kubernetes Service")?
 Wskaż zewnętrzny adres IP na węzły, ustaw zasady zapory (firewall), aby umożliwić dostęp do węzła.
@@ -2348,16 +2348,16 @@ ZALETY: Oddzielone środowiska. Możliwość konfiguracji specyficznych dla śro
 dzielone i redukowane w sposób niezawodny.
 WADY: Redundantna duplikacja, marnowanie przestrzeni. Wydajność może być wolna, czas uruchamiania może być długi. 
 Reprodukcja na innym komputerze / serwerze jest możliwa, ale może być trudna.
-Większy wpływ na system operacyjny, wolniejsze działanie, wyższe zużycie przestrzeni dyskowej. Dzielnie, odbudowa i 
+Większy wpływ na system operacyjny, wolniejsze działanie, wyższe zużycie przestrzeni dyskowej. Dzielenie, odbudowa i 
 ponowne tworzenie mogą być wyzwaniem. Kapsułkują "całe maszyny", a nie tylko aplikacje / środowiska.
-b) Kontenery Docker: Mały wpływ na system operacyjny, bardzo szybkie, minimalne zużycie przestrzeni dyskowej. Dzielnie, 
+b) Kontenery Docker: Mały wpływ na system operacyjny, bardzo szybkie, minimalne zużycie przestrzeni dyskowej. Dzielenie, 
 odbudowa i dystrybucja są łatwe. Kapsułkują aplikacje / środowiska, a nie "całe maszyny".
 
 423) Jaka jest idea tagu obrazu?
 Obraz może mieć nazwę, a następnie przypisane do tej samej nazwy różne "wersje" tego obrazu.
 
-424) Jaka jest różnica między "CMD" a "ENTRYPOINT" w pliku "Dockerfile"?
-"ENTRYPOINT" to domyślne polecenie do uruchomienia po starcie kontenera, podczas gdy "CMD" to polecenie, które musi 
+424) Jaka jest różnica między "CMD" a "Entrypoint" w pliku "Dockerfile"?
+"Entrypoint" to domyślne polecenie do uruchomienia po starcie kontenera, podczas gdy "CMD" to polecenie, które musi 
 zostać uruchomione przy starcie kontenera.
 
 425) Jakie są różne stany, w jakich kontener Docker może się znajdować w dowolnym momencie?
@@ -2365,12 +2365,13 @@ zostać uruchomione przy starcie kontenera.
 
 426) Terminologie Docker?
 a) Dockerfile (bez rozszerzeń): Instrukcje w formie czytelnej dla człowieka, które określają, jak uruchomić aplikację 
-(zależności + środowisko uruchomieniowe). ".java: Instrukcje w formie czytelnej dla człowieka dotyczące zachowania aplikacji.
+(zależności + środowisko uruchomieniowe). "Jak klasa java": Instrukcje w formie czytelnej dla człowieka dotyczące 
+zachowania aplikacji.
 b) "Build": Tworzenie migawki (snapshot) na podstawie Dockerfile. Budowanie / kompilowanie / pakowanie.
 c) "Image": Lekka maszyna wirtualna (migawka). ".class" / ".jar".
-d) "Tag": Wersja obrazu. Wersja pliku ".jar".
+d) "Tag": Wersja obrazu. Wersja pliku "Jak plik jar".
 e) "Container": Instancja obrazu. Działająca lekka maszyna wirtualna. Możemy tworzyć wiele kontenerów z jednego obrazu. 
-Instancje obiektów. "Person p1 = new Person();".
+Instancje obiektów. "Tworzenie nowego obiektu w Javie".
 f) "DockerHub": Rejestr obrazów. Repozytorium Maven.
 
 427) Docker Exec?
@@ -2380,23 +2381,23 @@ f) "DockerHub": Rejestr obrazów. Repozytorium Maven.
 
 428) Sterowniki sieciowe Docker ("Docker Network Drivers")?
 a) "Bridge": Domyślny, niestandardowy / zdefiniowany przez użytkownika.
-b) "None" (wyłącza całą sieć).
-c) "Host" (działa tylko na maszynach z systemem Linux).
-d) "Overlay" (dla Docker Swarm).
+b) "None": Wyłącza całą sieć.
+c) "Host": Działa tylko na maszynach z systemem Linux.
+d) "Overlay": Dla Docker Swarm.
 
 429) Polecenia Dockerfile?
 a) "FROM image": Obraz bazowy dla Twojego obrazu Docker. Każdy obraz powinien rozszerzać inny obraz.
-b) "ADD host-dir container-dir": Dodaje pliki z katalogu hosta do obrazu. ADD może również przyjmować URL.
+b) "ADD host-dir container-dir": Dodaje pliki z katalogu hosta do obrazu. "ADD" może również przyjmować URL.
 "COPY host-dir container-dir": Dodaje pliki z katalogu hosta do obrazu.
 c) "RUN command": Polecenie do wykonania podczas procesu budowania obrazu. Przydatne do instalowania oprogramowania lub 
 tworzenia katalogów itp.
-d) "ENV key value": Ustawia zmienną środowiskową.
-e) "WORKDIR path": Tworzy przestrzeń roboczą / domyślny katalog roboczy. Jeśli go zignorujemy, użyty zostanie katalog główny.
-f) "EXPOSE port": Udostępnia port.
-g) "CMD [command to execute when container starts]": Polecenie do wykonania, proces do uruchomienia po stworzeniu kontenera. 
-Można nadpisać polecenie.
-h) "ENTRYPOINT [command to execute when container starts]": Polecenie do wykonania, proces do uruchomienia po stworzeniu 
-kontenera. Nie można nadpisać polecenia.
+d) "Env key value": Ustawia zmienną środowiskową.
+e) "Workdir path": Tworzy przestrzeń roboczą / domyślny katalog roboczy. Jeśli go zignorujemy, użyty zostanie katalog główny.
+f) "EXPOSE port": Udostępnia "port".
+g) "CMD (Podaj komendę jaką wykonać kiedy kontener się uruchamia)": Polecenie do wykonania, proces do uruchomienia po 
+stworzeniu kontenera. Można nadpisać polecenie.
+h) "Entrypoint (Podaj komendę jaką wykonać kiedy kontener się uruchamia)": Polecenie do wykonania, proces do uruchomienia 
+po stworzeniu kontenera. Nie można nadpisać polecenia.
 
 430) Polecenia Docker Compose?
 a) "docker-compose up": Uruchamia wszystkie kontenery z niestandardową siecią mostu.
@@ -2404,11 +2405,10 @@ b) "docker-compose down": Zatrzymuje aplikację, usuwa kontenery i sieci.
 c) "docker-compose ps": Sprawdza status usługi.
 d) "docker-compose logs SERVICE-NAME": Sprawdza logi usługi w celu debugowania.
 
-431) Wymień przestrzeni nazw w systemie Linux:
+431) Wymień przestrzenie nazw w systemie Linux:
 a) "Mount" - mnt.
 b) "Process ID" - PID.
 c) "Network" - net.
 d) "Inter-process communication" - IPC.
 e) "Work station and domain" - UTS.
 f) "User ID" - user.
-

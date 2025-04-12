@@ -9,8 +9,9 @@ public class PowerfulNumberChecker {
 
         List<Integer> integers = powerfulNumber(0, 100);
         System.out.println(integers);
-
     }
+
+    // My Question Google 2022
 
     // O(n*Math.sqrt(n) + (end - start)*Math.sqrt(n)) time | O(n / log(n)) space
     public static List<Integer> powerfulNumber(int start, int end) {

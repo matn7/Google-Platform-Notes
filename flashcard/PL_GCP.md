@@ -8,17 +8,17 @@ Ilościowy pomiar aspektu usługi. Kategorie: dostępność, opóźnienia, przep
 "Cloud Run" i "GKE"?
 "Identity-Aware Proxy (IAP)".
 
-3) Twoje mikrousługi będą wdrażane w "GKE". Chcesz nadać wspólne uprawnienia do "Cloud Logging" i "Cloud Monitoring"?
+3) Twoje mikro-usługi będą wdrażane w "GKE". Chcesz nadać wspólne uprawnienia do "Cloud Logging" i "Cloud Monitoring"?
 Konto Usługowe Puli Węzłów ("Node Pool Service Account").
 
 4) Która usługa Google Cloud jest zalecana do implementacji pipeline "CI-CD"?
 "Cloud Build".
 
-5) Projektowanie "API gRPC"?
-"gRPC": Oparte na modelu Wywołania Zdalnej Procedury ("RPC"). 
-a) "createTodo(username, description)" - "todo_id". Jednostki adresowalne - procedury. 
-b) Zalety: Ukrywa szczegóły HTTP przed deweloperami (używa HTTP/2 w tle). Generowanie stubów i szkieletów "gRPC". 
-Klienci używają stubów do wykonywania wywołań gRPC. Dostawcy usług używają szkieletów do implementacji usług. 
+5) Projektowanie "API g-RPC"?
+"g-RPC": Oparte na modelu Wywołania Zdalnej Procedury ("RPC"). 
+a) "create-ToDo(username, description)" - "todo_id". Jednostki adresowalne - procedury. 
+b) Zalety: Ukrywa szczegóły HTTP przed deweloperami (używa HTTP/2 w tle). Generowanie stubów i szkieletów "g-RPC". 
+Klienci używają stubów do wykonywania wywołań g-RPC. Dostawcy usług używają szkieletów do implementacji usług. 
 Zapewnia bardzo dobrą wydajność: używa ładunków binarnych - "Protobuff". Efektywne zarządzanie połączeniami (dzięki HTTP2). 
 c) Wady: API REST są łatwiejsze w użyciu, nie wymagają żadnych specjalnych frameworków/bibliotek.
 
@@ -29,8 +29,8 @@ c) Wady: API REST są łatwiejsze w użyciu, nie wymagają żadnych specjalnych 
 "Cloud Firestore (Datastore)", "Cloud BigTable". Aplikacje wymagające szybko ewoluującej struktury (bez schematu).
 "Cloud Firestore": Bezserwerowa transakcyjna baza danych dokumentów wspierająca aplikacje mobilne i internetowe. 
 Małe do średnich baz danych (od 0 do kilku terabajtów).
-"Cloud BigTable": Duże bazy danych (10 TB - PB). Przesyłanie strumieniowe (IoT), obciążenia analityczne i operacyjne. 
-NIE jest bezserwerowe ("serverless").
+"Cloud BigTable": Duże bazy danych (10 Tera Bytes do Peta Bytes). Przesyłanie strumieniowe (IoT), obciążenia analityczne 
+i operacyjne. NIE jest bezserwerowe ("serverless").
 
 8) Relacyjne bazy danych OLAP?
 "BigQuery". Przechowywanie kolumnowe z predefiniowanym schematem. Hurtownie danych i obciążenia "BigData".
@@ -38,23 +38,23 @@ NIE jest bezserwerowe ("serverless").
 9) Relacyjne bazy danych OLTP?
 "Cloud SQL", "Cloud Spanner". Przypadki użycia transakcyjnego wymagające predefiniowanego schematu oraz bardzo silnych 
 zdolności transakcyjnych (przechowywanie wierszy).
-"CloudSQL": Bazy danych "MySQL", "PostgreSQL", "SQL Server".
-"Cloud Spanner": Nielimitowana skala i "99.999%" dostępności dla aplikacji globalnych z poziomym skalowaniem.
+"Cloud SQL": Bazy danych "MySQL", "PostgreSQL", "SQL Server".
+"Cloud Spanner": Nielimitowana skala i "99,999%" dostępności dla aplikacji globalnych z poziomym skalowaniem.
 
 10) Cloud SQL Auth Proxy?
 Jak uprościć zarządzanie połączeniami i zapewnić bezpieczne (HTTPS) połączenie między klientami a serwerem SQL? 
-"Cloud SQL Auth Proxy". Komunikacja szyfrowana protokołem "TLS1.2" z użyciem szyfru "AES 128-bit". 
+"Cloud SQL Auth Proxy". Komunikacja szyfrowana protokołem "TLS 1 2" z użyciem szyfru "AES 128 bit". 
 Nie martw się o certyfikaty. Prostszy menedżer połączeń. Wymaga izolacji klienta Proxy na maszynie klienckiej. 
 Może być używane do połączeń z lokalnego środowiska. Działa zarówno z prywatnymi, jak i publicznymi adresami IP.
 Cloud SQL Auth Proxy jest automatycznie wspierane przez niektóre usługi GCP, takie jak "App Engine" "Standard" i "Cloud Run".
 
 11) "Cloud SQL" - Wysoka dostępność?
-Utwórz konfigurację Wysokiej Dostępności (HA). Wybierz strefy "Primary" i "Secondary" w ramach regionu. 
+Utwórz konfigurację Wysokiej Dostępności "High Availability". Wybierz strefy "Primary" i "Secondary" w ramach regionu. 
 Będziesz mieć dwie instancje: instancję "Primary" i instancję "Secondary". Zmiany z instancji "Primary" są synchronizowane 
 do instancji "Secondary". W przypadku awarii strefy, następuje automatyczne przełączenie na instancję "Secondary": 
 Jeśli strefa "Primary" stanie się dostępna, przełączenie na instancję "Secondary" zostaje zachowane. 
-Jeśli strefa "Primary" stanie się dostępna, przełączenie nie następuje automatycznie. Pamiętaj, że konfiguracja 
-Wysokiej Dostępności nie może być używana jako "Read Replica".
+Jeśli strefa "Primary" stanie się dostępna, przełączenie nie następuje automatycznie. 
+Pamiętaj, że konfiguracja wysokiej dostępności nie może być używana jako replika do odczytu "Read Replica".
 
 12) Scenariusze "Cloud Storage". Zgodność z przepisami: Obiekt nie powinien być modyfikowany przez 2 lata?
 Skonfiguruj i zablokuj politykę przechowywania danych ("data retention policy").
@@ -70,7 +70,7 @@ Przenieś do klasy "Archive" po 30 dniach. Usuń po 4 latach.
 
 15) Konsumpcja API Google Cloud?
 Jak działa uwierzytelnianie dla bibliotek klienckich? 
-a) Biblioteki klienckie szukają zmiennej środowiskowej "GOOGLE_APPLICATION_CREDENTIALS" - jeśli jest obecna, używany jest 
+a) Biblioteki klienckie szukają zmiennej środowiskowej "Google_Application_Credentials" - jeśli jest obecna, używany jest 
 przypisany do niej konto usługi. 
 b) Użyj konta usługi przypisanego do zasobu, na którym działa Twój kod. W przeciwnym razie zostanie zgłoszony błąd. 
 Zalecane, jeśli używasz "Compute Engine", "Google Kubernetes Engine", "App Engine", "Cloud Run" lub "Cloud Functions" do 
@@ -80,7 +80,7 @@ uruchamiania aplikacji: przypisz konto usługi ("service account") do zasobów.
 masowej aktualizacji?
 DML partycjonowane (Partitioned DML).
 
-17) Jak połączyć się z Cloud SQL z środowisk bezserwerowych za pomocą prywatnego adresu IP?
+17) Jak połączyć się z Cloud SQL ze środowisk bezserwerowych za pomocą prywatnego adresu IP?
 Użyj dostępu do VPC bezserwerowego (serverless VPC Access).
 
 18) Jak połączyć się z instancji VM znajdującej się w VPC do instancji Cloud SQL za pomocą prywatnego adresu IP?
@@ -97,7 +97,7 @@ Używane do eksportowania danych z BigTable do Cloud Storage. Na przykład: Clou
 Cloud BigTable do Cloud Storage Parquet.
 
 22) Przypadek użycia dla Anthos Service Mesh?
-Canary deployments (rozproszenie ruchu pomiędzy dwoma wersjami tego samego mikrousługi). 
+Canary deployments (rozproszenie ruchu pomiędzy dwoma wersjami tej samej mikrousługi). 
 mTLS: dwukierunkowe TLS pomiędzy podami. Monitorowanie SLO.
 
 23) Jak uzyskać ogólny obraz bezpieczeństwa swojego projektu?
@@ -112,7 +112,7 @@ Logi (Logs), metryki (metrics), ślady (traces).
 26) Zalecany przepływ do obsługi danych strumieniowych w Google Cloud?
 Pub/Sub, Dataflow, BigQuery.
 
-27) Usługi do harmonogramowania asynchronicznych (schedule asynchronous tasks) zadań (z Twoich mikrousług) z wyraźnym 
+27) Usługi do harmonogramowania asynchronicznych (schedule asynchronous tasks) zadań (z Twoich mikro-usług) z wyraźnym 
 wywołaniem w Google Cloud?
 Cloud Tasks.
 
@@ -132,12 +132,12 @@ Używaj lekkich obrazów (preferuj Alpine Linux zamiast Ubuntu). Nie kopiuj nicz
 
 32) Tworzenie obrazów Docker - Dockerfile?
 Instrukcje do tworzenia obrazu Docker:
-FROM: ustawia obraz bazowy.
-WORKDIR: ustawia katalog roboczy.
-RUN: wykonuje polecenie.
-EXPOSE: informuje Dockera o porcie, na którym kontener nasłuchuje w czasie rzeczywistym.
-COPY: kopiuje nowe pliki lub katalogi do obrazu.
-CMD: domyślne polecenie dla uruchamianego kontenera.
+"FROM": ustawia obraz bazowy.
+"Workdir": ustawia katalog roboczy.
+"RUN": wykonuje polecenie.
+"EXPOSE": informuje Dockera o porcie, na którym kontener nasłuchuje w czasie rzeczywistym.
+"COPY": kopiuje nowe pliki lub katalogi do obrazu.
+"CMD": domyślne polecenie dla uruchamianego kontenera.
 
 33) Która usługa jest zalecana dla zaawansowanych wdrożeń między chmurami?
 Spinnaker.
@@ -148,26 +148,26 @@ Testowanie A/B.
 35) Które podejście do wdrożeń pozwala na przeprowadzenie wdrożenia bez przestojów bez używania dodatkowej infrastruktury?
 Deployment kanarkowy (Canary Deployment).
 
-36) GKE - Wydawanie nowych wersji. Spinnaker versus Cloud Build?
-Cloud Build lub Spinnaker mogą być używane do budowania obrazów Docker (CI). Cloud Build może wykonywać proste wdrożenia. 
+36) GKE Wydawanie nowych wersji. Spinnaker kontra Cloud Build?
+Cloud Build lub Spinnaker mogą być używane do budowania obrazów Docker ("Ci"). Cloud Build może wykonywać proste wdrożenia. 
 Dla zaawansowanych zautomatyzowanych wdrożeń między chmurami zalecany jest Spinnaker.
 
-37) GKE - Wydawanie nowej wersji. Canary Deployment?
-Utwórz nowe wdrożenie. Użyj Service Mesh, takiego jak Istio. Anthos Service Mesh to usługa GCP dla Istio, lub możesz 
+37) GKE Wydawanie nowej wersji. Canary Deployment?
+Utwórz nowe wdrożenie. Użyj Service Mesh, takiego jak Istio. Anthos Service Mesh to usługa GCP dla Istio lub możesz 
 użyć Spinnakera.
 
-38) GKE - Releasing New Versions. Blue Green Deployment?
-Create new deployment. Control traffic using Ingress (or service) or you can use Spinnaker.
+38) GKE Releasing New Versions. Blue Green Deployment?
+Tworzenie nowego obiektu deployment. Kontroluj ruch używając Ingress lub możesz użyć Spinnaker.
 
-39) GKE - Wydawanie nowych wersji. Rolling Update i Recreate?
+39) GKE Wydawanie nowych wersji. Rolling Update i Recreate?
 Ustaw typ strategii w Deployment.
 
-40) App Engine - Wydawanie nowych wersji?
+40) App Engine Wydawanie nowych wersji?
 a) Wdróż i przenieś cały ruch na raz: "gcloud app deploy".
 b) Wdróż wersję "v2" bez przenoszenia ruchu: "--no-promote".
-c) Przenieś cały ruch do "v2": "gcloud app service set-traffic s1 --splits v1=1".
+c) Przenieś cały ruch do "v2": "gcloud app service set-traffic s1 --splits v1= 1 ".
 d) Stopniowa migracja: Dodaj opcję "--migrate" do poprzedniego polecenia.
-e) Testowanie A/B: "gcloud app series set-traffic s1 --splits=v2=.5,v1=.5".
+e) Testowanie A/B: "gcloud app series set-traffic s1 --splits=v2= 0.5 ,v1= 0.5 ".
 
 41) Podejścia do wdrożeń MIG - Blue Green Deployment?
 Utwórz nowy MIG i dokonaj ręcznych dostosowań do backendów load balancera w razie potrzeby.
@@ -178,16 +178,16 @@ Binary Authorization.
 43) Skanuj obrazy kontenerów pod kątem luk bezpieczeństwa?
 Container Scanning API.
 
-44) Wykryj, czy Twoja VM jest wykorzystywana do kopania Bitcoina?
+44) Wykryj, czy Twoja Maszyna Wirtualna jest wykorzystywana do kopania Bitcoina?
 Anomaly Detection.
 
 45) Chroń swoje aplikacje przed atakami DDoS i powszechnymi lukami bezpieczeństwa?
 Cloud Armour.
 
-46) Skanuj i znajdź powszechne luki bezpieczeństwa, takie jak cross-site scripting (XSS), w aplikacjach App Engine.
+46) Skanuj i znajdź powszechne luki bezpieczeństwa, takie jak cross-site scripting (XSS), w aplikacjach App Engine?
 Web Security Scanner.
 
-47) Dowiedz się, który bucket storage zawiera dane wrażliwe?
+47) Dowiedz się, który bucket storage zawiera dane poufne?
 Cloud DLP (Data Loss Prevention).
 
 48) Chcesz rozwiązać problemy z wydajnością, identyfikując części aplikacji, które zużywają najwięcej zasobów?
@@ -221,36 +221,36 @@ Skonfiguruj sprawdzenie dostępności w Cloud Monitoring.
 
 56) Najlepsze praktyki dla Cloud SQL?
 a) Używaj proxy uwierzytelniania Cloud SQL (cloud SQL auth proxy), kiedy to możliwe.
-b) Używaj puli połączeń (connection pooling) i wykładniczego opóźnienia (exponential backoff).
+b) Używaj puli połączeń ("connection pooling") i wykładniczego opóźnienia ("exponential backoff").
 c) Trzymaj transakcje krótkie i małe.
 d) Używaj prywatnego IP, kiedy to możliwe.
-e) Zrozum skalowalność: Włącz konfigurację HA (wysoka dostępność) dla HA: instancja główna i zapasowa utworzone w tym 
-samym regionie (pamiętaj - regionalne). Read replicas pomagają odciążyć obciążenia związane z odczytami 
+e) Zrozum skalowalność: Włącz konfigurację "H A" (wysoka dostępność) dla "H A": instancja główna i zapasowa utworzone w tym 
+samym regionie (pamiętaj, regionalne). Read replicas pomagają odciążyć obciążenia związane z odczytami 
 (raportowanie, analityka itp.). Pamiętaj, że Read Replicas nie zwiększają dostępności. Preferuj kilka małych instancji 
 Cloud SQL zamiast jednej dużej instancji.
 
 57) Jak połączyć się z instancją Cloud SQL?
 Preferuj prywatne adresy IP zamiast publicznych. Używaj dostępu do VPC bezserwerowego dla połączeń prywatnym IP w 
 środowiskach bezserwerowych, takich jak App Engine, Cloud Functions, Cloud Run. Użyj proxy uwierzytelniania Cloud SQL 
-w tych scenariuszach: Połączenie za pomocą publicznego IP z środowisk bezserwerowych (App Engine, Cloud Functions, 
+w tych scenariuszach: Połączenie za pomocą publicznego IP ze środowisk bezserwerowych (App Engine, Cloud Functions, 
 Cloud Run). Połączenie za pomocą publicznych/prywatnych IP z innych środowisk, takich jak GCE VM, GKE itd. Jeśli nie 
 używasz proxy uwierzytelniania Cloud SQL, zaleca się używanie własnoręcznie zarządzanych certyfikatów SSL/TLS.
 
 58) Najlepsze praktyki dla IAM?
 Zasada najmniejszych uprawnień (Principle of Least Privilege:): Przyznawaj najmniejsze możliwe uprawnienia potrzebne do roli.
-Podział obowiązków: Zaangażuj co najmniej 2 osoby w wrażliwe zadania. Na przykład, stwórz oddzielne role do wdrożeń i migracji ruchu.
-Ciągłe monitorowanie.
-Używaj grup, kiedy to możliwe.
+Podział obowiązków: Zaangażuj co najmniej 2 osoby we wrażliwe zadania. Na przykład, stwórz oddzielne role do wdrożeń 
+i migracji ruchu. Ciągłe monitorowanie. Używaj grup, kiedy to możliwe.
 
 59) Jakie opcje należy włączyć w podsieci, aby umożliwić VM-om w podsieci łączenie się z interfejsami API Google za 
 pomocą prywatnych adresów IP?
 Włącz dostęp do Google przez prywatny IP (Private Google Access).
 
 60) Cloud VPN?
-Cloud VPN - Łączy sieć lokalną z siecią GCP. Zrealizowane za pomocą tunelu VPN IPsec. Ruch przechodzi przez internet 
-(publiczny). Ruch jest szyfrowany przy użyciu protokołu wymiany kluczy internetowych (Internet Key Exchange). Dwa typy Cloud VPN:
-a) HA VPN - wspiera tylko dynamiczne routowanie BGP.
-b) Classic VPN - wspiera statyczne routowanie oparte na politykach, routowanie oparte na trasach oraz dynamiczne routowanie BGP.
+Cloud VPN Łączy sieć lokalną z siecią GCP. Zrealizowane za pomocą tunelu "VPN IP-sec". Ruch przechodzi przez internet 
+(publiczny). Ruch jest szyfrowany przy użyciu protokołu wymiany kluczy internetowych (Internet Key Exchange). \
+Dwa typy Cloud VPN:
+a) HA VPN: Wspiera tylko dynamiczne routowanie BGP.
+b) Classic VPN: Wspiera statyczne routowanie oparte na politykach, routowanie oparte na trasach oraz dynamiczne routowanie BGP.
 
 61) Direct Peering?
 Hybrid Cloud. Łączy sieć klienta z siecią Google za pomocą peeringu sieciowego. Bezpośrednia ścieżka z sieci lokalnej do 
@@ -260,48 +260,49 @@ Niezalecane: używaj Cloud Interconnect i Cloud VPN.
 62) Cloud Interconnect?
 Hybrid Cloud. Szybkie fizyczne połączenie między siecią lokalną a siecią VPC. Wysoka dostępność i duża przepustowość. 
 Dwa typy:
-a) Dedicated Interconnect - 10 gigabitów na sekundę lub 100 gigabitów na sekundę.
-b) Partner Interconnect - 50 megabitów na sekundę do 10 gigabitów na sekundę. Wymiana danych odbywa się przez prywatną 
+a) "Dedicated Interconnect": 10 gigabitów na sekundę lub 100 gigabitów na sekundę.
+b) "Partner Interconnect": 50 megabitów na sekundę do 10 gigabitów na sekundę. Wymiana danych odbywa się przez prywatną 
 sieć. Używaj tylko w przypadku dużych potrzeb pasma: w przypadku niskiej przepustowości zaleca się używanie Cloud VPN.
 
 63) Jak połączyć sieci VPC w różnych organizacjach?
 VPC Peering. Sieci w tym samym projekcie, w różnych projektach i między projektami w różnych organizacjach mogą być połączone.
 
-64) Co można użyć do tworzenia pipeline'ów "CI/CD" w stylu Kubernetes, które działają jako rozszerzenie w klastrze Kubernetes?
+64) Co można użyć do tworzenia pipeline'ów "Ci Cd" w stylu Kubernetes, które działają jako rozszerzenie w klastrze Kubernetes?
 Tekton Pipelines.
 
 65) Opcje udostępniania plików między krokami Cloud Build?
 Użyj folderu "/workspace".
 
-66) SRE - Najlepsze praktyki.
+66) SRE Najlepsze praktyki.
 Obsługa nadmiernego obciążenia: zrzut obciążenia "load shedding", zmniejszona jakość usługi "Quality of Service".
 Unikanie awarii kaskadowych: zaplanuj, aby uniknąć przeciążenia.
 Testowanie penetracyjne (ethical hacking).
 Testowanie obciążeniowe.
 Testowanie odporności - "Jak aplikacja zachowuje się pod stresem?".
-Odporność "Resilience" - "Zdolność systemu do zapewnienia akceptowalnego zachowania, nawet gdy jedna lub więcej części systemu zawiedzie".
+Odporność "Resilience" - "Zdolność systemu do zapewnienia akceptowalnego zachowania, nawet gdy jedna lub więcej części 
+systemu zawiedzie".
 Podejścia:
 a) Chaos Testing.
 b) Dodanie dużego stresu do jednej z warstw.
 c) Uwzględnienie sieci w testowaniu.
-d) DIRT (Testowanie odzyskiwania po awarii w Google) (Disaster Recovery testing in Google).
+d) DIRT - Testowanie odzyskiwania po awarii w Google, ("Disaster Recovery testing in Google").
 
 67) Error budgets - metryki SRE?
 100% - SLO. Jak dobrze zespół realizuje swoje cele dotyczące niezawodności? Używane do zarządzania prędkością rozwoju.
 
-68) Umowa o poziomie usługi (SLA).
+68) Umowa o poziomie usługi (SLA)?
 SLO plus konsekwencje (umowa). Jakie są konsekwencje niewypełnienia SLO? (Określone w umowie). Miej surowsze wewnętrzne 
 SLO niż zewnętrzne SLA.
 
-69) Twoje mikrousługi będą wdrożone na GKE. Chcesz nadać każdej mikrousłudze określony dostęp do zasobów Google Cloud?
+69) Twoje mikro-usługi będą wdrożone na GKE. Chcesz nadać każdej mikro-usłudze określony dostęp do zasobów Google Cloud?
 Tożsamość obciążenia (Workload Identity).
 
 70) Najlepsze praktyki zabezpieczeń Kubernetes?
 Włącz automatyczne aktualizacje węzłów (Node Auto Upgrade) dla węzłów GKE.
-Używaj zabezpieczonych węzłów GKE (Shielded GKE nodes) z bezpiecznym rozruchem (secure boot).
+Używaj zabezpieczonych węzłów GKE (Shielded GKE Nodes) z bezpiecznym rozruchem (Secure Boot).
 Włącz Tożsamość obciążenia (Workload Identity).
 Używaj przestrzeni nazw (namespace) i RBAC do ograniczenia dostępu użytkowników do zasobów klastra.
-Ogranicz ruch między Podami za pomocą polityki sieciowej (network policy).
+Ogranicz ruch między Podami za pomocą polityki sieciowej (Network Policy).
 Używaj Kubernetes secrets lub Secret Manager do zarządzania tajemnicami. Rozważ użycie HashiCorp Vault, jeśli potrzebujesz 
 zarządzania tajemnicami w środowisku wielochmurowym.
 
@@ -316,15 +317,15 @@ Kubernetes Engine Viewer: Uzyskiwanie/listowanie klastra i obiektów API Kuberne
 Dokładne kontrolowanie dostępu na poziomie indywidualnych klastrów i przestrzeni nazw (namespace). Kontrolowanie dostępu 
 na poziomie zasobów Kubernetes (deployment, service, pod, secrets, configMap).
 
-73) Autoryzacja dla obciążenia Kubernetes:
-Opcja 1: Przypisz uprawnienia na poziomie węzła (maszyna wirtualna Compute Engine).
-Opcja 2: Przypisz uprawnienia na poziomie Poda (indywidualna mikrousługa), używając Kubernetes Secrets lub Workload Identity.
+73) Autoryzacja dla obciążenia Kubernetes?
+a) Przypisz uprawnienia na poziomie węzła (maszyna wirtualna Compute Engine).
+b) Przypisz uprawnienia na poziomie Poda (indywidualna mikro-usługa), używając Kubernetes Secrets lub Workload Identity.
 Rekomendowana opcja to użycie Workload Identity: przestrzega zasady minimalnych uprawnień (least privilege). 
 Nie wymaga zarządzania tajemnicami (secret management).
 
-74) Jak przypisać konto usługi do mikrousługi (lub Poda)?
-Opcja 1: Używając Kubernetes Secrets (lub zarządzania tajemnicami).
-Opcja 2: Używając Workload Identity.
+74) Jak przypisać konto usługi do mikro-usługi (lub Poda)?
+a) Używając Kubernetes Secrets (lub zarządzania tajemnicami).
+b) Używając Workload Identity.
 
 75) Uprawnienia na poziomie węzła Kubernetes. Domyślne konto usługi przypisane do węzła?
 Domyślne konto usługi Compute Engine.
@@ -362,7 +363,7 @@ c) Coldline do Archive.
 82) Funkcje w różnych klasach przechowywania (storage classes)?
 a) Wysoka trwałość (High durability).
 b) Niska latencja (Low latency).
-c) Nieograniczone przechowywanie (Unlimited storage): Autoskalowanie, brak minimalnej wielkości obiektu.
+c) Nieograniczone przechowywanie (Unlimited storage): Auto-skalowanie, brak minimalnej wielkości obiektu.
 d) Ta sama API dla wszystkich klas przechowywania.
 e) Zobowiązane SLA – brak zobowiązanego SLA (No committed SLA) dla Archive Storage.
 
@@ -378,13 +379,13 @@ Anthos.
 Inicjalizacja nowej instancji funkcji od zera może zająć trochę czasu.
 Rozwiązanie: Skonfiguruj minimalną liczbę instancji (zwiększa to koszty).
 
-86) Cloud Functions, zdarzenia są wywoływane z?
+86) Cloud Functions, zdarzenia są wywoływane?
 a) Cloud Storage.
 b) Cloud Pub/Sub.
 c) Metod HTTP: POST - GET - DELETE - PUT - OPTIONS.
 d) Firebase.
-e) Cloud Firestore.
-f) Stackdriver Logging.
+e) (Cloud Firestore).
+f) (Stackdriver Logging).
 
 87) Jak usługa w klastrze Kubernetes może komunikować się z inną usługą w tym samym klastrze Kubernetes bez używania jej URL?
 Odkrywanie usług Kubernetes (Kubernetes Service Discovery).
@@ -393,21 +394,21 @@ Odkrywanie usług Kubernetes (Kubernetes Service Discovery).
 różnych zespołów?
 Utwórz osobne przestrzenie nazw (Namespace).
 
-89) Zalecane podejście do zapewniania zewnętrznego dostępu do usług w klastrze (jeden Load Balancer obsługuje wiele mikrousług)?
+89) Zalecane podejście do zapewniania zewnętrznego dostępu do usług w klastrze (jeden Load Balancer obsługuje wiele mikro-usług)?
 Ingress.
 
 90) Jaką strategię wdrożenia domyślnie stosuje Kubernetes?
 RollingUpdates.
 
-91) GKE - Pamiętaj o CPU?
+91) GKE Pamiętaj o CPU?
 Część CPU na węzłach jest zarezerwowana przez Control Plane.
 Pierwsze rdzenie - 6%, drugie rdzenie - 1%, trzecie i czwarte - 0,5%, pozostałe - 0,25%.
 
-92) Status Kubernetes - PodUnschedulable?
+92) Status Kubernetes PodUnschedulable?
 Pod nie może zostać zaplanowany.
 Czy w klastrze są wystarczające zasoby?
 
-93) Status Kubernetes - CrashLoopBackOff?
+93) Status Kubernetes CrashLoopBackOff?
 Kontener wielokrotnie się zawiesza (repeatedly crashing).
 Sprawdź logi, aby dowiedzieć się, dlaczego kontener się zawiesza.
 "kubectl logs POD_NAME".
@@ -418,7 +419,7 @@ Możesz również spróbować połączyć się z pod'em i wykonać polecenia.
 "kubectl describe pods POD_NAME".
 Pokazuje bieżący stan Poda i ostatnie zdarzenia.
 
-95) Status Kubernetes - ImagePullBackOff, ErrImagePull?
+95) Status Kubernetes "ImagePullBackOff", "ErrImagePull"?
 Czy nazwa obrazu jest poprawna?
 Czy tag obrazu jest poprawny?
 Czy konto usługi w puli węzłów ma dostęp do obrazu w rejestrze kontenerów?
@@ -429,7 +430,7 @@ b) Regionalne (Regional): Grupa zarządzanych instancji regionalnych, trwałe dy
 c) Strefowe (Zonal): Grupy zarządzanych instancji strefowych, instancje, trwałe dyski: możesz podłączyć dysk tylko do 
 instancji w tej samej strefie co dysk.
 
-97) Chcesz bardzo wysokich IOPS, ale Twoje dane mogą zostać utracone bez problemu?
+97) Chcesz bardzo wysokich IOPS (input output per seconds), ale Twoje dane mogą zostać utracone bez problemu?
 Dyski SSD lokalne (Local SSDs).
 
 98) Chcesz stworzyć system udostępniania plików o wysokiej wydajności w GCP, który może być podłączony do wielu maszyn 
@@ -440,51 +441,52 @@ Filestore.
 dyskami?
 Utwórz obraz maszyny (Machine Image).
 
-100) Chcesz ułatwić uruchamianie maszyn wirtualnych z utwardzonym systemem operacyjnym i dostosowanym oprogramowaniem?
+100) Chcesz ułatwić uruchamianie maszyn wirtualnych z utwardzonym (hardened) systemem operacyjnym i dostosowanym 
+oprogramowaniem?
 Utwórz obraz niestandardowy (Custom Image).
 
 101) Trwała usługa przechowywania bloków sieciowych w GCP?
 Persistent Disk.
 
-102) Co zawiera wszystko, czego potrzebujesz do utworzenia instancji VM - konfigurację VM, metadane, dysk rozruchowy i 
+102) Co zawiera wszystko, czego potrzebujesz do utworzenia instancji VM, konfigurację VM, metadane, dysk rozruchowy i 
 dane z jednego lub więcej trwałych dysków?
 Obraz maszyny (Machine Image).
 
 103) Cloud Storage?
 Najbardziej popularna, bardzo elastyczna i niedroga usługa przechowywania. 
-Bezserwerowa: Autoskalowanie i nieskończona skalowalność.
+Bezserwerowa: Auto-skalowanie i nieskończona skalowalność.
 Przechowywanie dużych obiektów przy użyciu podejścia klucz-wartość: Traktuje cały obiekt jako jednostkę 
 (częściowe aktualizacje nie są dozwolone).
 Zalecane, gdy operujesz na całym obiekcie przez większość czasu.
 Kontrola dostępu na poziomie obiektu. Znana również jako przechowywanie obiektów (Object storage).
-Oferuje API REST do dostępu i modyfikacji obiektów. Oferuje również CLI (gsutil) oraz biblioteki klienckie 
+Oferuje API REST do dostępu i modyfikacji obiektów. Oferuje również Cli ("gsutil") oraz biblioteki klienckie 
 (C++, C#, Java, Node.js, PHP, Python i Ruby).
-Możliwość przechowywania wszystkich typów plików - tekstowych, binarnych, kopii zapasowych i archiwów: 
+Możliwość przechowywania wszystkich typów plików tekstowych, binarnych, kopii zapasowych i archiwów: 
 Pliki multimedialne i archiwa, paczki aplikacji i logi, kopie zapasowe baz danych lub urządzeń pamięci masowej, 
 dane tymczasowe podczas migracji z lokalnych baz danych do chmury.
 
-104) Cloud Storage - Objects i Buckets?
+104) Cloud Storage, Objects i Buckets?
 Obiekty są przechowywane w koszach (buckets). Nazwy koszy są unikalne globalnie. Nazwy koszy są używane jako część URL-i 
 obiektów, mogą zawierać tylko małe litery, cyfry, myślniki, podkreślniki i kropki. Maksymalna długość to 3 do 63 znaków. 
-Nie mogą zaczynać się od prefiksu goog ani zawierać słowa google (nawet z błędami ortograficznymi). W koszu może znajdować 
+Nie mogą zaczynać się od prefiksu "goog" ani zawierać słowa google (nawet z błędami ortograficznymi). W koszu może znajdować 
 się nieograniczona liczba obiektów. Każdy bucket jest powiązany z projektem. Każdy obiekt jest identyfikowany przez 
 unikalny klucz – klucz jest unikalny w obrębie bucketu. Maksymalny rozmiar obiektu to 5 terabajtów, ale można przechowywać 
 nieograniczoną liczbę takich obiektów.
 
-105) IAM - Role?
+105) IAM Role?
 Role to uprawnienia: wykonywanie określonego zestawu działań na określonym zestawie zasobów. Trzy typy:
-a) Role podstawowe (lub role pierwotne): Właściciel, Edytor, Widokowiec.
-Widokowiec (roles.viewer) – Działania tylko do odczytu.
-Edytor (roles.editor) – Widokowiec plus działania edytorskie.
-Właściciel (roles.owner) – Edytor plus zarządzanie rolami i uprawnieniami plus rozliczenia.
+a) Role podstawowe (lub role pierwotne): Owner, Editor, Viewer.
+Viewer (roles.viewer) – Działania tylko do odczytu.
+Editor (roles.editor) – Viewer plus działania edytorskie.
+Owner (roles.owner) – Editor plus zarządzanie rolami i uprawnieniami plus rozliczenia.
 Najwcześniejsza wersja: stworzona przed IAM. Nie zalecane: nie używaj w środowisku produkcyjnym.
 b) Role wstępnie zdefiniowane – Role o precyzyjnych uprawnieniach, zdefiniowane i zarządzane przez Google. 
 Różne role do różnych celów.
-Przykłady: Administrator Storage, Administrator Obiektów Storage, Widokowiec Obiektów Storage, Twórca Obiektów Storage.
+Przykłady: Administrator Storage, Administrator Obiektów Storage, Viewer Obiektów Storage, Twórca Obiektów Storage.
 c) Role niestandardowe: Kiedy role wstępnie zdefiniowane są niewystarczające, możesz stworzyć własne role niestandardowe.
 
-106) Cloud Identity and Access Management (IAM)
-Uwierzytelnianie (Authentication) (czy to właściwy użytkownik?) i Autoryzacja (Authorization) (czy mają odpowiedni dostęp?).
+106) Cloud Identity and Access Management (I  A M)?
+Uwierzytelnianie (Authentication) czy to właściwy użytkownik? i Autoryzacja (Authorization) czy mają odpowiedni dostęp?.
 Tożsamości (Identities) mogą być:
 Użytkownik GCP (Konto Google lub Użytkownik uwierzytelniony zewnętrznie).
 Grupa użytkowników GCP.
@@ -495,14 +497,14 @@ IAM zapewnia bardzo precyzyjną kontrolę.
 Możesz ograniczyć pojedynczego użytkownika do: wykonywania jednej akcji, na określonym zasobie, z określonego adresu IP, 
 w określonym przedziale czasowym.
 
-107) Typowe zarządzanie tożsamościami (identity) w chmurze
-Masz zasoby w chmurze (przykłady - wirtualny serwer, baza danych itd.). Masz tożsamości (human i non-human), które muszą 
+107) Typowe zarządzanie tożsamościami (identity) w chmurze?
+Masz zasoby w chmurze (przykłady, wirtualny serwer, baza danych itd.). Masz tożsamości (human i non-human), które muszą 
 uzyskać dostęp do tych zasobów i wykonywać działania. Na przykład: Uruchomienie (rozpoczęcie, zatrzymanie lub zakończenie) 
 wirtualnego serwera. Jak identyfikujesz użytkowników w chmurze? Jak konfigurujesz zasoby, do których mogą uzyskać dostęp? 
 Jak możesz skonfigurować, jakie działania są dozwolone? W GCP: Zarządzanie tożsamościami i dostępem (Cloud IAM) zapewnia 
 tę usługę.
 
-108) Cloud Storage - Szyfrowanie?
+108) Cloud Storage Szyfrowanie?
 Cloud Storage umożliwia szyfrowanie danych po stronie serwera. Konfiguracja szyfrowania po stronie serwera: Szyfrowanie 
 wykonywane przez Cloud Storage.
 Klucz szyfrowania zarządzany przez Google: Domyślnie (nie wymaga konfiguracji).
@@ -539,7 +541,7 @@ Wybierz dyski PD regionalne (regional PDs) (kosztują 2 razy więcej, ale są re
 114) Chcesz wykonać godzinną kopię zapasową dysków trwałych (PD) w celu odzyskiwania po awarii?
 Skonfiguruj godzinne migawki (hourly snapshots)!
 
-115) Access Control - Overview?
+115) Access Control Overview?
 Jak kontrolujesz dostęp do obiektów w zasobniku Cloud Storage? Istnieją dwa rodzaje kontroli dostępu: 
 a) Uniform (Zalecane): Uniform bucket level access przy użyciu IAM. 
 b) Fine-grained – użyj IAM i ACL do kontrolowania dostępu: zarówno na poziomie zasobnika, jak i na poziomie 
@@ -547,14 +549,14 @@ poszczególnych obiektów. Używaj jednolitego dostępu, gdy wszyscy użytkownic
 obiektów w zasobniku. Fine-grained access z użyciem ACL może być używane, gdy chcesz dostosować dostęp na poziomie 
 obiektów. Przyznaj użytkownikowi specyficzny dostęp do edytowania określonych obiektów w zasobniku.
 
-116) ACL - Access Control Lists?
+116) ACL Access Control Lists?
 ACL: Określ, kto ma dostęp do Twoich zasobników i obiektów oraz jaki poziom dostępu mają. Jak to różni się od IAM? 
 Uprawnienia IAM stosują się do wszystkich obiektów w zasobniku. ACL mogą być używane do dostosowania dostępu do 
 konkretnych obiektów. Użytkownik uzyskuje dostęp, jeśli ma go przyznany przez IAM lub ACL! Pamiętaj – używaj IAM do 
 ogólnych uprawnień do wszystkich obiektów w zasobniku. Pamiętaj – używaj ACL, jeśli musisz dostosować dostęp do 
 poszczególnych obiektów.
 
-117) Instancja VM z domyślnym kontem serwisowym w "Projekcie-"A potrzebuje dostępu do zasobnika Cloud Storage w "Projekcie-B"?
+117) Instancja VM z domyślnym kontem serwisowym w "Projekcie-A" potrzebuje dostępu do zasobnika Cloud Storage w "Projekcie-B"?
 W "Projekcie-B" dodaj konto serwisowe (service account) z "Projektu-A" i przypisz uprawnienie Storage Object Viewer 
 do zasobnika.
 
@@ -565,30 +567,30 @@ członkom na dostęp do konta serwisowego, przyznając im rolę do konta serwiso
 119) Konto serwisowe (Service Account) - Aplikacja na instancji VM chce wysłać wiadomość do tematu Pub/Sub (Pub/Sub Topic)?
 Skonfiguruj instancję VM, aby używała konta serwisowego (Service Account) z odpowiednimi uprawnieniami.
 
-120) Konto serwisowe - Aplikacja na instancji VM chce komunikować się z zasobnikiem Cloud Storage?
+120) Konto serwisowe. Aplikacja na instancji VM chce komunikować się z zasobnikiem Cloud Storage?
 Skonfiguruj instancję VM, aby używała konta serwisowego z odpowiednimi uprawnieniami.
 
-121) Konto serwisowe - Przypadek użycia uprawnień do interfejsów API Google Cloud (krótkotrwałe)?
+121) Konto serwisowe. Przypadek użycia uprawnień do interfejsów API Google Cloud (krótkotrwałe)?
 Wykonuj wywołania zewnętrzne do interfejsów API Google Cloud z krótkotrwałymi uprawnieniami. Kilka godzin lub krócej. 
-Mniejsze ryzyko w porównaniu do udostępniania kluczy kont serwisowych! Typy poświadczeń: token dostępu OAuth 2.0, 
+Mniejsze ryzyko w porównaniu do udostępniania kluczy kont serwisowych! Typy poświadczeń: token dostępu "OAuth 2 0", 
 tokeny identyfikacyjne OpenID Connect, samopodpisane JSON Web Tokens (JWT). 
 Przykłady: Kiedy członek zespołu potrzebuje podwyższonych uprawnień, może przyjąć rolę konta serwisowego 
-(utworzyć token dostępu OAuth 2.0 dla konta serwisowego). Tokeny identyfikacyjne OpenID Connect są zalecane do 
+(utworzyć token dostępu "OAuth 2 0" dla konta serwisowego). Tokeny identyfikacyjne OpenID Connect są zalecane do 
 uwierzytelniania usług między sobą: Usługa w GCP musi uwierzytelnić się do usługi w innym chmurze.
 
-122) Konto serwisowe - Przypadek użycia z on-premises do Google Storage (długotrwałe)?
+122) Konto serwisowe. Przypadek użycia z on-premises do Google Storage (długotrwałe) (long-lived)?
 Nie możesz przypisać konta serwisowego bezpośrednio do aplikacji on-premises.
-Jeden: Utwórz konto serwisowe z odpowiednimi uprawnieniami.
-Dwa: Utwórz zarządzany klucz konta serwisowego użytkownika (Service Account User Managed key:): 
+a) Utwórz konto serwisowe z odpowiednimi uprawnieniami.
+b) Utwórz zarządzany klucz konta serwisowego użytkownika (Service Account User Managed key). 
 "gcloud iam service-accounts keys create". Pobierz plik klucza konta serwisowego, przechowuj go w bezpiecznym miejscu 
 (może być użyty do podszywania się pod konto serwisowe)!
-Trzy: Udostępnij plik klucza konta serwisowego swojej aplikacji: Ustaw zmienną środowiskową GOOGLE_APPLICATION_CREDENTIALS.
-Cztery: Używaj bibliotek klienckich Google – Google Cloud Client Libraries – App Default Credentials/ADC.
+c) Udostępnij plik klucza konta serwisowego swojej aplikacji: Ustaw zmienną środowiskową "Google_Application_Credentials".
+d) Używaj bibliotek klienckich Google – Google Cloud Client Libraries – App Default Credentials/ADC.
 
-123) Konto serwisowe - Przypadek użycia instancja VM do Cloud Storage?
-Jeden: Utwórz rolę konta serwisowego (Service Account) z odpowiednimi uprawnieniami.
-Dwa: Przypisz rolę konta serwisowego do instancji VM.
-Używaj kluczy zarządzanych przez Google Cloud: Generowanie kluczy i ich użycie są automatycznie obsługiwane przez IAM, 
+123) Konto serwisowe/ Przypadek użycia instancja VM do Cloud Storage?
+a) Utwórz rolę konta serwisowego (Service Account) z odpowiednimi uprawnieniami.
+b) Przypisz rolę konta serwisowego do instancji VM.
+Używaj kluczy zarządzanych przez Google Cloud: Generowanie kluczy i ich użycie jest automatycznie obsługiwane przez IAM, 
 gdy przypiszemy konto serwisowe do instancji. Klucze są automatycznie rotowane. Nie ma potrzeby przechowywania poświadczeń 
 w plikach konfiguracyjnych.
 Nie usuwaj kont serwisowych używanych przez działające instancje. Aplikacja działająca na tych instancjach utraci dostęp!
@@ -596,33 +598,33 @@ Nie usuwaj kont serwisowych używanych przez działające instancje. Aplikacja d
 124) Konta serwisowe (Service Account)?
 Scenariusz: Aplikacja na instancji VM potrzebuje dostępu do Cloud Storage. Nie chcesz używać osobistych poświadczeń 
 (credentials), aby umożliwić dostęp.
-Zalecane - Używaj kont serwisowych: Identyfikowane przez adres e-mail (np. id-compute@developer.gserviceaccount.com).
+Zalecane: Używaj kont serwisowych: Identyfikowane przez adres e-mail (np. id-compute@developer.gserviceaccount.com).
 Nie mają hasła: Posiadają parę kluczy RSA (prywatny/publiczny).
 Nie można się zalogować za pomocą przeglądarek ani plików cookie.
 Rodzaje kont serwisowych:
-Domyślne konto serwisowe (Default) - Tworzone automatycznie, gdy używane są niektóre usługi. Niezalecane - 
-ma rolę Editor domyślnie. 
-Konto zarządzane przez użytkownika (User Managed) - Tworzone przez użytkownika: Zalecane. Zapewnia kontrolę dostępu na 
-poziomie szczegółowym.
+Domyślne konto serwisowe (Default) - Tworzone automatycznie, gdy używane są niektóre usługi. 
+Niezalecane, ma rolę Editor domyślnie. 
+Konto zarządzane przez użytkownika (User Managed) - Tworzone przez użytkownika: 
+Zalecane, zapewnia kontrolę dostępu na poziomie szczegółowym.
 Konta serwisowe zarządzane przez Google (Google-Managed service accounts) - Tworzone i zarządzane przez Google. 
 Używane przez GCP do wykonywania operacji w imieniu użytkownika. Zasadniczo nie musimy się nimi przejmować.
 
-125) Nowy scenariusz: Aplikacje raportowe i analityczne.
+125) Nowy scenariusz: Aplikacje raportowe i analityczne?
 Nowe aplikacje raportowe i analityczne są uruchamiane, korzystając z tej samej bazy danych. Aplikacje te będą tylko 
-odczytywać dane. Po kilku dniach zauważasz, że wydajność bazy danych została wpłynięta. Jak możemy rozwiązać ten problem?
-Skalowanie pionowe (Vertically) bazy danych - zwiększ CPU i pamięć.
-Utworzenie klastra bazy danych (database cluster) (rozproszenie bazy danych) - Zwykle klastry baz danych są drogie w 
+odczytywać dane. Po kilku dniach zauważasz, że wydajność bazy danych spadła. Jak możemy rozwiązać ten problem?
+Skalowanie pionowe (Vertically) bazy danych, zwiększ CPU i pamięć.
+Utworzenie klastra bazy danych (database cluster), (rozproszenie bazy danych) - Zwykle klastry baz danych są drogie w 
 konfiguracji.
 Utworzenie replik do odczytu (read replicas) - Uruchamiaj aplikacje tylko do odczytu na replikach do odczytu.
 
-126) Baza danych - Replika do odczytu?
+126) Baza danych. Replika do odczytu?
 Dodaj replikę do odczytu. Podłącz aplikacje raportowe i analityczne do repliki do odczytu. 
 Zmniejsza to obciążenie głównej bazy danych.
 Uaktualnij replikę do odczytu do roli głównej bazy danych (obsługiwane przez niektóre bazy danych).
 Utwórz repliki do odczytu w wielu regionach.
 Twórz migawki z replik do odczytu.
 
-127) Podsumowanie relacyjnych baz danych OLTP.
+127) Podsumowanie relacyjnych baz danych OLTP?
 Cloud SQL, Cloud Spanner. Przypadki użycia transakcyjne wymagające zdefiniowanego schematu i bardzo silnych możliwości 
 transakcyjnych (przechowywanie wierszy).
 Cloud SQL: Bazy danych MySQL, PostgreSQL, SQL Server.
@@ -649,7 +651,7 @@ Członek (Member) otrzymuje uprawnienia przez rolę! Rola może mieć wiele upra
 
 130) Polityka IAM?
 Role są przypisywane użytkownikom poprzez dokumenty polityki IAM. Reprezentowane przez obiekt polityki. Obiekt polityki 
-zawiera listę powiązań. Powiązanie przypisuje rolę do listy członków. Typ członka jest identyfikowany przez prefiks: 
+zawiera listę powiązań. Powiązanie przypisuje rolę do listy członków. Typ członka jest identyfikowany przez prefiks.
 Przykład: użytkownik, konto serwisowe, grupa lub domena.
 
 131) Uruchamiasz aplikację w instancji VM, która przechowuje swoje dane na trwałej pamięci masowej. 
@@ -659,20 +661,20 @@ RTO (Recovery Time Objective): 45 minut.
 RPO (Recovery Point Objective): 48 godzin.
 
 132) RTO i RPO. Bardzo mała utrata danych (RPO - 1 minuta), bardzo krótki czas przestoju (RTO - 5 minut)?
-Hot standby - Automatycznie synchronizuj dane. Miej instancję zapasową gotową do przejęcia obciążenia. 
+Hot standby. Automatycznie synchronizuj dane. Miej instancję zapasową gotową do przejęcia obciążenia. 
 Użyj automatycznego przełączania awaryjnego z głównego serwera na zapasowy.
 
-133) RTO i RPO. Bardzo mała utrata danych (RPO - 1 minuta). Ale mogę tolerować pewien czas przestoju (RTO - 15 minut)?
-Warm standby - Automatycznie synchronizuj dane. Miej instancję zapasową z minimalną infrastrukturą. 
+133) RTO i RPO. Bardzo mała utrata danych (RPO - 1 minuta). Mogę tolerować pewien czas przestoju (RTO - 15 minut)?
+Warm standby. Automatycznie synchronizuj dane. Miej instancję zapasową z minimalną infrastrukturą. 
 Skaluj ją w górę, gdy wystąpi awaria.
 
-134) RTO i RPO. Dane są krytyczne (RPO - 1 minuta), ale mogę tolerować przestój trwający kilka godzin (RTO - kilka godzin)?
-Twórz regularne migawki danych i dzienniki transakcji. Twórz bazę danych z migawków i dzienników transakcji, gdy wystąpi awaria.
+134) RTO i RPO. Dane są krytyczne (RPO - 1 minuta), ale mogę tolerować przestój trwający kilka godzin (RTO, kilka godzin)?
+Twórz regularne migawki danych i dzienniki transakcji. Twórz bazę danych z migawek i dzienników transakcji, gdy wystąpi awaria.
 
 135) RTO i RPO. Dane mogą zostać utracone bez problemu (na przykład: dane w pamięci podręcznej)?
 Przełączanie awaryjne na całkowicie nowy serwer.
 
-136) Baza danych do przechowywania ogromnych wolumenów danych strumieniowych z urządzeń IoT?
+136) Baza danych do przechowywania ogromnych wolumenów danych strumieniowych z urządzeń "I o T"?
 BigTable.
 
 137) Baza danych do przechowywania ogromnych strumieni danych szeregów czasowych (time series data)?
@@ -684,13 +686,13 @@ BigQuery.
 139) Pamięć podręczna danych (z bazy danych) dla aplikacji webowej?
 Memorystore.
 
-140) Transakcyjna, globalna baza danych z predefiniowaną schemą, która musi przetwarzać miliony transakcji na sekundę?
+140) Transakcyjna, globalna baza danych z predefiniowanym schematem, która musi przetwarzać miliony transakcji na sekundę?
 Cloud Spanner.
 
 141) Transakcyjna, lokalna baza danych przetwarzająca tysiące transakcji na sekundę?
 Cloud SQL.
 
-142) Startup z szybko ewoluującą schemą (strukturą tabeli)?
+142) Startup z szybko zmieniającym się schematem danych (strukturą tabeli)?
 Cloud Datastore / Firestore.
 
 143) Baza danych nierelacyjna z mniejszą ilością pamięci (10 GB)?
@@ -699,26 +701,25 @@ Cloud Datastore.
 144) Baza danych w pamięci podręcznej (In memory database caches)?
 Cloud Memorystore. Aplikacje wymagające odpowiedzi w mikrosekundach.
 
-145) Bazy danych NoSQL?
+145) Bazy danych "No SQL"?
 Cloud Firestore (Datastore), Cloud BigTable. Aplikacje wymagające szybko ewoluującej struktury (bez schematu).
 Cloud Firestore: Bezserwerowa, transakcyjna baza danych dokumentów wspierająca aplikacje mobilne i webowe. 
 Małe do średnich baz danych (od 0 do kilku terabajtów).
-Cloud BigTable: Duże bazy danych (od 10 terabajtów do petabajtów). Strumieniowanie IoT, analityka i obciążenia operacyjne. 
+Cloud BigTable: Duże bazy danych (od 10 terabajtów do petabajtów). Strumieniowanie "I o T", analityka i obciążenia operacyjne. 
 Nie jest bezserwerowe.
 
 146) Podsumowanie relacyjnej bazy danych OLAP?
-BigQuery. Przechowywanie kolumnowe z predefiniowaną schemą. Magazynowanie danych i obciążenia BigData.
+BigQuery. Przechowywanie kolumnowe z predefiniowanym schematem. Magazynowanie danych i obciążenia "Big-Data".
 
 147) Cloud BigTable?
-Skala petabajtów, szerokokolumnowa baza danych NoSQL (kompatybilna z API HBase). Zaprojektowana do obsługi ogromnych 
-wolumenów danych analitycznych i operacyjnych. Strumienie IoT, analityka, dane szeregów czasowych itd. Obsługuje miliony 
+Skala petabajtów, szerokokolumnowa baza danych "No SQL" (kompatybilna z API HBase). Zaprojektowana do obsługi ogromnych 
+wolumenów danych analitycznych i operacyjnych. Strumienie "I o T", analityka, dane szeregów czasowych itd. Obsługuje miliony 
 operacji odczytu/zapisu TPS przy bardzo niskiej latencji.
 Transakcje tylko dla pojedynczych wierszy (transakcje dla wielu wierszy NIE są obsługiwane). Nie jest bezserwerowa: 
-Należy utworzyć instancję serwera (użyj SSD lub HDD). Skaluje się poziomo z wieloma węzłami 
-(brak przestojów przy zmianie rozmiaru klastra).
-Nie można eksportować danych za pomocą konsoli chmurowej lub gcloud: Należy użyć aplikacji Java 
+Należy utworzyć instancję serwera (użyj SSD lub HDD). Skaluje się poziomo z wieloma węzłami (brak przestojów przy zmianie 
+rozmiaru klastra). Nie można eksportować danych za pomocą konsoli chmurowej lub gcloud: Należy użyć aplikacji Java 
 ("export/import" za pomocą java-jar JAR). 
-Użyj poleceń HBase. Użyj narzędzia wiersza poleceń cbt do pracy z BigTable (nie gcloud).
+Użyj poleceń HBase. Użyj narzędzia wiersza poleceń "c b t" do pracy z BigTable (nie gcloud).
 Przykład: "cbt createtable my-table".
 
 148) Cloud Bigtable - Baza danych o szerokich kolumnach?
@@ -729,7 +730,7 @@ Taka struktura wspiera wysoką przepustowość odczytu i zapisu przy niskim opó
 Zalety:
 a) Skalowalność do petabajtów danych z odpowiedziami w milisekundach, obsługującymi miliony transakcji na sekundę (TPS).
 Przypadki użycia:
-a) Strumienie IoT (IoT streams).
+a) Strumienie "I o T" (I o T streams).
 b) Dane grafowe (graph data).
 c) Analityka w czasie rzeczywistym (real-time analytics) - dane szeregów czasowych, dane finansowe, historia transakcji, 
 ceny akcji itp.
@@ -742,9 +743,8 @@ W pełni zarządzana usługa: Google Cloud zajmuje się provisioningiem, replika
 poprawek (patching) automatycznie.
 Wysoka dostępność: Memorystore oferuje SLA dostępności na poziomie "99,9%" (umowa o poziomie usług).
 Monitoring: Łatwe skonfigurowanie monitorowania instancji Memorystore przy użyciu Cloud Monitoring.
-Obsługiwane silniki:
-Redis oraz Memcached:
-a) Memcached jest używane głównie do cache'owania danych, takich jak: Dane referencyjne, zapytania do baz danych, 
+Obsługiwane silniki: Redis oraz Memcached:
+a) Memcached jest używane głównie do danych, takich jak: Dane referencyjne, zapytania do baz danych, 
 cache'owanie, przechowywanie sesji itp.
 b) Redis jest preferowane do: Dostępu o niskim opóźnieniu, z trwałością i wysoką dostępnością.
 Przypadki użycia:
@@ -753,18 +753,18 @@ b) Profile graczy (Player Profiles): Przechowywanie informacji o graczach z szyb
 c) Przetwarzanie strumieniowe w pamięci (In-memory stream processing): Przetwarzanie danych w czasie rzeczywistym, 
 takie jak analityka w czasie rzeczywistym lub architektury oparte na zdarzeniach.
 
-150) Zasady zapory - Zasady Ingress i Egress?
+150) Zasady zapory (Firewall). Zasady Ingress i Egress?
 Zasady Ingress:
 Definiują przychodzący ruch do zasobów Google Cloud Platform (GCP).
 Cel: Określa, gdzie kierowany jest ruch. Może to być:
 a) Wszystkie instancje w projekcie.
-b) Instancje z określonym TAG-iem lub Konta Usługi (SA).
+b) Instancje z określonym "Tagiem" lub Konta Usługi (SA).
 Źródło: Określa, skąd pochodzi ruch. Może to być:
 a) Blok CIDR (zakres adresów IP).
-b) Wszystkie instancje lub instancje z określonym TAG-iem lub Konta Usługi (SA).
+b) Wszystkie instancje lub instancje z określonym Tagiem lub Konta Usługi (SA).
 Zasady Egress:
 Definiują wychodzący ruch z zasobów GCP do określonego miejsca.
-Cel: Określa źródło wychodzącego ruchu. Może to być: Wszystkie instancje lub instancje z określonym TAG-iem lub 
+Cel: Określa źródło wychodzącego ruchu. Może to być: Wszystkie instancje lub instancje z określonym TAG lub 
 Konta Usługi (SA).
 Destynacja: Określa adres lub zakres docelowy, zazwyczaj definiowany przez blok CIDR.
 Każda zasada zapory może zawierać następujące konfiguracje:
@@ -772,7 +772,7 @@ a) Priorytet: Wartość liczbowa, gdzie niższa liczba oznacza wyższy priorytet
 pierwszeństwo przed zasadami o wyższym numerze.
 b) Akcja na dopasowanie: Zezwól lub Odmów ruchu, który pasuje do zasady.
 c) Protokół: Określa typ protokołu dla ruchu. Przykłady to TCP, UDP, ICMP itp.
-d) Status egzekwowania: Określa, czy zasada jest Włączona czy Wyłączona.
+d) Status egzekwowania: Określa, czy zasada jest Włączona, czy Wyłączona.
 
 151) Co to jest Shared VPC?
 Scenariusz:
@@ -783,12 +783,9 @@ Shared VPC tworzony jest na poziomie organizacji lub folderu współdzielonego. 
 uprawnienia Shared VPC Admin).
 Umożliwia współdzielenie sieci VPC pomiędzy różnymi projektami w ramach tej samej organizacji.
 Komponenty Shared VPC:
-Host Project:
-a) Zawiera sieć Shared VPC.
-b) To projekt, który przechowuje zasoby sieciowe, które będą współdzielone z innymi projektami.
-Service Projects:
-a) Projekty podłączone do Host Project.
-b) Projekty te mogą korzystać z zasobów sieciowych Host Project, ale nie zarządzają samą siecią VPC.
+Host Project: Zawiera sieć Shared VPC. To projekt, który przechowuje zasoby sieciowe, które będą współdzielone z innymi projektami.
+Service Projects: Projekty podłączone do Host Project. Projekty te mogą korzystać z zasobów sieciowych Host Project, 
+ale nie zarządzają samą siecią VPC.
 Kluczowe korzyści:
 Separation of Concerns (Rozdzielenie obowiązków):
 Administratorzy sieci są odpowiedzialni za zarządzanie Host Project oraz jego współdzieloną siecią.
@@ -811,15 +808,15 @@ w sieci połączonej.
 
 153) Co to jest Cloud VPN?
 Cloud VPN to rozwiązanie do łączenia sieci on-premise (sieć w Twoim centrum danych lub biurze) z siecią Google Cloud Platform (GCP).
-Jest realizowane przy użyciu tunelu VPN IPSec, który pozwala na szyfrowaną komunikację między siecią on-premise a siecią GCP.
+Jest realizowane przy użyciu tunelu "VPN IP-Sec", który pozwala na szyfrowaną komunikację między siecią on-premise a siecią GCP.
 Ruch odbywa się przez internet (sieć publiczną), a dane są szyfrowane za pomocą protokołu Internet Key Exchange (IKE), 
 aby zapewnić bezpieczną komunikację.
 Rodzaje rozwiązań Cloud VPN:
 a) HA VPN (VPN o wysokiej dostępności):
-SLA dostępności usługi: 99,99%. Używa dwóch zewnętrznych adresów IP dla redundancji. Obsługuje tylko dynamiczne routowanie 
+SLA dostępności usługi: "99,99%". Używa dwóch zewnętrznych adresów IP dla redundancji. Obsługuje tylko dynamiczne routowanie 
 za pomocą BGP (Border Gateway Protocol), co umożliwia automatyczne aktualizacje tras między sieciami.
 b) Classic VPN (VPN klasyczny):
-SLA dostępności usługi: 99,9%.  Używa jednego zewnętrznego adresu IP. Obsługuje zarówno statyczne routowanie 
+SLA dostępności usługi: "99,9%".  Używa jednego zewnętrznego adresu IP. Obsługuje zarówno statyczne routowanie 
 (oparte na politykach i trasach), jak i dynamiczne routowanie za pomocą BGP.
 
 154) Co to jest Cloud Interconnect?
@@ -853,20 +850,18 @@ Niezalecane: W większości przypadków zaleca się użycie Cloud Interconnect l
 te usługi oferują bardziej niezawodne, bezpieczne i skalowalne połączenia.
 
 156) Cloud Datastore i Firestore?
-Odpowiedź:
-Datastore: Wysoce skalowalna baza danych NoSQL typu Document. Automatycznie skaluje i partycjonuje dane w miarę ich wzrostu.
+Datastore: Wysoce skalowalna baza danych "No SQL" typu Document. Automatycznie skaluje i partycjonuje dane w miarę ich wzrostu.
 Zalecana dla danych o rozmiarze do kilku terabajtów. Dla większych wolumenów, zalecany jest BigTable. Obsługuje transakcje, 
 indeksy i zapytania w stylu SQL (GQL). Nie obsługuje operacji Joins ani operacji agregujących (sumowanie, liczenie). 
-Przeznaczony do przypadków użycia wymagających elastycznej schemy z transakcjami.
+Przeznaczony do przypadków użycia wymagających elastycznego schematu z transakcjami.
 Przykłady: profil użytkownika i katalogi produktów.
 Struktura: "Kind - Entity" (użyj przestrzeni nazw do grupowania encji). Można eksportować dane tylko z "gcloud" 
 (nie z konsoli). Eksport zawiera plik metadanych oraz folder z danymi.
 Firestore: Datastore++: Optymalizowany do dostępu z wielu urządzeń. Tryb offline oraz synchronizacja danych pomiędzy 
-wieloma urządzeniami, takimi jak urządzenia mobilne, IoT itd. Udostępnia biblioteki po stronie klienta: 
+wieloma urządzeniami, takimi jak urządzenia mobilne, "I o T" itd. Udostępnia biblioteki po stronie klienta: 
 Web, iOS, Android i inne. Oferuje tryby Datastore oraz Native.
 
 157) Google Cloud VPC (Virtual Private Cloud)?
-Odpowiedź:
 Twoja własna izolowana sieć w chmurze GCP. Ruch sieciowy wewnątrz VPC jest izolowany (niewidoczny) od wszystkich innych 
 VPC Google Cloud. Masz pełną kontrolę nad ruchem przychodzącym i wychodzącym z VPC. Najlepsza praktyka to tworzenie 
 wszystkich zasobów GCP (Compute, Storage, bazy danych itp.) wewnątrz VPC. Zabezpiecz zasoby przed nieautoryzowanym dostępem. 
@@ -874,9 +869,8 @@ Umożliw komunikację między zasobami w chmurze w sposób bezpieczny. VPC to za
 lub wielu strefach. Nie jest związany z regionem ani strefą. Zasoby VPC mogą znajdować się w dowolnym regionie lub strefie.
 
 158) Potrzeba dla podsieci VPC?
-Odpowiedź:
 W chmurze tworzone są różne typy zasobów, takie jak bazy danych, instancje obliczeniowe. Każdy typ zasobu ma swoje własne 
-potrzeby. Load Balancery są dostępne z internetu (zasoby publiczne). Bazy danych lub instancje VM nie powinny być dostępne 
+potrzeby. Load Balansery są dostępne z internetu (zasoby publiczne). Bazy danych lub instancje VM nie powinny być dostępne 
 z internetu. Tylko aplikacje wewnątrz Twojej sieci (VPC) powinny mieć do nich dostęp (zasoby prywatne). Jak oddzielić 
 zasoby publiczne od prywatnych wewnątrz VPC? Twórz oddzielne Podsieci! Dodatkowy powód: chcesz rozdzielić zasoby pomiędzy 
 różne regiony w celu zapewnienia wysokiej dostępności.
@@ -933,19 +927,19 @@ Cloud Storage: Modyfikacja kubełka lub obiektu.
 Wymagany dostęp: "Logging", "Logs Viewer" lub "Project Viewer".
 
 168) Przypadki użycia eksportu w Cloud Logging?
-Przypadek użycia 1: Rozwiązywanie problemów przy użyciu dzienników VM. Zainstaluj agenta Cloud Logging na wszystkich 
+a) Rozwiązywanie problemów przy użyciu dzienników VM. Zainstaluj agenta Cloud Logging na wszystkich 
 instancjach VM i wyślij dzienniki do Cloud Logging. Wyszukaj dzienniki w Cloud Logging.
-Przypadek użycia 2: Eksportuj dzienniki VM do "BigQuery" w celu zapytań za pomocą zapytań w stylu SQL. Zainstaluj agenta 
+b) Eksportuj dzienniki VM do "BigQuery" w celu zapytań za pomocą zapytań w stylu SQL. Zainstaluj agenta 
 Cloud Logging na wszystkich VM i wyślij dzienniki do Cloud Logging. Utwórz zestawy danych "BigQuery" do przechowywania 
 dzienników. Utwórz punkt eksportu w "Cloud Logging" z zestawem danych "BigQuery" jako miejscem docelowym.
-Przypadek użycia 3: Chcesz przechować dzienniki audytowe dla zewnętrznych audytorów przy minimalnych kosztach. 
+c) Chcesz przechować dzienniki audytowe dla zewnętrznych audytorów przy minimalnych kosztach. 
 Utwórz punkt eksportu w "Cloud Logging" z kubełkami Cloud Storage (Cloud Storage buckets) jako miejscem docelowym (sink). 
 Przyznaj audytorom rolę "Storage Object Viewer" dla kubełka (bucket).
 
 169) Eksportowanie dzienników w "Cloud Logging"?
 Dzienniki są idealnie przechowywane w "Cloud Logging" przez ograniczony czas. Dla długoterminowego przechowywania 
 (zgodność, audyt) dzienniki można eksportować do:
-Kubełka (bucket) Cloud Storage (przykład: "bucket/syslog/20250505").
+Kubełka (bucket) Cloud Storage (przykład: "bucket/syslog/2025-05-05").
 Zestawu danych BigQuery (przykład: tabele "syslog-20250505 > kolumny, timestamp, log").
 Tematu (topic) Cloud Pub/Sub (logi zakodowane w base64).
 Jak eksportować dzienniki? Utwórz punkty eksportu do tych miejsc docelowych za pomocą "Log Router": Możesz utworzyć 
@@ -1007,7 +1001,7 @@ Wymagany dostęp: "Logging/Logs Viewer" lub "Project/Viewer".
 177) Cloud Logging?
 Narzędzie do zarządzania logami w czasie rzeczywistym i analizy. Pozwala na przechowywanie, wyszukiwanie, analizowanie 
 i generowanie alertów na podstawie ogromnej ilości danych.
-Skala Exabyte, w pełni zarządzana usługa - brak konieczności provisionowania serwerów, łatania (patching). 
+Skala Exabyte, w pełni zarządzana usługa, brak konieczności provisionowania serwerów, łatania (patching). 
 Pobieranie danych logów z dowolnego źródła.
 Główne funkcje:
 "Logs Explorer": Wyszukiwanie, sortowanie i analiza przy użyciu elastycznych zapytań.
@@ -1015,15 +1009,15 @@ Główne funkcje:
 "Logs Metrics": Zbieranie metryk z logów (przy użyciu zapytań/dopasowanych ciągów).
 "Logs Router": Kierowanie różnych wpisów logów do różnych celów.
 
-178) Cloud Logging - Zbieranie?
+178) Cloud Logging, Zbieranie (Collection)?
 Większość usług zarządzanych przez GCP automatycznie wysyła logi do "Cloud Logging": GKE, App Engine, Cloud Run.
 Pobieranie logów z "GCE VMs": Zainstaluj agenta logowania (opartego na "fluentd"). Uruchom agenta logowania na wszystkich 
 instancjach VM.  Pobieranie logów z lokalnych środowisk: Użyj narzędzia "Bind-Plane" od "Blue Medora". 
 Użyj "Cloud Logging API".
 
 179) "Pub - Sub" - Przygotowanie tematu i subskrypcji?
-Krok 1: Tworzenie tematu (topics).
-Krok 2: Tworzenie subskrypcji. Subskrybenci rejestrują się do tematu. Każda subskrypcja reprezentuje oddzielne pobieranie 
+a) Tworzenie tematu (topics).
+b) Tworzenie subskrypcji. Subskrybenci rejestrują się do tematu. Każda subskrypcja reprezentuje oddzielne pobieranie 
 wiadomości z tematu. Wielu klientów pobiera tę samą subskrypcję, wiadomość jest dzielona między klientów.
 Wielu klientów tworzy subskrypcję, każdy klient otrzyma każdą wiadomość.
 
@@ -1034,8 +1028,8 @@ Przykłady zastosowań: Rejestracja i dostarczanie zdarzeń w pipeline'ach do an
 wiadomości metodami push i pull.
 
 181) "Pub - Sub" - Jak to działa?
-Publisher: nadawca wiadomości. Wydawcy wysyłają wiadomości, wykonując zapytanie HTTPS do "pubsub.googleapis.com".
-Subscriber: odbiorca wiadomości.
+"Publisher": nadawca wiadomości. Wydawcy wysyłają wiadomości, wykonując zapytanie HTTPS do "pubsub.googleapis.com".
+"Subscriber": odbiorca wiadomości.
 Pull: Subskrybent pobiera wiadomości, gdy jest gotowy. Subskrybent wykonuje zapytanie HTTPS do "pubsub.googleapis.com".
 Push: Wiadomości są wysyłane do subskrybentów. Subskrybenci podają punkt końcowy webhook podczas rejestracji. 
 Gdy wiadomość jest otrzymana na temacie, wysyłane jest zapytanie HTTP-s POST do punktu końcowego webhooka.
@@ -1046,12 +1040,12 @@ wiele do wielu (Many to Many).
 Cloud SQL: do - z Cloud Storage ("gcloud sql/csv export/import"). Z konsoli /gcloud/REST API. Format SQL i CSV.
 Dla dużych baz danych, użyj trybu serverless. Redukuje wpływ na wydajność eksportu na działającą bazę danych.
 Cloud Spanner: do - z Cloud Storage. Z konsoli (używa "Cloud Data Flow").
-BigQuery: do - z Cloud Storage i innych źródeł ("bq extract/load"). Z konsoli/bq. Format: CSV/JSON (z kompresją gzip), 
+BigQuery: do - z Cloud Storage i innych źródeł ("bq extract/load"). Z konsoli/bq. Format: CSV/JSON (z kompresją "g-zip"), 
 Avro (z kompresją deflate lub snappy).
 Wiele opcji importu danych. Ładowanie danych z Cloud Storage, Datastore, BigQuery. Ładowanie wsadowe za pomocą 
 BigQuery Data Transfer Service. Dataflow do konfiguracji pipeline'u strumieniowego.
 
-183) Bazy danych NoSQL - Import i Eksport?
+183) Bazy danych "No SQL" - Import i Eksport?
 Cloud Datastore/Firestore: do - z Cloud Storage. Z konsoli/gcloud/REST API.
 "gcloud datastore/firestore export/import --kinds --namespaces".
 Cloud BigTable: do - z Cloud Storage. Tworzenie zadań Dataflow.
@@ -1063,7 +1057,7 @@ BigQuery, Datastore, Firebase nie wymagają konfiguracji VM, podczas gdy Cloud S
 Bazy danych relacyjne: małe lokalne bazy danych: Cloud SQL. 
 Bardzo skalowalne bazy danych globalne: Cloud Spanner. 
 Magazyn danych: BigQuery.
-Bazy danych NoSQL: Bazy danych transakcyjne dla kilku terabajtów danych - Cloud Datastore. 
+Bazy danych "No SQL": Bazy danych transakcyjne dla kilku terabajtów danych - Cloud Datastore. 
 Ogromna ilość danych z "Internet of Things" lub analityki strumieniowej - Cloud BigTable.
 
 185) Komunikacja synchroniczna?
@@ -1072,19 +1066,19 @@ Twoja usługa logowania przestanie działać? Czy Twoje aplikacje również prze
 obciążenie i napłynie wiele logów? Usługa logowania nie będzie w stanie poradzić sobie z obciążeniem i będzie często 
 przestawać działać.
 
-186) Potrzeba komunikacji asynchronicznej
+186) Potrzeba komunikacji asynchronicznej?
 Utwórz temat i pozwól aplikacjom umieszczać wiadomości logów na tym temacie. Usługa logowania odbiera je do przetworzenia, 
 gdy jest gotowa.
 Zalety:
-Rozdzielenie: Wydawca (aplikacje) nie musi przejmować się tym, kto słucha.
-Dostępność: Wydawca (aplikacja) działa nawet, jeśli subskrybent (usługa logowania) jest niedostępny.
-Skalowalność: Skalowanie instancji konsumentów (usługi logowania) przy dużym obciążeniu.
-Trwałość: Wiadomość nie zostanie utracona, nawet jeśli subskrybent (usługa logowania) jest niedostępny.
+a) Rozdzielenie: Wydawca (aplikacje) nie musi przejmować się tym, kto słucha.
+b) Dostępność: Wydawca (aplikacja) działa nawet, jeśli subskrybent (usługa logowania) jest niedostępny.
+c) Skalowalność: Skalowanie instancji konsumentów (usługi logowania) przy dużym obciążeniu.
+d) Trwałość: Wiadomość nie zostanie utracona, nawet jeśli subskrybent (usługa logowania) jest niedostępny.
 
-187) Bazy danych w pamięci
+187) Bazy danych w pamięci?
 Odczyt danych z pamięci jest znacznie szybszy niż odczyt danych z dysku. Baza danych w pamięci, taka jak Redis, zapewnia 
 opóźnienie na poziomie mikrosekund, przechowując trwałe dane w pamięci.
-Zalecana zarządzana usługa GCP: Memory Store.
+Zalecana zarządzana usługa GCP: "Memory Store".
 Przykłady zastosowań:
 a) Caching.
 b) Zarządzanie sesjami.
@@ -1093,7 +1087,7 @@ d) Aplikacje geospatialne.
 
 188) Cloud SQL?
 W pełni zarządzana usługa bazy danych relacyjnych: Skonfiguruj swoje potrzeby i nie martw się o zarządzanie bazą danych. 
-Obsługuje MySQL, PostgreSQL i SQL Server. Usługa regionalna zapewniająca wysoką dostępność (99,95%). Dla najlepszej 
+Obsługuje "My SQL", "Postgre-SQL" i "SQL Server". Usługa regionalna zapewniająca wysoką dostępność (99,95%). Dla najlepszej 
 wydajności używaj SSD, ale dostępne są również HDD. Do 416 GB RAM i 30 TB przestrzeni dyskowej.
 Używaj Cloud SQL w przypadku prostych zastosowań relacyjnych:
 a) Migracja lokalnych baz danych MySQL, PostgreSQL i SQL Server.
@@ -1102,7 +1096,7 @@ c) Pamiętaj, aby używać Cloud Spanner zamiast Cloud SQL w następujących prz
 Ogromne wolumeny danych relacyjnych (terabajty). Potrzebujesz nieskończonej skalowalności. Wyższa dostępność (99,999%).
 Potrzebujesz globalnej bazy danych.
 
-189) Funkcje Cloud SQL?
+189) Funkcje "Cloud SQL"?
 Automatyczne szyfrowanie (tabele/kopie zapasowe), konserwacja i aktualizacje.
 Wysoka dostępność i przełączanie awaryjne. Tworzenie zapasowego serwera z automatycznym przełączaniem awaryjnym.
 Wymagania wstępne: Automatyczne kopie zapasowe i logowanie binarne.
@@ -1113,16 +1107,16 @@ Kopie zapasowe (automatyczne i na żądanie).
 Obsługuje migrację z innych źródeł: Użyj usługi migracji baz danych (DMS).
 Możliwość eksportu danych z UI (konsola) lub gcloud w formatach: SQL lub CSV.
 
-190) Cloud SQL - Wysoka dostępność?
+190) "Cloud SQL" Wysoka dostępność?
 Utwórz konfigurację Wysokiej dostępności (HA). Wybierz strefy główną i zapasową w obrębie regionu. Będziesz mieć dwie 
 instancje: główną i zapasową. Zmiany z instancji głównej są synchronizowane do zapasowej. W przypadku awarii strefy 
 następuje automatyczne przełączenie awaryjne na zapasową instancję. Jeśli strefa główna stanie się ponownie dostępna, 
 przełączenie awaryjne nie nastąpi automatycznie. Pamiętaj, że konfiguracja Wysokiej Dostępności nie może być używana jako 
-Replika odczytowa (Read Replica).
+Replika odczytowa ("Read Replica").
 
-191) Cloud Spanner
+191) Cloud Spanner?
 W pełni zarządzana, krytyczna dla misji (mission critical), relacyjna baza danych SQL, rozproszona globalnie z bardzo 
-wysoką dostępnością (99,999%).
+wysoką dostępnością ("99,999%").
 Silna spójność transakcyjna na globalną skalę. Skalowana do petabajtów danych z automatycznym partycjonowaniem. 
 Cloud Spanner skaluje się poziomo dla operacji odczytu i zapisu. Możliwość konfiguracji liczby węzłów.
 Pamiętaj, że w porównaniu, Cloud SQL oferuje repliki odczytowe, ale nie możesz poziomo skalować operacji zapisu w Cloud SQL!
@@ -1130,7 +1124,7 @@ Konfiguracje regionalne i multi-regionalne.
 Droższe (w porównaniu do Cloud SQL): Płatność za węzły i pamięć.
 Eksport danych: Użyj Cloud Console do eksportu danych. Inną opcją jest użycie Data Flow do automatyzacji eksportu.
 
-192) Magazyn danych BigQuery
+192) Magazyn danych BigQuery?
 Rozwiązanie magazynu danych nowej generacji na skalę Exabyte w GCP. Baza danych relacyjna (SQL, schemat, spójność). 
 Używaj zapytań podobnych do SQL, aby przetwarzać ogromne zestawy danych.
 Tradycyjny (przechowywanie + obliczenia) kontra Nowoczesny (w czasie rzeczywistym + bezserwerowy).
@@ -1138,61 +1132,61 @@ Mówiąc o magazynie danych, importowanie i eksportowanie danych (oraz formaty) 
 Ładowanie danych z różnych usług, w tym danych strumieniowych.
 Różnorodność formatów importu: CSV, JSON, Avro, Parquet, ORC, kopie zapasowe Datastore.
 Eksport do Cloud Storage (przechowywanie długoterminowe) i Data Studio (wizualizacja).
-Formaty: CSV/JSON (z kompresją gzip), Avro (z kompresją deflate lub snappy).
+Formaty: CSV/JSON (z kompresją "g-zip"), Avro (z kompresją deflate lub snappy).
 Automatyczne wygasanie danych (konfigurowalne wygasanie tabeli).
 Zapytania do zewnętrznych źródeł danych bez przechowywania danych w BigQuery: Cloud Storage, Cloud SQL, BigTable, Google Drive.
 Używaj stałych lub tymczasowych zewnętrznych tabel.
 
-193) BigQuery - Dostęp do danych i zapytania?
+193) BigQuery, Dostęp do danych i zapytania?
 Dostęp do bazy danych za pomocą:
 a) Cloud Console.
 b) Narzędzia wiersza poleceń 'bq' (nie gcloud).
 c) BigQuery REST API.
-c) Biblioteki oparte na HBase API (Java, .NET i Python).
+d) Biblioteki oparte na "H-Base API" (Java, .NET i Python).
 Pamiętaj, że zapytania w BigQuery mogą być kosztowne, ponieważ wykonujesz je na dużych zbiorach danych!
 Najlepsza praktyka: Oszacuj zapytania w BigQuery przed ich uruchomieniem:
-Użyj UI (konsola) / 'bq' (--dry-run) - uzyskaj szacowaną objętość przetworzonych danych (oszacowanie).
+Użyj UI (konsola) lub 'bq' (--dry-run) - uzyskaj szacowaną objętość przetworzonych danych (oszacowanie).
 Użyj Pricing Calculator: Znajdź cenę za skanowanie 1 MB danych. Oblicz koszt.
 
 194) Cloud Firestore (Datastore) kontra Cloud BigTable?
-Cloud Datastore: Zarządzana, bezserwerowa baza danych NoSQL typu dokumentowego (document database). Oferuje transakcje ACID, 
+Cloud Datastore: Zarządzana, bezserwerowa baza danych "No-SQL" typu dokumentowego (document database). Oferuje transakcje ACID, 
 zapytania podobne do SQL oraz indeksy. Zaprojektowana do obsługi transakcyjnych aplikacji mobilnych i internetowych. 
 Firestore (następna wersja Datastore) dodaje:
 a) Silną spójność.
 b) Biblioteki klienckie dla aplikacji mobilnych i webowych.
 Zalecana dla małych i średnich baz danych (od 0 do kilku terabajtów).
-Cloud BigTable: Zarządzana, skalowalna baza danych NoSQL z szerokimi kolumnami. Nie jest bezserwerowa (musisz tworzyć instancje).
+Cloud BigTable: Zarządzana, skalowalna baza danych "No-SQL" z szerokimi kolumnami. Nie jest bezserwerowa (musisz tworzyć instancje).
 Zalecana dla danych od 10 terabajtów do kilku petabajtów.
 Zalecana dla dużych obciążeń analitycznych i operacyjnych.
-Nie jest zalecana dla obciążeń transakcyjnych (nie obsługuje transakcji obejmujących wiele wierszy - obsługuje tylko 
+Nie jest zalecana dla obciążeń transakcyjnych (nie obsługuje transakcji obejmujących wiele wierszy, obsługuje tylko 
 transakcje na jednym wierszu).
 
-195) Bazy danych NoSQL?
-"NoSQL" = nie tylko SQL. Elastyczna struktura schematu. Strukturalizuj dane w sposób, który odpowiada Twojej aplikacji. 
+195) Bazy danych "No-SQL"?
+"No-SQL" = nie tylko SQL. Elastyczna struktura schematu. Strukturalizuj dane w sposób, który odpowiada Twojej aplikacji. 
 Pozwól, aby schemat ewoluował w miarę upływu czasu.
 Skaluj poziomo do petabajtów danych z milionami TPS. Nie jest to w 100% dokładne uogólnienie, ale świetny punkt wyjścia. 
-Typowe bazy danych NoSQL dokonują kompromisu między "Silną spójnością i funkcjami SQL", aby osiągnąć 
+Typowe bazy danych "No-SQL" dokonują kompromisu między "Silną spójnością i funkcjami SQL", aby osiągnąć 
 "Skalowalność i wysoką wydajność".
 Zarządzane usługi Google: "Cloud Firestore (Datastore)", "Cloud BigTable".
 
-196) Bazy danych relacyjne - OLAP vs OLTP?
+196) Bazy danych relacyjne, OLAP kontra OLTP?
 OLAP i OLTP używają podobnych struktur danych, ale bardzo różnią się podejściem do przechowywania danych. Bazy danych OLTP 
 używają przechowywania wierszowego. Każdy wiersz tabeli jest przechowywany razem. Jest to wydajne w przypadku przetwarzania 
 małych transakcji. Bazy danych OLAP używają przechowywania kolumnowego. Każda kolumna tabeli jest przechowywana razem. 
-Wysoka kompresja - efektywne przechowywanie petabajtów danych. Rozproszona architektura danych - jedna tabela na wielu 
-węzłach klastra. Wykonywanie pojedynczego zapytania na wielu węzłach - złożone zapytania mogą być wykonywane efektywnie.
+Wysoka kompresja, efektywne przechowywanie petabajtów danych. Rozproszona architektura danych, jedna tabela na wielu 
+węzłach klastra. Wykonywanie pojedynczego zapytania na wielu węzłach, złożone zapytania mogą być wykonywane efektywnie.
 
-197) Baza danych relacyjna - OLAP (Online Analytics Processing)?
+197) Baza danych relacyjna OLAP (Online Analytics Processing)?
 Aplikacje umożliwiające użytkownikom analizowanie petabajtów danych. Przykłady: Aplikacje do raportowania, hurtownie danych, 
 aplikacje do analityki biznesowej, systemy analityczne. Przykładowa aplikacja: Ustalanie składek ubezpieczeniowych na 
 podstawie analizy danych z ostatnich stu lat. Dane są konsolidowane z wielu baz danych transakcyjnych. Zalecana zarządzana 
-usługa GCP - BigQuery, hurtownia danych rozproszona na poziomie petabajtów.
+usługa GCP, BigQuery, hurtownia danych rozproszona na poziomie petabajtów.
 
-198) Baza danych relacyjna - OLTP (Online Transaction Processing)?
+198) Baza danych relacyjna OLTP (Online Transaction Processing)?
 Aplikacje, w których duża liczba użytkowników wykonuje dużą liczbę małych transakcji. Małe operacje na danych: odczyty, 
 aktualizacje i usunięcia. Przykłady użycia: Większość tradycyjnych aplikacji, ERP, CRM, e-commerce, bankowość. Popularne 
-bazy danych: MySQL, Oracle, SQL Server itp.
-Zalecane zarządzane usługi Google: CloudSQL obsługuje PostgreSQL, MySQL i SQL Server dla baz danych regionalnych 
+bazy danych: "My-SQL", Oracle, SQL Server itp.
+Zalecane zarządzane usługi Google: "Cloud-SQL" obsługuje PostgreSQL, "My-SQL" i SQL Server dla baz danych regionalnych 
 (do kilku terabajtów). CloudSpanner - nieskończona skalowalność (wiele petabajtów) i "99,999%" dostępności dla aplikacji 
 globalnych z poziomym skalowaniem.
 
@@ -1213,20 +1207,20 @@ Logi aktywności administratora. Logi audytu dostępu do danych. Logi audytu odr
 203) Chcesz przejrzeć logi dla konkretnego żądania?
 Cloud Logging.
 
-204) Chcesz zidentyfikować istotne (prominent) wyjątki (lub błędy) dla konkretnej mikrousługi?
+204) Chcesz zidentyfikować istotne (prominent) wyjątki (lub błędy) dla konkretnej mikro-usługi?
 Error Reporting.
 
-205) Chcesz śledzić żądanie przez wiele mikrousług?
+205) Chcesz śledzić żądanie przez wiele mikro-usług?
 Cloud Trace.
 
-206) Chciałbyś rejestrować wszystkie operacje/żądania na wszystkich obiektach w koszu (bucket) (do audytu)?
+206) Chciałbyś rejestrować wszystkie operacje/żądania na wszystkich obiektach w koszu (bucket), do audytu?
 Włącz logowanie audytu danych dla tego kosza.
 
-207) Cloud Storage - Strona statyczna?
+207) Cloud Storage, Strona statyczna?
 a) Utwórz kosz o tej samej nazwie, co nazwa witryny (Nazwa kosza powinna odpowiadać nazwie DNS witryny). 
 Zweryfikuj, że domena należy do Ciebie.
 b) Skopiuj pliki do kosza. Dodaj pliki index i error HTML, aby poprawić doświadczenie użytkownika.
-c) Dodaj członka "allUsers" i przyznaj opcję "storage Object Viewer". Wybierz "Allow Public Access".
+c) Dodaj członka "all-Users" i przyznaj opcję "storage Object Viewer". Wybierz "Allow Public Access".
 
 208) Podstawy baz danych?
 Bazy danych zapewniają zorganizowane i trwałe przechowywanie danych. Aby wybrać odpowiedni typ bazy danych, musimy 
@@ -1236,7 +1230,7 @@ zrozumieć: dostępność (Availability), trwałość (Durability), RTO, RPO, sp
 Zautomatyzuj robienie kopii bazy danych (tworzenie migawki) co godzinę do innego centrum danych w Londynie. 
 Rozważmy pewne wyzwania.
 Wyzwanie 1: Twoja baza danych przestanie działać, jeśli centrum danych ulegnie awarii.
-Wyzwanie 2 (częściowo rozwiązane): Stracisz dane, jeśli baza danych ulegnie awarii. Możesz przywrócić bazę danych z 
+Wyzwanie 2: Częściowo Rozwiązana: Stracisz dane, jeśli baza danych ulegnie awarii. Możesz przywrócić bazę danych z 
 najnowszej migawki. Jednak w zależności od tego, kiedy wystąpi awaria, możesz stracić do godziny danych.
 Wyzwanie 3: Baza danych będzie działać wolniej podczas robienia migawek.
 
@@ -1246,16 +1240,16 @@ Skorzystaj z funkcji "Signed URL". Jest to URL, który przyznaje uprawnienia na 
 określonych działań.
 Aby utworzyć signed URL:
 Utwórz klucz (YOUR_KEY) dla konta usługi / użytkownika z odpowiednimi uprawnieniami.
-Utwórz Signed URL za pomocą klucza: "gsutil signurl -d 10m YOUR_KEY gs://NAZWA_KOSZA/ŚCIEŻKA_OBIEKTU".
+Utwórz Signed URL za pomocą klucza: "gsutil signurl -d 10-m YOUR_KEY gs://Bucket_Name/Path".
 
-211) Baza danych - dziennik transakcji (Transaction Log)?
+211) Baza danych, dziennik transakcji (Transaction Log)?
 Dodajmy dzienniki transakcji do bazy danych i stwórzmy proces kopiowania ich do drugiego centrum danych. Rozważmy wyzwania:
 Wyzwanie 1: Twoja baza danych przestanie działać, jeśli centrum danych ulegnie awarii.
 Wyzwanie 2 (rozwiązane): Stracisz dane, jeśli baza danych ulegnie awarii. Możesz przywrócić bazę danych z najnowszej 
 migawki i zastosować dzienniki transakcji.
 Wyzwanie 3: Baza danych będzie działać wolniej podczas robienia migawek.
 
-212) Baza danych - Dodaj bazę zapasową (standby)?
+212) Baza danych, dodaj bazę zapasową (standby)?
 Odpowiedź: Dodajmy zapasową bazę danych w drugim centrum danych z replikacją. Kilka wyzwań:
 Wyzwanie 1 (Rozwiązane): Twoja baza danych przestanie działać, jeśli centrum danych ulegnie awarii. Możesz przełączyć 
 się na zapasową bazę danych.
@@ -1308,26 +1302,26 @@ Jak długo usługa zajmuje obsługę żądań?
 Jaki jest średni czas opóźnienia żądań?
 Jak nam idzie w czasie? (trend wzrostu/spadku).
 Obsługiwane dla: Compute Engine, GKE, App Engine (Flexible/Standard) itp.
-Dostępne biblioteki klienta Trace dla: "C#", Go, Java, Node.js, PHP, Python, Ruby.
+Dostępne biblioteki klienta Trace dla: "C-#", Go, Java, "Node.js", PHP, Python, Ruby.
 
 219) Error Reporting?
 Jak zidentyfikować problemy w produkcji w czasie rzeczywistym? Monitorowanie wyjątków w czasie rzeczywistym. 
 Agreguje i wyświetla błędy zgłoszone przez usługi chmurowe (korzystając ze stack trace).
 Centralna konsola zarządzania błędami: Identyfikuj i zarządzaj najważniejszymi błędami lub najnowszymi błędami. 
 Użyj Firebase Crash Reporting do błędów z aplikacji klienckich na Androida i iOS.
-Obsługiwane dla: Go, Java, .NET, Node.js, PHP, Python i Ruby.
+Obsługiwane dla: Go, Java, ".NET", "Node.js", PHP, Python i Ruby.
 Błędy mogą być zgłaszane przez:
-A) Wysyłanie ich do Cloud Logging.
-B) Wywoływanie API Error Reporting.
+a) Wysyłanie ich do Cloud Logging.
+b) Wywoływanie API Error Reporting.
 Error Reporting jest dostępny na desktopie.
 
 220) Cloud Profiler?
-Jak zidentyfikować wąskie gardła w wydajności w produkcji? Cloud Profiler - Statystyczny profiler o niskim narzucie.
+Jak zidentyfikować wąskie gardła w wydajności w produkcji? Cloud Profiler, Statystyczny profiler o niskim narzucie.
 Ciągle zbiera dane o użyciu CPU i pamięci z systemów produkcyjnych. Łączenie danych profilowania z kodem źródłowym aplikacji: 
 Łatwe identyfikowanie wąskich gardeł w wydajności.
 Dwa główne składniki:
-a) Agent profilowania (Profiling agent) (zbiera informacje o profilowaniu).
-b) Interfejs Profiler (Profiler interface) (wizualizacja).
+a) Agent profilowania (Profiling agent), zbiera informacje o profilowaniu.
+b) Interfejs Profiler (Profiler interface), wizualizacja.
 
 221) Service Level Objective (SLO) - SLI plus target?
 Dostępność (Availability) "99,99%", trwałość (Durability) 11 dziewiątek. 
@@ -1335,7 +1329,7 @@ Czas odpowiedzi: 99 percentyl - 1 sekunda. Wybór odpowiedniego SLO jest skompli
 
 222) Którą z tych ról przypisałbyś swoim użytkownikom, aby umożliwić im dostęp do aplikacji chronionych przez 
 Identity Aware Proxy (IAP)?
-IAP - Użytkownik aplikacji zabezpieczonej w sieci (Secured Web App User).
+IAP, Użytkownik aplikacji zabezpieczonej w sieci ("Secured Web App User").
 
 223) Dzielisz klaster GKE między różne zespoły. Chcesz zapewnić, aby każdy zespół miał dostęp do wdrażania tylko do 
 swoich specyficznych przestrzeni nazw (namespaces)?
@@ -1347,7 +1341,7 @@ Kubernetes Engine Admin ("roles/container.admin").
 225) Masz przypisane uprawnienia za pomocą RBAC, ale nie możesz uzyskać dostępu do klastra?
 Sprawdź, czy członek IAM (IAM Member) ma uprawnienie - "container.cluster.get".
 
-226) OAuth?
+226) "O-Auth"?
 Umożliwia użytkownikom udzielanie dostępu do zasobów serwera innej jednostce bez udostępniania poświadczeń 
 (sharing credentials).
 Przykład: Udostępnienie dostępu do swojego Google Drive aplikacji do edycji zdjęć.
@@ -1355,13 +1349,13 @@ Przykład: Udostępnienie dostępu do swojego Google Drive aplikacji do edycji z
 227) OpenID Connect (OIDC)?
 OAuth dotyczy tylko autoryzacji (Authorization). Nie interesuje się tym, jak implementowana jest autentykacja (Authentication). 
 Co jeśli chcesz pozwolić użytkownikom logować się do swojej aplikacji za pomocą Google Id? Użyj OpenID Connect (OIDC). 
-OpenID Connect rozszerza OAuth2.
+OpenID Connect rozszerza "O-Auth2".
 
 228) Jak ACL (Access Control List) różni się od IAM?
 Uprawnienia IAM mają zastosowanie do wszystkich obiektów w koszu (bucket). ACL mogą być używane do dostosowania 
 specyficznych uprawnień do różnych obiektów.
-IAM - uprawnienia ogólne.
-ACL - dostosowanie dostępu do poszczególnych obiektów.
+IAM uprawnienia ogólne.
+ACL dostosowanie dostępu do poszczególnych obiektów.
 
 229) Chcesz przechowywać swoje klucze szyfrujące na miejscu, szyfrować dane na miejscu i wysyłać zaszyfrowane dane do 
 Cloud Storage. Które z tych podejść byś zalecił?
@@ -1371,10 +1365,10 @@ Szyfrowanie po stronie klienta (Client-Side Encryption).
 Kubernetes wspiera stanowe wdrożenia, takie jak Kafka, Redis, Zookeeper.
 "Stateful-Set" – Zbiór podów z unikalnymi, trwałymi tożsamościami (identities) i stabilnymi nazwami hostów.
 
-231) GKE - Jak uruchomić usługi na węzłach do zbierania logów lub monitorowania?
+231) GKE Jak uruchomić usługi na węzłach do zbierania logów lub monitorowania?
 "Daemon-Set" – Jeden pod na każdym węźle! Dla usług działających w tle.
 
-232) Kubernetes Cluster - Włącz auto-skalowanie dla mikroserwisu. Chcesz również zwiększyć liczbę węzłów w klastrze, 
+232) Kubernetes Cluster Włącz auto-skalowanie dla mikro-serwisu. Chcesz również zwiększyć liczbę węzłów w klastrze, 
 jeśli istniejące węzły nie będą wystarczające?
 Użyj komendy "kubectl autoscale deployment" do skalowania podów oraz komendy "gcloud container clusters update" z opcją 
 "--enable-autoscaling", aby włączyć auto-skalowanie klastra.
@@ -1391,11 +1385,11 @@ Ingress to zbiór reguł do routingu zewnętrznego ruchu HTTPS do usług.
 235) App Engine, które typy skalowania nie pozwalają na określenie maksymalnej liczby instancji?
 Manual-scaling.
 
-236) App Engine - Pamiętaj?
+236) App Engine Pamiętaj?
 App Engine jest regionalny (usługi wdrażane w różnych strefach). Nie można zmienić regionu aplikacji. To dobra opcja 
-dla prostych mikroserwisów (wielu usług).
+dla prostych mikro-serwisów (wielu usług).
 Użyj standardowej wersji v2, gdy korzystasz z obsługiwanych języków. Użyj Flexible, jeśli budujesz aplikacje kontenerowe.
-Pamiętaj - przynajmniej jedna instancja kontenera jest zawsze uruchomiona w trybie flexible.
+Pamiętaj, przynajmniej jedna instancja kontenera jest zawsze uruchomiona w trybie flexible.
 Wybierz standard, jeśli chcesz mieć możliwość skalowania liczby instancji do zera, gdy nie ma obciążenia.
 Używaj kombinacji instancji stałych i dynamicznych:
 Instancje stałe: działają ciągle.
@@ -1403,36 +1397,35 @@ Instancje dynamiczne: dodawane w zależności od obciążenia.
 Wybierz tylko instancje dynamiczne, jeśli zależy Ci na kosztach. Jeśli nie jesteś bardzo wrażliwy na koszty, 
 utrzymuj zawsze zestaw instancji stałych.
 
-237) Kroki wdrożenia mikroserwisu w Kubernetes?
-a) Stwórz klaster Kubernetes z domyślną pulą węzłów: 
-"gcloud container cluster create", lub użyj konsoli chmurowej.
+237) Kroki wdrożenia mikro-serwisu w Kubernetes?
+a) Stwórz klaster Kubernetes z domyślną pulą węzłów: "gcloud container cluster create", lub użyj konsoli chmurowej.
 b) Zaloguj się do Cloud Shell.
-c) Połącz się z klastrem Kubernetes:
-"gcloud container cluster get-credentials my-cluster --zone us-central1-a --project my-project-123".
-d) Wdróż mikroserwis do Kubernetes: Stwórz deployment i usługę przy użyciu komend kubectl:
+c) Połącz się z klastrem Kubernetes: 
+"gcloud container cluster get-credentials my-cluster --zone us-central1-a --project my_project_123".
+d) Wdróż mikro-serwis do Kubernetes: Stwórz deployment i usługę przy użyciu komend kubectl:
 "kubectl create deployment hello-world --image=img:REL".
 "kubectl expose deployment hello-world --type=LoadBalancer --port=8080".
-e) Zwiększ liczbę instancji mikroserwisu:
+e) Zwiększ liczbę instancji mikro-serwisu:
 "kubectl scale deployment hello-world --replicas=2".
 f) Zwiększ liczbę węzłów w klastrze Kubernetes:
 "gcloud container cluster resize my-cluster --node-pool my-node-pool --replicas=2".
 Nie jesteś zadowolony z ręcznego zwiększania liczby instancji i węzłów!
-g) Skonfiguruj auto-skalowanie dla swojego mikroserwisu:
+g) Skonfiguruj auto-skalowanie dla swojego mikro-serwisu:
 "kubectl autoscale deployment hello-world --max=10 --cpu-percent=70".
 Nazywane również horizontal pod autoscaling (HPA) - "kubectl get hpa".
 h) Skonfiguruj auto-skalowanie dla swojego klastra Kubernetes:
 "gcloud container cluster update cluster-name --enable-autoscaling --min-nodes=1 --max-nodes=10".
-i) Dodaj konfigurację aplikacji dla mikroserwisu. ConfigMap:
+i) Dodaj konfigurację aplikacji dla mikro-serwisu. ConfigMap:
 "kubectl create configmap todo-web-application-config --from-literal=RDS_DB_NAME=todos".
-j) Dodaj konfigurację hasła dla mikroserwisu: secrety Kubernetes.
-"kubectl create secret generic todo-web-app-secrets-1 --from-literal=RDS_PWD=dummypwd".
-k) Wdróż nowy mikroserwis, który wymaga węzłów z podłączonym GPU. 
+j) Dodaj konfigurację hasła dla mikro-serwisu: secrety Kubernetes.
+"kubectl create secret generic todo-web-app-secrets-1 --from-literal=RDS_PWD=dummy".
+k) Wdróż nowy mikro-serwis, który wymaga węzłów z podłączonym GPU. 
 Dodaj nową pulę węzłów z instancjami GPU do swojego klastra:
 "gcloud container node-pools create POOL_NAME --cluster CLUSTER_NAME".
 "gcloud container node-pools list --cluster CLUSTER_NAME".
-Wdróż nowy mikroserwis do nowej puli, ustawiając "nodeSelector" w pliku "deployment.yaml":
+Wdróż nowy mikro-serwis do nowej puli, ustawiając "nodeSelector" w pliku "deployment.yaml":
 "nodeSelector: 'cloud.google.com/gke-nodepool:POOL_NAME'".
-l) Wdróż mikroserwis. 
+l) Wdróż mikro-serwis. 
 m) Usuń usługę: "kubectl delete service."
 n) Usuń deployment: "kubectl delete deployment".
 o) Usuń klaster: "gcloud container cluster delete".
@@ -1451,14 +1444,14 @@ a) Kubelet: Zarządza komunikacją z węzłem Master.
 b) Kube Proxy: Utrzymuje sieć wewnętrzną, umożliwiając komunikację pomiędzy podami. 
 
 239) Typy Klastrów GKE (Google Kubernetes Engine)
-a) Zonal Cluster: Jedna strefa - Jeden Control Plane. Węzły działają w tej samej strefie.
+a) Zonal Cluster: Jedna strefa. Jeden Control Plane. Węzły działają w tej samej strefie.
 b) Multi-zonal Cluster: Jeden Control Plane, ale węzły działają w wielu strefach.
 c) Regional Cluster: Replikacja Control Plane w wielu strefach w danym regionie. Węzły (Nodes) działają w tej samej strefie, 
 w której działa Control Plane.
 d) Private Cluster: VPC-native cluster. Węzły mają tylko wewnętrzne adresy IP (brak dostępu publicznego).
-e) Alpha Cluster: Klastery z alpha API - wczesne wersje funkcji API. Używane do testowania nowych funkcji Kubernetes.
+e) Alpha Cluster: Klastry z alpha API, wczesne wersje funkcji API. Używane do testowania nowych funkcji Kubernetes.
 
-240) Kubernetes - Pods?
+240) Kubernetes Pods?
 Pod to najmniejsza jednostka wdrożeniowa w Kubernetes. Pod zawiera jeden lub więcej kontenerów. Każdemu Podowi przypisany 
 jest ephemeral IP address (tymczasowy adres IP). Wszystkie kontenery w Podzie dzielą wspólne zasoby:
 Sieć, Pamięć masowa, Adres IP, Porty, Wolumeny (dyski współdzielone persistent).
@@ -1469,49 +1462,48 @@ c) Succeeded: Pod zakończył swoje zadanie pomyślnie.
 d) Failed: Pod zakończył zadanie z błędem.
 e) Unknown: Status nieznany (zwykle związany z problemami w komunikacji).
 
-241) Kubernetes - Deployment kontra ReplicaSet?
+241) Kubernetes Deployment kontra ReplicaSet?
 a) Deployment:
-Deployment jest tworzony dla każdej aplikacji lub mikroserwisu.
+Deployment jest tworzony dla każdej aplikacji lub mikro-serwisu.
 Tworzy i zarządza Podami, zapewniając ich odpowiednią liczbę w przypadku awarii.
-Zapewnia zero downtime podczas aktualizacji aplikacji, zarządzając wdrożeniami nowych wersji mikroserwisów.
+Zapewnia zero downtime podczas aktualizacji aplikacji, zarządzając wdrożeniami nowych wersji mikro-serwisów.
 Przykład: "kubectl create deployment m1 --image=img:v1"
 Deployment kontroluje "Replica-Set", który zapewnia, że odpowiednia liczba replik jest uruchomiona w danym czasie.
-b) "Replica-Set":
-"Replica-Set" zapewnia, że określona liczba Podów jest zawsze uruchomiona w danej wersji mikroserwisu.
+b) "Replica-Set": "Replica-Set" zapewnia, że określona liczba Podów jest zawsze uruchomiona w danej wersji mikro-serwisu.
 Jeśli którykolwiek z Podów ulegnie awarii (zostanie zabity), "Replica-Set" automatycznie uruchamia nowego Poda.
-W przypadku aktualizacji wersji mikroserwisu, Deployment tworzy nowy "Replica-Set" dla nowej wersji aplikacji.
+W przypadku aktualizacji wersji mikro-serwisu deployment tworzy nowy "Replica-Set" dla nowej wersji aplikacji.
 Przykład: "kubectl scale deployment m2 --replicas=2".
 Podsumowanie: Deployment zarządza cyklem życia aplikacji (w tym aktualizacjami), natomiast "Replica-Set" zapewnia 
-stabilną liczbę replik danej wersji mikroserwisu.
+stabilną liczbę replik danej wersji mikro-serwisu.
 
-242) Kubernetes - Service?
-W Kubernetesie, każdy Pod ma swój własny adres IP. Aby zapewnić, że użytkownicy zewnętrzni nie zostaną zaimpaktowani, gdy:
+242) Kubernetes Service?
+W Kubernetes każdy Pod ma swój własny adres IP. Aby zapewnić, że użytkownicy zewnętrzni nie zostaną zaimpaktowani, gdy:
 Pod ulegnie awarii i zostanie zreplikowany przez "Replica-Set",
 Następuje nowa wersja aplikacji i wszystkie stare Pody są zastępowane przez nowe wersje.
 Tworzymy Service, który eksponuje aplikację w stabilny sposób. Dzięki temu zewnętrzni użytkownicy nie zauważą, 
 kiedy Pody będą się zmieniały.
-Jak utworzyć Service: "kubectl expose deployment Nazwa-Deploymentu --type=LoadBalancer --port=80"
+Jak utworzyć Service: "kubectl expose deployment Nazwa-Deploymentu --type=LoadBalancer --port=80".
 Rodzaje Service w Kubernetes:
-a) ClusterIP: Eksponuje usługę tylko wewnątrz klastra przy użyciu wewnętrznego IP klastra.
-Przykład użycia: Chcesz, aby Twój mikroserwis był dostępny tylko wewnątrz klastra (komunikacja między mikroserwisami).
-b) LoadBalancer: Eksponuje usługę zewnętrznie, korzystając z load balancera dostawcy chmurowego (np. Google Cloud, AWS).
-Przykład użycia: Chcesz utworzyć osobne load balancery dla każdego mikroserwisu.
+a) "Cluster-IP": Eksponuje usługę tylko wewnątrz klastra przy użyciu wewnętrznego IP klastra.
+Przykład użycia: Chcesz, aby Twój mikro-serwis był dostępny tylko wewnątrz klastra (komunikacja między mikro-serwisami).
+b) LoadBalancer: Eksponuje usługę zewnętrznie, korzystając z load balansera dostawcy chmurowego (np. Google Cloud, AWS).
+Przykład użycia: Chcesz utworzyć osobne load balansery dla każdego mikro-serwisu.
 c) NodePort: Eksponuje usługę na IP każdego węzła klastra, przy użyciu stałego portu (NodePort).
-Przykład użycia: Nie chcesz tworzyć load balancera dla każdego mikroserwisu, ale możesz stworzyć jeden komponent Ingress, 
-który będzie równoważyć ruch pomiędzy wieloma mikroserwisami.
+Przykład użycia: Nie chcesz tworzyć load balansera dla każdego mikro-serwisu, ale możesz stworzyć jeden komponent Ingress, 
+który będzie równoważyć ruch pomiędzy wieloma mikro-serwisami.
 Podsumowanie: Service zapewnia stały punkt dostępu do aplikacji, niezależnie od zmieniających się Podów. 
 Rodzaj Service zależy od tego, czy chcesz, aby usługa była dostępna tylko w klastrze, zewnętrznie, czy na poziomie węzła.
 
-243) Container Registry - Image Repository?
-Stworzyłeś obrazy Docker dla swoich mikroserwisów: Gdzie je przechowujesz? Container Registry - w pełni zarządzany 
-rejestr kontenerów oferowany przez GCP. (Alternatywa) Docker Hub. Może być zintegrowany z narzędziami CI/CD do 
+243) Container Registry Image Repository?
+Stworzyłeś obrazy Docker dla swoich mikro-serwisów: Gdzie je przechowujesz? Container Registry, w pełni zarządzany 
+rejestr kontenerów oferowany przez GCP. (Alternatywa) Docker Hub. Może być zintegrowany z narzędziami "Ci - Cd" do 
 publikowania obrazów w repozytorium. Możesz zabezpieczyć swoje obrazy kontenerów, analizować je pod kątem podatności 
 oraz egzekwować polityki wdrożeniowe. Nazewnictwo: "Host-Name / Project-ID / Image-Tag - gcr.io".
 
-244) GKE - O czym należy pamiętać?
+244) GKE, o czym należy pamiętać?
 Replikuj węzły mastera w różnych strefach, aby zapewnić wysoką dostępność.
 Część CPU na węzłach jest rezerwowana przez Control Place.
-Tworzenie obrazu Docker dla Twojego mikroserwisu (Dockerfile). 
+Tworzenie obrazu Docker dla Twojego mikro-serwisu (Dockerfile). 
 Budowanie obrazu: "docker build -y some / name : V1 .".
 Testowanie lokalnie: "docker run -d -p 8080:8080 some / name : V1".
 Przesyłanie do repozytorium kontenerów: "docker push some / name : V1".
@@ -1523,7 +1515,7 @@ Włącza się domyślnie, integruje z Cloud Monitoring i Cloud Logging.
 System logowania w chmurze oraz logi aplikacji mogą być eksportowane do BigQuery lub Pub/Sub.
 
 245) Chcesz utrzymać niskie koszty i zoptymalizować implementację GKE?
-Rozważ użycie Preemptible VMs, odpowiednią regionizację oraz zniżki za zobowiązanie do długoterminowego użytkowania 
+Rozważ użycie "Preemptible VMs", odpowiednią regionizację oraz zniżki za zobowiązanie do długoterminowego użytkowania 
 (committed use discounts). Typy maszyn E2 są tańsze niż N1.
 Wybierz odpowiednie środowisko, które pasuje do typu obciążenia (jeśli to konieczne, użyj wielu pul węzłów).
 
@@ -1533,7 +1525,7 @@ Skonfiguruj Horizontal Pod Autoscaler dla wdrożeń i Cluster Autoscaler dla pul
 247) Chcesz uruchomić nieznany kod od osób trzecich w Kubernetes?
 Utwórz nową pulę węzłów z GKE sandbox. Wdrażaj nieznany kod do puli węzłów sandbox.
 
-248) Jaką rolę pełnią grupy instancji w klastrze Kubernetes?
+248) Jaką rolę pełni grupa instancji w klastrze Kubernetes?
 Tworzą zestawy maszyn wirtualnych, które można zarządzać jako jednostką.
 
 249) IAM - Predefiniowane Role - Przykłady Uprawnień?
@@ -1544,7 +1536,7 @@ c) Storage Object Creator (roles/storage.objectCreator) – "storage.objects.cre
 d) Storage Object Viewer (roles/storage.objectViewer) – "storage.object.get", "storage.objects.list".
 Wszystkie cztery role mają te uprawnienia: "resourcemanager.projects.get", "resourcemanager.projects.list".
 
-250) Google Kubernetes Engine - Tryb Autopilot?
+250) Google Kubernetes Engine. Tryb Autopilot?
 Nowy tryb dla GKE. Redukuje koszty operacyjne związane z uruchamianiem klastra Kubernetes.
 Zapewnia bezobsługowe doświadczenie.
 Nie musisz martwić się o zarządzanie infrastrukturą klastra (węzłami, pulami węzłów). GKE zarządza klastrem za Ciebie!
@@ -1555,7 +1547,7 @@ Zapewnia autoskalowanie Podów i klastra. Umożliwia konfigurację Cloud Logging
 Wykorzystuje zoptymalizowany system operacyjny kontenerów, system operacyjny opracowany przez Google.
 Zapewnia wsparcie dla dysków trwałych (Persistent disks) i lokalnych SSD.
 
-252) GKE - Zarządzanie Obciążeniami za pomocą Wiersza Poleceń?
+252) GKE Zarządzanie Obciążeniami za pomocą Wiersza Poleceń?
 Wyświetlanie Podów, Usług, "Replica-Sets": "kubectl get pods / services / replicasets".
 Tworzenie Wdrożenia: "kubectl apply -f deployment.yaml" lub "kubectl create deployment".
 Tworzenie Usługi: "kubectl expose deployment hello-world --type=LoadBalancer --port=8080".
@@ -1565,7 +1557,7 @@ Usuwanie Wdrożenia: "kubectl delete deployment hello-world".
 Aktualizowanie Wdrożenia: "kubectl apply -f deployment.yaml".
 Cofnięcie Wdrożenia: "kubectl rollout undo deployment hello-world --to-revision=1".
 
-253) Terminologia Kubernetes:
+253) Terminologia Kubernetes?
 Sprzęt (Cluster):
 a) Master Node(s) – Zarządza klastrem.
 b) Worker Node(s) – Uruchamiają twoje obciążenie jako pods.
@@ -1589,14 +1581,14 @@ Prawdopodobnie problem z pobraniem obrazu.
 256) Mój pod pozostaje w stanie "pending"?
 Prawdopodobnie pod nie może zostać zaplanowany na węźle (brak wystarczających zasobów).
 
-257) Chcesz umożliwić tylko wewnętrzną komunikację między wdrożeniami mikrousług w klastrze Kubernetes?
+257) Chcesz umożliwić tylko wewnętrzną komunikację między wdrożeniami mikro-usług w klastrze Kubernetes?
 Utwórz usługę typu "Cluster-IP".
 
-258) Polecenie do usunięcia szablonu grupy instancji:
+258) Polecenie do usunięcia szablonu grupy instancji?
 "gcloud compute instance-template delete".
 
 259) Kubernetes?
-Najpopularniejsze open source'owe rozwiązanie do orkiestracji kontenerów. Oferuje zarządzanie klastrem (w tym aktualizacje). 
+Najpopularniejsze open "source-owe" rozwiązanie do orkiestracji kontenerów. Oferuje zarządzanie klastrem (w tym aktualizacje). 
 Każdy klaster może mieć różne typy maszyn wirtualnych. Zapewnia wszystkie ważne funkcje orkiestracji kontenerów:
 a) Auto Scaling.
 b) Odkrywanie usług (Service Discovery).
@@ -1604,7 +1596,7 @@ c) Load Balancer.
 d) Samoleczenie (Self Healing).
 e) Wdrożenie bez przestojów (Zero Downtime Deployment).
 
-260) Polecenia do połączenia z klastrem Kubernetes:
+260) Polecenia do połączenia z klastrem Kubernetes?
 "gcloud container cluster get-credentials".
 
 261) Chcesz uruchomić jeden pod na każdym węźle w celu zbierania logów lub monitorowania. Którego komponentu Kubernetes użyjesz?
@@ -1621,7 +1613,7 @@ a) Klucze zarządzane przez Google (Google-managed keys): Brak konieczności kon
 b) Klucz zarządzany przez klienta (Customer-manager key): Używaj klucza z KMS.
 c) Klucz dostarczony przez klienta (Customer-supplied key): Dostarcz własny klucz.
 
-264) Szyfrowanie kluczem asymetrycznym
+264) Szyfrowanie kluczem asymetrycznym?
 Dwa klucze: Klucz publiczny i klucz prywatny. Nazywane również kryptografią klucza publicznego. Szyfruj dane za pomocą 
 klucza publicznego, a deszyfruj za pomocą klucza prywatnego. Udostępnij klucz publiczny wszystkim, a klucz prywatny 
 zachowaj dla siebie. Nie ma dziwnych pytań: Czy ktoś nie odkryje klucza prywatnego, używając klucza publicznego?
@@ -1634,7 +1626,7 @@ i użyj go do tworzenia dysków.
 Migawki są przyrostowe (incremental): Ale nie tracisz danych usuwając starsze migawki. Usunięcie migawki usuwa tylko 
 dane, które NIE są potrzebne przez inne migawki. Nie wahaj się usuwać zbędnych migawek.
 
-266) Szyfrowanie kluczem symetrycznym
+266) Szyfrowanie kluczem symetrycznym?
 Algorytmy szyfrowania symetrycznego używają tego samego klucza do szyfrowania i deszyfrowania.
 Czynnik kluczowy 1: Wybierz odpowiedni algorytm szyfrowania.
 Czynnik kluczowy 2: Jak zabezpieczyć klucz szyfrowania?
@@ -1659,7 +1651,7 @@ Dane w użyciu (Data in use): Aktywne dane przetwarzane w stanie nietrwałym. Pr
 "Replica-Set".
 
 270) Dedykowane połączenie z Twojego centrum danych do GCP. Jaką usługę sieciową byś polecił?
-Google Cloud Interconnect - Dedicated.
+Google Cloud Interconnect Dedicated.
 
 271) Zabawa z Dyskami - Wiersz Poleceń?
 "gcloud compute disk create". Jakie powinny być rozmiar i typ? Co powinno znajdować się na dysku? 
@@ -1677,7 +1669,7 @@ Instance Template: Klonowanie i replikacja instancji. Konfiguracja instancji VM.
 273) Zabawa z Machine Images?
 Machine Image różni się od obrazu. Do maszyny wirtualnej (VM) można podłączyć wiele dysków. Jeden Boot Disk 
 (System operacyjny działa z Boot Disk). Wiele dysków danych. Obraz jest tworzony z boot Persistent Disk. 
-Jednak Machine Image jest tworzony z instancji VM. Machine Image zawiera wszystko, co jest potrzebne do utworzenia 
+Jednak "Machine Image" jest tworzony z instancji VM. "Machine Image" zawiera wszystko, co jest potrzebne do utworzenia 
 instancji VM: konfigurację, metadane, uprawnienia, dane z jednego lub więcej dysków. 
 Zalecane do tworzenia kopii zapasowych dysków, klonowania i replikacji instancji.
 
@@ -1685,9 +1677,9 @@ Zalecane do tworzenia kopii zapasowych dysków, klonowania i replikacji instancj
 Nie.
 
 275) Czy te same usługi GCP mają specyficzne narzędzia CLI?
-a) Cloud Storage: "gsutil".
-b) Cloud BigQuery: "bq".
-c) Cloud BigTable: "cbt".
+a) Cloud Storage: "gs-util".
+b) Cloud BigQuery: "b-q".
+c) Cloud BigTable: "c-b-t".
 d) Kubernetes: "kubectl" (oprócz gcloud, które służy do zarządzania klastrami).
 
 276) Wyświetl wszystkie właściwości aktywnej konfiguracji?
@@ -1702,7 +1694,7 @@ c) Auto Scaling.
 d) Aktualizacje i łatki systemu operacyjnego.
 e) Dostępność.
 
-278) PAAS (Platforma jako Usługa - Platform as a Service)?
+278) PAAS Platforma jako Usługa (Platform as a Service)?
 Korzystasz z platformy dostarczonej przez chmurę. 
 Dostawca chmurowy jest odpowiedzialny za:
 a) System operacyjny (w tym aktualizacje i łatki (patches)).
@@ -1712,15 +1704,15 @@ Ty jesteś odpowiedzialny za:
 a) Konfigurację (usługi aplikacji).
 b) Kod aplikacji (jeśli jest potrzebny).
 Rodzaje:
-a) CAAS (Container as a Service): Kontenery zamiast (jako) aplikacji.
-b) FAAS (Function as a Service): Funkcje zamiast (jako) aplikacji.
-b) Bazy danych - Relacyjne i NoSQL (RDS, Cloud SQL), Kolejki, AI, ML, Operacje
+a) CAAS (Container as a Service): Kontenery zamiast (jako) aplikacja.
+b) FAAS (Function as a Service): Funkcje zamiast (jako) aplikacja.
+b) Bazy danych - Relacyjne i "No SQL" (RDS, Cloud SQL), Kolejki, AI, ML, Operacje
 
 279) Compute Engine?
 Maszyny wirtualne o wysokiej wydajności i ogólnego przeznaczenia (general purpose), które skalują się globalnie.
 
 280) Google Kubernetes Engine?
-Orkiestracja kontenerowych mikroserwisów na Kubernetes. Wymaga zaawansowanej konfiguracji i monitorowania klastrów. 
+Orkiestracja kontenerowych mikro-serwisów na Kubernetes. Wymaga zaawansowanej konfiguracji i monitorowania klastrów. 
 CaaS (Container as a Service).
 
 281) App Engine?
@@ -1747,7 +1739,7 @@ c) Prędkość I/O: 10-100 razy szybsza niż PD.
 d) Snapshots: Nieobsługiwane.
 e) Zastosowanie: Pamięć tymczasowa (Ephemeral Storage).
 
-285) Persistent Disks - Snapshots?
+285) Persistent Disks Snapshots?
 Twórz migawki stanu w danym momencie dla swoich Persistent Disks. Możesz również zaplanować migawki, 
 konfigurując harmonogram (schedule):
 Możesz automatycznie usuwać migawki po X dniach. 
@@ -1786,14 +1778,14 @@ Tylko niektóre typy maszyn obsługują Local SSDs. Obsługują interfejsy SCSI 
 Pamiętaj: Wybierz obrazy z obsługą NVMe i wielokolejkowego interfejsu SCSI, aby uzyskać najlepszą wydajność.
 Większe Local SSDs (więcej miejsca), więcej vCPU (podłączonych do VM) = Jeszcze lepsza wydajność.
 
-289) GCP - Block Storage?
+289) GCP Block Storage?
 Dwa popularne typy pamięci masowej blokowej, które mogą być podłączone do instancji VM: Local SSDs i Persistent Disks.
 Local SSDs są fizycznie podłączone do hosta instancji VM. Są to dane tymczasowe, a cykl życia jest powiązany z instancją VM.
 Persistent Disks to pamięć masowa sieciowa. Są bardziej trwałe. Cykl życia nie jest powiązany z instancją VM.
 
-290) GCP - Block Storage i File Storage?
+290) GCP Block Storage i File Storage?
 Block Storage:
-a) Persistent Disks: Pamięć blokowa sieciowa. Zonal: Dane replikowane w jednej strefie. Regional: Dane replikowane w 
+a) Persistent Disks: Pamięć blokowa sieciowa. Zonal: Dane repliko-wane w jednej strefie. Regional: Dane repliko-wane w 
 wielu strefach.
 b) Local SSDs: Lokalna pamięć blokowa.
 File Storage:
@@ -1815,13 +1807,13 @@ a) Direct-attached storage (DAS): Podobne do dysku twardego.
 b) Storage Area Network (SAN): Szybka sieć łącząca pulę urządzeń pamięci masowej; wykorzystywana przez bazy danych, 
 takie jak Oracle i Microsoft SQL Server.
 
-293) Storage Types - Block Storage i File Storage?
+293) Storage Types Block Storage i File Storage?
 Jaki jest typ pamięci Twojego dysku twardego? Block Storage.
 Utworzyłeś udostępniony folder, aby dzielić zestaw plików z kolegami w firmie.
 Jakiego typu pamięci używasz? File Storage.
 
 294) Skalowalność (Scalability)?
-Skalowalność to zdolność systemu do radzenia sobie ze wzrostem lub spadkiem obciążenia poprzez dodawanie lub usuwanie 
+Skalowalność to zdolność systemu do radzenia sobie ze wzrostem lub spadkiem obciążenia poprzez dodawanie, lub usuwanie 
 zasobów w systemie w miarę potrzeby.
 
 295) Dostepność (Availability)?
@@ -1844,7 +1836,7 @@ b) Zarządzanie kluczami szyfrowania.
 c) Źródłowy obraz dla dysku.
 
 300) Polecenie gcloud do przypisania konta usługi (Service Account) podczas tworzenia VM?
-"gcloud compute instance create INSTANCE_NAME --service-account SERVICE-ACCOUNT-EMAIL".
+"gcloud compute instance create INSTANCE_NAME --service-account SERVICE_ACCOUNT_EMAIL".
 
 301) Jaki jest najniższy poziom hierarchii zasobów?
 Projekt.
@@ -1863,7 +1855,7 @@ c) Automatyczna aktualizacja (Automatic upgrading) oprogramowania klastra w razi
 305) Ile organizacji można utworzyć w hierarchii zasobów? 
 Jedną. Hierarchia zasobów ma tylko jedną organizację. Można jednak utworzyć wiele folderów i projektów w ramach tej hierarchii.
 
-306) Baza danych dla danych zebranych z IoT?
+306) Baza danych dla danych zebranych z "I o T"?
 Cloud Bigtable. Bigtable jest zaprojektowany do przyjmowania miliardów wierszy danych.
 
 307) Magazyn danych (Data Warehouse)?
@@ -1892,7 +1884,7 @@ Organizacja, foldery, projekty.
 314) Jakiego typu systemu przechowywania użyłbyś do przechowywania plików danych bazy danych? 
 Przechowywanie blokowe (Block storage).
 
-315) Polecenie do stworzenia Load Balancera sieciowego w wierszu poleceń? 
+315) Polecenie do stworzenia Load Balansera sieciowego w wierszu poleceń? 
 "gcloud compute forwarding-rules create".
 
 316) Polecenie do stworzenia VPC z wiersza poleceń? 
@@ -1928,7 +1920,7 @@ c) Multiregional do Coldline.
 Przejścia z Regional do Multiregional lub z Multiregional do Regional nie są możliwe.
 
 325) Reguły zapory dla punktu końcowego usługi, który akceptuje dowolny ruch UDP, a każdy punkt końcowy będzie używać 
-portu w zakresie 20000 - 30000?
+portu w zakresie "20000" - "30000"?
 "gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress".
 
 326) Polecenie do utworzenia kopii zapasowej Cloud SQL? 
@@ -1955,10 +1947,10 @@ Network TCP/UDP.
 
 333) Środki bezpieczeństwa mające na celu zmniejszenie ryzyka spoofingu DNS i zatrucia pamięci podręcznej 
 (cache poisoning)? 
-Używanie DNSSEC.
+Używanie "DNS-SEC".
 
 334) Zakres jest identyfikowany za pomocą jakiego rodzaju identyfikatora? 
-URL zaczynający się od "https://www.googleapis.com/auth".
+URL zaczynający się od "https www googleapis.com/auth".
 
 335) Role w Cloud Query?
 a) BigQuery Admin.
@@ -2014,7 +2006,7 @@ c) Włączanie i wyłączanie fakturowania (billing).
 d) Dostęp do konfiguracji lub danych przechowywanych w innych usługach.
 
 341) Role IAM w Compute Engine?
-a) "Compute Engine Admin" – Pełna kontrola nad instancjami obliczeniowymi, obrazami, load balancerami, siecią, 
+a) "Compute Engine Admin" – Pełna kontrola nad instancjami obliczeniowymi, obrazami, load balanserami, siecią, 
 zaporami sieciowymi itp.
 b) "Compute Instance Admin" – Tworzenie, modyfikowanie i usuwanie instancji maszyn wirtualnych oraz dysków.
 c) "Compute Engine Network Admin" – Pełny dostęp do zasobów sieciowych (routery, sieci, sprawdzanie stanu, VPN, bramy itp.) 
@@ -2042,7 +2034,7 @@ Wdrożenie nowego kontenera: "gcloud run deploy Service-Name --image=Image-Url -
 Pierwsze wdrożenie tworzy konto serwisowe (service account) i pierwszą rewizję (first revision). 
 Kolejne dla tej samej usługi tworzą nowe rewizje.
 Wyświetlanie dostępnych rewizji: "gcloud run revisions list".
-Dostosowanie przypisania ruchu: "gcloud run services update --traffic myservice --to-revisions=v2=1-,v2=90".
+Dostosowanie przypisania ruchu: "gcloud run services update --traffic myservice --to-revisions=v2=1,v2=90".
 
 346) Cloud Run & Cloud Run for Anthos?
 Cloud Run:
@@ -2063,8 +2055,8 @@ a) Wdróż swoje obciążenia (workloads) do klastrów Anthos uruchamianych na m
 a) Brak zarządzania serwerami: Nie musisz martwić się o skalowanie ani dostępność swojej funkcji. Cloud Functions 
 automatycznie uruchamiają się i wyłączają w odpowiedzi na zdarzenia. Skaluje się poziomo!
 b) Zalecane do reagowania na zdarzenia: Cloud Functions są idealne do krótkotrwałych, "event-driven" operacji.
-c) Nie są idealne do długotrwałych procesów: Cloud Functions nie nadają się do procesów, 
-które wymagają długiego czasu działania.
+c) Nie są idealne do długotrwałych procesów: Cloud Functions nie nadają się do procesów, które wymagają długiego czasu 
+działania.
 
 348) Cloud Functions - Koncepcje?
 a) Event (Zdarzenie): Przykład: Wgranie obiektu do Cloud Storage.
@@ -2141,8 +2133,8 @@ ale bez możliwości wprowadzania zmian.
 
 361) Logging IAM Roles and Service Account Roles?
 Logging i Audit Logging: Logs Viewer, Private Log Viewer, Logging Admin.
-Konta serwisowe (service accounts): "serviceAccountAdmin", "serviceAccountUser", "serviceAccountTokenCreator", 
-"serviceAccountKeyAdmin".
+Konta serwisowe (service accounts): "service-Account-Admin", "service-Account-User", "service-Account-Token-Creator", 
+"service-Account-Key-Admin".
 
 362) Organization, Billing and Project Roles?
 a) "Organization Administrator": Definiowanie hierarchii zasobów. Definiowanie polityk zarządzania dostępem. 
@@ -2150,7 +2142,7 @@ Zarządzanie innymi użytkownikami i rolami.
 b) "BillingAccountCreator": Tworzenie kont rozliczeniowych.
 c) "Billing Account Administrator": Zarządzanie kontami rozliczeniowymi (instrumenty płatnicze, eksporty rozliczeniowe, 
 łączenie i rozłączanie projektów, zarządzanie rolami na koncie rozliczeniowym). Nie może tworzyć konta rozliczeniowego.
-d) "Billing Account User": Powiązywanie (associate) projektów z kontami rozliczeniowymi: Zwykle używane w połączeniu z 
+d) "Billing Account User": Powiązanie (associate) projektów z kontami rozliczeniowymi: Zwykle używane w połączeniu z 
 rolą "Project Creator". Te dwie role pozwalają użytkownikowi tworzyć nowe projekty i powiązać je z kontem rozliczeniowym.
 e) "Billing Account Viewer": Przeglądanie szczegółów wszystkich kont rozliczeniowych.
 
@@ -2166,14 +2158,14 @@ Jak włączyć scentralizowane ograniczenia dla wszystkich zasobów tworzonych w
 Przykład: Zablokowanie tworzenia konta serwisowego.
 Przykład: Zezwolenie/Odmowa tworzenia zasobów w określonym regionie.
 Wymaga roli - "Organization Policy Administrator".
-IAM koncentruje się na Kim. Kto może wykonywać określone działania na zasobach?
+IAM koncentruje się na "Kim". Kto może wykonywać określone działania na zasobach?
 "Organization Policy" koncentruje się na Co. Co może zostać zrobione na określonych zasobach?
 
 365) Twoja aplikacja, która jest wdrożona na maszynie wirtualnej GCE (Projekt A), musi uzyskać dostęp do zasobnika 
-Cloud Storage z innego projektu (Projekt B).
+Cloud Storage z innego projektu (Projekt B)?
 W Projekcie B przypisz odpowiednią rolę (assign the right role) do konta usługi maszyny wirtualnej GCE z Projektu A.
 
-366) Chcesz udzielić zewnętrznemu audytorowi dostępu do przeglądania wszystkich zasobów w Twoim projekcie, ALE nie 
+366) Chcesz udzielić zewnętrznemu audytorowi dostępu do przeglądania wszystkich zasobów w Twoim projekcie, ale nie 
 powinien on mieć możliwości wprowadzania żadnych zmian?
 Przydziel im rolę "Viewer" (Generalnie podstawowe role nie są zalecane, ale jest to najprostszy sposób na udzielenie 
 dostępu tylko do przeglądania wszystkich zasobów)!
@@ -2189,7 +2181,7 @@ Twój kod funkcji powinien być bezpieczny do wykonania współbieżnego.
 368) "Cloud Functions" - Druga Generacja (Second Generation)?
 Dłuższy czas oczekiwania na żądanie: Do 60 minut dla funkcji wyzwalanych przez HTTP.
 Większe rozmiary instancji: Do 16 GB RAM z 4 v-CPU.
-Współbieżność: Do 1000 jednoczesnych żądań na jedną instancję funkcji.
+Współbieżność: Do "1000" jednoczesnych żądań na jedną instancję funkcji.
 Obsługa wielu rewizji funkcji i podziału ruchu.
 Wsparcie dla ponad 90 typów zdarzeń włączonych przez "Eventarc".
 
@@ -2210,25 +2202,25 @@ dostępu do grupy.
 "Google Workspace Domain" – "Google Workspace" (dawniej "G-Suite") oferuje usługi współpracy dla firm: Narzędzia takie 
 jak Gmail, Kalendarz, Meet, Chat, Drive, Docs itp. są wliczone. Jeśli Twoja firma korzysta z "Google Workspace", 
 możesz zarządzać uprawnieniami za pomocą swojej domeny "Google Workspace".
-"Cloud Identity Domain" – "Cloud Identity" to rozwiązanie typu "Identity as a Service (IDaaS)", które centralnie zarządza 
+"Cloud Identity Domain" – "Cloud Identity" to rozwiązanie typu "Identity as a Service (ID a a S)", które centralnie zarządza 
 użytkownikami i grupami. Możesz używać IAM do zarządzania dostępem do zasobów dla każdego konta "Cloud Identity".
 
 372) Federacja Katalogu Korporacyjnego (Corporate Directory Federation)?
 "Federate Cloud Identity" lub "Google Workspace" z zewnętrznym dostawcą tożsamości (I d P), takim jak "Active Directory" 
 lub "Azure Active Directory".
-Włącz "Single Sign-O"n: Użytkownicy są przekierowywani do zewnętrznego (I d P) w celu uwierzytelnienia. Po uwierzytelnieniu 
-użytkowników, asercja SAML jest wysyłana do "Google Sign-In".
+Włącz "Single Sign-On": Użytkownicy są przekierowywani do zewnętrznego (I d P) w celu uwierzytelnienia. 
+Po uwierzytelnieniu użytkowników, asercja SAML jest wysyłana do "Google Sign-In".
 Przykłady: "Federate Active Directory" z "Cloud Identity" za pomocą Google Cloud Directory Sync (GCDS) i 
 Active Directory Federation Services (ADFS). Federate Azure AD z Cloud Identity.
 
 373) Zarządzanie Tożsamościami Użytkowników w Google Cloud?
 E-mail używany do tworzenia konta próbnego, "Super Admin". Dostęp do wszystkiego w Twojej organizacji GCP. Zarządzanie 
 dostępem do innych użytkowników za pomocą ich kont Gmail.
-Jednakże, nie jest to zalecane dla przedsiębiorstw.
+Nie jest to zalecane dla przedsiębiorstw.
 Opcja 1: Twoje przedsiębiorstwo korzysta z Google Workspace.
 Opcja 2: Twoje przedsiębiorstwo używa własnego dostawcy tożsamości. Federate Google Cloud z Twoim dostawcą tożsamości.
 
-374) Zarządzanie Rozliczeniami - Budżet, Alerty i Eksporty?
+374) Zarządzanie Rozliczeniami. Budżet, Alerty i Eksporty?
 Ustaw Cloud Billing Budget, aby uniknąć niespodzianek: Skonfiguruj Alerty. Dane rozliczeniowe mogą być eksportowane 
 (zgodnie z harmonogramem) do BigQuery lub Cloud Storage.
 
@@ -2240,7 +2232,7 @@ Dwa typy:
 a) Self Service: Faktura (Billed) jest bezpośrednio obciążana na kartę kredytową lub konto bankowe.
 b) Invoiced: Generowanie faktur (invoices) (używane przez duże przedsiębiorstwa).
 
-376) Hierarchia Zasobów - Rekomendacje dla Przedsiębiorstw?
+376) Hierarchia Zasobów. Rekomendacje dla Przedsiębiorstw?
 Twórz oddzielne projekty dla różnych środowisk. Pełna izolacja między środowiskami testowymi a produkcyjnymi.
 Twórz oddzielne foldery dla każdego działu: Izoluj aplikacje produkcyjne jednego działu od innych. Możemy stworzyć 
 wspólny folder dla zasobów współdzielonych.
@@ -2251,7 +2243,7 @@ Dobrze zdefiniowana hierarchia: Organizacja (Organization), Folder, Projekt (Pro
 Zasoby są tworzone w projektach. Folder może zawierać wiele projektów. Organizacje mogą zawierać wiele folderów.
 
 378) Polecenie do utworzenia maszyny wirtualnej z czterema CPU o nazwie web-server-1?
-"gcloud compute instances create --machine-type=n1-standard-4 web-server-1".
+"gcloud compute instances create --machine-type=n1-standard-4 web_server_1".
 
 379) Analiza danych (Data analytics)?
 Zestaw usług specjalistycznych z zakresu analizy danych obejmuje produkty, które pomagają w ekstrakcji, transformacji 
@@ -2280,7 +2272,7 @@ Warunki (Conditions), dokumentację i czas życia.
 386) Jak można nadpisać politykę odziedziczoną po innej jednostce w hierarchii zasobów?
 Polityki odziedziczone można nadpisać, definiując politykę na poziomie folderu lub projektu.
 
-387) Cloud BigTable
+387) Cloud BigTable?
 BigTable obsługuje dane półstrukturalne, do których dostęp uzyskuje się za pomocą klucza wiersza, i działa dobrze w 
 przypadku zbiorów danych większych niż 1 terabajt.
 
@@ -2307,9 +2299,9 @@ Raporty dzienne. Brak potrzeby obsługi transakcji. Który produkt do przechowyw
 394) Na jakiej technologii systemu plików oparty jest Cloud Filestore?
 Network File System (NFS).
 
-395) Uruchamianie klastrów BigTable w różnych regionach
-Zapewni to wyższą dostępność, ponieważ będziesz w stanie obsłużyć awarie na poziomie regionu. Jednak zwiększy to również 
-opóźnienie replikacji, ponieważ dane muszą być replikowane między klastrami w różnych regionach.
+395) Uruchamianie klastrów BigTable w różnych regionach?
+Zapewni to wyższą dostępność (Availability), ponieważ będziesz w stanie obsłużyć awarie na poziomie regionu. 
+Jednak zwiększy to również opóźnienie replikacji, ponieważ dane muszą być replikowane między klastrami w różnych regionach.
 
 396) Dane dostępne w pamięci w celu skrócenia czasu odpowiedzi i zmniejszenia obciążenia serwera bazy danych. 
 Jakiej usługi GCP użyłbyś do przechowywania danych w pamięci?
@@ -2324,17 +2316,17 @@ a) Routing za pomocą URL.
 b) Routing za pomocą pliku dispatch: Skonfiguruj "dispatch.yaml" z trasami "gcloud app deploy dispatch.yaml".
 c) Routing za pomocą Cloud Load Balancing.
 
-399) App Engine - Wdrażanie nowych wersji bez przestojów (downtime)?
-a) Jestem bardzo pewny - Wdróż i przekieruj cały ruch jednocześnie: "gcloud app deploy".
-b) Zarządzaj migracją z wersji v1 do v2. Wdróż v2 bez przekierowywania ruchu (--no-promote). Przekieruj ruch do v2. 
-Migracja stopniowa (--migrate). Podział (Splitting).
+399) App Engine. Wdrażanie nowych wersji bez przestojów (downtime)?
+a) Jestem bardzo pewny. Wdróż i przekieruj cały ruch jednocześnie: "gcloud app deploy".
+b) Zarządzaj migracją z wersji v1 do v2. Wdróż v2 bez przekierowywania ruchu ("--no-promote"). Przekieruj ruch do v2. 
+Migracja stopniowa ("--migrate"). Podział (Splitting).
 
 400) Jak podzielić ruch między wieloma wersjami?
-Podział na podstawie IP - na podstawie adresu IP żądania.
-Podział na podstawie pliku cookie - na podstawie pliku cookie (goog-app-uid).
+Podział na podstawie IP, na podstawie adresu IP żądania.
+Podział na podstawie pliku cookie, na podstawie pliku cookie (goog-app-uid).
 Losowy. Opcja '--split-by' w "gcloud app services set-traffic". Opcje: cookie, ip, random.
 
-401) Funkcje Kubernetes, które zmniejszają obciążenie inżynierów DevOps?
+401) Funkcje Kubernetes, które zmniejszają obciążenie inżynierów "Dev-Ops"?
 a) Równoważenie obciążenia pomiędzy maszynami wirtualnymi Compute Engine wdrożonymi w klastrze Kubernetes.
 b) Automatyczne skalowanie węzłów w klastrze.
 c) Automatyczna aktualizacja oprogramowania klastra w razie potrzeby.
@@ -2363,11 +2355,11 @@ Funkcje: Automatyczne równoważenie obciążenia (load balancing) i "auto-skalo
 i monitorowanie zdrowia aplikacji. Wersjonowanie aplikacji. Podział ruchu.
 
 407) Compute Engine kontra App Engine?
-a) Compute Engine: IaaS. Większa elastyczność. Większa odpowiedzialność: wybór obrazu, instalowanie oprogramowania, 
-wybór sprzętu, szczegółowy dostęp, uprawnienia (certyfikaty/firewalle).
-b) App Engine: PaaS. Bezserwerowe. Mniejsza odpowiedzialność. Mniejsza elastyczność.
+a) Compute Engine: "I a a S". Większa elastyczność. Większa odpowiedzialność: wybór obrazu, instalowanie oprogramowania, 
+wybór sprzętu, szczegółowy dostęp, uprawnienia (certyfikaty / firewalle).
+b) App Engine: "P a a S". Bezserwerowe. Mniejsza odpowiedzialność. Mniejsza elastyczność.
 
-408) Środowiska App Engine - Standard?
+408) Środowiska App Engine, Standard?
 Odpowiedź: Aplikacje działają w specyficznych dla języka piaskownicach (sandboxes). Pełna izolacja od systemu 
 operacyjnego, dysku i innych aplikacji (V1/V2).
 V1: Java, Python, PHP, Go. Tylko dla środowisk uruchomieniowych Python i PHP: ograniczony dostęp do sieci, 
@@ -2391,16 +2383,14 @@ Cloud Build.
 413) Jakie zasoby można skonfigurować podczas uruchamiania strony WordPress za pomocą Cloud Launcher?
 Typ dysku. Rozmiar dysku. Typ maszyny. Reguły zapory (Firewall rules) umożliwiające HTTP i HTTPS. Zmiana strefy.
 
-414) App Engine - Skalowanie instancji?
-a) Automatyczne (Automatic): Instancje skalują się automatycznie na podstawie obciążenia. 
-Zalecane dla ciągłych obciążeń roboczych.
-b) Podstawowe (Basic): Instancje są tworzone w miarę potrzeby, w zależności od żądań. 
-Zalecane dla obciążeń roboczych ad hoc.
+414) App Engine. Skalowanie instancji?
+a) Automatyczne (Automatic): Instancje skalują się automatycznie na podstawie obciążenia. Zalecane dla ciągłych obciążeń roboczych.
+b) Podstawowe (Basic): Instancje są tworzone w miarę potrzeby, w zależności od żądań. Zalecane dla obciążeń roboczych ad hoc.
 c) Ręczne (Manual): Skonfiguruj określoną liczbę instancji do uruchomienia. Ręcznie dostosowuj liczbę instancji w czasie.
 
 415) Hierarchia komponentów aplikacji App Engine?
 a) Aplikacja (Application): Jedna aplikacja na projekt.
-b) Usługi (Services): Wiele mikroserwisów lub komponentów aplikacji: Możesz mieć wiele usług w jednej aplikacji. 
+b) Usługi (Services): Wiele mikro-serwisów lub komponentów aplikacji: Możesz mieć wiele usług w jednej aplikacji. 
 Każda usługa może mieć różne ustawienia. Wcześniej nazywane modułami.
 c) Wersja(e) (Version(s)): Każda wersja związana z kodem i konfiguracją: Każda wersja może działać na jednej lub więcej 
 instancjach. Wiele wersji może współistnieć. Opcje przywracania poprzednich wersji i dzielenia ruchu.
@@ -2409,7 +2399,7 @@ instancjach. Wiele wersji może współistnieć. Opcje przywracania poprzednich 
 Polityki alertów (Alerting Policy). W Stackdriver Monitoring alerty są tworzone za pomocą polityki alertów. 
 Wykorzystanie CPU to jeden z takich przykładów.
 
-417) Kiedy przenosimy usługi z "n1-standard-1" na "n1-standard-4", nazywa się to skalowaniem pionowym?
+417) Kiedy przenosimy usługi z "n1 Standard 1" na "n1 Standard 4", nazywa się to skalowaniem pionowym?
 Tak. Skalowanie pionowe polega na przenoszeniu usług z jednej maszyny wirtualnej na inną, która ma więcej lub mniej zasobów.
 
 418) Pytanie: Jakie polecenie jest używane do uruchomienia obrazu Docker na klastrze?
@@ -2457,7 +2447,7 @@ klienta zostaną spełnione?
 
 430) Przechowywanie dużych wolumenów danych w Bigtable. Chcesz eksplorować środowisko Bigtable z wiersza poleceń. 
 Jakie polecenie upewni cię, że narzędzie wiersza poleceń jest zainstalowane?
-"gcloud components install cbt".
+"gcloud components install 'c b t'".
 
 431) Opcje formatu pliku przy eksporcie z Cloud SQL?
 CSV i SQL.
@@ -2472,14 +2462,14 @@ Dataflow. Dataflow to usługa przetwarzania danych w czasie rzeczywistym i wsado
 używane przez Cloud Spanner.
 
 434) Bezpośrednie korzyści z używania kolejki wiadomości w systemach rozproszonych?
-Oddziela usługi, dzięki czemu jeśli jedna z nich opóźnia się, nie powoduje to opóźnienia innych usług.
+Oddziela usługi, dzięki czemu, jeśli jedna z nich opóźnia się, nie powoduje to opóźnienia innych usług.
 
-435) Analiza dużej partii danych każdej nocy. Zadanie będzie trwało 3,5 godziny. Decydujesz się napisać skrypt, 
+435) Analiza dużej partii danych każdej nocy. Zadanie będzie trwało "3,5" godziny. Decydujesz się napisać skrypt, 
 który utworzy klaster Dataproc każdej nocy o północy. Przykład polecenia do utworzenia klastra o nazwie 
 spark-nightly-analysis w strefie "us-west2-a"?
 "gcloud dataproc cluster create spark-nightly-analysis --zone us-west2-a".
 
-436) Jaką rolę pełnią grupy instancji (instance group) w klastrze Kubernetes?
+436) Jaką rolę pełni grupa instancji (instance group) w klastrze Kubernetes?
 Tworzą zestawy maszyn wirtualnych, które mogą być zarządzane jako jednostka.
 
 437) Rozliczenia i koszty?
@@ -2496,15 +2486,15 @@ Cloud BigQuery. Stackdriver Monitoring zbiera metryki dotyczące wydajności zas
 Wymienione metryki są zbierane dla BigQuery.
 
 440) App Engine?
-App Engine to platforma PaaS, która pozwala deweloperom na wdrażanie pełnych aplikacji bez potrzeby zarządzania serwerami 
-lub klastrami.
+App Engine to platforma "P a a S", która pozwala deweloperom na wdrażanie pełnych aplikacji bez potrzeby zarządzania 
+serwerami lub klastrami.
 
-441) Ile czasu GCP będzie czekać przed zbieraniem statystyk wydajności z instancji w przypadku autoskalowania?
+441) Ile czasu GCP będzie czekać przed zbieraniem statystyk wydajności z instancji w przypadku auto-skalowania?
 Okres ochłodzenia (Cool down period).
 
 442) Zasobnik zawierający stare dane. Nie chcesz ich usuwać, ale chcesz zminimalizować koszt przechowywania. 
 Jakie polecenie zmieni klasę przechowywania na coldline?
-"gsutil rewrite -s STORAGE-CLASS gs://PATH-TO-OBJECT".
+"gsutil rewrite -s STORAGE-CLASS gs : // PATH-TO-OBJECT".
 
 443) Jak cache wpłynie na pobieranie danych?
 Użycie cache zmniejszy opóźnienia, ponieważ pobieranie z cache jest szybsze niż pobieranie z SSD lub HDD.
@@ -2514,7 +2504,7 @@ musiał użyć?
 BigQuery i Kalkulator cen (Pricing Calculator). BigQuery zapewnia szacunkową ilość zeskanowanych danych, a Kalkulator cen 
 daje szacunkowy koszt skanowania tej ilości danych. 
 
-445) Magazyn danych lokalny działający na MySQL jest migrowany do GCP. Zespół chce użyć zarządzanej usługi, która może 
+445) Magazyn danych lokalny działający na "My SQL" jest migrowany do GCP. Zespół chce użyć zarządzanej usługi, która może 
 skalować się do petabajtów. Jaką usługę wybrać?
 Cloud BigQuery.
 
@@ -2528,12 +2518,12 @@ Dokumentowy (Document).
 448) Poprawne polecenie do utworzenia tematu (topic) Pub/Sub?
 "gcloud pubsub topics create".
 
-449) Polecenie do usunięcia instancji o nazwie "ch06-instance-3"?
-"gcloud compute instance delete ch06-instance-3".
+449) Polecenie do usunięcia instancji o nazwie "ch06-Instance-3"?
+"gcloud compute instance delete ch06-Instance-3".
 
 450) Musisz utworzyć wiele maszyn wirtualnych o różnych konfiguracjach w ramach grupy instancji. Jak możemy to osiągnąć?
 Utwórz grupę instancji unmanaged instance group (niezarządzaną). Grupy instancji zarządzanych (MIG) składają się z 
-identycznie skonfigurowanych maszyn wirtualnych, podczas gdy grupy instancji nie-managed pozwalają na maszynach wirtualnych 
+identycznie skonfigurowanych maszyn wirtualnych, podczas gdy grupy instancji nie-managed pozwalają na maszyny wirtualnych 
 o różnych konfiguracjach.
 
 451) Usługi Kubernetes (Kubernetes Services)?
@@ -2555,7 +2545,7 @@ Rozmieszczaj serwery wirtualne w wielu regionach i wielu strefach.
 
 456) Google Compute Engine (GCE) - Funkcje?
 Google Compute Engine (GCE) - Przydzielanie i zarządzanie maszynami wirtualnymi. Tworzenie i zarządzanie cyklem życia 
-instancji maszyn wirtualnych (VM). Load balancing i autoskalowanie dla wielu instancji VM. Dołączanie pamięci masowej 
+instancji maszyn wirtualnych (VM). Load balancing i auto-skalowanie dla wielu instancji VM. Dołączanie pamięci masowej 
 (i pamięci masowej w sieci) do instancji VM. Zarządzanie łącznością sieciową i konfiguracją dla instancji VM.
 
 457) Rodzina maszyn Compute Engine?
@@ -2581,13 +2571,13 @@ dwa zasobniki w Cloud Storage. Jakie polecenie należy użyć, aby zsynchronizow
 460) Szacowanie objętości (volume) danych skanowanych przez BigQuery z wiersza poleceń. Przykład polecenia?
 "bq --location=LOCATION query --use_legacy_sql=false --dry_run SQL-QUERY".
 
-461) Firma zajmująca się przestrzenią "I o T" (Internet of Things. Firma przesyła duże wolumeny danych do GCP. 
+461) Firma zajmująca się przestrzenią "I o T" (Internet of Things). Firma przesyła duże wolumeny danych do GCP. 
 Dane muszą być filtrowane, przekształcane i analizowane przed zapisaniem w GCP Datastore. Dobry wybór dla komponentu 
 przetwarzania strumieniowego?
 Cloud Dataflow. Umożliwia przetwarzanie strumieniowe i wsadowe danych i jest dobrze dopasowane do tego rodzaju pracy ETL.
 
-462) Cloud Storage zapewnia dostępność na poziomie jedenastu 9 w skali roku?
-Nie. Cloud Storage zapewnia (jedenaście 9) rocznej trwałości (durability). Dostępność oznacza możliwość uzyskania 
+462) Cloud Storage zapewnia dostępność na poziomie jedenastu dziewiątek w skali roku?
+Nie. Cloud Storage zapewnia (jedenaście dziewiątek) rocznej trwałości (durability). Dostępność oznacza możliwość uzyskania 
 dostępu do obiektu, gdy jest to potrzebne.
 
 463) Tworzenie oprogramowania analitycznego dla "I o T" (Internet of Things). Przesyłanie dużych wolumenów danych w 
@@ -2597,7 +2587,7 @@ BigTable. BigTable to baza danych o szerokich kolumnach, która może wchłania�
 Obsługuje również opóźnienia na poziomie milisekund.
 
 464) Kiedy wprowadzasz zapytanie w formularzu zapytań BigQuery, BigQuery analizuje zapytanie i wyświetla szacunkową 
-wartość jakiego metryki?
+wartość jakich metryk?
 Ilość zeskanowanych danych.
 
 465) Typ maszyny e2-standard-2?
@@ -2606,14 +2596,14 @@ e2: Rodzina typów maszyn. standard: Typ obciążenia. 2: Liczba rdzeni CPU.
 466) Adres IP wewnętrzny (internal) i zewnętrzny (external)?
 Adresy IP zewnętrzne (publiczne) są adresowalne w Internecie.
 Adresy IP wewnętrzne (prywatne) są wewnętrzne dla sieci korporacyjnej.
-Nie można mieć dwóch zasobów z tym samym publicznym (zewnętrznym) adresem IP. Jednak dwa różne sieci korporacyjne mogą 
+Nie można mieć dwóch zasobów z tym samym publicznym (zewnętrznym) adresem IP. Jednak dwie różne sieci korporacyjne mogą 
 mieć zasoby z tym samym wewnętrznym (prywatnym) adresem IP. Wszystkie maszyny wirtualne mają przypisany co najmniej 
 jeden wewnętrzny adres IP. Tworzenie zewnętrznego adresu IP może być włączone dla instancji VM: pamiętaj, że gdy 
 zatrzymasz instancję VM, zewnętrzny adres IP zostaje utracony.
 
 467) Adres IP statyczny (Static IP Address)?
 Przypisz statyczny adres IP do maszyny wirtualnej (VM)!
-Load balancery. Statyczny adres IP można przenieść na inną instancję VM w tym samym projekcie.
+Load balansery. Statyczny adres IP można przenieść na inną instancję VM w tym samym projekcie.
 Statyczny adres IP pozostaje przypisany, nawet jeśli zatrzymasz instancję. Musisz ręcznie go odłączyć.
 Będziesz obciążany za statyczny adres IP, nawet gdy go nie używasz!
 
@@ -2623,7 +2613,7 @@ Co powiesz na utworzenie niestandardowego obrazu z już zainstalowanymi poprawka
 Można go utworzyć z instancji, dysku trwałego, migawki, innego obrazu lub pliku w Cloud Storage. 
 Może być udostępniany między projektami.
 Przestarzałe obrazy można usunąć (i określić obraz zastępczy).
-Hardening obrazu - Dostosuj obrazy do standardów bezpieczeństwa Twojej firmy. 
+Hardening obrazu. Dostosuj obrazy do standardów bezpieczeństwa Twojej firmy. 
 Zdecydowanie lepiej jest używać niestandardowego obrazu niż skryptu startowego.
 
 469) Szablony instancji (Instance Template)?
@@ -2631,7 +2621,7 @@ Dlaczego musisz określać wszystkie szczegóły instancji VM (obraz, typ instan
 Co powiesz na utworzenie szablonu instancji? Określ typ maszyny, obraz, etykiety, skrypty startowe i inne właściwości. 
 Używany do tworzenia instancji VM i zarządzanych grup instancji.
 Zapewnia wygodny sposób tworzenia podobnych instancji. Nie można go zaktualizować. Aby wprowadzić zmiany, skopiuj 
-istniejący szablon i zmodyfikuj go. Opcjonalnie można określić rodzinę obrazów (na przykład debian-9).
+istniejący szablon i zmodyfikuj go. Opcjonalnie można określić rodzinę obrazów (na przykład "Debian 9").
 
 470) Tworzenie instancji VM z serwerem HTTP, sposoby?
 Skrypt startowy, Szablon instancji, Niestandardowy obraz. Bootstrapping: Instalowanie poprawek systemu operacyjnego lub 
@@ -2657,27 +2647,27 @@ Ograniczenia: Nie dotyczy niektórych typów maszyn (np. E2 i A2). Nie dotyczy i
 Dla obciążeń o przewidywalnych potrzebach dotyczących zasobów. Zobowiąż się na 1 rok lub 3 lata. Zniżka do 70% w 
 zależności od typu maszyny i liczby rdzeni CPU.
 
-476) reemptible VM (Instancje VM na żądanie)?
-Tymczasowe, tańsze (nawet o 80%) instancje obliczeniowe. Mogą zostać zatrzymane przez GCP w dowolnym momencie 
+476) Preemptible VM (Instancje VM na żądanie)?
+Tymczasowe, tańsze (nawet o "80 %") instancje obliczeniowe. Mogą zostać zatrzymane przez GCP w dowolnym momencie 
 (preempted) w ciągu 24 godzin.
 Użyj Preemptible VM, jeśli:
 a) Twoje aplikacje są odporne na awarie (fault-tolerant).
 b) Jesteś bardzo wrażliwy na koszty (cost sensitive).
 c) Twoje obciążenie nie jest pilne (immediate).
-Przykład: Niepilne zadania przetwarzania wsadowego (No- immediate batch processing jobs).
+Przykład: Niepilne zadania przetwarzania wsadowego (No immediate batch processing jobs).
 Ograniczenia:
 a) Nie zawsze dostępne.
 b) Brak SLA i nie można ich migrować do standardowych instancji VM.
 c) Brak automatycznych ponownych uruchomień.
 
-477) Spot VMs?
-Spot VMs: najnowsza wersja preemptible VMs. Kluczowe różnice: nie mają maksymalnego czasu działania, w przeciwieństwie 
-do tradycyjnych preemptible VMs, które mają maksymalny czas działania wynoszący 24 godziny. Inne cechy są podobne do 
-tradycyjnych preemptible VMs. Mogą zostać odebrane w dowolnym momencie z 30-sekundowym wyprzedzeniem. 
+477) Spot "VM-s"?
+Spot "VM-s": najnowsza wersja preemptible "VM-s". Kluczowe różnice: nie mają maksymalnego czasu działania, w przeciwieństwie 
+do tradycyjnych preemptible "VM-s", które mają maksymalny czas działania wynoszący 24 godziny. Inne cechy są podobne do 
+tradycyjnych preemptible "VM-s". Mogą zostać odebrane w dowolnym momencie z 30-sekundowym wyprzedzeniem. 
 Nie zawsze są dostępne. Dynamic Pricing: zniżka od 60% do 91% w porównaniu do on-demand VMs. 
 Kredyty w ramach Free Tier nie mają zastosowania.
 
-478) Google Compute Engine - Billing?
+478) Google Compute Engine, Billing?
 Opłaty są naliczane na podstawie sekundy (po minimum 1 minucie). Nie ponosisz opłat za moc obliczeniową, gdy instancja 
 obliczeniowa jest zatrzymana. Jednak będziesz obciążony opłatami za wszelkie przechowywanie danych do niej podłączone! 
 Zawsze twórz alerty budżetowe i korzystaj z eksportów budżetów, aby na bieżąco kontrolować opłaty! Jakie są sposoby, 
@@ -2687,7 +2677,7 @@ by zaoszczędzić? Wybierz odpowiedni typ maszyny i obraz dla swojego obciążen
 Jak utrzymać działanie instancji VM, gdy system hosta wymaga aktualizacji (aktualizacja oprogramowania lub sprzętu)? 
 Live Migration: Twoja działająca instancja jest migrowana na inny host w tej samej strefie. Nie zmienia to żadnych 
 atrybutów ani właściwości VM. Obsługiwane dla instancji z lokalnymi SSD. Nieobsługiwane dla GPU i instancji preemptible.
-Ważna konfiguracja - Availability Policy: Co powinno się stać podczas okresowej konserwacji infrastruktury?
+Ważna konfiguracja, Availability Policy: Co powinno się stać podczas okresowej konserwacji infrastruktury?
 a) Migrate (domyślnie): Migruj instancje VM na inne sprzęt.
 b) Terminate: Zatrzymaj instancję VM.
 c) Automatic restart: Ponownie uruchom instancje VM, jeśli zostały zakończone z powodów niezwiązanych z użytkownikiem 
@@ -2696,12 +2686,12 @@ c) Automatic restart: Ponownie uruchom instancje VM, jeśli zostały zakończone
 480) Custom Machine Types?
 Co zrobić, gdy zdefiniowane opcje VM nie są odpowiednie dla Twojego obciążenia? Stwórz typ maszyny dostosowany do 
 Twoich potrzeb (Custom Machine Type).
-Custom Machine Type: Dostosuj vCPU, pamięć i GPU. Wybierz między typami maszyn E2, N2 lub N1. Obsługiwane są różne 
+Custom Machine Type: Dostosuj "v-CPU", pamięć i GPU. Wybierz między typami maszyn E2, N2 lub N1. Obsługiwane są różne 
 systemy operacyjne: CentOS, CoreOS, Debian, Red Hat, Ubuntu, Windows itp. 
-Opłaty są naliczane za vCPU i pamięć przypisaną do każdej instancji.
+Opłaty są naliczane za "v-CPU" i pamięć przypisaną do każdej instancji.
 
 481) GPU?
-Jak przyspieszyć obciążenia intensywnie wykorzystujące obliczenia matematyczne i grafikę, takie jak AI/ML itd.?
+Jak przyspieszyć obciążenia intensywnie wykorzystujące obliczenia matematyczne i grafikę, takie jak "AI - ML" itd.?
 Dodaj GPU do swojej maszyny wirtualnej: Wysoka wydajność dla obciążeń intensywnie wykorzystujących obliczenia 
 matematyczne i grafikę. Wyższy koszt.
 Pamiętaj, aby używać obrazów z zainstalowanymi bibliotekami GPU (np. do uczenia głębokiego).
@@ -2711,15 +2701,15 @@ Zalecana polityka dostępności dla GPU: Automatic restart-on (automatyczny rest
 
 482) Virtual Machine Remember?
 Związane z projektem. Dostępność typów maszyn może różnić się w zależności od regionu. Można zmienić typ maszyny 
-(dostosować liczbę vCPU i pamięć) tylko w przypadku zatrzymanej instancji. Instancje VM można filtrować według różnych 
+(dostosować liczbę "v-CPU" i pamięć) tylko w przypadku zatrzymanej instancji. Instancje VM można filtrować według różnych 
 właściwości: Nazwa, Strefa, Typ maszyny, IP wewnętrzne / zewnętrzne, Sieć, etykiety (labels) itp. 
-Instancje są strefowe (zonal) (działają w określonej strefie (w określonym regionie)). 
-Obrazy są globalne (global) (można udostępniać dostęp innym projektom, jeśli to konieczne). 
+Instancje są strefowe (zonal), działają w określonej strefie (w określonym regionie). 
+Obrazy są globalne (global), można udostępniać dostęp innym projektom, jeśli to konieczne. 
 Szablony instancji (instance templates) są globalne (chyba że używasz zasobów strefowych w swoich szablonach). 
 Automatic Basic monitoring jest włączony. Domyślne metryki: Wykorzystanie CPU, Liczba bajtów w sieci (wejście/wyjście), 
 Przepustowość dysku / IOPs. W przypadku wykorzystania pamięci i przestrzeni dyskowej wymagane są agenty Cloud Monitoring.
 
-483) Virtual Machines - Best Practices?
+483) Virtual Machines, Best Practices?
 Wybierz strefę i region na podstawie: kosztów, przepisów, potrzeb dostępności, opóźnień i specyficznych wymagań sprzętowych.
 Rozmieść instancje w wielu strefach i regionach, aby zapewnić wysoką dostępność. Wybierz odpowiedni typ maszyny dla 
 swoich potrzeb. Eksperymentuj z różnymi typami maszyn, aby znaleźć ten najlepszy.
@@ -2735,7 +2725,7 @@ Projekt. Konto rozliczeniowe. API Compute Engine powinny być włączone.
 Sole-tenant nodes.
 
 486) Mam tysiące instancji VM i chcę zautomatyzować zarządzanie łatkami systemu operacyjnego, zarządzanie inwentaryzacją 
-systemu operacyjnego oraz zarządzanie konfiguracją systemu operacyjnego (zarządzanie zainstalowanym oprogramowaniem).
+systemu operacyjnego oraz zarządzanie konfiguracją systemu operacyjnego (zarządzanie zainstalowanym oprogramowaniem)?
 Użyj VM Manager.
 
 487) Chcesz zalogować się do swojej instancji VM, aby zainstalować oprogramowanie?
@@ -2763,20 +2753,17 @@ Wykorzystanie CPU.
 493) Wykonaj kopię zapasową danych z bazy danych Datastore do systemu przechowywania obiektów. 
 Twoje dane są przechowywane w domyślnej przestrzeni nazw. Jakie polecenie należy wykonać, aby wyeksportować dane z 
 Datastore do koszyka ace-exam-bucket1?
-"gcloud datastore export --namespace="default" gs://ace-exam-bucket1".
+"gcloud datastore export --namespace="default" gs : // ace-exam-bucket1".
 
 494) Gcloud?
-Interfejs wiersza poleceń do interakcji z zasobami Google Cloud. Większość usług GCP może być zarządzana z poziomu CLI 
-za pomocą "gcloud":
-Compute Engine Virtual Machines.
-Managed Instance Groups.
-Bazy danych.
+Interfejs wiersza poleceń do interakcji z zasobami Google Cloud. Większość usług GCP może być zarządzana z poziomu "C L I" 
+za pomocą "gcloud": Compute Engine Virtual Machines. Managed Instance Groups. Bazy danych.
 Możesz tworzyć, usuwać, aktualizować, odczytywać istniejące zasoby oraz wykonywać operacje platformy, 
 takie jak wdrożenia (deployments)!
 Niektóre usługi GCP mają specyficzne narzędzia CLI:
-Cloud Storage: "gsutil".
-Cloud BigQuery: "bq".
-Cloud BigTable: "cbt".
+Cloud Storage: "gs-util".
+Cloud BigQuery: "b q".
+Cloud BigTable: "c b t".
 Kubernetes: "kubectl".
 
 495) Polecenia Gcloud?
@@ -2797,8 +2784,8 @@ Przeciwieństwo: "gcloud config unset".
 
 497) Gcloud - Monitorowanie wielu konfiguracji?
 "gcloud config configurations create/list/delete".
-Utwórz nową konfigurację: "gcloud config configurations create name/dev".
-Aktywuj określoną konfigurację: "gcloud config configurations activate name/dev".
+Utwórz nową konfigurację: "gcloud config configurations create name_dev".
+Aktywuj określoną konfigurację: "gcloud config configurations activate name_dev".
 
 498) Struktura poleceń Gcloud - Praca z usługami?
 "gcloud Group Subgroup Action...".
@@ -2806,9 +2793,9 @@ Group: config, compute, container, dataflow, functions, iam.
 Subgroup: instances, images, instance-template, machine-types, regions, zones.
 Action: create, list, stop, describe.
 a) "gcloud compute instances list".
-b) "gcloud compute instances create my-first-instance".
+b) "gcloud compute instances create my_first_instance".
 c) "gcloud compute instances describe".
-d) "gcloud compute instances delete my-first-instance".
+d) "gcloud compute instances delete my_first_instance".
 
 499) Gcloud compute instances create?
 Tworzenie instancji Compute: "gcloud compute instances create Name".
@@ -2852,7 +2839,7 @@ Cloud SQL i Spanner.
 Historia zadań pokazuje aktywne zadania, zakończone zadania oraz zadania, które wygenerowały błędy.
 
 506) Polecenie do utworzenia tabeli o nazwie "iot-ingest-data" w BigTable?
-"cbt createtable iot-ingest-data".
+"'c b t' createtable iot-ingest-data".
 
 507) Jaki jest następny krok po utworzeniu instancji Cloud Spanner, który należy wykonać, aby umożliwić załadowanie danych?
 Utwórz bazę danych w obrębie instancji.
@@ -2865,14 +2852,14 @@ regionalnej (Regional) do pamięci (Nearline) 90 dni po utworzeniu obiektu. Jak 
 Utwórz politykę konfiguracji zarządzania cyklem życia, określając wiek 90 dni i ustawiając "StorageClass" na nearline.
 
 510) Polecenie wiersza poleceń do utworzenia koszyka Cloud Storage?
-"gsutil mb".
+"'g-sutil' 'm b'".
 
 511) Tworzenie Zarządzanej Grupy Instancji (MIG)?
 Szablon instancji (instance template) jest wymagany. Skonfiguruj auto-skalowanie, aby automatycznie dostosować liczbę 
 instancji w zależności od obciążenia:
 a) Minimalna liczba instancji.
 b) Maksymalna liczba instancji.
-c) Metryki auto-skalowania (Auto-scaling metrics): Cel wykorzystania CPU, cel wykorzystania Load Balancera lub dowolna 
+c) Metryki auto-skalowania (Auto-scaling metrics): Cel wykorzystania CPU, cel wykorzystania Load Balansera lub dowolna 
 inna metryka z Stackdriver.
 d) Okres chłodzenia (Cool-down period): Jak długo czekać, zanim ponownie sprawdzisz metryki auto-skalowania?
 e) Kontrola skali w dół (Scale In Controls): Zapobiega nagłemu spadkowi liczby maszyn wirtualnych.
@@ -2887,7 +2874,7 @@ Skalowanie w górę (Scale Out): Zwiększa liczbę instancji VM, gdy obciążeni
 Aktualizacja stopniowa (Rolling Update): Stopniowa aktualizacja instancji w grupie instancji do nowego szablonu instancji.
 Określ nowy szablon: Opcjonalnie określ szablon do testów canary.
 Określ, jak ma odbyć się aktualizacja:
-a) Kiedy ma nastąpić aktualizacja? Rozpocznij aktualizację natychmiast (proaktywnie) lub Kiedy grupa instancji zostanie 
+a) Kiedy, ma nastąpić aktualizacja? Rozpocznij aktualizację natychmiast (proaktywnie) lub Kiedy grupa instancji zostanie 
 później skalowana (optymistycznie).
 b) Jak ma odbyć się aktualizacja? Maksymalny wzrost (Maximum surge): Ile instancji ma zostać dodanych w danym momencie?
 Maksymalna liczba niedostępnych (Maximum unavailable): Ile instancji może być niedostępnych podczas aktualizacji?
@@ -2899,26 +2886,26 @@ Okres chłodzenia (Cool-down period) / początkowe opóźnienie (Initial delay).
 515) Grupa instancji. Chcesz, aby niezdrowe instancje były automatycznie zastępowane?
 Skonfiguruj sprawdzanie stanu (health check) w grupie instancji (auto-uzdrawianie).
 
-516) Grupa instancji. Chcesz zapewnić wysoką dostępność w MIG, nawet podczas aktualizacji sprzętu/oprogramowania?
+516) Grupa instancji. Chcesz zapewnić wysoką dostępność w "M I G", nawet podczas aktualizacji sprzętu/oprogramowania?
 Użyj szablonu instancji z polityką dostępności "automatyczny restart" włączoną oraz "migracja podczas konserwacji hosta".
 Zapewnia to migrację na żywo i automatyczne ponowne uruchomienie.
 
-517) Grupa instancji. Chcesz zachować stan VM w MIG?
-Stateful MIG: Zachowaj stan VM (nazwa instancji, podłączony dysk trwały i metadane).
+517) Grupa instancji. Chcesz zachować stan VM w "M I G"?
+Stateful "M I G": Zachowaj stan VM (nazwa instancji, podłączony dysk trwały i metadane).
 Zalecane dla aplikacji wymagających stanu (np. bazy danych, aplikacje przetwarzania danych).
 
-518) Grupa instancji. Chcesz utworzyć maszyny wirtualne o różnych konfiguracjach w tej samej grupie.
+518) Grupa instancji. Chcesz utworzyć maszyny wirtualne o różnych konfiguracjach w tej samej grupie?
 Utwórz niezarządzaną grupę instancji.
 
 519) Grupa instancji. Chcesz, aby aplikacja zarządzana przez MIG przetrwała awarie strefowe?
-Utwórz MIG obejmującą wiele stref (lub MIG regionalną).
+Utwórz "M I G" obejmującą wiele stref (lub "M I G" regionalną).
 
 520) Polecenia dla zarządzanych grup instancji (Managed Instance Groups)?
 Gcloud compute instance-groups managed:
 a) Utwórz grupę instancji:
-"gcloud compute instance-group managed create my-mig --zone us-central1-a --template my-instance-template --size=1".
+"gcloud compute instance-group managed create my-mig --zone us-central1-a --template my-instance-template --size='1''".
 b) Skonfiguruj Auto-skalowanie: Włącz/wyłącz auto-skalowanie.
-"gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas=10".
+"gcloud compute instance-groups managed set-autoscaling my-mig --max-num-replicas='10'".
 c) Zaktualizuj istniejące polityki MIG (np. auto-uzdrawianie):
 "gcloud compute instance-groups managed update my-mig".
 
@@ -2930,7 +2917,7 @@ recreate-instances lub rolling-action start-update.
 522) Chcę wprowadzić nową wersję bez zmniejszenia pojemności. Którą z tych opcji powinienem skonfigurować z wartością 0?
 "--max-unavailable".
 
-523) Jakie opcje konfiguracji mogą zapobiec częstym operacjom skalowania w MIG?
+523) Jakie opcje konfiguracji mogą zapobiec częstym operacjom skalowania w "M I G"?
 "--cool-down-period".
 
 524) Cloud Load Balancing? 
@@ -2943,20 +2930,20 @@ c) Globalne balansowanie obciążenia z jednym adresem IP anycast.
 d) Umożliwia: Wysoką dostępność (High Availability), Auto-skalowanie, Odporność (Resilience).
 
 525) Cloud Load Balancing - Terminologia?
-a) Backend: Grupa punktów końcowych, które odbierają ruch od load balancera Google Cloud (np. grupy instancji).
-b) Frontend: Określa adres IP, port i protokół. Ten adres IP to adres frontendowy dla żądań od klientów. 
+a) Backend: Grupa punktów końcowych, które odbierają ruch od load balansera Google Cloud (np. grupy instancji).
+b) Frontend: Określa adres IP, port i protokół. Ten adres IP to adres front-endowy dla żądań od klientów. 
 W przypadku SSL należy również przypisać certyfikat.
-c) Reguły hosta i ścieżki (dla load balancingu HTTP(s)): Definiują reguły przekierowujące ruch do różnych backendów:
+c) Reguły hosta i ścieżki (dla load balansingu HTTP(s)): Definiują reguły przekierowujące ruch do różnych backendów:
 Na podstawie ścieżki, Na podstawie hosta, Na podstawie nagłówków HTTP.
 
 526) Load Balancing - Zakończenie (termination) / odciążenie (offloading) SSL/TLS?
-Klient do Load Balancera: Przez Internet, HTTPS jest zalecane.
+Klient do Load Balansera: Przez Internet, HTTPS jest zalecane.
 Load Balancer do instancji VM: Przez wewnętrzną sieć Google, HTTP jest wystarczające, ale HTTPS jest preferowane.
-Zakończenie/odciążenie SSL/TLS: Klient do Load Balancera: HTTPS/TLS. Load Balancer do instancji VM: HTTP/TCP.
+Zakończenie/odciążenie SSL/TLS: Klient do Load Balansera: HTTPS/TLS. Load Balancer do instancji VM: HTTP/TCP.
 
-527) Cloud Load Balancing - Cechy (features)?
-External HTTP(s): Globalny, Zewnętrzny, HTTP lub HTTPS. Proxy. HTTP na porcie 80 lub 8080, HTTPS na porcie 443.
-Internal HTTP(S): Regionalny, Wewnętrzny, HTTP lub HTTPS. Proxy. HTTP na porcie 80 lub 8080, HTTPS na porcie 443.
+527) Cloud Load Balancing, Cechy (features)?
+External HTTP(s): Globalny, Zewnętrzny, HTTP lub HTTPS. Proxy. HTTP na porcie "80" lub "8080", HTTPS na porcie "443".
+Internal HTTP(S): Regionalny, Wewnętrzny, HTTP lub HTTPS. Proxy. HTTP na porcie "80" lub "8080", HTTPS na porcie "443".
 SSL Proxy: Globalny, Zewnętrzny, TCP z odciążeniem SSL. Proxy. Duża lista portów.
 TCP Proxy: Globalny, Zewnętrzny, TCP bez odciążenia SSL. Proxy. Duża lista portów.
 External Network TCP/UDP: Regionalny, Zewnętrzny, TCP lub UDP. Pass-Through. Dowolne porty.
@@ -2966,11 +2953,11 @@ Internal TCP/UDP: Regionalny, Wewnętrzny, TCP lub UDP. Pass-Through. Dowolne po
 Skonfiguruj health-check.
 
 529) Load Balancer. Chcesz zapewnić wysoką dostępność dla swoich instancji VM?
-Utwórz wiele MIG dla swoich instancji VM w różnych regionach. Równoważ ruch za pomocą Load Balancer.
+Utwórz wiele "M I G" dla swoich instancji VM w różnych regionach. Równoważ ruch za pomocą Load Balancer.
 
-530) Load Balancer. Chcesz kierować żądania do wielu mikroserwisów, używając tego samego load balancera?
-Utwórz indywidualne MIG i back-endy dla każdego mikroserwisu. Stwórz zasady Host i Path, aby przekierować ruch do 
-odpowiedniego back-endu mikroserwisu w zależności od ścieżki (/microservice-a, /microservice-b, itd.). 
+530) Load Balancer. Chcesz kierować żądania do wielu mikro-serwisów, używając tego samego load balansera?
+Utwórz indywidualne MIG i back-endy dla każdego mikro-serwisu. Stwórz zasady Host i Path, aby przekierować ruch do 
+odpowiedniego back-endu mikro-serwisu w zależności od ścieżki (/microservice-a, /microservice-b, itd.). 
 Możesz także kierować ruch do zasobników chmurowych.
 
 531) Load Balancer. Chcesz równoważyć globalny zewnętrzny ruch HTTPS między instancjami back-end w wielu regionach?
@@ -3130,25 +3117,25 @@ Google Cloud Platform (GCP) to zestaw usług chmurowych, który działa na tej s
 wykorzystuje wewnętrznie do swoich produktów końcowych, takich jak Google Search, Gmail, przechowywanie plików i YouTube.
 GCP oferuje szereg usług, w tym obliczenia, przechowywanie danych, analitykę danych i uczenie maszynowe.
 
-559) Czy możesz wyjaśnić różnicę między IaaS, PaaS i SaaS? Podaj przykłady z GCP.
-a) IaaS (Infrastructure as a Service): Oferuje zwirtualizowane zasoby obliczeniowe przez internet.
+559) Czy możesz wyjaśnić różnicę między "I a a S", "P a a S" i "S a a S"? Podaj przykłady z GCP.
+a) "I a a S" (Infrastructure as a Service): Oferuje zwirtualizowane zasoby obliczeniowe przez internet.
 W GCP przykładem IaaS jest Google Compute Engine (GCE), który oferuje maszyny wirtualne, które użytkownicy mogą 
 dostosować i kontrolować.
-b) PaaS (Platform as a Service): Oferuje narzędzia sprzętowe i programowe przez internet, zazwyczaj do tworzenia aplikacji.
+b) "P a a S" (Platform as a Service): Oferuje narzędzia sprzętowe i programowe przez internet, zazwyczaj do tworzenia aplikacji.
 Google App Engine (GAE) to przykład PaaS, oferujący platformę dla programistów do budowania, wdrażania i skalowania aplikacji.
-c) SaaS (Software as a Service): Dostarcza aplikacje oprogramowania przez internet na zasadzie subskrypcji.
+c) "S a a S" (Software as a Service): Dostarcza aplikacje oprogramowania przez internet na zasadzie subskrypcji.
 Google Workspace (dawniej G Suite) to przykład SaaS, oferujący narzędzia produktywności dla firm.
 
 560) Czym są Google Compute Engine i Google App Engine? Jak się różnią?
-Google Compute Engine (GCE) to IaaS, które oferuje maszyny wirtualne (VM) w chmurze, dając użytkownikom pełną kontrolę 
+Google Compute Engine (GCE) to "I a a S", które oferuje maszyny wirtualne (VM) w chmurze, dając użytkownikom pełną kontrolę 
 nad systemem operacyjnym, ustawieniami sieciowymi i całym stosem oprogramowania.
-Z kolei Google App Engine (GAE) to PaaS, które abstrahuje większość infrastruktury, umożliwiając programistom skupienie 
+Z kolei Google App Engine (GAE) to "P a a S", które abstrahuje większość infrastruktury, umożliwiając programistom skupienie 
 się na pisaniu kodu bez martwienia się o środowisko, w którym ten kod działa.
 GAE automatycznie skaluje aplikację w odpowiedzi na otrzymywany ruch.
 
-561) Wyjaśnij pojęcie równoważenia obciążenia w GCP.
+561) Wyjaśnij pojęcie równoważenia obciążenia w GCP?
 Równoważenie obciążenia to metoda używana do rozdzielania ruchu sieciowego lub aplikacyjnego pomiędzy wiele serwerów w 
-farmie serwerów lub puli serwerów. W GCP równoważenie obciążenia pozwala użytkownikom rozdzielać nadchodzący ruch 
+farmie serwerów, lub puli serwerów. W GCP równoważenie obciążenia pozwala użytkownikom rozdzielać nadchodzący ruch 
 pomiędzy wieloma instancjami ich aplikacji, co poprawia wydajność i dostępność.
 GCP oferuje różne rodzaje równoważników obciążenia, w tym HTTP(S) Load Balancing, TCP/SSL Proxy Load Balancing i 
 Network Load Balancing, z których każdy jest zaprojektowany do specyficznych scenariuszy.
@@ -3163,10 +3150,10 @@ c) Coldline (dla danych, które są dostępne mniej niż raz na kwartał).
 d) Archive (dla długoterminowego przechowywania, dostępnego mniej niż raz w roku). 
 każda z nich różni się ceną i dostępnością.
 
-563) Opisz różnicę między BigQuery a Cloud Bigtable.
+563) Opisz różnicę między BigQuery a Cloud Bigtable?
 BigQuery to w pełni zarządzane, bezserwerowe i wysoce skalowalne magazynowanie danych zaprojektowane z myślą o 
 elastyczności biznesowej (business agility). Jest idealne do przeprowadzania analiz dużych zbiorów danych.
-Cloud Bigtable to z kolei usługa bazy danych NoSQL, która jest odpowiednia do analiz w czasie rzeczywistym i obciążeń 
+Cloud Bigtable to z kolei usługa bazy danych "No SQL", która jest odpowiednia do analiz w czasie rzeczywistym i obciążeń 
 operacyjnych z dużymi ilościami danych.
 Podczas gdy BigQuery jest zoptymalizowane do zapytań analitycznych, Cloud Bigtable jest zoptymalizowane do dostępu do 
 danych o niskim opóźnieniu.
@@ -3180,7 +3167,7 @@ co pozwala na stworzenie spójnego środowiska chmurowego.
 
 565) Jak GCP zarządza tożsamością (identity) i dostępem (access)?
 GCP zarządza tożsamością i dostępem za pomocą Cloud Identity and Access Management (IAM). IAM pozwala administratorom 
-autoryzować, kto może podejmować działania na określonych zasobach, dając im kontrolę nad tym, którzy użytkownicy i 
+autoryzować, kto może podejmować działania na określonych zasobach, dając im kontrolę, którzy użytkownicy i 
 usługi mogą uzyskać dostęp do różnych zasobów.
 Polityki IAM definiują uprawnienia i mogą być ustawiane na różnych poziomach hierarchii zasobów GCP.
 
@@ -3199,10 +3186,10 @@ Przykłady produktów bezserwerowych w GCP to Google Cloud Functions (funkcje wy
 
 568) Jakie są główne usługi obliczeniowe oferowane przez GCP?
 GCP oferuje kilka usług obliczeniowych, w tym:
-a) Google Compute Engine (GCE): Elastyczna i skalowalna usługa IaaS, która zapewnia maszyny wirtualne (VM) w chmurze.
+a) Google Compute Engine (GCE): Elastyczna i skalowalna usługa "I a a S", która zapewnia maszyny wirtualne (VM) w chmurze.
 b) Google Kubernetes Engine (GKE): Zarządzana usługa, która pozwala użytkownikom uruchamiać i zarządzać kontenerami Docker 
 oraz aplikacjami opartymi na kontenerach na klastrze maszyn wirtualnych (VM).
-c) Google App Engine (GAE): PaaS do budowania skalowalnych aplikacji internetowych i zaplecza dla aplikacji mobilnych.
+c) Google App Engine (GAE): "P a a S" do budowania skalowalnych aplikacji internetowych i zaplecza dla aplikacji mobilnych.
 d) Google Cloud Functions (GCF): Bezserwerowe środowisko wykonawcze do budowania i łączenia usług chmurowych za pomocą 
 funkcji o pojedynczym celu, które odpowiadają na zdarzenia chmurowe.
 
@@ -3237,10 +3224,10 @@ Przypadki użycia obejmują:
 a) Przetwarzanie danych przechowywanych w Google Cloud Storage.
 b) Reagowanie na zmiany w Firebase Realtime Database.
 c) Implementacja zaplecza webhooków dla GitHub lub Slack.
-d) Tworzenie lekkich API i mikroserwisów.
+d) Tworzenie lekkich API i mikro-serwisów.
 
-573) Czym są preemptible VMs w GCE i kiedy warto ich używać?
-Preemptible VMs to opłacalna opcja uruchamiania obciążeń roboczych na Google Compute Engine, które mogą zostać przerwane.
+573) Czym są preemptible "VM-s" w GCE i kiedy warto ich używać?
+Preemptible "VM-s" to opłacalna opcja uruchamiania obciążeń roboczych na Google Compute Engine, które mogą zostać przerwane.
 Te maszyny wirtualne są oferowane w niższej cenie niż standardowe instancje, ale mogą zostać zakończone przez GCP, 
 jeśli będzie potrzebować zasobów do innych zadań.
 Należy je używać do zadań wsadowych, obciążeń odpornych na błędy lub jakiejkolwiek pracy, którą można łatwo ponownie 
@@ -3270,14 +3257,14 @@ b) Automatyczne skalowanie i przełączanie awaryjne (failover).
 c) Obsługę ruchu HTTP(S), TCP/SSL i UDP.
 d) Integrację z automatycznym skalowaniem GCP, aby dynamicznie dostosować zasoby do zapotrzebowania.
 
-577) Opisz, jak zarządzać aplikacjami stanowymi w Kubernetes Engine.
+577) Opisz, jak zarządzać aplikacjami stanowymi w Kubernetes Engine?
 Zarządzanie aplikacjami stanowymi w GKE obejmuje:
-a) Używanie StatefulSets, które zapewniają unikalne, trwałe tożsamości oraz stabilne, trwałe przechowywanie danych dla 
-każdego poda.
+a) Używanie "Stateful-Sets", które zapewniają unikalne, trwałe tożsamości oraz stabilne, trwałe przechowywanie danych 
+dla każdego poda.
 b) Implementowanie persistent volumes, które są niezależne od cyklu życia poda, aby przechowywać dane.
 c) Konfigurowanie usług, które zapewniają stabilną sieć do komunikacji z podami.
-d) Stosowanie probe'ów gotowości (readiness) i probe'ów żywotności (liveness), aby upewnić się, że pody są uznawane za 
-gotowe tylko wtedy, gdy mogą obsługiwać żądania i są restartowane, jeśli zawiodą.
+d) Stosowanie probów gotowości (readiness) i probów żywotności (liveness), aby upewnić się, że pody są uznawane za 
+gotowe tylko wtedy, gdy mogą obsługiwać żądania i są "restarto-wane", jeśli zawiodą.
 
 578) Jakie są podstawowe opcje przechowywania dostępne w GCP?
 GCP oferuje różnorodne opcje przechowywania, które odpowiadają na różne potrzeby:
@@ -3289,7 +3276,7 @@ d) Local SSD: Przechowywanie blokowe o wysokiej wydajności, lokalne i przejści
 zapewnienia wysokiej przepustowości i niskiej latencji.
 
 579) Czy możesz wyjaśnić różnicę między Cloud SQL a Cloud Spanner?
-Cloud SQL to w pełni zarządzana usługa baz danych relacyjnych, która obsługuje MySQL, PostgreSQL i SQL Server.
+Cloud SQL to w pełni zarządzana usługa baz danych relacyjnych, która obsługuje "My SQL", "Postgre SQL" i "SQL Server".
 Jest idealna do tradycyjnych obciążeń baz danych, które wymagają bazy danych relacyjnej, i została zaprojektowana z myślą 
 o kompatybilności z istniejącymi aplikacjami.
 Cloud Spanner to w pełni zarządzana, skalowalna usługa baz danych relacyjnych dla danych aplikacji regionalnych i globalnych.
@@ -3297,34 +3284,33 @@ Oferuje skalowanie poziome bez kompromisów w zakresie silnej spójności i sema
 dla większych, rozproszonych aplikacji, które wymagają wysokiej dostępności i globalnej dystrybucji.
 
 580) Jak Google Cloud Storage zapewnia trwałość i dostępność danych?
-Google Cloud Storage zapewnia wysoką trwałość i dostępność danych dzięki:
 a) Replikacji danych (Data Replication): Przechowywaniu wielu kopii danych w różnych lokalizacjach fizycznych, 
 aby chronić przed awariami sprzętu i katastrofami.
 b) Automatycznym sumom kontrolnym (Automatic checksums): Weryfikacji integralności danych zarówno w spoczynku, 
 jak i w trakcie transmisji, w celu wykrywania i naprawiania wszelkich uszkodzeń.
-c) Klasom przechowywania (Storage classes): Oferowaniu różnych klas przechowywania(Standard, Nearline, Coldline i Archive), 
-które równoważą częstotliwość dostępu z kosztami, umożliwiając użytkownikom wybór odpowiedniego poziomu dostępności 
+c) Klasom przechowywania (Storage classes): Oferowaniu różnych klas przechowywania (Standard, Nearline, Coldline i Archive),.
+Równoważą częstotliwość dostępu z kosztami, umożliwiając użytkownikom wybór odpowiedniego poziomu dostępności 
 i ceny dla swoich danych.
 
 581) Czym jest BigQuery i jak się go używa?
 BigQuery to w pełni zarządzane, bezserwerowe i wysoce skalowalne magazynowanie danych na GCP, zaprojektowane z myślą 
 o analizie dużych danych.
 Umożliwia użytkownikom analizowanie dużych zbiorów danych w czasie rzeczywistym za pomocą zapytań w stylu SQL.
-BigQuery jest używane do wykonywania szybkich zapytań SQL-like na zestawach danych wielotero-bajtowych, co czyni je 
+BigQuery jest używane do wykonywania szybkich zapytań SQL-like na zestawach danych "wielo-tero-bajtowych", co czyni je 
 idealnym rozwiązaniem do aplikacji analitycznych, business intelligence i raportowania. 
 
 582) Opisz przypadki użycia Firestore i Realtime Database w Firebase.
 Firestore to elastyczna, skalowalna baza danych do rozwoju aplikacji mobilnych, webowych i serwerowych w Firebase i GCP.
 Obsługuje zaawansowane zapytania, aktualizacje w czasie rzeczywistym oraz replikację danych w wielu regionach, co czyni 
 ją odpowiednią dla aplikacji, które wymagają złożonych, hierarchicznych struktur danych i synchronizacji w czasie rzeczywistym.
-Realtime Database to baza danych NoSQL hostowana w chmurze, która umożliwia przechowywanie i synchronizowanie danych 
+Realtime Database to baza danych "No-SQL" hostowana w chmurze, która umożliwia przechowywanie i synchronizowanie danych 
 między użytkownikami w czasie rzeczywistym.
 Jest idealna dla aplikacji, które wymagają wysokiej wydajności i aktualizacji danych w czasie rzeczywistym w bardzo 
 dużych zbiorach danych, takich jak aplikacje do współpracy w czasie rzeczywistym, analityka w czasie rzeczywistym oraz 
 gry wieloosobowe.
 
 583) Jakie są zalety korzystania z Cloud Bigtable?
-Cloud Bigtable to w pełni zarządzana, skalowalna usługa bazy danych NoSQL przeznaczona do dużych obciążeń analitycznych 
+Cloud Bigtable to w pełni zarządzana, skalowalna usługa bazy danych "No-SQL" przeznaczona do dużych obciążeń analitycznych 
 i operacyjnych.
 Zalety to:
 a) Wysoka wydajność: Optymalizowana pod kątem zarówno przepustowości, jak i niskiej latencji dla operacji odczytu i zapisu.
@@ -3336,7 +3322,8 @@ analityki danych oraz aplikacji w czasie rzeczywistym.
 584) Jak wybierasz odpowiednią opcję przechowywania danych w GCP dla swojej aplikacji?
 Odpowiedź: Wybór odpowiedniej opcji przechowywania danych w GCP zależy od kilku czynników:
 a) Model danych: Czy Twoje dane są strukturalne, czy niestrukturalne.
-b) Wzorce dostępu: Częstotliwość dostępu i to, czy obciążenie jest bardziej odczytowe, zapisywalne, czy wymaga dostępu w czasie rzeczywistym.
+b) Wzorce dostępu: Częstotliwość dostępu i to, czy obciążenie jest bardziej odczytowe, zapisywalne, czy wymaga dostępu 
+w czasie rzeczywistym.
 c) Skalowalność: Wolumen danych i ich wzrost w czasie.
 d) Wymagania geograficzne: Czy dane muszą być dostępne globalnie, czy tylko w określonych regionach.
 e) Wymagania kosztowe: Ograniczenia budżetowe i potrzeba zrównoważenia kosztów z wydajnością oraz częstotliwością dostępu.
@@ -3354,7 +3341,6 @@ poniżej milisekundy. Czyni to go idealnym rozwiązaniem dla aplikacji wymagają
 takich jak przechowywanie często używanych informacji w celu poprawy czasów odpowiedzi aplikacji.
 
 587) Jak możesz zabezpieczyć dane przechowywane w GCP?
-Zabezpieczenie danych w GCP można osiągnąć poprzez kilka praktyk:
 a) Szyfrowanie: GCP automatycznie szyfruje dane w spoczynku oraz w trakcie transmisji. Dodatkowo klienci mogą zarządzać 
 swoimi kluczami szyfrującymi za pomocą Cloud Key Management Service.
 b) Kontrola dostępu: Używanie Identity and Access Management (IAM) do określenia, kto ma dostęp do zasobów oraz jakie 
@@ -3369,8 +3355,8 @@ chmury, w której możesz uruchamiać zasoby w wirtualnej sieci, którą sam zde
 zapewniają skalowalną i elastyczną sieć dla zasobów opartych na chmurze, umożliwiając kontrolowanie zakresów adresów IP, 
 podsieci, bram sieciowych i reguł zapory.
 
-589) Wyjaśnij różnicę między Globalnym a Regionalnym VPC w GCP.
-W GCP, Globalne VPC (Virtual Private Cloud) obejmuje wszystkie regiony, umożliwiając zasobom w różnych regionach 
+589) Wyjaśnij różnicę między Globalnym a Regionalnym VPC w GCP?
+Globalne VPC (Virtual Private Cloud) obejmuje wszystkie regiony, umożliwiając zasobom w różnych regionach 
 komunikację ze sobą za pomocą wewnętrznych adresów IP, bez potrzeby korzystania z zewnętrznych adresów IP lub VPN. 
 Z kolei Regionalne VPC jest ograniczone do jednego regionu. Podczas gdy Globalne VPC oferują bezproblemową łączność i 
 uproszczoną architekturę sieciową dla wdrożeń wieloregionowych, Regionalne VPC mogą być korzystne w przypadku lokalnych 
@@ -3386,14 +3372,14 @@ d) Network Load Balancing do równoważenia ruchu TCP/UDP na skalę globalną.
 Każdy typ jest zaprojektowany w celu optymalizacji wydajności i dostępności Twoich aplikacji.
 
 591) Jak działa Cloud CDN (Content Delivery Network) w GCP?
-Cloud CDN wykorzystuje globalnie rozproszone punkty obecności Google'a (edge points of presence) do buforowania treści 
+Cloud CDN wykorzystuje globalnie rozproszone punkty obecności Google (edge points of presence) do buforowania treści 
 HTTP(S) obciążonych równoważeniem obciążenia w pobliżu użytkowników. W GCP, Cloud CDN jest zintegrowany z 
 HTTP(S) Load Balancing, co pozwala na serwowanie treści bezpośrednio z pamięci podręcznej, zmniejszając opóźnienia i 
 poprawiając czasy ładowania stron dla Twoich aplikacji. Działa to poprzez buforowanie treści w lokalizacjach brzegowych 
 (edge locations); kiedy użytkownik żąda treści, Cloud CDN dostarcza ją z najbliższej lokalizacji brzegowej, 
 jeśli jest dostępna, aby zminimalizować odległość i opóźnienia.
 
-592) Opisz funkcję Cloud Interconnect i kiedy warto go używać.
+592) Opisz funkcję Cloud Interconnect i kiedy warto go używać?
 Cloud Interconnect zapewnia szybkie, dedykowane i bezpieczne połączenie między Twoją lokalną siecią a Google Cloud VPC. 
 Jest idealny w scenariuszach wymagających dużej przepustowości, niskich opóźnień lub przy przesyłaniu dużych ilości 
 danych między chmurą a lokalną infrastrukturą. Istnieją dwa rodzaje: Dedicated Interconnect dla prywatnego połączenia 
@@ -3405,7 +3391,7 @@ i wychodzący jest dozwolony lub zablokowany na podstawie adresów IP, protokoł
 (stateful), co oznacza, że odpowiedź na dozwolony ruch przychodzący jest automatycznie dozwolona, niezależnie od zasad 
 dla ruchu wychodzącego. Są one kluczowe dla zapewnienia bezpieczeństwa i prawidłowego funkcjonowania zasobów chmurowych.
 
-594) Wyjaśnij pojęcie podsieci (Subnetworks) w GCP i ich znaczenie.
+594) Wyjaśnij pojęcie podsieci (Subnetworks) w GCP i ich znaczenie?
 Podsieci (lub subnets) w GCP to podziały sieci VPC, które pozwalają na bardziej efektywne segmentowanie sieci. Każda 
 podsieć jest przypisana do określonego regionu i definiuje zakres adresów IP. Dzięki podsieciom można organizować zasoby 
 według działu, aplikacji lub według innych potrzeb operacyjnych, co poprawia zarządzanie siecią, bezpieczeństwo i 
@@ -3414,11 +3400,11 @@ wydajność poprzez kontrolowanie przepływu ruchu na podstawie określonych zas
 595) Jak zapewnić wysoką dostępność i odzyskiwanie po awarii w sieciach GCP?
 Zapewnienie wysokiej dostępności i odzyskiwania po awarii w sieciach GCP polega na projektowaniu z redundancją, wyborze 
 usług wieloregionowych, gdy to możliwe, korzystaniu z zarządzanych usług, które zapewniają automatyczne przełączanie 
-awaryjne (np. Cloud SQL), oraz wdrożeniu solidnego monitorowania i alertowania. Dodatkowo, korzystanie z 
+awaryjne (np. Cloud SQL), oraz wdrożeniu solidnego monitorowania i alertowania. Dodatkowo korzystanie z 
 Cloud Load Balancing do rozdzielania ruchu między instancjami w różnych regionach oraz projektowanie aplikacji jako 
 bezstanowych, gdzie to możliwe, może zwiększyć odporność systemu.
 
-596) Opisz zakresy adresów IP w VPC oraz ich związek z podsieciami.
+596) Opisz zakresy adresów IP w VPC oraz ich związek z podsieciami?
 Zakresy adresów IP w VPC są definiowane podczas tworzenia VPC lub podsieci, określając zakres adresów IP dostępnych do 
 użycia przez zasoby w danej sieci. Każda podsieć w VPC musi mieć unikalny zakres adresów IP, który nie nakłada się na 
 zakresy innych podsieci w tej samej VPC. Taka struktura pozwala na efektywne zarządzanie adresami IP, zapobiegając 
@@ -3436,7 +3422,7 @@ lub różnych sieci przez internet.
 IAM w GCP zarządza kontrolą dostępu, definiując, kto (tożsamość) ma dostęp do jakich zasobów (role) w GCP. Umożliwia to 
 administratorom przyznawanie szczegółowych uprawnień użytkownikom, grupom i kontom serwisowym.
 
-599) Wyjaśnij rolę kont serwisowych (Service Accounts) w GCP.
+599) Wyjaśnij rolę kont serwisowych (Service Accounts) w GCP?
 Konta serwisowe to specjalne konta używane przez aplikacje lub maszyny wirtualne (VM) do interakcji z innymi usługami 
 Google Cloud. Te konta mogą mieć przypisane role IAM i służą do uwierzytelniania aplikacji w celu programowego dostępu 
 do zasobów GCP.
@@ -3453,12 +3439,12 @@ Cloud Key Management Service (KMS).
 b) W trakcie transmisji (in transit): GCP szyfruje dane, gdy przesyłają je między swoimi centrami danych oraz do/z klientów 
 przez internet, używając protokołów takich jak TLS.
 
-602) Jaki jest cel Cloud Security Command Center (CSCC) w GCP?
-CSCC to kompleksowa platforma zarządzania bezpieczeństwem i ryzykiem danych w GCP, która pomaga w zapobieganiu, wykrywaniu 
+602) Jaki jest cel Cloud Security Command Center ("C S C C") w GCP?
+"C S C C" to kompleksowa platforma zarządzania bezpieczeństwem i ryzykiem danych w GCP, która pomaga w zapobieganiu, wykrywaniu 
 i reagowaniu na zagrożenia. Zapewnia wgląd w zasoby chmurowe oraz umożliwia ich kontrolowanie, pozwalając na skanowanie 
 danych wrażliwych, wykrywanie typowych luk bezpieczeństwa w aplikacjach internetowych oraz przeglądanie praw dostępu.
 
-603) Wyjaśnij pojęcie VPC Service Controls w GCP.
+603) Wyjaśnij pojęcie VPC Service Controls w GCP?
 VPC Service Controls wzmacniają obwód bezpieczeństwa wokół usług opartych na API w GCP, pomagając w ograniczeniu ryzyka 
 wycieku danych. Umożliwiają administratorom definiowanie obwodów wokół zasobów, kontrolowanie ruchu danych przez ten 
 obwód oraz zapewnianie dostępu do usług z zarządzanych środowisk.
@@ -3486,7 +3472,7 @@ ten realizowany jest za pomocą technologii takich jak Identity-Aware Proxy (IAP
 aplikacji na podstawie tożsamości i kontekstu.
 
 608) Co to jest Google Cloud Console i jakie są jej kluczowe funkcje?
-Google Cloud Console to oparta na przeglądarce graficzna interfejs użytkownika, który umożliwia zarządzanie zasobami 
+Google Cloud Console to oparta na przeglądarce graficzny interfejs użytkownika, który umożliwia zarządzanie zasobami 
 Google Cloud. Kluczowe funkcje to m.in. możliwość wdrażania i zarządzania aplikacjami, monitorowanie usług, zarządzanie 
 fakturowaniem, konfigurowanie ról i uprawnień IAM, dostęp do Cloud Shell oraz korzystanie z API. Console zapewnia 
 intuicyjny sposób nawigacji i kontrolowania wszystkich aspektów Google Cloud.
@@ -3505,7 +3491,7 @@ Dzięki Cloud Monitoring, deweloperzy i operatorzy mogą uzyskać informacje na 
 rzeczywistym, ustawiać alerty oraz tworzyć niestandardowe pulpity nawigacyjne do wizualizacji danych metryk. 
 Usługa integruje się bezproblemowo z większością usług GCP, oferując wbudowane możliwości monitorowania.
 
-611) Opisz Cloud Logging i jego znaczenie w GCP.
+611) Opisz Cloud Logging i jego znaczenie w GCP?
 Cloud Logging to w pełni zarządzana usługa w GCP, która umożliwia przechowywanie, przeszukiwanie, analizowanie, 
 monitorowanie i ustawianie alertów na podstawie danych dzienników oraz zdarzeń z Google Cloud i Amazon Web Services. 
 Odgrywa kluczową rolę w debugowaniu i rozwiązywaniu problemów z aplikacjami, monitorowaniu bezpieczeństwa oraz utrzymaniu 
@@ -3513,8 +3499,7 @@ Odgrywa kluczową rolę w debugowaniu i rozwiązywaniu problemów z aplikacjami,
 analizę dzienników w czasie rzeczywistym, co ułatwia deweloperom i administratorom systemów zrozumienie ich środowisk chmurowych.
 
 612) Jak zestaw operacji Google Cloud (dawniej znany jako Stackdriver) poprawia monitorowanie aplikacji i infrastruktury?
-Zestaw operacji Google Cloud, wcześniej znany jako Stackdriver, poprawia monitorowanie aplikacji i infrastruktury, oferując 
-zintegrowane i inteligentne monitorowanie, rejestrowanie i diagnostykę. Zapewnia on potężne możliwości monitorowania, 
+Oferuje zintegrowane i inteligentne monitorowanie, rejestrowanie i diagnostykę. Zapewnia on potężne możliwości monitorowania, 
 które obejmują metryki wydajności, pulpity nawigacyjne, sprawdzanie dostępności oraz systemy alertów. Zestaw oferuje 
 również rozbudowane możliwości rejestrowania, raportowania błędów oraz analizowania śladów (trace) w celu szczegółowego 
 zrozumienia wydajności i stanu aplikacji, ułatwiając proaktywne zarządzanie i optymalizację zasobów chmurowych.
@@ -3553,17 +3538,17 @@ Cloud Armor to usługa zabezpieczeń, która zapewnia ochronę przed atakami typ
 funkcję zapory aplikacji internetowych (WAF), chroniąc aplikacje działające na GCP przed różnorodnymi zagrożeniami, 
 w tym atakami DDoS, wstrzykiwaniem SQL i atakami typu cross-site scripting (XSS). Działa poprzez stosowanie zasad 
 bezpieczeństwa do przychodzącego ruchu, blokując lub filtrując złośliwe żądania, zanim dotrą one do aplikacji. 
-Cloud Armor obsługuje niestandardowe zasady i integruje się z globalnym load balancingiem HTTP(S) w celu zapewnienia 
+Cloud Armor obsługuje niestandardowe zasady i integruje się z globalnym load balansingiem HTTP(S) w celu zapewnienia 
 polityk bezpieczeństwa zorientowanych na aplikację.
 
 618) Co to jest Cloud SDK i jak jest używane w rozwoju GCP?
 Google Cloud SDK to zestaw narzędzi służących do zarządzania zasobami i aplikacjami hostowanymi na Google Cloud Platform. 
-Narzędzia te obejmują komendę "gcloud" do tworzenia i zarządzania zasobami GCP, "gsutil" do interakcji z Google Cloud 
-Storage oraz "bq" do zarządzania danymi w BigQuery. Jest to kluczowe narzędzie do automatyzacji procesów wdrażania i 
+Narzędzia te obejmują komendę "gcloud" do tworzenia i zarządzania zasobami GCP, "gs-util" do interakcji z Google Cloud 
+Storage oraz "b q" do zarządzania danymi w BigQuery. Jest to kluczowe narzędzie do automatyzacji procesów wdrażania i 
 zarządzania oraz do skryptowania interakcji z usługami GCP.
 
-619) Wyjaśnij cel i korzyści z używania Cloud Source Repositories.
-Cloud Source Repositories to w pełni zarządzana usługa kontroli wersji, która hostuje prywatne repozytoria Git na 
+619) Wyjaśnij cel i korzyści z używania Cloud Source "Repositor-ies".
+Cloud Source "Repositor-ies" to w pełni zarządzana usługa kontroli wersji, która hostuje prywatne repozytoria Git na 
 Google Cloud. Zapewnia bezpieczną, skalowalną platformę do współpracy przy rozwoju oprogramowania. Korzyści obejmują 
 łatwą integrację z innymi usługami GCP, takimi jak Cloud Build do tworzenia pipeline'ów CI/CD oraz IAM do kontroli dostępu. 
 Usługa ta wspiera również lustrzane repozytoria GitHub i Bitbucket, umożliwiając zintegrowane wyszukiwanie i analizę 
@@ -3573,7 +3558,7 @@ kodu w ramach GCP.
 Cloud Build to platforma Google Cloud do ciągłej integracji (CI) i ciągłego wdrażania (CD), która umożliwia budowanie, 
 testowanie i wdrażanie oprogramowania w różnych językach programowania. Automatyzuje procesy budowania, testowania i 
 wdrażania, co pozwala deweloperom na szybkie dostarczanie wysokiej jakości kodu. Cloud Build integruje się z Cloud Source 
-Repositories, GitHub i Bitbucket, umożliwiając płynne włączenie do workflow deweloperskiego. Obsługuje niestandardowe 
+"Repositor-ies", GitHub i Bitbucket, umożliwiając płynne włączenie do workflow deweloperskiego. Obsługuje niestandardowe 
 procesy, konteneryzację oraz wdrażanie bezserwerowe, co czyni go wszechstronnym narzędziem do nowoczesnego dostarczania 
 aplikacji.
 
@@ -3583,14 +3568,14 @@ Dzięki Cloud Functions można pisać proste funkcje o jednym celu, które są p
 infrastrukturę chmurową i usługi.
 Automatycznie skalują się w zależności od obciążenia, obsługują środowiska uruchomieniowe Node.js, Python, Go oraz Java, 
 i integrują się z usługami GCP w celu tworzenia bardziej złożonych aplikacji. Przykłady zastosowań obejmują przetwarzanie 
-danych, integrację z usługami zewnętrznymi oraz implementację API i architektur mikroserwisów. 
+danych, integrację z usługami zewnętrznymi oraz implementację API i architektur mikro-serwisów. 
 
 622) Co to jest App Engine i jak różni się od Kubernetes Engine?
 App Engine to w pełni zarządzana, bezserwerowa platforma do tworzenia i hostowania aplikacji internetowych na dużą skalę.
 Abstrakcyjnie zarządza infrastrukturą, umożliwiając deweloperom skupienie się na kodzie. App Engine automatycznie skaluje 
 aplikacje w górę i w dół, równocześnie balansując obciążenie.
 Kubernetes Engine (GKE) to z kolei zarządzane środowisko do uruchamiania aplikacji w kontenerach z wykorzystaniem 
-infrastruktury Google Cloud. GKE oferuje większą kontrolę nad środowiskiem i jest idealne do architektur mikroserwisów. 
+infrastruktury Google Cloud. GKE oferuje większą kontrolę nad środowiskiem i jest idealne do architektur mikro-serwisów. 
 Kluczowa różnica leży w poziomie abstrakcji i kontroli; App Engine oferuje środowisko o wyższym poziomie abstrakcji w 
 porównaniu do GKE.
 
@@ -3598,11 +3583,11 @@ porównaniu do GKE.
 Cloud Endpoints to rozproszone system zarządzania API, który oferuje narzędzia do tworzenia, wdrażania i zarządzania API.
 Wspomaga zarządzanie API poprzez funkcje takie jak uwierzytelnianie, monitorowanie, rejestrowanie zdarzeń oraz klucze API 
 do kontroli dostępu.
-Obsługuje protokoły OpenAPI i gRPC, co ułatwia wdrażanie API, a także integruje się z App Engine, Compute Engine i GKE. 
+Obsługuje protokoły "Open-API" i "g-RPC", co ułatwia wdrażanie API, a także integruje się z App Engine, Compute Engine i GKE. 
 Cloud Endpoints pomaga deweloperom w zabezpieczaniu, monitorowaniu i skalowaniu API, oferując płynny sposób zarządzania 
 ekosystemem API.
 
-624) Omów zalety korzystania z Firebase w tworzeniu aplikacji mobilnych i webowych.
+624) Omów zalety korzystania z Firebase w tworzeniu aplikacji mobilnych i webowych?
 Firebase to kompleksowa platforma do tworzenia aplikacji, która oferuje szeroki wachlarz narzędzi i usług wspierających 
 deweloperów w budowie, ulepszaniu i rozwoju aplikacji mobilnych i webowych.
 Zalety obejmują bazy danych w czasie rzeczywistym, uwierzytelnianie użytkowników, analitykę, raportowanie awarii oraz 
@@ -3619,7 +3604,7 @@ Cloud Pub/Sub jest kluczowy w budowaniu skalowalnych i odpornych aplikacji, a je
 zdarzeń, integrację danych oraz analizę w czasie rzeczywistym.
 
 626) Jak deweloperzy mogą wykorzystać Cloud Firestore do rozwoju aplikacji?
-Cloud Firestore to w pełni zarządzana, dokumentowa baza danych NoSQL, przeznaczona do tworzenia aplikacji webowych, 
+Cloud Firestore to w pełni zarządzana, dokumentowa baza danych "No-SQL", przeznaczona do tworzenia aplikacji webowych, 
 mobilnych i serwerowych na dużą skalę.
 Deweloperzy mogą wykorzystać Cloud Firestore do synchronizacji danych w czasie rzeczywistym, wsparcia offline oraz 
 realizacji transakcji ACID w rozproszonych danych.
@@ -3691,7 +3676,7 @@ budowania, trenowania i wdrażania modeli uczenia maszynowego na dużą skalę.
 Te integracje pozwalają użytkownikom płynnie włączyć uczenie maszynowe do swoich procesów analityki danych, wzbogacając 
 wnioski i możliwości prognozowania.
 
-634) Opisz cel i przypadki użycia Google Data Studio.
+634) Opisz cel i przypadki użycia Google Data Studio?
 Google Data Studio to darmowe, chmurowe narzędzie do wizualizacji danych, które umożliwia użytkownikom tworzenie 
 interaktywnych pulpitów nawigacyjnych i raportów z różnych źródeł danych. Jego celem jest udostępnienie danych i ich 
 zrozumienie wszystkim interesariuszom za pomocą wizualnej reprezentacji.
@@ -3716,7 +3701,7 @@ Looker pasuje do ekosystemu GCP, oferując potężną warstwę analityczną na s
 umożliwiając użytkownikom tworzenie modeli danych, budowanie wnikliwych wizualizacji oraz dzielenie się raportami w 
 organizacjach.
 Integracja Lookera z GCP wspiera podejmowanie decyzji opartych na danych, zapewniając dostęp w czasie rzeczywistym do 
-danych, interaktywne pulpity nawigacyjne oraz elastyczny język modelowania LookML, który pozwala definiować zależności 
+danych, interaktywne pulpity nawigacyjne oraz elastyczny język modelowania "Look-ML", który pozwala definiować zależności 
 i transformacje danych.
 
 637) Jak zabezpieczyć środowiska analityki danych na GCP?
@@ -3741,10 +3726,10 @@ dostosowany rozwój modeli.
 AI Platform wspiera cały workflow ML, począwszy od przetwarzania danych, trenowania i oceny modeli, aż po wdrożenie i 
 przewidywania, co ułatwia zespołom wdrażanie uczenia maszynowego w swoich projektach.
 
-639) Jak AutoML na GCP demokratyzuje uczenie maszynowe?
-AutoML na GCP demokratyzuje uczenie maszynowe, oferując zestaw produktów, które umożliwiają użytkownikom z ograniczoną 
+639) Jak "Auto-ML" na GCP demokratyzuje uczenie maszynowe?
+"Auto-ML" na GCP demokratyzuje uczenie maszynowe, oferując zestaw produktów, które umożliwiają użytkownikom z ograniczoną 
 wiedzą na temat uczenia maszynowego trenowanie wysokiej jakości modeli, dostosowanych do ich potrzeb biznesowych.
-AutoML obejmuje różne obszary, takie jak wizja (vision), przetwarzanie języka naturalnego (language) i dane strukturalne, 
+"Auto-ML" obejmuje różne obszary, takie jak wizja (vision), przetwarzanie języka naturalnego (language) i dane strukturalne, 
 pozwalając użytkownikom tworzyć modele niestandardowe za pomocą łatwego w użyciu interfejsu graficznego.
 Automatyzuje proces wyboru modelu, trenowania i dostosowywania, co sprawia, że nowoczesne uczenie maszynowe staje się 
 dostępne dla osób bez specjalistycznej wiedzy, jednocześnie znacząco skracając czas i zasoby potrzebne do wdrożenia 
@@ -3779,10 +3764,10 @@ po bezpieczeństwo i opiekę zdrowotną, w zadaniach takich jak identyfikacja pr
 czy automatyczne tagowanie treści.
 
 643) W jaki sposób GCP wspiera aplikacje przetwarzania języka naturalnego (NLP)?
-GCP wspiera aplikacje NLP za pomocą Cloud Natural Language API oraz AutoML Natural Language.
+GCP wspiera aplikacje NLP za pomocą Cloud Natural Language API oraz "Auto-ML" Natural Language.
 Cloud Natural Language API oferuje wstępnie wytrenowane modele do analizy tekstu, w tym analizę sentymentu, rozpoznawanie 
 encji i analizę składniową. Umożliwia aplikacjom zrozumienie struktury i znaczenia tekstu w wielu językach.
-AutoML Natural Language pozwala użytkownikom trenować niestandardowe modele do klasyfikacji, ekstrakcji encji i analizy 
+"Auto-ML" Natural Language pozwala użytkownikom trenować niestandardowe modele do klasyfikacji, ekstrakcji encji i analizy 
 sentymentu, dostosowane do ich specyficznych zbiorów danych.
 Te narzędzia wspierają szeroki zakres aplikacji NLP, od klasyfikacji treści i analizy sentymentu klientów po AI 
 konwersacyjne i systemy rekomendacji treści.
@@ -3850,7 +3835,7 @@ usługami Google Cloud oraz zaawansowane funkcje sieciowe i bezpieczeństwa, co 
 na dużą skalę.
 
 649) W jaki sposób GCP wspiera aplikacje kontenerowe poza Kubernetes?
-Poza Kubernetes, GCP wspiera aplikacje kontenerowe za pomocą usług takich jak Cloud Run i App Engine flexible environment. 
+Poza Kubernetes GCP wspiera aplikacje kontenerowe za pomocą usług takich jak Cloud Run i App Engine flexible environment. 
 Cloud Run to zarządzana platforma, która automatycznie skaluje kontenery bezstanowe w odpowiedzi na żądania lub zdarzenia, 
 koncentrując się na łatwości użycia i wydajności. App Engine flexible environment umożliwia wdrażanie kontenerowych 
 aplikacji internetowych i interfejsów API, oferując automatyczne skalowanie, wersjonowanie i funkcje bezpieczeństwa. 
@@ -3865,20 +3850,20 @@ samej maszynie hosta i dzielą ten sam adres IP oraz przestrzeń portów, co poz
 Pody są uważane za efemeryczne i jednorazowe byty, które mogą być tworzone, niszczone i zastępowane dynamicznie.
 
 651) Jak zarządzać aplikacjami stanowymi w Kubernetes?
-Zarządzanie aplikacjami stanowymi w Kubernetes polega na wykorzystaniu StatefulSets, Persistent Volumes (PVs) oraz 
-Persistent Volume Claims (PVCs). StatefulSets zapewniają mechanizm do wdrażania i skalowania zestawów Podów, zachowując 
+Zarządzanie aplikacjami stanowymi w Kubernetes polega na wykorzystaniu "Stateful-Sets", Persistent Volumes (PVs) oraz 
+Persistent Volume Claims (PVCs). "Stateful-Sets" zapewniają mechanizm do wdrażania i skalowania zestawów Podów, zachowując 
 jednocześnie trwałą tożsamość dla każdego Poda. Zarządzają one wdrażaniem i skalowaniem zestawu Podów oraz gwarantują 
 porządek i unikalność tych Podów. PVs i PVCs oferują sposób na przechowywanie danych w sposób trwały, niezależnie od 
 cyklu życia Poda, zapewniając, że dane są zachowywane podczas restartów i ponownego przydzielania Podów.
 
 652) Jaką rolę pełnią usługi (Services) w Kubernetes?
 Usługi (Services) w Kubernetes zapewniają stabilny, abstrakcyjny sposób eksponowania zestawu Podów jako usługi sieciowej. 
-Dzięki szybkiemu tworzeniu i niszczeniu Podów, Usługa zapewnia, że ruch sieciowy może być kierowany do aktualnych Podów 
+Dzięki szybkiemu tworzeniu i niszczeniu Podów, usługa zapewnia, że ruch sieciowy może być kierowany do aktualnych Podów 
 aplikacji, korzystając z jednego, stałego adresu IP lub nazwy DNS. Usługi wybierają Pody na podstawie etykiet i 
 selektorów oraz zarządzają równoważeniem obciążenia, oferując jeden punkt dostępu do Podów, co jest kluczowe dla skalowania 
 i zapewnienia wysokiej dostępności aplikacji.
 
-653) Opisz, jak GKE integruje się z innymi usługami GCP, tworząc kompleksowe rozwiązanie chmurowe.
+653) Opisz, jak GKE integruje się z innymi usługami GCP, tworząc kompleksowe rozwiązanie chmurowe?
 GKE integruje się bezproblemowo z szeregiem usług GCP, tworząc kompleksowe rozwiązanie chmurowe. Obejmuje to Cloud Storage 
 do przechowywania danych trwałych, Cloud SQL do zarządzanych usług bazodanowych, Cloud Pub/Sub do komunikacji opartej na 
 zdarzeniach oraz Cloud Functions do obliczeń serverless. Integracja z Identity and Access Management (IAM) zapewnia 
@@ -3911,7 +3896,7 @@ które monitorują i chronią przed zagrożeniami.
 657) Jak zautomatyzować pipeline'y CI/CD dla aplikacji Kubernetes w GCP?
 Automatyzację pipeline'ów CI/CD dla aplikacji Kubernetes w GCP można osiągnąć za pomocą Cloud Build, usługi, 
 która wykonuje procesy budowania na infrastrukturze Google Cloud. Cloud Build może być zintegrowany z repozytoriami kodu 
-(takimi jak Cloud Source Repositories, GitHub lub Bitbucket), aby automatycznie uruchamiać procesy budowania po dokonaniu 
+(takimi jak "Cloud Source Repositor-ies", GitHub lub Bitbucket), aby automatycznie uruchamiać procesy budowania po dokonaniu 
 commitów w kodzie. Może tworzyć obrazy kontenerów, uruchamiać testy i automatycznie wdrażać aplikacje na GKE lub innych 
 usługach. Integracja z Spinnaker lub Tekton może dodatkowo usprawnić automatyzację w przypadku bardziej złożonych 
 strategii wdrożeniowych, zapewniając płynne, zautomatyzowane przepływy pracy od commitów kodu po wdrożenie.
@@ -3936,8 +3921,8 @@ Proxy API mogą obsługiwać zadania takie jak uwierzytelnianie, limitowanie lic
 oraz zarządzanie wersjami API. Działają one poprzez przechwytywanie żądań API, stosowanie skonfigurowanych polityk, 
 a następnie przekazywanie żądań do odpowiedniej usługi zaplecza.
 
-661) Czym jest wsparcie dla OAuth2.0 w Apigee i dlaczego jest to ważne?
-Wsparcie dla OAuth2.0 w Apigee umożliwia platformie zabezpieczanie API za pomocą protokołu OAuth 2.0, który jest 
+661) Czym jest wsparcie dla "OAuth 2 0" w Apigee i dlaczego jest to ważne?
+Wsparcie dla "OAuth 2 0" w Apigee umożliwia platformie zabezpieczanie API za pomocą protokołu "OAuth 2 0", który jest 
 standardem autoryzacji. Apigee pozwala na konfigurację OAuth2.0 jako serwera autoryzacji do zarządzania tokenami dostępu, 
 poświadczeniami klientów i kodami autoryzacyjnymi. Jest to ważne dla zabezpieczania API, ponieważ zapewnia, że tylko 
 autoryzowani klienci mogą uzyskać dostęp do wrażliwych danych i usług, oferując solidny mechanizm zarządzania i weryfikacji 
@@ -3949,7 +3934,7 @@ współistnienie wielu wersji API. Deweloperzy mogą kierować żądania do odpo
 parametrów zapytania lub nagłówków. Apigee umożliwia również implementację niestandardowych polityk do zarządzania 
 przejściem między różnymi wersjami API, zapewniając płynny rozwój API bez łamania istniejących aplikacji klienckich.
 
-663) Opisz, jak Apigee umożliwia monitorowanie i analizę użycia API.
+663) Opisz, jak Apigee umożliwia monitorowanie i analizę użycia API?
 Apigee oferuje kompleksowe funkcje monitorowania i analityki, które umożliwiają organizacjom śledzenie wydajności API, 
 wzorców użycia i wskaźników błędów w czasie rzeczywistym. Zbiera dane na temat wywołań API, czasów odpowiedzi, lokalizacji 
 klientów oraz typów urządzeń, które uzyskują dostęp do API. Te informacje mogą być wykorzystywane do generowania 
@@ -3964,7 +3949,7 @@ gdzie deweloperzy mogą określić kryteria limitu, takie jak liczba dozwolonych
 poszczególnych API lub produktów API.
 
 665) Jak Apigee ułatwia bezpieczeństwo API?
-Apigee wspiera bezpieczeństwo API poprzez szereg mechanizmów, w tym OAuth2.0 i walidację kluczy API do uwierzytelniania, 
+Apigee wspiera bezpieczeństwo API poprzez szereg mechanizmów, w tym "OAuth 2 0" i walidację kluczy API do uwierzytelniania, 
 SSL/TLS do szyfrowania danych w trakcie transmisji oraz ochronę przed zagrożeniami związanymi z JSON i XML w celu obrony 
 przed atakami typu injection. Apigee wspiera również polityki dotyczące kontroli dostępu, bezpieczeństwa opartego na 
 treści oraz wykrywania anomalii. Te funkcje pomagają zapewnić, że tylko autoryzowani użytkownicy mają dostęp do API oraz 
@@ -3979,44 +3964,44 @@ pozwalają na precyzyjną kontrolę nad tym, kto może uzyskać dostęp do konkr
 667) Jak deweloperzy mogą zarządzać etapami cyklu życia API w Apigee?
 Deweloperzy mogą zarządzać etapami cyklu życia API w Apigee, wykorzystując możliwości platformy do tworzenia, testowania, 
 wdrażania, wersjonowania i wycofywania API. Apigee oferuje środowiska do rozwoju, testowania i produkcji, umożliwiając 
-ciągłą integrację i dostarczanie (CI/CD). Funkcje zarządzania wersjami umożliwiają płynne przejścia między różnymi 
+ciągłą integrację i dostarczanie "Ci Cd". Funkcje zarządzania wersjami umożliwiają płynne przejścia między różnymi 
 wersjami API, a funkcje analityki platformy pomagają podejmować świadome decyzje o tym, kiedy zdeprecjonować lub wycofać 
 wersje API na podstawie wzorców użycia i metryk wydajności.
 
-668) Jaką rolę pełni Google Cloud Build w praktykach DevOps w GCP?
-Google Cloud Build to w pełni zarządzana platforma ciągłej integracji i dostarczania (CI/CD), która automatyzuje procesy 
-budowania, testowania i wdrażania oprogramowania. W ramach praktyk DevOps w GCP odgrywa kluczową rolę, umożliwiając 
+668) Jaką rolę pełni Google Cloud Build w praktykach "Dev - Ops" w GCP?
+Google Cloud Build to w pełni zarządzana platforma ciągłej integracji i dostarczania "Ci - Cd", która automatyzuje procesy 
+budowania, testowania i wdrażania oprogramowania. W ramach praktyk "Dev - Ops" w GCP odgrywa kluczową rolę, umożliwiając 
 deweloperom tworzenie zautomatyzowanych przepływów pracy, które kompilują kod źródłowy, uruchamiają testy i wdrażają 
 aplikacje na Google Cloud lub w innym środowisku. Obsługuje szeroką gamę języków programowania i integruje się z usługami 
-Google Cloud oraz GitHub, co czyni go wszechstronnym narzędziem do pipeline'ów DevOps.
+Google Cloud oraz GitHub, co czyni go wszechstronnym narzędziem do pipeline'ów "Dev - Ops".
 
-669) Jak GCP implementuje Infrastructure as Code (IaC) i jakie narzędzia oferuje w tym zakresie?
-GCP implementuje Infrastructure as Code (IaC) za pomocą Google Cloud Deployment Manager i Terraform. Narzędzia te umożliwiają 
+669) Jak GCP implementuje Infrastructure as Code (I a C) i jakie narzędzia oferuje w tym zakresie?
+GCP implementuje Infrastructure as Code (I a C) za pomocą Google Cloud Deployment Manager i Terraform. Narzędzia te umożliwiają 
 deweloperom i zespołom operacyjnym automatyzację provisioningu zasobów Google Cloud za pomocą plików konfiguracyjnych. 
-Deployment Manager to natywna usługa IaC w GCP, umożliwiająca zarządzanie zasobami chmurowymi za pomocą szablonów i 
+Deployment Manager to natywna usługa (I a C) w GCP, umożliwiająca zarządzanie zasobami chmurowymi za pomocą szablonów i 
 plików konfiguracyjnych. Terraform, narzędzie open-source, oferuje deklaratywny język konfiguracyjny do modelowania i 
 zarządzania infrastrukturą GCP oraz innych usług chmurowych. Oba narzędzia umożliwiają wersjonowanie, powtarzalność oraz 
-kodowanie infrastruktury, co stanowi kluczowe zasady w praktykach DevOps.
+kodowanie infrastruktury, co stanowi kluczowe zasady w praktykach "Dev - Ops".
 
-670) Wyjaśnij znaczenie Google Kubernetes Engine (GKE) w praktykach DevOps.
-Google Kubernetes Engine (GKE) jest kluczowy dla praktyk DevOps, ponieważ zapewnia zarządzane środowisko do wdrażania, 
-zarządzania i skalowania aplikacji kontenerowych przy użyciu Kubernetes. GKE wspiera DevOps poprzez automatyzację wielu 
+670) Wyjaśnij znaczenie Google Kubernetes Engine (GKE) w praktykach "Dev - Ops".
+Google Kubernetes Engine (GKE) jest kluczowy dla praktyk "Dev - Ops", ponieważ zapewnia zarządzane środowisko do wdrażania, 
+zarządzania i skalowania aplikacji kontenerowych przy użyciu Kubernetes. GKE wspiera "Dev - Ops" poprzez automatyzację wielu 
 zadań operacyjnych, takich jak wdrożenia, skalowanie i samonaprawianie aplikacji. Integruje się z narzędziami CI/CD 
 w Google Cloud, co umożliwia płynne przepływy pracy związane z rozwojem i wdrażaniem aplikacji, wspiera architektury 
-mikroserwisów oraz promuje zasady DevOps takie jak automatyzacja, ciągłe dostarczanie i skalowalność.
+mikroserwisów oraz promuje zasady "Dev - Ops" takie jak automatyzacja, ciągłe dostarczanie i skalowalność.
 
-671) Czym są praktyki SRE i jak integrują się z DevOps w GCP?
+671) Czym są praktyki SRE i jak integrują się z "Dev - Ops" w GCP?
 Praktyki Site Reliability Engineering (SRE) to zestaw zasad i praktyk łączących inżynierię oprogramowania i inżynierię 
 systemów w celu budowy i obsługi systemów oprogramowania na dużą skalę, wysoce niezawodnych i wydajnych. W GCP praktyki 
-SRE integrują się z DevOps poprzez wspólne cele automatyzacji, niezawodności i szybkiej iteracji. SRE koncentruje się na 
-tworzeniu skalowalnych i niezawodnych systemów oprogramowania, co uzupełnia nacisk DevOps na szybki rozwój i wdrażanie. 
+SRE integrują się z "Dev - Ops" poprzez wspólne cele automatyzacji, niezawodności i szybkiej iteracji. SRE koncentruje się na 
+tworzeniu skalowalnych i niezawodnych systemów oprogramowania, co uzupełnia nacisk "Dev - Ops" na szybki rozwój i wdrażanie. 
 SRE wprowadza takie koncepcje jak budżety błędów (error budgets) i cele poziomów usług (SLOs), aby zrównoważyć potrzebę 
 niezawodności z tempem innowacji.
 
-672) Jak Google Cloud Operations (dawniej Stackdriver) wspiera praktyki DevOps i SRE?
+672) Jak Google Cloud Operations (dawniej Stackdriver) wspiera praktyki "Dev - Ops" i SRE?
 Google Cloud Operations suite oferuje funkcje monitorowania, rejestrowania i diagnostyki, które są niezbędne zarówno w 
-praktykach DevOps, jak i SRE. Zapewnia wgląd w czasie rzeczywistym w zdrowie, wydajność i dostępność aplikacji oraz 
-infrastruktury, wspierając proaktywne zarządzanie incydentami i efektywność operacyjną. W DevOps umożliwia ciągłe 
+praktykach "Dev - Ops", jak i SRE. Zapewnia wgląd w czasie rzeczywistym w zdrowie, wydajność i dostępność aplikacji oraz 
+infrastruktury, wspierając proaktywne zarządzanie incydentami i efektywność operacyjną. W "Dev - Ops" umożliwia ciągłe 
 monitorowanie przez cały cykl życia oprogramowania, ułatwiając szybkie sprzężenie zwrotne i poprawki. W SRE wspiera pomiar 
 i zarządzanie wskaźnikami poziomu usług (SLI) oraz celami poziomu usług (SLO), które są kluczowe dla utrzymania 
 niezawodności usług.
@@ -4029,33 +4014,33 @@ poprawie niezawodności. Jeśli budżet błędów nie zostanie wyczerpany, zespo
 wyczerpany, wysiłki koncentrują się na poprawie stabilności. Narzędzia GCP, takie jak Cloud Operations, pomagają w 
 śledzeniu i zarządzaniu budżetami błędów.
 
-674) Jaką rolę odgrywa automatyzacja w praktykach DevOps i SRE w GCP?
-Automatyzacja jest fundamentem zarówno praktyk DevOps, jak i SRE w GCP, mając na celu redukcję manualnego wysiłku, 
+674) Jaką rolę odgrywa automatyzacja w praktykach "Dev - Ops" i SRE w GCP?
+Automatyzacja jest fundamentem zarówno praktyk "Dev - Ops", jak i SRE w GCP, mając na celu redukcję manualnego wysiłku, 
 poprawę efektywności oraz zwiększenie niezawodności. Obejmuje różne aspekty, w tym provisionowanie infrastruktury, 
 wdrażanie aplikacji, testowanie, skalowanie i reagowanie na incydenty. Automatyzacja umożliwia spójne i bezbłędne operacje, 
 szybkie skalowanie oraz zdolność do szybkiego odzyskiwania po awariach, wspierając tym samym ciągłą integrację 
-i dostarczanie (CI/CD) oraz zapewniając wysoką dostępność i niezawodność usług.
+i dostarczanie "Ci - Cd" oraz zapewniając wysoką dostępność i niezawodność usług.
 
-675) Jak Service Level Objectives (SLOs) kierują praktykami DevOps i SRE w GCP?
-Service Level Objectives (SLOs) to konkretne, mierzalne cele związane z niezawodnością i wydajnością usług. W praktykach 
-DevOps i SRE w GCP, SLOs kierują procesem podejmowania decyzji i ustalania priorytetów, definiując pożądany poziom 
+675) Jak Service Level Objectives (SLOs) kierują praktykami "Dev - Ops" i SRE w GCP?
+Service Level Objectives (SLOs) to konkretne, mierzalne cele związane z niezawodnością i wydajnością usług. W praktykach
+"Dev - Ops" i SRE w GCP, SLOs kierują procesem podejmowania decyzji i ustalania priorytetów, definiując pożądany poziom 
 niezawodności usług. Pomagają one w dostosowaniu działań rozwoju i operacji do celów biznesowych, koncentrując się na 
 satysfakcji klientów. SLOs określają również sposób alokacji zasobów, czy to na nowe funkcje, konserwację, czy poprawę 
 niezawodności, w zależności od bieżącej wydajności w stosunku do tych celów.
 
-676) Jak GCP wspiera ciągłe doskonalenie w praktykach DevOps i SRE?
-GCP wspiera ciągłe doskonalenie w praktykach DevOps i SRE poprzez zintegrowane narzędzia monitorowania, rejestrowania i 
+676) Jak GCP wspiera ciągłe doskonalenie w praktykach "Dev - Ops" i SRE?
+GCP wspiera ciągłe doskonalenie w praktykach "Dev - Ops" i SRE poprzez zintegrowane narzędzia monitorowania, rejestrowania i 
 feedbacku, takie jak Cloud Operations suite, oraz praktykę blameless postmortems (bez winy po incydencie). Narzędzia i 
 praktyki te pomagają zespołom uczyć się na błędach i incydentach operacyjnych bez przypisywania winy, promując kulturę 
 przejrzystości i ciągłego uczenia się. Narzędzia CI/CD w GCP wspierają ciągły rozwój, testowanie i wdrażanie, umożliwiając 
 zespołom iteracyjne ulepszanie aplikacji i infrastruktury na podstawie danych z rzeczywistego użytkowania i wydajności.
 
-677) Jakie znaczenie ma architektura mikroserwisów w praktykach DevOps w GCP?
-Architektura mikroserwisów odgrywa istotną rolę w praktykach DevOps w GCP, umożliwiając organizacjom rozwój, wdrażanie i 
+677) Jakie znaczenie ma architektura mikro-serwisów w praktykach "Dev - Ops" w GCP?
+Architektura mikro-serwisów odgrywa istotną rolę w praktykach "Dev - Ops" w GCP, umożliwiając organizacjom rozwój, wdrażanie i 
 skalowanie aplikacji jako zbioru luźno powiązanych usług. Takie podejście zwiększa zwinność, pozwalając zespołom na 
-niezależne wdrażanie aktualizacji do poszczególnych usług, co jest kluczową zasadą DevOps. GCP wspiera architekturę 
-mikroserwisów poprzez usługi takie jak Google Kubernetes Engine (GKE), Cloud Run i App Engine, zapewniając skalowalną i 
-niezawodną infrastrukturę do wdrażania i zarządzania mikroserwisami oraz wspierając praktyki DevOps, takie jak ciągła 
+niezależne wdrażanie aktualizacji do poszczególnych usług, co jest kluczową zasadą "Dev - Ops". GCP wspiera architekturę 
+mikro-serwisów poprzez usługi takie jak Google Kubernetes Engine (GKE), Cloud Run i App Engine, zapewniając skalowalną i 
+niezawodną infrastrukturę do wdrażania i zarządzania mikro-serwisami oraz wspierając praktyki DevOps, takie jak ciągła 
 integracja i dostarczanie.
 
 678) Jakie są kluczowe kwestie do rozważenia przed rozpoczęciem migracji do GCP?
@@ -4073,16 +4058,16 @@ przejście.
 
 679) Jakie narzędzia oferuje GCP do migracji maszyn wirtualnych i jak działają?
 Do migracji maszyn wirtualnych GCP oferuje narzędzia takie jak Migrate for Compute Engine (dawniej Velostrata), które 
-umożliwiają strumieniowanie danych z środowiska źródłowego do GCP, co pozwala na szybkie migracje z minimalnym czasem 
+umożliwiają strumieniowanie danych ze środowiska źródłowego do GCP, co pozwala na szybkie migracje z minimalnym czasem 
 przestoju. Narzędzie to wspiera migracje typu lift-and-shift, umożliwiając przeniesienie maszyn wirtualnych do GCP bez 
 konieczności modyfikacji.
 
 680) Jak wygląda proces migracji danych do GCP i jakie narzędzia są zaangażowane?
 Migracja danych do GCP może obejmować różne narzędzia, w zależności od rodzaju i rozmiaru danych:
-a) Cloud Storage Transfer Service: Do transferu danych online z innych usług przechowywania w chmurze lub lokalizacji \
+a) Cloud Storage Transfer Service: Do transferu danych online z innych usług przechowywania w chmurze lub lokalizacji 
 HTTP/HTTPS do Google Cloud Storage.
 b) Transfer Appliance: Urządzenie sprzętowe do offline'owego transferu danych przy przenoszeniu dużych wolumenów danych.
-c) BigQuery Data Transfer Service: Do migracji danych do BigQuery z aplikacji SaaS lub innych usług Google.
+c) BigQuery Data Transfer Service: Do migracji danych do BigQuery z aplikacji "S a a S" lub innych usług Google.
 Proces zwykle polega na wyborze odpowiedniego narzędzia, skonfigurowaniu źródła i miejsca docelowego oraz wykonaniu 
 transferu przy zapewnieniu integralności i bezpieczeństwa danych.
 
@@ -4090,7 +4075,7 @@ transferu przy zapewnieniu integralności i bezpieczeństwa danych.
 Najlepsze praktyki obejmują:
 a) Rozpocznij od Pilotażu: Zacznij od migracji systemu, który nie jest krytyczny, aby przetestować proces.
 b) Użyj wzorca Stranglera: Stopniowo zastępuj części aplikacji nowymi funkcjonalnościami w GCP.
-c) Wdrażaj praktyki DevOps: Korzystaj z CI/CD pipeline'ów w celu automatyzacji i zwiększenia wydajności.
+c) Wdrażaj praktyki "Dev - Ops": Korzystaj z CI/CD pipeline'ów w celu automatyzacji i zwiększenia wydajności.
 d) Optymalizuj na bieżąco: Wykorzystaj okazję do optymalizacji aplikacji pod kątem funkcji natywnych dla chmury.
 e) Skup się na bezpieczeństwie: Wdrażaj najlepsze praktyki bezpieczeństwa GCP od samego początku.
 f) Szkolenie zespołu: Zapewnij, że Twój zespół jest przeszkolony i zaznajomiony z usługami GCP oraz najlepszymi praktykami.
@@ -4106,7 +4091,7 @@ Zarządzanie zależnościami aplikacji polega na:
 a) Mapowaniu zależności: Dokładne mapowanie wszystkich zależności aplikacji przed migracją.
 b) Migracji usług zależnych jako pierwszych: Upewnienie się, że usługi, od których zależą inne, są migracyjne jako 
 pierwsze lub pozostają dostępne podczas migracji.
-c) Używaniu Interconnect i Peering: Wykorzystanie usług Interconnect i Peering Google Cloud, aby utrzymać łączność z 
+c) Używaniu Interconnect i Peering: Wykorzystanie usług Interconnect i Peering Google Cloud, aby utrzymać łączność ze 
 środowiskami on-premises w razie potrzeby podczas migracji.
 
 684) Jakie strategie można zastosować do migracji baz danych do GCP?
@@ -4155,7 +4140,7 @@ pomocą zapytań HTTP. W przeciwieństwie do Cloud Functions, które są zaproje
 jednofunkcyjnych zadań, Cloud Run jest odpowiedni do uruchamiania bardziej złożonych aplikacji lub mikroserwisów, 
 które wymagają niestandardowych środowisk uruchomieniowych lub zależności, które nie są obsługiwane przez Cloud Functions.
 
-690) Opisz kluczowe cechy i korzyści Google App Engine.
+690) Opisz kluczowe cechy i korzyści Google App Engine?
 Google App Engine to w pełni zarządzana, bezserwerowa platforma do tworzenia i hostowania aplikacji webowych na dużą skalę.
 Kluczowe cechy to automatyczne skalowanie, wersjonowanie i dzielenie ruchu, wsparcie dla wielu języków programowania 
 oraz integracja z usługami GCP. Korzyści obejmują zmniejszenie obciążenia operacyjnego, szybkie wdrożenia oraz skupienie 
@@ -4174,8 +4159,8 @@ a) Wsparcie dla środowisk uruchomieniowych: Cloud Run i App Engine obsługują 
 podczas gdy Cloud Functions jest ograniczone do obsługiwanych języków.
 b) Bezstanowość: Cloud Run jest idealne dla bezstanowych kontenerów, podczas gdy App Engine wspiera aplikacje, 
 które utrzymują stan między zapytaniami.
-c) Zdarzenia vs. zapytania HTTP: Cloud Functions doskonale sprawdza się w scenariuszach opartych na zdarzeniach, podczas 
-gdy Cloud Run i App Engine są lepsze dla obciążeń opartych na HTTP/wykonywaniu aplikacji webowych.
+c) Zdarzenia kontra zapytania HTTP: Cloud Functions doskonale sprawdza się w scenariuszach opartych na zdarzeniach, 
+podczas gdy Cloud Run i App Engine są lepsze dla obciążeń opartych na HTTP/wykonywaniu aplikacji webowych.
 d) Wymagania dotyczące skalowalności i wydajności: App Engine i Cloud Run są w stanie obsługiwać bardziej złożone 
 scenariusze skalowania i oferują więcej opcji konfiguracji w porównaniu do Cloud Functions.
 
@@ -4188,10 +4173,10 @@ aplikacji bez potrzeby interwencji manualnej.
 694) Czym jest Firestore i jak wspiera architektury bezserwerowe?
 Firestore to w pełni zarządzana, nierelacyjna baza danych dokumentowa, zaprojektowana do automatycznego skalowania, 
 wysokiej wydajności i ułatwienia rozwoju aplikacji. Wspiera architektury bezserwerowe, oferując bazę danych w czasie 
-rzeczywistym z płynna integracją z usługami bezserwerowymi, takimi jak Cloud Functions, umożliwiając deweloperom 
+rzeczywistym z płynną integracją z usługami bezserwerowymi, takimi jak Cloud Functions, umożliwiając deweloperom 
 tworzenie dynamicznych aplikacji bez potrzeby zarządzania serwerami baz danych.
 
-695) Omów model cenowy produktów bezserwerowych GCP.
+695) Omów model cenowy produktów bezserwerowych GCP?
 Produkty bezserwerowe GCP zazwyczaj opierają się na modelu cenowym "płać za to, co zużywasz", w którym opłaty są naliczane 
 na podstawie zasobów wykorzystywanych przez aplikację, takich jak czas obliczeniowy, zużycie pamięci oraz liczba zapytań. 
 Taki model pozwala na kosztową skalowalność, ponieważ płacisz tylko za to, czego używasz, bez kosztów początkowych czy 
@@ -4213,8 +4198,8 @@ zarządzanie obciążeniami.
 698) W jaki sposób Anthos ułatwia modernizację aplikacji w środowiskach hybrydowych?
 Anthos ułatwia modernizację aplikacji, umożliwiając organizacjom używanie kontenerowych aplikacji w sposób spójny w 
 różnych środowiskach. Wykorzystuje Kubernetes i inne technologie chmurowe, aby zmodernizować istniejące aplikacje i 
-budować nowe, wspierając przejście na architekturę mikroserwisów. Zarządzane usługi Anthos upraszczają operacje, takie 
-jak siatka usług do komunikacji mikroserwisów i monitorowania, oraz zarządzanie konfiguracją do egzekwowania polityk, 
+budować nowe, wspierając przejście na architekturę mikro-serwisów. Zarządzane usługi Anthos upraszczają operacje, takie 
+jak siatka usług do komunikacji mikro-serwisów i monitorowania, oraz zarządzanie konfiguracją do egzekwowania polityk, 
 pomagając firmom modernizować aplikacje bez uzależnienia od jednego dostawcy chmurowego.
 
 699) Jaką rolę odgrywa Google Kubernetes Engine (GKE) w strategiach hybrydowych i wielochmurowych?
@@ -4234,13 +4219,13 @@ dostęp do usług i zasobów chmurowych, co jest kluczowe dla operacji chmurowyc
 
 701) W jaki sposób Traffic Director Google Cloud wspiera wdrożenia wielochmurowe?
 Traffic Director Google Cloud to w pełni zarządzana platforma kontroli siatki usług, która zapewnia globalne równoważenie 
-obciążenia dla mikroserwisów, działających zarówno na GKE, jak i na usługach opartych na maszynach wirtualnych w 
-Google Cloud oraz w lokalnych środowiskach. W wdrożeniach wielochmurowych, Traffic Director umożliwia spójne zarządzanie 
+obciążenia dla mikro-serwisów, działających zarówno na GKE, jak i na usługach opartych na maszynach wirtualnych w 
+Google Cloud oraz w lokalnych środowiskach. We wdrożeniach wielochmurowych, Traffic Director umożliwia spójne zarządzanie 
 ruchem, politykami bezpieczeństwa i telemetrią w różnych środowiskach, niezależnie od miejsca, w którym są wdrożone usługi. 
 Pomaga zapewnić wysoką dostępność i optymalną wydajność aplikacji poprzez dynamiczne kierowanie ruchem do najlepszego 
 punktu końcowego, na podstawie stanu zdrowia, geolokalizacji i innych parametrów.
 
-702) Opisz rolę Cloud VPN w łączeniu lokalnych sieci z GCP.
+702) Opisz rolę Cloud VPN w łączeniu lokalnych sieci z GCP?
 Cloud VPN bezpiecznie łączy lokalną sieć z siecią Google Cloud VPC (Virtual Private Cloud) poprzez połączenie VPN oparty 
 na protokole IPsec. Odgrywa kluczową rolę w konfiguracjach chmurowych hybrydowych, umożliwiając bezpieczną komunikację 
 między serwerami lokalnymi a usługami chmurowymi, zapewniając, że dane w trakcie transmisji są szyfrowane i chronione. 
@@ -4258,7 +4243,7 @@ organizacji.
 704) Jakie funkcje bezpieczeństwa oferuje Google Cloud dla konfiguracji hybrydowych i wielochmurowych?
 Google Cloud oferuje szereg funkcji bezpieczeństwa dla konfiguracji hybrydowych i wielochmurowych, w tym:
 a) Context-Aware Access: Kontroluje dostęp do aplikacji i maszyn wirtualnych na podstawie tożsamości i kontekstu.
-b) Cloud Armor: Chroni aplikacje przed atakami DDoS.
+b) Cloud Armor: Chroni aplikacje przed atakami "D - DoS".
 c) Binary Authorization: Zapewnia, że tylko zaufane obrazy kontenerów są wdrażane na GKE.
 d) Cloud Identity and Access Management (IAM): Zarządza kontrolą dostępu i uprawnieniami.
 e) Data Loss Prevention (DLP): Pomaga w odkrywaniu i ochronie wrażliwych danych w środowiskach hybrydowych i wielochmurowych.
@@ -4284,76 +4269,76 @@ d) Innowacyjność i zwinność: Dostęp do unikalnych usług i funkcji od róż
 Google Cloud wspiera te korzyści dzięki szerokiemu zestawowi usług i narzędzi zaprojektowanych z myślą o 
 interoperacyjności i łatwości zarządzania w środowiskach hybrydowych i wielochmurowych.
 
-707) Czym jest Google Cloud IoT Core i jakie są jego główne funkcje?
-Google Cloud IoT Core to w pełni zarządzana usługa, która umożliwia użytkownikom łatwe i bezpieczne łączenie, zarządzanie 
+707) Czym jest Google Cloud "I o T" Core i jakie są jego główne funkcje?
+Google Cloud "I o T" Core to w pełni zarządzana usługa, która umożliwia użytkownikom łatwe i bezpieczne łączenie, zarządzanie 
 oraz pobieranie danych z milionów urządzeń rozproszonych na całym świecie. Jego główne funkcje to: bezpieczne łączenie 
 urządzeń i zarządzanie nimi na dużą skalę, menedżer urządzeń do zarządzania tożsamościami urządzeń i metadanymi oraz 
 płynna integracja z platformą analityki danych Google Cloud, umożliwiająca uzyskiwanie wglądu w czasie rzeczywistym.
 
-708) Jak GCP zapewnia bezpieczne połączenie urządzeń i transmisję danych w projektach IoT?
-GCP zapewnia bezpieczne połączenie urządzeń i transmisję danych w projektach IoT poprzez szereg mechanizmów. 
+708) Jak GCP zapewnia bezpieczne połączenie urządzeń i transmisję danych w projektach "I o T"?
+GCP zapewnia bezpieczne połączenie urządzeń i transmisję danych w projektach "I o T" poprzez szereg mechanizmów. 
 Używa standardowych protokołów branżowych, takich jak MQTT i HTTP, do bezpiecznej komunikacji, wspiera szyfrowanie 
 end-to-end oraz umożliwia automatyczne provisioning urządzeń z bezpiecznymi poświadczeniami połączenia. 
-Google Cloud IoT Core integruje się również z Cloud IAM, zapewniając precyzyjną kontrolę dostępu, oraz wykorzystuje 
+Google Cloud "I o T" Core integruje się również z Cloud IAM, zapewniając precyzyjną kontrolę dostępu, oraz wykorzystuje 
 Cloud Audit Logs do monitorowania i rejestrowania aktywności urządzeń.
 
-709) Czy możesz wyjaśnić, jak Cloud IoT Core integruje się z innymi usługami GCP do analizy danych IoT?
-Cloud IoT Core integruje się bezproblemowo z innymi usługami GCP, umożliwiając kompleksową analizę danych IoT. Dane 
-pobrane przez IoT Core mogą być bezpośrednio przesyłane do BigQuery w celu magazynowania, do Cloud Pub/Sub w celu 
+709) Czy możesz wyjaśnić, jak Cloud "I o T" Core integruje się z innymi usługami GCP do analizy danych "I o T"?
+Cloud "I o T" Core integruje się bezproblemowo z innymi usługami GCP, umożliwiając kompleksową analizę danych "I o T". 
+Dane pobrane przez "I o T" Core mogą być bezpośrednio przesyłane do BigQuery w celu magazynowania, do Cloud Pub/Sub w celu 
 przesyłania wiadomości i przetwarzania opartego na zdarzeniach, do Cloud Dataflow do przetwarzania danych w czasie 
 rzeczywistym i w partiach oraz do Cloud Machine Learning Engine do zaawansowanej analityki i aplikacji sztucznej 
 inteligencji. Ta integracja umożliwia potężne rozwiązanie end-to-end do zbierania, przetwarzania, analizowania i 
-wizualizowania danych IoT w czasie rzeczywistym.
+wizualizowania danych "I o T" w czasie rzeczywistym.
 
-710) Jakie korzyści płyną z używania Cloud Pub/Sub w rozwiązaniu IoT na GCP?
-Cloud Pub/Sub przynosi korzyści rozwiązaniu IoT na GCP, zapewniając skalowalną i elastyczną usługę do przesyłania 
+710) Jakie korzyści płyną z używania Cloud Pub/Sub w rozwiązaniu "I o T" na GCP?
+Cloud Pub/Sub przynosi korzyści rozwiązaniu "I o T" na GCP, zapewniając skalowalną i elastyczną usługę do przesyłania 
 wiadomości i pobierania zdarzeń. Umożliwia komunikację w czasie rzeczywistym między urządzeniami a chmurą, pozwalając na 
 odseparowanie usług, które mogą skalować się niezależnie. Cloud Pub/Sub obsługuje strumienie zdarzeń o dużej objętości, 
-takie jak te generowane przez urządzenia IoT, i integruje się z innymi usługami GCP do dalszego przetwarzania i analizy, 
-poprawiając ogólną wydajność i szybkość reakcji rozwiązań IoT.
+takie jak te generowane przez urządzenia "I o T", i integruje się z innymi usługami GCP do dalszego przetwarzania i analizy, 
+poprawiając ogólną wydajność i szybkość reakcji rozwiązań "I o T".
 
-711) Opisz, jak Google Cloud Functions mogą być używane w aplikacjach IoT.
-Google Cloud Functions mogą być używane w aplikacjach IoT do budowania lekkich, opartych na zdarzeniach backendów, które 
-reagują na zdarzenia z urządzeń IoT bez potrzeby zarządzania serwerami. Na przykład, Cloud Functions mogą przetwarzać 
-dane w miarę ich napływania z urządzeń IoT, przeprowadzać analitykę w czasie rzeczywistym, aktualizować bazy danych, 
+711) Opisz, jak Google Cloud Functions mogą być używane w aplikacjach "I o T".
+Google Cloud Functions mogą być używane w aplikacjach "I o T" do budowania lekkich, opartych na zdarzeniach backendów, które 
+reagują na zdarzenia z urządzeń "I o T" bez potrzeby zarządzania serwerami. Na przykład, Cloud Functions mogą przetwarzać 
+dane w miarę ich napływania z urządzeń "I o T", przeprowadzać analitykę w czasie rzeczywistym, aktualizować bazy danych, 
 wysyłać powiadomienia lub wywoływać inne usługi chmurowe. To podejście bezserwerowe pozwala programistom skupić się na 
 kodzie i logice biznesowej, podczas gdy GCP zajmuje się skalowaniem i zarządzaniem infrastrukturą.
 
-712) Jak GCP wspiera przetwarzanie danych w czasie rzeczywistym w aplikacjach IoT?
-GCP wspiera przetwarzanie danych w czasie rzeczywistym w aplikacjach IoT za pomocą usług takich jak Cloud Dataflow i 
+712) Jak GCP wspiera przetwarzanie danych w czasie rzeczywistym w aplikacjach "I o T"?
+GCP wspiera przetwarzanie danych w czasie rzeczywistym w aplikacjach "I o T" za pomocą usług takich jak Cloud Dataflow i 
 Cloud Pub/Sub. Cloud Dataflow umożliwia użytkownikom rozwijanie i uruchamianie różnych wzorców przetwarzania danych, 
 w tym ETL, obliczeń wsadowych oraz obliczeń ciągłych na danych strumieniowych. W połączeniu z Cloud Pub/Sub, służącym do 
 przesyłania wiadomości i pobierania zdarzeń, te usługi zapewniają potężną infrastrukturę do analizowania i przetwarzania 
-strumieni danych IoT w czasie rzeczywistym, umożliwiając natychmiastowe wglądy i podejmowanie działań.
+strumieni danych "I o T" w czasie rzeczywistym, umożliwiając natychmiastowe wglądy i podejmowanie działań.
 
-713) Jaką rolę odgrywają AI i uczenie maszynowe w rozwiązaniach IoT na GCP?
+713) Jaką rolę odgrywają AI i uczenie maszynowe w rozwiązaniach "I o T" na GCP?
 AI i uczenie maszynowe odgrywają kluczową rolę w rozwiązaniach IoT na GCP, zapewniając zaawansowane możliwości analityczne 
-do wyciągania wniosków z ogromnych ilości danych IoT. Dzięki usługom takim jak Cloud Machine Learning Engine i TensorFlow, 
+do wyciągania wniosków z ogromnych ilości danych "I o T". Dzięki usługom takim jak Cloud Machine Learning Engine i TensorFlow, 
 użytkownicy mogą tworzyć i wdrażać niestandardowe modele uczenia maszynowego, które mogą prognozować trendy, optymalizować 
-operacje i wykrywać anomalie. Ta integracja umożliwia tworzenie bardziej inteligentnych rozwiązań IoT, które uczą się na 
+operacje i wykrywać anomalie. Ta integracja umożliwia tworzenie bardziej inteligentnych rozwiązań "I o T", które uczą się na 
 podstawie danych, poprawiają się z czasem i podejmują autonomiczne decyzje.
 
-714) Jak BigQuery może być wykorzystywane do analityki danych IoT?
-BigQuery może być wykorzystywane do analityki danych IoT jako wysoko skalowalna i bezserwerowa hurtownia danych do 
-przechowywania i analizowania dużych wolumenów danych IoT. Umożliwia szybkie zapytania SQL na petabajtach danych, co 
-czyni je odpowiednim narzędziem do analizowania danych historycznych z urządzeń IoT w celu identyfikacji wzorców, 
+714) Jak BigQuery może być wykorzystywane do analityki danych "I o T"?
+BigQuery może być wykorzystywane do analityki danych "I o T" jako wysoko skalowalna i bezserwerowa hurtownia danych do 
+przechowywania i analizowania dużych wolumenów danych "I o T". Umożliwia szybkie zapytania SQL na petabajtach danych, co 
+czyni je odpowiednim narzędziem do analizowania danych historycznych z urządzeń "I o T" w celu identyfikacji wzorców, 
 trendów i wniosków. Integracja BigQuery z innymi usługami GCP umożliwia łatwe pobieranie, analizowanie i wizualizowanie 
-danych IoT, wspierając podejmowanie decyzji opartych na danych.
+danych "I o T", wspierając podejmowanie decyzji opartych na danych.
 
-715) Jaka jest znaczenie Edge TPU w rozwiązaniach IoT na GCP?
+715) Jaka jest znaczenie Edge TPU w rozwiązaniach "I o T" na GCP?
 Edge TPU to dedykowany układ ASIC (Application-Specific Integrated Circuit) stworzony przez Google, zaprojektowany do 
 uruchamiania AI na brzegu sieci (edge). Znacząco przyspiesza wnioskowanie uczenia maszynowego na urządzeniach brzegowych, 
-umożliwiając rozwiązaniom IoT przetwarzanie danych lokalnie, z niską latencją i zmniejszoną zależnością od chmury. 
+umożliwiając rozwiązaniom "I o T" przetwarzanie danych lokalnie, z niską latencją i zmniejszoną zależnością od chmury. 
 Jest to szczególnie istotne w aplikacjach wymagających natychmiastowego podejmowania decyzji, obliczeń wrażliwych na 
-prywatność lub pracy w środowiskach o ograniczonej łączności. Integracja Edge TPU z rozwiązaniami IoT na GCP pozwala na 
-efektywne wdrożenie wniosków opartych na AI bezpośrednio na urządzeniach IoT.
+prywatność lub pracy w środowiskach o ograniczonej łączności. Integracja Edge TPU z rozwiązaniami "I o T" na GCP pozwala na 
+efektywne wdrożenie wniosków opartych na AI bezpośrednio na urządzeniach "I o T".
 
-716) Jak GCP ułatwia zarządzanie dużymi wdrożeniami IoT?
-GCP ułatwia zarządzanie dużymi wdrożeniami IoT dzięki możliwościom zarządzania urządzeniami oferowanym przez Cloud IoT Core, 
-które umożliwiają użytkownikom bezpieczną rejestrację, organizowanie, monitorowanie i zdalne zarządzanie urządzeniami 
-IoT na dużą skalę. Funkcje takie jak konfiguracje urządzeń, raportowanie stanu i automatyczne provisioning urządzeń 
-pomagają uprościć proces wdrażania i utrzymania urządzeń IoT. Dodatkowo, globalna infrastruktura GCP zapewnia skalowalność 
-i niezawodność niezbędną do zarządzania ogromną liczbą urządzeń rozproszonych na całym świecie.
+716) Jak GCP ułatwia zarządzanie dużymi wdrożeniami "I o T"?
+GCP ułatwia zarządzanie dużymi wdrożeniami "I o T" dzięki możliwościom zarządzania urządzeniami oferowanym przez 
+Cloud "I o T" Core, które umożliwiają użytkownikom bezpieczną rejestrację, organizowanie, monitorowanie i zdalne 
+zarządzanie urządzeniami "I o T" na dużą skalę. Funkcje takie jak konfiguracje urządzeń, raportowanie stanu i automatyczne 
+provisioning urządzeń pomagają uprościć proces wdrażania i utrzymania urządzeń "I o T". Dodatkowo, globalna infrastruktura 
+GCP zapewnia skalowalność i niezawodność niezbędną do zarządzania ogromną liczbą urządzeń rozproszonych na całym świecie.
 
 717) Jakie jest podejście Google Cloud do zarządzania kosztami i optymalizacji?
 Podejście Google Cloud do zarządzania kosztami i optymalizacji polega na zapewnieniu wglądu w zużycie zasobów i koszty, 
@@ -4505,14 +4490,14 @@ Przedsiębiorstwa mogą wykorzystać GCP do transformacji cyfrowej, korzystając
 chmurze, uczenia maszynowego i analityki danych, aby wprowadzać innowacje i usprawniać procesy biznesowe. GCP umożliwia 
 przedsiębiorstwom tworzenie i wdrażanie skalowalnych i bezpiecznych aplikacji, uzyskiwanie wglądu w dane dzięki 
 rozwiązaniom big data oraz poprawę doświadczeń klientów za pomocą technologii opartych na sztucznej inteligencji. 
-Dodatkowo, narzędzia do współpracy i produktywności GCP (Google Workspace) wspierają płynną komunikację i współpracę w 
+Dodatkowo narzędzia do współpracy i produktywności GCP (Google Workspace) wspierają płynną komunikację i współpracę w 
 ramach zespołów.
 
 740) Jak przedsiębiorstwa mogą wykorzystać GCP do transformacji cyfrowej?
 Przedsiębiorstwa mogą wykorzystać GCP do transformacji cyfrowej, korzystając z szerokiej gamy usług, w tym obliczeń w 
 chmurze, uczenia maszynowego i analityki danych, aby wprowadzać innowacje i usprawniać procesy biznesowe. GCP umożliwia 
 przedsiębiorstwom tworzenie i wdrażanie skalowalnych oraz bezpiecznych aplikacji, pozyskiwanie wglądów z danych za pomocą 
-rozwiązań big data oraz poprawę doświadczeń klientów poprzez technologie oparte na sztucznej inteligencji. Dodatkowo, 
+rozwiązań big data oraz poprawę doświadczeń klientów poprzez technologie oparte na sztucznej inteligencji. Dodatkowo 
 narzędzia do współpracy i produktywności GCP (Google Workspace) wspierają płynną komunikację i współpracę w zespołach.
 
 741) Jaką rolę sztuczna inteligencja i uczenie maszynowe odgrywają w GCP dla przedsiębiorstw?
@@ -4530,7 +4515,7 @@ zasoby w przypadku obciążeń o długoterminowej intensywności oraz monitorowa
 rekomendacji z pakietu Cloud Operations, mogą dodatkowo pomóc w kontrolowaniu kosztów. GCP oferuje także szczegółową 
 dokumentację oraz najlepsze praktyki, które pomagają w optymalizacji kosztów.
 
-743) Opisz usługi migracyjne dostępne w GCP dla obciążeń przedsiębiorstw.
+743) Opisz usługi migracyjne dostępne w GCP dla obciążeń przedsiębiorstw?
 GCP oferuje różne usługi migracyjne dla obciążeń przedsiębiorstw, w tym Migrate for Compute Engine, Migrate for Anthos, 
 Database Migration Service oraz Transfer Appliance. Usługi te ułatwiają migrację maszyn wirtualnych, aplikacji, baz danych 
 i dużych zestawów danych do GCP, minimalizując czas przestoju i zapewniając integralność danych. GCP zapewnia także zasoby 
@@ -4553,32 +4538,1075 @@ usługi monitorowania i rejestrowania, które umożliwiają szybkie wykrywanie i
 746) W jaki sposób GCP wspiera współpracę i produktywność w przedsiębiorstwach?
 GCP wspiera współpracę i produktywność w przedsiębiorstwach poprzez Google Workspace, który obejmuje aplikacje takie 
 jak Gmail, Docs, Drive, Calendar, Meet i inne. Google Workspace umożliwia zespołom współpracę w czasie rzeczywistym, 
-bezpieczne udostępnianie dokumentów i skuteczną komunikację, niezależnie od lokalizacji. Dodatkowo, infrastruktura i 
+bezpieczne udostępnianie dokumentów i skuteczną komunikację, niezależnie od lokalizacji. Dodatkowo infrastruktura i 
 usługi GCP wspierają rozwój i wdrażanie niestandardowych narzędzi do współpracy oraz integracji, co dodatkowo zwiększa 
 produktywność i efektywność pracy zespołowej w przedsiębiorstwach.
 
+747) W jaki sposób GCP przyczynia się do rozwoju komputerów kwantowych?
+GCP przyczynia się do rozwoju komputerów kwantowych poprzez swój zespół Quantum AI, który koncentruje się na opracowywaniu 
+algorytmów kwantowych, oprogramowania i sprzętu do rozwiązywania złożonych problemów obliczeniowych. GCP oferuje dostęp 
+do procesorów kwantowych i symulatorów w chmurze za pośrednictwem usługi Quantum Computing, umożliwiając badaczom i 
+deweloperom eksperymentowanie z algorytmami kwantowymi i aplikacjami, przyspieszając tym samym rozwój tej dziedziny 
+oraz jej zastosowań praktycznych.
 
+748) Jaką rolę odgrywa GCP w rozwoju i wdrażaniu modeli AI i uczenia maszynowego?
+GCP odgrywa kluczową rolę w AI i ML, oferując kompleksowy zestaw narzędzi i usług, takich jak TensorFlow, AI Platform 
+oraz AutoML. Usługi te umożliwiają deweloperom łatwe tworzenie, trenowanie i wdrażanie modeli uczenia maszynowego na 
+dużą skalę. GCP oferuje również wcześniej wytrenowane modele AI oraz interfejsy API do rozpoznawania obrazów, 
+przetwarzania języka naturalnego i innych zadań, umożliwiając firmom integrację zaawansowanych funkcji AI w swoich 
+aplikacjach bez potrzeby posiadania głębokiej wiedzy z zakresu uczenia maszynowego.
 
+749) W jaki sposób GCP wspiera aplikacje i urządzenia "I o T"?
+GCP wspiera aplikacje i urządzenia "I o T" poprzez usługę Cloud "I o T" Core, która umożliwia bezpieczne łączenie, zarządzanie i 
+pobieranie danych z milionów rozproszonych na całym świecie urządzeń. Zintegrowana z narzędziami analityki danych i 
+uczenia maszynowego GCP, usługa Cloud "I o T" Core umożliwia przetwarzanie i analizowanie danych "I o T" w czasie rzeczywistym, 
+co pozwala na pozyskiwanie wglądów i podejmowanie decyzji. Ułatwia to efektywne operacje, prognozowanie potrzeb utrzymania 
+oraz personalizowanie doświadczeń klientów.
 
+750) Jak GCP wspiera innowacje w analizie danych?
+GCP wspiera innowacje w analizie danych, oferując potężne narzędzia, takie jak BigQuery, Dataflow i Looker. BigQuery, 
+w pełni zarządzana, bezserwerowa hurtownia danych, umożliwia szybkie zapytania SQL i analizę dużych zbiorów danych. 
+Dataflow zapewnia zjednoczone przetwarzanie strumieniowe i wsadowe danych, a Looker oferuje funkcje inteligencji 
+biznesowej. Razem te narzędzia umożliwiają przedsiębiorstwom wykorzystanie potencjału ich danych, odkrywanie wglądów 
+oraz podejmowanie decyzji opartych na danych.
 
+751) Jakie inicjatywy podjął GCP w kierunku zrównoważonego rozwoju i zielonego przetwarzania danych?
+GCP zobowiązuje się do zrównoważonego rozwoju i zielonego przetwarzania danych, dążąc do pracy na energii wolnej od 
+węgla 24/7 we wszystkich swoich centrach danych do 2030 roku. Google jest neutralne pod względem emisji dwutlenku węgla 
+od 2007 roku i pokrywa 100% swojego zapotrzebowania na energię elektryczną z odnawialnych źródeł. GCP oferuje również 
+narzędzia umożliwiające klientom monitorowanie i redukcję ich śladu węglowego, kładąc nacisk na efektywne wykorzystanie 
+zasobów, energię odnawialną oraz odpowiedzialność środowiskową w obliczeniach.
 
+752) W jaki sposób GCP integruje technologie blockchain w swoich usługach?
+Chociaż GCP samo w sobie nie oferuje natywnych usług blockchain, wspiera technologie blockchain, zapewniając bezpieczną 
+i skalowalną infrastrukturę do wdrażania i uruchamiania sieci blockchain oraz aplikacji. Poprzez swój rynek, GCP oferuje 
+rozwiązania od dostawców zewnętrznych, które umożliwiają przedsiębiorstwom uruchamianie i zarządzanie węzłami blockchain, 
+rozwijanie inteligentnych kontraktów oraz budowanie zdecentralizowanych aplikacji, wykorzystując globalną infrastrukturę 
+GCP i zapewnione przez nią bezpieczeństwo.
 
+753) Jakie postępy poczynił GCP w zakresie obliczeń brzegowych (edge computing)?
+GCP poczynił znaczące postępy w zakresie obliczeń brzegowych dzięki platformie Anthos oraz Edge TPU. Anthos umożliwia 
+przedsiębiorstwom uruchamianie aplikacji zarówno w chmurze, jak i na brzegu sieci, zapewniając spójną warstwę zarządzania 
+w różnych środowiskach. Edge TPU, specjalnie zaprojektowany układ ASIC do uruchamiania modeli uczenia maszynowego na 
+brzegu sieci, umożliwia przetwarzanie AI o wysokiej prędkości i niskim opóźnieniu, wspierając przypadki użycia takie 
+jak "I o T", inteligentne miasta i pojazdy autonomiczne.
 
+754) W jaki sposób GCP napędza innowacje w obliczeniach bezserwerowych (serverless computing)?
+GCP napędza innowacje w obliczeniach bezserwerowych dzięki produktom takim jak Cloud Functions, Cloud Run oraz App Engine, 
+które umożliwiają deweloperom tworzenie i wdrażanie aplikacji bez konieczności zarządzania infrastrukturą. Usługi te 
+automatycznie skalują zasoby w zależności od zapotrzebowania, optymalizują koszty i umożliwiają szybsze cykle rozwoju. 
+Oferta GCP w zakresie obliczeń bezserwerowych wspiera szeroki wachlarz języków programowania i integruje się bezproblemowo 
+z innymi usługami GCP, tworząc wysoce produktywne środowisko deweloperskie.
 
+755) Omów rolę GCP w zwiększaniu bezpieczeństwa cybernetycznego poprzez nowe technologie.
+GCP zwiększa bezpieczeństwo cybernetyczne dzięki nowym technologiom, włączając zaawansowane narzędzia i funkcje, takie 
+jak Security Command Center, Cloud Armor oraz Confidential Computing. Narzędzia te wykorzystują sztuczną inteligencję i 
+uczenie maszynowe do wykrywania i reagowania na zagrożenia w czasie rzeczywistym, oferują ochronę przed atakami webowymi 
+i DDoS oraz umożliwiają przetwarzanie wrażliwych danych w bezpiecznym, zaszyfrowanym środowisku. Zobowiązanie GCP do 
+innowacji w zakresie bezpieczeństwa pomaga chronić dane i aplikacje klientów przed ewoluującymi zagrożeniami cybernetycznymi.
 
+756) W jaki sposób GCP ułatwia eksperymentowanie z nowymi technologiami dla deweloperów i przedsiębiorstw?
+GCP ułatwia eksperymentowanie z nowymi technologiami dzięki kompleksowemu zestawowi usług chmurowych, obszerniej 
+dokumentacji i narzędziom dla deweloperów. Google Cloud Free Tier, kredyty dla startupów oraz różne zasoby wsparcia 
+obniżają barierę wejścia dla eksperymentowania z technologiami chmurowymi. Regularne aktualizacje GCP oraz wprowadzanie 
+najnowszych usług zapewniają deweloperom i przedsiębiorstwom narzędzia potrzebne do innowacji, eksperymentowania i 
+wdrażania nowoczesnych aplikacji wykorzystujących najnowsze technologie chmurowe.
 
+757) Czym jest Google Cloud Platform (GCP)?
+Google Cloud Platform (GCP) to zestaw usług obliczeniowych w chmurze, który działa na tej samej infrastrukturze, z której 
+Google korzysta wewnętrznie dla swoich produktów końcowych, takich jak Google Search, Gmail, przechowywanie plików i 
+YouTube. GCP oferuje szereg usług, w tym obliczenia, przechowywanie danych, analizę danych oraz uczenie maszynowe.
 
+758) Czy możesz wyjaśnić różnicę między IaaS, PaaS i SaaS? Podaj przykłady z GCP?
+a) IaaS (Infrastructure as a Service): Zapewnia wirtualizowane zasoby obliczeniowe przez internet. W GCP, przykładem 
+IaaS jest Google Compute Engine (GCE), oferujący maszyny wirtualne, które użytkownicy mogą dostosować i kontrolować.
+b) PaaS (Platform as a Service): Oferuje narzędzia sprzętowe i programowe przez internet, zazwyczaj do rozwoju aplikacji. 
+Przykładem PaaS w GCP jest Google App Engine (GAE), który zapewnia platformę dla deweloperów do budowania, wdrażania i 
+skalowania aplikacji.
+c) SaaS (Software as a Service): Dostarcza aplikacje oprogramowania przez internet na zasadzie subskrypcji. Przykładem 
+SaaS w GCP jest Google Workspace (dawniej G Suite), oferujący narzędzia do pracy grupowej i produktywności dla firm.
 
+759) Czym są Google Compute Engine i Google App Engine? Jakie są różnice między nimi?
+Google Compute Engine (GCE) to usługa IaaS, która zapewnia maszyny wirtualne (VM) w chmurze, dając użytkownikom pełną 
+kontrolę nad systemem operacyjnym, ustawieniami sieciowymi oraz całym stosem oprogramowania. Z kolei Google App Engine 
+(GAE) to usługa PaaS, która abstrahuje większość infrastruktury, umożliwiając deweloperom skupienie się na pisaniu kodu 
+bez martwienia się o środowisko, w którym aplikacja działa. GAE automatycznie skaluje aplikację w odpowiedzi na ruch, 
+który otrzymuje.
 
+760) Wyjaśnij pojęcie równoważenia obciążenia w GCP.
+Równoważenie obciążenia to metoda wykorzystywana do rozdzielania ruchu sieciowego lub aplikacyjnego pomiędzy wiele 
+serwerów w farmie serwerów lub puli serwerów. W GCP, równoważenie obciążenia umożliwia użytkownikom rozdzielanie 
+przychodzącego ruchu pomiędzy różne instancje ich aplikacji, co poprawia wydajność i dostępność. GCP oferuje różne typy 
+równoważenia obciążenia, w tym HTTP(S) Load Balancing, TCP/SSL Proxy Load Balancing oraz Network Load Balancing, 
+z których każdy jest zaprojektowany do konkretnych scenariuszy.
 
+761) Czym jest Google Cloud Storage? Jakie różne klasy przechowywania oferuje?
+Google Cloud Storage to zunifikowane rozwiązanie do przechowywania obiektów, które umożliwia użytkownikom przechowywanie 
+i dostęp do danych z dowolnego miejsca. Oferuje różne klasy przechowywania, dostosowane do różnych scenariuszy użycia: 
+Standard (dla danych często używanych), Nearline (dla danych dostępnych mniej niż raz w miesiącu), Coldline (dla danych 
+dostępnych mniej niż raz na kwartał) oraz Archive (dla danych długoterminowych, dostępnych mniej niż raz w roku), 
+z których każda różni się ceną i dostępnością.
 
+762) Opisz różnicę między BigQuery a Cloud Bigtable?
+BigQuery to w pełni zarządzana, bezserwerowa i wysoce skalowalna hurtownia danych, zaprojektowana z myślą o elastyczności 
+biznesowej. Jest idealna do analizowania dużych zbiorów danych. Z kolei Cloud Bigtable to usługa baz danych "No SQL", 
+przeznaczona do analiz w czasie rzeczywistym oraz obciążeń operacyjnych z dużymi ilościami danych. Podczas gdy BigQuery 
+jest zoptymalizowane do zapytań analitycznych, Cloud Bigtable jest zoptymalizowane do dostępu do danych o niskim opóźnieniu.
 
+763) Czym jest Virtual Private Cloud (VPC) i jakie są jego korzyści w GCP?
+Virtual Private Cloud (VPC) w GCP to zarządzana funkcjonalność sieciowa dla zasobów chmurowych. Zapewnia prywatną sieć z 
+alokacją adresów IP, routowaniem oraz politykami zapory sieciowej w celu zabezpieczenia i zarządzania zasobami chmurowymi. 
+Korzyści to izolacja zasobów chmurowych, skalowalne i elastyczne opcje sieciowe oraz integracja z usługami GCP, 
+co zapewnia płynne środowisko chmurowe.
 
+764) W jaki sposób GCP zarządza tożsamościami (identity) i dostępem (access)?
+GCP zarządza tożsamościami i dostępem za pomocą Cloud Identity and Access Management (IAM). IAM umożliwia administratorom 
+autoryzowanie osób, które mogą podejmować działania na określonych zasobach, dając im kontrolę nad tym, którzy użytkownikcy 
+i usługi mogą uzyskiwać dostęp do różnych zasobów. Polityki IAM definiują uprawnienia i mogą być ustawiane na różnych 
+poziomach hierarchii zasobów w GCP. 
 
+765) Jaka jest rola Kubernetes Engine w GCP?
+Google Kubernetes Engine (GKE) to zarządzane środowisko w GCP do wdrażania, zarządzania i skalowania aplikacji 
+kontenerowych z wykorzystaniem infrastruktury Google. GKE automatyzuje wiele aspektów konfiguracji i utrzymywania klastrów 
+Kubernetes, co ułatwia wdrażanie aplikacji, skalowanie ich w razie potrzeby oraz zarządzanie ich cyklem życia bez 
+konieczności posiadania głębokiej wiedzy na temat Kubernetes.
 
+766) Wyjaśnij pojęcie obliczeń bezserwerowych w GCP. Wymień niektóre produkty bezserwerowe oferowane przez GCP?
+Obliczenia bezserwerowe pozwalają na budowanie i uruchamianie aplikacji oraz usług bez konieczności zarządzania 
+infrastrukturą. Twoja aplikacja wciąż działa na serwerach, ale całe zarządzanie serwerami jest realizowane przez GCP. 
+Ten model pozwala deweloperom skupić się na kodzie, podczas gdy GCP zajmuje się skalowaniem, przydzielaniem zasobów i 
+zarządzaniem serwerami. Przykłady produktów bezserwerowych w GCP to Google Cloud Functions (funkcje wywoływane 
+zdarzeniami), Google App Engine (platforma aplikacyjna) oraz Google Cloud Run (aplikacje kontenerowe).
 
+767) Jakie są główne opcje przechowywania dostępne w GCP?
+GCP oferuje różnorodne opcje przechowywania, dostosowane do różnych potrzeb: 
+a) Google Cloud Storage: Usługa przechowywania obiektów do przechowywania i uzyskiwania dostępu do dowolnej ilości danych. 
+b) Persistent Disk: Przechowywanie blokowe dla maszyn wirtualnych Google Compute Engine. 
+c) Filestore: Zarządzana usługa przechowywania plików dla aplikacji wymagających interfejsu systemu plików oraz 
+współdzielonego systemu plików. 
+d) Local SSD: Wydajna, przejściowa, lokalna pamięć blokowa zaprojektowana w celu zapewnienia wysokiej przepustowości i 
+niskiego opóźnienia.
 
+768) Czy możesz wyjaśnić różnicę między Cloud SQL a Cloud Spanner?
+a) Cloud SQL to w pełni zarządzana usługa baz danych relacyjnych, która obsługuje "My SQL", PostgreSQL oraz SQL Server. 
+Jest idealna do tradycyjnych obciążeń bazodanowych, które wymagają bazy danych relacyjnej i została zaprojektowana z 
+myślą o kompatybilności z istniejącymi aplikacjami.
+b) Cloud Spanner to w pełni zarządzana, skalowalna usługa baz danych relacyjnych przeznaczona do danych aplikacji 
+regionalnych i globalnych. Oferuje skalowanie poziome bez kompromisów w zakresie silnej spójności i semantyki relacyjnej, 
+co czyni ją odpowiednią do większych, rozproszonych aplikacji, które wymagają wysokiej dostępności i globalnej dystrybucji.
 
+769) Jaka jest rola Google Cloud Build w praktykach "Dev - Ops" GCP?
+Google Cloud Build to w pełni zarządzana platforma do ciągłej integracji i dostarczania (CI/CD), która automatyzuje 
+procesy budowania, testowania i wdrażania oprogramowania. W praktykach "Dev - Ops" GCP odgrywa kluczową rolę, umożliwiając 
+deweloperom tworzenie zautomatyzowanych przepływów pracy, które kompilują kod źródłowy, uruchamiają testy i wdrażają 
+aplikacje do Google Cloud lub dowolnego innego środowiska. Obsługuje szeroki zakres języków programowania i integruje 
+się z usługami Google Cloud oraz GitHub, co czyni go wszechstronnym narzędziem w pipeline'ach (Dev - Ops).
 
+770) Jak GCP implementuje Infrastructure as Code (I a C) i jakie narzędzia oferuje w tym zakresie?
+GCP implementuje Infrastructure as Code (I a C) za pomocą Google Cloud Deployment Manager oraz Terraform. Narzędzia te 
+umożliwiają zespołom deweloperskim i operacyjnym automatyzację provisioningu zasobów Google Cloud przy użyciu plików 
+konfiguracyjnych. Deployment Manager to natywna usługa (I a C) w GCP, która pozwala na zarządzanie zasobami chmurowymi za 
+pomocą szablonów i plików konfiguracyjnych. Terraform, narzędzie open-source, oferuje deklaratywny język konfiguracji 
+do modelowania i zarządzania infrastrukturą GCP oraz innych usług chmurowych. Oba narzędzia umożliwiają wersjonowanie, 
+powtarzalność oraz kodowanie infrastruktury, co stanowi kluczowe zasady w praktykach (Dev - Ops).
 
+771) Czym jest Google Kubernetes Engine (GKE) i w jaki sposób upraszcza operacje Kubernetes?
+Google Kubernetes Engine (GKE) to zarządzane, gotowe do produkcji środowisko do wdrażania aplikacji kontenerowych przy 
+użyciu Kubernetes na Google Cloud. Upraszcza operacje Kubernetes, automatyzując zadania takie jak provisioning, skalowanie 
+oraz aktualizowanie klastra Kubernetes. GKE oferuje zintegrowane logowanie i monitorowanie, bezproblemową integrację z 
+usługami Google Cloud oraz zaawansowane funkcje sieciowe i bezpieczeństwa, co ułatwia wdrażanie i zarządzanie aplikacjami 
+na dużą skalę.
 
+772) Czym jest Identity and Access Management (IAM) w GCP?
+IAM w GCP zarządza kontrolą dostępu, definiując, kto (tożsamość) ma jaki dostęp (role) do zasobów w GCP. Pozwala 
+administratorom przyznawać szczegółowe uprawnienia użytkownikom, grupom i kontom serwisowym (service accounts).
+
+773) Wyjaśnij rolę Kont Serwisowych (Service Accounts) w GCP?
+Kont Serwisowe to specjalne konta używane przez aplikacje lub maszyny wirtualne (VM) do interakcji z innymi usługami 
+Google Cloud. Te konta mogą mieć przypisane role IAM i służyć do uwierzytelniania aplikacji w celu dostępu do zasobów 
+GCP w sposób programowy.
+
+774) Czym jest Cloud Identity w GCP i jak integruje się z IAM?
+Cloud Identity to zintegrowane rozwiązanie do zarządzania tożsamościami, dostępem, aplikacjami i urządzeniami, 
+zaprojektowane z myślą o chmurze. Integruje się z IAM, umożliwiając centralne zarządzanie użytkownikami i grupami, 
+co pozwala na kontrolowanie ich dostępu do usług i zasobów GCP.
+
+775) Jak GCP obsługuje szyfrowanie danych w spoczynku i w tranzycie?
+a) W spoczynku (at rest): GCP automatycznie szyfruje dane przed zapisaniem ich na dysku, używając kluczy szyfrowania 
+zarządzanych przez Google. Klienci mogą również zarządzać własnymi kluczami szyfrowania za pomocą 
+Cloud Key Management Service (KMS). 
+b) W tranzycie (in transit): GCP szyfruje dane podczas ich przesyłania między centrami danych oraz do/z klientów przez 
+internet, wykorzystując protokoły takie jak TLS.
+
+776) Jaki jest cel Cloud Security Command Center (CSCC) w GCP?
+CSCC to kompleksowa platforma do zarządzania bezpieczeństwem i ryzykiem danych w GCP, która pomaga w zapobieganiu, 
+wykrywaniu i reagowaniu na zagrożenia. Zapewnia widoczność i kontrolę nad zasobami chmurowymi, umożliwiając skanowanie 
+danych wrażliwych, wykrywanie powszechnych luk w zabezpieczeniach aplikacji internetowych oraz przeglądanie praw dostępu.
+
+777) Czym jest Google Cloud Console i jakie są jej kluczowe funkcje?
+Google Cloud Console to oparta na sieci, graficzny interfejs użytkownika, która pozwala użytkownikom zarządzać zasobami 
+Google Cloud. Kluczowe funkcje obejmują możliwość wdrażania i zarządzania aplikacjami, monitorowania usług, zarządzania 
+rozliczeniami, ustawiania ról IAM i uprawnień, dostępu do Cloud Shell oraz korzystania z interfejsów API. Console zapewnia 
+intuicyjny sposób nawigacji i kontrolowania każdego aspektu Google Cloud.
+
+778) Jaką rolę pełni Google Cloud SDK w zarządzaniu GCP?
+Google Cloud SDK to zestaw narzędzi, które służą do zarządzania zasobami i aplikacjami hostowanymi na Google Cloud. 
+Narzędzia te obejmują gcloud, narzędzie wiersza poleceń, (gs util) oraz (b q), które umożliwiają odpowiednio zarządzanie 
+zasobami Google Cloud, interakcję z Google Cloud Storage oraz zapytania do zbiorów danych BigQuery. SDK umożliwia 
+tworzenie skryptów i automatyzację zadań zarządzania chmurą bezpośrednio z wiersza poleceń lub za pomocą skryptów.
+
+779) Czym jest Cloud Monitoring i jak integruje się z usługami GCP?
+Cloud Monitoring to usługa w ramach GCP, która zapewnia wgląd w wydajność, czas pracy i ogólny stan aplikacji 
+działających w chmurze. Zbiera metryki, zdarzenia i metadane z usług GCP, maszyn wirtualnych i instrumentacji aplikacji. 
+Dzięki Cloud Monitoring, deweloperzy i operatorzy mogą uzyskać wgląd w wydajność swoich aplikacji w czasie rzeczywistym, 
+ustawić alerty i tworzyć niestandardowe pulpity nawigacyjne do wizualizacji danych metryk. Usługa ta integruje się płynnie 
+z większością usług GCP, oferując gotowe funkcje monitorowania.
+
+780) Opisz Cloud Logging i jego znaczenie w GCP.
+Cloud Logging to w pełni zarządzana usługa w GCP, która umożliwia przechowywanie, wyszukiwanie, analizowanie, monitorowanie 
+i ustawianie alertów na danych logów oraz zdarzeniach z Google Cloud, oraz Amazon Web Services. Odgrywa kluczową rolę w 
+debugowaniu i rozwiązywaniu problemów z aplikacjami, monitorowaniu bezpieczeństwa oraz utrzymaniu śladów audytowych. 
+Cloud Logging zapewnia scentralizowaną platformę do zarządzania logami, wspierając zarządzanie i analizę logów w czasie 
+rzeczywistym, co ułatwia deweloperom i administratorom systemów zrozumienie ich środowisk chmurowych.
+
+781) Jak zestaw operacyjny Google Cloud (dawniej znany jako Stackdriver) poprawia monitorowanie aplikacji i infrastruktury?
+Zestaw operacyjny Google Cloud, wcześniej znany jako Stackdriver, poprawia monitorowanie aplikacji i infrastruktury, 
+oferując zintegrowane i inteligentne monitorowanie, logowanie oraz diagnostykę. Zapewnia potężne możliwości monitorowania, 
+w tym metryki wydajności, pulpity nawigacyjne, testy dostępności oraz systemy powiadamiania. Zestaw oferuje również 
+rozbudowane możliwości logowania, raportowania błędów oraz analizowania śladów (trace) w celu dogłębnego zrozumienia 
+wydajności aplikacji i stanu zdrowia, umożliwiając proaktywne zarządzanie i optymalizację zasobów chmurowych.
+
+782) Kiedy używasz opcji "Create Deployment" w Cloud Console, który z poniższych parametrów nie może być określony 
+podczas tworzenia wdrożenia?
+Time to live (T T L). Time to Live nie jest atrybutem wdrożenia. Nazwa aplikacji, obraz kontenera oraz początkowa komenda 
+mogą być określone.
+
+783) Stackdriver Monitoring zbiera metryki, takie jak liczba zapytań, czas wykonania, liczba przetworzonych bajtów oraz 
+liczba tabel, które są zbierane dla jakich usług zarządzanych w GCP?
+Cloud BigQuery. Stackdriver Monitoring zbiera metryki dotyczące wydajności zasobów infrastrukturalnych i aplikacji. 
+Wymienione metryki są zbierane dla BigQuery.
+
+784) Wdrażasz aplikację, która musi skalować się i być dostępna (highly available). Które z poniższych komponentów 
+Compute Engine pomogą osiągnąć skalowalność i wysoką dostępność?
+Grupy instancji. Grupy instancji to zestawy maszyn wirtualnych, które można skonfigurować do skalowania i które są 
+używane z load balanserami, co pomaga w poprawie dostępności. Instancje preemptible nie są wysoko dostępne, ponieważ 
+mogą zostać zamknięte w dowolnym momencie przez GCP. Cloud Storage nie jest komponentem Compute Engine. GPU mogą pomóc 
+w zwiększeniu przepustowości dla operacji intensywnie obliczeniowych, ale nie przyczyniają się do wysokiej dostępności.
+
+785) Klienci skarżą się na długie czasy oczekiwania podczas rezerwacji biletów lotniczych. W Twoim systemie przetwarzania 
+biletów znajduje się wiele mikro-usług. Chciałbyś zobaczyć informacje na temat czasu, jaki każda mikro-usługa potrzebuje 
+na wykonanie. Jaką usługę Stackdriver powinieneś użyć?
+Stackdriver Trace.
+a) Stackdriver Trace służy do zbierania informacji o czasie potrzebnym na wykonanie funkcji w stosie wywołań.
+b) Stackdriver Logging służy do zbierania danych o wydarzeniach w formie półstrukturalnej.
+c) Stackdriver Monitoring zbiera metryki wydajności.
+d) Stackdriver Debugger służy do sprawdzania stanu działającego kodu. 
+
+786) Architekt zasugerował określony typ maszyny do Twojego obciążenia. Tworzysz maszynę wirtualną w konsoli, ale nie 
+widzisz tego typu maszyny na liście dostępnych typów maszyn. Co może być tego przyczyną?
+Ten typ maszyny nie jest dostępny w strefie, którą podałeś.
+Różne strefy mogą mieć różne dostępne typy maszyn, więc musisz najpierw wybrać region, a następnie strefę, aby określić 
+zestaw dostępnych typów maszyn. Jeśli typ maszyny nie pojawia się na liście, oznacza to, że nie jest dostępny w tej strefie. 
+Podsieci i adresy IP nie mają związku z dostępnymi typami maszyn. Jeśli nie określasz niestandardowego typu maszyny, 
+nie musisz podawać ilości pamięci – jest to definiowane przez typ maszyny.
+
+787) Jakie są kategorie rozwiązań w Cloud Launcher?
+Zbiory danych, systemy operacyjne i narzędzia dla deweloperów.
+Kategorie rozwiązań obejmują wszystkie wymienione, czyli "zbiory danych, systemy operacyjne i narzędzia dla deweloperów". 
+Inne kategorie to Aplikacje Kubernetes, API i usługi oraz bazy danych.
+
+788) Zauważasz, że 5 maszyn wirtualnych przetwarza dane o godzinie 11:00 GMT w porównaniu do 7 maszyn wirtualnych o 
+godzinie 10:30 GMT. Jaka funkcja grup zarządzanych instancji działa tutaj?
+Autoskalowanie. Autoskalowanie dodaje lub usuwa instancje na podstawie metryk instancji i obciążenia. 
+
+789) Deployujesz aplikację webową napisaną w Pythonie na GCP. Aplikacja korzysta tylko z niestandardowego kodu i 
+podstawowych bibliotek Pythona. Spodziewasz się sporadycznego korzystania z aplikacji w przewidywalnej przyszłości i 
+chcesz zminimalizować zarówno koszty jej uruchamiania, jak i nakład pracy związany z jej zarządzaniem. Która usługa 
+obliczeniowa jest najlepszą opcją do uruchomienia aplikacji?
+App Engine standard environment.
+App Engine standard environment może uruchamiać aplikacje Pythonowe, które mogą automatycznie skalować w dół do zerowej 
+liczby instancji, gdy nie ma obciążenia, co pozwala zminimalizować koszty.
+Compute Engine oraz App Engine flexible environment wymagają większej konfiguracji i zarządzania niż App Engine standard 
+environment. 
+Kubernetes Engine jest używany, gdy potrzebny jest klaster serwerów do obsługi dużych aplikacji lub wielu aplikacji, 
+które korzystają z tych samych zasobów obliczeniowych.
+
+790) Ile czasu GCP będzie czekać przed zbieraniem statystyk wydajności z instancji w celu autoskalowania, nazywa się to?
+Okres chłodzenia (Cool down period).
+
+791) Twój zespół zarządzający rozważa trzech różnych dostawców chmurowych. Poproszono Cię o podsumowanie informacji 
+dotyczących fakturowania (billing) i kosztów, aby pomóc zespołowi zarządzającemu porównać struktury kosztów między 
+chmurami. Które z poniższych informacji o kosztach maszyn wirtualnych (VM) w GCP powinieneś wspomnieć?
+Maszyny wirtualne są fakturo-wane w przyrostach 1 sekundy, koszt zależy od liczby rdzeni CPU i ilości pamięci w typie 
+maszyny, możesz tworzyć niestandardowe typy maszyn, maszyny wirtualne preemptible kosztują do 80% mniej niż standardowe 
+maszyny wirtualne, a Google oferuje zniżki za długotrwałe użytkowanie.
+
+792) Próbujesz wykonać polecenia, aby zainicjować wdrożenie na klastrze Kubernetes. Polecenia te nie mają żadnego efektu. 
+Podejrzewasz, że któryś z komponentów Kubernetes nie działa prawidłowo. Który komponent może być problemem?
+API Kubernetes.
+Wszystkie interakcje z klastrem odbywają się poprzez mastera za pomocą API Kubernetes. Jeśli jakieś działanie ma być 
+wykonane na węźle, polecenie jest wydawane przez mastera klastra.
+
+793) Musisz utworzyć wiele maszyn wirtualnych o różnych konfiguracjach w ramach grupy instancji. Jak możesz to osiągnąć?
+Utwórz grupę instancji niezarządzalne (unmanaged).
+Zarządzane grupy instancji (MIG) składają się z maszyn wirtualnych o identycznych konfiguracjach. Grupy instancji 
+(unmanaged) pozwalają na tworzenie maszyn wirtualnych o różnych konfiguracjach.
+
+794) Wykorzystanie CPU przekraczające 70 procent przez trzy minuty jest przykładem czego?
+Polityka alertów (Alerting Policy). 
+W Stackdriver Monitoring alerty są tworzone za pomocą polityki alertów. Wykorzystanie CPU to jeden z takich przykładów.
+
+795) Uruchamianie klastrów BigTable w różnych regionach spowoduje "zwiększenie" opóźnienia replikacji i "zwiększenie" dostępność.
+Uruchamiając klaster BigTable w wielu regionach, zapewniasz wyższą dostępność, ponieważ możesz obsługiwać awarię na 
+poziomie regionu. Jednak spowoduje to również zwiększenie opóźnienia replikacji, ponieważ dane muszą być replikowane w 
+klastrze w różnych regionach.
+
+796) Nasza aplikacja działa na klastrze Kubernetes na GCP. Skonfigurowałeś autoskalowanie, gdy wykorzystanie CPU 
+przekracza 75 procent. Jak obliczane jest wykorzystanie CPU?
+Na podstawie wszystkich procesorów używanych przez wdrożenie (deployment).
+Repliki są dodawane do wdrożenia (deployment), dlatego wykorzystanie CPU powinno być sprawdzane na poziomie wdrożenia. 
+Sprawdzanie wykorzystania CPU na poziomie klastra byłoby niepoprawne, ponieważ klaster może mieć uruchomione jedno lub 
+więcej wdrożeń.
+
+797) Architekt przenosi aplikację legacy do Google Cloud i chce zminimalizować zmiany w istniejącej architekturze, 
+jednocześnie zarządzając klastrem jako jednolitą jednostką. Aplikacja legacy działa w klastrze z równoważeniem obciążenia, 
+który uruchamia węzły o dwóch różnych konfiguracjach. Te dwie konfiguracje są wymagane z powodu decyzji projektowych 
+podjętych kilka lat temu. Obciążenie aplikacji jest dość stabilne, więc rzadko zachodzi potrzeba skalowania w górę lub 
+w dół. Jakie zasoby Compute Engine w GCP zaleciłbyś w tym przypadku?
+Grupy instancji niezarządzalne (Unmanaged instance groups).
+Grupy instancji niezarządzalne są dostępne w przypadku ograniczonych przypadków użycia, takich jak ten. Grupy instancji
+     niezarządzalne nie są zalecane ogólnie. Zarządzane grupy instancji (MIG) są zalecanym sposobem korzystania z grup instancji, 
+ale dwie różne konfiguracje uniemożliwiają ich użycie. Instancje preemptible i GPU nie są istotne w tym scenariuszu.
+
+798) Twoja firma ma siedzibę w X i będzie uruchamiać serwer wirtualny dla Y. Jaki czynnik decyduje o koszcie jednostki 
+na minutę?
+Charakterystyki serwera.
+Charakterystyki serwera, takie jak liczba wirtualnych serwerów, ilość pamięci oraz region, w którym uruchamiasz maszynę 
+wirtualną, wpływają na koszt. Czas dnia nie jest czynnikiem ani typ aplikacji, którą uruchamiasz na maszynie wirtualnej.
+
+799) Co może stanowić podstawę do skalowania grupy instancji?
+Opóźnienie sieci, pojemność równoważenia obciążenia i wykorzystanie CPU.
+Można skonfigurować politykę autoskalowania, która wywołuje dodawanie lub usuwanie instancji na podstawie wykorzystania 
+CPU, metryk monitorowania, pojemności równoważenia obciążenia lub obciążeń opartych na kolejce.
+Dysk, opóźnienie sieciowe i pamięć mogą również wyzwalać skalowanie, jeśli skonfigurowane są metryki monitorowania 
+tych zasobów.
+
+800) Jeśli pod zostanie zakończony z powodu problemów ze zdrowiem, to co doda pody, aż osiągnięty zostanie pożądany stan?
+Kubernetes (Replica Sets).
+(Replica Set) to kontroler, który zarządza liczbą podów uruchamianych w ramach wdrożenia (deployment). Wdrożenie to wyższy 
+poziom koncepcji, która zarządza (Replica Sets) i zapewnia deklaratywne aktualizacje.
+
+801) Czy Cloud Dataflow wymaga określenia typu maszyn podczas konfigurowania pipeline?
+Nie. Cloud Dataflow nie wymaga określenia typu maszyn, ale możesz określić typ maszyny i typ dysku roboczego, jeśli 
+chcesz mieć taką kontrolę.
+
+802) Twój menedżer przygotowuje prezentację dla kierownictwa w Twojej firmie, w której przekonuje, że warto zacząć 
+korzystać z Kubernetes Engine. Sugerujesz, aby menedżer uwzględnił wszystkie funkcje, które Kubernetes oferuje, aby 
+zredukować obciążenie inżynierów (Dev Ops). Opisujesz kilka funkcji, z wyjątkiem której z poniższych?
+Skanowanie bezpieczeństwa w celu wykrywania luk.
+Kubernetes zapewnia równoważenie obciążenia, skalowanie i automatyczne aktualizowanie oprogramowania. Nie zapewnia jednak 
+skanowania w poszukiwaniu luk bezpieczeństwa. GCP ma produkt Cloud Security Scanner, ale jest on zaprojektowany do 
+współpracy z App Engine w celu wykrywania typowych luk aplikacyjnych.
+
+803) Inżynier (Dev Ops) zauważa wzrost wykorzystania CPU na serwerach. Wyjaśniasz, że właśnie uruchomiłeś wdrożenie. 
+Chciałbyś pokazać inżynierowi (Dev Ops) szczegóły wdrożenia, które właśnie uruchomiłeś. Jakiego polecenia użyjesz?
+"gcloud deployment-manager deployments describe".
+Poprawna odpowiedź to "gcloud deployment-manager deployments describe", ponieważ "cloud-launcher" nie jest nazwą usługi.
+Uwaga: list wyświetla krótkie podsumowanie każdego wdrożenia, a describe wyświetla szczegółowy opis.
+
+804) Używasz migawek (snapshots) do przechowywania kopii dysku o pojemności 100 GB. Tworzysz migawkę, a następnie 
+dodajesz 10 GB danych. Tworzysz drugą migawkę. Ile przestrzeni dyskowej jest używane łącznie przez te dwie migawki 
+(zakładając brak kompresji)?
+110 GB, z czego 100 GB dla pierwszej migawki i 10 GB dla drugiej.
+Kiedy tworzysz pierwszą migawkę, GCP tworzy pełną kopię danych z dysku trwałego (persistent disk). Następnym razem, 
+gdy tworzysz migawkę z tego samego dysku, GCP skopiuje tylko dane, które zmieniły się od ostatniej migawki.
+Uwaga: GCP nie przechowuje pełnej kopii drugiej migawki, a pierwsza migawka nie jest automatycznie usuwana. Ponadto, 
+kolejne migawki nie generują dodatkowego 10% narzutu na przestrzeń.
+
+805) Przed utworzeniem grupy instancji musisz utworzyć co?
+Szablon grupy instancji (Instance group template).
+Szablon grupy instancji służy do określenia, jak grupa instancji powinna zostać utworzona.
+Uwaga: Instancje są tworzone automatycznie podczas tworzenia grupy instancji.
+Obrazy dysków rozruchowych i migawki nie muszą być tworzone przed utworzeniem grupy instancji.
+
+806) Musisz skonfigurować serwer o wysokim poziomie bezpieczeństwa. Chcesz być przygotowany na ataki na swój serwer 
+przez osobę próbującą wprowadzić rootkit (rodzaj złośliwego oprogramowania, które może zmienić system operacyjny).
+Jaką opcję powinieneś wybrać podczas tworzenia maszyny wirtualnej?
+Shield VM.
+Shield VM to zaawansowany zestaw kontroli bezpieczeństwa, który obejmuje monitorowanie integralności, czyli sprawdzanie, 
+czy obrazy rozruchowe nie zostały naruszone, co czyni tę opcję właściwą odpowiedzią.
+Zapory ogniowe (firewalle) służą do kontrolowania przychodzącego i wychodzącego ruchu sieciowego do serwera lub podsieci.
+Klucze SSH na poziomie projektu służą do uwierzytelniania użytkowników na różnych serwerach w projekcie.
+
+807) Zdecydowałeś się przekazać zadanie tworzenia kopii zapasowych migawkowych członkowi swojego zespołu. Jaką rolę 
+musisz przypisać członkowi zespołu, aby mógł tworzyć migawki? 
+Administrator przechowywania obliczeniowego (Compute Storage Admin). 
+Aby pracować z migawkami, użytkownik musi mieć przypisaną rolę Administratora przechowywania obliczeniowego.
+
+808) Będziesz budować szereg modeli uczenia maszynowego na instancji i podłączać do niej GPU. Kiedy uruchamiasz swoje 
+modele uczenia maszynowego, zajmują one wyjątkowo dużo czasu na wykonanie. Wygląda na to, że GPU nie jest używane. 
+Jaki może być tego powód? 
+Biblioteki GPU nie są zainstalowane. Aby działać poprawnie, system operacyjny musi mieć zainstalowane biblioteki GPU. 
+System operacyjny nie musi być oparty na Ubuntu i nie ma potrzeby posiadania co najmniej ośmiu procesorów CPU w 
+instancji, aby móc podłączyć i używać GPU. Dostępna przestrzeń dyskowa nie decyduje o tym, czy GPU jest używane, czy nie.
+
+809) Prowadzisz zespół inżynierów chmurowych, którzy utrzymują zasoby chmurowe dla kilku działów w Twojej firmie. 
+Zauważyłeś problem z dryfem konfiguracji. Niektóre konfiguracje maszyn nie są już w tym samym stanie, w jakim zostały 
+utworzone. Nie możesz znaleźć notatek ani dokumentacji dotyczącej tego, jak i dlaczego dokonano tych zmian. Jaką praktykę 
+wdrożysz, aby rozwiązać ten problem? 
+Napisz skrypty używając poleceń gcloud do zmiany konfiguracji i przechowuj te skrypty w systemie kontroli wersji.
+Używanie skryptów z kontrolą wersji to najlepsze podejście spośród czterech opcji. Skrypty mogą być udokumentowane z 
+powodami zmian i mogą być uruchamiane wielokrotnie na różnych maszynach, aby wdrożyć tę samą zmianę. Zmniejsza to ryzyko 
+błędu podczas ręcznego wpisywania poleceń.
+
+810) Zostałeś poproszony przez swojego menedżera o wdrożenie strony WordPress. Oczekujesz dużego ruchu, a Twój menedżer 
+chce upewnić się, że maszyna wirtualna hostująca stronę WordPress ma wystarczające zasoby. Jakie zasoby możesz 
+skonfigurować podczas uruchamiania strony WordPress za pomocą Cloud Launcher? 
+Typ dysku, rozmiar dysku, typ maszyny. Możesz również określić zasady zapory, aby umożliwić ruch HTTP i HTTPS lub 
+zmienić strefę, w której działa maszyna wirtualna.
+
+811) Nabyłeś zestaw danych o wielkości 10 GB od zewnętrznej firmy badawczej. Grupa naukowców zajmujących się danymi 
+chciałaby uzyskać dostęp do tych danych za pomocą swoich programów statystycznych napisanych w języku R. R dobrze 
+współpracuje z systemami plików Linux i Windows, a naukowcy są zaznajomieni z operacjami na plikach w R. Każdy z 
+naukowców chciałby mieć swoją dedykowaną maszynę wirtualną (VM), a dane miałyby być dostępne w systemie plików tej 
+maszyny wirtualnej. Jak najlepiej udostępnić te dane na maszynie wirtualnej, minimalizując liczbę kroków, które muszą 
+podjąć naukowcy?
+Utwórz maszyny wirtualne, używając obrazu źródłowego utworzonego z dysku z danymi. Zestaw danych o wielkości 10 GB jest 
+wystarczająco mały, aby przechować go na jednym dysku. Tworząc obraz dysku z danymi, możesz określić ten obraz źródłowy 
+podczas tworzenia maszyny wirtualnej. Inne opcje wymagałyby, aby naukowcy skopiowali dane z Cloud Storage na dysk w 
+maszynie wirtualnej. Google Drive podobnie wymagałby skopiowania danych, a załadowanie ich do BigQuery spowodowałoby 
+załadowanie danych do bazy danych, a nie do systemu plików, jak określono w wymaganiach.
+
+812) Klient poprosił Cię o pomoc w redukcji nadmiernego nakładu pracy w (Dev Ops). Inżynierowie spędzają zbyt dużo czasu na 
+łatanie serwerów i optymalizowanie wykorzystania serwerów. Chcą przejść na platformy serverless w jak największym stopniu. 
+Twój klient słyszał o Cloud Functions i chce je wykorzystać jak najczęściej. Zalecasz wszystkie poniższe rodzaje 
+aplikacji, z wyjątkiem której?
+Długoterminowe procedury ładowania danych do hurtowni danych. 
+Cloud Functions najlepiej nadaje się do przetwarzania zdarzeń, takich jak przesyłanie pliku do Cloud Storage lub zapisanie 
+zdarzenia do kolejki Pub/Sub. Długotrwałe zadania, takie jak ładowanie danych do hurtowni danych, lepiej nadają się do 
+Compute Engine lub App Engine.
+
+813) Dział marketingu w Twojej firmie chce wdrożyć aplikację internetową, ale nie chce zarządzać serwerami ani klastrami. 
+Dobrym rozwiązaniem dla nich będzie?
+App Engine. App Engine to platforma PaaS, która pozwala programistom na wdrożenie pełnych aplikacji bez konieczności 
+zarządzania serwerami czy klastrami. Compute Engine i Kubernetes Engine wymagają zarządzania serwerami. Cloud Functions 
+nadaje się do krótkoterminowych funkcji w Node.js lub Pythonie, ale nie do pełnych aplikacji.
+
+814) Usługa GCP do przechowywania i zarządzania kontenerami Docker to?
+Container Registry. Usługa GCP do przechowywania i zarządzania kontenerami Docker to Container Registry. 
+Cloud Build służy do tworzenia obrazów.
+
+815) Kiedy przenosimy usługi z "n1 Standard 1" do "n1 Standard 4", nazywa się to skalowaniem pionowym (Vertical Scaling)?
+Tak. Skalowanie pionowe wymaga przeniesienia usług z jednej maszyny wirtualnej na inną, z większymi lub mniejszymi zasobami.
+
+816) Twój zespół rozwija nowy pipeline do analizowania strumienia danych z czujników urządzeń produkcyjnych. Stary 
+pipeline czasami powodował uszkodzenie danych, ponieważ równoległe wątki nadpisywały dane zapisane przez inne wątki. 
+Postanawiasz użyć Cloud Functions jako części pipeline'u. Jako programista Cloud Function, co musisz zrobić, aby zapobiec 
+zakłóceniu przez siebie wielu wywołań funkcji?
+Nic. GCP zapewnia, że wywołania funkcji nie będą się nawzajem zakłócać. Każde wywołanie funkcji w chmurze działa w 
+bezpiecznym, izolowanym środowisku wykonawczym. Nie ma potrzeby sprawdzania, czy inne wywołania funkcji są uruchomione. 
+W usłudze Cloud Functions nie ma sposobu, aby programista kontrolował wykonanie kodu na poziomie procesu lub wątku.
+
+817) Nowy inżynier pyta o wyjaśnienie, kiedy najlepiej używać Kubernetes, a kiedy grupy instancji. Wskazujesz, że 
+Kubernetes używa grup instancji. Jaką rolę pełnią grupy instancji w klastrze Kubernetes?
+Tworzą zestawy maszyn wirtualnych, które mogą być zarządzane jako jednostka. Kubernetes tworzy grupy instancji jako 
+część procesu tworzenia klastra, co sprawia, że jest to poprawna odpowiedź. To nie grupy instancji, ale Stackdriver służy 
+do monitorowania stanu zdrowia węzłów oraz do tworzenia alertów i powiadomień. Kubernetes tworzy pody i wdrożenia; 
+nie są one dostarczane przez grupy instancji.
+
+818) Twoja firma ma zamiar wypuścić nową usługę online, która opiera się na nowym doświadczeniu interfejsu użytkownika, 
+zarządzanym przez zestaw usług działających na Twoich serwerach. Istnieje oddzielny zestaw usług do zarządzania 
+uwierzytelnianiem i autoryzacją. Zestaw usług przechowujących dane śledzi informacje o kontach. Wszystkie trzy zestawy 
+usług muszą być wysoce niezawodne i skalowalne, aby sprostać zapotrzebowaniu. Która usługa GCP będzie najlepsza do 
+wdrożenia tego rozwiązania?
+Kubernetes Engine. Opisana sytuacja jest idealna do zastosowania Kubernetes. Każdy z grup usług może być zorganizowany 
+w pody i wdrożony za pomocą wdrożenia Kubernetes. Kubernetes Engine zarządza zdrowiem węzłów, równoważeniem obciążenia 
+i skalowaniem.
+
+819) Dodanie maszyn wirtualnych do grupy instancji może zostać wywołane w polityce auto-skalowania, przez który z 
+poniższych czynników?
+a) Wykorzystanie CPU.
+b) Metryki Stackdriver.
+c) Pojemność obsługi równoważenia obciążenia.
+Naruszenia zasad IAM nie powodują zmiany rozmiaru klastrów. Wszystkie inne opcje mogą być użyte do wywołania zmiany 
+rozmiaru klastra.
+
+820) Maszyny wirtualne w GCP Compute Engine mogą być tworzone za pomocą?
+a) Cloud Console.
+b) Zapytanie REST API.
+c) Zapytanie SOAP.
+d) Interfejs wiersza poleceń SDK.
+Maszyny wirtualne są tworzone za pomocą Cloud Console, interfejsu wiersza poleceń SDK lub zapytań REST API. 
+Zapytanie SOAP nie jest poprawnym wyborem.
+
+821) Jakie polecenie jest używane do uruchamiania obrazu Docker na klastrze?
+"kubectl run". Polecenie kubectl jest używane do zarządzania obciążeniami na klastrze Kubernetes po jego utworzeniu. 
+Polecenie gcloud nie jest używane do manipulowania procesami Kubernetes. Uwaga: beta nie jest wymagana w poleceniach kubectl.
+
+822) Karta "Network" formularza tworzenia maszyny wirtualnej to miejsce, w którym wykonasz którą z następujących operacji?
+Dodanie interfejsu sieciowego do maszyny wirtualnej. W karcie "Network" formularza VM możesz dodać kolejny interfejs 
+sieciowy. GCP automatycznie ustawia adres IP. Nie ma opcji określania routera ani zmiany zasad zapory w karcie "Network".
+
+823) Jakie polecenie użyjesz, aby utworzyć 10 replik wdrożenia o nazwie ch07-app-deploy?
+"kubectl scale deployment ch07-app-deploy --replicas=10".
+Użycie gcloud i upgrade jest niepoprawne. "scale" to właściwe polecenie, które należy użyć razem z parametrem replicas.
+
+824) Wdrożyłeś aplikację do klastra Kubernetes. Zauważyłeś, że kilka podów przez pewien czas ma niedobór zasobów, 
+a następnie są one zamykane. Gdy zasoby stają się dostępne, tworzone są nowe instancje tych podów. Klienci nadal mogą 
+łączyć się z podami, mimo że nowe pody mają inne adresy IP niż te, które zostały zakończone. Który komponent Kubernetes 
+umożliwia to działanie?
+Service.
+Usługi zapewniają poziom pośrednictwa w dostępie do podów. Pody są efemeryczne. Klienci łączą się z usługami, które mogą 
+odkrywać pody. (Replica Sets) i (Stateful Sets) zapewniają zarządzane pody. Alerty służą do raportowania stanu zasobów.
+
+825) Właśnie otworzyłeś konsolę GCP na stronie "console.google.com". Zalogowałeś się jako użytkownik, którego chcesz używać. 
+Jakie jest jedno z pierwszych rzeczy, które powinieneś zrobić przed wykonaniem zadań na maszynach wirtualnych?
+Zweryfikuj, czy wybrany projekt to ten, z którym chcesz pracować.
+Powinieneś zweryfikować wybrany projekt, ponieważ wszystkie operacje, które wykonasz, będą miały zastosowanie do zasobów 
+w wybranym projekcie, co czyni to odpowiedzią prawidłową.
+Nie musisz otwierać Cloud Shell, chyba że chcesz pracować z wiersza poleceń, a jeśli to zrobisz, najpierw powinieneś 
+upewnić się, że projekt jest poprawnie wybrany.
+Logowanie do maszyny wirtualnej za pomocą SSH to jedno z zadań, które wymaga pracy z odpowiednim projektem, więc logowanie 
+się przez SSH nie powinno mieć miejsca przed weryfikacją projektu.
+Lista maszyn wirtualnych w oknie Maszyny wirtualne to lista maszyn w aktualnym projekcie.
+Powinieneś zweryfikować, który projekt używasz, aby upewnić się, że oglądasz zestaw maszyn wirtualnych, które chcesz używać.
+
+826) Inżynier oprogramowania zwraca się do Ciebie o rekomendację. Zaimplementowała algorytm uczenia maszynowego do 
+identyfikacji komórek rakowych w obrazach medycznych. Algorytm jest zasobożerny, wykonuje wiele obliczeń matematycznych, 
+wymaga natychmiastowego dostępu do dużych ilości danych i nie może być łatwo rozproszony na wielu serwerach. 
+Jaką konfigurację Compute Engine byś polecił?
+Wysoka pamięć, wysoka moc CPU, GPU.
+Aplikacja obciążająca obliczeniowo oczywiście wymaga dużej liczby rdzeni CPU, ale fakt, że wykonuje wiele obliczeń 
+matematycznych, wskazuje, że należy użyć GPU.
+Można rozważyć uruchomienie tego w klastrze, ale praca nie jest łatwo rozdzielna na wiele serwerów, więc będziesz 
+potrzebować pojedynczego serwera, który poradzi sobie z tym obciążeniem.
+Natychmiastowy dostęp do dużych ilości danych sugeruje, że należy wybrać maszynę o dużej pamięci.
+
+827) Jakie polecenie usunie instancję o nazwie ch06-instance-3?
+"gcloud compute instances delete ch06-instance-3".
+Polecenie do usunięcia instancji to "gcloud compute instances delete", a następnie nazwa instancji.
+Polecenie stop zatrzymuje, ale nie usuwa instancji.
+
+828) Masz aplikację, która używa kolejki wiadomości Pub/Sub do zarządzania listą zadań, które mają zostać przetworzone 
+przez inną aplikację. Aplikacja konsumująca wiadomości z kolejki Pub/Sub usuwa wiadomość dopiero po zakończeniu zadania. 
+Przetwarzanie jednego zadania zajmuje około 10 sekund. Nie stanowi problemu, jeśli dwa lub więcej maszyn wirtualnych 
+wykonuje to samo zadanie. Jaka jest najbardziej opłacalna konfiguracja do przetwarzania tego obciążenia?
+Użyj maszyn wirtualnych typu preemptible.
+Jest to dobry przypadek użycia maszyn wirtualnych typu preemptible, ponieważ mogą one zmniejszyć koszty uruchamiania 
+drugiej aplikacji bez ryzyka utraty pracy.
+Ponieważ zadania są usuwane z kolejki dopiero po ich zakończeniu, jeśli maszyna preemptible zostanie wyłączona przed 
+zakończeniem zadania, inne VM mogą je wykonać.
+Nie ma również żadnego problemu, jeśli zadanie jest wykonywane więcej niż raz, więc jeśli dwie maszyny wirtualne wykonają 
+to samo zadanie, nie wpłynie to negatywnie na wynik aplikacji.
+
+829) Twój zespół jest nowy w Kubernetes i migruje do GCP. Programiści w zespole nie są zaznajomieni z Kubernetes i nie 
+rozumieją, dlaczego nie mogą znaleźć polecenia do wdrożenia kontenera. Jak wyjaśnisz powód, dla którego nie ma polecenia 
+do wdrożenia kontenera?
+Kubernetes używa podów jako najmniejszej jednostki wdrożeniowej.
+Kubernetes używa podów jako najmniejszej jednostki wdrożeniowej, a pody zwykle zawierają jeden, ale możliwie kilka 
+kontenerów, które są wdrażane jako całość.
+
+830) Stackdriver Monitoring może zbierać metryki dotyczące usług Amazon Web Services?
+Tak. Stackdriver Monitoring zbiera metryki dotyczące wydajności zasobów infrastrukturalnych i aplikacji. Zasoby mogą 
+znajdować się zarówno w GCP, jak i w chmurze Amazon Web Services.
+
+831) Kolega poprosił Cię o pomoc w ustawieniu środowiska testowego w Google Cloud. Nigdy wcześniej nie pracował z GCP. 
+Sugerujesz rozpoczęcie od jednej maszyny wirtualnej. Jaki jest minimalny zestaw informacji, których będziesz potrzebować?
+Nazwa VM, typ maszyny, region i strefa.
+Nazwa VM, region i strefa, oraz typ maszyny mogą być określone w konsoli razem z innymi parametrami.
+
+832) Twoja firma uruchamia usługę (I o T) i będzie otrzymywać duże wolumeny danych strumieniowych. Musisz przechować te 
+dane w Bigtable. Chcesz zbadać środowisko Bigtable z poziomu wiersza poleceń. Jakie polecenie powinieneś uruchomić, 
+aby upewnić się, że masz zainstalowane narzędzia wiersza poleceń?
+"gcloud components install cbt".
+Poprawne polecenie to "gcloud components install cbt", aby zainstalować narzędzia Bigtable.
+
+833) Jesteś głównym deweloperem aplikacji medycznej, która wykorzystuje smartfony pacjentów do rejestrowania danych 
+biomedycznych. Aplikacja musi zbierać dane i przechowywać je na smartfonie, gdy dane nie mogą być niezawodnie przesyłane 
+do aplikacji backendowej. Chcesz zminimalizować ilość prac programistycznych potrzebnych do synchronizacji danych między 
+smartfonami a centralnymi magazynami danych. Jaki magazyn danych powinieneś polecić?
+Cloud Firestore.
+Cloud Firestore to mobilna usługa baz danych, która umożliwia synchronizację danych między urządzeniami mobilnymi a 
+centralnym magazynem danych. 
+Spanner to globalna relacyjna baza danych do aplikacji na dużą skalę, które wymagają obsługi transakcji w wysoko 
+skalowanych bazach danych. 
+Datastore i Cloud SQL również mogłyby być użyte, ale wymagałyby więcej niestandardowego rozwoju w celu synchronizacji 
+danych między urządzeniami mobilnymi a centralnym magazynem danych.
+
+834) Po utworzeniu klastra GCP Cloud Dataproc można go?
+Skalować w górę, Tylko węzły robocze mogą się zmieniać, Skalować w dół.
+Po utworzeniu klastra można go skalować w górę lub w dół.
+Zmieniać można tylko liczbę węzłów roboczych — węzły główne są stałe.
+
+835) Zespół deweloperów mobilnych rozwija nową aplikację. Będzie wymagała synchronizacji danych między urządzeniami 
+mobilnymi a bazą danych backendową. Jaką usługę bazy danych byś polecił?
+Firestore.
+Firestore to baza danych dokumentów, która oferuje funkcje wspierające urządzenia mobilne, takie jak synchronizacja danych, 
+dlatego jest to odpowiedni wybór.
+BigQuery jest przeznaczony do analiz, a nie do aplikacji mobilnych czy transakcyjnych.
+Spanner to globalna relacyjna baza danych, ale nie oferuje funkcji specyficznych dla urządzeń mobilnych.
+Bigtable można używać z urządzeniami mobilnymi, ale nie oferuje funkcji specyficznych dla mobilnych, 
+takich jak synchronizacja.
+
+836) Zespół naukowców danych poprosił Cię o pomoc w ustawieniu klastra Apache Spark. Sugerujesz, aby użyli zarządzanej 
+usługi GCP, zamiast zarządzać klastrem samodzielnie na Compute Engine. Jaką usługę powinni wykorzystać?
+Cloud Dataproc.
+Cloud Dataproc to zarządzana usługa Spark. 
+Cloud Dataflow służy do przetwarzania danych strumieniowych i wsadowych (batch).
+BigQuery jest przeznaczony do analiz.
+Cloud Hadoop nie jest usługą GCP. 
+
+837) Pracujesz z startupem, który rozwija oprogramowanie analityczne do danych (I o T). Musisz móc spójnie przetwarzać duże 
+wolumeny danych i przechowywać je przez kilka miesięcy. Startup ma kilka aplikacji, które będą musiały zapytać te dane. 
+Oczekuje się, że wolumeny wzrosną do petabajtów. Jaką bazę danych powinieneś wybrać?
+Bigtable.
+Bigtable to baza danych typu wide-column, która może spójnie przetwarzać duże wolumeny danych.
+Obsługuje również niski czas opóźnienia w milisekundach, co czyni ją dobrym wyborem do wspierania zapytań.
+Cloud Spanner to globalna relacyjna baza danych, która nie nadaje się do szybkiego przetwarzania dużych wolumenów danych.
+Datastore to model danych obiektowych, który nie jest odpowiedni dla danych (I o T) ani innych danych szeregów czasowych.
+BigQuery to baza danych analityczna, która nie jest zaprojektowana do szybkiego przetwarzania dużych wolumenów danych w 
+krótkich okresach czasu.
+
+838) Musisz przechować dane dla X, dlatego używasz cache’a dla Y. Jak cache wpłynie na pobieranie danych?
+Użycie cache’a zmniejszy opóźnienia, ponieważ pobieranie z cache’a jest szybsze niż pobieranie z SSD lub HDD.
+Cache’e używają pamięci, co czyni je najszybszym typem magazynu do odczytu danych.
+Cache’e to magazyny danych na zapleczu systemów rozproszonych, a nie na stronie klienta.
+Cache nie ma wpływu na wykonanie JavaScriptu po stronie klienta.
+Cache nie przechowuje danych, jeśli nastąpi utrata zasilania; dane muszą być ponownie załadowane.
+Cache może stać się niespójny z systemem prawdy (system of truth), ponieważ system prawdy może zostać zaktualizowany, 
+ale cache może nie zostać zaktualizowany.
+Cache ma szybszy czas odczytu niż SSD i HDD.
+
+839) Deweloper oprogramowania w Twoim zespole prosi Cię o pomoc w poprawieniu wydajności zapytań w aplikacji bazodanowej. 
+Deweloper używa instancji Cloud SQL "My SQL", Drugiej Generacji. Jakie opcje byś polecił?
+Memorystore i dyski SSD persistent.
+Memorystore to zarządzana pamięć podręczna Redis. Można jej użyć do przechowywania wyników zapytań.
+Kolejne zapytania, które odwołują się do danych przechowywanych w pamięci podręcznej, mogą je odczytać z cache’a, co 
+jest znacznie szybsze niż odczyt z dysków persistent.
+Dyski SSD mają znacznie niższe opóźnienia niż tradycyjne dyski twarde (HDD) i powinny być używane w aplikacjach 
+wrażliwych na wydajność, takich jak bazy danych.
+Datastore to zarządzana baza danych "No SQL", która nie jest odpowiednia do tego typu zapytań.
+
+840) Zgodnie z polityką Twojej firmy musisz wykonywać kopię zapasową bazy danych Datastore co najmniej raz dziennie. 
+Audytor pyta, czy eksport z Datastore jest wystarczający. Wyjaśniasz, że polecenie eksportu Datastore generuje jakie dane?
+Plik metadanych i folder z danymi.
+Proces eksportu tworzy plik metadanych zawierający informacje o wyeksportowanych danych oraz folder, który zawiera same dane.
+
+841) Właśnie utworzyłeś instancję Cloud Spanner. Twoje zadanie polega na utworzeniu sposobu przechowywania danych o 
+katalogu produktów. Jaki będzie następny krok po utworzeniu instancji Cloud Spanner, który umożliwi załadowanie danych?
+Utwórz bazę danych w ramach instancji.
+Kolejnym krokiem jest utworzenie bazy danych w ramach instancji. Po utworzeniu bazy danych można tworzyć tabele, a 
+następnie ładować dane do tabel. Cloud Spanner to zarządzana baza danych, więc nie musisz stosować poprawek bezpieczeństwa.
+Nie możesz utworzyć tabel bez uprzedniego utworzenia bazy danych.
+
+842) Deweloper oprogramowania prosi Cię o pomoc w eksporcie danych z bazy danych Cloud SQL. Deweloper mówi ci, którą bazę 
+danych wyeksportować i do którego koszyka przechować plik eksportu, ale nie wspomniał, jaki format pliku powinien zostać 
+użyty do eksportu. Jakie są dostępne opcje formatu pliku eksportu?
+CSV i SQL.
+Podczas eksportowania bazy danych z Cloud SQL opcje formatu pliku eksportu to CSV i SQL. JSON oraz XML nie są opcjami.
+
+843) Na jakiej technologii systemu plików oparty jest Cloud Filestore?
+Network File System (NFS).
+Cloud Filestore oparty jest na technologii Network File System (NFS), która jest rozproszonym systemem zarządzania plikami.
+Pozostałe opcje to systemy plików obsługiwane przez Linuxa, ale nie stanowią one podstawy Cloud Filestore.
+
+844) Który z poniższych formatów plików jest, a który nie jest opcją dla pliku eksportu podczas eksportu z BigQuery?
+CSV, JSON, Avro.
+XML nie jest opcją w procesie eksportu z BigQuery.
+
+845) Nowe przepisy rządowe wymagają, aby wszystkie firmy farmaceutyczne przechowywały swoje dane finansowe przez 5 lat. 
+Co byś zalecił jako najlepszy sposób na spełnienie wymogu regulacyjnego?
+Zdefiniować politykę przechowywania danych (Define a data retention policy).
+Można byłoby odpowiedzieć, że najlepszym rozwiązaniem będzie Coldline Storage, ale poprawną odpowiedzią jest 
+„Zdefiniować politykę przechowywania danych.”
+Zauważ, że nie wspomniano o dostępie do tych danych, tzn. czy będą one dostępne często, czy rzadko.
+Definiując politykę przechowywania danych, zapewniamy, że dane nie zostaną usunięte, co jest wymagane przez przepisy.
+
+846) Musisz skopiować pliki z lokalnego urządzenia do koszyka w Cloud Storage. Jakiej komendy użyjesz? Załóżmy, że masz 
+zainstalowany Cloud SDK na swoim lokalnym komputerze.
+"gsutil cp". gsutil to komenda służąca do kopiowania plików do Cloud Storage. Czasownik to (c p), a nie "copy".
+
+847) Jakie funkcje można skonfigurować podczas uruchamiania bazy danych MySQL Drugiej Generacji w Cloud SQL?
+Typ maszyny, repliki awaryjne (Failover replicas), okno konserwacyjne (Maintenance window).
+W przypadku instancji drugiej generacji możesz skonfigurować wersję (My SQL), łączność, typ maszyny, automatyczne kopie 
+zapasowe, repliki awaryjne, flagi bazy danych, okna konserwacyjne oraz etykiety.
+
+848) Twój menedżer prosi Cię o skonfigurowanie podstawowego systemu Pub/Sub jako środowiska testowego dla nowych 
+programistów, którzy uczą się o systemach wiadomości. Jakie dwa zasoby w Pub/Sub musisz utworzyć?
+Tematy i subskrypcje.
+Pub/Sub działa z tematami, które odbierają i przechowują wiadomości, oraz subskrypcjami, które udostępniają wiadomości 
+aplikacjom konsumentów.
+Tabele to struktury danych w relacyjnych bazach danych, a nie w kolejkach wiadomości.
+Bazy danych istnieją w instancjach systemów zarządzania bazami danych, a nie w systemach wiadomości.
+Tabele nie są zasobem w systemach wiadomości.
+
+849) Chcesz oszacować koszt wykonania zapytania w BigQuery. Jakie dwa usługi w Google Cloud Platform będziesz musiał użyć?
+BigQuery i Kalkulator Cen (Pricing Calculator).
+BigQuery dostarcza oszacowanie ilości przetwarzanych danych, a Kalkulator Cen daje szacunkowy koszt przetwarzania tej 
+objętości danych.
+Usługa Billing śledzi poniesione opłaty, ale nie jest używana do szacowania przyszłych lub potencjalnych kosztów.
+
+850) Poprawne polecenie do utworzenia tematu Pub/Sub to które z poniższych?
+"gcloud pubsub topics create".
+Polecenie "gcloud" jest używane z odpowiednią usługą, w tym przypadku "pubsub", następnie zasobem, w tym przypadku 
+"topics", a na końcu czasownikiem, w tym przypadku "create".
+
+851) Otrzymałeś duży zbiór danych z systemu Internetu Rzeczy (Io T +). Chcesz użyć BigQuery do analizy danych. 
+Jakie polecenie w wierszu poleceń użyjesz, aby udostępnić dane do analizy w BigQuery?
+"bq load --autodetect --source_format=Format Dataset.Tabela.Ścieżka'
+Parametry "--autodetect" i "--source_format" oraz ścieżka do źródła są poprawnie określone w każdym z przypadków.
+Aby pracować z BigQuery, używamy polecenia "bq", a "load" jest odpowiednią opcją, a nie "import".
+
+852) Jaki język zapytań jest używany przez Datastore?
+GQL. Datastore używa języka zapytań podobnego do SQL, zwanego GQL (Google Query Language).
+SQL nie jest używane w Datastore.
+MDX jest używane do zapytań w systemach OLAP, a nie w Datastore.
+DataFrames to struktura danych używana w Spark, niezwiązana z Datastore.
+
+853) Utworzyłeś instancję i bazę danych Cloud Spanner. Zgodnie z najlepszymi praktykami Google, jak często powinieneś 
+aktualizować pakiety VM za pomocą apt-get?
+Nigdy, Cloud Spanner to usługa zarządzana.
+Nie ma potrzeby stosowania poprawek do zasobów obliczeniowych, gdy używasz Cloud Spanner, ponieważ Google zarządza 
+zasobami wykorzystywanymi przez Cloud Spanner. Aktualizowanie pakietów jest dobrą praktyką podczas używania maszyn 
+wirtualnych, na przykład z Compute Engine, ale nie jest to konieczne w przypadku usługi zarządzanej.
+
+854) Jaką wielkość bloku używają wszystkie systemy przechowywania blokowego?
+Wielkość bloku może się różnić.
+Wielkość bloku jest ustalana podczas tworzenia systemu plików. Bloki o wielkości 4 KB są powszechnie używane w systemach Linux.
+
+855) Jaka jest jedna z bezpośrednich zalet używania kolejki wiadomości w systemach rozproszonych?
+Odseparowuje usługi, dzięki czemu, jeśli jedna z nich ma opóźnienie, nie powoduje to opóźnienia w innych usługach.
+Użycie kolejki wiadomości między usługami odseparowuje je, więc jeśli jedna z usług ma opóźnienie, nie powoduje to 
+opóźnienia w innych usługach.
+Należy pamiętać, że dodanie kolejki wiadomości nie rozwiązuje bezpośrednio żadnych ryzyk związanych z bezpieczeństwem, 
+które mogą występować w systemie rozproszonym, takich jak nadmiernie uprawnienia.
+
+856) Jaki rodzaj modelu danych jest używany przez Datastore?
+Dokumentowy.
+Datastore to baza danych dokumentów.
+Cloud SQL i Spanner to bazy danych relacyjne.
+Bigtable to baza danych o szerokich kolumnach.
+
+857) Które z poniższych poleceń utworzy subskrypcję na temacie ace-exam-topic1?
+"gcloud pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1".
+Polecenie "gcloud pubsub subscriptions create", a następnie temat i nazwa subskrypcji.
+
+858) Zanim zaczniesz przechowywać dane w BigQuery, co musisz utworzyć?
+Zbiór danych (data set).
+Aby używać BigQuery do przechowywania danych, musisz mieć zbiór danych, w którym je przechowasz, co sprawia, że jest to 
+poprawna odpowiedź.
+Pojemniki (buckets) są używane przez Cloud Storage, a nie BigQuery. Nie zarządzasz dyskami trwałymi (persistent disks) 
+podczas korzystania z BigQuery.
+Encja (entity) to struktura danych w Datastore, a nie BigQuery.
+
+859) Twoje stanowisko zostało poproszone o analizowanie dużych partii danych każdej nocy. Zadania będą trwały około 
+trzech do czterech godzin. Chcesz wyłączyć zasoby, gdy tylko analiza zostanie zakończona, więc postanawiasz napisać skrypt, 
+który utworzy klaster Dataproc każdej nocy o północy. Jakie polecenie użyjesz, aby utworzyć klaster o nazwie 
+spark-nightly-analysis w strefie us-west2-a?
+"gcloud dataproc clusters create spark-nightly-analysis --zone us-west2-a".
+Poprawne polecenie to "gcloud dataproc clusters create", następnie nazwa klastra i parametr "--zone".
+bq to narzędzie wiersza poleceń dla BigQuery, a nie Dataproc.
+
+860) Który z poniższych formatów plików nie jest obsługiwany podczas importowania danych do BigQuery?
+YAML.
+YAML nie jest formatem przechowywania danych; jest używany do określania danych konfiguracyjnych.
+
+861) Chcesz, aby cały ruch sieciowy przechodził przez sieć Google i nie przechodził przez publiczny Internet. 
+Jaki poziom usługi sieciowej powinieneś wybrać?
+Premium.
+Premium to poziom usługi sieciowej, który kieruje cały ruch przez sieć Google.
+Poziom Standard (Standard tier) może korzystać z publicznego Internetu przy routingu ruchu.
+Nie ma poziomów usług o nazwach Google-only lub non-Internet.
+
+862) Masz stronę internetową hostowaną na maszynie wirtualnej Compute Engine. Użytkownicy mogą uzyskać dostęp do strony 
+internetowej, używając domeny, którą podałeś. Przeprowadziłeś prace konserwacyjne na VM, zatrzymałeś serwer i ponownie 
+go uruchomiłeś. Teraz użytkownicy nie mogą uzyskać dostępu do strony internetowej. Żadne inne zmiany nie miały miejsca 
+w podsieci. Jaka może być przyczyna problemu?
+Użyłeś adresu IP ephemerycznego (ephemeral) zamiast statycznego. Zatrzymanie i ponowne uruchomienie VM spowoduje 
+zwolnienie adresów IP ephemerycznych. Aby zachować ten sam adres IP po ponownym uruchomieniu, użyj adresu IP statycznego. 
+Ponowne uruchomienie VM nie zmienia rekordu DNS.
+Jeśli miałeś wystarczającą liczbę adresów, aby uzyskać adres przy pierwszym uruchomieniu VM, a następnie zwolniłeś ten 
+adres IP, powinien być dostępny przynajmniej jeden adres, zakładając, że żadne inne urządzenia nie zostały dodane do podsieci.
+
+863) Używasz Cloud Console do tworzenia VPN. Chcesz skonfigurować stronę VPN po stronie GCP. Jaką sekcję formularza 
+"Utwórz VPN" powinieneś wybrać?
+Google Compute Engine VPN.
+Google Compute Engine VPN to miejsce, w którym określasz informacje o stronie Google Cloud połączenia VPN, więc jest to 
+poprawna odpowiedź. Określasz nazwę, opis, sieć, region i adres IP.
+
+864) Do jakich zasobów służy sprawdzanie stanu (health check)?
+Maszyny wirtualne (VM).
+Sprawdzanie stanu monitoruje stan maszyn wirtualnych (VM) używanych z load balanserami.
+Magazyn Nearline to rodzaj Cloud Storage, urządzenia magazynujące (storage devices) lub pojemniki (buckets) nie są 
+sprawdzane pod kątem stanu.
+
+865) Jaki typ rekordu jest używany do określenia adresu IPv4 domeny?
+Rekord A służy do mapowania nazwy domeny na adres IPv4.
+Rekord (A A A A) jest używany dla adresów IPv6. Rekord NS to rekord serwera nazw. Rekord SOA to rekord początku autorytetu
+(start of authority record). 
+
+866) Podczas konfigurowania sieci w GCP, twoja sieć oraz zasoby w niej są traktowane jako co?
+Wirtualna chmura prywatna (VPC).
+Kiedy tworzysz sieć, jest ona traktowana jako wirtualna chmura prywatna (VPC).
+Zasoby są dodawane do VPC i nie są dostępne poza VPC, chyba że bezpośrednio skonfigurujesz je w celu udostępnienia.
+Subdomena jest związana z domenami internetowymi, a nie z konfiguracją sieci w GCP.
+Klastry, takie jak klastry Kubernetes, mogą być w twojej sieci, ale nie są charakterystycznym elementem sieci.
+
+867) Instancja VM próbuje odczytać dane z pojemnika Cloud Storage. Odczyt pojemnika jest dozwolony przez role IAM 
+przypisane do konta usługi VM. Odczyt pojemników jest zabroniony przez zakresy przypisane do VM. Co się stanie, 
+jeśli VM spróbuje odczytać dane z pojemnika?
+Odczyt nie zostanie wykonany, ponieważ zarówno zakresy, jak i role IAM są stosowane w celu określenia, jakie operacje 
+mogą być wykonane.
+Zarówno zakresy, jak i role IAM przypisane do konta usługi muszą zezwalać na operację, aby mogła się ona powieść.
+Uwaga: Kontrole dostępu nie wpływają na przepływ sterowania w aplikacjach, chyba że zostało to bezpośrednio zaprogramowane.
+Ponadto nie są stosowane najbardziej pesymistyczne uprawnienie.
+
+868) Jakie polecenie gcloud służy do tworzenia roli niestandardowej?
+"gcloud iam roles create".
+Poprawna odpowiedź to "gcloud iam roles create".
+
+869) CEO twojego startupu właśnie przeczytał raport w wiadomościach o firmie, która została zaatakowana przez coś, 
+co nazywa się "cache poisoning". CEO chce wdrożyć dodatkowe środki bezpieczeństwa, aby zmniejszyć ryzyko spoofingu DNS 
+i cache poisoning. Co byś polecił?
+Użycie (DNS SEC).
+(DNS SEC) to bezpieczny protokół zaprojektowany w celu zapobiegania spoofingowi i cache poisoning.
+Rekordy SOA i CNAME zawierają dane o rekordzie DNS; nie są one dodatkowymi środkami bezpieczeństwa.
+Usunięcie rekordu CNAME nie poprawia bezpieczeństwa.
+
+870) Jakie polecenie służy do tworzenia load balansera sieciowego w wierszu poleceń?
+"gcloud compute forwarding-rules create".
+Poprawna odpowiedź to "gcloud compute forwarding-rules create".
+
+871) Chcesz utworzyć VPN za pomocą Cloud Console. Jaką sekcję Cloud Console powinieneś użyć?
+Hybrid Connectivity.
+Opcja tworzenia VPC jest dostępna w sekcji Hybrid Connectivity, więc jest to poprawna odpowiedź.
+Compute Engine, App Engine i IAM & Admin nie mają funkcji związanych z VPN.
+
+872) Jakie etapy uruchomienia są dostępne przy tworzeniu ról niestandardowych?
+Alpha, beta, ogólna dostępność (general availability) i wyłączony (disabled).
+Cztery dostępne etapy uruchomienia to alpha, beta, ogólna dostępność (general availability) i wyłączony (disabled).
+
+873) Stażysta programista jest zdezorientowany, do czego służą role. Opisujesz role IAM jako zbiór czego?
+Uprawnień (Permissions).
+Role są używane do grupowania uprawnień, które następnie mogą być przypisane do tożsamości (identities). 
+Role nie mają tożsamości, ale tożsamości mogą otrzymać role.
+Role nie używają list kontroli dostępu (ACL). Role nie zawierają dzienników audytu.
+Dzienniki są zbierane i zarządzane przez Stackdriver Logging.
+
+874) Kiedy przejdziesz do IAM & Admin w Cloud Console, co pojawi się w głównej części strony?
+Członkowie i przypisane role (Members and roles assigned).
+Na liście znajdują się członkowie oraz ich przypisane role.
+
+875) Zespół ustawia usługę webową do użytku wewnętrznego. Chcą używać tego samego adresu IP przez przewidywalną przyszłość. 
+Jaki typ adresu IP należy przypisać?
+Statyczny (Static).
+Adresy statyczne są przypisywane, dopóki nie zostaną zwolnione.
+Adresy wewnętrzne i zewnętrzne określają, czy ruch jest kierowany do i z podsieci.
+Adresy zewnętrzne mogą odbierać ruch z Internetu; adresy wewnętrzne nie mogą.
+Adresy efemeryczne (ephemeral) są zwalniane, gdy maszyna wirtualna zostaje wyłączona lub usunięta.
+
+876) Jakie polecenie gcloud należy użyć, aby przypisać konto usługi podczas tworzenia maszyny wirtualnej?
+"gcloud compute instance create Instance-Name --service-account Service-Account-Email".
+Możesz przypisać konto usługi podczas tworzenia maszyny wirtualnej za pomocą polecenia create.
+Uwaga: nie ma poleceń takich jak create-service-account, define-service-account ani instances-service-account.
+
+877) Gdzie określasz porty w load balanserze TCP Proxy, na które powinien być kierowany ruch?
+Frontend.
+Porty, na które ma być kierowany ruch, określasz podczas konfigurowania frontendu. Backend to miejsce, gdzie konfigurujesz 
+sposób kierowania ruchu do maszyn wirtualnych.
+Network Services to obszar o wysokim poziomie w konsoli. VPC nie jest miejscem, gdzie określasz konfigurację load balansera.
+
+878) VPC to jakie zasoby?
+Globalne.
+Google obsługuje globalną sieć, a VPC to zasoby, które mogą obejmować tę globalną sieć.
+
+879) Chcesz ograniczyć ruch do zestawu instancji. Postanawiasz przypisać specyficzny tag sieciowy do każdej instancji. 
+Jaka część reguły zapory (firewall) może odnosić się do tagu sieciowego, aby określić zestaw instancji, na które wpływa 
+ta reguła?
+Cel (Target).
+Cel (Target) może obejmować wszystkie instancje w sieci, instancje z określonymi tagami sieciowymi lub instancje używające 
+konkretnego konta usługi.
+Akcja to zezwolenie (allow) lub odmowa (deny).
+Priorytet określa, która z pasujących reguł zostanie zastosowana.
+Kierunek (Direction) wskazuje, czy reguła dotyczy ruchu przychodzącego, czy wychodzącego.
+
+880) Wdrażasz nową niestandardową (custom) aplikację i chcesz delegować niektóre zadania administracyjne inżynierom (Dev Ops). 
+Nie potrzebują oni wszystkich uprawnień pełnego administratora aplikacji, ale potrzebują podzbioru tych uprawnień. 
+Jakiego rodzaju rolę powinieneś użyć, aby przyznać te uprawnienia?
+Niestandardową (custom).
+Role prymitywne obejmują tylko uprawnienia Właściciela (Owner), Edytora (Editor) i Podglądającego (Viewer). 
+Role wstępnie zdefiniowane są zaprojektowane dla produktów i usług GCP, takich jak App Engine i BigQuery. 
+Dla niestandardowej aplikacji możesz stworzyć zestawy uprawnień, które zapewnią użytkownikowi tej roli tyle uprawnień, 
+ile jest potrzebne, ale nie więcej.
+
+881) Zespół programistyczny aplikacji wdraża zestaw wyspecjalizowanych punktów końcowych usługi i chce ograniczyć ruch, 
+tak aby tylko ruch kierujący do jednego z punktów końcowych był dozwolony przez reguły zapory. Punkty końcowe usługi 
+będą akceptować wszelki ruch UDP, a każdy punkt końcowy będzie używać portu w zakresie od 20000 do 30000. 
+Które z poniższych poleceń należy użyć?
+"gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress".
+Reguła w "gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --direction=ingress" używa poprawnego 
+polecenia gcloud i określa parametry allow oraz direction.
+
+882) Jaka rola daje użytkownikom pełną kontrolę nad instancjami Compute Engine?
+Rola "Compute Admin".
+Rola "Compute Engine Admin" to rola, która daje użytkownikom pełną kontrolę nad instancjami.
+Rola "Compute Engine Security Admin" daje użytkownikom uprawnienia do tworzenia, modyfikowania i usuwania certyfikatów 
+SSL oraz reguł zapory.
+
+883) Jaka część reguły zapory określa, czy reguła dotyczy ruchu przychodzącego, czy wychodzącego?
+Kierunek (Direction).
+Kierunek (Direction) określa, czy reguła jest stosowana do ruchu przychodzącego, czy wychodzącego, co czyni ją poprawną 
+odpowiedzią.
+Akcja (Action) to zezwolenie (allow) lub odmowa (deny).
+Cel (Target) określa zestaw instancji, do których stosuje się reguła.
+Priorytet (Priority) określa, która z pasujących reguł zostanie zastosowana.
+
+884) Który regionalny load balancer umożliwia balansowanie obciążenia na podstawie protokołu IP, adresu i portu?
+Network TCP/UDP.
+Network TCP/UDP umożliwia balansowanie obciążenia na podstawie protokołu IP, adresu i portu.
+
+885) Jakie są opcje ustawiania zakresów w maszynie wirtualnej (VM)?
+"Allow Default Access", "Allow Full Access", oraz "Set Access for Each API".
+Opcje ustawiania zakresów to: "Allow Default Access", "Allow Full Access" oraz "Set Access For Each API".
+
+886) Jakie opcje są dostępne do filtrowania wiadomości logów podczas przeglądania dzienników audytu?
+Zasób (Resource), typ logu (type of log), poziom logu (log level) oraz okres czasu (period time only).
+Logi można filtrować według zasobu, typu logu, poziomu logu oraz okresu czasu.
+
+887) Jakie dwa komponenty należy skonfigurować podczas tworzenia load balansera TCP Proxy?
+Frontend i backend.
+Load balansery TCP Proxy wymagają skonfigurowania zarówno frontendu, jak i backendu.
+Reguły przekazywania ("Forwarding rules") to komponent, który jest określany przy konfiguracji load balansera sieciowego
+(network load balancer).
+
+888) Projektujesz aplikację, która wykorzystuje serię usług do transformacji danych z ich pierwotnej formy do formatu 
+odpowiedniego do użycia w magazynie danych. Twoja aplikacja transformująca będzie zapisywać do kolejki wiadomości, 
+gdy przetwarza każdy plik wejściowy. Nie chcesz przyznawać użytkownikom uprawnień do zapisywania w kolejce wiadomości. 
+Jakie rozwiązanie pozwoli aplikacji na zapis do kolejki wiadomości?
+Konto usługi (Service account).
+Konta usługi są zaprojektowane w celu nadania aplikacjom lub maszynom wirtualnym uprawnień do wykonywania zadań.
+Konta rozliczeniowe są używane do przypisania opłat do metody płatności.
+Foldery są częścią hierarchii zasobów i nie mają nic wspólnego z umożliwieniem aplikacji wykonywania zadania.
+
+889) Konfigurujesz load balancer i chcesz wdrożyć prywatne balansowanie obciążenia. Którą opcję wybierzesz?
+Tylko między moimi VM-ami (Only Between My VMs).
+W konsoli znajduje się opcja wyboru między "Z Internetu do moich VM-ek" (From Internet To My VMs) oraz 
+"Tylko między moimi VM-kami" (Only Between My VMs).
+Jest to opcja, która wskazuje, czy ma to być balansowanie prywatne, czy publiczne.
+
+890) Zespół składający się z czterech członków potrzebuje, abyś ustawił projekt, który wymaga tylko ogólnych uprawnień 
+do wszystkich zasobów. Przyznajesz każdej osobie rolę prymitywną, zależnie od ich odpowiedzialności w projekcie. 
+Które z poniższych nie są rolami prymitywnymi w Google Cloud Platform?
+Publisher nie jest rolą prymitywną. W Google Cloud Platform istnieją trzy role prymitywne: Owner, Editor oraz Viewer.
+
+891) Inżynier (Dev Ops) jest zdezorientowany co do celu zakresów (scopes). Zakresy to kontrole dostępu, które są stosowane 
+do jakiego rodzaju zasobów?
+Instancje VM (VM instances).
+Zakresy to uprawnienia przyznawane instancjom VM. Zakresy w połączeniu z rolami IAM przypisanymi do kont usługowych, 
+które są przypisane do instancji VM, określają, jakie operacje instancja VM może wykonywać.
+Uwaga: zakresy nie mają zastosowania do zasobów magazynowych ani do podsieci.
+
+892) Chcesz, aby GCP zarządzało kluczami kryptograficznymi, więc zdecydowałeś się użyć Cloud Key Management Services. 
+Zanim zaczniesz tworzyć klucze kryptograficzne, musisz?
+Włączyć API Google Cloud Key Management Service (KMS) i skonfigurować rozliczenia.
+Włączenie API Google Cloud KMS i skonfigurowanie rozliczeń to kroki wspólne dla korzystania z usług GCP.
+
+893) Chcesz, aby router w tunelu, który tworzysz, uczył się tras z wszystkich regionów GCP w sieci. 
+Jaką funkcję routingu GCP należy włączyć?
+Globalne dynamiczne routowanie (Global dynamic routing).
+Globalne dynamiczne routowanie służy do nauki wszystkich tras w sieci. Routing regionalny nauczy się tylko tras w danym 
+regionie.
+
+894) Polecenie do tworzenia VPC z linii poleceń to?
+"gcloud compute networks create".
+Poprawna odpowiedź to "gcloud compute networks create".
+
+895) Które load balansery zapewniają globalne balansowanie obciążenia?
+HTTP(S), SSL Proxy oraz TCP Proxy.
+Trzy globalne load balansery to HTTP(S), SSL Proxy i TCP Proxy. Internal TCP/UDP to load balancer regionalny.
+
+896) Aplikacja dla firmy finansowej potrzebuje dostępu do bazy danych i zasobnika Cloud Storage.
+Nie ma predefiniowanej roli, która przyznałaby wszystkie potrzebne uprawnienia bez przyznawania uprawnień, które nie są potrzebne.
+Decydujesz się stworzyć niestandardową rolę. Jaką zasadę powinieneś zastosować podczas definiowania niestandardowych ról?
+Zasada najmniejszych uprawnień (Least privilege).
+Użytkownicy powinni mieć tylko te uprawnienia, które są niezbędne do wykonywania ich obowiązków — jest to zasada 
+najmniejszych uprawnień.
+Rotacja obowiązków (Rotation of duties) to inna zasada bezpieczeństwa, która polega na przypisaniu różnych osób do 
+wykonywania tych samych zadań w różnych okresach.
+Obrona w głębokości (Defense in depth) to praktyka stosowania wielu środków bezpieczeństwa do ochrony tego samego zasobu.
+"Least Principle" nie jest rzeczywistą zasadą bezpieczeństwa, dlatego poprawną odpowiedzią jest "Least privilege".
+
+897) Podczas incydentu, który spowodował awarię aplikacji, podejrzewasz, że niektóre zasoby mogą nie mieć przypisanych 
+odpowiednich ról. Jakie polecenie należy użyć, aby wyświetlić przypisane role do zasobu?
+"gcloud iam list-grantable-roles".
+gcloud to narzędzie wiersza poleceń, a do pracy z IAM musimy dodać "iam", a "list-grantable-roles" to poprawne polecenie.
+
+898) Premium Tier kieruje ruchem tylko przez globalną sieć Google?
+Kiedy używasz Standard Tier, twoje dane są narażone na niezawodność publicznego Internetu.
+
+899) Używasz gcloud do tworzenia reguły zapory. Jakie polecenie powinieneś użyć?
+"gcloud compute firewall-rules create".
+Produkt, z którym pracujesz, to Compute, a zasób, który tworzysz, to reguła zapory, więc 
+"gcloud compute firewall-rules create" jest poprawne.
+
+900) Jakie polecenie jest używane do tworzenia strefy DNS w wierszu poleceń?
+"gcloud beta dns managed-zones create".
+Poprawna odpowiedź to "gcloud beta dns managed-zones create".
+Polecenie gsutil jest używane do pracy z Cloud Storage.
+
+901) Poproszono cię o stworzenie sieci z 1000 adresów IP. W celu zminimalizowania nieużywanych adresów IP, który sufiks 
+CIDR powinieneś użyć, aby stworzyć sieć z co najmniej 1000 adresami, ale nie większą, niż to konieczne?
+Sufiks "/22" daje 1022 użyteczne adresy IP.
+
+902) Stworzyłeś podsieć o nazwie "sn1", używając "192.168.0.0". Chcesz, aby miała 14 adresów. Jaki długość prefiksu 
+powinieneś użyć?
+"28". Długość prefiksu określa długość maski podsieci w bitach. Pozostałe bity adresu IP są używane do reprezentowania 
+adresów urządzeń. Ponieważ adres IP ma 32 bity, należy odjąć długość maski, aby uzyskać liczbę bitów używanych do 
+reprezentowania adresu.
+
+903) Spotykasz się z audytorem, aby omówić praktyki bezpieczeństwa w chmurze. Audytor pyta, jak implementujesz kilka 
+najlepszych praktyk. Opisujesz, jak role wstępnie zdefiniowane w IAM pomagają w implementacji której z praktyk bezpieczeństwa?
+Najmniejsze uprawnienia i Rozdzielenie obowiązków.
+Role wstępnie zdefiniowane pomagają w implementacji zarówno najmniejszych uprawnień, jak i rozdzielenia obowiązków.
+Role wstępnie zdefiniowane same w sobie nie implementują obrony w głębokości, ale mogą być używane razem z innymi 
+kontrolami bezpieczeństwa w celu implementacji tej praktyki.
+
+904) Standard Tier używa publicznej sieci Internet do transferu danych między centrami danych Google?
+Kiedy używasz Standard Tier, twoje dane są przesyłane z wykorzystaniem publicznej sieci Internet, co oznacza, że są one 
+uzależnione od niezawodności publicznego Internetu. Premium Tier przesyła ruch tylko przez globalną sieć Google.
+
+905) Zostałeś poproszony o mapowanie polityk uwierzytelniania i autoryzacji aplikacji on-premises na mechanizmy 
+uwierzytelniania i autoryzacji GCP. Dokumentacja GCP stwierdza, że tożsamość musi być uwierzytelniona, aby przyznać jej 
+uprawnienia. Co oznacza termin tożsamość?
+Użytkownik (User).
+Tożsamości (identities) są abstrakcjami użytkowników. Mogą one również reprezentować cechy procesów działających 
+w imieniu użytkownika lub maszyny wirtualnej (VM) w GCP. Tożsamości nie są związane z identyfikatorami VM. 
+Role są zbiorami uprawnień, które można przypisać tożsamościom.
+
+906) Na jakich poziomach hierarchii zasobów można utworzyć współdzieloną sieć VPC?
+Organizacja i foldery (Organization and folders).
+Współdzielone sieci VPC mogą być tworzone na poziomie organizacji lub folderu w hierarchii zasobów. Współdzielone sieci 
+VPC nie są tworzone na poziomie zasobów ani projektów. Współdzielone sieci VPC nie są stosowane do podsieci, które są 
+zasobami w hierarchii zasobów.
+
+907) Chcesz zaimplementować komunikację między projektami w VPC. Jaką funkcję VPC powinieneś użyć do jej implementacji?
+VPC peering jest używane do komunikacji między projektami w VPC. 
+
+908) Dlaczego role podstawowe są klasyfikowane w kategorii oprócz IAM (addition to IAM)?
+Zostały stworzone przed IAM.
+Role podstawowe (Primitive roles) zostały stworzone przed IAM i zapewniały dostęp oparty na szerokim zakresie 
+(coarse-grained access control). IAM to nowsza forma kontroli dostępu.
+
+909) Zostałeś poproszony o skonfigurowanie zabezpieczeń sieci w wirtualnej prywatnej chmurze. Twoja firma chce mieć wiele 
+podsieci i ograniczyć ruch między tymi podsieciami. Jaką kontrolę zabezpieczeń sieciowych należy zastosować, 
+aby kontrolować przepływ ruchu między podsieciami?
+Firewall. Firewalle w Google Cloud Platform (GCP) to oprogramowanie-definiowane kontrolery sieciowe 
+(software-defined network controls), które ograniczają przepływ ruchu do i z sieci lub podsieci.
+Routery służą do przesyłania ruchu do odpowiednich miejsc docelowych w sieci.
+Zarządzanie tożsamością i dostępem (IAM) jest używane do uwierzytelniania i autoryzowania użytkowników; nie jest to 
+istotne w kontekście kontroli sieciowych między podsieciami. Tabele adresów IP nie są kontrolą zabezpieczeń.
+
+910) Twoja firma właśnie zaczęła korzystać z GCP, a kierownictwo chce mieć dedykowane połączenie z centrum danych do GCP, 
+aby umożliwić przesyłanie dużych ilości danych. Jaką usługę sieciową byś polecił?
+Google Cloud Interconnect - Dedicated. Google Cloud Interconnect – Dedicated to jedyna opcja dla dedykowanego połączenia 
+między centrum danych klienta a centrum danych Google.
