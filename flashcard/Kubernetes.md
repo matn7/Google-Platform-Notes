@@ -1,4 +1,4 @@
-1. NEW SECTION - CONTAINERS
+NEW SECTION - CONTAINERS.
 
 1) What is a Container and How Does it Differ from a Virtual Machine? 
 Answer: A container is a lightweight, stand-alone, executable package that includes everything needed to run a piece of 
@@ -27,7 +27,7 @@ Answer: Namespaces are a feature of the Linux kernel that partitions kernel reso
 one set of resources while another set of processes sees a different set of resources. In the context of containers, 
 namespaces provide a layer of isolation by ensuring that containers only see their own processes, file systems, network, and users.
 
-6) Describe Container Networking. How do Containers Communicate with Each Other? 
+6) Describe Container Networking. How do Containers Communicate with Each Other? // here
 Answer: Container networking enables containers to communicate with each other and with the outside world. This is achieved 
 through various networking models like bridge networks, overlay networks, or host-based networks. Docker, for instance, 
 creates a virtual bridge, allowing containers to communicate through it. Containers can also be configured to expose 
@@ -54,7 +54,7 @@ status of containers. Tools like Prometheus, Grafana, Docker Monitoring, cAdviso
 They help in understanding the performance and status of containers, making it easier to manage large-scale container deployments.
 
 
-2. NEW SECTION - KUBERNETES COMPONENTS
+NEW SECTION - KUBERNETES COMPONENTS.
 
 1) What are the Main Components of a Kubernetes Cluster? 
 Answer: A Kubernetes cluster has two main types of components: the control plane and the worker nodes. The control plane 
@@ -82,12 +82,12 @@ Answer: The 'kube-controller-manager' runs various controller processes in the b
 the node controller, replication controller, endpoints controller, and others. Each controller watches the state of the 
 cluster through the 'kube-apiserver' and makes changes to move the current state towards the desired state.
 
-6) What is the 'kubelet' and What is its Role in a Kubernetes Node? 
+6) What is the 'kubelet' and What is its Role in a Kubernetes Node?
 Answer: The 'kubelet' is an agent running on each node in the cluster. It ensures that containers are running in a Pod. 
 The 'kubelet' takes a set of PodSpecs provided by the 'apiserver' and ensures that the containers described in those 
 PodSpecs are running and healthy. It communicates with the container runtime to manage container lifecycle.
 
-7) Explain the Function of 'kube-proxy' in Kubernetes. 
+7) Explain the Function of 'kube-proxy' in Kubernetes.?
 Answer: 'kube-proxy' is a network proxy that runs on each node in the cluster, maintaining network rules that allow network 
 communication to the Pods from network sessions inside or outside the cluster. It ensures that the networking environment 
 is predictable and accessible, but also isolated where necessary.
@@ -98,7 +98,7 @@ with shared storage/network, and a specification for how to run the containers. 
 and port space, and can find each other via localhost. They also have access to shared volumes, allowing data to be shared 
 between them.
 
-9) Describe the Role of Container Runtime in Kubernetes. 
+9) Describe the Role of Container Runtime in Kubernetes?
 Answer: The container runtime is the software responsible for running containers. Kubernetes supports several container 
 runtimes, like Docker, containerd, and CRI-O. It provides the environment to run containers, pulls images from a container 
 image registry, and starts and stops containers.
@@ -109,9 +109,9 @@ typically using IP addresses. Services allow applications running in the Kuberne
 and with the outside world. It assigns a fixed IP address to a group of Pods for consistent communication and load balancing.
 
 
-3. NEW SECTION - KUBERNETES INSTALLATION
+NEW SECTION - KUBERNETES INSTALLATION.
 
-1) What are the Prerequisites for Installing Kubernetes? 
+1) What are the Prerequisites for Installing Kubernetes? // here
 Answer: Before installing Kubernetes, you need a set of machines (physical or virtual) to run the Kubernetes components. 
 These machines should have a compatible Linux operating system, a container runtime like Docker, and network connectivity 
 between them. Additionally, you should have a way to access the cluster, typically through 'kubectl', Kubernetes 
@@ -122,7 +122,7 @@ Answer: 'kubeadm' is a tool provided by Kubernetes to help set up and bootstrap 
 standardized way. It automates many of the tasks involved in setting up a cluster, such as creating the necessary 
 certificates, setting up the control plane, and configuring the 'kubelet'.
 
-3) Explain the Steps to Install a Kubernetes Cluster Using 'kubeadm'. 
+3) Explain the Steps to Install a Kubernetes Cluster Using 'kubeadm'?
 Answer: The basic steps to install a Kubernetes cluster with 'kubeadm' include:
 a) Installing 'kubeadm', 'kubelet', and 'kubectl' on all nodes.
 b) Initializing the cluster on the master node with 'kubeadm init'.
@@ -140,7 +140,7 @@ Answer: After initializing a Kubernetes cluster, you need to install a network p
 This is done by applying a network plugin’s YAML configuration file using 'kubectl apply'. There are several network plugins 
 available like Calico, Flannel, Weave, etc., each with its configuration and installation instructions.
 
-6) What are the Considerations for Setting Up High Availability (HA) in Kubernetes? 
+6) What are the Considerations for Setting Up High Availability (HA) in Kubernetes?
 Answer: For high availability in Kubernetes, you need to set up multiple master nodes. This involves configuring a load 
 balancer that directs traffic to all active master nodes, setting up an 'etcd cluster' across multiple nodes for state storage, 
 and ensuring that the control plane components are replicated and synchronized across these nodes.
@@ -166,9 +166,9 @@ OS or container runtime, difficulties with setting up high availability, ensurin
 resource limitations on smaller or older hardware.
 
 
-4. NEW SECTION - DEPLOYMENTS
+NEW SECTION - DEPLOYMENTS.
 
-1) What is a Kubernetes Deployment and How Does it Work? 
+1) What is a Kubernetes Deployment and How Does it Work?
 Answer: A Kubernetes Deployment is an API object that provides declarative updates to applications. It allows you to describe 
 an application’s desired state, such as which container images to use and the number of pod replicas. The Deployment controller 
 changes the actual state to the desired state at a controlled rate, managing the rollout of updated application instances and, 
@@ -194,7 +194,7 @@ Answer: When a node fails, the pods on that node become unavailable. The Deploym
 new pods on other available nodes to replace the ones that were running on the failed node. This ensures that the Deployment 
 maintains the desired number of replicas.
 
-6) How Do You Monitor the Status of a Kubernetes Deployment? 
+6) How Do You Monitor the Status of a Kubernetes Deployment?
 Answer: The status of a Kubernetes Deployment can be monitored using kubectl commands like 'kubectl get deployments'
 to check the deployment status, 'kubectl describe deployment' to get detailed information, and 'kubectl rollout status' 
 to watch the status of a deployment update.
@@ -220,7 +220,7 @@ Liveness probes are used to know when to restart a container, and Readiness prob
 to start accepting traffic. These probes help ensure that only healthy containers are used in deployments.
 
 
-5. NEW SECTION - StatefulSet
+NEW SECTION - StatefulSet.
 
 1) What is a StatefulSet in Kubernetes and How Does it Differ from a Deployment? 
 Answer: A StatefulSet is a Kubernetes workload API object used for managing stateful applications, which are applications 
@@ -233,7 +233,7 @@ Answer: In a StatefulSet, each pod gets a unique, ordinal index and a stable net
 The names of the pods are consistent and follow the pattern: 'STATEFUL-NAME ORDINAL-INDEX'. This identity persists 
 even if the pod gets rescheduled onto another node.
 
-3) Explain How StatefulSets Handle Scaling and Updates. 
+3) Explain How StatefulSets Handle Scaling and Updates?
 Answer: StatefulSets scale and update pods one at a time, in order, from the lowest ordinal to the highest. When scaling 
 down, they remove pods in reverse ordinal order. During updates, StatefulSets support rolling updates where updates 
 propagate sequentially from the first pod to the last.
@@ -248,7 +248,7 @@ Answer: A headless service in Kubernetes is a service with a clusterIP set to No
 provide a unique network identity to each pod. The headless service ensures that each pod gets a stable DNS entry, which 
 is crucial for stateful applications that rely on stable network identifiers.
 
-6) How Does a StatefulSet Maintain Pod Ordering and Uniqueness? 
+6) How Does a StatefulSet Maintain Pod Ordering and Uniqueness?
 Answer: StatefulSets maintain pod ordering and uniqueness using a governing service, which is a headless service that 
 controls the network domain of the StatefulSet. The StatefulSet controller creates pods based on the ordinal index, 
 ensuring that each pod is created and terminated in a predictable order.
@@ -265,7 +265,7 @@ and Kubernetes applies the changes to each pod sequentially, respecting the orde
 updating StatefulSets is related to the application-specific requirements for data integrity and consistency, as these 
 applications often manage state.
 
-9) Explain the Significance of podManagementPolicy in a StatefulSet. 
+9) Explain the Significance of podManagementPolicy in a StatefulSet?
 Answer: The podManagementPolicy of a StatefulSet determines how pods are managed within the StatefulSet. The two policies 
 are OrderedReady, where pods are started sequentially, and Parallel, where pods are started or deleted simultaneously. 
 OrderedReady is the default and ensures orderly deployment and scaling.
@@ -277,7 +277,7 @@ ensuring data consistency during backups. It's also advisable to store backups i
 Kubernetes cluster.
 
 
-6. NEW SECTION - ReplicaSet
+NEW SECTION - ReplicaSet.
 
 1) What is a ReplicaSet in Kubernetes? 
 Answer: A ReplicaSet in Kubernetes is a workload API object used to ensure that a specified number of pod replicas are 

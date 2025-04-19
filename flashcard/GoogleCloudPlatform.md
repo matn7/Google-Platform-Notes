@@ -3180,7 +3180,7 @@ Cloud Datalab seamlessly integrates with GCP services like BigQuery, Cloud Stora
 enabling data scientists to leverage the full power of GCP for their data science projects. It supports Python and its 
 data science libraries, making it a versatile tool for data analysis and machine learning tasks.
 
-9) Explain how Looker fits into the GCP data analytics ecosystem.
+9) Explain how Looker fits into the GCP data analytics ecosystem?
 Answer: Looker is a business intelligence (BI) and analytics platform that integrates with the Google Cloud data 
 analytics ecosystem to provide data exploration, visualization, and reporting capabilities. It fits into the GCP 
 ecosystem by offering a powerful analytics layer on top of BigQuery and other GCP data services, enabling users to build 
@@ -3230,7 +3230,7 @@ machine learning algorithms with its extensive library and tools for tasks such 
 GCP's offerings lies in its integration with AI Platform, making it easier to train, deploy, and manage TensorFlow models 
 at scale within GCP.
 
-5) Describe how GCP's Vision AI services can be used in applications.
+5) Describe how GCP's Vision AI services can be used in applications?
 Answer: GCP's Vision AI services, including the Vision API and AutoML Vision, enable applications to understand images 
 and videos more deeply. The Vision API provides pre-trained models that can detect objects, faces, text, and more within 
 images, enabling features like content moderation, emotion detection, and optical character recognition. AutoML Vision 
@@ -3323,7 +3323,7 @@ Pods for an application using a consistent IP address or DNS name. Services sele
 and manage load balancing, offering a single access point for accessing Pods, which can be crucial for scaling and 
 ensuring the high availability of applications.
 
-6) Describe how GKE integrates with other GCP services for a complete cloud solution.
+6) Describe how GKE integrates with other GCP services for a complete cloud solution?
 Answer: GKE integrates seamlessly with a range of GCP services to provide a comprehensive cloud solution. This includes 
 Cloud Storage for persistent storage, Cloud SQL for managed database services, Cloud Pub/Sub for event-driven messaging,
 and Cloud Functions for serverless computing. Integration with Identity and Access Management (IAM) ensures secure access 
@@ -3412,7 +3412,7 @@ authentication, SSL/TLS for data encryption in transit, and JSON and XML threat 
 It also supports policies for access control, content-based security, and anomaly detection. These features help ensure 
 that only authorized users can access APIs and that data is protected both in transit and at rest. 
 
-9) Explain the significance of API products in Apigee.
+9) Explain the significance of API products in Apigee?
 Answer: API products in Apigee are a way to bundle one or more APIs together and define access limits and quota policies. 
 They enable API providers to package APIs based on consumer needs, business models, or usage patterns. API products 
 facilitate the monetization of APIs, streamline developer access through simplified key management, and allow for 
@@ -3443,7 +3443,7 @@ files. Terraform, an open-source tool, offers a declarative configuration langua
 cloud services' infrastructure. Both tools enable versioning, repeatability, and codification of infrastructure, 
 key principles in DevOps.
 
-3) Explain the importance of Google Kubernetes Engine (GKE) in DevOps practices.
+3) Explain the importance of Google Kubernetes Engine (GKE) in DevOps practices?
 Answer: Google Kubernetes Engine (GKE) is crucial for DevOps practices as it provides a managed environment for deploying, 
 managing, and scaling containerized applications using Kubernetes. GKE enhances DevOps by automating many operational 
 tasks such as deployment rollouts, scaling, and self-healing of applications. It integrates with Google Cloud CI/CD tools 
@@ -3595,7 +3595,7 @@ requests. Unlike Cloud Functions, which is designed for executing small, single-
 for running more complex applications or microservices that require custom runtimes or dependencies not supported by 
 Cloud Functions.
 
-4) Describe the key features and benefits of Google App Engine.
+4) Describe the key features and benefits of Google App Engine?
 Answer: Google App Engine is a fully managed, serverless platform for building and hosting web applications at scale. 
 Key features include automatic scaling, versioning, and traffic splitting, support for multiple development languages, 
 and integration with GCP services. Benefits include reduced operational overhead, quick deployments, and a focus on 
@@ -3628,7 +3628,7 @@ application development. It supports serverless architectures by providing a rea
 to serverless services like Cloud Functions, allowing developers to build dynamic applications without managing database 
 servers.
 
-9) Discuss the pricing model for GCP's serverless products.
+9) Discuss the pricing model for GCP's serverless products?
 Answer: GCP's serverless products typically follow a pay-as-you-go pricing model, where you are charged based on the 
 resources consumed by your application, such as compute time, memory usage, and the number of requests. This model 
 allows for cost-effective scaling, as you only pay for what you use, with no upfront costs or fees for idle resources.
@@ -3656,7 +3656,7 @@ existing applications and build new ones, supporting a move to a microservices a
 simplify operations, such as service mesh for microservices communication and monitoring, and config management for 
 policy enforcement, helping businesses modernize applications without being locked into a single cloud provider.
 
-3) Can you explain the role of Google Kubernetes Engine (GKE) in hybrid and multi-cloud strategies?
+3) Can you explain the role of Google Kubernetes Engine (GKE) in hybrid and multi-cloud strategies? // HERE
 Answer: In hybrid and multi-cloud strategies, Google Kubernetes Engine (GKE) plays a pivotal role by providing a managed 
 environment for deploying, managing, and scaling containerized applications using Google's infrastructure. GKE extends 
 to GKE On-Prem as part of the Anthos platform, allowing organizations to run Kubernetes in their own data centers and 
@@ -3678,7 +3678,7 @@ Traffic Director enables consistent traffic management, security policies, and t
 of where the services are deployed. It helps ensure high availability and optimal performance of applications by dynamically 
 routing traffic to the best endpoint based on health, geography, and other parameters.
 
-6) Describe the role of Cloud VPN in connecting on-premises networks to GCP.
+6) Describe the role of Cloud VPN in connecting on-premises networks to GCP?
 Answer: Cloud VPN securely connects your on-premises network to your Google Cloud VPC (Virtual Private Cloud) network 
 through an IPsec VPN connection. It plays a crucial role in hybrid cloud setups by enabling secure communication between 
 on-premises servers and cloud services, ensuring data in transit is encrypted and protected. Cloud VPN supports both 
@@ -3702,7 +3702,7 @@ e) Data Loss Prevention (DLP): Helps discover and protect sensitive data across 
 These features ensure that security is consistent and centrally managed, regardless of where the resources or users 
 are located.
 
-9) Explain how Google Cloud’s operations suite supports monitoring and logging in hybrid and multi-cloud environments.
+9) Explain how Google Cloud’s operations suite supports monitoring and logging in hybrid and multi-cloud environments?
 Answer: Google Cloud’s operations suite (formerly Stackdriver) offers integrated monitoring, logging, and diagnostics 
 tools that work across Google Cloud, on-premises environments, and other cloud providers. It supports hybrid and 
 multi-cloud environments by providing a single pane of glass for visibility into the performance, availability, 
@@ -3748,7 +3748,7 @@ independently. Cloud Pub/Sub supports high-volume event streams, such as those g
 with other GCP services for downstream processing and analysis, enhancing the overall efficiency and responsiveness of 
 IoT solutions.
 
-5) Describe how Google Cloud Functions can be used in IoT applications.
+5) Describe how Google Cloud Functions can be used in IoT applications?
 Answer: Google Cloud Functions can be used in IoT applications to build lightweight, event-driven backends that respond 
 to events from IoT devices without the need for managing servers. For example, Cloud Functions can process data as it 
 arrives from IoT devices, perform real-time analytics, update databases, send alerts, or invoke other cloud services. 
@@ -3775,7 +3775,7 @@ for analyzing historical data from IoT devices to identify patterns, trends, and
 other GCP services allows for easy ingestion, analysis, and visualization of IoT data, supporting data-driven decision-making.
 
 9) What is the significance of Edge TPU in GCP's IoT solutions?
-Answer: The Edge TPU is Google’s purpose-built ASIC (Application-Specific Integrated Circuit) designed to run AI at the edge. 
+Answer: The Edge TPU is Google’s purpose-built A S I C (Application-Specific Integrated Circuit) designed to run AI at the edge. 
 It significantly accelerates machine learning inference on edge devices, enabling IoT solutions to process data locally 
 with low latency and reduced cloud dependency. This is particularly important for applications requiring immediate 
 decision-making, privacy-sensitive computations, or operating in environments with limited connectivity. 
@@ -3834,7 +3834,7 @@ standard instances. They can be terminated by GCP at any time if the resources a
 are ideal for workloads that can tolerate interruptions, such as batch processing, data analysis, and background tasks, 
 allowing users to significantly reduce their compute costs.
 
-8) Describe how Rightsizing Recommendations can help in cost optimization on GCP.
+8) Describe how Rightsizing Recommendations can help in cost optimization on GCP?
 Answer: Rightsizing Recommendations in GCP analyze your virtual machine instances' usage patterns and suggest adjustments 
 to their configurations (such as changing the machine type or size) to optimize their efficiency and cost. By applying 
 these recommendations, users can ensure they are not overprovisioning resources and paying for more than they need, 
@@ -3886,7 +3886,7 @@ allowing customers to choose where their data is stored and processed. GCP compl
 by implementing strict data protection and privacy measures, providing the necessary controls for data residency, 
 and undergoing regular audits to ensure compliance with various global and regional standards.
 
-6) Describe how Security Command Center contributes to GCP governance.
+6) Describe how Security Command Center contributes to GCP governance?
 Answer: Security Command Center contributes to GCP governance by providing a comprehensive view of the security and risk 
 posture of GCP assets. It helps identify vulnerabilities and threats, reviews security settings, and provides actionable 
 recommendations to improve security. By centralizing visibility and control over cloud resources, Security Command Center 
@@ -3904,7 +3904,7 @@ sets of permissions that match the unique needs of their organization. Unlike pr
 tailored to provide the precise level of access needed for a user or service account, enforcing the principle of least 
 privilege and reducing the risk of excessive permissions that could lead to security vulnerabilities.
 
-9) Explain the significance of VPC Service Controls in enhancing GCP governance.
+9) Explain the significance of VPC Service Controls in enhancing GCP governance? // HERE
 Answer: VPC Service Controls enhance GCP governance by creating a security perimeter around data stored in GCP services, 
 preventing data exfiltration and mitigating data breaches. It allows organizations to define fine-grained access control 
 policies for services and their data, ensuring that sensitive information is accessed only by authorized services and users, 
@@ -3972,7 +3972,7 @@ to manage access, monitor resources, and ensure data protection. Features like C
 Cloud Audit Logs, and Security Command Center help enterprises enforce policies, audit operations, and detect vulnerabilities. 
 GCP undergoes regular third-party audits and certifications to ensure compliance with global and industry-specific regulations.
 
-9) What disaster recovery solutions does GCP offer to enterprises?
+9) What disaster recovery solutions does GCP offer to enterprises? // HERE
 Answer: GCP offers robust disaster recovery solutions to enterprises, including multi-regional storage options, snapshot 
 and backup services, and the ability to replicate workloads across different regions. GCP's global infrastructure ensures 
 that enterprises can quickly recover from disasters by distributing applications and data across multiple locations, 
@@ -4038,7 +4038,7 @@ automatically scale resources to match demand, optimize costs, and enable faster
 offerings support a wide range of programming languages and integrate seamlessly with other GCP services, fostering a 
 highly productive development environment. 
 
-9) Discuss GCP's role in enhancing cybersecurity through emerging technologies.
+9) Discuss GCP's role in enhancing cybersecurity through emerging technologies?
 Answer: GCP enhances cybersecurity through emerging technologies by incorporating advanced security tools and features 
 like Security Command Center, Cloud Armor, and Confidential Computing. These tools leverage AI and machine learning to 
 detect and respond to threats in real-time, offer protection against web and DDoS attacks, and enable the processing of 
@@ -4053,14 +4053,14 @@ services provide developers and enterprises with the tools they need to innovate
 leveraging the latest in cloud technology.
 
 
-NEW SECTION - INTERVIEW 1
+NEW SECTION - INTERVIEW 1.
 
 1) What is Google Cloud Platform (GCP)?
 Answer: Google Cloud Platform (GCP) is a suite of cloud computing services that runs on the same infrastructure that Google 
 uses internally for its end-user products, such as Google Search, Gmail, file storage, and YouTube. GCP offers a range of 
 services including computing, data storage, data analytics, and machine learning.
 
-2) Can you explain the difference between IaaS, PaaS, and SaaS? Provide examples from GCP.
+2) Can you explain the difference between IaaS, PaaS, and SaaS? Provide examples from GCP?
 Answer:
 a) IaaS (Infrastructure as a Service): Provides virtualized computing resources over the internet. In GCP, 
 Google Compute Engine (GCE) is an example of IaaS, offering virtual machines that users can customize and control.
@@ -4071,11 +4071,11 @@ Google Workspace (formerly G Suite) is an example of SaaS, offering productivity
 
 3) What are Google Compute Engine and Google App Engine? How do they differ?
 Answer: Google Compute Engine (GCE) is an IaaS that provides virtual machines (VMs) in the cloud, giving users complete 
-control over the OS, network settings, and the entire software stack. On the other hand, Google App Engine (GAE) is a PaaS 
+control over the OS, network settings, and the entire software stack. On the other hand, Google App Engine (G A E) is a PaaS 
 that abstracts much of the underlying infrastructure, allowing developers to focus on writing code without worrying about 
-the environment it runs in. GAE automatically scales your application in response to the traffic it receives.
+the environment it runs in. (G A E) automatically scales your application in response to the traffic it receives.
 
-4) Explain the concept of load balancing in GCP.
+4) Explain the concept of load balancing in GCP?
 Answer: Load balancing is a method used to distribute network or application traffic across multiple servers in a server 
 farm or server pool. In GCP, load balancing allows users to distribute incoming traffic across multiple instances of their 
 applications, improving performance and availability. GCP offers various types of load balancers, including HTTP(S) 
@@ -4088,9 +4088,9 @@ It offers different storage classes for various use cases: Standard (for frequen
 (for long-term storage, accessed less than once a year), each varying in price and accessibility.
 
 
-NEW SECTION - INTERVIEW 2
+NEW SECTION - INTERVIEW 2.
 
-1) Describe the difference between BigQuery and Cloud Bigtable.
+1) Describe the difference between BigQuery and Cloud Bigtable?
 Answer: BigQuery is a fully managed, serverless, and highly scalable data warehouse designed for business agility. 
 It's ideal for running big data analytics. Cloud Bigtable, on the other hand, is a NoSQL database service suited for 
 real-time analytics and operational workloads with large amounts of data. While BigQuery is optimized for analytical 
@@ -4112,7 +4112,7 @@ Answer: Google Kubernetes Engine (GKE) is a managed environment in GCP for deplo
 applications using Google infrastructure. GKE automates many aspects of setting up and maintaining Kubernetes clusters, 
 making it easier to deploy applications, scale them as needed, and manage their lifecycle without deep Kubernetes expertise.
 
-5) Explain the concept of serverless computing in GCP. Mention some serverless products offered by GCP.
+5) Explain the concept of serverless computing in GCP. Mention some serverless products offered by GCP?
 Answer: Serverless computing allows you to build and run applications and services without managing infrastructure. 
 Your application still runs on servers, but all the server management is done by GCP. This model enables developers to 
 focus on their code while GCP handles scaling, provisioning, and managing servers. Examples of serverless products in 
@@ -4120,7 +4120,7 @@ GCP include Google Cloud Functions (event-driven functions), Google App Engine (
 and Google Cloud Run (containerized applications).
 
 
-NEW SECTION - INTERVIEW 3
+NEW SECTION - INTERVIEW 3.
 
 1) What are the primary storage options available in GCP?
 Answer: GCP offers a variety of storage options to cater to different needs:
@@ -4159,13 +4159,13 @@ and updating the Kubernetes cluster. GKE offers integrated logging and monitorin
 services, and advanced network and security features, making it easier to deploy and manage applications at scale.
 
 
-NEW SECTION - INTERVIEW 4
+NEW SECTION - INTERVIEW 4.
 
 1) What is Identity and Access Management (IAM) in GCP?
 Answer: IAM in GCP manages access control by defining who (identity) has what access (roles) to resources within GCP.
 It allows administrators to grant granular permissions to users, groups, and service accounts.
 
-2) Explain the role of Service Accounts in GCP.
+2) Explain the role of Service Accounts in GCP?
 Answer: Service Accounts are special accounts used by applications or virtual machines (VMs) to interact with other 
 Google Cloud services. These accounts can be assigned IAM roles and used to authenticate applications for accessing GCP 
 resources programmatically.
@@ -4183,7 +4183,7 @@ b) In transit: GCP encrypts data as it moves between its data centers and to/fro
 protocols such as TLS.
 
 5) What is the purpose of Cloud Security Command Center (CSCC) in GCP?
-CSCC is a comprehensive security management and data risk platform for GCP that helps you prevent, detect, and respond
+Answer: CSCC is a comprehensive security management and data risk platform for GCP that helps you prevent, detect, and respond
 to threats. It provides visibility into and control over cloud resources, allowing you to scan for sensitive data,
 detect common web vulnerabilities, and review access rights.
 
@@ -4196,7 +4196,7 @@ Key features include the ability to deploy and manage applications, monitor serv
 permissions, access Cloud Shell, and utilize APIs. It provides an intuitive way to navigate and control every aspect of 
 Google Cloud.
 
-2) Explain the role of Google Cloud SDK in GCP management.
+2) Explain the role of Google Cloud SDK in GCP management?
 Answer: The Google Cloud SDK is a set of tools that can be used to manage resources and applications hosted on Google Cloud.
 These tools include the gcloud command-line tool, gsutil, and bq, which respectively allow for managing Google Cloud resources,
 interacting with Google Cloud Storage, and querying BigQuery datasets. The SDK enables scripting and automation of cloud
@@ -4209,7 +4209,7 @@ instrumentation. Using Cloud Monitoring, developers and operators can gain insig
 in real-time, set up alerts, and create custom dashboards for visualizing metric data. It integrates seamlessly with most
 GCP services, offering out-of-the-box monitoring capabilities.
 
-4) Describe Cloud Logging and its importance in GCP.
+4) Describe Cloud Logging and its importance in GCP?
 Answer: Cloud Logging is a fully managed service in GCP that allows you to store, search, analyze, monitor, and alert on
 logging data and events from Google Cloud and Amazon Web Services. It plays a crucial role in debugging and troubleshooting
 application issues, security monitoring, and audit trail maintenance. Cloud Logging provides a centralized platform for
@@ -4224,14 +4224,14 @@ capabilities, error reporting, and trace analysis for understanding application 
 facilitating proactive management and optimization of cloud resources.
 
 
-NEW SECTION - Compute Engine
+NEW SECTION - Compute Engine.
 
 1) When using Create Deployment from Cloud Console, which of the following cannot be specified for a deployment?
 Answer: Time to live (TTL). Time to Live is not an attribute of deployments. Application name, container image, and initial
 command can all be specified.
 
 2) Stackdriver Monitoring collects metrics such as query counts, execution times, scanned bytes,
-and table count are captured for which GCP managed services ?
+and table count are captured for which GCP managed services?
 Answer: Cloud BigQuery. Stackdriver Monitoring collects metrics on the performance of infrastructure resources and applications.
 The mentioned metrics are captured for BigQuery.
 
@@ -4246,10 +4246,10 @@ operations but do not contribute to high availability.
 ticket processing system. You would like to view information about the time each microservice takes to run.
 What Stackdriver service would you use?
 Answer: Stackdriver Trace.
-a) Stackdriver Trace is used to collect information about the time required to execute functions in a call stack.
-b) Stackdriver Logging is used to collect semi-structured data about events.
-c) Stackdriver Monitoring collects performance metrics.
-d) Stackdriver Debugger is used to inspect the state of running code.
+Stackdriver Trace is used to collect information about the time required to execute functions in a call stack.
+Stackdriver Logging is used to collect semi-structured data about events.
+Stackdriver Monitoring collects performance metrics.
+Stackdriver Debugger is used to inspect the state of running code.
 
 5) An architect has suggested a particular machine type for your workload. You are in the console creating
 a VM and you don’t see the machine type in the list of available machine types. What could be the reason for this?
@@ -4282,7 +4282,7 @@ Kubernetes Engine is used when a cluster of servers is needed to support large o
 same computing resources.
 
 9) The amount of time GCP will wait before collecting performance statistics from the instance for
-Autoscaling is called as ?
+Autoscaling is called as?
 Answer: Cool down period.
 
 10) Your management team is considering three different cloud providers. You have been asked to summarize
@@ -4308,7 +4308,7 @@ Unmanaged instance groups allow for heterogeneous VMs.
 Answer: Alerting Policy.
 In Stackdriver Monitoring, alerts are created using an alerting policy. CPU Utilization is one such example.
 
-14) Running BigTable clusters in different regions will _____ replication latency and ________ availability**
+14) Running BigTable clusters in different regions will (increase) replication latency and (increase) availability?
 Answer: increase, increase.
 When running the BigTable cluster across multiple region - you will ensure higher availability as you can handle region
 level failure. But it will also increase replication latency as data needs to be replicated across cluster in different region.
@@ -4329,7 +4329,7 @@ Unmanaged instance groups are available for limited use cases such as this. Unma
 in general. Managed instance groups are the recommended way to use instance groups, but the two different configurations
 prevents their use. Preemptible instances and GPUs are not relevant to this scenario.
 
-17) Your company is based in X and will be running a virtual server for Y. What factor determines the unit per minute cost.
+17) Your company is based in X and will be running a virtual server for Y. What factor determines the unit per minute cost?
 Answer: The characteristics of the server.
 The characteristics of the server, such as the number of virtual servers, the amount of memory, and the region where you
 run the VM, influence the cost. Time of day is not a factor, nor is the type of application you run on the VM.
@@ -4341,7 +4341,7 @@ monitoring metric, load balancing capacity, or queue-based workloads.
 Disk, network latency, and memory can trigger scaling if monitoring metrics on those resources are configured.
 
 19) If a pod is terminated for being unhealthy—then the <WHAT> will add pods until the desired state is reached.
-Answer: Kubernetes ReplicaSets
+Answer: Kubernetes ReplicaSets.
 A ReplicaSet is a controller that manages the number of pods running for a deployment.
 A deployment is a higher-level concept that manages ReplicaSets and provides declarative updates.
 
@@ -4353,7 +4353,6 @@ you want that level of control.
 21) Your manager is making a presentation to executives in your company advocating that you start using
 Kubernetes Engine. You suggest that the manager highlight all the features Kubernetes provides to reduce the workload
 on DevOps engineers. You describe several features, including all of the following except which one?
-Automatic upgrading of cluster software as needed.
 Answer: Security scanning for vulnerabilities.
 Load balancing across Compute Engine VMs that are deployed in a Kubernetes cluster.
 Automatic scaling of nodes in the cluster.
@@ -4365,7 +4364,7 @@ application vulnerabilities.
 22) A DevOps engineer is noticing a spike in CPU utilization on your servers. You explain you have just launched
 a deployment. You’d like to show the DevOps engineer the details of a deployment you just launched. What command would you use?
 Answer: 'gcloud deployment-manager deployments describe'
-The correct answer is gcloud deployment-manager deployments describe, cloud-launcher is not the name of the service.
+The correct answer is 'gcloud deployment-manager deployments describe', cloud-launcher is not the name of the service.
 Note: list displays a brief summary of each deployment and describe displays a detailed description.
 
 23) You are using snapshots to save copies of a 100GB disk. You make a snapshot and then add 10GB of data.
@@ -4510,7 +4509,7 @@ In the Network tab of the VM form, you can add another network interface. GCP se
 to specify a router or change firewall rules on the Network tab.
 
 42) What command would you use to have 10 replicas of a deployment named ch07-app-deploy?
-Answer: 'kubectl scale deployment ch07-app-deploy --replicas=10'
+Answer: 'kubectl scale deployment ch07-app-deploy --replicas=10'.
 Use of gcloud and upgrade is incorrect. "scale" is the right command along with replicas.
 
 43) You have deployed an application to a Kubernetes cluster. You have noticed that several pods are starved
@@ -4524,7 +4523,7 @@ Clients connect to services, which can discover pods.
 ReplicaSets and StatefulSets provide managed pods.
 Alerts are for reporting on the state of resources.
 
-44) You have just opened the GCP console at console.google.com. You have authenticated with the user you want
+44) You have just opened the GCP console at 'console.google.com'. You have authenticated with the user you want
 to use. What is one of the first things you should do before performing tasks on VMs?
 Answer: Verify that the selected projects is the one you want to work with.
 You should verify the project selected because all operations you perform will apply to resources
@@ -4550,7 +4549,7 @@ Immediate access to large amounts of data indicates that a high-memory machine s
 46) Which command will delete an instance named ch06-instance-3?
 Answer: 'gcloud compute instances delete ch06-instance-3'.
 The command to delete an instance is gcloud compute instances delete followed by the name of the instance.
-Note : stop command stops but does not delete the instance.
+Note: stop command stops but does not delete the instance.
 
 47) You have an application that uses a Pub/Sub message queue to maintain a list of tasks that are to be
 processed by another application. The application that consumes messages from the Pub/Sub queue removes the message only
@@ -4572,7 +4571,7 @@ Answer: Kubernetes uses pods as the smallest deployable unit.
 Kubernetes uses pods as the smallest deployable unit, and pods have usually one but possibly multiple containers that
 are deployed as a unit.
 
-49) Stackdriver Monitoring can collect metrics on Amazon Web Services ?
+49) Stackdriver Monitoring can collect metrics on Amazon Web Services?
 Answer: TRUE.
 Stackdriver Monitoring collects metrics on the performance of infrastructure resources and applications.
 Resources can be in GCP as well as the Amazon Web Services cloud.
@@ -4585,13 +4584,13 @@ The name of the VM, the region and zone, and the machine type can all be specifi
 with other parameters.
 
 
-NEW SECTION - Security & Compliance
+NEW SECTION - Security & Compliance.
 
 1) Your company is launching an IoT service and will receive large volumes of streaming data. You have to store
 this data in Bigtable. You want to explore the Bigtable environment from the command line. What command would you run to
 ensure you have command-line tools installed?
 Answer: 'gcloud components install cbt'.
-The correct command is 'gcloud components install cbt` to install the Bigtable.
+The correct command is 'gcloud components install cbt' to install the Bigtable.
 
 2) You are the lead developer on a medical application that uses patients’ smartphones to capture biometric data.
 The app is required to collect data and store it on the smartphone when data cannot be reliably transmitted to the
@@ -4606,7 +4605,7 @@ Datastore and Cloud SQL could be used but would require more custom development 
 mobile devices and the centralized data store.
 
 3) Once a GCP Cloud dataproc cluster is created, it can be?
-Answer: Scaled up, Only workers nodes can change, Scaled down.
+Answer: Scaled up. Only workers nodes can change. Scaled down.
 Once a cluster is created, it can be scaled up or down.
 Only the number of worker nodes can change—master nodes are fixed.
 
@@ -4682,17 +4681,16 @@ When exporting a database from Cloud SQL, the export file format options are CSV
 12) Cloud Filestore is based on what file system technology?
 Answer: Network File System (NFS).
 Cloud Filestore is based on Network Filesystem (NSF), which is a distributed file management system.
-The other options are file systems supported by Linux but are not the foundation of Cloud Filestore.
 
 13) Which of the following file formats is and which is not an option for an export file when exporting from BigQuery?
-Answer: CSV, JSON. Avro.
+Answer: CSV, JSON and Avro.
 XML is not an option in BigQuery’s export process.
 
 14) A new government regulation requires all pharmaceutical companies to keep their financial data for 5 years.
 What would you recommend as the best way to comply with the regulation requirement?
 Answer: Define a data retention policy.
 You would be tempted to answer Coldline Storage - but the correct answer is "Define a data retention policy.".
-Note there is no mention about the access to this data i.e. will it be access frequenctly or infrequenctly?
+Note there is no mention about the access to this data i.e. will it be access frequently or infrequently?
 By defining a retention policy - we ensure that the data is not deleted, as required by the regulation.
 
 15) You need to copy files from your local device to a bucket in Cloud Storage. What command would you use?
@@ -4730,7 +4728,7 @@ and finally the verb, in this case create.
 analyze the data. What command-line command would you use to make data available for analysis in BigQuery?
 Answer: 'bq load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]'
 The autodetect and source_format parameters and path to source are correctly specified in all options.
-To work with Bigquery we use bq and "load" is the right option and not import.
+To work with Bigquery we use bq and 'load' is the right option and not import.
 
 21) What is the query language used by Datastore?
 Answer: GQL.
@@ -4768,7 +4766,7 @@ Datastore is a document database.
 Cloud SQL and Spanner are relational databases.
 Bigtable is a wide-column database.
 
-27) Which of the following commands will create a subscription on the topic ace-exam-topic1?
+27) Which commands will create a subscription on the topic ace-exam-topic1?
 Answer: 'gcloud pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1'.
 gcloud pubsub subscriptions create followed by the topic and the name of the subscription.
 
@@ -4784,14 +4782,14 @@ create a Dataproc cluster every night at midnight. What command would you use to
 spark-nightly-analysis in the us-west2-a zone?
 Answer: 'gcloud dataproc clusters create spark-nightly-analysis --zone us-west2-a'.
 The correct command is gcloud dataproc clusters create followed by the name of the cluster and the a --zone parameter.
-bq is the command-line tool for BigQuery, not Dataproc. Other combination of gcloud command missing a verb or command
+bq is the command-line tool for BigQuery, not Dataproc. Other combination of gcloud command missing a verb or command.
 
 30) Which of the following file formats is not supported when importing data into BigQuery?
 Answer: YAML.
 YAML is not a file storage format; it used for specifying configuration data.
 
 
-NEW SECTION - Cloud Security & Networking
+NEW SECTION - Cloud Security & Networking.
 
 1) You want all your network traffic to route over the Google network and not traverse the public Internet.
 What level of network service should you choose?
@@ -4858,7 +4856,7 @@ Deleting a CNAME record does not improve security.
 Answer: 'gcloud compute forwarding-rules create'
 The correct answer, is 'gcloud compute forwarding-rules create'.
 
-11) You want to create a VPN using Cloud Console. What section of Cloud Console should you use?
+11) You want to create a VPN using Cloud Console. What section of Cloud Console should you use? // here
 Answer: Hybrid Connectivity.
 The VPC create option is available in the Hybrid Connectivity section, so it is correct.
 Compute Engine, App Engine, and IAM & Admin do not have features related to VPNs.
@@ -4895,7 +4893,7 @@ Answer: Frontend.
 You specify ports to forward when configuring the frontend. The backend is where you configure how traffic is routed to VMs.
 Network Services is a high-level area of the console. VPCs are not where you specify load balancer configurations.
 
-18) VPCs are [WHAT] resources.
+18) VPCs are WHAT resources?
 Answer: Global.
 Google operates a global network, and VPCs are resources that can span that global network.
 
@@ -4995,17 +4993,15 @@ The correct answer is 'gcloud compute networks create'. 'networks vpc' is not a 
 
 35) Which load balancers provide global load balancing?
 Answer: HTTP(S), SSL Proxy, and TCP Proxy.
-The three global load balancers are HTTP(S), SSL Proxy, and TCP Proxy. Internal TCP/UD is a regional load balancer.
+The three global load balancers are HTTP(S), SSL Proxy, and TCP Proxy. Internal TCP/UDP is a regional load balancer.
 
 36) An app for a finance company needs access to a database and a Cloud Storage bucket.
 There is no predefined role that grants all the needed permissions without granting some permissions that are not needed.
 You decide to create a custom role. When defining custom roles, you should follow which of the following principles?
 Answer: Least privilege.
 Users should have only the privileges that are needed to carry out their duties, this is the principle of least privilege.
-Rotation of duties is another security principle related to having different people perform a task at
-a different times. 
+Rotation of duties is another security principle related to having different people perform a task at a different times. 
 Defense in depth is the practice of using multiple security controls to protect the same asset.
-Least Principle is not a real security principal. This make "Least privilege" the correct answer
 
 37) During an incident that has caused an application to fail, you suspect some resource may not have
 appropriate roles granted. The command to list roles granted to a resource is?
@@ -5013,8 +5009,7 @@ Answer: 'gcloud iam list-grantable-roles'.
 gcloud is the command-line tool and for working with IAM we need to add "iam", and list-grantable-roles
 is the correct command.
 
-38) _____________________ routes traffic only over Google’s global network.
-Answer: Premium Tier.
+38) What is a Premium Tier?
 Premium Tier routes traffic only over Google’s global network.
 When using the Standard Tier, your data is subject to the reliability of the public Internet.
 
@@ -5033,7 +5028,7 @@ IP addresses, which CIDR suffix would you use to create a network with at least 
 Answer: '/22'.
 The '/22' suffix produces 1,022 usable IP addresses.
 
-42) You have created a subnet called sn1 using 192.168.0.0. You want it to have 14 addresses.
+42) You have created a subnet called sn1 using '192.168.0.0'. You want it to have 14 addresses.
 What prefix length would you use?
 Answer: '28'.
 The prefix length specifies the length in bits of the subnet mask. The remaining bits of the IP address are used for
@@ -5047,9 +5042,8 @@ Predefined roles help implement both least privilege and separation of duties.
 Predefined roles do not implement defense in depth by themselves but could be used with other security controls to
 implement defense in depth.
 
-44) ___________ uses the public Internet network to transfer data between Google data centers?
-Answer: Standard Tier.
-When using the Standard Tier, your data is subject to the reliability of the public Internet.
+44) What is a Standard Tier?
+Answer: When using the Standard Tier, your data is subject to the reliability of the public Internet.
 Premium Tier routes traffic only over Google’s global network.
 Rest all not Valid Options for networking tier in GCP.
 
@@ -5061,14 +5055,14 @@ Identities are abstractions of users. They can also represent characteristics of
 user or a VM in the GCP. Identities are not related to VM IDs. Roles are collections of privileges that can be granted to
 identities.
 
-46) At what levels of the resource hierarchy can a shared VPC be created?
+46) At what levels of the resource hierarchy can a shared VPC be created? // here
 Answer: Organization and folders.
 Shared VPCs can be created at the organization or folder level of the resource hierarchy. Shared VPCs are not created at
 the resource or project levels. Shared VPCs are not applied at subnets, which are resources in the resource hierarchy.
 
 47) You want to implement interproject communication between VPCs. Which feature of VPCs would you use to implement this?
 Answer: VPC peering.
-VPC is used for interproject communications.
+VPC is used for inter-project communications.
 
 48) Why are primitive roles classified in a category in addition to IAM?
 Answer: They were created before IAM.
