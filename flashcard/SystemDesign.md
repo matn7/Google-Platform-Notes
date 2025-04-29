@@ -5,7 +5,7 @@ Answer: Zookeeper: Manage cluster, store metadata. Schema registry: Stores versi
 Producer: Send schema to schema registry and get schema ID. Consumer: Retrieve schema by ID. Data is serialized/deserialized 
 with registered schema.
 
-2) Why is replication across multiple Kafka Servers needed in production environment? 
+2) Why is replication across multiple Kafka Servers needed in production environment?
 Answer: To compensate for the failure of any one.
 
 3) White-Box Testing? 
@@ -20,7 +20,7 @@ Answer: Increase batch size. Setting a compression type as snoppy. Increase ling
 5) Where to fire an event? Microservice architecture? 
 Answer: In Application Service. Domain Layer should not know about how to fire the event.
 
-6) When to choose synchronous vs asynchronous communication? 
+6) When to choose synchronous vs asynchronous communication?
 Answer: 
 Synchronous:  
 a) Immediate responses are critical. 
@@ -48,7 +48,7 @@ Answer: A situation when the OS is spending more time managing resources than al
 Typically thrashing is associated with exhausting the physical memory due to virtual memory overuse, which leads to a high 
 number of page faults. This can happen if we run too many processes, allocate too many threads or allocate too much memory.
 
-11) What are the factors that influence the technical Micro Service? 
+11) What are the factors that influence the technical Micro Service?
 Answer: Communication, Resilience, New Microservices. Operations: Logs, Metrics, Configuration, Deployment.
 
 12) What are some roles of OS? 
@@ -104,7 +104,7 @@ c) Backends for Frontends pattern.
 Answer: Time required to send packets between two points in computer network. Measured in milliseconds. Caused by 
 propagation time, waiting for free resources. The lower, the better.
 
-22) System Design Cloud Scalability Pattern? 
+22) System Design Cloud Scalability Pattern?
 Answer: 
 a) Load Balancing. 
 b) Pipes and Filters. 
@@ -164,7 +164,7 @@ Answer: Smoke Testing also known as build verification testing, involves running
 that core functionalities of a software applications are operational after a new build or release. Quick feedback on whether 
 build is stable enough for more extensive testing. Identifies major issues. Prevents wasting time on comprehensive testing.
 
-31) Set Based Consistency CQRS? 
+31) Set Based Consistency CQRS?
 Answer: How to check if record already exists in a database table? How to check if User already exists? Solution Lookup 
 database table. Message Dispatch Interceptor: 
 a) Will intercept a command before it is processed by the command handler. 
@@ -320,7 +320,7 @@ through a system, without requiring a central source of data.
 60) What is Page Cache? 
 Answer: Consist of physical pages in RAM, corresponds to physical blocks on DISC.
 
-61) Describe Outbox Pattern? 
+61) Describe Outbox Pattern?
 Answer: It is used to add a strong consistency between local acid transactions and event publishing operation.
 It relies on keeping the domain events in local database to be published later. Two ways to implement publishing part 
 and pulling the outbox table and CDC (change data capture). It makes SAGA pattern consistent when combined with SAGA.
@@ -329,7 +329,8 @@ It will complete SAGA in a safe and consistent way. Persist events in local data
 Read the events and publish: 
 a) Pulling Outbox Table: Pull the events with scheduler. 
 b) Change Data Capture: Listen transaction logs. Keep track of SAGA and order status in Outbox Table. 
-Ensure idempotency: Do not consume same data. Optimistic locks and BS Constraints: Prevent Data Corruption.
+Ensure idempotency: Do not consume same data. 
+Optimistic locks and BS Constraints: Prevent Data Corruption.
 
 62) Describe OS Threads? 
 Answer: Subprocesses executed as part of process. Used to parallel work, application becomes more responsive, increased 
@@ -378,7 +379,7 @@ c) High Availability: Database Replication, Redundancy, Message Broker, Multi Da
 d) Availability over Consistency: Choosing / Configuring AP Databases. 
 e) Durability: Replication and Backups.
 
-71) Non-functional requirements example? 
+71) Non-functional requirements example?
 Answer: 
 a) Scalability: Millions of daily users. 
 b) Performance: Less than 500ms response time 99%. 
@@ -391,11 +392,11 @@ Answer: Strategies and Patterns:
 a) Redundancy and Replication. 
 b) Circuit Breaker Pattern: Tools example Netflix Hystrix, resilience4j. 
 c) Retry Mechanism. 
-d) Health Checks and Monitoring: Tools example  Prometheus, Graphana. 
+d) Health Checks and Monitoring: Tools example Prometheus, Graphana. 
 e) Stateless Services. 
 f) Distributed Tracing: Tools example Zipkin. 
 g) Graceful Degradation. 
-h) Chaos Engineering - Tools example Netflix Chaos Monkey.
+h) Chaos Engineering: Tools example Netflix Chaos Monkey.
 
 73) Microservices, micro and macro architecture decisions? 
 Answer: 
@@ -429,7 +430,7 @@ Microsoft Azure: Service BUS, Event Hub, Event Grid.
 80) What is Megabyte (Mb)? 
 Answer: 10 to the power of 6 or 1000000 bytes.
 
-81) Mebibyte (Mi)? 
+81) Mebibyte (Mi)?
 Answer: 2 to the power of 20 or 1048676 bytes.
 
 82) Describe Map Reduce Pattern? 
@@ -441,7 +442,7 @@ b) Shuffle: which recognizes the intermediate key-value pairs such that pairs of
 in the final step. 
 c) Reduce: which runs a reduce function on the newly shuffled key-value pairs and transform them into more meaningful data.
 Processing and analysis of large set of data like logs or financial data. Generating reports and statistics based on data set.
-Sentiment analysis in Social Network. Fraud detection w financial transactions. Processing spatial data.
+Sentiment analysis in Social Network. Fraud detection in financial transactions. Processing spatial data.
 Example of technologies: Apache Hadoop, Spark, Google Cloud Dataflow.
 
 83) Managing API Documentation and Versioning Challenges?
@@ -460,8 +461,15 @@ c) Error Rate.
 d) CPU and memory utilization.
 
 85) Load Balancing Solutions & Cloud Technologies? 
-Answer: HAProxy, NGINX. Cloud Based LB Solutions:AWS Elastic LB (ELB), GCP Cloud LB, Microsoft Azure LB.
-GSLB Solutions: Amazon Route 53, Google Cloud Platform LB & Cloud DNS, Azure Traffic Manager.
+Answer: HAProxy, NGINX. 
+a) Cloud Based LB Solutions: 
+    * AWS Elastic LB (ELB).
+    * GCP Cloud LB.
+    * Microsoft Azure LB.
+b) GSLB Solutions: 
+    * Amazon Route 53.
+    * Google Cloud Platform LB & Cloud DNS.
+    * Azure Traffic Manager.
 
 86) Load Balancing Implementation Considerations? 
 Answer: 
@@ -471,15 +479,15 @@ c) Least Connection: Task associated with long term connections (SQL, LDAP).
 
 87) Leader Algorithm? 
 Answer: Consensus Algorithm: A type of complex algorithm used to have multiple entities agree on a single data value, 
-like who the leader is amongst a group of machines. Paxos, Raft. Tools used to implement / perform leader election. 
+like who the leader is amongst a group of machines. Paxos, Raft: Tools used to implement / perform leader election. 
 etcd, zookeeper.
 
 88) Latency and Throughput? 
 Answer: Latency and throughput are the two most important measures of the performance of a system.
-Latency: Time required to send packet from one computer to other in computer network. Measured in 'm-s'. 
+Latency: Time required to send packet from one computer to other in computer network. Measured in 'milliseconds'. 
 Check inter-node propagation time. 
-Throughput: Quantity of data, which can be send by network in a time. Measured in 'b-p-s', 'k-b-p-s'. 
-Connection throughput limitation, use of resource be app or quality of connection.
+Throughput: Quantity of data, which can be send by network in a time. Measured in 'bytes per seconds', 
+'kilobytes per seconds'. Connection throughput limitation, use of resource be app or quality of connection.
 
 89) Key-Value Store? 
 Answer: A key-value store is a flexible NoSQL database that's often used for caching and dynamic configuration. 
@@ -492,7 +500,7 @@ Continuous Deployment, Decentralization.
 Challenges: Complexity, Communication, Communication overhead, Data management, 
 Testing, Operational Overhead, Security, Service Discovery.
 
-91) Kafka what are arguments for a lower number of partitions? 
+91) Kafka what are arguments for a lower number of partitions?
 Answer: A Lesser memory consumed on the client. It takes less time to find a leader for each partition if the node fails.
 
 92) What are Kafka Topics? 
@@ -527,12 +535,12 @@ on several servers, meaning Kafka can be made fail-safe. If one server crashes o
 Answer: Kafka organizes data in records. This is what other MOMs called "messages". Contain the transported data as a value. 
 Records have a key and a timestamp.
 
-101) Kafka Polling? 
+101) Kafka Polling?
 Answer: The consumers poll the data, meaning the fetch new data and process it. Consumer can decide for themselves 
 when they process the records.
 
 102) Kafka Persistence? 
-Answer: Kafka is a mixture of messaging system and data storage solution. By default retention for records is seven days.
+Answer: Kafka is a mixture of messaging system and data storage solution. By default, retention for records is seven days.
 
 103) Kafka Partitions? 
 Answer: Topics are divided into partitions. Partitions allow strong guarantees concerning the order of records, but also 
@@ -619,7 +627,10 @@ are possible).
 Answer: Manage and inspect brokers, topics and configurations.
 
 122) Kafka Acknowledgements acks? 
-Answer: all: wait ack from all replicas. 1: wait only current brokers ack. 0: no ack.
+Answer: 
+all: wait ack from all replicas. 
+1: wait only current brokers ack. 
+0: no ack.
 
 123) How to ensure high performance in distributed systems? 
 Answer: Load distribution (partitioning, replication and scaling). Minimizing network processing.
@@ -651,8 +662,8 @@ between servers, using techniques such as two-phased-commit or a distributed con
 detection and correction, checksums or correction codes. Access control.
 
 129) Independent System Architecture Principles? 
-Answer: Principle #1: The system must be divided into modules.
-Principle 
+Answer: Principle 
+#1: The system must be divided into modules. Principle 
 #2: Two separate levels of architectural decisions: Macro Architecture: Concerns for all modules. 
 Micro Architecture: Decisions which can be made differently for each individual module.
 Principle #3: Modules must be separate process / containers / VMs.
@@ -715,11 +726,11 @@ a) HTTP/Restful API: Simple, easy to implement, compatibility are required.
 b) gRCP: Micro in different programing languages. Internal communication within private network.
 c) Message Queues: RabbitMQ, Apache Kafka. Asynchronous communication.
 d) Graph QL: Query language for APIs that enables clients to request only the data they need.
-e) WebSocket: Full-duplex, bi-directional communication channel over a single, long-lived connection, usage Chat, gaming.
+e) WebSocket: Full-duplex, bidirectional communication channel over a single, long-lived connection, usage Chat, gaming.
 f) Service Mesh (Istio, Linkerd): Dedicated infrastructure layer for handling service-to-service communication. 
-Manage and secure communication in a complex micro-services ecosystem.
+Manage and secure communication in a complex microservices' ecosystem.
 
-141) Explain the concept of distributed transactions and the two-phase commit (2PC) protocol?
+141) Explain the concept of distributed transactions and the two-phase commit (2PC) protocol? 
 Answer: Distributed Transactions: Multiple operations across distributed systems or microservices, where each operation 
 is a part of larger transaction. In distributed transactions, either all the operations within transaction are 
 successfully completed, or none of them are. This ensures data consistency across services.
@@ -727,13 +738,11 @@ Two phase commit (2PC) protocol: Is a distributed transaction management protoco
 transactions are either committed or rolled back consistently across multiple services or databases.
 Two phase commit (2PC) protocol phases: 
 a) Prepare Phase: Coordinator asks all participants if they are ready to commit. When agrees, they respond with prepared message. 
-b) Commit Phase: If all participants respond positively in the 
-prepare phase, coordinator sends a commit message to all participants. If any participant response negatively or not at all, 
-coordinator sends rollback message to undo transactions. Data consistency across services or databases is critical. 
-Complex business process. 
-Challenges: Performance Overhead. Blocking. Single Point of Failure. Complexity. Resource Locking. 
-Limited Scalability. 
-Tools Example: Java Atomikos, @Transactional Annotation.
+b) Commit Phase: If all participants respond positively in the prepare phase, coordinator sends a commit message to all 
+participants. If any participant response negatively or not at all, coordinator sends rollback message to undo transactions. 
+Data consistency across services or databases is critical. Complex business process. 
+Challenges: Performance Overhead, Blocking, Single Point of Failure, Complexity, Resource Locking, Limited Scalability. 
+Tools Example: Java Atomikos, '@Transactional' Annotation.
 
 142) Explain the concept of circuit breakers in microservices, and how do they contribute to system resilience?
 Answer: Enhance fault tolerance and resilience. Can help prevent cascading failures and improve system stability.
@@ -775,10 +784,11 @@ Answer: A term referring to the process of transferring and processing data from
 ETL pipeline is a sequence of stages, data retrieval, transformation and processing, loading them into the target system.
 Extract: extracting data from source, Apache NiFi, Kafka Connect. 
 Transform: processing according to Apache Spark, Apache Beam rules. 
-Load: transferring data to the target system. Tools example: Apache Kafka, Amazon S3, Elastic-Search. 
+Load: transferring data to the target system. Tools example: Apache Kafka, Amazon S3, Elasticsearch. 
 
 149) Etcd Database? 
-Answer: Etcd is a strongly consistent and highly available key-value store that often used to implement leader election in system.
+Answer: Etcd is a strongly consistent and highly available key-value store that often used to implement leader election 
+in system.
 
 150) Domain Driven Design DDD? 
 Answer: Bounded Context: Each domain model is valid only in bounded-context. For example order process, 
@@ -801,7 +811,7 @@ DNS save in cache. Return address to client.
 153) Distributed tracing in microservices architecture and why it's valuable for monitoring and troubleshooting? 
 Answer: Distributed tracing involves tracking requests or transactions as they move through various microservices 
 in a distributed system. Each service records timing information and context data, allowing for the reconstruction 
-of request paths and the identification of performance bottlenecks. Example, Jageor.
+of request paths and the identification of performance bottlenecks. Example, Jageor, Zipkin.
 
 154) Distributed File System? 
 Answer: A Distributed File System is an abstraction over a (usually large) cluster of machines that allows them to 
@@ -846,7 +856,7 @@ application that modify the data. Kafka sink connector - 'debezium/connect' dock
 Support for Confluent Schema Registry. Source connectors for various database. Postgres source connector 
 'io.debezium.connector.postgresql.PostgresConnector'.
 
-161) DDD Strategic Design & Common Patterns? 
+161) DDD Strategic Design & Common Patterns? // here
 Answer: 
 a) Customer / Supplier Pattern: Supplier is upstream and consumer is downstream. For example uses the model of the 
 order process. However, payment defines requirements for the order Process. 
