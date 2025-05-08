@@ -2,7 +2,7 @@
 
 ## What are Microservices?
 
-To understand microservices, lets imagine a bank called EazyBank. Typically, banks comprise various departments, including
+To understand microservices, lets imagine a bank called Bank. Typically, banks comprise various departments, including
 Accounts, Cards, and Loans.
 
 ## The Monolith.
@@ -22,7 +22,9 @@ server. We call this architecture approach as Monolith.
 - Not Fault tolerance.
 - Tiny update and feature development always need a fill deployment.
 
-We have various fforms of Monolithic with the names like Single-Process Monolith, Modular Monolith, Distributed Monolith.
+![SOA.](flashcard-img/soa.png "SOA.")
+
+We have various forms of Monolithic with the names like Single-Process Monolith, Modular Monolith, Distributed Monolith.
 In a monolithic approach, developers work with a single code base, which is then packaged as a unified unit, such as an
 EAR/WAR file, and deployed onto a single web/application server. Additionally, the entire application is supported by a
 single database.
@@ -72,10 +74,36 @@ If there's one crucial takeaway from this course and the concept of microservice
 deploy-ability of your microservices. Develop the habit of deploying and releasing changes to a single microservice in
 production without requiring the deployment of other components. By doing so, numerous benefits will naturally emerge. 
 
+### Monolithic vs SOA vs Microservices.
+
+**Monolithic:**
+* Parallel deployment: NOT OK.
+* Agility: NOT OK.
+* Scalability: NOT OK.
+* Usability: NOT OK.
+* Complexity & Operational overhead: Great.
+* Security Concerns & Performance: Great.
+
+**SOA:**
+* Parallel Development: OK.
+* Agility: OK.
+* Scalability: OK.
+* Usability: OK
+* Complexity & Operational overhead: OK.
+* Security Concerns & Performance: OK.
+
+**Microservices:**
+* Parallel Development: Great.
+* Agility: Great.
+* Scalability: Great.
+* Usability: Great.
+* Complexity & Operational overhead: NOT OK.
+* Security Concerns & Performance: NOT OK.
+
 ## Definition of microservice?
 
 Microservices is an approach to developing a single application as a suite of small services, each running its own process
-and communicating with lightweight mechanism, built around business capabilities amd independently deployable by fully
+and communicating with lightweight mechanism, built around business capabilities and independently deployable by fully
 automated deployment machinery.
 
 ## How to build Microservices?
@@ -136,6 +164,9 @@ The Data Transfer Object (DTO) pattern is a design pattern that allows you to tr
 your application. DTOs are simple objects that contain only data, and they do not contain any business logic. This makes
 them ideal for transferring data between different layers of your application, such as the presentation layer and the data 
 access layer.
+
+![DTO.](flashcard-img/dto.png "DTO.")
+
 Here are some of benefits of using the DTO pattern:
 - Reduces network traffic: DTOs can be used to batch up multiple pieces of data into a single object, which can reduce the
 number of network requests that need to be made. This can improve performance and reduce the load on your servers.
@@ -206,7 +237,7 @@ Problem that E-Commerce team is facing due to traditional monolithic design.
 
 - Initial Days:
   - It is straightforward to build, test, deploy, troubleshoot and scale during the launch and when the team size is less.
-- Later after few days the app/site is a super hit amd started evolving a lot. Now team has below problems:
+- Later after few days the app/site is a super hit and started evolving a lot. Now team has below problems:
   - The app has become so overwhelmingly complicated that no single person understands it.
   - You fear making changes - each change has unintended and costly side effects.
   - New features/fixes become tricky, time-consuming, and expensive to implement.
@@ -257,6 +288,8 @@ environment called a container".
 
 ## What are containers & how they are different from VMs?
 
+![VM & Containers.](flashcard-img/vm-containers.png "VM & Containers.")
+
 Main difference between virtual machines and containers. Containers don't need the Guest OS nor the hypervisor to assign
 resources; instead, they use the container engine.
 
@@ -296,6 +329,9 @@ limit the resources (such as CPU, memory, disk I/O, and network bandwidth) that 
 container runtimes can enforce resource restrictions and prevent one container from monopolizing system resources, ensuring
 fair allocation among containers.
 
+Here you may have a question. If containerization works based on Linux concepts like kernel, namespaces, cgroups etc. then
+how is Docker supposed to work on a macOS or Windows machine. Let's try to understand this.
+
 ### How does docker works on Mac & Windows OS?
 
 When you install Docker on a Linux OS, you receive the complete Docker Engine on your Linux host. However, if you opt for
@@ -305,6 +341,9 @@ machine.
 As a user, you experience will be very similar to using Docker on a Linux machine, with minimal noticeable differences.
 However, when you utilize the Docker CLI to execute commands, you are actually interacting with a Docker server running
 on a separate machine, which in this case is the Linux-based virtual machine.
+To confirm this configuration, you can start Docker and execute 'docker version' command. You will observe that the Docker
+client is running on the 'darwin/amd64' architecture (on macOS) or 'windows/amd64' (on Windows), while the Docker server
+is opening on the 'linux/amd64' architecture.
 
 ### Docker Architecture?
 
@@ -323,6 +362,8 @@ Steps:
 2. Docker server finds the image in registry if not found locally.
 3. Docker server pulls the image from registry into local.
 4. Docker server creates a running container from the image.
+
+![Docker Architecture.](flashcard-img/docker-architecture.png "Docker Architecture.")
 
 ### Generate Docker Images.
 
@@ -347,7 +388,7 @@ the docker image name and port mapping provided.
 
 **Sample Dockerfile**
 
-'''dockerfile
+```dockerfile
 # Start with a base image containing Java runtime
 FROM openjdk:17-jdk-slim
 
@@ -359,7 +400,7 @@ COPY target/accounts-0.0.1-SNAPSHOT.jar accounts-0.0.1-SNAPSHOT.jar
 
 # execute the application
 ENTRYPOINT ["java", "-jar", "/accounts-0.0.1-SNAPSHOT.jar"]
-'''
+```
 
 ### Port Mapping in Docker.
 
@@ -369,6 +410,8 @@ By default, containers are connected to an isolated network within the Docker ho
 network, you need to configure port mapping explicitly. For instance, when running the accounts Service application, we
 can provide the port mapping as an argument in the docker run command: '-p 8081:8080' (where the first value represents
 the external port and second value represent the container port).
+
+![Port Mapping in Docker.](flashcard-img/port-mapping-in-docker.png "Port Mapping in Docker.")
 
 ### Running a Spring Boot app as a container using Buildpacks.
 
@@ -420,33 +463,33 @@ lifecycle.
 ### Important Docker Commands.
 
 1. 'docker images': To list all the docker images present in the Docker server.
-2. 'docker image inspect [image-id]': To display detailed image information for a given image id.
-3. 'docker image rm [image-id]': To remove one or more images for a given image ids.
+2. 'docker image inspect [image-ID]': To display detailed image information for a given image ID.
+3. 'docker image rm [image-ID]': To remove one or more images for a given image IDs.
 4. 'docker build . -t [image-name]': To generate a docker image based on a Dockerfile.
 5. 'docker run -p [hostport]:[containerport] [image_name]': To start a docker based on a given image.
 6. 'docker ps': To show all running containers.
 7. 'docker ps -a': To show all containers including running and stopped.
-8. 'dokcer container start [container-id]': To start one or more stopped containers.
-9. 'docker container pause [container-id]': To pause all processed within one or more container.
-10. 'docker container unpause [container-id]': To resume/unpause all processed within one or more containers.
-11. 'docker container stop [container-id]': To stop one or more running containers.
-12. 'docker container kill [container-id]': To kill one or more running container instantly.
-13. 'docker container restart [container-id]': To restart one or more containers.
-14. 'docker container inspect [container-id]': To inspect all the details for a given container id.
-15. 'docker container logs [container-id]': To fetch the logs of a given container id.
-16. 'docker container logs -f [container-id]': To follow log output of a given container id.
-17. 'docker rm [container-id]': To remove one or more containers based on container ids.
+8. 'dokcer container start [container-ID]': To start one or more stopped containers.
+9. 'docker container pause [container-ID]': To pause all processed within one or more container.
+10. 'docker container unpause [container-ID]': To resume/unpause all processed within one or more containers.
+11. 'docker container stop [container-ID]': To stop one or more running containers.
+12. 'docker container kill [container-ID]': To kill one or more running container instantly.
+13. 'docker container restart [container-ID]': To restart one or more containers.
+14. 'docker container inspect [container-ID]': To inspect all the details for a given container ID.
+15. 'docker container logs [container-ID]': To fetch the logs of a given container ID.
+16. 'docker container logs -f [container-ID]': To follow log output of a given container ID.
+17. 'docker rm [container-ID]': To remove one or more containers based on container IDs.
 18. 'docker container prune': To remove all stopped containers.
 19. 'docker image push [container_registry/username:tag]': To push an image from a container registry.
 20. 'docker image pull [container_registry/username:tag]': To pull an image form a container registry.
 21. 'docker image prune': To remove all unused images.
 22. 'docker container stats': To show all containers statistics like CPU, memory, I/O usage.
 23. 'docker system prune': Remove stopped containers, dangling images, and unused networks, volumes, and cache.
-24. 'docker rmi [image-id]': To remove one or more images based on image ids.
+24. 'docker rmi [image-ID]': To remove one or more images based on image IDs.
 25. 'docker login -u [username]': To login in to docker hub container registry.
 26. 'docker logout': To login out from docker hub container registry.
 27. 'docker history [image-name]': Displays the Intermediate layers and commands that were executed when building the image.
-28. 'docker exec -it [container-id] sh': To open a shell inside a running container and execute commands.
+28. 'docker exec -it [container-ID] sh': To open a shell inside a running container and execute commands.
 29. 'docker compose up': To create and start containers based on given docker compose file.
 30. 'docker compose down': To stop and remove containers from services defined in the Compose file.
 
@@ -539,7 +582,7 @@ principles and incorporates three new factors.
 14. Telemetry.
 15. Authentication & authorization.
 
-### Onc codebase, one application.
+### One codebase, one application.
 
 The 15-Factor methodology ensures a one-to-one correspondence between an application and its codebase, meaning each application
 has a dedicated codebase. Shared code is managed separately as a library, allowing it to be utilized as a dependency or as
@@ -578,6 +621,8 @@ we maintain a clear and controlled dependency management process for our applica
 5. Put the downloaded Jar in the local repository.
 6. Copy the jar files.
 
+![Dependency Management.](flashcard-img/dependency-management.png "Dependency Management.")
+
 ### Design, build, release, run.
 
 Codebase progression from design to production deployment involves below stages.
@@ -614,6 +659,8 @@ their logs to the standard output, treating them as sequentially ordered events 
 storage and rotation is now shifted to an external tool, known as a log aggregator. This tool retrieves, gathers, and provides
 access to the logs for inspection purposes.
 
+![Logs.](flashcard-img/logs.png "Logs.")
+
 ### Disposability.
 
 In a traditional environment, ensuring the continuous operation of applications is a top priority, striving to prevent
@@ -621,7 +668,7 @@ any terminations. However, in a cloud environment, such meticulous attention is 
 are considered ephemeral, meaning that if a failure occurs and the application becomes unresponsive, it can be terminated
 and replaced within a new instance. Similarly, during high-load periods, additional instances of the application can be
 spun up to handle the increased workload. This concept is referred to as application disposability, where applications can
-be started ot stopped as needed.
+be started or stopped as needed.
 To effectively manage application instances in this dynamic environment, it is crucial to design them for quick startup
 when new instances are required and for graceful shutdown when they are no longer needed. A fast startup enables system
 elasticity, ensuring robustness and resilience. Without fast startup capabilities, performance and availability issues may
@@ -642,6 +689,8 @@ easily switch to a different service depending on the environment. This attachme
 which involves providing necessary information like a URL, username, and password for connecting to the database.
 In example, we can see that a local DB can be swapped easily to a third part DB like AWS DB without any code changes.
 
+![Backing services.](flashcard-img/backing-services.png "Backing services.")
+
 ### Environment Parity.
 
 Environment parity aims to minimize differences between various environments & avoiding costly shortcuts. Here, the adoption
@@ -657,7 +706,7 @@ of backing services across all environment.
 
 ### Administrative processes.
 
-Management task required to support applications, such as database migrations, barch jobs, or maintenance task, should
+Management task required to support applications, such as database migrations, batch jobs, or maintenance task, should
 be treated as isolated processes. Similar to application processes, the code for these administrative tasks should be
 version controlled, packaged alongside the application, and executed within the same environment.
 It is advisable to consider administrative tasks as independent microservices that are executed once and then discarded,
@@ -693,7 +742,7 @@ ensuring that necessary state is still maintained and accessible when needed.
 
 ### Concurrency.
 
-Scalability is not solely archived by creating stateless applications. While stateless is important, scalability also requires
+Scalability is not solely achieved by creating stateless applications. While stateless is important, scalability also requires
 ability to serve a large number of users. This means the applications should support concurrent processing to handle multiple
 users simultaneously.
 According to the 15-Factor methodology, processes play a crucial role in application design. These processes should be
@@ -734,7 +783,8 @@ actions. Implementing identity and access management standards can greatly enhan
 # Configuration Management in Microservices.
 
 **Separation of configs/properties.**
-How do we separate the configurations/properties form the microservices so that same Docker image can be deployed in multiple envs.
+How do we separate the configurations/properties form the microservices so that same Docker image can be deployed in 
+multiple environments.
 
 **Inject configs/properties.**
 How do we inject configurations/properties that microservice need during start up of the service.
@@ -792,22 +842,27 @@ matching the properties, and Spring Boot automatically maps the properties to th
 
 ### Profiles.
 
-Spring provides a great tool for grouping configuration properties into so-called profiles (dev, qa, prod) allowing us to
+Spring provides a great tool for grouping configuration properties into so-called profiles (DEV, QA, PROD) allowing us to
 activate a bunch of configurations based on the active profile.
 Profiles are perfect for setting up our application for different environments, but they're also being used in another use
 cases like Bean creation based on a profile etc.
 So basically a profile can influence the application properties loaded and beans which are loaded into the Spring context.
-The default profile is always active. Spring Boot loads all properties in application.properties into the default profile.
-We can create another profiles by creating property files like application_prod.properties or application_qa.profiles.
-We can activate a specific profile using spring.profiles.active property like 'sping.profiles.active=prod'.
+The default profile is always active. Spring Boot loads all properties in 'application.properties' into the default profile.
+We can create another profiles by creating property files like 'application_prod.properties' or 'application_qa.profiles'.
+We can activate a specific profile using 'spring.profiles.active' property like 'sping.profiles.active=prod'.
 An important point to consider is that once an application is built and packaged, it should not be modified. If any 
-configuration changes are required, such as updating credentials or database handles, the should be made externally. 
+configuration changes are required, such as updating credentials or database handles, they should be made externally. 
 
 ### How to externalize configurations using command-line arguments?
 
 Spring Boot automatically converts command-line arguments into key/value pairs and adds them to the Environment object. In
 a production application, this becomes the property source with the highest precedence. You can customize the application
 configuration by specifying command-line arguments when running the JAR you built earlier.
+
+```bash
+java -jar accounts-service-0.0.1-SNAPSHOT.jar --build.version="1.1"
+```
+
 The command-line argument follows the same naming convention as the corresponding Spring property, with the familiar -- prefix
 for CLI arguments.
 
@@ -817,18 +872,24 @@ JVM system properties, similar to command-line arguments, can override Spring pr
 allows for externalizing the configuration without the need to rebuild the JAR artifact. The JVM system property follows the
 same naming convention as the corresponding Spring property, prefixed with -D for JVM arguments, In the application, the
 message defined as a JVM system property will be utilized, taking precedence over property files.
+
+```bash
+java -Dbuild.version="1.2" -jar accounts-service-0.0.1-SNAPSHOT.jar
+```
+
 In the scenario where both a JVM system property and a command-line argument are specified, the precedence rules dictate
 that Spring will prioritize the value provided as a command-line argument. This means that the value specified through the
 CLI will be utilized by the application, taking precedence over the JVM properties.
 
-### How ro externalize configurations using environment variables?
+### How to externalize configurations using environment variables?
 
 Environment variables are widely used for externalized configuration as the offer portability across different operating
 systems, as they are universally supported. Most programming languages, including Java, provide mechanism to access
-environment variables, such as the System.getenv() method.
+environment variables, such as the 'System.getenv()' method.
 To map a Spring property key to an environment variable, you need to convert all letters to uppercase and replace any dots
 or dashes with underscores. Spring Boot will handle this mapping correctly internally. For example, an environment variable
-named BUILD_VERSION will be recognized as the property build.version. This feature is known as relaxed binding.
+named 'BUILD_VERSION' will be recognized as the property 'build.version'. This feature is known as relaxed binding.
+Linux based OS: 'BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'
 
 ### Drawbacks of externalized configurations using Spring Boot alone.
 
@@ -859,6 +920,8 @@ multiple applications.
 2. Spring Cloud Config Server load all the configurations by connecting to central repository.
 3. Central repositories where properties get stored (database, github, file system/classpath).
 
+![Spring Cloud Config.](flashcard-img/spring-cloud-config.png "Spring Cloud Config.")
+
 ### What is Spring Cloud? Using Spring Cloud for microservices development.
 
 Spring Cloud provides frameworks for developers to quickly build some of the common patterns of Microservices.
@@ -876,28 +939,38 @@ services and asynchronous communication, allowing for scalable and resilient sys
 ### Refresh configurations ar runtime using /refresh path.
 
 What occurs when new updates are committed to the Git repository supporting the Config Service? In a typical Spring Boot 
-application, modifying a property would require restart. However, Spring CCloud Config introduces the capability to dynamically
+application, modifying a property would require restart. However, Spring Cloud Config introduces the capability to dynamically
 refresh the configuration in client applications during runtime. When a change is pushed to the configuration repository,
 all integrated applications connected to the config server can be notified, prompting them to reload portions affected by
 the configuration modification.
 Let's see an approach for refreshing the configuration, which involves sending a specific POST request to a running instance
 of the microservice. This request will initiate the reloading of the modified configuration data, enabling a hot reload
 of the application. Below are the steps to follow:
-1. Add actuator dependency in the Config Client services: Add Spring Boot Actuator dependency inside pom.xml of the individual
+1. Add actuator dependency in the Config Client services: Add Spring Boot Actuator dependency inside 'pom.xml' of the individual
 microservices like accounts, loans, cards to expose the '/refresh' endpoint.
 2. Enable '/refresh' API: The Spring Boot Actuator library provides a configuration endpoint called "/actuator/refresh"
 that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it in the
-application.yaml file.
+'application.yaml' file.
+
+```yaml
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh
+```
 
 ### Refresh configurations at runtime using /refresh path.
 
-1. Push new configuration data into Config repo (User).
-2. Invokes '/actuator/refresh' using HTTP POST method (User).
+1. User: Push new configuration data into Config repo.
+2. User: Invokes '/actuator/refresh' using HTTP POST method.
 3. Load latest configuration data related to accounts microservices (Accounts microservice).
 4. Pull latest changes from remote GitHub config repo (Config Server).
 5. Return latest config data related to accounts microservice (GitHub).
 6. Return latest config data related to accounts microservice (Config Service).
 7. Reload of the new configurations data inside the microservice without restart of the app (Accounts Microservice).
+
+![Refresh configurations at runtime.](flashcard-img/refresh-configurations.png "Refresh configurations at runtime.")
 
 You invoked the refresh mechanism on Accounts Service, and it worked fine, since it was just one application with 1 instance. 
 How about in production where there may be multiple services? If a production has many microservices, then team may prefer
@@ -912,13 +985,20 @@ communication across the application ecosystem.
 Below are the steps to follow:
 1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside pom.xml
 of the individual microservices like accounts, loans and cards to expose the '/busrefresh' endpoint.
-2. Enable '/busrefresh' API: The Sping Boot Actuator library provides a configuration endpoint called "/actuator/busrefresh"
+2. Enable '/busrefresh' API: The Spring Boot Actuator library provides a configuration endpoint called "/actuator/busrefresh"
 that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it in the
-application.yaml file.
+'application.yaml' file.
+    ```yaml
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: busrefresh
+    ```
 3. Add Spring Cloud Bus dependency in the Config Server & Client services: Add Spring Cloud Bus dependency
-(spring-cloud-starter-bus-amqp) inside pom.xml of the individual microservices like accounts, loans, cards and Config server.
+'spring-cloud-starter-bus-amqp' inside 'pom.xml' of the individual microservices like accounts, loans, cards and Config server.
 4. Set up a RabbitMQ: Using Docker, setup RabbitMQ service. If the service is not started with default values, then configure
-the rabbitmq connection details in the application.yaml file of all the individual microservices and Config Server.
+the rabbitmq connection details in the 'application.yaml' file of all the individual microservices and Config Server.
 
 ### Refresh configurations at runtime using Spring Cloud Bus.
 
@@ -926,6 +1006,8 @@ the rabbitmq connection details in the application.yaml file of all the individu
 2. Invoke '/actuator/busrefresh' on any of the microservice instance & config service will load the latest config data (GitHub).
 3. Trigger a config change event & initiate refresh on all the subscribed nodes (Config Service - Message Broker).
 4. Reload of the new configurations data from Config Server inside all the microservices without restart (microservices).
+
+![Refresh configurations at runtime using Spring Cloud Bus.](flashcard-img/refresh-configuration-cloud-bus.png "Refresh configurations at runtime.")
 
 Though this approach reduce manual work to a great extent, but still there is a single manual step involved which is invoking
 the '/actuator/busrefresh' on any of the microservice instance. Let's see how we can avoid and completely automate the process.
@@ -937,18 +1019,25 @@ Service. By exposing the '/monitor' endpoint, it facilitates the propagation of 
 via the Bus. The Monitor library allows push notifications from popular code repository providers such as GitHub, GitLab, and
 Bitbucket. You can configure webhooks in these services to automatically send a POST request to the Config Service after
 each new push to the configuration repository. Below are steps to follow:
-1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside pom.xml of the
+1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside 'pom.xml' of the
 individual microservices like accounts, loans, cards, and Config Server to expose the '/busrefresh' endpoint.
 2. Enable '/busrefresh' API: The Spring Boot Actuator library provides a configuration endpoint called "/actuator/busrefresh"
 that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it in
-application.yaml file.
+'application.yaml' file.
+    ```yaml
+    management:
+      endpoints:
+        web:
+          exposure:
+            include: busrefresh
+    ```
 3. Add Spring Cloud Bus dependency in the Config Server & Client servicesL Add Spring Cloud Bus dependency
-(spring-cloud-starter-bus-amqp) inside pom.xml of the individual microservices like accounts, loans, cards and Config server.
+(spring-cloud-starter-bus-amqp) inside 'pom.xml' of the individual microservices like accounts, loans, cards and Config server.
 4. Add Spring Cloud Config monitor dependency in the Config Server: Add Spring Cloud Config monitor dependency 
-(spring-cloud-config-monitor) inside pom.xml of Config server and this exposes '/monitor' endpoint.
+(spring-cloud-config-monitor) inside 'pom.xml' of Config server and this exposes '/monitor' endpoint.
 5. Set up a RabbitMQ: Using Docker, setup RabbitMQ service. If the service is not started with default values, then configure
-the rabbitmq connection details in the application.yaml file of all the individual microservices and Config Server.
-6. Set up a WebHJook in GitHub: Set up a webhook to automatically send a POST request to Config Service '/monitor' path
+the rabbitmq connection details in the 'application.yaml' file of all the individual microservices and Config Server.
+6. Set up a WebHook in GitHub: Set up a webhook to automatically send a POST request to Config Service '/monitor' path
 after each new push to the config repo.
 
 ### Refresh configurations ar runtime using Spring Cloud Bus & Spring Cloud Config Monitor.
@@ -957,6 +1046,8 @@ after each new push to the config repo.
 2. Webhook invokes '/monitor' on config server (GitHub).
 3. Trigger a config change event & initiate refresh on all the subscribed nodes (Config Service - Message Broker).
 4. Reload of the new configurations data from Config Server inside all the microservices without restart (Microservices).
+
+![Refresh configurations at runtime.](flashcard-img/refresh-configuration-cloud-bus-and-configmonitor.png "Refresh configurations at runtime.")
 
 In this solution, there is no manual step involved and everything is automated.
 
@@ -998,12 +1089,12 @@ These challenges in microservices can be solved using below concepts or solution
 2. Service registration.
 3. Load balancing.
 
-## How service communication happens in Traditional alls?
+## How service communication happens in Traditional apps?
 
 Inside web network, when a service/aoo want to communicate with another service/app, it must be given the necessary information
 to locate it, such as an IP address or a DNS name. Let's examine the scenario of two services, Accounts and Loans. If there
 was only a single instance of Loans microservice. Upstream Service (Accounts) internal communication between microservices
-using hostname, DNS, ort IP address. No Service Discovery or Load Balancing involved. Load Microservice (Downstream Service).
+using hostname, DNS, or IP address. No Service Discovery or Load Balancing involved. Load Microservice (Downstream Service).
 Loans microservice will be a backing service with respect to Accounts microservice.
 
 When there is only one instance of the Loans microservice running, managing the DNS name and its corresponding IP address
@@ -1026,6 +1117,8 @@ Clients like other services uses generic DNS along with the service specific pat
 DNS name for load balancers.
 Traditional Service location resolution architecture using DNS & a load balancer.
 
+![Load Balancers.](flashcard-img/load-balancers.png "Load Balancers.")
+
 ### Limitations with Traditional LoadBalancers?
 
 With traditional approach each instance of a service used to be deployed in one or more application servers. The number
@@ -1037,7 +1130,7 @@ running on a group of static servers, it doesn't work well for cloud-based micro
 reasons:
 1. Limited horizontal scalability & license costs.
 2. Single point of failure & Centralized choke-points.
-3. Manual;y managed to update any IPs, configurations.
+3. Manually managed to update any IPs, configurations.
 4. Complex in nature & not containers friendly.
 
 The biggest challenge with traditional load balancers is that someone has to manually maintain the routing tables which
@@ -1079,6 +1172,8 @@ Below workflow illustrates this process:
 3. Service Registry to Accounts microservice. Buddy, here are the IP addresses of Loans instances.
 4. Accounts microservice is going to invoke one of the instance of loans based on the load balancing strategy configured.
 
+![Client-side service discovery and load balancing](flashcard-img/client-side-service-discovery.png "Client-side service discovery and load balancing")
+
 Client-side service discovery is an architectural pattern where client applications are responsible for locating and connecting
 to services they depend on. In this approach, the client application communicates directly with a service registry to discover
 available service instances, and obtain the necessary information to establish connection.
@@ -1106,10 +1201,12 @@ take requests.
 2. Service discovery nodes communicate with each other about new services, health of the services etc.
 3. Service instances send a heartbeat to the service discovery agent. If a service didn't send a heartbeat, service discovery
 will remove the IP of the dead instance from the list.
-4. A service actual location will be looked up based on yje given logical name.
+4. A service actual location will be looked up based on the given logical name.
 
 Client Applications (Microservices) never worry about the direct IP details of the microservice. They will just invoke service
 discovery later with a logical service name.
+
+![How Client-side service discovery works](flashcard-img/how-client-side-service-discovery.png "How Client-side service discovery works")
 
 ### How load balancing works in Client-side service discovery?
 
@@ -1122,6 +1219,8 @@ Service discovery nodes communicate with each other about new services, health o
 Service instances send a heartbeat to the service discovery agent. If a service didn't send a heartbeat, service discovery
 will remove the IP of the dead instance from the list.
 
+![How load balancing works](flashcard-img/how-loadbalancing-works.png "How load balancing works")
+
 ### Spring Cloud Support for Client-side service discovery.
 
 Spring Cloud project makes Service Discovery & Registration setup trivial to undertake with the help of the below concepts:
@@ -1132,7 +1231,7 @@ Spring Cloud project makes Service Discovery & Registration setup trivial to und
 Though in this course we use Eureka since it is mostly used, but they are other service registries such as etcs, Consul,
 and Apache Zookeeper which are also good.
 Through Netflix Ribbon client-side is also good and stable product, we are going to use Spring Cloud Load Balancer for
-client-side load balancing. This is because Ribbon has entered a mode, and it will not be developed anymore.
+client-side load balancing. This is because Ribbon has entered a maintenance mode, and it will not be developed anymore.
 
 Advantages of Service Discovery approach includes:
 1. No limitations on availability.
@@ -1146,6 +1245,19 @@ Below are the steps to build a Eureka Server application using Spring Cloud Netf
 1. Set up a new Spring Boot project: Start by creating a new Spring Boot project using Spring Initializr. Include the
 spring-cloud-starter-eureka-server maven dependency.
 2. Configure the properties: In the application properties ot YAML file.
+    ```yaml
+    server:
+      port: 8070
+   
+    eureka:
+      instance:
+        hostname: localhost
+      client:
+        fetchRegistry: false
+        registerWithEureka: false
+        serviceUrl:
+          defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    ```
 3. Add the Eureka Server annotation: In the main class of your project, annotate it with '@EnableEurekaServer'. This 
 annotation configures the application to act as a Eureka Server.
 4. Build and run the Eureka Server: Build your project and run it as a Spring Boot application. Open a web browser and
@@ -1156,8 +1268,18 @@ information about registered service instances.
 
 Below are the steps to make a microservice application to register and act as a Eureka Client.
 1. Set up a new Spring Boot project: Start by creating a new Spring Boot project using Spring Initializr. Include the
-spring-cloud-starter=netflix-eureka-client maven dependency.
+'spring-cloud-starter=netflix-eureka-client' maven dependency.
 2. Configure the properties: In the application properties or YAML file.
+    ```yaml
+    eureka:
+      instance:
+        preferIpAddress: true
+      client:
+        fetchWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+          defaultZone: "http://localhost:8070/eureka/"
+    ```
 3. Build and run the application: Build your project and run it as a Spring Boot application. Open a web browser and
 navigate to localhost on port 8070 (as configured in step 2). You should see the microservice registered itself as an
 application and the same can be confirmed inside the Eureka Server dashboard.
@@ -1171,7 +1293,7 @@ behavior helps the Eureka server maintain an up-to-date view of the registered s
 However, in certain situations, network glitches or temporary system delays may cause the Eureka server to miss a few
 heartbeats, leading to false expiration of service instances. This can result in unnecessary evictions of healthy service
 instances from the registry, causing instability and disruption in the system.
-To mitigate this issie, Eureka enters into Self-Preservation mode. When Self-Preservation mode is active, the existing
+To mitigate this issues, Eureka enters into Self-Preservation mode. When Self-Preservation mode is active, the existing
 registry entries will not be removed even if it stops receiving heartbeats from some of the service instances. This
 prevents the Eureka server from evicting all the instances due to temporary network glitches or delays.
 In Self-Preservation mode, the Eureka server continues to serve the registered instances to client applications, even if
@@ -1183,25 +1305,26 @@ resolved. This is because eureka will not expire the instances till it  is above
 Eureka Server will not panic when it is not receiving heartbeats from a majority of the instances, instead it will be calm
 and enters into Self-preservation mode. This feature is a savior where the networks glitches are common and help us to
 handle false-positive alarms.
+
 Healthy Microservice System with all 5 instances up before entering network problems. Heartbeats by all the instances for
 every 30 seconds.
 2 of the instances not sending heartbeat. Eureka enters self-preservation mode since it met threshold percentage.
 During Self-preservation, eureka will stop expiring the instances though it is not receiving heartbeat from instance 3.
 
 Configurations which will directly or indirectly impact self-preservation behavior of eureka:
-1. "eureka.instance.lease-renewal-interval-in-seconds=30": Indicates the frequency the client sends heartbeats to server that
+1. 'eureka.instance.lease-renewal-interval-in-seconds=30': Indicates the frequency the client sends heartbeats to server that
 is still alive.
-2. "eureka.instance.lease-expiration-duration-in-seconds=90": Indicates the duration the server waits since it received the
+2. 'eureka.instance.lease-expiration-duration-in-seconds=90': Indicates the duration the server waits since it received the
 last heartbeat before it can evict an instance.
-3. "eureka.server.eviction-interval-timer-in-ms=60*1000": A scheduler (EvictionTask) us run at this frequency which will
-evict instances from the registry if the lease of the instances are expired as configured by lease-expiration-duration-in-seconds.
-It will also check whether the system has reached self-preservation mode (by comparing actual and expected heartbeats) 
-before evicting.
-4. "eureka.server.renewal-percent-threshold=0.85": The value is used to calculate the expected % of heartbeats per minute
+3. 'eureka.server.eviction-interval-timer-in-ms=60*1000': A scheduler (EvictionTask) us run at this frequency which will
+evict instances from the registry if the lease of the instances are expired as configured by 
+'lease-expiration-duration-in-seconds'. It will also check whether the system has reached self-preservation mode 
+(by comparing actual and expected heartbeats)before evicting.
+4. 'eureka.server.renewal-percent-threshold=0.85': The value is used to calculate the expected % of heartbeats per minute
 eureka is expecting.
-5. "eureka.server.renewal-threshold-update-interval-ms=15*60*1000": A scheduler is run at this frequency which calculates 
+5. 'eureka.server.renewal-threshold-update-interval-ms= 15 * 60 * 1000': A scheduler is run at this frequency which calculates 
 the expected heartbeats per minute.
-6. "eureka.server.enable-self-preservation=true": By default self-preservation mode is enabled but if you need to diable
+6. 'eureka.server.enable-self-preservation=true': By default self-preservation mode is enabled but if you need to diable
 it you can change it to 'false'.
 
 # Routing, cross-cutting concerns in microservices.
@@ -1232,6 +1355,8 @@ Additionally, these servers enable control over ingress traffic, empowering the 
 authentication and authorization mechanism can be implemented at the edge, enabling the passing of tokens to downstream
 services for secure communication and access control.
 
+![Routing, Cross Catting Concerns](flashcard-img/routing-cross-cutting-concerns.png "Routing, Cross Cutting Concerns")
+
 ### Few important tasks that API Gateway does?
 
 1. Request Validation.
@@ -1244,8 +1369,8 @@ services for secure communication and access control.
 8. Protocol Conversion.
 9. Exception Handling.
 10. Circuit Breaker.
-11. Logging Monitoring.
-12. Cache.
+11. Logging Monitoring: Observability Tools like Grafana.
+12. Cache: Redis.
 
 ### Spring Cloud Gateway.
 
@@ -1275,27 +1400,58 @@ Point (PEP) like below.
 
 ### Spring Cloud Gateway Internal Architecture.
 
+![Spring Cloud Gateway](flashcard-img/spring-cloud-gateway.png "Spring Cloud Gateway")
+
 When the client makes a request to the Spring Cloud Gateway, the Gateway Handler Mapping first checks if the request matches
 a route. This matching is done using the predicates. If it matches then the request is sent to the pre-filters followed
 by actual microservices. The response will travel through post filters.
-1. Request.
-2. Gateway Handler Mapping using Routing configs.
-3. Predicates to check if the request fulfill a set of given condition.
-4. Pre filter.
-5. Microservice.
-6. Response.
-7. Post filters.
-8. Gateway Handler Mapping using Routing configs.
-9. Response.
 
 ### Steps to create Spring Cloud Gateway.
 
 Steps to make a microservice application to register and act as a Eureka client.
 1. Set up a new Spring Boot project: Start by creating a new Spring Boot project using your preferred IDE or by using Spring
-Initializr. Include the spring-cloud-starter-gateway, spring-cloud-starter-config & spring-cloud-starter-netflix-eureka-client
-maven dependencies.
+Initializr. Include the 'spring-cloud-starter-gateway', 'spring-cloud-starter-config' & 
+'spring-cloud-starter-netflix-eureka-client' maven dependencies.
 2. Configure the properties: In the application properties or YAML file. Make routing configurations using RouteLocatorBuilder.
+    ```yaml
+    eureka:
+      instance:
+        preferIpAddress: true
+      client:
+        registerWithEureka: true
+        fetchRegistry: true
+        serviceUrl:
+          defaultZone: http://localhost:8070/eureka
+    spring:
+      cloud:
+        gateway:
+          discovery:
+            locator:
+              enabled: true
+              lowerCaseServiceId: true
+    ```
 3. Configure the routing config: Make routing configurations using RouteLocatorBuilder.
+    ```java
+    @Bean
+    public RouteLocator myRoutes(RouteLocatorBuilder builder) {
+        return builder.routes()
+                .route(p -> p
+                        .path("/bank/accounts/**")
+                        .filters(f -> f.rewritePath("/bank/accounts/(?<segment>.*)", "/${segment}")
+                                .addResponseHandler("X-Response-Time", new Date().toString()))
+                        .uri("lb://ACCOUNTS"))
+                .route(p -> p
+                        .path("/bank/loans/**")
+                        .filters(f -> f.rewritePath("/bank/loans/(?<segment>.*)", "/${segment}")
+                                .addResponseHandler("X-Response-Time", new Date().toString()))
+                        .uri("lb://LOANS"))
+                .route(p -> p
+                        .path("/bank/cards/**")
+                        .filters(f -> f.rewritePath("/bank/cards/(?<segment>.*)", "/${segment}")
+                                .addResponseHandler("X-Response-Time", new Date().toString()))
+                        .uri("lb://CARDS")).build();      
+    }
+    ```
 4. Build and run the application: Build your project and run it as a Spring Boot application. Invokes the APIs using
 localhost at port 8072 (or other configured) which is the gateway path.
 
@@ -1305,6 +1461,8 @@ The API Gateway Pattern is a crucial architectural component in microservice des
 multiple microservices, It acts as a gateway between the external clients (e.g. web apps, mobile apps) and the internal
 microservices, helping streamline communication, security, and routing. This pattern is essential when managing the complexities
 of microservice-based applications.
+
+![API Gateway Pattern](flashcard-img/api-gateway-pattern.png "API Gateway Pattern")
 
 ### Gateway Routing Pattern.
 
@@ -1318,11 +1476,15 @@ such as security, caching, rate limiting, and monitoring - from individual micro
 helps centralize and simplify the implementation of these concerns, allowing the microservices to focus solely on business
 logic.
 
+![Gateway offloading Pattern](flashcard-img/gateway-offloading-pattern.png "Gateway offloading Pattern")
+
 ### Backend For Frontend (BFF) Pattern.
 
 The Backend for Frontend (BFF) Pattern is a design pattern used in microservices architectures where a separate backend
 service is created for each client type (e.g. web, mobile, tablet). Each frontend (client) has its own specialized backend
 to optimize communication between the frontend and the microservices, providing a tailored experience for different clients.
+
+![Backend for Frontend (BFF) Pattern](flashcard-img/backend-for-frontend-pattern.png "Backend for Frontend (BFF) Pattern")
 
 ### Gateway Aggregator / Composition Pattern.
 
@@ -1330,10 +1492,12 @@ In microservices architecture, a Gateway Aggregator or Gateway Composition patte
 to retrieve or process data from multiple backend microservices. Instead of having the client make multiple calls to various
 microservices, the API Gateway consolidates the requests into a single response.
 
+![Gateway Aggregator Pattern](flashcard-img/gateway-aggregator-composition-pattern.png "Gateway Aggregator Pattern")
+
 # Resiliency in microservices.
 
 **How do we avoid cascading failures?**
-One failed ot slow service should not have a ripple effect on the other microservice. Like in the scenarios of multiple 
+One failed or slow service should not have a ripple effect on the other microservice. Like in the scenarios of multiple 
 microservices are communicating, we need to make sure that the entire chain of microservices does not fail with the failure
 of a single microservice.
 
@@ -1347,6 +1511,7 @@ recover itself.
 
 Ensuring system stability and resilience is crucial for providing a reliable service to users, One of the critical aspects
 in achieving a stable and resilient system for production is managing the integration points between services over a network.
+
 There exist various patterns for building resilient applications. In the Java ecosystem, Hystrix, a library developer by Netflix, 
 was widely used for implementing such patterns. However, Hystrix entered maintenance mode in 2018 and is no longer being 
 actively developed. To address this, Resilience4J has gained significant popularity, stepping in to fill the gap left by Hystrix.
@@ -1361,7 +1526,7 @@ for increasing fault tolerance due to network problems or failure of any of the 
 2. Fallback: Alternative paths to failing requests.
 3. Retry: Used to make retries when a service has temporarily failed.
 4. Rate limit: Limits the number off calls that a service receives in a time.
-5. BulkheadL Limits the number of outgoing concurrent requests to a service to avoid overloading.
+5. Bulkhead: Limits the number of outgoing concurrent requests to a service to avoid overloading.
 
 ### Typical scenario in microservices.
 
@@ -1377,7 +1542,7 @@ when it detects a fault, such as short circuit or overload, to ensure the safety
 The Circuit Breaker pattern in software development takes its inspiration from the concept of an electrical circuit breaker
 found in electrical systems.
 In a distributed environment, calls to remote resources and services can fail due to transient faults, such as slow network
-connections, timeouts, or the resources being overcommitted ot temporarily unavailable. These faults typically correct 
+connections, timeouts, or the resources being over-committed or temporarily unavailable. These faults typically correct 
 themselves after a short period of time, and a robust cloud application should be prepared to handle them.
 The Circuit Breaker pattern which inspired from electrical circuit breaker will monitor the remote calls. If the calls take
 too long, the circuit breaker will intercede and kill the call. Also, the circuit breaker will monitor all calls to a remote
@@ -1400,14 +1565,33 @@ it will either go to CLOSED or OPEN.
 
 **Spring Cloud Gateway filter.**
 Below are the steps to build a circuit breaker pattern using Spring Cloud Gateway filter.
-1. Add maven dependency: Add spring-cloud-starter-circuitbreaker-reactor-resilience4j maven dependency inside pom.xml.
+1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-reactor-resilience4j' maven dependency inside 'pom.xml'.
 2. Add circuit breaker filter: Inside the method where we are creating a bean of RouteLocator, add a filter of circuit
-breaker.
+   breaker.
+    ```java
+    import java.util.Date;@Bean
+    public RouteLocator myRoutes(RouteLocatorBuilder builder) {
+        return builder.routes()
+                    .route(p -> p.path("/bank/accounts/**")
+                            .filters(f -> f.rewritePath("/bank/accounts/(?<segment>.*)", "/${segment}")
+                            .addResponseHeader("X-Response-Time", new Date().toString())
+                            .circuitBreaker(config -> config.setName("accountsCircuitBreaker")
+                            .setFallbackUri("forward:/contactSupport")))
+                            .uri("lb://ACCOUNTS")).build();
+    }
+    ```
 3. Add properties: Add properties inside the application.yaml file.
-
+    ```yaml
+    resilience4j.circuitbreaker:
+      configs:
+        slidingWindowSize: 10
+        permittedNumberOfCallsInHalfOpenState: 2
+        failureRateThreshold: 50
+        waitDurationInOpenState: 10000
+    ```
 **Spring Boot service.**
 Below are the steps to build a circuit breaker pattern using normal Spring Boot service.
-1. Add maven dependency: Add spring-cloud-starter-circuitbreaker-resilience4j maven dependency inside pom.xml.
+1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-resilience4j' maven dependency inside 'pom.xml'.
 2. Add circuit breaker relate changes in Feign Client interface like below:
     ```java
     @FeignClient(name="cards", fallback=CardsFallback.class)
@@ -1425,21 +1609,21 @@ Below are the steps to build a circuit breaker pattern using normal Spring Boot 
         } 
     }
     ```
-3. Add properties: Add properties inside the application.yaml file:
-```yaml
-spring:
-  cloud:
-    openfeign:
-      circuitbreaker:
-        enabled: true
-resilience4j.circuitbreaker:
-  configs:
-    default:
-      slidingWindowSize: 5
-      failureRateThreshold: 50
-      waitDurationInOpenState: 10000
-      permittedNumberOfCallsInHalfOpenState: 2
-```
+3. Add properties: Add properties inside the 'application.yaml' file:
+    ```yaml
+    spring:
+      cloud:
+        openfeign:
+          circuitbreaker:
+            enabled: true
+    resilience4j.circuitbreaker:
+      configs:
+        default:
+          slidingWindowSize: 5
+          failureRateThreshold: 50
+          waitDurationInOpenState: 10000
+          permittedNumberOfCallsInHalfOpenState: 2
+    ```
 
 ### Retry Pattern.
 
@@ -1456,19 +1640,19 @@ of retries fail consecutively, the circuit breaker can be opened to prevent furt
 many times it is invoked. This prevents unintended side effects or duplicate operations.
 
 Steps to build a retry pattern using Spring Cloud Gateway filter.
-1. Add Retry filter: Inside the method where we are creating a bean of RouteLocator, add a filter of retry like highlited below:
-```
-@Bean
-public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-  return builder.routes()
-          .route(p -> p.path("/bank/loans/**")
-            .filters(f -> f.rewritePath("/bank/loans/(?<segment>.*)","/{segment}")
-              .addResponseHeader("X-Response-Time", new Date().toString())
-              .retry(retryConfig -> retryConfig.setRetries(3).setMethods(HttpMethod.GET)
-                .setBackoff(Duration.ofMillis(100), Duration.ofMillis(1000), 2, true)))
-            .uri("lb://LOANS")).build();
-}
-```
+1. Add Retry filter: Inside the method where we are creating a bean of RouteLocator, add a filter of retry.
+    ```java
+    @Bean
+    public RouteLocator myRoutes(RouteLocatorBuilder builder) {
+      return builder.routes()
+              .route(p -> p.path("/bank/loans/**")
+                .filters(f -> f.rewritePath("/bank/loans/(?<segment>.*)","/{segment}")
+                  .addResponseHeader("X-Response-Time", new Date().toString())
+                  .retry(retryConfig -> retryConfig.setRetries(3).setMethods(HttpMethod.GET)
+                    .setBackoff(Duration.ofMillis(100), Duration.ofMillis(1000), 2, true)))
+                .uri("lb://LOANS")).build();
+    }
+    ```
 
 Steps to build a retry pattern using normal Spring Boot Service.
 1. Add Retry pattern annotations: Choose a method and mention retry pattern related annotation along with the below configs.
@@ -1514,34 +1698,33 @@ pattern proves beneficial for providing services to users based on their subscri
 limits can be defined for basic, premium, and enterprise users.
 
 Steps to build a rate limiter pattern using Spring Cloud Gateway filter.
-1. Add maven dependency: Add spring-boot-starter-data-redis-reactive maven dependency inside pom.xml and make sure a redis
-container started. Mention redis connection details inside the application.yaml file.
+1. Add maven dependency: Add 'spring-boot-starter-data-redis-reactive' maven dependency inside pom.xml and make sure a redis
+container started. Mention redis connection details inside the 'application.yaml' file.
 2. Add rate limiter filter: Inside the method where we are creating a bean of RouteLocator, add a filter of rate limiter
 and creating supporting beans of RedisRateLimiter and KeyResolver.
-
-```java
-@Bean
-public RouteLocator myRoutes(RouteLocatorBuilder builder) {
-  return builder.routes()
-          .route(p -> p.path("/bank/cards/**"))
-          .filters(f -> f.rewritePath("/bank/cards/(?<segment>.*)", "/${segment}")
-                  .addResponseHeader("X-Response_Time", new Date().toString())
-                  .requestRateLimiter(config ->
-                          config.setReteLimitter(redisRateLimiter()).setKeyResolver(userKeyResolver()))
-                  .uri("lb://CARDS")).build();
-}
-
-@Bean
-public RedisReteLimiter redisReteLimiter() {
-    return new RedisRateLimiter(1, 1, 1);
-}
-
-@Bean
-KeyResolver userKeyResolver() {
-    return exchange -> Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst("user"))
-            .defaultIfEmpty("anonymous");
-}
-```
+    ```java
+    @Bean
+    public RouteLocator myRoutes(RouteLocatorBuilder builder) {
+      return builder.routes()
+              .route(p -> p.path("/bank/cards/**"))
+              .filters(f -> f.rewritePath("/bank/cards/(?<segment>.*)", "/${segment}")
+                      .addResponseHeader("X-Response_Time", new Date().toString())
+                      .requestRateLimiter(config ->
+                              config.setReteLimitter(redisRateLimiter()).setKeyResolver(userKeyResolver()))
+                      .uri("lb://CARDS")).build();
+    }
+    
+    @Bean
+    public RedisReteLimiter redisReteLimiter() {
+        return new RedisRateLimiter(1, 1, 1);
+    }
+    
+    @Bean
+    KeyResolver userKeyResolver() {
+        return exchange -> Mono.justOrEmpty(exchange.getRequest().getHeaders().getFirst("user"))
+                .defaultIfEmpty("anonymous");
+    }
+    ```
 
 Steps to build a rate limiter using Spring Boot service.
 1. Add rate limiter annotations: Choose a method and mention rate limiter pattern related annotation along with the below
@@ -1553,7 +1736,7 @@ configs. Post that create a fallback method matching the same method signature.
    
     private ResponseEntity<String> getJavaVersionFallback(Throwable t) {}
     ```
-2. Add properties: Add the below properties inside the application.yaml file.
+2. Add properties: Add the below properties inside the 'application.yaml' file.
     ```yaml
     resilience4j.ratelimiter:
       configs:
@@ -1578,9 +1761,10 @@ The Bulkhead pattern is particularly useful in systems that require high availab
 between components. By compartmentalizing components and enforcing resource boundaries, the Bulkhead pattern enhances the
 resilience and stability of the system, ensuring that failures or heavy loads in one area do not bring down the entire system.
 
+![Bulkhead Pattern](flashcard-img/bulkhead-pattern.png "Bulkhead Pattern")
+
 Without Bulkhead, '/myCustomerDetails' will start eating all the threads, resources available which will affect the performance
 of '/myAccount'.
-
 With Bulkhead, '/myCustomerDetails' and '/myAccount' will have their own resources, thread pool defined.
 
 # Observability and monitoring of microservices.
@@ -1588,7 +1772,7 @@ With Bulkhead, '/myCustomerDetails' and '/myAccount' will have their own resourc
 **Debugging a problem in microservices?**
 How do we trace transactions across multiple services, containers and try to find where exactly the problem or bug is?
 How do we combine all the logs from multiple services into a central location where they can be indexed, searched, filtered,
-and grouped to dinf bugs that are contributing to a problem?
+and grouped to find bugs that are contributing to a problem?
 
 **Monitoring performance of service calls?**
 How can we track the path of a specific chain service call through our microservices network, and see how long it took to
@@ -1628,7 +1812,7 @@ the health of individual microservices and the overall health of microservices n
 Monitoring in microservices is important because it allows you to:
 1. Identify and troubleshoot problems: By collecting and analyzing data from your microservices, you can identify problems
 before they cause outages or other disruptions.
-2. Track the health of your microservicesL Monitoring can help you to track the health of your microservices, so you can 
+2. Track the health of your microservices: Monitoring can help you to track the health of your microservices, so you can 
 identify any microservices that are under-performing ot that are experiencing problems.
 3. Optimize your microservices: By monitoring your microservices, you can identify areas where you can optimize your microservices
 to improve performance and reliability.
@@ -1637,7 +1821,7 @@ Monitoring and observability can be considered as two sides of the same coin. Bo
 to enable insight into software distributed systems. Those data types - metrics, traces, and logs - are often referred to
 as the three pillars of observability.
 
-## Observability vs. Monitoring.
+## Observability vs Monitoring.
 
 Monitoring:
 1. Purpose: Identify and troubleshoot problems.
@@ -1665,20 +1849,20 @@ such as trace, debug, info, warn, and error. This allows us to log only the most
 giving us the change to change the log level temporarily during debugging.
 
 **Logging in Monolithic Apps.**
-In monolithic apps, all of the code is in a single codebase. This means that all of the logs are also in a single location.
+In monolithic apps, all the code is in a single codebase. This means that all the logs are also in a single location.
 This makes it easy to find and troubleshoot problems, as you only need to look in one place.
 
 **Logging in Microservices.**
 Logging in microservices is complex. This is because each service has its own logs. This means that you need to look in multiple
-places to find all of the logs for a particular request.
+places to find all the logs for a particular request.
 To address this challenge, microservices architectures often use centralized logging. Centralized logging collects logs from
-all of the services in the architecture and stores them in a single location. This makes it easier to find and troubleshoot
+all the services in the architecture and stores them in a single location. This makes it easier to find and troubleshoot
 problems, as you only need to look in one place.
 
 ### Managing logs with Grafana, Loki & Promtail.
 
 Grafana is an open-source analytics and interactive visualization web application. It provides charts, graphs, and alerts for
-the web when connected to supported data sources. It can be easily installed using Docker or Docker Compone.
+the web when connected to supported data sources. It can be easily installed using Docker or Docker Compose.
 Grafana is a popular tool for visualizing metrics, logs, and traces from various of sources. It is used by organizations 
 of all sizes to monitor their applications and infrastructure.
 Grafana Loki is a horizontally scalable, highly available, and cost-effective log aggregation system. It is designed to be easy
@@ -1692,7 +1876,7 @@ Grafana provides visualization of the log lines captured within Loki.
 ### Managing Logs with Grafana, Loki & Alloy.
 
 Grafana is an open-source analytics and interactive visualization web application. It provides charts, graphs, and alerts for
-the web when connected to supported data sources. It can be easily installed using Docker or Docker Compone.
+the web when connected to supported data sources. It can be easily installed using Docker or Docker Compose.
 Grafana is a popular tool for visualizing metrics, logs, and traces from various of sources. It is used by organizations
 of all sizes to monitor their applications and infrastructure.
 Grafana Loki is a horizontally scalable, highly available, and cost-effective log aggregation system. It is designed to be easy
@@ -1706,6 +1890,8 @@ Grafana provides visualization of the log lines captured within Loki.
 1. Alloy: Collects logs from containers, processes & forwards them to Loki.
 2. Loki: log aggregation system.
 3. Grafana: Query, search, visualize the logs with Loki as datasource.
+
+![Managing Logs with Grafana, Loki & Alloy](flashcard-img/managing-logs-with-grafana-loki-alloy.png "Managing Logs with Grafana, Loki & Alloy")
 
 ### Demo of logging using Grafana, Loki & Promotail.
 
@@ -1737,6 +1923,8 @@ Microservices with the help of actuator and micrometer exposes metrics informati
 Prometheus metrics aggregator & monitoring system.
 Grafana: Query, search, visualize the metrics, build dashboard, alerts with Prometheus as datasource.
 
+![Metrics & monitoring](flashcard-img/metrics-and-monitoring.png "Metrics & monitoring")
+
 ### Distributed tracing in microservices.
 
 Event logs, health probes, and metrics offer a wealth of valuable information for deducing the internal condition of an application.
@@ -1747,7 +1935,7 @@ Distributed tracing is a technique used in microservices or cloud-native applica
 of requests as they propagate across multiple services and components. It helps in gaining insights into how requests are
 processed, identifying performance bottlenecks, and diagnosing issues in complex, distributed systems.
 * One possible solution to address this issue is to implement a straightforward approach where a unique identifier, known
-as correlation ID, is generated for each request ar the entry point of the system. This correlation ID can then be utilized
+as correlation ID, is generated for each request at the entry point of the system. This correlation ID can then be utilized
 in event logs and passed along to other relevant services involved in processing the request. By leveraging this correlation
 ID, we can retrieve all log messages associated with a specific transaction from multiple applications.
 * Distributed tracing encompasses three primary concepts:
@@ -1765,6 +1953,8 @@ we added service name which is accounts.
 3. A span ID is going to be generated which is specific to a service and the same will be present in all the logs of the
 service in a request.
 
+![Distributed tracing](flashcard-img/distributed-tracing.png "Distributed tracing")
+
 ### Distributed tracing with OpenTelemetry, Tempo & Grafana.
 
 1. OpenTelemetry: Using OpenTelemetry generate traces and spans automatically. OpenTelemetry also known as OTel for short,
@@ -1779,7 +1969,9 @@ Loki.
 
 OpenTelemetry java agent JAR dynamically injects bytecode to add trace information & send to Tempo.
 Tempo Trace aggregator & distributed tracing system.
-Grafana Query, search, visualize the traces with Tempo as datasource,
+Grafana Query, search, visualize the traces with Tempo as datasource.
+
+![Distributed tracing](flashcard-img/distributed-tracing-tempo.png "Distributed tracing")
 
 # Microservices Security.
 
@@ -1799,7 +1991,7 @@ challenges.
 
 ## Problem that OAuth2 solves.
 
-Why should we use OAUTH2 framework for implementing security inside our microservice? Why can't we use the basic authentication?
+Why should we use OAuth2 framework for implementing security inside our microservice? Why can't we use the basic authentication?
 To answer this, first lets try to understand the basic authentication & it's drawbacks.
 Early websites usually ask for credentials via an HTML form, which the browser will send to the server. The server
 authenticates the information and writes a session value in the cookie; as long as the session is still marked active, 
@@ -1862,6 +2054,8 @@ set of information and claims specifically for identity.
 OpenID Connect - Authentication.
 OAuth 2.0 - Authorization.
 
+![OpenID Connect & OAuth2](flashcard-img/opanid-oauth.png "OpenID Connect & OAuth2")
+
 The OpenID connect flow looks the same as OAuth. The only differences are, in the initial request, a specific scope of
 openid is used, and in the final exchange the client receives both an Access Token and an ID Token.
 
@@ -1877,6 +2071,8 @@ OpenID Connect add below details to OAuth 2.0:
 2. ID Token using JWT standard.
 3. OIDC exposes the standardized "/userinfo" endpoint.
 
+![IAM](flashcard-img/auth-authz-iam.png "IAM")
+
 ### Client credentials grant type flow in OAuth2.
 
 1. Client: I want to access protected resources. Here are my client credentials. No user involved in this.
@@ -1884,12 +2080,14 @@ OpenID Connect add below details to OAuth 2.0:
 3. Client: Hey Resource Server, I want to access a protected resources. Here is the access token issued by Auth Server.
 4. Resource Server: Hey Client. Your token is validated successfully. Here are the resources you requested.
 
+![Client Credentials grant type flow](flashcard-img/client-credentials-grant-type-flow.png "Client Credentials grant type flow")
+
 In the step 1, where client is making a request to Auth Server endpoint, have to send the below important details:
 * client_id & client_secret - the credentials of the client to authenticate itself.
 * scope - similar to authorities. Specifies level of access that client is requesting like EMAIL, PROFILE.
 * grant_type - With the value 'client_credentials' which indicates that we want to follow client credentials grant type.
 
-This is the simplest grant type flow in OAUTH2.
+This is the simplest grant type flow in OAuth2.
 We use this authentication flow only if there is no user and UI involved. Like in the scenarios where 2 different applications
 want to share data between them using backend APIs.
 
@@ -1903,6 +2101,8 @@ want to share data between them using backend APIs.
 
 When ever an external system trying to communicate with Spring Cloud Gateway where there is no end used involved, then we
 need to use the OAuth2 Client Credentials grant flow for Authentication & Authorization.
+
+![Securing Gateway Client Credentials](flashcard-img/securing-gateway-using-client-credentials-grant.png "Securing Gateway Client Credentials")
 
 1. Client: External client trying to invoke '/bank/accounts/api/**' without any authentication.
 2. Resource Server: Gateway/Resource server replies, "Sorry buddy, I can only process the requests who provide an access
@@ -1919,6 +2119,8 @@ Client Secret which it received during the registration process that it did offl
 10. Spring Cloud Gateway: Gateway/Resource Server invokes the actual microservice API & respond back with the successful
 response.
 
+![Securing Gateway Client Credentials](flashcard-img/client-credentials-flow.png "Securing Gateway Client Credentials")
+
 ### Authorization code grant type flow in OAuth2.
 
 1. User: I want to access my resources.
@@ -1926,9 +2128,11 @@ response.
 3. User: Hello Auth Server please allow the client to access my resources. Here are my credentials to prove my identity.
 4. Auth Server: Hey Client, User allowed you to access his resources. Here is AUTHORIZATION CODE.
 5. Client: Here are my client credentials, AUTHZ CODE. Please provide me an access token.
-6. Auth Server: Hre is the access token from Auth Server.
+6. Auth Server: Here is the access token from Auth Server.
 7. Client: Hey Resource Server, I want to access the resources. Here is the access token from Authz server.
-8. Resource Server: Jey Client, your token is validated successfully. Here are the resources you requested.
+8. Resource Server: Hey Client, your token is validated successfully. Here are the resources you requested.
+
+![Auth Code Grant Flow](flashcard-img/auth-code-grant-flow.png "Auth Code Grant Flow")
 
 In the steps 2 & 3, where client is making a request to Auth Server endpoint have to send the below important details:
 * client_id: the id which identifies the client application by the Auth Server. This will be granted when the client register
@@ -1945,7 +2149,7 @@ server for a token with the below values:
 * client_id & client_secret: the client credentials which are registered with the auth server. Please note that these are
 not user credentials.
 * grant_type: with the value 'authorization_code' which identifies the kind of grant type is used.
-* redirect_url.
+* redirect_uri.
 
 We may wonder that why in the Authorization Code grant type client is making request 2 times to Auth Server for authorization
 code and access token.
@@ -1972,8 +2176,10 @@ page. Post successful authentication, access token will be received by client.
 Whenever an end user involved & trying to communicate with Spring Cloud Gateway, then we need to use the OAuth2 Authorization
 Code grant flow for Authentication & Authorization.
 
+![Securing Gateway using Auth](flashcard-img/securing-gateway-using-auth-grant.drawio.png "Securing Gateway using Auth")
+
 1. Client: Client app trying to invoke '/bank/accounts/api/**' without any authentication on behalf of end user.
-2. Resource Server: Gateway/Resource server replies, "Sorry Buddy, I can only process the requests wjo provide an access
+2. Resource Server: Gateway/Resource server replies, "Sorry Buddy, I can only process the requests who provide an access
 token from Auth server. Go and get an access token from Auth Server".
 3. Client: Client application asked KeyCloak which is an Auth Server for Access token.
 4. Auth Server: Auth Server laughed and replied, I can't give access token just like that. In order to get access token from
@@ -2036,9 +2242,11 @@ user will be initiated.
 4. Message Service: Receives the notification from event broker and read the details from the queue. The data will be processed
 and an email, sms will be sent to the consumer.
 5. Message Service: Once the message service process the communication, it publishes an event asynchronously to confirm the message.
-6. Event Broker: The event broker receives the event details and push into a queue which yje accounts service subscribed.
+6. Event Broker: The event broker receives the event details and push into a queue which the accounts service subscribed.
 7. Accounts Microservice: Receives the notification from event broker and update the DB columns accordingly about communication
 to consumer.
+
+![Pub/Sub model](flashcard-img/pub-sub-model.png "Pub/Sub model")
 
 ### Using RabbitMQ for publish/subscribe communications.
 
@@ -2052,9 +2260,13 @@ following categories:
 * Message broker: The middleware that receives messages from producers and directs them to appropriate consumers.
 Producer, sends or produce message to message broker. Consumer receive or subscribe message from message broker.
 
+![RabbitMQ Pub/Sub model](flashcard-img/rabbitmq-pub-sub.png "RabbitMQ Pub/Sub model")
+
 The messaging model of AMQP operates on the principles of exchanges and queues, as depicted in the illustration.
 Producers transmit messages to an exchange. Based on a specified routing rule, RabbitMQ determines the queues that should
 receive a copy of the message. Consumers, in turn, read messages from a queue.
+
+![RabbitMQ Pub/Sub model](flashcard-img/rabbitmq-pub-sub-comm.png "RabbitMQ Pub/Sub model")
 
 ### Why to use Spring Cloud Function?
 
@@ -2068,7 +2280,7 @@ or sink.
 
 Spring Cloud Function features:
 * Choice of programming styles - reactive, imperative or hybrid.
-* POJO functions (i.e., if something fits the @FunctionalInterface semantics we'll treat it as function).
+* POJO functions (i.e., if something fits the '@FunctionalInterface' semantics we'll treat it as function).
 * Function composition which includes composing imperative functions with reactive.
 * REST support to expose functions as HTTP endpoints etc.
 * Streaming data (via Apache Kafka, Solace, RabbitMQ and more) to/from functions via Spring Cloud Stream framework.
@@ -2078,48 +2290,44 @@ service providers).
 #### Steps to create functions using Spring Cloud Functions.
 
 1. Initialize a spring cloud function project: Start by creating a new Spring Boot project using Spring Initializr.
-Include the spring-cloud-function-context maven dependency.
-2. Implement the business logic using functions. 
-
+Include the 'spring-cloud-function-context' maven dependency.
+2. Implement the business logic using functions.
 Develop two functions with the name 'email()' and 'sms()'. 
 To enable Spring Cloud Function to recognize our functions, we need to register them as beans. Proceed with annotating
 the MessageFunction class as '@Configuration' and the methods 'email()' & 'sms()' as '@Bean' to accomplish this.
-
-```java
-import java.util.function.Function;
-
-@Configuration
-public class MessageFunctions {
-  private static final Logger log = LoggerFactory.getLogger(MessageFunctions.class);
-
-  @Bean
-  public Function<AccountsMsgDto, AccountsMsgDto> email() {
-    return accountsMsgDto -> {
-      log.info("Sending email with the details : " + accountsMsgDto.toString());
-      return accountsMsgDto;
-    };
-  }
-
-  @Bean
-  public Function<AccountsMsgDto, Long> sms() {
-      return accountsMsgDto -> {
-          log.info("Sending sms with the details : " + accountsMsgDto.toString());
-          return accountsMsgDto.accountNumber();
-      };
-  }
-}
-```
-
+    ```java
+    import java.util.function.Function;
+    
+    @Configuration
+    public class MessageFunctions {
+      private static final Logger log = LoggerFactory.getLogger(MessageFunctions.class);
+    
+      @Bean
+      public Function<AccountsMsgDto, AccountsMsgDto> email() {
+        return accountsMsgDto -> {
+          log.info("Sending email with the details : " + accountsMsgDto.toString());
+          return accountsMsgDto;
+        };
+      }
+    
+      @Bean
+      public Function<AccountsMsgDto, Long> sms() {
+          return accountsMsgDto -> {
+              log.info("Sending sms with the details : " + accountsMsgDto.toString());
+              return accountsMsgDto.accountNumber();
+          };
+      }
+    }
+    ```
 3. Composing functions: If our scenario needs multiple functions to be executed, then we need to compose them otherwise we 
 can use them as individual functions as well. Composing functions can be achieved by defining a property in 'application.yaml'
 like shown below.
-
-```yaml
-spring:
-  cloud:
-    function:
-      definition: email|sms
-```
+    ```yaml
+    spring:
+      cloud:
+        function:
+          definition: email|sms
+    ```
 
 The property 'spring.cloud.function.definition' enables you to specify which functions should be managed and integrated by
 Spring Cloud Function, thereby establishing a specific data flow. In the previous step, we implemented the 'email()' and 
@@ -2164,21 +2372,23 @@ both input and output, to an exchange within RabbitMQ (specifically, a topic exc
 it binds a queue to the associated exchange. This queue serves as the source from which consumers receive and process events.
 This configuration provides the necessary infrastructure for implementing event-driven architectures based on the pub-sub model.
 
+![Spring Cloud Stream](flashcard-img/spring-cloud-streams.png "Spring Cloud Stream")
+
 #### Steps to create bindings using Spring Cloud Stream.
 
-1. Add the Stream related dependencies: Add the maven dependencies spring-cloud-stream, spring-cloud-stream-binder-rabbit 
+1. Add the Stream related dependencies: Add the maven dependencies 'spring-cloud-stream', 'spring-cloud-stream-binder-rabbit' 
 inside 'pom.xml' of message service where we defined functions.
 2. Add the stream binding and rabbitmq properties inside 'application.yaml' of message service.
 We need to define input bindings for each function accepting input data and an output binding for each function returning
 output data. Each binding can have a logical name following the below convention. Unless you use partitions (for example,
-with Kafka), the <index> part of the name will always be 0. The <functionName> is computed from the value of the 
+with Kafka), the '<index>' part of the name will always be 0. The <functionName> is computed from the value of the 
 'spring.cloud.function.definition' property.
-Input binding: <functionName> + -in- + <index>.
-Output binding: <functionName> + -out- + <index>.
+Input binding: '<functionName> + -in- + <index>'.
+Output binding: '<functionName> + -out- + <index>'.
 The binding names exist only in Spring Cloud Stream and RabbitMQ doesn't know about them. So to map between the Spring
 Cloud Stream binding and RabbitMQ, we need to define destination which will be the exchange inside the RabbitMQ. Group 
 is typically application name, so that all the instances of the application can point to same exchange and queue.
-The queues will be created inside RabbitMQ based on the queue-naming strategy (<destination>.<group>) includes a parameter
+The queues will be created inside RabbitMQ based on the queue-naming strategy ('<destination>.<group>') includes a parameter
 called consumer group.
 
 ```yaml
@@ -2209,77 +2419,72 @@ spring:
 output binding. So to produce the event, autowire the StreamBridge class into the class from where you want to produce
 an event.
 2. Use send() of StreamBridge to produce an event.
-
-```java
-@Override
-public void createAccount(CustomerDto customerDto) {
-    Customer customer = CustomerMapper.mapToCustomer(cusstomerDto, new Customer());
-    Optional<Customer> optionalCustomer = customerRepository.findByMobileNumber(customerDto.getMobileNumber());
-    if (optionalCustomer.isPresent()) {
-        throw new CustomerAlreadyExistsException("Customer already registered with given mobileNumber " + customerDto.getMobileNumber());
+    ```java
+    @Override
+    public void createAccount(CustomerDto customerDto) {
+        Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
+        Optional<Customer> optionalCustomer = customerRepository.findByMobileNumber(customerDto.getMobileNumber());
+        if (optionalCustomer.isPresent()) {
+            throw new CustomerAlreadyExistsException("Customer already registered with given mobileNumber " + customerDto.getMobileNumber());
+        }
+        Customer savedCustomer = customerRepository.save(customer);
+        Accounts savedAccount = accountsRepository.save(createNewAccount(savedCustomer));
+        sendCommunication(savedAccount, savedCustomer);
     }
-    Customer savedCustomer = customerRepository.save(customer);
-    Accounts savedAccount = accountsRepository.save(createNewAccount(savedCustomer));
-    sendCommunication(savedAccount, savedCustomer);
-}
-
-private void sendCommunication(Account account, Customer customer) {
-    var accountsMsgDto = new AccountsMsgDto(account.getAccountNumber(), customer.getName(), customer.getEmail(), 
-            customer.getMobileNumber());
-    log.info("Sending Communication request for the details: {}", accountsMsgDto);
-    var result = streamBinding.send("sendCommunication-out-()", accountsMsgDto);
-    log.info("Is the Communication request successfully processed? {}", result);
-}
-```
-
+    
+    private void sendCommunication(Account account, Customer customer) {
+        var accountsMsgDto = new AccountsMsgDto(account.getAccountNumber(), customer.getName(), customer.getEmail(), 
+                customer.getMobileNumber());
+        log.info("Sending Communication request for the details: {}", accountsMsgDto);
+        var result = streamBinding.send("sendCommunication-out-()", accountsMsgDto);
+        log.info("Is the Communication request successfully processed? {}", result);
+    }
+    ```
 3. Create a function to accept the event: Inside accounts microservice, we need to create a function that accepts the event
 and update the communication status inside the DB.
-
-```java
-import java.beans.BeanProperty;
-
-@Configuration
-public class AccountsFunctions {
-  private static final Logger log = LoggerFactory.getLogger(AccountsFunctions.class);
-
-  @BeanProperty
-  public Consumer<Long> updateCommunication(IAccountsService accountsService) {
-      return accountNumber -> {
-          log.info("Updating Communication status for the account number: " + accountNumber.toString());
-          accountsService.updateCommunicationStatus(accountNumber);
-      };
-  }
-}
-```
-
-4. Add the stream binding and rabbitmq properties inside application.yaml of accounts service.
+    ```java
+    import java.beans.BeanProperty;
+    
+    @Configuration
+    public class AccountsFunctions {
+      private static final Logger log = LoggerFactory.getLogger(AccountsFunctions.class);
+    
+      @BeanProperty
+      public Consumer<Long> updateCommunication(IAccountsService accountsService) {
+          return accountNumber -> {
+              log.info("Updating Communication status for the account number: " + accountNumber.toString());
+              accountsService.updateCommunicationStatus(accountNumber);
+          };
+      }
+    }
+    ```
+4. Add the stream binding and rabbitmq properties inside 'application.yaml' of accounts service.
 When accounts microservice want to produce an event using StreamBridge, we should have a supporting stream binding and
 destination. The same we created with the names 'sendCommunication-out-0' and 'send-communication'.
 Similarly, we need to define input binding for the function 'updateCommunication' to accept the event using the destination
 'communication-sent'. So when the message service push an event into the exchange of 'communication-sent', the same will
 be processed by the function 'updateCommunication'.
-
-```yaml
-spring:
-  application:
-    name: accounts
-  cloud:
-    function:
-      definition: updateCommunication
-    stream:
-      bindings:
-        updateCommunication-in-0:
-          destination: communication-sent
-          group: ${spring.application.name}
-        sendCommunication-out-0:
-          destination: send-communication
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
-    connection-timeout: 10s
-```
+    ```yaml
+    spring:
+      application:
+        name: accounts
+      cloud:
+        function:
+          definition: updateCommunication
+        stream:
+          bindings:
+            updateCommunication-in-0:
+              destination: communication-sent
+              group: ${spring.application.name}
+            sendCommunication-out-0:
+              destination: send-communication
+      rabbitmq:
+        host: localhost
+        port: 5672
+        username: guest
+        password: guest
+        connection-timeout: 10s
+    ```
 
 ### Apache Kafka vs RabbitMQ.
 
@@ -2294,6 +2499,7 @@ for longer periods of time, while RabbitMQ is more suitable for applications tha
 performant for applications with complex routing requirements.
 * Scalability: Kafka is highly scalable, while RabbitMQ is more limited in its scalability. This is because Kafka can be
 scaled horizontally to any extent by adding more brokers to the cluster.
+
 Ultimately, the best choice for you will depend on your specific needs and requirements. If you need a high-performance
 messaging system that can handle large volumes of data, Kafka is a good choice. If you need a messaging system with complex
 routing requirements, RabbitMQ is a good choice.
@@ -2327,13 +2533,13 @@ that consume, transform, and produce data in real-time.
 recommended. This helps in maintaining replications, fault-tolerant system etc. 
 * A Kafka broker can have any number of topics. Topic is a category under which producers can write and interested, authorized
 consumers can read data. For example, we can have topics like sendCommunication, dispatchOrder, purgeData etc.
-* Inside each topic, we can have eny number of partitions. Why do we need partitions? Since Kafka producers can handle enormous
+* Inside each topic, we can have any number of partitions. Why do we need partitions? Since Kafka producers can handle enormous
 amount of data, it is not possible to store in a single server (broker). Therefore, a topic will be partitioned into
 multiple parts and distributed across multiple brokers, since Kafka is a distributed system. For example, we can store
 all consumers data from a state, zipcode, region etc. inside a partition and the same can be replicated as per the
 configurations.
-* Offsets is a sequence id assigned to a message as they get stored inside a partition. The offset number starts from 0 and
-followed by 1,2,3... Once offset id is assigned, it will never change. These are similar to sequence ids inside the DB tables.
+* Offsets is a sequence ID assigned to a message as they get stored inside a partition. The offset number starts from 0 and
+followed by 1,2,3... Once offset ID is assigned, it will never change. These are similar to sequence ids inside the DB tables.
 
 By keeping track of offsets, Kafka provides reliability, fault tolerance, and flexibility to Consumers. Consumers have
 fine-grained control over their progress, enabling them to manage message ordering, reply messages, ensure message delivery,
@@ -2354,7 +2560,7 @@ message should be written to.
 If no partition key is provided, Kafka uses a round-robin or hashing algorithm to distribute messages evenly across partitions.
 5. Message Routing & offset assignment: The producer sends the message to the appropriate Kafka broker based on the target
 topic and the partition assigned to the message. The broker receives the message and appends it to the log of the corresponding
-partition in a durable and ordered manner with the help of offset id.
+partition in a durable and ordered manner with the help of offset ID.
 6. Message Replication: Kafka ensures high availability and fault tolerance by replicating messages across multiple brokers.
 Once the message is written to the leader partition, Kafka asynchronously replicates it to other replicas of the partition.
 7. Acknowledgment and Error Handling: The producer receives an acknowledgment from Kafka once the message is successfully 
@@ -2474,7 +2680,7 @@ eight letters between K and the s.
 
 The master node is responsible for managing an entire cluster. It monitors the health check of all the nodes in the cluster,
 stores members information regarding different nodes, plans the containers that are scheduled to certain worker nodes,
-monitors containers and nodes, etc. So, when a worked node fails, the master moves the workload that failed node to another 
+monitors containers and nodes, etc. So, when a worker node fails, the master moves the workload that failed node to another 
 healthy worker node.
 Below are the details of the four basic components present inside the control plane.
 * API server: The API server is the primary interface for interacting with the Kubernetes cluster. It exposes the Kubernetes
@@ -2497,7 +2703,7 @@ The worker node is nothing but a virtual machine (VM) running in the cloud or on
 your data center). So, any hardware capable of running container runtime can become a worker node. These nodes expose 
 underlying compute, storage, and networking to the applications. Worker nodes do the heavy-lifting for the application
 running inside the Kubernetes cluster. Together, these nodes form a cluster - a workload assign is run to them by the
-masted node component, similar to how a manager would assign a task to a team member. This way, we will be able to achieve
+master node component, similar to how a manager would assign a task to a team member. This way, we will be able to achieve
 fault-tolerance and replication.
 Pods are the smallest unit of deployment in Kubernetes just as a container is the smallest unit of deployment in Docker.
 To understand in an easy way, we can say that pods are nothing but lightweight VMs in the virtual world. Each pod consists 
@@ -2522,6 +2728,7 @@ A Kubernetes ConfigMap is an essential Kubernetes resource used to store configu
 code.
 The apiVersion and kind fields are required for all Kubernetes objects. When creating a config map inside K8s, the kind
 should be "ConfigMap".
+The metadata field contains the name of the ConfigMap and other metadata about the object.
 The data field is where the key-value pairs are stored. The keys can be any alphanumeric string, and the values can be
 strings, numbers, or binary data.
 
@@ -2540,24 +2747,24 @@ In Kubernetes, a Deployment is a high-level resource used to manage the deployme
 It provides a declarative way to define and maintain the desired state of your application. When you create a Deployment,
 Kubernetes ensures that the specified number of replicas of your application are running and automatically handles scaling,
 rolling updates, and rollbacks.
-The apiVersion and kind fields are required for all Kubernetes objects. For deployment manifest file, the kind should be
+* The apiVersion and kind fields are required for all Kubernetes objects. For deployment manifest file, the kind should be
 "Deployment".
-Metadata: The metadata section contains information about the Deployment, such as its name and labels. The Deployment is
+* Metadata: The metadata section contains information about the Deployment, such as its name and labels. The Deployment is
 named "accounts-deployment", and it has the label "app:accounts".
-Spec: The spec section defines the desired state of the Deployment.
-Replicas: The replicas field is set to 1, indicating that only one replica of the container should ne running at any given
+* Spec: The spec section defines the desired state of the Deployment.
+* Replicas: The replicas field is set to 1, indicating that only one replica of the container should ne running at any given
 time.
-Selector: The selector field is used to select the pods controlled by this Deployment. In this case, it's using the label
+* Selector: The selector field is used to select the pods controlled by this Deployment. In this case, it's using the label
 "app:accounts" to identify the pods.
-Template: The template section specified the pod template that will be used to create pods for this Deployment.
-Metadata: The metadata section inside the template defines the labels for the pods. The pod will have the label "app:accounts".
-Spec: The spec section inside the template specifies the details of the pod's specification.
-Containers: The containers field lists the containers that should be part of the pod. In this case, there is one container
+* Template: The template section specified the pod template that will be used to create pods for this Deployment.
+* Metadata: The metadata section inside the template defines the labels for the pods. The pod will have the label "app:accounts".
+* Spec: The spec section inside the template specifies the details of the pod's specification.
+* Containers: The containers field lists the containers that should be part of the pod. In this case, there is one container
 named "accounts" based on the "panda/accounts:latest" image.
-Ports: The ports section exposes port 8080 of the container.
-Environment Variables: The env section sets an environment variable named "SPRING_PROFILES_ACTIVE" and assigns it a value
+* Ports: The ports section exposes port 8080 of the container.
+* Environment Variables: The env section sets an environment variable named "SPRING_PROFILES_ACTIVE" and assigns it a value
 from a ConfigMap.
-valueFrom: The valueFrom field allows you to reference data from a ConfigMap. In this case, it is using configMapKeyRef
+* valueFrom: The valueFrom field allows you to reference data from a ConfigMap. In this case, it is using configMapKeyRef
 to fetch the value of the "SPRING_PROFILES_ACTIVE" key from the ConfigMap named "bank-configmap".
 
 ```yaml
@@ -2595,17 +2802,17 @@ spec:
 In Kubernetes, a Service is an essential resource that provides network connectivity to a set of pods. It acts as a stable
 endpoint for accessing and load balancing traffic across multiple replicas of a pod. Services abstract away the underlying
 network details, allowing pods to be more dynamic and scalable without affecting how client access them.
-The apiVersion, and kind fields are required for all Kubernetes objects. For service manifest file, the kind should be "Service".
-Metadata: The metadata section contains information about the Service, such as its name.
-Spec: The spec section defines the desired state of the Service.
-Selector: The selector field is used to select the pods that the Service will route traffic to. In this case, it uses the
+* The apiVersion, and kind fields are required for all Kubernetes objects. For service manifest file, the kind should be "Service".
+* Metadata: The metadata section contains information about the Service, such as its name.
+* Spec: The spec section defines the desired state of the Service.
+* Selector: The selector field is used to select the pods that the Service will route traffic to. In this case, it uses the
 label "app:accounts" to select the pods controlled by the Deployment with the same label.
-Type: The type field specifies the type of Service. In this case, it is set to "ClusterIP", which means that the Service
+* Type: The type field specifies the type of Service. In this case, it is set to "ClusterIP", which means that the Service
 will be accessible only from within the cluster.
-Port: The ports section defines the ports that the Service should listen on and forward traffic to.
-protocol: The protocol field specifies the protocol used for the service port. In this case, it's TCP.
-port: The port field is the port number on which the Service will listen for incoming traffic.
-targetPort: The targetPort field is the port number on the pods to which the incoming traffic will be forwarded.
+* Port: The ports section defines the ports that the Service should listen on and forward traffic to.
+* protocol: The protocol field specifies the protocol used for the service port. In this case, it's TCP.
+* port: The port field is the port number on which the Service will listen for incoming traffic.
+* targetPort: The targetPort field is the port number on the pods to which the incoming traffic will be forwarded.
 
 ```yaml
 apiVersion: v1
@@ -2639,7 +2846,7 @@ manifest files.
 are not available for external access of the cluster and used for internal communications between different Pods or
 microservices in the cluster.
 2. NodePort Service: This service exposes outside and allows the outside traffic to connect to K8s Pods through the node
-port opened at Node end. The Pods can be accessed from external using '<NodeIp>:<NodePort>'.
+port opened at Node end. The Pods can be accessed from external using '[NodeIP]:[NodePort]'.
 3. LoadBalancer Service: This service is exposed like in NodePort but creates a load balancer in the cloud where K8s is
 running that receives external requests to the service. It then distributes them among the cluster nodes using NodePort.
 
@@ -2653,7 +2860,7 @@ support other workloads within the cluster.
 #### K8s NodePort service.
 
 Services of type NodePort build on top of ClusterIP type services by exposing the ClusterIP service outside of the cluster
-on high ports (default 30_000 - 32_767). If no port number is specified then Kubernetes automatically selects a free port.
+on high ports (default 30000 - 32767). If no port number is specified then Kubernetes automatically selects a free port.
 The local kube-proxy is responsible for listening to the port on the node and forwarding client traffic on the NodePort
 to the ClusterIP.
 
@@ -2681,7 +2888,7 @@ kubectl.
 that describe a related set of Kubernetes resources.
 
 A single Helm chart might be used to deploy a simple app or something complex like a full web app stack with HTTP servers,
-databases, caches, adn so on.
+databases, caches, and so on.
 A chart can have child charts and dependent charts as well. This means that Helm can install whole dependency tree of a
 project with just a single command.
 
@@ -2813,6 +3020,10 @@ Eureka during startup and unregistering when shutting down. When an application 
 it queries the service registry for the associated IP address. If multiple instances of the service are available, 
 the registry returns a list of IP addresses. The client application then selects one based on its own defined load-balancing
 strategy. Below figure illustrates the workflow of this process.
+1. Loans service registers with Service registry during startup & send regular heart beats.
+2. What are address details of loans service?
+3. Here are the IP addresses of Loans instances.
+4. Accounts microservice is going to invoke one of the instance of loans based on the load balancing strategy configured.
 
 ![Client-side service discovery and load balancing](flashcard-img/client-side-service-discovery.png "Client-side service discovery and load balancing")
 
@@ -2987,7 +3198,7 @@ describing a TLS connection. In most cases, the term SSL and SSL/TLS both refer 
 
 ### How does TLS works?
 
-When web browsers aim to establish a secure connection with a web server, such as 'https amazon . com' they employ the 
+When web browsers aim to establish a secure connection with a web server, such as 'https amazon.com' they employ the 
 Transport Layer Security (TLS) protocol. This not only encrypts and safeguards private communications but also validates 
 the server's authenticity, ensuring it truly belongs to Amazon.
 Even if we've never visited 'amazon . com' before, our web browser inherently trust the site's identity right from our
@@ -3040,7 +3251,7 @@ domain.
 Think like, accounts microservice container want to communicate with loans microservice container and both of them are
 deployed in same Kubernetes Cluster.
 
-1. HTTP
+1. HTTP.
 2. Send HTTPs/TLS handshake.
 3. Respond back with certificate.
 4. Validate the certificate with CA.
@@ -3084,7 +3295,7 @@ conflicts across multiple modules in a microservice architecture.
 **Why Use BOM in Microservices?**
 In microservices architecture, managing shared libraries across multiple services can quickly become complex. Each service
 might independently manage dependencies, leading to version conflicts and increased maintenance effort. The BOM (Bill
-off Materials) addresses this challenge:
+off Materials) addresses this challenge by:
 * Ensuring version consistency across all microservices.
 * Streamlining dependency management.
 * Simplifying the process of upgrading libraries across all services.

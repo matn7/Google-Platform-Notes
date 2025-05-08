@@ -32,12 +32,10 @@
 * Core principles for Microservices Boundaries?
 * API Gateway?
 * PACEL?
-* De-normalizing?
 * How can we scale systems to support millions of users?
 * Hinted Handoff?
 * Bloom Filter?
 * 5 golden signals?
-* Normalizing.
 * Service Discovery.
 * Robustness:
   * Error Handling.
@@ -67,3 +65,15 @@
   * Chaos Engineering: Tools example Netflix Chaos Monkey.
 * Distributed consensus algorithm.
 * Integration Design Pattern.
+* Merkle Tree.
+* DB optimization techniques:
+  * Indexing.
+  * Normalization.
+  * Denormalization.
+  * Isolation rules.
+  * Load balancing.
+  * Caching.
+  * Materialized View Pattern.
+* Normalization.
+* Denormalization.
+* Pagination.

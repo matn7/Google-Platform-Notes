@@ -856,14 +856,14 @@ application that modify the data. Kafka sink connector - 'debezium/connect' dock
 Support for Confluent Schema Registry. Source connectors for various database. Postgres source connector 
 'io.debezium.connector.postgresql.PostgresConnector'.
 
-161) DDD Strategic Design & Common Patterns? // here
+161) DDD Strategic Design & Common Patterns?
 Answer: 
 a) Customer / Supplier Pattern: Supplier is upstream and consumer is downstream. For example uses the model of the 
 order process. However, payment defines requirements for the order Process. 
 b) Conformist Pattern: Bounded context simply uses a domain model for another bounded context. 
 c) The anti-corruption layer: Bounded context does not directly use the domain model of the other bounded context. 
 d) The Separate Way Pattern: Bounded Contexts are not related at the software level although a relation would be conceivable. 
-e) The Shared Kernel Pattern: Describes a common core that is shared by multiple bounded contexts, Microservices anti-pattern. 
+e) The Shared Kernel Pattern: Describes a common core that is shared by multiple bounded contexts, Microservices antipattern. 
 f) The Open Host Service Pattern: Bounded context offers a generic interface with several services, Frequently found at 
 public APIs on the internet. 
 g) The publishing language model: Is a domain model accessible by all bounded contexts. For example standard format like 
@@ -884,7 +884,7 @@ Cloud solutions.
 164) Differences between CRUD and CQRS?
 Answer: 
 a) Responsibility: CRUD: read + write together (Data Access Layer). CQRS: segregated responsibility Commands Command 
-layer, Queries Query Layer. 
+layer, Queries Layer. 
 b) Operations: CRUD: 4 create, read, update, delete. CQRS: commands change state, queries read.
 c) Data Model: CRUD: one model. CQRS: split model, DB optimized for writing or reading.
 d) Scalability: CRUD: all operations scale together. CQRS: independent scaling.
@@ -936,7 +936,7 @@ monitoring, and security concerns. It acts as a control plane for managing traff
 Improves communication, Load Balancing, routing and retries. Enhance observability, centralized logging, 
 metrics collection, and tracing. Strengthens security with features like authentication, authorization and encryption. 
 Benefits of service mesh: Traffic management, Load Balancing, circuit braking, routing, Observability, Security.
-Resilience: Circuit Braking, Retries. Policy Enforcement. Tools Example: Istio.
+Resilience: Circuit Braking, Retries. Policy Enforcement. Tools Example: Istio, Envoy.
 
 173) Concept of event-driven architecture in the context of microservices? 
 Answer: Event-driven architecture relies on the production, detection, consumption, and reaction to events, which are 
@@ -949,7 +949,7 @@ distributed. Each node holds a portion of the data, and these nodes work togethe
 Enable to access data while maintaining CAP. Supports horizontal scalability. Enforce fault tolerance. Benefits of 
 Distributed Databases: Scalability, High Availability, Data replication, Reduced Latency, Data Consistency: 
 Thorough quorum-based systems or eventual consistency model. 
-Challenges: Complexity, Latency, Consistency Trade-offs" Strong consistency across all nodes at cost of increased latency 
+Challenges: Complexity, Latency, Consistency Trade-offs. Strong consistency across all nodes at cost of increased latency 
 or decreased availability.
 
 175) Concept of containerization in the context of microservices architecture using Kubernetes? 
@@ -991,8 +991,8 @@ Reduce load of failing services. Provide a graceful degradation of functionality
 Tools Example: Hystrix, resilience4j.
 
 180) Choreography-Based Saga compensation flow? 
-Answer: Initial Flow: Create Order operation. Reserve Product operation. Compensating Transaction: Cancel product 
-reservation. Reject order. Initial Flow: 1,2,3,4,5,...,n. Compensating Transactions: n,...,5,4,3,2,1.
+Answer: Initial Flow: Create Order operation, Reserve Product operation. Compensating Transaction: Cancel product 
+reservation, Reject order. Initial Flow: 1,2,3,4,5,...,n. Compensating Transactions: n,...,5,4,3,2,1.
 
 181) Choreography Pattern? 
 Answer: Scalability. Helps scale a complex flow of business operations. Event Driven Architecture using choreography. 
@@ -1030,7 +1030,7 @@ Answer: Hardware or software that stores data. They are used to store responses 
 but also the results of long computations. Data may be out of date (permanently). The DB has been updated but 
 the feature has not. Eviction policy: LRU: Least Recently Used. LFU: Least Frequently Used. FIFO: First In First Out.
 CDN (content delivery network): Servers scattered around the world means that the delay will be low.
-Also called PoP (Point of Presence). Example, Cloud Flare.
+Also called PoP (Point of Presence). Example, Cloud Flare, Akamai.
 
 188) Business Logic in Clean Architecture? 
 Answer: Entities: Has the core business logic with the critical business rules. 
@@ -1044,7 +1044,7 @@ Answer: Domain events: For the communication between bounded context. Represents
 For example shopping cart. This event is triggered by bounded context order process, and it is received by the bounded 
 contexts shipping and payment to initiate shipping and invoicing of the order.
 
-191) Boundary Testing and its importance in software testing? 
+191) Boundary Testing and its importance in software testing?
 Answer: Defect identification: Boundary conditions are often where software defects, such as overflow, 
 out-of-memory errors, or unexpected behavior. Robustness: Application handle extreme inputs gracefully. Security.
 
@@ -1053,7 +1053,7 @@ Answer: Involves testing values that are on the boundary or edge of valid input 
 It aims to uncover issues such as off-by-one errors, buffer overflow, and unexpected behavior near limits.
 To achieve: Accuracy, Security, Quality.
 
-193) Black-Box vs White-Box testing, when use? 
+193) Black-Box vs White-Box testing, when to use? 
 Answer: Black-Box: In the early stages of testing to validate that the software meets its functional requirements.
 White-box: When you need to delve deep into the code to identify defects, security vulnerabilities, or performance 
 bottlenecks.
@@ -1098,7 +1098,7 @@ Answer: Advantages: Efficiency, Consistency, Regression Testing, Coverage, Conti
 Answer: A service is asynchronous if: It does not make a request to other microservices while processing requests.
 It makes a request to other microservices while processing requests and does not wait for the result.
 
-201) Describe Distributed architecture? 
+201) Describe Distributed architecture?
 Answer: Many devices and machines connected via a network. Multiple devices work together to perform a single task or 
 set of tasks, sharing resources and information among themselves. Client-server architecture. Peer-to-Peer Architecture. 
 Microservice architecture. Cloud-based architecture. Distributed architecture allows for better scalability, reliability, 
@@ -1201,7 +1201,7 @@ a) Lower memory footprint of the application.
 b) We can easily scale our system horizontally by running a group of identical application instances behind a load balancer. 
 c) Seamless integration and implementation with HTTP protocol.
 
-221) What is the main purpose of a CDN? 
+221) What is the main purpose of a CDN?
 Answer: To speed up the delivery of static content to end-users
 
 222) How does the CDN solve the latency problem when the user is far from our system's data center? 
@@ -1275,7 +1275,7 @@ b) An API endpoint that provides a list of products in an online store that matc
 c) An API endpoint that provides all the financial transactions in a user's bank account
 
 238) What is the correct statement when comparing between REST and RPC? 
-Answer: RPC looks and feels more like a local method invocation than a REST API call.A Remote Procedure Call uses Location 
+Answer: RPC looks and feels more like a local method invocation than a REST API call. A Remote Procedure Call uses Location 
 Transparency and abstracts away all the complexities of the marshalling/unmarshalling of data and the management of the 
 network communication between the client and the server. Therefore, a typical RPC looks like a simple method call, no 
 different from any other local method.
@@ -1290,11 +1290,11 @@ reliable and slower than a local method call.
 Answer: REST is a set of architectural constraints and best practices for defining APIs for the web.
 
 241) One of the core principles of a RESTful API is statelessness. What quality attribute does this principle 
-provide to our system? 
+provide to our system?
 Answer: High Scalability. When our application is stateless, we can run multiple instances of it, which allows us to 
 scale our system horizontally.
 
-242) One of the core principles of a RESTful API is cacheability? 
+242) One of the core principles of a RESTFUL API is cache-ability? 
 Answer: The server needs to implicitly or explicitly define a response as either cacheable or not cacheable by the client.
 In a REST API, each response needs to be marked as cacheable or not cacheable so the client knows whether it is safe to 
 cache that response. When using HTTP to implement a REST API, any GET requests are cacheable by default. Requests using 
@@ -1323,7 +1323,7 @@ Answer: Retrying a failed request multiple times.
 Answer: It may result in high latency for long-running operations.
 
 250) What is one problem of synchronous communication solved by asynchronous, event-driven architecture? 
-Answer: Synchronous communication requires both the sender and receiver to maintain an active connection. And be available 
+Answer: Synchronous communication requires both the sender and receiver to maintain an active connection, and be available 
 at the same time. Asynchronous, Event-Driven architecture doesn't.
 
 251) What is the difference between Multi-Tier Architecture and Multi-Layer Architecture? 
@@ -1351,7 +1351,7 @@ Using CQRS, we can optimize our system for both read and write operations, which
 Answer:Integration design patterns are crucial for creating robust and scalable software architectures that allow different systems, 
 applications, or services to work together seamlessly. These patterns help manage complexities, improve maintainability, 
 and ensure reliable communication between integrated systems. Here are some key integration design patterns:
-a) Message Patterns:Message: Basic unit of data passed between systems. Command Message: Encodes a command for the receiver to process.
+a) Message Patterns: Message: Basic unit of data passed between systems. Command Message: Encodes a command for the receiver to process.
 Document Message: Contains a document that is intended to be processed by the receiver. Event Message: Notifies a receiver 
 about something that has happened.
 b) Messaging Channels: Point-to-Point Channel: Ensures that only one receiver will get a particular message.
@@ -1425,7 +1425,8 @@ resulting in a false positive, but it also ensures that a 0-bit collision, resul
 The parameters of a Bloom filter, such as the size of the bit array, the number of hash functions, and the number of 
 elements in the filter, affect the false positive rate of the filter. The false positive rate can be controlled by adjusting 
 the size of the bit array and the number of hash functions. Bloom filters are used in a variety of applications such as:
-a) Network routers to check if a packet has already been seen before. b) Web browsers to check if a URL has already been visited.
+a) Network routers to check if a packet has already been seen before. 
+b) Web browsers to check if a URL has already been visited.
 c) Distributed systems to check if a key is present in a distributed hash table.
 Bloom filters have the advantages of being space-efficient and having a constant time complexity for both adding and 
 checking elements, but they also have the drawback of having a non-zero false positive rate.
@@ -1542,11 +1543,11 @@ and purging old data.
 Answer: Regulatory Requirements: Ensure your database design and data handling practices comply with relevant regulations 
 and standards (example, GDPR, HIPAA).
 
-271) Can you explain concept of oauth?
+271) Can you explain concept of oauth? 
 Answer: OAuth (Open Authorization) is an open standard for access delegation, commonly used as a way to grant websites 
 or applications limited access to a user's information without exposing the user's password. OAuth allows third-party 
 services to exchange access tokens for accessing resources on behalf of a user.
-a) Key Concepts of OAuth.
+a) Key Concepts of OAuth:
 Resource Owner: The user who authorizes an application to access their account.
 Client: The application requesting access to the user's resources.
 Authorization Server: The server that issues access tokens to the client after successfully authenticating the resource 
@@ -1555,7 +1556,7 @@ Resource Server: The server that hosts the protected resources, capable of accep
 requests using access tokens.
 Access Token: A token that the client uses to access the resource server on behalf of the resource owner.
 Refresh Token: A token used to obtain a new access token without re-authenticating the resource owner.
-b) OAuth Flow.
+b) OAuth Flow:
 The OAuth flow involves several steps to ensure secure authorization:
 Authorization Request: The client requests authorization from the resource owner. This is typically done via an 
 authorization server, where the resource owner logs in and grants permission to the client.
@@ -1566,7 +1567,7 @@ Access Token Request: The client requests an access token from the authorization
 code and its credentials.
 Access Token Response: The authorization server returns the access token (and optionally a refresh token) to the client.
 Access Resource: The client uses the access token to request the protected resource from the resource server.
-c) Types of OAuth Flows.
+c) Types of OAuth Flows:
 Authorization Code Grant: Used for server-side applications where the client secret can be securely stored. The client 
 exchanges an authorization code for an access token.
 Steps: The client directs the user to the authorization server. The user logs in and consents. The authorization server 
@@ -1582,13 +1583,13 @@ The authorization server validates the credentials and returns an access token.
 Client Credentials Grant: Used for machine-to-machine communication where no user is involved. The client authenticates 
 itself directly with the authorization server and obtains an access token.
 Steps: The client authenticates with the authorization server. The authorization server returns an access token.
-d) Benefits of OAuth.
+d) Benefits of OAuth:
 Security: Users don't need to share their passwords with third-party applications. Access tokens can be scoped to 
 specific resources and have limited lifetimes.
 Decentralization: OAuth supports a decentralized approach where the authorization server can be separate from the 
 resource server.
 Scalability: OAuth can handle complex authorization scenarios and can scale to large numbers of users and applications.
-e) Common Use Cases.
+e) Common Use Cases:
 Single Sign-On (SSO): Allowing users to log in to multiple applications with one set of credentials.
 Third-Party API Access: Enabling applications to access APIs on behalf of the user (e.g., integrating with Google or 
 Facebook APIs).
@@ -1650,7 +1651,7 @@ Examples include Enhanced Interior Gateway Routing Protocol (EIGRP).
 d) Path-vector algorithms: These algorithms are based on Border Gateway Protocol (BGP) and use the path information to 
 determine the best path. Bellman-Ford Algorithm: It is a distance-vector algorithm which is used to find the shortest 
 path from a single source node to all other nodes in a graph.
-Dijkstra Algorithm: It is also a distance-vector algorithm but it is used for finding the shortest path from a single 
+Dijkstra Algorithm: It is also a distance-vector algorithm, but it is used for finding the shortest path from a single 
 source node to all other nodes in a weighted graph where the edges have non-negative weights.
 These are some of the algorithms that are used in routers to find paths, and the choice of algorithm depends on the
 specific requirements of the network and the routing protocol being used.
@@ -1774,9 +1775,9 @@ f) The load balancer forwards the response back to the client.
 There are several types of load balancers and algorithms that can be used, such as:
 a) Round-robin: it distributes requests to servers in a circular fashion, sending the first request to the first
 server, the second request to the second server, and so on.
-b) Least connections: it distributes requests to the server with the least number of active connections.
+b) The Least connections: it distributes requests to the server with the least number of active connections.
 c) IP hash: it distributes requests to servers based on the hash value of the client's IP address.
-d) Least response time: it distributes requests to the server with the lowest response time.
+d) The Least response time: it distributes requests to the server with the lowest response time.
 e) Layer 7 Load Balancing: it distributes requests based on application layer data, such as the URI or the hostname.
 f) DNS Load balancing: it distributes requests based on the DNS resolution, it can be used for global load balancing.
 Load balancers can also provide other features such as SSL offloading, caching, compression, and health checks to
@@ -1814,7 +1815,7 @@ their corresponding IP addresses.
 This way, if a client requests the same domain name again, the caching DNS server can return the IP address without
 having to query the authoritative DNS server again.
 It's important to note that DNS servers also have a role in providing security by making sure requests are coming from
-authorized sources and also by providing additional security features like DNSSEC which ensures that the response from
+authorized sources, and also by providing additional security features like DNSSEC which ensures that the response from
 the DNS server is authentic and not tampered.
 There are several Linux commands that can be used to troubleshoot DNS issues:
 a) 'nslookup': This command allows you to query DNS servers and retrieve information about a domain name.
@@ -1853,11 +1854,11 @@ which can be a web-based interface, a command-line interface, or a combination o
 From the management interface, you can create and edit firewall rules, view logs, and perform other tasks.
 The specific steps involved in configuring a firewall will depend on the type of firewall and the vendor that
 provided it, but some general steps include:
-a) Defining the firewall's role and scope (e.g. perimeter firewall, internal firewall)
-b) Configuring the interfaces and zones
-c) Creating rules and policies to control traffic
-d) Enabling logging and monitoring for security events
-It's also important to regularly review and update the firewall configuration to ensure it remains aligned with the
+a) Defining the firewall's role and scope (e.g. perimeter firewall, internal firewall).
+b) Configuring the interfaces and zones.
+c) Creating rules and policies to control traffic.
+d) Enabling logging and monitoring for security events.
+It's also important to regularly review, and update the firewall configuration to ensure it remains aligned with the
 organization's security policies and to address any security threats that may have emerged.
 In Linux, firewall configuration is typically stored in the **iptables** configuration file, which is usually located
 at '/etc/sysconfig/iptables' or '/etc/iptables/iptables.rules'.
@@ -1883,23 +1884,25 @@ at the VPN server, any third-party that intercepts the data in transit (such as 
 will only see encrypted data and not be able to read the user's data.
 VPN also enables users to access content that is blocked in their geographic location, by assigning a new IP address
 of a different location.
-There are two main types of VPNs:Remote access VPNs and site-to-site VPNs: A remote access VPN allows individual users 
-to securely connect to a private network from a remote location. While a site-to-site VPN allows multiple remote locations 
-to securely connect to a central private network.
+There are two main types of VPNs:
+a) Remote access VPNs.
+b) Site-to-site VPNs.
+A remote access VPN allows individual users to securely connect to a private network from a remote location. 
+While a site-to-site VPN allows multiple remote locations to securely connect to a central private network.
 
 284) Multi-core, modern concurrency constraints?
 Answer: Modern computers have multiple cores, which allows them to perform multiple tasks at the same time.
 This is known as concurrency. However, concurrency can also introduce new challenges and constraints that need to be 
-addressed in order to take full advantage of the multiple cores.
-Data Race: When multiple threads are accessing and modifying the same shared data simultaneously without proper
+addressed in order to take full advantage of the multiple cores. 
+a) Data Race: When multiple threads are accessing and modifying the same shared data simultaneously without proper
 synchronization, it can lead to unexpected and inconsistent results.
-a) Deadlock: When two or more threads are blocked, waiting for each other to release a resource, it can lead to a deadlock.
+b) Deadlock: When two or more threads are blocked, waiting for each other to release a resource, it can lead to a deadlock.
 Deadlocks can cause the program to hang indefinitely and can be difficult to detect and diagnose.
-b) Starvation: When a thread is not able to access a shared resource because other threads are holding the resource, 
+c) Starvation: When a thread is not able to access a shared resource because other threads are holding the resource, 
 it can lead to starvation. Starvation can cause a thread to be blocked indefinitely and can lead to poor performance.
-c) Priority Inversion: When a high-priority thread is blocked by a low-priority thread, it can lead to a priority inversion.
+d) Priority Inversion: When a high-priority thread is blocked by a low-priority thread, it can lead to a priority inversion.
 Priority inversion can cause a high-priority thread to be blocked indefinitely, leading to poor performance.
-d) Memory Consistency: With multiple cores, it is possible that different cores may have different views of memory.
+e) Memory Consistency: With multiple cores, it is possible that different cores may have different views of memory.
 This can lead to unexpected behavior and can be difficult to debug.
 To address these constraints, various synchronization constructs such as locks, semaphores, and monitors are used to
 ensure that shared resources are accessed in a safe and predictable manner.
@@ -1942,8 +1945,8 @@ a) Cache Hierarchy: Memory cache is typically organized in a hierarchical fashio
 each with a different size and speed.
 The lowest level of cache memory is the L1 cache, which is the smallest and fastest, followed by the L2 cache,
 and so on.
-b) Cache Replacement Policy: Memory cache is typically implemented using a cache replacement policy, which determines which data should be
-removed from the cache when it becomes full.
+b) Cache Replacement Policy: Memory cache is typically implemented using a cache replacement policy, which determines 
+which data should be removed from the cache when it becomes full.
 The most common cache replacement policies include the least recently used (LRU) policy, which removes the
 data that has been accessed least recently, and the first in, first out (FIFO) policy, which removes the data
 that was added to the cache first.
@@ -1953,20 +1956,21 @@ is being accessed for the first time.
 d) Cache Hit: A cache hit occurs when the CPU requests data that is present in the cache memory.
 This results in faster access to the data, as the CPU does not need to access the main memory or storage device.
 Memory caches are widely used in many industries, such as:
-a) Computer Industry: Memory caches are used in processors and computer systems to speed up the access time to frequently used data.
-For example, Intel processors have a built-in L1 and L2 cache to speed up the data access.
-b) Storage Industry: Memory caches are used in storage devices such as hard disk drives and solid-state drives to speed up the
-access time to frequently used data. For example, many SSDs have a built-in cache memory to speed up the access time to frequently used data.
-c) Network Industry: Memory caches are used in networking equipment such as routers and switches to speed up the access time to
-frequently used data.
+a) Computer Industry: Memory caches are used in processors and computer systems to speed up the access time to frequently 
+used data. For example, Intel processors have a built-in L1 and L2 cache to speed up the data access.
+b) Storage Industry: Memory caches are used in storage devices such as hard disk drives and solid-state drives to speed 
+up the access time to frequently used data. For example, many SSDs have a built-in cache memory to speed up the access 
+time to frequently used data.
+c) Network Industry: Memory caches are used in networking equipment such as routers and switches to speed up the access 
+time to frequently used data.
 For example, many routers use a cache to store the most recently accessed web pages, reducing the need to
 request the same web page multiple times.
-d) Web Industry: Memory caches are used in web servers and web applications to speed up the access time to frequently used data.
-For example, many web servers use caching mechanisms to store the most recently accessed web pages,
+d) Web Industry: Memory caches are used in web servers and web applications to speed up the access time to frequently 
+used data. For example, many web servers use caching mechanisms to store the most recently accessed web pages,
 reducing the need to generate the same web page multiple times.
 Overall, memory caches play a key role in improving the performance of systems by reducing the access time to
 frequently used data, it's important to consider the trade-off between the size of the cache and the performance,
-a bigger cache can store more data but it can also consume more resources.
+a bigger cache can store more data, but it can also consume more resources.
 
 287) Scheduling?
 Answer: Operating system scheduling refers to the way in which the operating system allocates CPU time to different processes.
@@ -1979,7 +1983,7 @@ d) Round Robin (RR): Processes are executed in a circular fashion, with each pro
 before being moved to the back of the queue.
 e) Multilevel Queue: Processes are divided into different queues based on some criteria (e.g. priority, type), and different
 scheduling algorithms are applied to each queue.
-f) Multilevel Feedback Queue :Is an extension of the multilevel queue scheduling algorithm, but process can move between queues.
+f) Multilevel Feedback Queue: Is an extension of the multilevel queue scheduling algorithm, but process can move between queues.
 
 288) What resource process needs and thread needs?
 Answer: A resource is any item or capability that a computer system uses, such as memory, disk space, or network bandwidth.
@@ -1996,23 +2000,20 @@ proceed because the resource is constantly being acquired and released by the ot
 This results in the threads continuously changing their state in response to the state of the other threads,
 but no progress is made.
 Here are several ways to avoid livelock:
-a) Prioritizing resources:
-By prioritizing resources, a thread can be made to wait for a higher-priority resource instead of constantly
-trying to acquire a lower-priority resource that is constantly being acquired and released by other threads.
-b) Using a timeout:
-A timeout can be set for acquiring a resource, so if a thread is unable to acquire the resource within a
-certain period, it can move on to other tasks.
-c) Preempting a resource:
-A thread can be allowed to temporarily take control of a resource, even if another thread is currently
-using it, to break the livelock. 
-d) Breaking symmetry:Introducing randomness into the resource acquisition process can break symmetry, allowing one thread to proceed while 
-the others are blocked.
+a) Prioritizing resources: By prioritizing resources, a thread can be made to wait for a higher-priority resource instead 
+of constantly trying to acquire a lower-priority resource that is constantly being acquired and released by other threads.
+b) Using a timeout: A timeout can be set for acquiring a resource, so if a thread is unable to acquire the resource 
+within a certain period, it can move on to other tasks.
+c) Preempting a resource: A thread can be allowed to temporarily take control of a resource, even if another thread is 
+currently using it, to break the livelock. 
+d) Breaking symmetry: Introducing randomness into the resource acquisition process can break symmetry, allowing one 
+thread to proceed while the others are blocked.
 e) Using a signaling mechanism: A signaling mechanism can be used to inform other threads when a resource is available, 
 so they do not have to constantly check for its availability.
-f) Resource hierarchy: Similar to lock hierarchy, using a resource hierarchy can help avoid livelock by ensuring that a thread always
-acquires resources in a consistent order.
-g) Deadlock Detection: Similarly to deadlock, livelock detection algorithms can be used to detect livelocks and take appropriate
-action to resolve them.
+f) Resource hierarchy: Similar to lock hierarchy, using a resource hierarchy can help avoid livelock by ensuring that a 
+thread always acquires resources in a consistent order.
+g) Deadlock Detection: Similarly to deadlock, livelock detection algorithms can be used to detect livelocks and take 
+appropriate action to resolve them.
 It's important to note that, as with deadlocks, avoiding livelocks completely may not be possible, but they can be
 mitigated by following the above techniques.
 
@@ -2025,10 +2026,10 @@ on if it is unable to acquire a lock.
 c) Using a lock hierarchy: Establishing a hierarchy for locks can help prevent deadlocks by ensuring that a thread always 
 acquires locks in a consistent order.
 d) Avoiding circular wait: Deadlocks can occur when two or more threads are waiting for each other to release a resource.
-To avoid this, ensure that a thread never waits for a resource that is held by another thread that is also
-waiting for a resource held by the first thread.
-e) Using a global lock: If a system has multiple locks, using a global lock can help prevent deadlocks by ensuring that all threads
-acquire the global lock before attempting to acquire other locks.
+To avoid this, ensure that a thread never waits for a resource that is held by another thread that is also waiting for a 
+resource held by the first thread.
+e) Using a global lock: If a system has multiple locks, using a global lock can help prevent deadlocks by ensuring that 
+all threads acquire the global lock before attempting to acquire other locks.
 f) Using non-blocking algorithm: Some algorithm such as lock-free, wait-free and compare-and-swap can help avoid deadlock 
 by allowing multiple threads to access shared resources simultaneously.
 g) Using a deadlock detection algorithm: Deadlock detection algorithms can be used to detect deadlocks and take appropriate 
@@ -2060,17 +2061,12 @@ internal memory, B-Trees are used to store the data in an external memory and re
 
 292) AVL Trees?
 Answer: 
-An AVL tree is a self-balancing binary search tree.
-It is a variation of the more common binary search tree, but it is more balanced, which means that the height of the
-tree is always kept as small as possible.
-AVL trees maintain balance by enforcing the following property:
-For every node in the tree, the height of its left and right subtrees can differ by at most 1.
-This is accomplished by performing rotations on the tree when a node becomes unbalanced.
-There are four types of rotations in AVL tree:
-Left-Left Rotation (LL Rotation).
-Right-Right Rotation (RR Rotation).
-Left-Right Rotation (LR Rotation).
-Right-Left Rotation (RL Rotation).
+An AVL tree is a self-balancing binary search tree. It is a variation of the more common binary search tree, but it is 
+more balanced, which means that the height of the tree is always kept as small as possible. AVL trees maintain balance 
+by enforcing the following property:For every node in the tree, the height of its left and right subtrees can differ by 
+at most 1. This is accomplished by performing rotations on the tree when a node becomes unbalanced.
+There are four types of rotations in AVL tree: Left-Left Rotation (LL Rotation). Right-Right Rotation (RR Rotation).
+Left-Right Rotation (LR Rotation). Right-Left Rotation (RL Rotation).
 
 293) Red Black Trees?
 Answer: A Red-Black Tree is a type of self-balancing binary search tree, where each node has an extra bit that represents
@@ -2102,7 +2098,7 @@ operations like put and get.
 It's worth noting that the actual implementation of these classes can change between different versions of the
 Java API and other libraries, but the basic principles and algorithms remain the same.
 
-294) Can you explain the different levels of testing (unit, integration, system, and acceptance)? 
+294) Can you explain the different levels of testing (unit, integration, system, and acceptance)? // here
 Answer: 
 a) Unit Testing. Definition:Unit testing involves testing individual components or functions of the software in isolation. 
 The goal is to validate that each unit of the software performs as expected.
@@ -2147,7 +2143,8 @@ Each level of testing plays a crucial role in ensuring the quality and reliabili
 to a robust and user-friendly product.
 
 295) Explain the different phases of the SDLC?
-Answer: a) Planning. Objective: Define project scope, objectives, resources, timeline, and feasibility.
+Answer: 
+a) Planning. Objective: Define project scope, objectives, resources, timeline, and feasibility.
 Outcome: Project plan and feasibility study.
 b) Requirements Analysis. Objective: Gather and analyze business and user requirements.
 Outcome: Requirement specifications document (functional and non-functional).
@@ -2166,13 +2163,13 @@ These phases ensure a systematic approach to software development, improving the
 296) What are the key principles of Continuous Integration/Continuous Deployment (CI/CD)?
 Answer:
 The key principles of Continuous Integration/Continuous Deployment (CI/CD) are:
-Continuous Integration (CI).
+**Continuous Integration (CI).**
 a) Frequent Commits: Developers integrate code into a shared repository multiple times a day.
 b) Automated Builds: Every commit triggers an automated build to ensure the code compiles and functions correctly.
 c) Automated Testing: Automated tests run with each build to detect defects early.
 d) Immediate Feedback: Developers receive instant feedback on their code, allowing for quick identification and resolution of issues.
 e) Consistent Environment: Use of consistent environments for development, testing, and production to avoid configuration issues.
-Continuous Deployment (CD)
+**Continuous Deployment (CD).**
 a) Automated Deployment: Automated tools deploy the application to production without human intervention.
 b) Continuous Delivery: Code is always in a deployable state, and updates are automatically delivered to users.
 c) Rollback Mechanisms: Ability to quickly roll back changes if something goes wrong in production.
@@ -2181,9 +2178,8 @@ e) Incremental Updates: Deploy small, incremental changes to reduce risk and sim
 These principles help streamline the development process, ensure high code quality, and accelerate the delivery of software to users.
 
 297) What is Software Development Life Cycle (SDLC)?
-Answer:
-The software development lifecycle (SDLC) is the cost-effective and time-efficient process that development team use to
-design and build high-quality software. Steps:
+Answer: The software development lifecycle (SDLC) is the cost-effective and time-efficient process that development team 
+use to design and build high-quality software. Steps:
 a) Requirement gathering and planning.
 b) Design.
 c) Development.
@@ -2193,12 +2189,12 @@ f) Maintenance.
 
 298) Explain different types of SQL Joins?
 Answer: SQL Joins are used to combine rows from two or more tables based on a related column between them:
-a) INNER JOIN: Returns only the rows where there is a match in both tables on the specified condition.
-b) LEFT JOIN: Returns all the rows from the left table and the matching rows from the right table. If there is no match,
+a) 'INNER JOIN': Returns only the rows where there is a match in both tables on the specified condition.
+b) 'LEFT JOIN': Returns all the rows from the left table and the matching rows from the right table. If there is no match,
 NULL values are returned from columns from the right table.
-c) RIGHT JOIN: Returns all the rows from the right table and the matching rows from the left table. If there is no match,
+c) 'RIGHT JOIN': Returns all the rows from the right table and the matching rows from the left table. If there is no match,
 NULL values are returned from columns from the left table.
-d) FULL JOIN: Returns all the rows when there is a match in either the left or right table. If there is no match, NULL
+d) 'FULL JOIN': Returns all the rows when there is a match in either the left or right table. If there is no match, NULL
 values are returned for columns from the table without a match.
 
 299) What are the primary key and foreign key in SQL?
@@ -2343,7 +2339,7 @@ c) Site lifecycle. 'site' - generate the project's site documentation.
 Answer: Maven is a build process automation and project management tool for Java projects. Maven automates the build 
 process, including tasks such as compiling source code, running tests, packaging binaries, and creating artifacts.
 Maven follows a convention over configuration approach, defining a standard project structure. This makes it easier for
-developers to understand and contribute to projects, as they where to find source code, resources and configuration files.
+developers to understand and contribute to projects, as they were to find source code, resources and configuration files.
 Maven manages project dependencies, retrieving and resolving them from remote repositories.
 
 322) What is the difference between soft and hard assert?
@@ -2442,11 +2438,11 @@ using Alert class. We need to switchTo alert. However, we need to wait for alert
 Answer: When dropdown is based on select tag then we can use select class to work with it.
 
 344) How do you work with iFrames in Selenium?
-Answer: Switch to iFrame first by using switchTo() method. You can switch by index, id and name. Once you completed your
+Answer: Switch to iFrame first by using switchTo() method. You can switch by index, ID and name. Once you completed your
 task in the iFrame, you can switch back by using default content.
 
 345) How do you work with multiple Windows in Selenium?
-Answer: Each window has unique window handle (sort od ID of the window). We can read these window handles via Selenium
+Answer: Each window has unique window handle (sort of ID of the window). We can read these window handles via Selenium
 and Switch between windows.
 
 346) What do you check if element exist in the DOM?
@@ -2586,7 +2582,7 @@ software test team's intent, its expectations and its understanding of the testi
 372) What is a defect?
 Answer: The defect is when the actual result doesn't match with the expected result. Usually, we have our expected
 results from the product specification document includes all the aspects of the product. For example, if software is
-difficult to understand, hard to use, slow, or just not right and it wasn't mentioned in product specification, it is
+difficult to understand, hard to use, slow, or just not right, and it wasn't mentioned in product specification, it is
 a valid defect.
 
 373) Mock Functionality?
@@ -2607,8 +2603,7 @@ Self-Validating: Unit tests validates itself. Thorough & Timely: Cover edge case
 375) JUnit 5?
 Answer: JUnit5 = JUnit Platform + JUnit Jupiter + JUnit Vintage.
 JUnit Platform: The JUnit Platform serves as a foundation for launching testing frameworks in the JVM.
-JUnit Jupiter: Is the combination of the new programming model and extension model for writing tests and extensions in
-JUnit5. 
+JUnit Jupiter: Is the combination of the new programming model and extension model for writing tests and extensions in JUnit5. 
 JUnit Vintage: TestEngine for running JUnit3 and JUnit4 based tests on the platform.
 
 376) Test Driven Development (TDD)?
@@ -2633,7 +2628,7 @@ give a response.
 379) Spring Boot support for unit testing?
 Answer: What do you need for Spring Boot unit testing? Access to the Spring Application Context. Support for Spring
 dependency injection. Retrieve data from Spring 'application.properties'. Mock object support for web, data, REST APIs.
-@SpringBootTest: Loads the application context. Support for Spring dependency injection. You can access data from Spring
+'@SpringBootTest': Loads the application context. Support for Spring dependency injection. You can access data from Spring
 'application.properties'.
 
 380) Testing using Reflection?
@@ -2664,7 +2659,7 @@ handled by itself or by any other server.
 
 385) A database host that is replicated to a backup that's always ready to take over is an example of?
 Answer: Warm standby.
-When dealing with monolithic relational database hosts, replication is a common backup technique. However scalable 
+When dealing with monolithic relational database hosts, replication is a common backup technique. However, scalable 
 systems generally rely on distributed key/value data stores, or more generally object stores, AKA "NoSQL" - as these can 
 be horizontally scaled with backups on each shard.
 
@@ -2684,18 +2679,16 @@ in practice modern NoSQL databases have highly redundant master nodes that can q
 of failure.
 
 389) When designing a cache that discards the data accessed the longest time ago, which eviction policy is appropriate?
-Answer: LRU.
-A "least recently used" policy is most commonly used, and evicts data that hasn't been accessed in the longest amount 
-of time once memory for the cache fills up.
+Answer: LRU. A "least recently used" policy is most commonly used, and evicts data that hasn't been accessed in the 
+longest amount of time once memory for the cache fills up.
 
 390) If you need to minimize client latency for retrieving static data around the world at any cost, you would use:
-Answer: A CDN.
-Content Delivery Networks (CDN's) are aimed at the problem of global traffic and minimizing latency due to long network 
-hops. Load balancers and caching technologies such as Redis can also be parts of low-latency designs, but are not 
-specifically for the problem of global traffic.
+Answer: A CDN. Content Delivery Networks (CDN's) are aimed at the problem of global traffic and minimizing latency due 
+to long network hops. Load balancers and caching technologies such as Redis can also be parts of low-latency designs, 
+but are not specifically for the problem of global traffic.
 
 391) An SLA of 100ms at "three nines" means?
-Answer: My system will respond in less than 100 mn 99.9% of the time.
+Answer: My system will respond in less than 100 ms 99.9% of the time.
 
 392) In HDFS, the server responsible for coordinating requests is called the?
 Answer: Name node.
