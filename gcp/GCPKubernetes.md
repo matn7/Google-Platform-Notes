@@ -1,6 +1,6 @@
-# Kubernetes
+# Kubernetes.
 
-## Google Cloud Platform
+## Google Cloud Platform.
 
 - Define cloud computing.
 - Identify Google Cloud's compute services.
@@ -8,9 +8,9 @@
 - Understand the cloud resources hierarchy.
 - Administer your Google Cloud resources.
 
-### Cloud Computing and Google Cloud
+### Cloud Computing and Google Cloud.
 
-**Cloud computing has five fundamental attributes**
+**Cloud computing has five fundamental attributes.**
 
 - On-demand self-service: No human intervention needed to get resources.
 - Broad network access: Access from anywhere.
@@ -18,68 +18,68 @@
 - Rapid elasticity: Get more resources quickly as needed.
 - Measured service: Pay only for what you consume.
 
-**Google Cloud offers a range of services**
+**Google Cloud offers a range of services.**
 
 - Compute:
-    - Compute Engine
-    - Google Kubernetes Engine (GKE)
-    - App Engine
-    - Cloud Functions
+    - Compute Engine.
+    - Google Kubernetes Engine (GKE).
+    - App Engine.
+    - Cloud Functions.
 
-**Building your own database solution**
+**Building your own database solution.**
 
 ![Own DB solutions](gcp-img/kubernetes/gcp-kube-own-db.png "Own DB solutions")
 
-**Use a managed service**
+**Use a managed service.**
 
 - Storage:
-    - Cloud Bigtable
-    - Cloud Storage
-    - Cloud SQL
-    - Cloud Spanner
-    - Datastore
+    - Cloud Bigtable.
+    - Cloud Storage.
+    - Cloud SQL.
+    - Cloud Spanner.
+    - Datastore.
 
-**Google Cloud offers a range of services**
+**Google Cloud offers a range of services.**
 
 - Big Data:
-    - BigQuery
-    - Pub/Sub
-    - Dataflow
-    - Dataproc
-    - Datalab
+    - BigQuery.
+    - Pub/Sub.
+    - Dataflow.
+    - Dataproc.
+    - Datalab.
 - Machine Learning:
-    - Vision API
-    - AI Platform
-    - Speech-to-Text API
-    - Cloud Translation
-    - Cloud Natural Language    
+    - Vision API.
+    - AI Platform.
+    - Speech-to-Text API.
+    - Cloud Translation.
+    - Cloud Natural Language.
 
-### Resource Management
+### Resource Management.
 
-**Understanding regions and zones**
+**Understanding regions and zones.**
 
 ![Regions and zones](gcp-img/kubernetes/gcp-kube-regions-zones.png "Regions and zones")
 
-**Google Cloud PoPs and network**
+**Google Cloud PoPs and network.**
 
 - Edge point of presence.
 
-**Zonal resources operate exclusively in a single zone**
+**Zonal resources operate exclusively in a single zone.**
 
 - Zonal resources operate within a single zone, which means that is the zone becomes unavailable, the resources
 won't be available either.
 - GKE has a component called a node, and these are zonal, too.
 
-**Regional**
+**Regional.**
 
 - Regional resources operate across multiple zones, but within one region.
 
-**Global**
+**Global.**
 
 - Global resources can be managed across multiple regions, these resources can further improve the availability
 of an application.
 
-**Resources sit in projects**
+**Resources sit in projects.**
 
 - The GCP resources you use, no matter where they reside, must belong to a project.
 - A project is the base level organizing entity, for creating and using resources and services and managing
@@ -89,7 +89,7 @@ logically organize them.
 
 ![Physical, logical organization](gcp-img/kubernetes/gcp-kube-organization.png "Physical, logical organization")
 
-**Resources have hierarchy**
+**Resources have hierarchy.**
 
 - Each project identified by a unique project ID and project number.
 - Project ID and project number remain fixed.
@@ -101,7 +101,7 @@ enterprise.
 - Organizations let you set policies that apply throughout your entire enterprise.
 - Having organization required for you to use folders.
 
-**Resource have hierarchy**
+**Resource have hierarchy.**
 
 - The GCP resource hierarchy, helps you manage resources across multiple departments, and multiple teams within an
 organization.
@@ -112,7 +112,7 @@ that control user access to resources.
 - Additional policies at lower levels of the hierarchy can grant additional permissions.
 - Billing accumulates at the project level.
 
-**Cloud security and Google Cloud**
+**Cloud security and Google Cloud.**
 
 - Upper layers of the security stack, including the securing of the data, remain your responsibility.
 
@@ -141,44 +141,44 @@ that control user access to resources.
 - Allocation quotas: `5 networks per project`.
 - Many quotas are changeable.
 
-### Interacting with Google Cloud
+### Interacting with Google Cloud.
 
-**Ways to interact with Google Cloud**
+**Ways to interact with Google Cloud.**
 
 - Google Cloud Console: Web user interface.
 - Cloud SDK and Cloud Shell: Command-line interface.
 - Cloud Console mobile app: For IOS and Android.
 - REST-based API: For custom apps.
 
-**The Cloud Console**
+**The Cloud Console.**
 
 - Web-based GUI to manage all Google Cloud resources.
 - Executes common tasks using simple mouse clicks.
 - Provides visibility into Google Cloud projects and resources.
 
-**Cloud SDK**
+**Cloud SDK.**
 
-- `gcloud`
-- `kubectl`
-- `gsutil`
-- `bq`
+- `gcloud`.
+- `kubectl`.
+- `gsutil`.
+- `bq`.
 
-**Cloud Shell**
+**Cloud Shell.**
 
 - Command-line access to your cloud resources directly from your browser.
 - Constant availability of `gcloud` command-line tool and other utilities.
 - Ephemeral Compute Engine virtual machine instance.
 - Built-in authorization for access to Cloud Console projects and resources.
 
-**Cloud Shell code editor**
+**Cloud Shell code editor.**
 
-**Cloud Console mobile app**
+**Cloud Console mobile app.**
 
 - Start, stop, and SSH into Compute Engine instances.
 - Get up-to-date billing information and alerts.
 - Set up customizable graphs, showing key metrics.
 
-### Summary
+### Summary.
 
 - Cloud computing means on-demand, pay-as-you-go resources.
 - Google Cloud offers 4 compute services.
@@ -188,50 +188,50 @@ that control user access to resources.
 
 ***
 
-## Introduction to Containers and Kubernetes
+## Introduction to Containers and Kubernetes.
 
 - Create a container using Cloud Build.
 - Store a container in Container Registry.
 - Compare and contrast Kubernetes and Google Kubernetes Engine (GKE) features.
 
-### Introduction to Containers and Container Images
+### Introduction to Containers and Container Images.
 
-**We used to build apps on individual servers**
+**We used to build apps on individual servers.**
 
 ![Dedicated server](gcp-img/kubernetes/gcp-kube-dedicated-server.png "Dedicated server")
 
-- Deployment `~months`.
+- Deployment months.
 - Low utilization.
 - Not portable.
 
-**Hypervisors create and manage virtual machines**
+**Hypervisors create and manage virtual machines.**
 
 ![Virtual machine](gcp-img/kubernetes/gcp-kube-dedicated-server.png "Virtual machine")
 
 - A hypervisor is the software layer that breaks the dependencies of an operating system with its underlying hardware and
 allow several Virtual Machines to share that same hardware.
 - KVM is one well-known hypervisor.
-- Deployment `~days (mins)`.
+- Deployment days (mins).
 - Improved utilization.
 - Hypervisor-specific.
 
-**Running multiple apps on a single VM**
+**Running multiple apps on a single VM.**
 
 ![Multiple apps in vm](gcp-img/kubernetes/gcp-kube-multiple-vms.png "Multiple apps in vm")
 
-- Deployment `~days (mins)`.
+- Deployment days (mins).
 - Hypervisor-specific.
-- **Low isolation; tied to OS**
+- **Low isolation; tied to OS**.
 
 **The VM-centric way to solve this problem**
 
 ![VM-centric](gcp-img/kubernetes/gcp-kube-vm-centric.png "VM-centric")
 
-- Deployment `~days (mins)`.
+- Deployment days (mins).
 - Hypervisor-specific.
-- **Redundant OS**
+- **Redundant OS**.
 
-**User space abstraction and containers**
+**User space abstraction and containers.**
 
 ![User space abst & containers](gcp-img/kubernetes/gcp-kube-user-space-containers.png "User space abst & containers")
 
@@ -246,7 +246,7 @@ the underlying system.
 
 - The lightweight, stand-alone, resource efficient, portable execution packages.
 
-**Why developers like containers**
+**Why developers like containers?**
 
 - Safely make assumptions about the underlying hardware and software.
 - With Linux kernel underneath, you no longer have code that works on your laptop, but doesn't work in prod.
@@ -263,7 +263,7 @@ affecting the app as a whole.
 - By building software into container images, developers can easily package and ship and app without worrying about the
 system it will be running on.
 
-**Containers use a varied set of Linux technologies**
+**Containers use a varied set of Linux technologies.**
 
 - **Processes:** Each Linux process has its own virtual memory address space, separate from all others, and Linux 
 processes rapidly created and destroyed.
@@ -274,13 +274,13 @@ directory trees, IP addresses and more.
     - Its maximum consumption of CPU time, memory, IO bandwidth and other resources.
 - **Union file system:** To efficiently encapsulate apps, and their dependencies into a set of clean minimal layers.
 
-**Containers structured in layers**
+**Containers structured in layers.**
 
 ![Container layers](gcp-img/kubernetes/gcp-kube-containers-layers.png "Container layers")
 
 ![Container layers](gcp-img/kubernetes/gcp-kube-container-layers-dockerfile.png "Container layers")
 
-**Containers promote smaller shared images**
+**Containers promote smaller shared images.**
 
 **How can you get containers?**
 
@@ -288,15 +288,15 @@ directory trees, IP addresses and more.
 - Build your own container using open-source docker command.
 - Builds your own container using Cloud Build.
 
-**Cloud Build**
+**Cloud Build.**
 
 ![Cloud Build](gcp-img/kubernetes/gcp-kube-cloud-build.png "Cloud Build")
 
 ***
 
-### Kubernetes
+### Kubernetes.
 
-**Challenge: Container management**
+**Challenge: Container management.**
 
 - You've embraced containers, but managing them at scale is a challenge.
 - What can you do to better manage your container infrastructure?
@@ -316,17 +316,17 @@ flexibility.
 you want to achieve, instead of issuing a series of commands to achieve that desired state.
 - An imperative configuration: You issue commands to change the system state.
 
-**Kubernetes features**
+**Kubernetes features.**
 
-- Supports both stateful and stateless apps
-- Autoscaling
-- Resource limits
-- Extensibility
-- Portability
+- Supports both stateful and stateless apps.
+- Autoscaling.
+- Resource limits.
+- Extensibility.
+- Portability.
 
-### Introduction to Google Kubernetes Engine
+### Introduction to Google Kubernetes Engine.
 
-**Challenge: Managing Kubernetes**
+**Challenge: Managing Kubernetes.**
 
 - Kubernetes is powerful, but managing the infrastructure is a full-time job.
 - Is there a managed service for Kubernetes within Google Cloud?
@@ -336,7 +336,7 @@ you want to achieve, instead of issuing a series of commands to achieve that des
 
 - GKE is a component of the GCP, compute offerings, it makes it easy to bring your Kubernetes workloads into the cloud.
 
-**Exploring GKE features**
+**Exploring GKE features.**
 
 - Fully managed: You don't have to provision the underlying resources.
 - Container-optimized OS: This OS maintained by Google, and are optimized to scale quickly, and with a minimal
@@ -357,26 +357,26 @@ networking features.
 - Cloud Console: The GCP console provides insights into GKE clusters and the resources, and it allows you to
 view, inspect and delete resources in those clusters.
 
-### Computing Options
+### Computing Options.
 
-**Comparing Google Cloud computing solutions**
+**Comparing Google Cloud computing solutions.**
 
 ![Google Cloud computing](gcp-img/kubernetes/gcp-kube-computing-solutions.png "Google Cloud computing")
 
-**Compute Engine**
+**Compute Engine.**
 
 - Fully customizable virtual machines.
 - Persistent disks and optional local SSDs.
 - Global load balancing and autoscaling.
 - Per-second billing.
 
-**Compute Engine use cases**
+**Compute Engine use cases.**
 
 - Complete control over the OS and virtual hardware.
 - Well suited for lift-and-shift migrations to the cloud.
 - Most flexible compute solution, often used when a managed solution is too restrictive.
 
-**App Engine**
+**App Engine.**
 
 - Provides a fully managed, code-first platform.
 - Streamlines application deployment and scalability.
@@ -384,28 +384,28 @@ view, inspect and delete resources in those clusters.
 - Supports integrated monitoring, logging, and diagnostics.
 - Simplifies version control, canary testing, and rollbacks.
 
-**App Engine use cases**
+**App Engine use cases.**
 
-- Websites
-- A mobile app and gaming backends
-- RESTful APIs
+- Websites.
+- A mobile app and gaming backends.
+- RESTful APIs.
 
-**Google Kubernetes Engine**
+**Google Kubernetes Engine.**
 
 - Fully managed Kubernetes platform.
 - Supports cluster scaling, persistent disks, automated upgrades, and auto node repairs.
 - Built-in integration with Google Cloud services.
 - Portability across multiple environments:
-    - Hybrid computing
-    - Multi-cloud computing
+    - Hybrid computing.
+    - Multi-cloud computing.
 
-**GKE use cases**
+**GKE use cases.**
 
 - Containerized apps.
 - Cloud-native distributed systems.
 - Hybrid apps.
 
-**Cloud Run**
+**Cloud Run.**
 
 - Enables stateless containers.
 - Abstract away infrastructure management.
@@ -446,7 +446,7 @@ view, inspect and delete resources in those clusters.
 
 ***
 
-## Kubernetes Architecture
+## Kubernetes Architecture.
 
 - Understand Kubernetes objects, and the Kubernetes control plane.
 - Deploy a Kubernetes cluster using Google Kubernetes Engine (GKE).
@@ -461,11 +461,11 @@ view, inspect and delete resources in those clusters.
 - Principle of declarative management. 
 - Kubernetes expects you to tell it what you want the state of the objects under its management to be.
 
-**There are two elements to Kubernetes objects**
+**There are two elements to Kubernetes objects.**
 
 ![Kubernetes objects](gcp-img/kubernetes/gcp-kube-objects.png "Kubernetes objects")
 
-**Containers in a Pod share resources**
+**Containers in a Pod share resources.**
 
 ![Kubernetes pods](gcp-img/kubernetes/gcp-kube-pod.png "Kubernetes pods")
 
@@ -474,13 +474,13 @@ view, inspect and delete resources in those clusters.
 - Containers within the same pod can communicate through local host `127.0.0.1`.
 - A pod can also specify a set of storage volumes, to be shared amongst its containers.
 
-**Running three nginx containers**
+**Running three nginx containers.**
 
 - You want three nginx containers running all the time.
 - You declare objects that represent those containers.
 - Kubernetes launches those objects and maintains them.
 
-**Desired state compared to current state**
+**Desired state compared to current state.**
 
 - Desired state: Kubernetes objects.
 - Current state: ???
@@ -488,9 +488,9 @@ view, inspect and delete resources in those clusters.
 
 ![Kubernetes desired state](gcp-img/kubernetes/gcp-kube-desired-state.png "Kubernetes desired state")
 
-### Kubernetes Control Plane
+### Kubernetes Control Plane.
 
-**Cooperating processes make a Kubernetes cluster work**
+**Cooperating processes make a Kubernetes cluster work.**
 
 ![Kubernetes cooperating processes](gcp-img/kubernetes/gcp-kube-cooperating-processes.png "Kubernetes cooperating processes")
 
@@ -508,27 +508,27 @@ the pods on the nodes.
     - Maintain the network connectivity among the pods in a cluster. 
     - Use Linux IP tables.
 
-### Google Kubernetes Engine Concepts
+### Google Kubernetes Engine Concepts.
 
-**GKE manages all the control plane components**
+**GKE manages all the control plane components.**
 
 ![Control plane GKE](gcp-img/kubernetes/gcp-kube-gke.png "Control plane GKE")
 
-**GKE: More about nodes**
+**GKE: More about nodes.**
 
 - Kubernetes doesn't create nodes.
 - Cluster admins create nodes and add them to Kubernetes.
 - GKE manages this by deploying and registering Compute Engine instances as nodes.
 
-**GKE: More about nodes**
+**GKE: More about nodes.**
 
 - You can choose your node machine type, when you create a cluster.
 
-**Use node pools to manage different kinds of nodes**
+**Use node pools to manage different kinds of nodes.**
 
 ![Node pools](gcp-img/kubernetes/gcp-kube-node-pools.png "Node pools")
 
-**Zonal versus regional clusters**
+**Zonal versus regional clusters.**
 
 ![Zonal vs regional](gcp-img/kubernetes/gcp-kube-zonal-vs-regional.png "Zonal vs regional")
 
@@ -540,13 +540,13 @@ single region.
 withstand the loss of one or more but not all zones.
 - By default, regional cluster spread across 3 zones.
 
-**A regional or zonal GKE cluster can also be set up as a private cluster**
+**A regional or zonal GKE cluster can also be set up as a private cluster.**
 
 ![Private cluster](gcp-img/kubernetes/gcp-kube-private-cluster.png "Private cluster")
 
-### Kubernetes Object Management
+### Kubernetes Object Management.
 
-**Objects defined in a YAML file**
+**Objects defined in a YAML file.**
 
 ```yaml
 apiVersion: apps/v1
@@ -561,9 +561,9 @@ spec:
       image: nginx:latest
 ```
 
-**Best practice tip: use version control on YAML files**
+**Best practice tip: use version control on YAML files.**
 
-**Object names**
+**Object names.**
 
 - All objects identified by a name.
 - Cannot have two of the same object types with same names.
@@ -579,7 +579,7 @@ metadata:
 [...]
 ```
 
-**Labels**
+**Labels.**
 
 ```yaml
 apiVersion: apps/v1
@@ -597,7 +597,7 @@ spec:
       app: nginx
 ```
 
-**Labels can be matched by label selectors**
+**Labels can be matched by label selectors.**
 
 - Admin issues a command.
 
@@ -605,23 +605,23 @@ spec:
 $> kubectl get pods --selector=app-nginx
 ```
 
-**Pods have a life cycle**
+**Pods have a life cycle.**
 
-- Pod is "born"
-- Pod is running
-- Pod is broken
-- Pod "dies"
+- Pod is "born".
+- Pod is running.
+- Pod is broken.
+- Pod "dies".
 
-**Pods and Controller Objects**
+**Pods and Controller Objects.**
 
 ![Pods and Controller](gcp-img/kubernetes/gcp-kube-pods-controller.png "Pods and Controller")
 
-**Example: Use Deployments**
+**Example: Use Deployments.**
 
 - You want three nginx containers running all the time.
 - How does Kubernetes maintain 3 nginx containers at any given time?
 
-**Deployment ensure that sets of Pods are running**
+**Deployment ensure that sets of Pods are running.**
 
 ```yaml
 apiVersion: apps/v1
@@ -642,20 +642,20 @@ spec:
           image: nginx:latest
 ```
 
-**Allocating resource quotas**
+**Allocating resource quotas.**
 
 - Multiple projects run on a single cluster.
 - How can I allocate resource quotas?
 
-**Namespaces**
+**Namespaces.**
 
 - Namespaces provide scope for naming resources such as pods, deployments, and controllers.
 - 3 initial namespaces in a cluster.
-    - Default: Pods, Deployments
-    - Kube-system: ConfigMap, Secrets, Controllers, Deployments
+    - Default: Pods, Deployments.
+    - Kube-system: ConfigMap, Secrets, Controllers, Deployments.
     - Kube-public: 
 
-**Best practice tip: namespace-neutral YAML**
+**Best practice tip: namespace-neutral YAML.**
 
 - Most flexible:
 
@@ -673,18 +673,18 @@ metadata:
     namespaces: demo
 ```
 
-### Migrate for Anthos
+### Migrate for Anthos.
 
-**Migrate for Anthos moves VMs to containers**
+**Migrate for Anthos moves VMs to containers.**
 
 - Move and convert workloads into containers.
 - Workloads can start as physical servers or VMs.
 - Moves workload compute to container immediately (<10 min).
 - Data can be migrated all at once or "streamed" to the cloud until the app is live in the cloud.
 
-**A migration requires an architecture to be built**
+**A migration requires an architecture to be built.**
 
-**A Migration is a multi-step process**
+**A Migration is a multi-step process.**
 
 - Step 1: Configure processing cluster.
 - Step 2: Add migration source.
@@ -693,7 +693,7 @@ metadata:
 - Step 5: Test.
 - Step 6: Deploy.
 
-**Migrate for Anthos requires a processing cluster**
+**Migrate for Anthos requires a processing cluster.**
 
 ```console
 $> gcloud container --project $PROJECT_ID \
@@ -710,43 +710,43 @@ $> gcloud container --project $PROJECT_ID \
    --tags="http-server"
 ```
 
-**Installing Migrate for Anthos uses migctl**
+**Installing Migrate for Anthos uses migctl.**
 
 ```console
 $> migctl setup install
 ```
 
-**Adding a source enables migrations from a specific environment**
+**Adding a source enables migrations from a specific environment.**
 
 ```console
 $> migctl source create ce my-ce-src --project my-project --zone zone
 ```
 
-**Creating a migration generates a migration plan**
+**Creating a migration generates a migration plan.**
 
 ```console
 $> migctl migration create test-migration --source my-ce-src --vm-id my-id --intent Image
 ```
 
-**Executing a migration generates resources and artifacts**
+**Executing a migration generates resources and artifacts.**
 
 ```console
 $> migctl migration generate-artifacts my-migration
 ```
 
-**Deployment files typically need modification**
+**Deployment files typically need modification.**
 
 ```console
 $> migctl migration get-artifacts test-migration
 ```
 
-**Apply the configuration to deploy the workload**
+**Apply the configuration to deploy the workload.**
 
 ```console
 $> kubectl apply -f deployment_spec.yaml
 ```
 
-### Summary
+### Summary.
 
 - Kubernetes controllers keep the cluster state matching the desired state.
 - Kubernetes consists of a family of control plane components, running on the control plane and the nodes.
@@ -755,18 +755,18 @@ $> kubectl apply -f deployment_spec.yaml
 
 ***
 
-## Kubernetes Workloads
+## Kubernetes Workloads.
 
 - Understand the `kubectl` command.
 - Understand how Deployments used in Kubernetes.
 - Understand the networking architecture of Pods.
 - Understand Kubernetes storage abstractions.
 
-### The kubectl Command
+### The kubectl Command.
 
-**Kubectl transforms your command-line entries into API calls**
+**Kubectl transforms your command-line entries into API calls.**
 
-**Use kubectl to see a list of Pods in a cluster**
+**Use kubectl to see a list of Pods in a cluster.**
 
 - Admin issues a command.
 
@@ -776,17 +776,17 @@ $> kubectl get pods
 
 ![Kubectl](gcp-img/kubernetes/gcp-kube-kubectl.png "Kubectl")
 
-**kubectl must be configured first**
+**kubectl must be configured first.**
 
 - Relies on a config file: 
-    - `$HOME/.kube/config`
+    - `$HOME/.kube/config`.
 - Config file contains:
     - Target cluster name.
     - Credentials for the cluster.
 - A current config: 
-    - `kubectl config view`
+    - `kubectl config view`.
 
-**Connecting to a Google Kubernetes Engine cluster**
+**Connecting to a Google Kubernetes Engine cluster.**
 
 ```console
 $> gcloud container clusters \
@@ -794,7 +794,7 @@ $> gcloud container clusters \
    --zone [ZONE_NAME]
 ```
 
-**The kubectl command syntax has several parts**
+**The kubectl command syntax has several parts.**
 
 ![Kubectl syntax](gcp-img/kubernetes/gcp-kube-kubectl-syntax.png "Kubectl syntax")
 
@@ -806,27 +806,27 @@ $> kubectl get pod my-test-app -o=yaml
 $> kubectl get pods -o=wide
 ```
 
-**The kubectl command has many uses**
+**The kubectl command has many uses.**
 
 - Create Kubernetes objects.
 - View objects.
 - Delete objects.
 - View and export configurations.
 
-### Deployments
+### Deployments.
 
-**Deployment declare the state of Pods**
+**Deployment declare the state of Pods.**
 
 - Roll out updates to the Pods.
 - Roll back Pods to previous revision.
 - Scale or autoscale Pods.
 - Well-suited for stateless applications.
 
-**Deployment is a two-part process**
+**Deployment is a two-part process.**
 
 ![Deployment process](gcp-img/kubernetes/gcp-kube-deployment-process.png "Deployment process")
 
-**Deployment object file in YAML format**
+**Deployment object file in YAML format.**
 
 ```yaml
 apiVersion: apps/v1
@@ -847,13 +847,13 @@ spec:
           - containerPort: 8080
 ```
 
-**Deployment has three different lifecycle states**
+**Deployment has three different lifecycle states.**
 
-- Progressing State
-- Complete State
-- Failed State
+- Progressing State.
+- Complete State.
+- Failed State.
 
-**There are three ways to create deployment**
+**There are three ways to create deployment.**
 
 **(1)**
 
@@ -875,9 +875,9 @@ $> kubectl run [DEPLOYMENT_NAME] \
 
 **(3)**
 
-- GCP console
+- GCP console.
 
-**Use kubectl to inspect your Deployment**
+**Use kubectl to inspect your Deployment.**
 
 ```console
 $> kubectl get deployment [DEPLOYMENT_NAME]
@@ -891,33 +891,33 @@ NAME                DESIRED     CURRENT     UP-TO-DATE      AVAILABLE       AGE
 nginx-deployment    3           3           3               3               3m
 ```
 
-**Or output the Deployment config in a YAML format**
+**Or output the Deployment config in a YAML format.**
 
 ```console
 $> kubectl get deployment [DEPLOYMENT_NAME] -o yaml > this.yaml
 ```
 
-**Use the 'describe' command to get detailed info**
+**Use the 'describe' command to get detailed info.**
 
 ```console
 $> kubectl describe deployment [DEPLOYMENT_NAME]
 ```
 
-**Use GCP console to get detailed information**
+**Use GCP console to get detailed information.**
 
-**Scaling a Deployment manually**
+**Scaling a Deployment manually.**
 
 ```console
 $> kubectl scale deployment [DEPLOYMENT_NAME] -replicas=5
 ```
 
-**Autoscaling a Deployment**
+**Autoscaling a Deployment.**
 
 ```console
 $> kubectl autoscale deployment [DEPLOYMENT_NAME] --min=5 --max=15 --cpu-percent=75
 ```
 
-**Updating a Deployment**
+**Updating a Deployment.**
 
 ```yaml
 apiVersion: apps/v1
@@ -943,17 +943,17 @@ $> kubectl set image deployment [DEPLOYMENT_NAME] [IMAGE] [IMAGE]:[TAG]
 $> kubectl edit deployment/[DEPLOYMENT_NAME]
 ```
 
-**Updating Deployment through GCP console**
+**Updating Deployment through GCP console.**
 
-**The process behind updating a Deployment**
+**The process behind updating a Deployment.**
 
 - Updates slowly released, which ensures the availability of the application.
 
-**Service is a load balancing front end for Pods**
+**Service is a load balancing front end for Pods.**
 
 ![Kubernetes service](gcp-img/kubernetes/gcp-kube-service.png "Kubernetes service")
 
-**Blue/green deployment strategy**
+**Blue/green deployment strategy.**
 
 - Is useful when you want to deploy a new version of an application, and also ensure that app services remain available,
 while the deployment updated.
@@ -964,7 +964,7 @@ green version.
 - Services allow you to manage the network traffic flows to a selection of pods, this set of pods selected using
 a label selector.
 
-**Applying a blue/green deployment strategy**
+**Applying a blue/green deployment strategy.**
 
 ```yaml
 [...]
@@ -996,15 +996,15 @@ $> kubectl patch service my-app-service -p '{"spec":{"selector":{"version":"v2"}
 
 - The advantage of this update strategy is that rollouts can be instantaneous, and the newer versions can be tested
 internally before releasing them to the entire user base.
-- The disadvantage is that the research usage is doubled during the deployment
+- The disadvantage is that the research usage is doubled during the deployment.
 
-**Canary Deployments**
+**Canary Deployments.**
 
 - The Canary method is another update strategy based on the blue-green method, but traffic gradually shifted to the
 new version.
 - The main advantages of using canary deployments are that you can minimize the excess resource usage during the update.
 
-**Applying a canary deployment**
+**Applying a canary deployment.**
 
 ```yaml
 [...]
@@ -1023,9 +1023,9 @@ $> kubectl scale deploy/my-app-v2 -replicas=10
 $> kubectl delete -f my-app-v1.yaml
 ```
 
-**Session affinity ensures that all client requests sent to the same Pod**
+**Session affinity ensures that all client requests sent to the same Pod.**
 
-**Rolling back a Deployment**
+**Rolling back a Deployment.**
 
 ```console
 $> kubectl rollout undo deployment [DEPLOYMENT_NAME]
@@ -1035,49 +1035,49 @@ $> kubectl rollout undo deployment [DEPLOYMENT_NAME] --to-revision=2
 $> kubectl rollout history deployment [DEPLOYMENT_NAME] --revision=2
 ```
 
-**Pausing a Deployment**
+**Pausing a Deployment.**
 
 ```console
 $> kubectl rollout pause deployment [DEPLOYMENT_NAME]
 ```
 
-**Resuming a Deployment**
+**Resuming a Deployment.**
 
 ```console
 $> kubectl rollout resume deployment [DEPLOYMENT_NAME]
 ```
 
-**Monitoring a Deployment**
+**Monitoring a Deployment.**
 
 ```console
 $> kubectl rollout status deployment [DEPLOYMENT_NAME]
 ```
 
-**Deleting a Deployment**
+**Deleting a Deployment.**
 
 ```console
 $> kubectl delete deployment [DEPLOYMENT_NAME]
 ```
 
-### Pod Networking
+### Pod Networking.
 
-**A Pod is a group of containers with shared storage and networking**
+**A Pod is a group of containers with shared storage and networking.**
 
-**Your workload doesn't run in a single Pod**
+**Your workload doesn't run in a single Pod.**
 
-**Pod-to-Pod communication on the same node**
+**Pod-to-Pod communication on the same node.**
 
 ![Pod-to-Pod](gcp-img/kubernetes/gcp-kube-pod-to-pod.png "Pod-to-Pod")
 
-**Nodes get Pod IP addresses from address ranges assigned to your Virtual Private Cloud**
+**Nodes get Pod IP addresses from address ranges assigned to your Virtual Private Cloud.**
 
 - VPCs are logically isolated networks that provide connectivity for resources you deploy within GCP.
 
-**Addressing the Pods**
+**Addressing the Pods.**
 
-### Volumes
+### Volumes.
 
-**Kubernetes offers storage abstraction options**
+**Kubernetes offers storage abstraction options.**
 
 - Volumes:
     - Volumes are the method by which you attach storage to a Pod.
@@ -1089,13 +1089,13 @@ $> kubectl delete deployment [DEPLOYMENT_NAME]
     - Are independent of the Pod's lifecycle.
     - May exists before Pod creation and be claimed.
 
-**A Volume is a directory that's accessible to the containers in a Pod**
+**A Volume is a directory that's accessible to the containers in a Pod.**
 
 ```console
 $> kubectl create -f pod.yaml
 ```
 
-**Creating a Pod with an NFS Volume**
+**Creating a Pod with an NFS Volume.**
 
 ```yaml
 apiVersion: v1
@@ -1118,9 +1118,9 @@ spec:
 
 ![NFS Volume](gcp-img/kubernetes/gcp-kube-nfs-volume.png "NFS Volume")
 
-**Data saved on NFS Volumes will outlive the Pod**
+**Data saved on NFS Volumes will outlive the Pod.**
 
-**The benefits of PersistentVolumes**
+**The benefits of PersistentVolumes.**
 
 - Abstracts storage provisioning from storage consumption.
 - Promotes microservices architecture.
@@ -1131,7 +1131,7 @@ spec:
 
 ![PV PVC](gcp-img/kubernetes/gcp-kube-pv-pvc.png "PV PVC")
 
-**Creating Compute Engine persistent disk using a `gcloud` command**
+**Creating Compute Engine persistent disk using a `gcloud` command.**
 
 ```console
 $> gcloud compute disks create
@@ -1139,7 +1139,7 @@ $> gcloud compute disks create
    --zone=us-central1-a demo-disk
 ```
 
-**Creating and using a Compute Engine persistent disk**
+**Creating and using a Compute Engine persistent disk.**
 
 ```yaml
 [...]
@@ -1157,17 +1157,17 @@ spec:
         fsType: ext4
 ```
 
-**Creating Compute Engine Persistent Disk**
+**Creating Compute Engine Persistent Disk.**
 
-**Configuring Volumes in Pods makes portability difficult**
+**Configuring Volumes in Pods makes portability difficult.**
 
-**PersistentVolumes abstraction has two components**
+**PersistentVolumes abstraction has two components.**
 
 ![PersistentVolumes](gcp-img/kubernetes/gcp-kube-persistentvolume.png "PersistentVolumes")
 
-**PersistentVolumes must be claimed**
+**PersistentVolumes must be claimed.**
 
-**PersistentVolume manifest**
+**PersistentVolume manifest.**
 
 ```yaml
 apiVersion: v1
@@ -1198,7 +1198,7 @@ parameters:
     replication-type: none
 ```
 
-**Use SSD**
+**Use SSD.**
 
 ```yaml
 apiVersion: v1
@@ -1226,19 +1226,19 @@ parameters:
     type: pd-ssd
 ```
 
-### Proxies
+### Proxies.
 
-**Forward Proxy**
+**Forward Proxy.**
 
 - A server that sits between a client and servers and acts on behalf of the client, typically used to mask the
 client's identity (IP address). 
 - Note that forward proxies often referred to as just proxies.
 
-**Reverse Proxy**
+**Reverse Proxy.**
 
 - A server that sits between clients and servers and acts on behalf of the servers, typically used for logging, load 
 balancing or caching.
 
-**Nginx**
+**Nginx.**
 
 - Nginx is a very popular webserver that's often used as a **reverse proxy** and **load balancer**.

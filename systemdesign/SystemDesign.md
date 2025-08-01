@@ -1,6 +1,6 @@
-# System Design
+# System Design.
 
-## GFS
+## GFS.
 
 - Google File System (GFS) is a distributed file system designed to provide efficient, reliable access to large data sets.
 - It was developed by Google and used in their data centers to store and process large amounts of data.
@@ -9,7 +9,7 @@
 - The file system also includes a number of features such as versioning, fault tolerance, and automatic data replication
   to ensure data availability and reliability.
 
-**How GFS works**
+**How GFS works.**
 
 - Google File System (GFS) works by dividing large files into smaller chunks called chunkservers and storing these chunks
   across many machines in a distributed manner.

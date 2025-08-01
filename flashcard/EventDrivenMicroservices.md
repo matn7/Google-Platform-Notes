@@ -1,6 +1,6 @@
 # Event Driven Microservices with CQRS, Saga, Event Sourcing.
 
-**Agenda**
+**Agenda.**
 1. Database-per-service pattern.
 2. API composition pattern.
 3. Command Query Responsibility Segregation (CQRS).
@@ -25,7 +25,7 @@ solely through API.
 By decoupling data stores, the overall resiliency of your application is enhanced, preventing any single database from
 becoming a single point of failure.
 
-**Benefits**
+**Benefits.**
 * Loose Coupling.
 * Independent Scaling.
 * Faster development.
@@ -39,7 +39,7 @@ data replication or using an API to aggregate data.
 * Data Consistency: Ensuring data consistency across services can be challenging, especially when a business process spans
 multiple services.
 * Complex Transactions: Distributed transactions across multiple services and their databases are difficult to manage.
-Techniques like Sage patterns or eventual consistency are often used.
+Techniques like Saga patterns or eventual consistency are often used.
 * Data Duplication: Sometimes, the same data needs to be stored in multiple services, leading to data duplication and
 challenges in keeping this data synchronized.
 
@@ -187,7 +187,7 @@ in the past, such as "MoneyDebited", "MoneyCredited" etc.
 * Event Store: This is a specialized database where events are stored. Events are appended to the store in the order they
 occur and can be replayed to recreate the state of the system.
 * Aggregate: In Event Sourcing, aggregates are the primary objects that encapsulate state and behavior. They produce and
-process events. Foe example, a Transaction might be an aggregate that processes events like "MoneyDebited" or "MoneyCredited".
+process events. For example, a Transaction might be an aggregate that processes events like "MoneyDebited" or "MoneyCredited".
 * Projections: Projections are read-only views or models built from the sequence of events. They are often used to query
 the current state of the system or generate reports. Projections can be updated in real-time as new events occur.
 
@@ -228,7 +228,7 @@ Principle (SRP), making the system flexible and easy to test.
 * Using different Read and Write models with a single database allows for performance optimization on both sides. While
 both share the same database, you can use a heavier ORM for writing and a lightweight model for querying. This setup 
 maintains strong consistency with low to medium complexity and scalability.
-* Write model often involve Domain-Driven Design (DDD), while simpler DTOs handle Redis, optimized for fast serialization
+* Write model often involve Domain-Driven Design (DDD), while simpler DTOs handle Reads, optimized for fast serialization
 and querying with minimal mapping.
 * Since changes are committed in a single atomic transaction, consistency is ensured, allowing for better query performance
 without added complexity.

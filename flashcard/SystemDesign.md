@@ -1,9 +1,9 @@
-System Design
+System Design.
 
 1) Zookeeper & Schema Registry? 
 Answer: Zookeeper: Manage cluster, store metadata. Schema registry: Stores versioned history of all schemas by ID.
-Producer: Send schema to schema registry and get schema ID. Consumer: Retrieve schema by ID. Data is serialized/deserialized 
-with registered schema.
+Producer: Send schema to schema registry and get schema ID. 
+Consumer: Retrieve schema by ID. Data is serialized/deserialized with registered schema.
 
 2) Why is replication across multiple Kafka Servers needed in production environment?
 Answer: To compensate for the failure of any one.
@@ -67,7 +67,7 @@ a) Designed for machine-to-machine (or app to app) interaction.
 b) Should be interoperable, not platform dependent. 
 c) Should allow communication over a network.
 
-15) We have a computer with a single core? 
+15) We have a computer with a single core?
 Answer: We can achieve concurrency using multiple threads. We can achieve concurrency using multiple processes. 
 We can only achieve parallelism with multiple cores, but by multitasking, the OS can achieve concurrency using just one 
 core by the means of multithreading.
@@ -112,7 +112,7 @@ c) Scatter Gather.
 d) Execution Orchestrator for Microservices Architecture. 
 e) Choreography for Microservices Architecture.
 
-23) System Design Cloud Performance Pattern for Data Intensive Systems? 
+23) System Design Cloud Performance Pattern for Data Intensive Systems?
 Answer: 
 a) Map Reduce. 
 b) The Saga Pattern. 
@@ -369,7 +369,7 @@ structured.
 Answer: 
 a) Key / Value Store: Examples Redis, Aerospike, Amazon DynamoDB. 
 b) Document Store: Examples Cassandra, MongoDB. 
-c) Graph Database: Examples Amazon Neptune, Neo4j
+c) Graph Database: Examples Amazon Neptune, Neo4j.
 
 70) Non-Functional Requirements tools? 
 Answer: 
@@ -461,21 +461,16 @@ c) Error Rate.
 d) CPU and memory utilization.
 
 85) Load Balancing Solutions & Cloud Technologies? 
-Answer: HAProxy, NGINX. 
-a) Cloud Based LB Solutions: 
-    * AWS Elastic LB (ELB).
-    * GCP Cloud LB.
-    * Microsoft Azure LB.
-b) GSLB Solutions: 
-    * Amazon Route 53.
-    * Google Cloud Platform LB & Cloud DNS.
-    * Azure Traffic Manager.
+Answer: 
+a) HAProxy, NGINX. 
+b) Cloud Based LB Solutions: AWS Elastic LB (ELB). GCP Cloud LB. Microsoft Azure LB.
+b) GSLB Solutions: Amazon Route 53. Google Cloud Platform LB & Cloud DNS. Azure Traffic Manager.
 
 86) Load Balancing Implementation Considerations? 
 Answer: 
 a) Round Robin: For stateless applications. 
 b) Sticky Session / Session Affinity. 
-c) Least Connection: Task associated with long term connections (SQL, LDAP).
+c) The Least Connection: Task associated with long term connections (SQL, LDAP).
 
 87) Leader Algorithm? 
 Answer: Consensus Algorithm: A type of complex algorithm used to have multiple entities agree on a single data value, 
@@ -485,8 +480,8 @@ etcd, zookeeper.
 88) Latency and Throughput? 
 Answer: Latency and throughput are the two most important measures of the performance of a system.
 Latency: Time required to send packet from one computer to other in computer network. Measured in 'milliseconds'. 
-Check inter-node propagation time. 
-Throughput: Quantity of data, which can be send by network in a time. Measured in 'bytes per seconds', 
+Check internode propagation time. 
+Throughput: Quantity of data, which can be sent by network in a time. Measured in 'bytes per seconds', 
 'kilobytes per seconds'. Connection throughput limitation, use of resource be app or quality of connection.
 
 89) Key-Value Store? 
@@ -497,8 +492,8 @@ Popular options include DynamoDB, Etcd, Redis and Zookeeper.
 Answer: Key Differences: Size and complexity, Scalability, Development and Deployment, Technology Stack. 
 Advantages of microservices: Scalability, Flexibility, Resilience, Technology Diversity, Easy Maintenance, 
 Continuous Deployment, Decentralization. 
-Challenges: Complexity, Communication, Communication overhead, Data management, 
-Testing, Operational Overhead, Security, Service Discovery.
+Challenges: Complexity, Communication, Communication overhead, Data management, Testing, Operational Overhead, Security, 
+Service Discovery.
 
 91) Kafka what are arguments for a lower number of partitions?
 Answer: A Lesser memory consumed on the client. It takes less time to find a leader for each partition if the node fails.
@@ -610,7 +605,7 @@ Partitions: Smallest storage unit that holds subset of records. Producers: Write
 Consumers: Reads from a partition using an offset. Replication: Resilient and fault-tolerant. 
 Scaling: Partition strategy. Immutable append-only event logs.
 
-118) Kafka APIs? 
+118) Kafka APIs ? 
 Answer: The producer API Servers to send data. The consumer API servers to receive data. Streams API servers to transform the data.
 
 119) Kafka and Programming on Kafka? 
@@ -644,7 +639,7 @@ A simple data model. Use of a simple programming language.
 125) How is context switch invoked by OS and hardware? 
 Answer: Many processors have special context-switching instructions, such as the CALL, RET, JMP, or INT instructions,
 which allow control to be transferred from one process to another. Processors also have special registers that store 
-process state information, such as instruction counters, register status, and flags. In interrupt-based OS'es, 
+process state information, such as instruction counters, register status, and flags. In interrupt-based OSes, 
 context switching can be triggered by a hardware interrupt, such as from Real Time Clock, which triggers a program interrupt. 
 Others are thread-based.
 
@@ -662,9 +657,9 @@ between servers, using techniques such as two-phased-commit or a distributed con
 detection and correction, checksums or correction codes. Access control.
 
 129) Independent System Architecture Principles? 
-Answer: Principle 
-#1: The system must be divided into modules. Principle 
-#2: Two separate levels of architectural decisions: Macro Architecture: Concerns for all modules. 
+Answer: 
+Principle #1: The system must be divided into modules. 
+Principle #2: Two separate levels of architectural decisions: Macro Architecture: Concerns for all modules. 
 Micro Architecture: Decisions which can be made differently for each individual module.
 Principle #3: Modules must be separate process / containers / VMs.
 Principle #4: Standardized integration & communication.
@@ -758,7 +753,7 @@ Context and Execution Step. Responsibility for handling issues and retries.
 Answer: Allows for temporary inconsistencies between copies of data, but guarantees that those will be resolved. 
 Availability and Partition Tolerance are crucial. Ensuring Data Consistency: 
 a) Use Idempotent Operations. 
-b) Implement Data 
+b) Implement Data.
 c) Versioning. 
 d) Conflict resolution strategies "least write wins", "merge". 
 e) Asynchronous Communication. 
@@ -823,7 +818,7 @@ A central control plane is in charge of deciding where each chunk resides, routi
 and handling communication between machines. Different DFS implementations have slightly different APIs and semantics, 
 but they achieve the same common goal: extremely large-scale persistent storage.
 
-155) Differences between synchronous and asynchronous communication in microservices? 
+155) Differences between synchronous and asynchronous communication in microservices?
 Answer: Synchronous: Client sends a request and waits for a response before continuing communication.
 Suitability, Client requires immediate response, and can tolerate latency. Querying DB. 
 When strong consistency is essential. Asynchronous: Client sends a request and continues its operation without waiting 
@@ -910,7 +905,7 @@ d) 'pthread_yield()': C function, allows a thread to voluntarily donate CPU time
 e) 'sem_wait()' and 'sem_post()': C function, synchronization by using semaphores. 
 f) 'mutex_lock()' and 'mutex_unlock()': C function, synchronization by using mutexes.
 
-168) Context Switch Algorithms? 
+168) Context Switch Algorithms?
 Answer: Round-Robin: Divides CPU time to each task in order with a fixed time cycle. Priority-Based: Processor time is 
 allocated based on priorities. Shortest Job First: Allocates CPU to jobs based on their length. Guaranteed Scheduling: 
 Ensures that each task receives a specific amount of CPU time.
@@ -983,7 +978,7 @@ dependencies. Easier to test the business logic by mocking the dependencies even
 details. Replace an adapter implementation easily without touching the business logic. Independent development and 
 deployment of different parts.
 
-179) Circuit Breakers in context of microservice architecture, how contribute to the resilience? 
+179) Circuit Breakers in context of microservice architecture, how contribute to the resilience?
 Answer: Circuit breakers are a design pattern used in microservices to handle failures in remote services or 
 dependencies. They monitor the health of a service and, when failures or timeouts exceed a threshold, temporarily "open" 
 the circuit, preventing further requests to the failing service. Enhance resilience, by preventing cascading failures.
@@ -1044,7 +1039,7 @@ Answer: Domain events: For the communication between bounded context. Represents
 For example shopping cart. This event is triggered by bounded context order process, and it is received by the bounded 
 contexts shipping and payment to initiate shipping and invoicing of the order.
 
-191) Boundary Testing and its importance in software testing?
+191) Boundary Testing and its importance in software testing? // here
 Answer: Defect identification: Boundary conditions are often where software defects, such as overflow, 
 out-of-memory errors, or unexpected behavior. Robustness: Application handle extreme inputs gracefully. Security.
 
@@ -1098,7 +1093,7 @@ Answer: Advantages: Efficiency, Consistency, Regression Testing, Coverage, Conti
 Answer: A service is asynchronous if: It does not make a request to other microservices while processing requests.
 It makes a request to other microservices while processing requests and does not wait for the result.
 
-201) Describe Distributed architecture?
+201) Describe Distributed architecture? // here
 Answer: Many devices and machines connected via a network. Multiple devices work together to perform a single task or 
 set of tasks, sharing resources and information among themselves. Client-server architecture. Peer-to-Peer Architecture. 
 Microservice architecture. Cloud-based architecture. Distributed architecture allows for better scalability, reliability, 
