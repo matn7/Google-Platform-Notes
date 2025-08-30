@@ -11,11 +11,13 @@ Back a decade, all the applications used to be deployed as a Single unit where a
 server. We call this architecture approach as Monolith.
 
 ### Pros.
+
 - Simpler development and deployment for smaller teams and applications.
 - Fewer cross-cutting concerns.
 - Better performance due to no network latency.
 
 ### Cons.
+
 - Difficult to adopt new technologies.
 - Limited agility.
 - Single code base and difficult to maintain.
@@ -36,17 +38,19 @@ design and develop large-scale applications by decomposing them into smaller, mo
 developed, deployed, and managed.
 
 ### Pros.
+
 - Reusability of services.
 - Better maintainability.
 - Higher reliability.
 - Parallel development.
 
 ### Cons.
+
 - Complex management due to communication protocols (e.g. SOAP).
 - High investment costs due top vendor in middleware.
 - Extra overload.
 
-I have observed numerous instances of SOA where teams aimed to create smaller services, yet they remained tightly coupled
+Numerous instances of SOA where teams aimed to create smaller services, yet they remained tightly coupled
 to a shared database and required deploying everything as a cohesive unit. While they followed a service-oriented approach, 
 it cannot be classified as microservices.
 
@@ -60,6 +64,7 @@ building blocks. One microservice might represent Accounts, another Cards, and y
 constitute an entire bank system.
 
 ### Pros.
+
 - Easy to develop, test, and deploy.
 - Increase agility.
 - Ability to scale horizontally.
@@ -67,6 +72,7 @@ constitute an entire bank system.
 - Modeled Around a Business Domain.
 
 ### Cons.
+
 - Complexity.
 - Infrastructure overhead.
 - Security concerns.
@@ -79,7 +85,8 @@ production without requiring the deployment of other components. By doing so, nu
 
 ### Monolithic vs SOA vs Microservices.
 
-**Monolithic:**
+**Monolithic.**
+
 * Parallel deployment: NOT OK.
 * Agility: NOT OK.
 * Scalability: NOT OK.
@@ -87,7 +94,8 @@ production without requiring the deployment of other components. By doing so, nu
 * Complexity & Operational overhead: Great.
 * Security Concerns & Performance: Great.
 
-**SOA:**
+**SOA.**
+
 * Parallel Development: OK.
 * Agility: OK.
 * Scalability: OK.
@@ -95,7 +103,8 @@ production without requiring the deployment of other components. By doing so, nu
 * Complexity & Operational overhead: OK.
 * Security Concerns & Performance: OK.
 
-**Microservices:**
+**Microservices.**
+
 * Parallel Development: Great.
 * Agility: Great.
 * Scalability: Great.
@@ -113,9 +122,9 @@ automated deployment machinery.
 
 When considering a web application, the traditional approach involves packaging it as a WAR or EAR file. These archive 
 formats are commonly used to bundle Java applications, which are then deployed to web servers like Tomcat or application
-servers like WildFly. Do you thing the same approach works for building microservices? Of course not, because Organizations 
+servers like WildFly. Do you think the same approach works for building microservices? Of course not, because Organizations 
 may need to build 100s of microservices. Building, packaging, and deploying all the microservices using traditional
-methods can be an extremely challenging and practically impossible task. How to overcome this challenge? The cluse is
+methods can be an extremely challenging and practically impossible task. How to overcome this challenge? The clue is
 **Spring Boot**.
 
 ## Why Spring Boot for Microservices?
@@ -124,7 +133,7 @@ Why Spring Boot is the best framework to build microservice. Spring Boot is a fr
 deployment of Java applications, including microservices. With Spring Boot, you can build self-container, executable JAR files 
 instead of the traditional WAR or EAR files. These JAR files contain all the dependencies and configurations required to run
 the microservice. This approach eliminates the need for external web servers or application servers.
-- Provides a range of built-in features and integrations such as auto-configuration, dependency injection, and support for
+- Provides a range of built-in features and integrations such as autoconfiguration, dependency injection, and support for
 various cloud platforms.
 - Provides an embedded Tomcat, Jetty, or Undertow server, which can run the microservice directly without the need for a
 separate server installation.
@@ -135,7 +144,7 @@ pre-configured settings for various components such as databases, queues etc.
 for containerization, and enables seamless deployment to popular cloud providers.
 
 In the traditional approach, applications are typically packages as WARs and rely on the presence of a server in the
-execution environment for running. However, in the microservices paradigm, applications are packages ad self-contained JARs,
+execution environment for running. However, in the microservices paradigm, applications are packages as self-contained JARs,
 also called fat-JARs or uber-JARs, since they contain the application itself, the dependencies, and the embedded server.
 
 ![Microservices.](flashcard-img/why-spring-boot-microservices.png "Microservices.")
@@ -155,7 +164,7 @@ Attached are the standards that we need to follow while building REST services.
 - Business logic supporting CRUD operations:
   - Create - HttpMethod.POST.
   - Read - HttpMethod.GET.
-  - Update - HttpMethod.PUT/PATCH.
+  - Update - HttpMethod.PUT / PATCH.
   - Delete - HttpMethod.DELETE.
 - Proper input validation & Exception Handling:
   - Make sure all the REST services perform input validations, handle the runtime and business exceptions properly. In all
@@ -173,7 +182,8 @@ access layer.
 
 ![DTO.](flashcard-img/dto.png "DTO.")
 
-Here are some of benefits of using the DTO pattern:
+**Here are some of the benefits of using the DTO pattern.**
+
 - Reduces network traffic: DTOs can be used to batch up multiple pieces of data into a single object, which can reduce the
 number of network requests that need to be made. This can improve performance and reduce the load on your servers.
 - Encapsulates serialization: DTOs can be used to encapsulate the serialization logic for transferring data over the wire.
@@ -208,16 +218,16 @@ various annotations like '@PostMapping', '@GetMapping', '@PutMapping', '@DeleteM
 5. Perform data validations on the input: Perform validations on the input data using annotations present inside the
 **jakarta.validation** package. These annotations are like '@NotEmpty', '@Size', '@Email', '@Pattern', '@Validated',
 '@Valid' etc.
-6. Perform auditing using Spring Data JPA: With the help of annotations like '@createdDate', '@CreatedBy', '@LastModifiedDate',
+6. Perform auditing using Spring Data JPA: With the help of annotations like '@CreatedDate', '@CreatedBy', '@LastModifiedDate',
 '@LastModifiedBy', '@EntityListeners' & '@EnableJpaAuditing', we implemented logic to populate audit columns in DB.
 7. Documenting REST APIs: With the help of OpenAPI specifications, Swagger, Spring Doc library, we documented our REST APIs. 
 In the same process, we used annotations like '@Schema', '@Tag', '@Operation', '@ApiResponse' etc.
 
-### How to right size & identify service boundaries of microservices?
+## How to right size & identify service boundaries of microservices?
 
 One of the most challenging aspects of building a successful microservices system is the identification of proper microservice
 boundaries and defining the size of each microservice. Below are the most common approaches in the industry.
-- Domain-Driven Sizing: Since many of our modifications or enhancements driven by the business needs, we cam size/define
+- Domain-Driven Sizing: Since many of our modifications or enhancements driven by the business needs, we can size/define
 boundaries of our microservices that are closely aligned with Domain-Driven design & Business capabilities. But this process
 takes lot off time and need good domain knowledge.
 - Event Storming Sizing: Conducting an interactive fun session among various stakeholder to identify the list of important
@@ -235,7 +245,7 @@ independent modules have separate service maintaining loosely coupled & highly c
 - Saving Accounts, Trading Accounts, Debit Card, Credit Card, Home Loan, Vehicle Loan, Personal Loan: Not correct sizing
 as we can see too many services under loans & cards.
 
-## Monolith to Microservices.
+### Monolith to Microservices.
 
 Migration use case. Now let's take a scenario where an E-Commerce startup is following monolithic architecture and try to 
 understand what's the challenges with it.
@@ -256,13 +266,14 @@ Problem that E-Commerce team is facing due to traditional monolithic design.
 So the E-Commerce company decided and adopted the cloud-native design by leveraging Microservices architecture to make
 their life easier and less risk with the continuous changes.
 
-## Strangler Fig Pattern.
+### Strangler Fig Pattern.
 
 The Strangler Fig Pattern is a software migration pattern used to gradually replace or refactor a legacy system with a new
 system, piece by piece, without disrupting the existing functionality. This pattern gets its name from the way a strangler
 Fig plant grows around an existing tree, slowly replacing it until the original tree is no longer needed.
 
-**When to Use the Strangler Fig Pattern**:
+**When to Use the Strangler Fig Pattern.**
+
 - When you need to modernize a large or complex legacy system.
 - When you want to avoid the risk associated with a complete system rewrite or "big bang" migration.
 - When the legacy system needs to remain operational during the transition to the new system.
@@ -283,9 +294,10 @@ co-existence, and elimination.
 
 # Deployment, Portability & Scalability of Microservices.
 
-**Deployment**: How do we deploy all the tiny 100s of microservices with less effort & cost?
-**Portability**: How do we move our 100s microservices across environments with less effort, configuration & cost?
-**Scalability**: How do we scale our applications based on the demand on the fly with minimum effort & cost?
+* **Deployment**: How do we deploy all the tiny 100s of microservices with less effort & cost?
+* **Portability**: How do we move our 100s microservices across environments with less effort, configuration & cost?
+* **Scalability**: How do we scale our applications based on the demand on the fly with minimum effort & cost?
+
 To overcome the above challenges, we should **containerize** our microservices. Why? Containers offer a self-contained
 and isolated environment for applications, including all necessary dependencies. By containerizing an application, it
 becomes portable and can run seamlessly in any cloud environment. Containers enable unified management of applications 
@@ -303,15 +315,18 @@ resources; instead, they use the container engine.
 ## What are Containers & Docker?
 
 **What is software containerization?**
+
 Software containerization is an OS virtualization method that is used to deploy and run containers without using a virtual
 machine (VM). Containers can run on physical hardware, in the cloud, VMs, and across multiple OSs.
 
 **What is a container?**
+
 A container is a loosely isolated environment that allows us to build and run software packages. These software packages 
 include the code and all dependencies to run applications quickly and reliably on any computing environment. We call these
 packages as container images.
 
 **What is Docker?**
+
 Docker is an open-source platform that enables developers to automate the deployment, scaling, and management of applications
 using containerization. Containers are lightweight, isolated environments that encapsulate an application along with its
 dependencies, libraries, and runtime components.
@@ -324,13 +339,15 @@ machine (VM) runs a separate OS instance.
 In containerization, Linux features such as namespaces and cgroups play a crucial role in providing isolation and 
 resource management. Here's a brief explanation of these concepts.
 
-**Namespaces**:
+**Namespaces.**
+
 Linux namespaces allow for the creation of isolated environments within the operating system. Each container has its own
 set of namespaces, including process, network, mount, IPC (Inter Process Communication), and user namespaces. These
 namespaces ensure that processes within a container are only aware of and can interact with resources within their specific
 namespace, providing a level of isolation.
 
-**Control Groups**:
+**Control Groups.**
+
 cgroups provide resource management and allocation capabilities for containers. They allow administrators to control and
 limit the resources (such as CPU, memory, disk I/O, and network bandwidth) that containers can consume. By using cgroups, 
 container runtimes can enforce resource restrictions and prevent one container from monopolizing system resources, ensuring
@@ -342,10 +359,10 @@ how is Docker supposed to work on a macOS or Windows machine. Let's try to under
 ### How does docker works on Mac & Windows OS?
 
 When you install Docker on a Linux OS, you receive the complete Docker Engine on your Linux host. However, if you opt for
-Docker Desktop for Max or Windows, only the Docker client is installed on your macOS or Windows host. Behind the scenes,
+Docker Desktop for Mac or Windows, only the Docker client is installed on your macOS or Windows host. Behind the scenes,
 a lightweight virtual machine is configured with Linux, and the Docker server component is installed within that virtual
 machine.
-As a user, you experience will be very similar to using Docker on a Linux machine, with minimal noticeable differences.
+As a user, your experience will be very similar to using Docker on a Linux machine, with minimal noticeable differences.
 However, when you utilize the Docker CLI to execute commands, you are actually interacting with a Docker server running
 on a separate machine, which in this case is the Linux-based virtual machine.
 To confirm this configuration, you can start Docker and execute 'docker version' command. You will observe that the Docker
@@ -354,13 +371,16 @@ is opening on the 'linux/amd64' architecture.
 
 ### Docker Architecture?
 
-**Docker Client**:
+**Docker Client.**
+
 Docker remote API, Docker CLI. We can issue commands to Docker Daemon using either Docker CLI or APIs.
 
-**Docker Host/Server**:
+**Docker Host/Server.**
+
 Docker Daemon. Using Docker Daemon we can create & manages the docker images.
 
-**Docker Registry**:
+**Docker Registry.**
+
 Docker Hub, Private Registry. The docker images can be maintained and pulled from the docker hub or private container 
 registries.
 
@@ -385,7 +405,8 @@ simplifies containerization since with it, we don't need to write a low-level do
 
 ### Running a Spring Boot app as a container using Dockerfile.
 
-**Steps to be followed**:
+**Steps to be followed.**
+
 1. Run maven command, 'mvn clean install' from the location where pom.xml is present to generate a fat jar inside target folder.
 2. Write instructions to Docker inside a file with the name **Dockerfile** to generate a Docker image.
 3. Execute the docker command: 'docker build . -r panda/accounts:s4' from the location where Dockerfile is present. This
@@ -393,7 +414,7 @@ will generate the docker image based on the tag name provided.
 4. Execute the docker command: 'docker run -p 8080:8080 panda/accounts:s4'. This will start the docker container based on
 the docker image name and port mapping provided.
 
-**Sample Dockerfile**
+**Sample Dockerfile.**
 
 ```dockerfile
 # Start with a base image containing Java runtime
@@ -422,7 +443,8 @@ the external port and second value represent the container port).
 
 ### Running a Spring Boot app as a container using Buildpacks.
 
-**Steps to be followed**:
+**Steps to be followed.**
+
 1. Add the configurations inside pom.xml. Make sure to pass the image name details.
     ```xml
     <build>
@@ -450,7 +472,8 @@ code without the need to write a Dockerfile.
 
 ### Running a Spring Boot app as a container using Google Jib.
 
-**Steps to be followed**:
+**Steps to be followed.**
+
 1. Add the configurations inside the pom.xml. Make sure to pass the image name details.
     ```xml
     <build>
@@ -566,7 +589,7 @@ distributed architecture, load balancing, and automated failure recovery to ensu
 databases, message queues, caching systems, and identity services. This allows developers to focus more on application
 logic and less on managing infrastructure components.
 
-## Difference between Cloud Native & Traditional apps.
+## Difference between Cloud Native & Traditional apps. here
 
 **Cloud Native Applications.**
 
@@ -825,13 +848,16 @@ actions. Implementing identity and access management standards can greatly enhan
 # Configuration Management in Microservices.
 
 **Separation of configs/properties.**
+
 How do we separate the configurations/properties form the microservices so that same Docker image can be deployed in 
 multiple environments.
 
 **Inject configs/properties.**
+
 How do we inject configurations/properties that microservice need during start up of the service.
 
 **Maintain configs/properties.**
+
 How do we maintain configurations/properties in a centralized repository along with versioning of them.
 
 There are multiple solutions available in Spring Boot ecosystem to handle this challenge. Below are the solutions.
@@ -853,7 +879,7 @@ of the application artifact across environments. Regardless of the deployment en
 unchanged. In cloud native applications, each deployment involves combining the build with specific configuration data.
 This allows the same build to be deployed to multiple environments while accommodating different configuration requirements.
 
-### How Configurations work in Spring Boot?.
+### How Configurations work in Spring Boot?
 
 Spring Boot lets you externalize your configuration so that you can work with the same application code in different
 environments. You can use variety of external configuration sources, include Java properties files, YAML files,
@@ -916,7 +942,7 @@ So basically a profile can influence the application properties loaded and beans
 
 The default profile is always active. Spring Boot loads all properties in 'application.properties' into the default profile.
 We can create another profiles by creating property files like 'application_prod.properties' or 'application_qa.profiles'.
-We can activate a specific profile using 'spring.profiles.active' property like 'sping.profiles.active=prod'.
+We can activate a specific profile using 'spring.profiles.active' property like 'spring.profiles.active=prod'.
 
 An important point to consider is that once an application is built and packaged, it should not be modified. If any 
 configuration changes are required, such as updating credentials or database handles, they should be made externally. 
@@ -938,7 +964,7 @@ for CLI arguments.
 
 JVM system properties, similar to command-line arguments, can override Spring properties with a lower priority. This approach
 allows for externalizing the configuration without the need to rebuild the JAR artifact. The JVM system property follows the
-same naming convention as the corresponding Spring property, prefixed with -D for JVM arguments, In the application, the
+same naming convention as the corresponding Spring property, prefixed with '-D' for JVM arguments, In the application, the
 message defined as a JVM system property will be utilized, taking precedence over property files.
 
 ```bash
@@ -958,10 +984,8 @@ environment variables, such as the 'System.getenv()' method.
 To map a Spring property key to an environment variable, you need to convert all letters to uppercase and replace any dots
 or dashes with underscores. Spring Boot will handle this mapping correctly internally. For example, an environment variable
 named 'BUILD_VERSION' will be recognized as the property 'build.version'. This feature is known as relaxed binding.
-
-Windows: 'env:BUILD_VERSION="1.3"; java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
-
-Linux based OS: 'BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
+* Windows: 'env:BUILD_VERSION="1.3"; java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
+* Linux based OS: 'BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
 
 ### Drawbacks of externalized configurations using Spring Boot alone.
 
@@ -982,7 +1006,7 @@ a complete restart?
 ### Spring Cloud Config.
 
 A centralized configuration server with Spring Cloud Config can overcome all the drawbacks that we discussed in the previous
-slide. Sping Cloud Config provides server and client-side support for externalized configuration in a distributed system.
+slide. Spring Cloud Config provides server and client-side support for externalized configuration in a distributed system.
 With the Config Server you have a central place to manage external properties for applications across all environments.
 
 Centralized configuration resolves around two core elements:
@@ -1147,14 +1171,17 @@ Probes by using health groups: "/actuator/health/liveness" and "/actuator/health
 # Service Discovery & Registration in Microservices.
 
 **How do services locate each other inside a network?**
+
 Each instance of a microservice exposes a remote API with it's own host and port. How do other microservices & clients
 know about these dynamic endpoint URLs to invoke them. So where is my service?
 
 **How do new service instances enter into the network?**
+
 If a microservice instance fails, new instances will be brought online to ensure constant availability. This means that
 the IP address of the instances can be constantly changing. So how does these new instances can start serving to the clients?
 
 **Load balance, info sharing between microservice instances.**
+
 How do we make sure to properly load balance between the multiple microservice instances especially a microservice is
 invoking another microservice? How do a specific service information shared across the network?
 
@@ -1228,7 +1255,7 @@ Client-side service discovery and server-side service discovery are distinct app
 problem in different contexts.
 
 In modern microservice architecture, knowing the right network location of an application is a much more complex problem
-for the clients as service instances might have dynamically assigned IP addresses. More-over the number instances may vary
+for the clients as service instances might have dynamically assigned IP addresses. Moreover, the number instances may vary
 due to autoscaling and failures.
 Microservices service discovery & registration is a way for applications and microservices to locate each other on a network.
 This includes:
@@ -1247,8 +1274,8 @@ service registry for the associated IP address. If multiple instances of the ser
 list of IP addresses. The client application then selects one based on its own defined load-balancing strategy. 
 Below workflow illustrates this process:
 1. Loans service registers with Service registry during startup & send regular heart beats.
-2. Accounts microservice to Service Registry. Dude, what are address details of loans service?
-3. Service Registry to Accounts microservice. Buddy, here are the IP addresses of Loans instances.
+2. Accounts microservice to Service Registry. What are address details of loans service?
+3. Service Registry to Accounts microservice. Here are the IP addresses of Loans instances.
 4. Accounts microservice is going to invoke one of the instance of loans based on the load balancing strategy configured.
 
 ![Client-side service discovery and load balancing](flashcard-img/client-side-service-discovery.png "Client-side service discovery and load balancing")
@@ -1411,21 +1438,24 @@ the expected heartbeats per minute.
 6. 'eureka.server.enable-self-preservation=true': By default self-preservation mode is enabled but if you need to disable
 it you can change it to 'false'.
 
-# Routing, cross-cutting concerns in microservices.
+# Routing, cross-cutting concerns in microservices. here
 
 **How do we maintain a single entrypoint into microservices network?**
+
 How do we build a single gatekeeper for all the inbound traffic to our microservices. This way the client doesn't need to
 keep track of the different services involved in a transaction, simplifying the client's logic.
 
 **How do we handle cross-cutting concerns?**
+
 In a distributed microservices architecture, how do we make sure to have a consistently enforced cross-cutting concerns
 like logging, auditing, tracing and security across multiple microservices.
 
 **How do we route based on custom requirements?**
+
 How to provide dynamic routing capabilities, which allows to define routing rules based on various criteria such as HTTP
 headers, request parameters etc. inside microservices network?
 
-These challenges in microservices can be solved using a Edge server.
+These challenges in microservices can be solved using an Edge server.
 
 In a scenario where multiple clients directly connect with various services, several challenges arise. For instance, clients
 must be aware of the URLs of all the services, and enforcing, common requirements such as security, auditing, logging, and
@@ -1468,7 +1498,7 @@ Here are the key aspects of Spring Cloud Gateway:
 a service gateway in place, our service clients never directly call the URL of an individual service, but instead place all
 calls to the service gateway.
 2. Spring Cloud Gateway is a library for building an API gateway, so it looks like any another Spring Boot application. 
-If you're a Spring developer, you'll find it's very easy to get started with Sping Cloud Gateway with just a few lines of code.
+If you're a Spring developer, you'll find it's very easy to get started with Spring Cloud Gateway with just a few lines of code.
 3. Spring Cloud Gateway is intended to sit between a requester and a resource that's being requested, where it intercepts,
 analyzes, and modifies every request. That means you can route requests based on their context. Did a request include a
 header indicating an API version? We can route that request to the appropriately versioned backend. Does the request
@@ -1616,7 +1646,7 @@ Resilience4J provides a comprehensive set of features for building resilient app
 Java developers.
 
 ### Resiliency using Resilience4J.
-
+[Microservices.md](Microservices.md)
 Resilience4J is a lightweight fault tolerance library designed for functional programming. It offers the following patterns
 for increasing fault tolerance due to network problems or failure of any of the multiple services:
 1. Circuit breaker: Used to stop making requests when a service invoked is failing.
@@ -1924,7 +1954,7 @@ Monitoring in microservices is important because it allows you to:
 1. Identify and troubleshoot problems: By collecting and analyzing data from your microservices, you can identify problems
 before they cause outages or other disruptions.
 2. Track the health of your microservices: Monitoring can help you to track the health of your microservices, so you can 
-identify any microservices that are under-performing ot that are experiencing problems.
+identify any microservices that are under-performing or that are experiencing problems.
 3. Optimize your microservices: By monitoring your microservices, you can identify areas where you can optimize your microservices
 to improve performance and reliability.
 
@@ -1934,13 +1964,13 @@ as the three pillars of observability.
 
 ## Observability vs Monitoring.
 
-Monitoring:
+**Monitoring.**
 1. Purpose: Identify and troubleshoot problems.
 2. Data: Metrics, traces, and logs.
 3. Goal: Identify problem.
 4. Approach: Reactive.
 
-Observability:
+**Observability.**
 1. Purpose: Understand the internal state of a system.
 2. Data: Metrics, traces, logs, and other data sources.
 3. Goal: Understand how a system works.
@@ -1977,7 +2007,7 @@ To address this challenge, microservices architectures often use centralized log
 all the services in the architecture and stores them in a single location. This makes it easier to find and troubleshoot
 problems, as you only need to look in one place.
 
-### Managing logs with Grafana, Loki & Promtail.
+### Managing logs with Grafana, Loki & Promtail. here
 
 Grafana is an open-source analytics and interactive visualization web application. It provides charts, graphs, and alerts for
 the web when connected to supported data sources. It can be easily installed using Docker or Docker Compose.
@@ -2071,7 +2101,7 @@ ID, we can retrieve all log messages associated with a specific transaction from
   * A span represent each individual storage of request processing, encompassing start and end timestamps, and is uniquely
   identified by combination of trace ID and `span ID`.
 
-1. When a client request received at the edge server if the first service inside the network, a trace ID lika abc123def will
+1. When a client request received at the edge server if the first service inside the network, a trace ID like 'abc123def' will
 be generated, and it is going to be same through the request.
 2. Apart from trace ID and span ID, a metadata information can also be attached to the logs using Tags. For example, here
 we added service name which is accounts.
@@ -2101,14 +2131,17 @@ Grafana Query, search, visualize the traces with Tempo as datasource.
 # Microservices Security.
 
 **Securing Microservices from unauthorized access?**
+
 How to secure our microservices and protect them from unauthorized access by client applications or end users? Right now
 all our services doesn't have security and any one can invoke them to get a response which have sensitive data.
 
 **Authentication and Authorization.**
+
 How can our microservices can authenticate and authorize users and services to access them. Our microservices should be
 capable of performing identification, authentication & authorization.
 
 **Centralized identity and access management (IAM).**
+
 How to maintain a centralized component to store user credentials, handling identity & access management.
 
 Using OAuth2 / OpenID Connect, KeyCloak (IAM), Spring Security we can secure the microservices and handle all the above 
@@ -2125,13 +2158,11 @@ user can access protected features and resources.
 
 **Drawbacks of Basic authentication.**
 
-Backend server or business logic is tightly coupled with the Authentication/Authorization logic. Not mobile flow/REST
+* Backend server or business logic is tightly coupled with the Authentication/Authorization logic. Not mobile flow/REST
 API friendly.
-
-Basic authentication flow does not accommodate well the use case where users of one product or service would like to grant
+* Basic authentication flow does not accommodate well the use case where users of one product or service would like to grant
 third-party clients access to their information on the platform.
-
-How come, Google let me use the same account in all it's products? Though they are different websites/Apps?
+* How come, Google let me use the same account in all it's products? Though they are different websites/Apps?
 Well the answer is with the help of OAuth2. OAuth2 recommend to use a separate Auth server for Authentication & Authorization.
 
 ### Introduction to OAuth2.
@@ -2329,16 +2360,19 @@ response.
 # Building Event-driven microservices.
 
 **Avoiding temporal coupling whenever possible.**
+
 Temporal coupling occurs when a caller service expects an immediate response from a callee service before continuing its
 processing. If the callee experiences any delay in responding, it negatively impacts the overall response time of the caller.
 This scenario commonly arises in synchronous communication between services. How can we prevent temporal coupling and
 mitigate its effects?
 
 **Using asynchronous communication.**
+
 Synchronous communication between services is not always necessary. In many real-world scenarios, asynchronous communication
 can fulfill the requirements effectively. So, how can we establish asynchronous communication between services?
 
 **Building event driven microservices.**
+
 An event, as an incident, signifies a specific occurrence within a system, such as a state transition. Multiple sources
 can generate events. When an event takes place, it is possible to alert the concerned parties. How can one go about
 constructing event-driven services with these characteristics.
@@ -2510,14 +2544,15 @@ This configuration provides the necessary infrastructure for implementing event-
 1. Add the Stream related dependencies: Add the maven dependencies `spring-cloud-stream`, `spring-cloud-stream-binder-rabbit` 
 inside `pom.xml` of message service where we defined functions.
 2. Add the stream binding and rabbitmq properties inside `application.yaml` of message service.
-3. 
-We need to define input bindings for each function accepting input data and an output binding for each function returning
+3. We need to define input bindings for each function accepting input data and an output binding for each function returning
 output data. Each binding can have a logical name following the below convention. Unless you use partitions (for example,
 with Kafka), the '[index]' part of the name will always be 0. The '[functionName]' is computed from the value of the 
 'spring.cloud.function.definition' property.
 
+```
 Input binding: '[functionName] + -in- + [index]'.
 Output binding: '[functionName] + -out- + [index].
+```
 
 The binding names exist only in Spring Cloud Stream and RabbitMQ doesn't know about them. So to map between the Spring
 Cloud Stream binding and RabbitMQ, we need to define destination which will be the exchange inside the RabbitMQ. Group 
@@ -2643,7 +2678,7 @@ Apache Kafka is an open-source distributed event streaming platform. It is desig
 streams and enables high-throughput, fault-tolerant, and scalable data processing. It is used to build real-time streaming
 data pipelines and applications that adapt to the data streams.
 Here are some key concepts and components of Kafka:
-* Producers: Producers are responsible for publishing messages to Kafka topics. They write messages to a specific topic,![image.CTTY62.png](../../../../../../tmp/evince-14546/image.CTTY62.png)
+* Producers: Producers are responsible for publishing messages to Kafka topics. They write messages to a specific topic,
 and Kafka appends these messages to the topic's log.
 * Topics: Kafka organizes data into topics. A topic is a particular stream of data that can be divided into partitions.
 Each message within a topic is identified by its offset.
@@ -2777,14 +2812,17 @@ spring:
 # Container Orchestration.
 
 **Automating the deployments, rollouts & rollbacks?**
+
 How do we automate deployment of the containers into a complex cluster env and perform rollout of new versions of the
 containers without downtime along with an option of automatic rollback in case of any failure.
 
 **Making sure our services are self-healing?**
+
 How do we automatically restart containers that fail, replaces containers, kill containers that don't respond to your
 user-defined health check, and doesn't advertise them to clients until they are ready to serve.
 
 **Autoscaling our services?**
+
 How do we monitor our services and scale them automatically based on metrics like CPU Utilization etc.?
 
 Kubernetes is an open-source container orchestration platform that automates the deployment, scaling, and management
@@ -2885,7 +2923,7 @@ rolling updates, and rollbacks.
 * Metadata: The metadata section contains information about the Deployment, such as its name and labels. The Deployment is
 named "accounts-deployment", and it has the label "app:accounts".
 * Spec: The spec section defines the desired state of the Deployment.
-* Replicas: The replicas field is set to 1, indicating that only one replica of the container should ne running at any given
+* Replicas: The replicas field is set to 1, indicating that only one replica of the container should be running at any given
 time.
 * Selector: The selector field is used to select the pods controlled by this Deployment. In this case, it's using the label
 "app:accounts" to identify the pods.
@@ -2919,7 +2957,7 @@ spec:
     spec:
       containers:
         - name: accounts
-          image: panda/accounts:latest
+          image: pandatronik/accounts:latest
           ports:
             - containerPort: 8080
           env:
@@ -3011,6 +3049,7 @@ NodePort type services.
 # Introduction to HELM.
 
 **What is HELM?**
+
 Helm is renowned as the "package manager of Kubernetes", aiming to enhance the management of Kubernetes projects by offering
 users a more efficient approach to handling the multitude of YAML files involved.
 
@@ -3106,14 +3145,17 @@ service:
 ```
 
 **Helm supports packaging of yaml files.**
+
 With the help of Helm, we can package all of the YAML manifest files belongs in to an application into a Chart. The same
 can be distributed into public or private repositories.
 
 **Helm supports easier installation.**
+
 With the help of Helm, we can setup/upgrade/rollback/remove entire microservices applications into K8s cluster with just
-1 command. No need to manually run kubectl apply command for each manifest file.
+1 command. No need to manually run 'kubectl apply' command for each manifest file.
 
 **Helm supports release/version management.**
+
 Helm automatically maintains the version history of the installed manifest. Due to that rollback of entire K8s cluster
 to the previous working state is just a single command anyway.
 
@@ -3126,7 +3168,8 @@ similarly Helm automates the installation, rollback, upgrade of the multiple K8s
 ![Helm chart structure](flashcard-img/helm-structure.png "Helm chart structure")
 
 * Top level 'wordpress' folder is the name of the chart that we have given while installing/creating the chart.
-* 'Chart.yaml' will have meta information about the helm chart. 'values.yaml' will have dynamic values for the chart.
+* 'Chart.yaml' will have meta information about the helm chart. 
+* 'values.yaml' will have dynamic values for the chart.
 * 'charts' folder will have other charts which the current chart is dependent on.
 * 'templates' folder contains the manifest template yaml file.
 
@@ -3187,11 +3230,13 @@ Below are the different famous cloud providers and their support to Kubernetes w
 ### Kubernetes Ingress.
 
 **What is Ingress?**
+
 Ingress exposes HTTP and HTTPS routes from outside the cluster to services within the cluster. Traffic routing is
 controlled by rules defined on the Ingress resource. An Ingress may be configured to give Services externally-reachable
 URLs, load balance traffic, terminate SSL/TLS, and offer name-based virtual hosting.
 
 **What is Ingress Controller?**
+
 On its own, the Ingress resource doesn't do anything. You need to have an Ingress controller installed and configured in
 your cluster to make Ingress resources functional. Popular Ingress controllers include Nginx Ingress, Traefik, and
 HAProxy Ingress. The controller watches for Ingress resources and configures the underlying networking components
@@ -3226,6 +3271,7 @@ spec:
 ![Kubernetes Ingress](flashcard-img/kubernetes-ingress.png "Kubernetes Ingress")
 
 **Why Use Ingress?**
+
 Ingress provides several benefits:
 * Single Entry Point: It allows you to configure a single entry point for multiple services, making it easier to manage
 external access to your applications.
@@ -3233,17 +3279,19 @@ external access to your applications.
 certificates.
 * Path-Based Routing: You can route traffic to different services based on the request path (e.g., '/app1' goes to one
 service, '/app2' to another).
-* Host-Based Routing: You can route traffic based on the requested host or domain name (e.g., app1.example.com goes to
-one service, app2.example.com to another).
+* Host-Based Routing: You can route traffic based on the requested host or domain name (e.g., 'app1.example.com' goes to
+one service, 'app2.example.com' to another).
 * Load Balancing: It provides built-in load balancing for distributing traffic among multiple pods of the same service.
 * Annotations: Ingress resources can be customized using annotations. Annotations allow you to configure additional 
 settings, such as rewrite rules, custom headers, and authentication.
 
 **Ingress Controllers vs. Service Type LoadBalancer.**
+
 Ingress controllers are often compared to using Kubernetes Service resources of type LoadBalancer. While both can expose
 services externally, Ingress offers more advances routing and traffic management capabilities.
 
 **Types of traffic by Ingress Controller.**
+
 * Ingress traffic: Traffic entering a Kubernetes cluster.
 * Egress traffic: Traffic exiting a Kubernetes cluster.
 * Nort-south traffic: Traffic entering and exiting a Kubernetes cluster (also called ingress-egress traffic).
@@ -3367,8 +3415,8 @@ as symmetric encryption as both parties use same key for encryption and decrypti
 ![How does TLS works](flashcard-img/how-tls-works-flow.png "How does TLS works")
 
 **Asymmetric Encryption.**
-Private Key: using which any data encrypted with public can be decrypted.
-Public Key: using which any one can send encrypted data which can be understood by server which has private key.
+* Private Key: using which any data encrypted with public can be decrypted.
+* Public Key: using which any one can send encrypted data which can be understood by server which has private key.
 
 ### How is mTLS Different from TLS?
 

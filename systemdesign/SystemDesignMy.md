@@ -67,3 +67,9 @@
 17. CQRS - Issues/Drawbacks?
     * Eventual consistency between command DB and the query DB.
     * Overhead and complexity.
+18. Event Sourcing Benefits?
+    * Visualization.
+    * Auditing.
+    * Corrections.
+    * High Write Performance.
+19. 
