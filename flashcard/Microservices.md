@@ -22,7 +22,7 @@ server. We call this architecture approach as Monolith.
 - Limited agility.
 - Single code base and difficult to maintain.
 - Not Fault tolerance.
-- Tiny update and feature development always need a fill deployment.
+- Tiny update and feature development always need a full deployment.
 
 We have various forms of Monolithic with the names like Single-Process Monolith, Modular Monolith, Distributed Monolith.
 
@@ -407,7 +407,8 @@ simplifies containerization since with it, we don't need to write a low-level do
 
 **Steps to be followed.**
 
-1. Run maven command, 'mvn clean install' from the location where pom.xml is present to generate a fat jar inside target folder.
+1. Run maven command, 'mvn clean install' from the location where **pom.xml** is present to generate a fat jar inside 
+**target** folder.
 2. Write instructions to Docker inside a file with the name **Dockerfile** to generate a Docker image.
 3. Execute the docker command: 'docker build . -r panda/accounts:s4' from the location where Dockerfile is present. This
 will generate the docker image based on the tag name provided.
@@ -445,7 +446,7 @@ the external port and second value represent the container port).
 
 **Steps to be followed.**
 
-1. Add the configurations inside pom.xml. Make sure to pass the image name details.
+1. Add the configurations inside **pom.xml**. Make sure to pass the image name details.
     ```xml
     <build>
         <plugins>
@@ -461,7 +462,7 @@ the external port and second value represent the container port).
         </plugins>
     </build>
     ```
-2. Run the maven command: 'mvn spring-boot:build-image' from the location where pom.xml is present to generate the docker
+2. Run the maven command: 'mvn spring-boot:build-image' from the location where **pom.xml** is present to generate the docker
 image without the need of Dockerfile.
 3. Execute the docker command 'docker run -p 8090:8090 panda/loans:s4'. This will start the docker container based on the 
 docker image name and port mapping provided.
@@ -474,7 +475,7 @@ code without the need to write a Dockerfile.
 
 **Steps to be followed.**
 
-1. Add the configurations inside the pom.xml. Make sure to pass the image name details.
+1. Add the configurations inside the **pom.xml**. Make sure to pass the image name details.
     ```xml
     <build>
         <plugins>
@@ -491,7 +492,7 @@ code without the need to write a Dockerfile.
         </plugins>
     </build>
     ```
-2. Run the maven command 'mvn compile jib:dockerBuild' from location where pom.xml is present to generate the docker image
+2. Run the maven command 'mvn compile jib:dockerBuild' from location where **pom.xml** is present to generate the docker image
 without the need of Dockerfile.
 3. Execute the docker command 'docker run -p 9000:9000 panda/cards:s4'. This will start the docker container based on the
 docker image name and port mapping provided.
@@ -541,7 +542,7 @@ lifecycle.
 16. 'docker container logs -f [container-ID]': To follow log output of a given container ID.
 17. 'docker rm [container-ID]': To remove one or more containers based on container IDs.
 18. 'docker container prune': To remove all stopped containers.
-19. 'docker image push [container_registry/username:tag]': To push an image from a container registry.
+19. 'docker image push [container_registry/username:tag]': To push an image to a container registry.
 20. 'docker image pull [container_registry/username:tag]': To pull an image form a container registry.
 21. 'docker image prune': To remove all unused images.
 22. 'docker container stats': To show all containers statistics like CPU, memory, I/O usage.
@@ -556,7 +557,7 @@ lifecycle.
 
 # What are cloud native applications?
 
-**The layman definition.**
+**The Layman definition.**
 
 Cloud-native applications are software applications designed specifically to leverage cloud computing principles and take
 full advantage of cloud-native technologies and services. These applications are built and optimized to run in cloud environments,
@@ -589,7 +590,7 @@ distributed architecture, load balancing, and automated failure recovery to ensu
 databases, message queues, caching systems, and identity services. This allows developers to focus more on application
 logic and less on managing infrastructure components.
 
-## Difference between Cloud Native & Traditional apps. here
+## Difference between Cloud Native & Traditional apps.
 
 **Cloud Native Applications.**
 
@@ -644,7 +645,7 @@ principles and incorporates three new factors.
 14. Telemetry.
 15. Authentication & authorization.
 
-### One codebase, one application.
+### 1. One codebase, one application.
 
 The 15-Factor methodology ensures a one-to-one correspondence between an application and its codebase, meaning each application
 has a dedicated codebase. Shared code is managed separately as a library, allowing it to be utilized as a dependency or as
@@ -655,7 +656,7 @@ different environments, all leveraging the same application artifact. It is unne
 environment-specific deployment. Instead, any factors that vary between deployments, such as configuration settings, should
 be maintained externally from the application codebase.
 
-### API first.
+### 2. API first.
 
 In a cloud-native ecosystem, a typical setup consists of various services that interact through APIs. Adopting an API-first
 approach during the design phase of a cloud-native application encourages a mindset aligned with distributed systems and
@@ -665,7 +666,7 @@ This upfront design of the API contract results in more reliable and testable in
 deployment pipeline. Moreover, internal modifications to the API implementation can be made without impacting other applications
 or teams they rely on it.
 
-### Dependency management.
+### 3. Dependency management.
 
 It is crucial to explicitly declare all dependencies of an application in a manifest and ensure that they are accessible
 to the dependency manager, which can download them from a central repository.
@@ -676,16 +677,16 @@ we maintain a clear and controlled dependency management process for our applica
 
 **Sample flow when use Maven as build tool.**
 
-1. Maven reads the pom.xml file.
+1. Maven reads the **pom.xml** file.
 2. Check if the dependency jar/library is in local repository.
 3. If the dependent jar/library is not in local repository, then it searches the maven central repository.
-4. Download the Jar.
-5. Put the downloaded Jar in the local repository.
+4. Download the jar.
+5. Put the downloaded jar in the local repository.
 6. Copy the jar files.
 
 ![Dependency Management.](flashcard-img/dependency-management.png "Dependency Management.")
 
-### Design, build, release, run.
+### 4. Design, build, release, run.
 
 Codebase progression from design to production deployment involves below stages.
 * Design stage: Determine technologies, dependencies, and tools for specific application features.
@@ -702,7 +703,7 @@ ensuring reproducibility.
 
 ![Design, build, release, run.](flashcard-img/design-build-release-run.png "Design, build, release, run.")
 
-### Configuration, credentials & code.
+### 5. Configuration, credentials & code.
 
 According to the 15-Factor methodology, configuration encompasses all elements prone to change between deployments. It 
 emphasizes the ability to modify application configuration independently, without code changes or the need to rebuild the
@@ -717,7 +718,7 @@ files, but they should be stored in a distinct repository.
 The methodology recommends utilizing environment variables to store configuration. This enables deploying the same application
 in different environments while adapting its behavior based on the specific environment's configuration.
 
-### Logs.
+### 6. Logs.
 
 In a cloud-native application, log routing and storage are not the application's concern. Instead, applications should direct
 their logs to the standard output, treating them as sequentially ordered events based on time. The responsibility of log
@@ -726,7 +727,7 @@ access to the logs for inspection purposes.
 
 ![Logs.](flashcard-img/logs.png "Logs.")
 
-### Disposability.
+### 7. Disposability.
 
 In a traditional environment, ensuring the continuous operation of applications is a top priority, striving to prevent
 any terminations. However, in a cloud environment, such meticulous attention is not necessary. Applications in the cloud
@@ -743,7 +744,7 @@ ongoing ones, and the exiting. This process is straightforward for web processes
 types, it involves returning any pending jobs to the work queue before exiting.
 Docker containers along with an orchestrator like Kubernetes inherently satisfy this requirement.
 
-### Backing services.
+### 8. Backing services.
 
 Backing services refer to external resources that an application relies on to provide its functionality. These resources 
 can include databases, message brokers, caching systems, SMTP servers, FTP servers, or RESTful web services. By treating
@@ -756,7 +757,7 @@ In example, we can see that a local DB can be swapped easily to a third part DB 
 
 ![Backing services.](flashcard-img/backing-services.png "Backing services.")
 
-### Environment Parity.
+### 9. Environment Parity.
 
 Environment parity aims to minimize differences between various environments & avoiding costly shortcuts. Here, the adoption
 of containers can greatly contribute by promoting the same execution environment.
@@ -769,7 +770,7 @@ culture promotes collaboration between developers and operators, fostering the "
 locally but PostgreSQL in production. To achieve environment parity, it is recommended to use the same type and version
 of backing services across all environment.
 
-### Administrative processes.
+### 10. Administrative processes.
 
 Management task required to support applications, such as database migrations, batch jobs, or maintenance task, should
 be treated as isolated processes. Similar to application processes, the code for these administrative tasks should be
@@ -778,7 +779,7 @@ It is advisable to consider administrative tasks as independent microservices th
 or as functions configured within a stateless platform to respond to specific events. Alternatively, they can be integrated
 directly into the application, activated by calling a designated endpoint.
 
-### Port binding.
+### 11. Port binding.
 
 Cloud native applications, adhering to the 15-Factor methodology, should be self-contained and expose their services through
 port binding. In production environment, routing services may be employed to translate requests from public endpoints to the 
@@ -793,7 +794,7 @@ The services offered by the application are then exposed through port binding. F
 HTTP services to a specific port and can potentially serve as a backing service for another application. This is a common
 practice within cloud native systems.
 
-### Stateless processes.
+### 12. Stateless processes.
 
 Cloud native applications are often developed with high scalability in mind. One of the key principles to achieve scalability
 is designing applications as stateless processes and adopting a share-nothing architecture. This means that no state should
@@ -805,7 +806,7 @@ such as data stores. In other words, a stateless application relies on a separat
 required state, while application itself remains stateless. This approach allows for better scalability and flexibility while
 ensuring that necessary state is still maintained and accessible when needed.
 
-### Concurrency.
+### 13. Concurrency.
 
 Scalability is not solely achieved by creating stateless applications. While stateless is important, scalability also requires
 ability to serve a large number of users. This means the applications should support concurrent processing to handle multiple
@@ -818,7 +819,7 @@ Processes can be categorized based on their respective types. For instance, ther
 HTTP requests, as well as worker processes that execute scheduled background jobs. By classifying processes and optimizing
 their concurrency, applications can effectively scale and handle increased workloads.
 
-### Telemetry.
+### 14. Telemetry.
 
 Observability is a fundamental characteristics of cloud native applications. With the inherent complexity of managing a
 distributed system in the cloud, it becomes essential to have access to accurate and comprehensive data from each component
@@ -834,7 +835,7 @@ flows, health status to assess system well-being, and events to capture signific
 these types of telemetry data you can gain valuable insights into your applications and make informed decisions to manage
 them effectively from a remote location.
 
-### Authentication and Authorization.
+### 15. Authentication and Authorization.
 
 Security is critical aspect of a software system, yet it often doesn't receive the necessary emphasis it deserves. To uphold a
 zero-trust approach, it is essential to ensure that security of every interaction within the system, encompassing architectural
@@ -886,7 +887,7 @@ environments. You can use variety of external configuration sources, include Jav
 environment variables, and command-line arguments.
 
 * By default, Spring Boot look for the configurations or properties inside application.properties/yaml present in the 
-classpath location. But we can have other property files as well and make Spring Boot ro read from them.
+classpath location. But we can have other property files as well and make Spring Boot to read from them.
 * Spring Boot uses a very particular order that is designed to allow sensible overriding of values. Properties are considered
 in the following order (with the values from lower items overriding earlier ones):
 
@@ -941,7 +942,7 @@ cases like Bean creation based on a profile etc.
 So basically a profile can influence the application properties loaded and beans which are loaded into the Spring context.
 
 The default profile is always active. Spring Boot loads all properties in 'application.properties' into the default profile.
-We can create another profiles by creating property files like 'application_prod.properties' or 'application_qa.profiles'.
+We can create another profiles by creating property files like 'application_prod.properties' or 'application_qa.properties'.
 We can activate a specific profile using 'spring.profiles.active' property like 'spring.profiles.active=prod'.
 
 An important point to consider is that once an application is built and packaged, it should not be modified. If any 
@@ -964,7 +965,7 @@ for CLI arguments.
 
 JVM system properties, similar to command-line arguments, can override Spring properties with a lower priority. This approach
 allows for externalizing the configuration without the need to rebuild the JAR artifact. The JVM system property follows the
-same naming convention as the corresponding Spring property, prefixed with '-D' for JVM arguments, In the application, the
+same naming convention as the corresponding Spring property, prefixed with '-D' for JVM arguments. In the application, the
 message defined as a JVM system property will be utilized, taking precedence over property files.
 
 ```bash
@@ -1044,11 +1045,11 @@ the configuration modification.
 Let's see an approach for refreshing the configuration, which involves sending a specific POST request to a running instance
 of the microservice. This request will initiate the reloading of the modified configuration data, enabling a hot reload
 of the application. Below are the steps to follow:
-1. Add actuator dependency in the Config Client services: Add Spring Boot Actuator dependency inside 'pom.xml' of the individual
-microservices like accounts, loans, cards to expose the '/refresh' endpoint.
+1. Add actuator dependency in the Config Client services: Add Spring Boot Actuator dependency inside **pom.xml** of the 
+individual microservices like accounts, loans, cards to expose the '/refresh' endpoint.
 2. Enable '/refresh' API: The Spring Boot Actuator library provides a configuration endpoint called "/actuator/refresh"
 that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it in the
-'application.yaml' file.
+**application.yaml** file.
 
 ```yaml
 management:
@@ -1081,11 +1082,11 @@ Spring Cloud Bus, facilitates seamless communication between all connected appli
 event broadcasting channel. It offers an implementation of AMQP brokers, such as RabbitMQ, and Kafka, enabling efficient
 communication across the application ecosystem.
 Below are the steps to follow:
-1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside pom.xml
+1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside **pom.xml**
 of the individual microservices like accounts, loans and cards to expose the '/busrefresh' endpoint.
 2. Enable '/busrefresh' API: The Spring Boot Actuator library provides a configuration endpoint called "/actuator/busrefresh"
 that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it in the
-'application.yaml' file.
+**application.yaml** file.
     ```yaml
     management:
       endpoints:
@@ -1094,9 +1095,9 @@ that can trigger a refresh event. By default, this endpoint is not exposed, so y
             include: busrefresh
     ```
 3. Add Spring Cloud Bus dependency in the Config Server & Client services: Add Spring Cloud Bus dependency
-'spring-cloud-starter-bus-amqp' inside 'pom.xml' of the individual microservices like accounts, loans, cards and Config server.
+'spring-cloud-starter-bus-amqp' inside **pom.xml** of the individual microservices like accounts, loans, cards and Config server.
 4. Set up a RabbitMQ: Using Docker, setup RabbitMQ service. If the service is not started with default values, then configure
-the rabbitmq connection details in the 'application.yaml' file of all the individual microservices and Config Server.
+the rabbitmq connection details in the **application.yaml** file of all the individual microservices and Config Server.
 
 ### Refresh configurations at runtime using Spring Cloud Bus.
 
@@ -1117,11 +1118,11 @@ Service. By exposing the '/monitor' endpoint, it facilitates the propagation of 
 via the Bus. The Monitor library allows push notifications from popular code repository providers such as GitHub, GitLab, and
 Bitbucket. You can configure webhooks in these services to automatically send a POST request to the Config Service after
 each new push to the configuration repository. Below are steps to follow:
-1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside 'pom.xml' of the
+1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside **pom.xml** of the
 individual microservices like accounts, loans, cards, and Config Server to expose the '/busrefresh' endpoint.
 2. Enable '/busrefresh' API: The Spring Boot Actuator library provides a configuration endpoint called "/actuator/busrefresh"
 that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it in
-'application.yaml' file.
+**application.yaml** file.
     ```yaml
     management:
       endpoints:
@@ -1130,11 +1131,11 @@ that can trigger a refresh event. By default, this endpoint is not exposed, so y
             include: busrefresh
     ```
 3. Add Spring Cloud Bus dependency in the Config Server & Client services: Add Spring Cloud Bus dependency
-(spring-cloud-starter-bus-amqp) inside 'pom.xml' of the individual microservices like accounts, loans, cards and Config server.
+(spring-cloud-starter-bus-amqp) inside **pom.xml** of the individual microservices like accounts, loans, cards and Config server.
 4. Add Spring Cloud Config monitor dependency in the Config Server: Add Spring Cloud Config monitor dependency 
-(spring-cloud-config-monitor) inside 'pom.xml' of Config server and this exposes '/monitor' endpoint.
+(spring-cloud-config-monitor) inside **pom.xml** of Config server and this exposes '/monitor' endpoint.
 5. Set up a RabbitMQ: Using Docker, setup RabbitMQ service. If the service is not started with default values, then configure
-the rabbitmq connection details in the 'application.yaml' file of all the individual microservices and Config Server.
+the rabbitmq connection details in the **application.yaml** file of all the individual microservices and Config Server.
 6. Set up a WebHook in GitHub: Set up a webhook to automatically send a POST request to Config Service '/monitor' path
 after each new push to the config repo.
 
@@ -1192,10 +1193,10 @@ These challenges in microservices can be solved using below concepts or solution
 
 ## How service communication happens in Traditional apps?
 
-Inside web network, when a service/aoo want to communicate with another service/app, it must be given the necessary information
+Inside web network, when a service/app want to communicate with another service/app, it must be given the necessary information
 to locate it, such as an IP address or a DNS name. Let's examine the scenario of two services, Accounts and Loans. If there
 was only a single instance of Loans microservice. Upstream Service (Accounts) internal communication between microservices
-using hostname, DNS, or IP address. No Service Discovery or Load Balancing involved. Load Microservice (Downstream Service).
+using hostname, DNS, or IP address. No Service Discovery or Load Balancing involved. Loans Microservice (Downstream Service).
 Loans microservice will be a backing service with respect to Accounts microservice.
 
 ![Service comm no LB.](flashcard-img/service-comm.png "Service comm no LB.")
@@ -1210,7 +1211,7 @@ However, this approach may not be suitable for microservices, as containers or s
 makes it difficult to maintain accurate DNS records and ensure efficient communication between microservices.
 
 Unlike physical machines or long-running virtual machines, cloud-based service instances have shorter lifespan. These 
-instances are designed to be disposable and cen be terminated or replaced for various reasons, such as unresponsiveness.
+instances are designed to be disposable and can be terminated or replaced for various reasons, such as unresponsiveness.
 Furthermore, auto-scaling capabilities can be enabled by automatically adjust the number of application instances based
 on the workload.
 
@@ -1334,7 +1335,7 @@ Spring Cloud project makes Service Discovery & Registration setup trivial to und
 2. Spring Cloud Load Balancer library for client-side load balancing.
 3. Netflix Feign client to look up for a service between microservices.
 
-Though in this course we use Eureka since it is mostly used, but they are other service registries such as etcs, Consul,
+Though in this course we use Eureka since it is mostly used, but they are other service registries such as etcd, Consul,
 and Apache Zookeeper which are also good.
 Through Netflix Ribbon client-side is also good and stable product, we are going to use Spring Cloud Load Balancer for
 client-side load balancing. This is because Ribbon has entered a maintenance mode, and it will not be developed anymore.
@@ -1349,7 +1350,7 @@ Advantages of Service Discovery approach includes:
 
 Below are the steps to build a Eureka Server application using Spring Cloud Netflix's Eureka:
 1. Set up a new Spring Boot project: Start by creating a new Spring Boot project using Spring Initializr. Include the
-spring-cloud-starter-eureka-server maven dependency.
+**spring-cloud-starter-eureka-server** maven dependency.
 2. Configure the properties: In the application properties or YAML file.
     ```yaml
     server:
@@ -1374,7 +1375,7 @@ information about registered service instances.
 
 Below are the steps to make a microservice application to register and act as a Eureka Client.
 1. Set up a new Spring Boot project: Start by creating a new Spring Boot project using Spring Initializr. Include the
-'spring-cloud-starter-netflix-eureka-client' maven dependency.
+**spring-cloud-starter-netflix-eureka-client** maven dependency.
 2. Configure the properties: In the application properties or YAML file.
     ```yaml
     eureka:
@@ -1427,10 +1428,10 @@ Configurations which will directly or indirectly impact self-preservation behavi
 is still alive.
 2. 'eureka.instance.lease-expiration-duration-in-seconds=90': Indicates the duration the server waits since it received the
 last heartbeat before it can evict an instance.
-3. 'eureka.server.eviction-interval-timer-in-ms=60*1000': A scheduler (EvictionTask) us run at this frequency which will
+3. 'eureka.server.eviction-interval-timer-in-ms=60*1000': A scheduler (EvictionTask) run at this frequency which will
 evict instances from the registry if the lease of the instances are expired as configured by 
 'lease-expiration-duration-in-seconds'. It will also check whether the system has reached self-preservation mode 
-(by comparing actual and expected heartbeats)before evicting.
+(by comparing actual and expected heartbeats) before evicting.
 4. 'eureka.server.renewal-percent-threshold=0.85': The value is used to calculate the expected % of heartbeats per minute
 eureka is expecting.
 5. 'eureka.server.renewal-threshold-update-interval-ms= 15 * 60 * 1000': A scheduler is run at this frequency which calculates 
@@ -1536,9 +1537,9 @@ by actual microservices. The response will travel through post filters.
 ### Steps to create Spring Cloud Gateway.
 
 Steps to make a microservice application to register and act as a Eureka client.
-1. Set up a new Spring Boot project: Start by creating a new Spring Boot project using using Spring
-Initializr. Include the 'spring-cloud-starter-gateway', 'spring-cloud-starter-config' & 
-'spring-cloud-starter-netflix-eureka-client' maven dependencies.
+1. Set up a new Spring Boot project: Start by creating a new Spring Boot project using Spring
+Initializr. Include the **spring-cloud-starter-gateway**, **spring-cloud-starter-config** & 
+**spring-cloud-starter-netflix-eureka-client** maven dependencies.
 2. Configure the properties: In the application properties or YAML file. Make routing configurations using RouteLocatorBuilder.
     ```yaml
     eureka:
@@ -1701,7 +1702,7 @@ it will either go to CLOSED or OPEN.
 
 **Spring Cloud Gateway filter.**
 Below are the steps to build a circuit breaker pattern using Spring Cloud Gateway filter.
-1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-reactor-resilience4j' maven dependency inside 'pom.xml'.
+1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-reactor-resilience4j' maven dependency inside **pom.xml**.
 2. Add circuit breaker filter: Inside the method where we are creating a bean of RouteLocator, add a filter of circuit
    breaker.
     ```java
@@ -1716,7 +1717,7 @@ Below are the steps to build a circuit breaker pattern using Spring Cloud Gatewa
                             .uri("lb://ACCOUNTS")).build();
     }
     ```
-3. Add properties: Add properties inside the 'application.yaml' file.
+3. Add properties: Add properties inside the **application.yaml** file.
     ```yaml
     resilience4j.circuitbreaker:
       configs:
@@ -1729,7 +1730,7 @@ Below are the steps to build a circuit breaker pattern using Spring Cloud Gatewa
 **Spring Boot service.**
 
 Below are the steps to build a circuit breaker pattern using normal Spring Boot service.
-1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-resilience4j' maven dependency inside 'pom.xml'.
+1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-resilience4j' maven dependency inside **pom.xml**.
 2. Add circuit breaker relate changes in Feign Client interface like below:
     ```java
     @FeignClient(name="cards", fallback=CardsFallback.class)
@@ -1747,7 +1748,7 @@ Below are the steps to build a circuit breaker pattern using normal Spring Boot 
         } 
     }
     ```
-3. Add properties: Add properties inside the 'application.yaml' file:
+3. Add properties: Add properties inside the **application.yaml** file:
     ```yaml
     spring:
       cloud:
@@ -1837,7 +1838,7 @@ limits can be defined for basic, premium, and enterprise users.
 
 Steps to build a rate limiter pattern using Spring Cloud Gateway filter.
 1. Add maven dependency: Add 'spring-boot-starter-data-redis-reactive' maven dependency inside pom.xml and make sure a redis
-container started. Mention redis connection details inside the 'application.yaml' file.
+container started. Mention redis connection details inside the **application.yaml** file.
 2. Add rate limiter filter: Inside the method where we are creating a bean of RouteLocator, add a filter of rate limiter
 and creating supporting beans of RedisRateLimiter and KeyResolver.
     ```java
@@ -1874,7 +1875,7 @@ configs. Post that create a fallback method matching the same method signature.
    
     private ResponseEntity<String> getJavaVersionFallback(Throwable t) {}
     ```
-2. Add properties: Add the below properties inside the 'application.yaml' file.
+2. Add properties: Add the below properties inside the **application.yaml** file.
     ```yaml
     resilience4j.ratelimiter:
       configs:
@@ -2767,7 +2768,7 @@ as they become available.
 
 1. Add maven dependencies: Add the maven dependency 'spring-cloud-stream-binder-kafka' in the place of 
 'spring-cloud-stream-binder-rabbitmq' dependency.
-2. Add Kafka related properties inside the 'application.yaml' file of both accounts and messages services.
+2. Add Kafka related properties inside the **application.yaml** file of both accounts and messages services.
 
 ```yaml
 spring:
