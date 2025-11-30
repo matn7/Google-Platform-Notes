@@ -111,7 +111,7 @@ and with the outside world. It assigns a fixed IP address to a group of Pods for
 
 NEW SECTION - KUBERNETES INSTALLATION.
 
-1) What are the Prerequisites for Installing Kubernetes? // here
+1) What are the Prerequisites for Installing Kubernetes? 
 Answer: Before installing Kubernetes, you need a set of machines (physical or virtual) to run the Kubernetes components. 
 These machines should have a compatible Linux operating system, a container runtime like Docker, and network connectivity 
 between them. Additionally, you should have a way to access the cluster, typically through 'kubectl', Kubernetes 
@@ -420,7 +420,7 @@ to automatically delete the Pods upon completion using a TTL mechanism or by set
 
 7) How Can You Control the Parallel Execution of Pods in a Kubernetes Job?
 Answer: You can control the parallel execution of Pods in a Kubernetes Job using the completions and parallelism properties 
-in the Job spec. completions specifies the desired number of successfully finished Pods, and parallelism specifies the 
+in the Job spec. Completions specifies the desired number of successfully finished Pods, and parallelism specifies the 
 maximum number of Pods that can run simultaneously.
 
 8) Explain How to Use a Job to Process a Work Queue in Kubernetes?
@@ -609,7 +609,7 @@ ready to handle requests.
 
 NEW SECTION - HELM.
 
-1) What is Helm in Kubernetes, and what are its main components? // here
+1) What is Helm in Kubernetes, and what are its main components?
 Answer: Helm is a package manager for Kubernetes, which simplifies the deployment and management of applications on 
 Kubernetes clusters. Its main components are the Helm Client and the Tiller Server (in Helm 2; Helm 3 is tiller-less). 
 Helm 3 introduces improvements like better security, simplified client-only architecture, and enhanced chart management. 
@@ -730,7 +730,7 @@ central to Kubernetes and allows for greater scalability and ease of management.
 
 NEW SECTION - AUTOSCALING.
 
-1) What is Autoscaling in Kubernetes and Why is it Important? 
+1) What is Autoscaling in Kubernetes and Why is it Important?
 Answer: Autoscaling in Kubernetes refers to the automatic adjustment of the number of Pods or nodes in a Kubernetes cluster, 
 based on the workload's demands. This is crucial for efficiently managing resources, ensuring application performance, 
 and reducing costs. Autoscaling helps in handling traffic spikes and reducing resources during low usage.
@@ -841,7 +841,7 @@ industry standards and regulations, and maintaining the overall security posture
 
 NEW SECTION - MONITORING AND LOGGING.
 
-1) What is the Importance of Monitoring and Logging in Kubernetes? 
+1) What is the Importance of Monitoring and Logging in Kubernetes?
 Answer: Monitoring and logging in Kubernetes are critical for maintaining the health, performance, and security of applications 
 and the Kubernetes cluster itself. Monitoring helps in tracking the performance metrics and health of pods, nodes, and other resources, 
 enabling proactive troubleshooting and optimization. Logging provides insight into the behavior and output of applications and 
@@ -1071,7 +1071,7 @@ The PVC ensures that when the pod is rescheduled or recreated, it can reattach t
 
 NEW SECTION - SCHEDULING.
 
-1) What is the Role of the Scheduler in Kubernetes? 
+1) What is the Role of the Scheduler in Kubernetes?
 Answer: The Kubernetes Scheduler is responsible for assigning newly created or unscheduled pods to nodes in the cluster. 
 It makes this decision based on several factors such as resource requirements, hardware/software/policy constraints, 
 affinity and anti-affinity specifications, data locality, and inter-workload interference.
@@ -1126,7 +1126,7 @@ evictions that would violate the budget, ensuring high availability during maint
 
 NEW SECTION - kubectl.
 
-1) What is kubectl and What is its Role in Kubernetes? 
+1) What is kubectl and What is its Role in Kubernetes?
 Answer: kubectl is the command-line tool for interacting with the Kubernetes API server. It allows users to deploy 
 applications, inspect and manage cluster resources, and view logs. kubectl converts command-line requests into API calls 
 and communicates with the Kubernetes cluster to execute these requests.
@@ -1185,7 +1185,7 @@ These commands provide more control over interacting with and managing Kubernete
 
 NEW SECTION - kustomize.
 
-1) What is Kustomize and How is it Integrated into Kubernetes? 
+1) What is Kustomize and How is it Integrated into Kubernetes?
 Answer: Kustomize is a standalone tool to customize Kubernetes objects through a kustomization file. It introduces a 
 template-free way to customize application configuration that simplifies the use of off-the-shelf applications. Integrated 
 directly into kubectl since Kubernetes v1.14, Kustomize allows users to alter any API resource in a declarative fashion, 
@@ -1572,7 +1572,7 @@ Answer: 'kubectl get pod -l dept=dep-1,team=team-a'.
 10) Pod, Formatting output?
 Answer: 'kubectl get pod -o wide'.
 
-11) Pod, Formatting output in yaml file?
+11) Pod, Formatting output in yaml file? +
 Answer: 'kubectl get pod pod-1 -o yaml'.
 
 12) Pod, delete pods using file?
@@ -1747,7 +1747,7 @@ NOT just for databases. Instead, it is for any workload which wants sticky ident
 
 42) Headless Service?
 Answer: Service will not have any IP & Kube-proxy does NOT do any load balancing. DNS entries would be created for
-'<POD-NAME>.<SVC-NAME>'.
+'POD-NAME.SVC-NAME'.
 
 43) Consequences of Exceeding Limit?
 Answer: 
@@ -1755,7 +1755,7 @@ a) Memory: Kubelet will kill the container and restart.
 b) CPU: Container will NOT be killed. Throttled.
 
 44) Ingress?
-Answer: Service: ClusterIP, NodePort (30_000-32_767), LoadBalancer (AWS, GCP, etc.).
+Answer: Service: ClusterIP, NodePort (30000-32767), LoadBalancer (AWS, GCP, etc.).
 Smart Router / Proxy to bring traffic into the cluster. Contains a set of routing rules. We need Ingress Controller to
 manage Ingress.
 
@@ -1796,7 +1796,7 @@ use Deployments to set up the desired end state.
 
 5) What is the Service Object?
 Answer: Exposes Pods to the Cluster or Externally. Pods have an internal IP by default - it changes when a Pod is replaced:
-Finding Pods is hard iff the IP changes all the time. Services group Pods with a shared IP. Services can allow external
+Finding Pods is hard if the IP changes all the time. Services group Pods with a shared IP. Services can allow external
 access to Pods: The default (internal only) can be overwritten. Without Services, Pods are very hard to reach and
 communication is difficult. Reaching a Pod from outside the Cluster is not possible at all without Services.
 
@@ -1823,7 +1823,7 @@ Control Groups (cgroups): Limit amount of resources used per process.
 Namespacing: Process, Network, Hostnames, Hard Drive, Users, IPC.
 Control Groups (cgroups): Memory, HD I/O, CPU Usage, Network Bandwidth.
 
-11) Creating and Running a Container from an image?
+11) Creating and Running a Container from an image? +
 Answer: 'docker run IMAGE-NAME'.
 'docker': Reference to docker client.
 'run': Try to create and run a container.
@@ -1852,8 +1852,8 @@ Answer: Dockerfile: Configuration to define how our container should behave. Doc
 16) Creating a Dockerfile?
 Answer: 
 a) Specify a base image. 
-B) Run some commands to install additional programs. 
-C) Specify a command to run on container startup.
+b) Run some commands to install additional programs. 
+c) Specify a command to run on container startup.
 
 17) Tagging an image?
 Answer:
@@ -1983,7 +1983,7 @@ Pods are destroyed.
 41) Kubernetes Volumes vs Docker Volumes?
 Answer: 
 a) Kubernetes Volumes: Supports many different Drivers and types. Volumes are not necessarily persistent.
-Volumes survive CContainer restarts and removals.
+Volumes survive Container restarts and removals.
 b) Docker Volumes: Basically on Driver / Type support. Volumes persist until manually cleared. Volumes survive container
 restarts and removals.
 
@@ -2013,7 +2013,7 @@ c) Run some commands to install additional programs.
 d) Specify a command to run on container startup.
 
 47) Docker Architecture?
-Answer:Docker Client. Docker Daemon; Containers, Local Images, Image Repository. 
+Answer: Docker Client. Docker Daemon; Containers, Local Images, Image Repository. 
 
 48) Container Orchestration?
 Answer: Requirement: I want 10 instances of microservice A, 15 instances of Microservice B.
@@ -2224,7 +2224,7 @@ other microservices via environment variables.
 
 92) Kubernetes' namespaces?
 Answer: Namespaces are virtual clusters so that services and deployments are completely separated. Separate the 
-microservices from infrastructure/
+microservices from infrastructure.
 
 93) Kubernetes Apps with states?
 Answer: Persistent Volumes and Stateful Sets Operators.

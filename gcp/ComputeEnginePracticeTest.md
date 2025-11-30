@@ -2,10 +2,10 @@
 
 **Question 1: When using Create Deployment from Cloud Console, which of the following cannot be specified for a deployment?**
 
-- :white_check_mark: **Time to live (TTL)**
-- Application name
-- Initial command
-- Container image
+- :white_check_mark: **Time to live (TTL)**.
+- Application name.
+- Initial command.
+- Container image.
 
 ```
 Time to Live is not an attribute of deployments. 
@@ -15,10 +15,10 @@ Application name, container image, and initial command can all be specified.
 **Question 2: Stackdriver Monitoring collects metrics such as query counts, execution times, scanned bytes, 
 and table count are captured for which GCP managed services ?**
 
-- Cloud BigTable
-- :white_check_mark: **Cloud BigQuery**
-- Cloud Firestore
-- Cloud SQL
+- Cloud BigTable.
+- :white_check_mark: **Cloud BigQuery**.
+- Cloud Firestore.
+- Cloud SQL.
 
 ```
 Stackdriver Monitoring collects metrics on the performance of infrastructure resources and applications. 
@@ -28,10 +28,10 @@ The mentioned metrics are captured for BigQuery.
 **Question 3: You are deploying an application that will need to scale and be highly available. 
 Which of these Compute Engine components will help achieve scalability and high availability?**
 
-- Preemptible instances
-- GPUs
-- :white_check_mark: **Instance groups**
-- Cloud Storage
+- Preemptible instances.
+- GPUs.
+- :white_check_mark: **Instance groups**.
+- Cloud Storage.
 
 ```
 * Instance groups are sets of VMs that can be configured to scale and are used with load balancers, 
@@ -45,10 +45,10 @@ which contribute to improving availability.
 ticket processing system. You would like to view information about the time each microservice takes to run. 
 What Stackdriver service would you use?**
 
-- Stackdriver Logging
-- Stackdriver Debugger
-- Stackdriver Monitoring
-- :white_check_mark: **Stackdriver Trace**
+- Stackdriver Logging.
+- Stackdriver Debugger.
+- Stackdriver Monitoring.
+- :white_check_mark: **Stackdriver Trace**.
 
 ```
 * Stackdriver Trace is used to collect information about the time required to execute functions in a call stack. 
@@ -70,16 +70,15 @@ Different zones may have different machine types available, so you will need to 
 to determine the set of machine types available. If the machine type does not appear in the list, it is not available 
 in that zone. 
 Subnets and IP addresses are not related to the machine types available. 
-Unless you are specifying a custom machine type, you do not specify the amount of memory; 
-that is defined by the machine type.
+Unless you are specifying a custom machine type, you do not specify the amount of memory; that is defined by the machine type.
 ```
 
 **Question 6: What are the categories of Cloud Launcher solutions?**
 
-- Operating systems only
-- Data sets only
-- Developer tools and operating systems only
-- :white_check_mark: **Data sets, operating systems, and developer tools**
+- Operating systems only.
+- Data sets only.
+- Developer tools and operating systems only.
+- :white_check_mark: **Data sets, operating systems, and developer tools**.
 
 ```
 Categories of solutions include all of the categories mentioned, so "Data sets, operating systems, 
@@ -90,10 +89,10 @@ Others include Kubernetes Apps, API & Services, and Databases.
 **Question 7: You notice that 5 VMs are processing the data at 11:00 AM GMT as compared to 7 VMs at 10:30 AM GMT. 
 What feature of managed instance groups is at work here?**
 
-- Auto upgrade
-- Autohealing
-- :white_check_mark: **Autoscaling**
-- Redundancy
+- Auto upgrade.
+- Autohealing.
+- :white_check_mark: **Autoscaling**.
+- Redundancy.
 
 ```
 Autoscaling adds or removes instances based on instance metrics and workloads. 
@@ -105,10 +104,10 @@ Python libraries. You expect to have sporadic use of the application for the for
 both the cost of running the application and the DevOps overhead of managing the application. 
 Which computing service is the best option for running the application?**
 
-- Compute Engine
-- :white_check_mark: **App Engine standard environment**
-- Kubernetes Engine
-- App Engine flexible environment
+- Compute Engine.
+- :white_check_mark: **App Engine standard environment**.
+- Kubernetes Engine.
+- App Engine flexible environment.
 
 ```
 * The App Engine standard environment can run Python applications, which can autoscale down to no instances when there 
@@ -122,10 +121,10 @@ same computing resources.
 **Question 9: The amount of time GCP will wait before collecting performance statistics from the instance for 
 Autoscaling is called as ?**
 
-- Hold out time
-- :white_check_mark: **Cool down period**
-- Rest time period
-- Wait time period
+- Hold out time.
+- :white_check_mark: **Cool down period**.
+- Rest time period.
+- Wait time period.
 
 ```
 Cool down period is the correct answer.
@@ -151,10 +150,10 @@ All of the statements in this options are true and relevant to billing and costs
 **Question 11: You are attempting to execute commands to initiate a deployment on a Kubernetes cluster. The commands are 
 not having any effect. You suspect that a Kubernetes component is not functioning correctly. What component could be the problem?**
 
-- A StatefulSet
-- Cloud SDK `gcloud` commands
-- ReplicaSet
-- :white_check_mark: **The Kubernetes API**
+- A StatefulSet.
+- Cloud SDK `gcloud` commands.
+- ReplicaSet.
+- :white_check_mark: **The Kubernetes API**.
 
 ```
 All interactions with the cluster are done through the master using the Kubernetes API. 
@@ -167,7 +166,7 @@ How can we achieve that ?**
 - Create individual VMs one by one as per the configurations.
 - Create a managed instance group.
 - Not possible to create VMs with heterogeneous configurations.
-- :white_check_mark: **Create an unmanaged instance group**
+- :white_check_mark: **Create an unmanaged instance group**.
 
 ```
 * Managed instance groups (MIGs) consist of identically configured VMs. 
@@ -176,21 +175,21 @@ How can we achieve that ?**
 
 **Question 13: CPU utilization exceeding 70 percent for three minutes is an example of ?**
 
-- :white_check_mark: **Alerting Policy**
-- Metric bases Policy
-- Monitoring Policy
-- Utilization Policy
+- :white_check_mark: **Alerting Policy**.
+- Metric bases Policy.
+- Monitoring Policy.
+- Utilization Policy.
 
 ```
 In Stackdriver Monitoring, alerts are created using an alerting policy. CPU Utilization is one such example.
 ```
 
-**Question 14: Running BigTable clusters in different regions will _____ replication latency and ________ availability**
+**Question 14: Running BigTable clusters in different regions will (increase) replication latency and (increase) availability.**
 
-- decrease, decrease
-- increase, decrease
-- :white_check_mark: **increase, increase**
-- decrease, increase
+- decrease, decrease.
+- increase, decrease.
+- :white_check_mark: **increase, increase**.
+- decrease, increase.
 
 ```
 When running the BigTable cluster across multiple region - you will ensure higher availability as you can handle region 
@@ -201,7 +200,7 @@ But it will also increase replication latency as data needs to be replicated acr
 **Question 15: Your application is running on Kubernetes cluster on GCP. You have configured autoscaling when the CPU 
 utilizations exceeds 75 percent. How is the CPU Utilizations calculated ?**
 
-- :white_check_mark: **Based on all CPUs used by the deployment**
+- :white_check_mark: **Based on all CPUs used by the deployment**.
 - Based on the CPU utilization on the lease CPU-intensive pod.
 - Based on all CPUs in the cluster.
 - Based on all CPU utilization of the most CPU-intensive pod.
@@ -215,12 +214,12 @@ It would be incorrect to check the CPU at Cluster level as it would have one or 
 existing architecture while administering the cluster as a single entity. The legacy application runs on a load-balanced 
 cluster that runs nodes with two different configurations. The two configurations are required because of design decisions 
 made several years ago. The load on the application is fairly consistent, so there is rarely a need to scale up or down. 
-What GCP Compute Engine resource would you recommended using?**
+What GCP Compute Engine resource would you recommend using?**
 
-- Preemptible instances
-- GPUs
-- Managed instance groups
-- :white_check_mark: **Unmanaged instance groups**
+- Preemptible instances.
+- GPUs.
+- Managed instance groups.
+- :white_check_mark: **Unmanaged instance groups**.
 
 ```
 * Unmanaged instance groups are available for limited use cases such as this. 
@@ -232,10 +231,10 @@ prevents their use.
 
 **Question 17: Your company is based in X and will be running a virtual server for Y. What factor determines the unit per minute cost.**
 
-- :white_check_mark: **The characteristics of the server**
-- The application you run
-- The time of the day the VM is run
-- None of the above
+- :white_check_mark: **The characteristics of the server**.
+- The application you run.
+- The time of the day the VM is run.
+- None of the above.
 
 ```
 * The characteristics of the server, such as the number of virtual servers, the amount of memory, 
@@ -245,10 +244,10 @@ and the region where you run the VM, influence the cost.
 
 **Question 18: What can be the basis for scaling up an instance group?**
 
-- Disk usage and operating system updates only
-- :white_check_mark: **Network latency, load balancing capacity, and CPU utilization**
-- Disk usage and CPU utilization only
-- CPU utilization and operating system updates
+- Disk usage and operating system updates only.
+- :white_check_mark: **Network latency, load balancing capacity, and CPU utilization**.
+- Disk usage and CPU utilization only.
+- CPU utilization and operating system updates.
 
 ```
 * You can configure an autoscaling policy to trigger adding or removing instances based on CPU utilization, 
@@ -256,12 +255,12 @@ monitoring metric, load balancing capacity, or queue-based workloads.
 * Disk, network latency, and memory can trigger scaling if monitoring metrics on those resources are configured.
 ```
 
-**Question 19: If a pod is terminated for being unhealthy—then the ____ will add pods until the desired state is reached**
+**Question 19: If a pod is terminated for being unhealthy—then the (Kubernetes Replicasets) will add pods until the desired state is reached**
 
-- Kubernetes Service
-- Kubernetes Deployment
-- Kubernetes Container
-- :white_check_mark: **Kubernetes Replicasets**
+- Kubernetes Service.
+- Kubernetes Deployment.
+- Kubernetes Container.
+- :white_check_mark: **Kubernetes Replicasets**.
 
 ```
 * A ReplicaSet is a controller that manages the number of pods running for a deployment. 
@@ -270,8 +269,8 @@ monitoring metric, load balancing capacity, or queue-based workloads.
 
 **Question 20: Cloud Dataflow does require you to specify machine types when configuring a pipeline ?**
 
-- :white_check_mark: **FALSE**
-- TRUE
+- :white_check_mark: **FALSE**.
+- TRUE.
 
 ```
 Cloud Dataflow does not require you to specify machine types, but you can specify machine type and worker disk type if 
@@ -297,13 +296,13 @@ application vulnerabilities.
 **Question 22: A DevOps engineer is noticing a spike in CPU utilization on your servers. You explain you have just launched 
 a deployment. You’d like to show the DevOps engineer the details of a deployment you just launched. What command would you use?**
 
-- :white_check_mark: **`gcloud deployment-manager deployments describe`**
-- `gcloud cloud-launcher deployments list`
-- `gcloud cloud-launcher deployments describe`
-- `gcloud deployment-manage deployments list`
+- :white_check_mark: **`gcloud deployment-manager deployments describe`**.
+- `gcloud cloud-launcher deployments list`.
+- `gcloud cloud-launcher deployments describe`.
+- `gcloud deployment-manage deployments list`.
 
 ```
-The correct answer is gcloud deployment-manager deployments describe, cloud-launcher is not the name of the service. 
+The correct answer is "gcloud deployment-manager deployments describe", cloud-launcher is not the name of the service. 
 Note: list displays a brief summary of each deployment and describe displays a detailed description.
 ```
 
@@ -325,10 +324,10 @@ Also, subsequent snapshots do not incur 10 percent overhead.
 
 **Question 24: Before creating an instance group, you need to create what?**
 
-- Instances in the instance group
-- Source snapshot
-- :white_check_mark: **Instance group template**
-- Boot disk image
+- Instances in the instance group.
+- Source snapshot.
+- :white_check_mark: **Instance group template**.
+- Boot disk image.
 
 ```
 An instance group template is used to specify how the instance group should be created. 
@@ -340,10 +339,10 @@ Boot disk images and snapshots do not have to be created before creating an inst
 on your server by someone trying to inject a rootkit (a kind of malware that can alter the operating system). 
 Which option should you select when creating a VM?**
 
-- :white_check_mark: **Shield VM**
-- Project-wide SSH keys
-- Firewall
-- Boot disk integrity check
+- :white_check_mark: **Shield VM**.
+- Project-wide SSH keys.
+- Firewall.
+- Boot disk integrity check.
 
 ```
 Shield VM is an advanced set of security controls that includes Integrity Monitoring, a check to ensure 
@@ -356,13 +355,14 @@ Boot disk integrity check is a fictional feature.
 **Question 26: You have decided to delegate the task of making backup snapshots to a member of your team. 
 What role would you need to grant to your team member to create snapshots?**
 
-- Compute Image Admin
-- :white_check_mark: **Compute Storage Admin**
-- Compute Snapshot Admin
-- Storage Admin
+- Compute Image Admin.
+- :white_check_mark: **Compute Storage Admin**.
+- Compute Snapshot Admin.
+- Storage Admin.
 
 ```
-To work with snapshots, a user must be assigned the Compute Storage Admin role. The other options are fictitious roles.
+To work with snapshots, a user must be assigned the Compute Storage Admin role. 
+The other options are fictitious roles.
 ```
 
 **Question 27: You will be building a number of machine learning models on an instance and attaching GPU to the instance. 
@@ -400,10 +400,10 @@ This reduces the chance of error when manually entering a command.
 wants to make sure the VM hosting the WordPress site has enough resources. Which resources can you configure when launching 
 a WordPress site using Cloud Launcher?**
 
-- Disk type
-- Disk size
-- Machine type
-- :white_check_mark: **All of the above**
+- Disk type.
+- Disk size.
+- Machine type.
+- :white_check_mark: **All of the above**.
 
 ```
 You can change the configuration of any of the items listed, so option D is correct. 
@@ -433,10 +433,10 @@ patching servers and optimizing server utilization. They want to move to serverl
 Your client has heard of Cloud Functions and wants to use them as much as possible. You recommend all of the following 
 types of applications except which one?**
 
-- Mobile application event processing
-- :white_check_mark: **Long-running data warehouse data load procedures**
-- IoT backed processing
-- Asynchronous workflows
+- Mobile application event processing.
+- :white_check_mark: **Long-running data warehouse data load procedures**.
+- IoT backed processing.
+- Asynchronous workflows.
 
 ```
 Cloud Functions is best suited for event-driven processing, such as a file being uploaded to Cloud Storage or an event 
@@ -445,12 +445,12 @@ Compute Engine or App Engine.
 ```
 
 **Question 32: The marketing department in your company wants to deploy a web application but does not want to have to 
-manage servers or clusters. A good option for them is:**
+manage servers or clusters. A good option for them is?**
 
-- Compute Engine
-- :white_check_mark: **App Engine**
-- Kubernetes Engine
-- Cloud Functions
+- Compute Engine.
+- :white_check_mark: **App Engine**.
+- Kubernetes Engine.
+- Cloud Functions.
 
 ```
 * App Engine is a PaaS that allows developers to deploy full applications without having to manage servers or clusters. 
@@ -458,12 +458,12 @@ manage servers or clusters. A good option for them is:**
 * Cloud Functions is suitable for short-running Node.js or Python functions but not full applications.
 ```
 
-**Question 33: The GCP service for storing and managing Docker containers is:**
+**Question 33: The GCP service for storing and managing Docker containers is?**
 
-- Docker Repository
-- Cloud Source Repositories
-- Cloud Build
-- :white_check_mark: **Container Registry**
+- Docker Repository.
+- Cloud Source Repositories.
+- Cloud Build.
+- :white_check_mark: **Container Registry**.
 
 ```
 * The GCP service for storing and managing Docker containers is Container Registry. 
@@ -471,10 +471,10 @@ manage servers or clusters. A good option for them is:**
 * The others are not GCP services.
 ```
 
-**Question 34: When we are moving services from "n1-standard-1" to "n1-standard-4" it is called as Vertical Scaling**
+**Question 34: When we are moving services from "n1-standard-1" to "n1-standard-4" it is called as Vertical Scaling?**
 
-- :white_check_mark: **TRUE**
-- FALSE
+- :white_check_mark: **TRUE**.
+- FALSE.
 
 ```
 Vertical scaling, requires moving services from one VM to another VM with more or fewer resources
@@ -516,10 +516,10 @@ driven by a set of services that will run on your servers. There is a separate s
 and authorization. A data store set of services keeps track of account information. All three sets of services must be 
 highly reliable and scale to meet demand. Which of the GCP services is the best option for deploying this?**
 
-- App Engine standard environment
-- Compute Engine
-- Cloud Functions
-- :white_check_mark: **Kubernetes Engine** 
+- App Engine standard environment.
+- Compute Engine.
+- Cloud Functions.
+- :white_check_mark: **Kubernetes Engine**. 
   
 ```
 * The scenario described is a good fit for Kubernetes. 
@@ -536,22 +536,22 @@ and manage software deployments.
 **Question 38: Adding virtual machines to an instance group can be triggered in an autoscaling policy by all of the 
 following, except which one?**
 
-- CPU utilization
-- Stackdriver metrics
-- :white_check_mark: **IAM policy violation**
-- Load balancing serving capacity
+- CPU utilization.
+- Stackdriver metrics.
+- :white_check_mark: **IAM policy violation**.
+- Load balancing serving capacity.
 
 ```
 IAM policy violations do not trigger changes in the size of clusters. All other options can be used to trigger a change 
 in cluster size.
 ```
 
-**Question 39: GCP compute Engine VMs can be created using ?**
+**Question 39: GCP compute Engine VMs can be created using?**
 
-- :white_check_mark: **Cloud Console**
-- :white_check_mark: **REST API Request**
-- SOAP Request
-- :white_check_mark: **Command line SDK**
+- :white_check_mark: **Cloud Console**.
+- :white_check_mark: **REST API Request**.
+- SOAP Request.
+- :white_check_mark: **Command line SDK**.
 
 ```
 VMs are provisioned using the cloud console, the command-line SDK, or the REST API. SOAP request is not correct choice.
@@ -565,43 +565,44 @@ VMs are provisioned using the cloud console, the command-line SDK, or the REST A
 - `gcloud container run`
 
 ```
-The kubectl command is used to control workloads on a Kubernetes cluster once it is created. gcloud is not used to 
-manipulate Kubernetes processes. Note: beta is not required in kubectl commands.
+The "kubectl" command is used to control workloads on a Kubernetes cluster once it is created. 
+"gcloud" is not used to manipulate Kubernetes processes. 
+Note: "beta" is not required in "kubectl" commands.
 ```
 
 **Question 41: The Network tab of the create VM form is where you would perform which of the following operations?**
 
-- Set the IP address of the VM
-- :white_check_mark: **Add a network interface to the VM**
-- Change firewall configuration rules
-- Specify a default router
+- Set the IP address of the VM.
+- :white_check_mark: **Add a network interface to the VM**.
+- Change firewall configuration rules.
+- Specify a default router.
 
 ```
-In the Network tab of the VM form, you can add another network interface. GCP sets the IP address. There is no option 
-to specify a router or change firewall rules on the Network tab.
+In the Network tab of the VM form, you can add another network interface. 
+GCP sets the IP address. 
+There is no option to specify a router or change firewall rules on the Network tab.
 ```
 
 **Question 42: What command would you use to have 10 replicas of a deployment named ch07-app-deploy?**
 
-- :white_check_mark: **`kubectl scale deployment ch07-app-deploy --replicas=10`**
-- `kubectl scale deployment ch07-app-deploy --pods=5`
-- `kubectl upgrade deployment ch07-app-deploy --replicas=5`
-- `gcloud containers deployment ch07-app-deploy --replicas=5`
+- :white_check_mark: **`kubectl scale deployment ch07-app-deploy --replicas=10`**.
+- `kubectl scale deployment ch07-app-deploy --pods=5`.
+- `kubectl upgrade deployment ch07-app-deploy --replicas=5`.
+- `gcloud containers deployment ch07-app-deploy --replicas=5`.
 
 ```
-Use of gcloud and upgrade is incorrect. "scale" is the right command along with replicas.
+Use of "gcloud" and "upgrade" is incorrect. "scale" is the right command along with replicas.
 ```
 
-**Question 43: 
-You have deployed an application to a Kubernetes cluster. You have noticed that several pods are starved 
+**Question 43: You have deployed an application to a Kubernetes cluster. You have noticed that several pods are starved 
 for resources for a period of time and the pods are shut down. When resources are available, new instantiations of those 
 pods are created. Clients are still able to connect to pods even though the new pods have different IP addresses from the 
 pods that were terminated. What Kubernetes component makes this possible?**
 
-- :white_check_mark: **Service**
-- Alerts
-- StatefulSet
-- ReplicaSet
+- :white_check_mark: **Service**.
+- Alerts.
+- StatefulSet.
+- ReplicaSet.
 
 ```
 * Services provide a level of indirection to accessing pods. 
@@ -635,10 +636,10 @@ to identify cancerous cells in medical images. The algorithm is computationally 
 calculations, requires immediate access to large amounts of data, and cannot be easily distributed over multiple servers. 
 What kind of Compute Engine configuration would you recommend?**
 
-- :white_check_mark: **High memory, high CPU, GPU**
-- High CPU, GPU
-- Mid-level memory, high CPU
-- High memory, high CPU
+- :white_check_mark: **High memory, high CPU, GPU**.
+- High CPU, GPU.
+- Mid-level memory, high CPU.
+- High memory, high CPU.
 
 ```
 * A computationally intensive application obviously requires high CPUs, but the fact that there are many mathematical 
@@ -650,14 +651,14 @@ so you will need to have a single server capable of handling the load.
 
 **Question 46: Which command will delete an instance named ch06-instance-3?**
 
-- `gcloud compute delete ch06-instance-3`
-- :white_check_mark: **`gcloud compute instances delete ch06-instance-3`**
-- `gcloud compute instance stop ch06-instance-3`
-- `gcloud compute inetances delete instance=ch06-instance-3`
+- `gcloud compute delete ch06-instance-3`.
+- :white_check_mark: **`gcloud compute instances delete ch06-instance-3`**.
+- `gcloud compute instance stop ch06-instance-3`.
+- `gcloud compute inetances delete instance=ch06-instance-3`.
 
 ```
-The command to delete an instance is gcloud compute instances delete followed by the name of the instance. 
-Note : stop command stops but does not delete the instance.
+The command to delete an instance is "gcloud compute instances delete" followed by the name of the instance. 
+Note: "stop" command stops but does not delete the instance.
 ```
 
 **Question 47: You have an application that uses a Pub/Sub message queue to maintain a list of tasks that are to be 
@@ -665,10 +666,10 @@ processed by another application. The application that consumes messages from th
 after completing the task. It takes approximately 10 seconds to complete a task. It is not a problem if two or more VMs 
 perform the same task. What is a cost-effective configuration for processing this workload?**
 
-- :white_check_mark: **Use preemptible VMs**
-- Use Spanner
-- Use DataProc
-- Use standard VMs
+- :white_check_mark: **Use preemptible VMs**.
+- Use Spanner.
+- Use DataProc.
+- Use standard VMs.
 
 ```
 * This is a good use case for preemptible VMs because they could reduce the cost of running 
@@ -696,8 +697,8 @@ are deployed as a unit.
 
 **Question 49: Stackdriver Monitoring can collect metrics on Amazon Web Services ?**
 
-- :white_check_mark: **TRUE**
-- FALSE
+- :white_check_mark: **TRUE**.
+- FALSE.
 
 ```
 Stackdriver Monitoring collects metrics on the performance of infrastructure resources and applications. 

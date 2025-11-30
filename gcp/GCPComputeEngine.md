@@ -70,7 +70,7 @@
     
 ### Assess Phase.
 
-**Assess overview.**+
+**Assess overview.**
 
 - Assess phase helps uncover the existing workloads that need to be migrated, and the information necessary to determine: 
     - **Migration type**.
@@ -127,7 +127,7 @@
 **CloudPhysics Observer.**
 
 - Observer collects performance and configurations for the following VMware resources:
-    - 8-GB vRA.
+    - 8-GB vRAM.
     - vCenter.
     - Data centers.
     - Clusters.
@@ -202,7 +202,7 @@ and spot migration challenges and obstacles?**
 
 ### Google Cloud Platform terminology.
 
-**On-premises vs. Google Cloud: Compute**
+**On-premises vs. Google Cloud: Compute.**
 
 - Data center:
     - Physical or virtualized hardware.
@@ -254,10 +254,10 @@ and spot migration challenges and obstacles?**
 
 **Projects have three identifying attributes.**
 
-| Project ID | Globally Unique | Chosen by you | Immutable |
-|---|---|---|---|
-| Project name | Need not be unique | Chosen by you | Mutable |
-| Project number | Globally unique | Assigned by GCP | Immutable |
+| Project ID     | Globally Unique     | Chosen by you   | Immutable |
+|----------------|---------------------|-----------------|-----------|
+| Project name   | Need not be unique  | Chosen by you   | Mutable   |
+| Project number | Globally unique     | Assigned by GCP | Immutable |
 
 **Folders offer flexible management.**
 
@@ -282,7 +282,7 @@ and spot migration challenges and obstacles?**
 
 #### Quiz.
 
-**1. True or False: All Google Cloud resources associated with a project.**
+**1. True or False: All Google Cloud resources associated with a project?**
 - True, all Google Cloud resources associated with a project. 
 - Each project associated with a billing account, which functions as the payment method for these resources.
 
@@ -345,11 +345,11 @@ and spot migration challenges and obstacles?**
         
 **Compute Engine IAM roles.**
 
-| Role Title | Description |
-|---|---|
-| Compute Admin | Full control of all Compute Engine resources (compute.*) |
+| Role Title    | Description                                                                                              |
+|---------------|----------------------------------------------------------------------------------------------------------|
+| Compute Admin | Full control of all Compute Engine resources (compute.*)                                                 |
 | Network Admin | Permissions to create, modify, and delete networking resources, except for firewall rules and SSL certs. |
-| Storage Admin | Permissions to create, modify, and delete disks, images, and snapshots. |
+| Storage Admin | Permissions to create, modify, and delete disks, images, and snapshots.                                  |
 
 **IAM custom roles let you define a precise set of permissions.**
 
@@ -371,7 +371,7 @@ and spot migration challenges and obstacles?**
 
 #### Quiz.
 **1. True or False: If a Google Cloud IAM policy gives you Owner permissions at the project level, 
-your access to a resource in the project may be restricted by a more restrictive policy on that resource.**
+your access to a resource in the project may be restricted by a more restrictive policy on that resource?**
 - False, policies are a union of the parent and the resource. 
 - If a parent policy is less restrictive, it overrides a more restrictive resource policy.
 
@@ -401,9 +401,9 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 **There are four ways to interact with GCP**
 
-| Cloud Platform Console | Cloud SDK and Cloud Shell | Cloud Console Mobile App | REST-based API |
-|---|---|---|---|
-| Web user interface | Command-line interface | For IOS and Android | For custom applications |
+| Cloud Platform Console | Cloud SDK and Cloud Shell | Cloud Console Mobile App | REST-based API          |
+|------------------------|---------------------------|--------------------------|-------------------------|
+| Web user interface     | Command-line interface    | For IOS and Android      | For custom applications |
 
 **Google Cloud Console.**
 - Centralized GUI-based console for all project data.
@@ -414,7 +414,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 - Access to product APIs.
 - Manage and create projects.    
 
-**The Cloud SDK and Cloud Shell**
+**The Cloud SDK and Cloud Shell.**
 - The Cloud SDK includes CLI tools for Google Cloud products and services:
     - `gcloud`, `gsutil` (Cloud Storage), `bg` (Big Query).
 - Available as Docker image.
@@ -529,26 +529,26 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
     - Regional IP allocation.
     - Expendable to any RFC 1918 size.
 
-**Firewall rules/**
+**Firewall rules.**
 - VPC network functions as distributed firewall.
 - Can use tags to globally apply rules.
 - Firewall rules are stateful.
 - Implied deny all ingress and allow all egress.
 
 **A firewall rule composed of...**
-- `direction:`
+- `direction`:
     - Inbound connections matched against `ingress` rules only.
     - Outbound connections matched against `egress` rules only.
-- `source or destination:`
+- `source or destination`:
     - For the `ingress` direction, `sources` can be specified as part of the rule with IP addresses, source tags, or a
     source service account.
     - For the `egress` direction, `destinations` can be specified as part of the rule with one or more ranges of 
     IP addresses.
-- `protocol and port:`
+- `protocol and port`:
     - Any rule can be restricted to apply to specific protocols only or specific combinations of protocols and ports only.
-- `action:`
+- `action`:
     - To allow or deny packets that match the direction, protocol, port, and source or destination of the rule.
-- `priority:`
+- `priority`:
     - Governs the order in which rules evaluated; the first matching rule applied.
 
 ### Compute Engine Virtual Machines.
@@ -607,10 +607,10 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 **Shared-core machine types.**
 
-| | vCPUs | Memory (GB) |
-|---|---|---|
-| f1-micro | 0.2 | 0.60 |
-| g1-small | 0.5 | 1.70 |
+|          | vCPUs  | Memory (GB)  |
+|----------|--------|--------------|
+| f1-micro | 0.2    | 0.60         |
+| g1-small | 0.5    | 1.70         |
 
 **Creating custom machine types.**
 - When to select custom:
@@ -641,7 +641,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 ### Persistent Disks and NICs.
 
-**Persistent disks:**
+**Persistent disks.**
 
 - Network storage appearing as a block device:
     - Zonal or regional resource.
@@ -657,7 +657,7 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
         - Customer-managed.
         - Customer-supplied.
 
-**Local SSD disks physically attached to a VM:**
+**Local SSD disks physically attached to a VM.**
 
 - More IOPS, lower latency, higher throughput than persistent disk.
 - 375-GB disk up to eight, total of 3 TB.
@@ -666,14 +666,14 @@ existing directory service      ----- Scheduled sync ----->     Users and groups
 
 **Summary of disk options.**
 
-| | Persistent disk HDD | Persistent disk SSD | Local SSD disk |
-|---|---|---|---|
-| Data redundancy | Yes | Yes | No |
-| Encryption at rest | Yes | Yes | Yes |
-| Bootable | Yes | Yes | No |
-| Use case | General, bulk file storage | Random IOPS | High IOPS and low latency |
+|                    | Persistent disk HDD        | Persistent disk SSD | Local SSD disk            |
+|--------------------|----------------------------|---------------------|---------------------------|
+| Data redundancy    | Yes                        | Yes                 | No                        |
+| Encryption at rest | Yes                        | Yes                 | Yes                       |
+| Bootable           | Yes                        | Yes                 | No                        |
+| Use case           | General, bulk file storage | Random IOPS         | High IOPS and low latency |
 
-**Persistent disk management differences**
+**Persistent disk management differences.**
 
 - Cloud Persistent Disk:
     - Single file system is best.

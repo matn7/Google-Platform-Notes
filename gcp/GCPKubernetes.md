@@ -116,16 +116,16 @@ that control user access to resources.
 
 - Upper layers of the security stack, including the securing of the data, remain your responsibility.
 
-### Billing
+### Billing.
 
-**How billing works**
+**How billing works.**
 
 - Billing account pays for project resources.
 - A billing account linked to one or more projects.
 - Charged automatically or invoiced every month or at threshold limit.
-- Sub accounts can be used for separate billing for projects.
+- Sub-accounts can be used for separate billing for projects.
 
-**How to keep your billing under control**
+**How to keep your billing under control.**
 
 - Budget and alerts.
 - Billing export:
@@ -223,7 +223,7 @@ allow several Virtual Machines to share that same hardware.
 - Hypervisor-specific.
 - **Low isolation; tied to OS**.
 
-**The VM-centric way to solve this problem**
+**The VM-centric way to solve this problem.**
 
 ![VM-centric](gcp-img/kubernetes/gcp-kube-vm-centric.png "VM-centric")
 
@@ -412,19 +412,19 @@ view, inspect and delete resources in those clusters.
 - Automatically scales up and down.
 - Open API and runtime environment.
 
-**Cloud Run use cases**
+**Cloud Run use cases.**
 
 - Deploy stateless containers that listen for requests or events.
 - Build apps in any language using any frameworks and tools.
 
-**Cloud Functions**
+**Cloud Functions.**
 
 - Event-driven, serverless compute service.
 - Automatic scaling with highly available and fault-tolerant design.
 - Charges apply only when your code runs.
 - Triggered based on events in Google Cloud services, HTTP endpoints, and Firebase.
 
-**Cloud Functions use cases**
+**Cloud Functions use cases.**
 
 - Supporting microservice architecture.
 - Serverless application backend:
@@ -519,9 +519,6 @@ the pods on the nodes.
 - Kubernetes doesn't create nodes.
 - Cluster admins create nodes and add them to Kubernetes.
 - GKE manages this by deploying and registering Compute Engine instances as nodes.
-
-**GKE: More about nodes.**
-
 - You can choose your node machine type, when you create a cluster.
 
 **Use node pools to manage different kinds of nodes.**

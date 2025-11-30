@@ -57,7 +57,7 @@ The Cross-Service Queries challenge can be addressed by using the following appr
 * API composition pattern: This is the simplest approach and should be used whenever possible. It works by making the 
 clients responsible for invoking the services that own the data and then combining the results.
 * CQRS pattern: Command Query Responsibility Segregation (CQRS) pattern is more powerful but also more complex. It involves
-maintaining one or more view databases whose sole purpose is to support queries, making it easier to retrieve and combin
+maintaining one or more view databases whose sole purpose is to support queries, making it easier to retrieve and combine
 data from multiple services.
 
 #### API composition pattern.
@@ -112,8 +112,7 @@ operations are executed as a single atomic transaction is challenging because th
 
 ![Data Consistency](flashcard-img/data-consistency-and-complex-transactions-bank.png "Data Consistency")
 
-The Data consistency and complex transactions challenges can be addressed by using the following pattern.
-**Saga Pattern.**
+The Data consistency and complex transactions challenges can be addressed by using the **Saga Pattern.**
 * The Saga pattern can be used to manage distributed transactions. Each microservice executes a local transaction and 
 publishes an event to trigger the next step. If a step fails, the previous steps are compensated.
 * For example, if payment fails after an order is created the Saga pattern can automatically trigger a cancellation of the
@@ -128,8 +127,7 @@ services becomes complex.
 
 ![Data Duplication](flashcard-img/data-duplication.png "Data duplication")
 
-The Data duplication challenge can be addressed by using the following approaches.
-**Event-Driven Architecture.**
+The Data duplication challenge can be addressed by using the **Event-Driven Architecture.**
 * When data in one service changes, it can publish an event that other services listen to and update their copies of the
 data accordingly.
 
@@ -248,7 +246,7 @@ complexity of managing distributed systems and eventual consistency.
 
 ![CQRS Different Read Write Databases](flashcard-img/cqrs-different-read-write.png "CQRS Different Read Write Databases")
 
-#### CQRS with Event Sourcing, different Read/Write Databases/
+#### CQRS with Event Sourcing, different Read/Write Databases.
 
 * Maintaining sync between separate Read/Write databases with Eventual Consistency can be tricky, especially when event
 ordering matters. For example, if a Write model is updated twice in quick succession, and the first event is processed
@@ -256,7 +254,7 @@ after the second, the Read model could end up with outdated data.
 * Most synchronous message buses prioritize availability and performance, which means they don't guarantee message order.
 Event Sourcing offers a solution by storing Write models as event streams instead of their current state.
 
-**Event Sourcing with Different Read/Write Databases:**
+**Event Sourcing with Different Read/Write Databases.**
 * Consistency: Eventual Consistency.
 * Complexity: High.
 * Performance/Scalability: High.
@@ -412,10 +410,10 @@ at a controlled pace.
 * Primary Purpose: Ensures reliable event publishing between database and message broker.
 * Focus: Maintaining data consistency and reliability in event publishing.
 * Data Synchronization: Data is recorded in an outbox table and later published as an event.
-* Typical Use Case: Event;driven systems requiring reliable inter-service communication.
+* Typical Use Case: Event driven systems requiring reliable inter-service communication.
 * Challenges: Outbox table management and processing overhead.
 
-# Sage Pattern.
+# Saga Pattern.
 
 ![Saga Pattern.](flashcard-img/saga-pattern.png "Saga Pattern.")
 
@@ -455,7 +453,7 @@ in how they design and implement their distributed transactions.
 **Drawbacks of Saga Pattern.**
 * Complexity: Implementing the Saga Pattern can add complexity to the system, especially when dealing with compensating
 transactions and failure scenarios.
-* Eventual Consistency: The Sage Pattern often relies on eventual consistency, meaning that there might be a delay before
+* Eventual Consistency: The Saga Pattern often relies on eventual consistency, meaning that there might be a delay before
 all services reflect the latest state. This requires careful handling to ensure a consistent user experience.
 * Testing and Debugging: Testing and debugging Sagas can be challenging due to the distributed nature of the transactions
 and the need to simulate various failure scenarios.

@@ -47,7 +47,7 @@ developed, deployed, and managed.
 ### Cons.
 
 - Complex management due to communication protocols (e.g. SOAP).
-- High investment costs due top vendor in middleware.
+- High investment costs due to vendor in middleware.
 - Extra overload.
 
 Numerous instances of SOA where teams aimed to create smaller services, yet they remained tightly coupled
@@ -999,7 +999,7 @@ to store, track revisions and audit the configuration used in release?
 configuration data?
 4. When the number of application instances grows, handling configuration in a distribute manner for each instance becomes
 challenging. How can such challenges be overcome?
-5. Considering that neither Spring Boot properties not environment variables support configuration encryption, how should
+5. Considering that neither Spring Boot properties nor environment variables support configuration encryption, how should
 secrets be managed securely?
 6. After modifying configuration data, how can you ensure that the application can read it at runtime without necessitating
 a complete restart?
@@ -1439,7 +1439,7 @@ the expected heartbeats per minute.
 6. 'eureka.server.enable-self-preservation=true': By default self-preservation mode is enabled but if you need to disable
 it you can change it to 'false'.
 
-# Routing, cross-cutting concerns in microservices. here
+# Routing, cross-cutting concerns in microservices.
 
 **How do we maintain a single entrypoint into microservices network?**
 
@@ -1586,7 +1586,7 @@ localhost at port 8072 (or other configured) which is the gateway path.
 ### API Gateway Pattern.
 
 The API Gateway Pattern is a crucial architectural component in microservice design, offering a unified entry point for
-multiple microservices, It acts as a gateway between the external clients (e.g. web apps, mobile apps) and the internal
+multiple microservices. It acts as a gateway between the external clients (e.g. web apps, mobile apps) and the internal
 microservices, helping streamline communication, security, and routing. This pattern is essential when managing the complexities
 of microservice-based applications.
 
@@ -1637,7 +1637,7 @@ Like returning the default value or return values from cache of call another ser
 In the cases of slow performing services, how do we configure timeouts, retries and give time for a failed services to
 recover itself.
 
-Ensuring system stability and resilience is crucial for providing a reliable service to users, One of the critical aspects
+Ensuring system stability and resilience is crucial for providing a reliable service to users. One of the critical aspects
 in achieving a stable and resilient system for production is managing the integration points between services over a network.
 
 There exist various patterns for building resilient applications. In the Java ecosystem, Hystrix, a library developer by Netflix, 
@@ -1647,7 +1647,7 @@ Resilience4J provides a comprehensive set of features for building resilient app
 Java developers.
 
 ### Resiliency using Resilience4J.
-[Microservices.md](Microservices.md)
+
 Resilience4J is a lightweight fault tolerance library designed for functional programming. It offers the following patterns
 for increasing fault tolerance due to network problems or failure of any of the multiple services:
 1. Circuit breaker: Used to stop making requests when a service invoked is failing.
@@ -1702,7 +1702,7 @@ it will either go to CLOSED or OPEN.
 
 **Spring Cloud Gateway filter.**
 Below are the steps to build a circuit breaker pattern using Spring Cloud Gateway filter.
-1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-reactor-resilience4j' maven dependency inside **pom.xml**.
+1. Add maven dependency: Add **spring-cloud-starter-circuitbreaker-reactor-resilience4j** maven dependency inside **pom.xml**.
 2. Add circuit breaker filter: Inside the method where we are creating a bean of RouteLocator, add a filter of circuit
    breaker.
     ```java
@@ -1730,7 +1730,7 @@ Below are the steps to build a circuit breaker pattern using Spring Cloud Gatewa
 **Spring Boot service.**
 
 Below are the steps to build a circuit breaker pattern using normal Spring Boot service.
-1. Add maven dependency: Add 'spring-cloud-starter-circuitbreaker-resilience4j' maven dependency inside **pom.xml**.
+1. Add maven dependency: Add **spring-cloud-starter-circuitbreaker-resilience4j** maven dependency inside **pom.xml**.
 2. Add circuit breaker relate changes in Feign Client interface like below:
     ```java
     @FeignClient(name="cards", fallback=CardsFallback.class)
@@ -1768,7 +1768,7 @@ Below are the steps to build a circuit breaker pattern using normal Spring Boot 
 
 The retry pattern will make configured multiple retry attempts when a service has temporarily failed. This pattern is very
 helpful in the scenarios like network disruption where the client request may successful after retry attempt.
-Here are come key concepts and considerations of implementing the Retry pattern in microservices:
+Here are some key concepts and considerations of implementing the Retry pattern in microservices:
 1. Retry Logic: Determine when and how many times to retry an operation. This can be based on factors such as error codes,
 exceptions, or response status.
 2. Backoff Strategy: Define a strategy for delaying retries to avoid overwhelming the system or exacerbating the underlying
@@ -1778,7 +1778,7 @@ of retries fail consecutively, the circuit breaker can be opened to prevent furt
 4. Idempotent Operations: Ensure that the retried operation is idempotent, meaning it produces the result regardless of how
 many times it is invoked. This prevents unintended side effects or duplicate operations.
 
-Steps to build a retry pattern using Spring Cloud Gateway filter.
+**Steps to build a retry pattern using Spring Cloud Gateway filter.**
 1. Add Retry filter: Inside the method where we are creating a bean of RouteLocator, add a filter of retry.
     ```java
     @Bean
@@ -1793,7 +1793,7 @@ Steps to build a retry pattern using Spring Cloud Gateway filter.
     }
     ```
 
-Steps to build a retry pattern using normal Spring Boot Service.
+**Steps to build a retry pattern using normal Spring Boot Service.**
 1. Add Retry pattern annotations: Choose a method and mention retry pattern related annotation along with the below configs.
 Post that create a fallback method matching the same method signature.
     ```java
@@ -1803,7 +1803,7 @@ Post that create a fallback method matching the same method signature.
    
     private ResponsEntity<String> getBuildInfoFallback(Throwable t) {}
     ```
-2. Add properties: Add properties inside the application.yaml file:
+2. Add properties: Add properties inside the **application.yaml** file:
     ```yaml
     resilience4j.retry:
       configs:
@@ -1836,8 +1836,8 @@ especially during challenging circumstances. This exemplifies the essence of res
 pattern proves beneficial for providing services to users based on their subscription tiers. For instance, distinct rate
 limits can be defined for basic, premium, and enterprise users.
 
-Steps to build a rate limiter pattern using Spring Cloud Gateway filter.
-1. Add maven dependency: Add 'spring-boot-starter-data-redis-reactive' maven dependency inside pom.xml and make sure a redis
+**Steps to build a rate limiter pattern using Spring Cloud Gateway filter.**
+1. Add maven dependency: Add **spring-boot-starter-data-redis-reactive** maven dependency inside **pom.xml**, and make sure a redis
 container started. Mention redis connection details inside the **application.yaml** file.
 2. Add rate limiter filter: Inside the method where we are creating a bean of RouteLocator, add a filter of rate limiter
 and creating supporting beans of RedisRateLimiter and KeyResolver.
@@ -1865,7 +1865,7 @@ and creating supporting beans of RedisRateLimiter and KeyResolver.
     }
     ```
 
-Steps to build a rate limiter using Spring Boot service.
+**Steps to build a rate limiter using Spring Boot service.**
 1. Add rate limiter annotations: Choose a method and mention rate limiter pattern related annotation along with the below
 configs. Post that create a fallback method matching the same method signature.
     ```java
@@ -1909,18 +1909,28 @@ Without Bulkhead, '/myCustomerDetails' will start eating all the threads, resour
 of '/myAccount'.
 With Bulkhead, '/myCustomerDetails' and '/myAccount' will have their own resources, thread pool defined.
 
+**Resiliency Patterns Summary.**
+- Circuit Breaker.
+- Fallback.
+- Retry.
+- Rate Limit.
+- Bulkhead.
+
 # Observability and monitoring of microservices.
 
 **Debugging a problem in microservices?**
+
 How do we trace transactions across multiple services, containers and try to find where exactly the problem or bug is?
 How do we combine all the logs from multiple services into a central location where they can be indexed, searched, filtered,
 and grouped to find bugs that are contributing to a problem?
 
 **Monitoring performance of service calls?**
+
 How can we track the path of a specific chain service call through our microservices network, and see how long it took to
 complete at each microservice?
 
 **Monitoring services metrics & health?**
+
 How can we easily and efficiently monitor the metrics like CPU usage, JVM metrics, etc. for all the microservices applications
 in our network?
 How can we monitor the status and health of all of our microservices applications in a single place, and create alerts
@@ -1998,17 +2008,19 @@ such as trace, debug, info, warn, and error. This allows us to log only the most
 giving us the change to change the log level temporarily during debugging.
 
 **Logging in Monolithic Apps.**
+
 In monolithic apps, all the code is in a single codebase. This means that all the logs are also in a single location.
 This makes it easy to find and troubleshoot problems, as you only need to look in one place.
 
 **Logging in Microservices.**
+
 Logging in microservices is complex. This is because each service has its own logs. This means that you need to look in multiple
 places to find all the logs for a particular request.
 To address this challenge, microservices architectures often use centralized logging. Centralized logging collects logs from
 all the services in the architecture and stores them in a single location. This makes it easier to find and troubleshoot
 problems, as you only need to look in one place.
 
-### Managing logs with Grafana, Loki & Promtail. here
+### Managing logs with Grafana, Loki & Promtail.
 
 Grafana is an open-source analytics and interactive visualization web application. It provides charts, graphs, and alerts for
 the web when connected to supported data sources. It can be easily installed using Docker or Docker Compose.
@@ -2095,12 +2107,12 @@ as correlation ID, is generated for each request at the entry point of the syste
 in event logs and passed along to other relevant services involved in processing the request. By leveraging this correlation
 ID, we can retrieve all log messages associated with a specific transaction from multiple applications.
 * Distributed tracing encompasses three primary concepts:
-  * `Tags` serve as metadata that offer supplementary details about the span context, including the request URI, the username
+  * Tag serve as metadata that offer supplementary details about the span context, including the request URI, the username
   of the authenticated user, or the identifier for a specific tenant.
-  * A trace denotes the collection of actions tied to a request of transaction, distinguishing by a `trace ID`. It consists of
+  * A trace denotes the collection of actions tied to a request of transaction, distinguishing by a trace ID. It consists of
   multiple spans that span across various services.
   * A span represent each individual storage of request processing, encompassing start and end timestamps, and is uniquely
-  identified by combination of trace ID and `span ID`.
+  identified by combination of trace ID and span ID.
 
 1. When a client request received at the edge server if the first service inside the network, a trace ID like 'abc123def' will
 be generated, and it is going to be same through the request.
@@ -2259,20 +2271,20 @@ want to share data between them using backend APIs.
 4. Resource Server (Gateway/Edge Service): If the access token is valid, edge server allows the request to the actual services.
 5. Unsecured services deployed behind the docker network or Kubernetes firewall network. So can't be accessed directly.
 
-When ever an external system trying to communicate with Spring Cloud Gateway where there is no end used involved, then we
+When ever an external system trying to communicate with Spring Cloud Gateway where there is no end user involved, then we
 need to use the OAuth2 Client Credentials grant flow for Authentication & Authorization.
 
 ![Securing Gateway Client Credentials](flashcard-img/securing-gateway-using-client-credentials-grant.png "Securing Gateway Client Credentials")
 
 1. Client: External client trying to invoke '/bank/accounts/api/**' without any authentication.
-2. Resource Server: Gateway/Resource server replies, "Sorry buddy, I can only process the requests who provide an access
-token from Auth server, Go and get an access token from Auth Server".
+2. Resource Server: Gateway/Resource server replies, "Sorry, I can only process the requests who provide an access
+token from Auth server. Go and get an access token from Auth Server".
 3. Client: External client asked KeyCloak which is an Auth Server for Access token.
 4. Auth Server: Auth Server laughed and replied, I can't give access token just like that. In order to get access token
 from me, you need to register with me and the same needs to be approved by my admin.
 5. Client: External client asked KeyCloak which is an Auth Server for Access token. But this time, it passed Client ID &
 Client Secret which it received during the registration process that it did offline with the admin of Auth server.
-6. Auth Server: Auth Server replied, "Congratulations Buddy. Your details are correct. Here is your access token.".
+6. Auth Server: Auth Server replied, "Congratulations. Your details are correct. Here is your access token.".
 7. Client: External client trying to invoke '/bank/accounts/api/**' with the access token that it received during step 6.
 8. Spring Cloud Gateway: Gateway shared the received access token to the Auth Server to confirm whether it is valid or not.
 9. Auth Server: Auth Server confirmed back to the Gateway that the access token is valid.
@@ -2339,11 +2351,11 @@ Code grant flow for Authentication & Authorization.
 ![Securing Gateway using Auth](flashcard-img/securing-gateway-using-auth-grant.drawio.png "Securing Gateway using Auth")
 
 1. Client: Client app trying to invoke '/bank/accounts/api/**' without any authentication on behalf of end user.
-2. Resource Server: Gateway/Resource server replies, "Sorry Buddy, I can only process the requests who provide an access
+2. Resource Server: Gateway/Resource server replies, "Sorry, I can only process the requests who provide an access
 token from Auth server. Go and get an access token from Auth Server".
 3. Client: Client application asked KeyCloak which is an Auth Server for Access token.
-4. Auth Server: Auth Server laughed and replied, I can't give access token just like that. In order to get access token from
-me, you and your partner in crime (end user) need to register with me and the same needs to be approved by my admin.
+4. Auth Server: Auth Server replied, I can't give access token just like that. In order to get access token from
+me, you and end user, need to register with me and the same needs to be approved by my admin.
 5. Client: Client application asked KeyCloak which is an Auth Server for Access token. But this time, it passed Client ID which it
 received during registration process. The KeyCloak shows the login page for the end user.
 6. Client: end user says "Hello Auth Server, please allow the client app to access the secured resources on my behalf. Here
@@ -2351,7 +2363,7 @@ are my credentials to prove my identity".
 7. Auth Server: Hey Client, User allowed you to access resources on his behalf. Here is AUTHORIZATION CODE.
 8. Client: Hey Auth Server, here are my Client ID, Client Secret & AUTHORIZATION CODE which shared in step 7. Please provide
 me a token.
-9. Auth Server: Auth Server replied, "Congratulations Buddy. Your details are correct. Here is the end user access token. Don't misuse it.".
+9. Auth Server: Auth Server replied, "Congratulations. Your details are correct. Here is the end user access token. Don't misuse it.".
 10. Client: Client app trying to invoke '/bank/accounts/**' with the access token that it received during step 9.
 11. Spring Cloud Gateway: Gateway shared the received access token to the Auth Server to confirm whether it is valid or not.
 12. Auth Server: Auth Server confirmed back to the Gateway that the access token is valid.
@@ -2442,7 +2454,7 @@ a producer, publisher, or source.
 * Consumer: A consumer is a function that consumes input but does not produce any output. It can also be called a subscriber
 or sink.
 
-Spring Cloud Function features:
+**Spring Cloud Function features.**
 * Choice of programming styles - reactive, imperative or hybrid.
 * POJO functions (i.e., if something fits the `@FunctionalInterface` semantics we'll treat it as function).
 * Function composition which includes composing imperative functions with reactive.
@@ -2759,7 +2771,7 @@ This processing can involve transformations, aggregations, calculations, or any 
 requirements.
 7. Committing the Offset: After successfully processing a batch of messages, the consumer needs to commit the offset to
 Kafka. This action signifies that the consumer has completed processing the messages up to that offset. Committing the
-offset ensures that the consumer's progress is persisted can can be resumed from that point in case of failure or restart.
+offset ensures that the consumer's progress is persisted and can be resumed from that point in case of failure or restart.
 8. Polling Loop: The consumer repeats the process of sending fetch requests, receiving messages, processing them, and
 committing the offset in a continuous loop. This loop allows the consumer to continuously consume and process new messages
 as they become available.
@@ -2867,7 +2879,7 @@ maintains the correct number of pods, etc. It constantly tries to keep the syste
 with the current state of the system.
 * etcd: etcd is a distributed key-value store that serves as the cluster's primary data store. It stores the configuration
 data and the desired state of the system, including information about Pods, Services, ReplicationControllers, and more.
-The API server interacts with etcd to read amd write cluster data.
+The API server interacts with etcd to read and write cluster data.
 
 ### Components of Worker Node.
 
@@ -2982,9 +2994,9 @@ label "app:accounts" to select the pods controlled by the Deployment with the sa
 * Type: The type field specifies the type of Service. In this case, it is set to "ClusterIP", which means that the Service
 will be accessible only from within the cluster.
 * Port: The ports section defines the ports that the Service should listen on and forward traffic to.
-* protocol: The protocol field specifies the protocol used for the service port. In this case, it's TCP.
-* port: The port field is the port number on which the Service will listen for incoming traffic.
-* targetPort: The targetPort field is the port number on the pods to which the incoming traffic will be forwarded.
+* Protocol: The protocol field specifies the protocol used for the service port. In this case, it's TCP.
+* Port: The port field is the port number on which the Service will listen for incoming traffic.
+* TargetPort: The targetPort field is the port number on the pods to which the incoming traffic will be forwarded.
 
 ```yaml
 apiVersion: v1
@@ -3387,7 +3399,7 @@ describing a TLS connection. In most cases, the term SSL and SSL/TLS both refer 
 
 ### How does TLS works?
 
-When web browsers aim to establish a secure connection with a web server, such as 'https amazon.com' they employ the 
+When web browsers aim to establish a secure connection with a web server, such as 'https://amazon.com' they employ the 
 Transport Layer Security (TLS) protocol. This not only encrypts and safeguards private communications but also validates 
 the server's authenticity, ensuring it truly belongs to Amazon.
 
@@ -3408,7 +3420,7 @@ Below are the steps happens behind the scenes just before browser start sending 
 1. TCP handshake happens and connection between client and server established.
 2. Client says Hello to server.
 3. Server responds and send public key to client.
-4. Client browser send en encrypted session key to server which it generated using public key.
+4. Client browser send an encrypted session key to server which it generated using public key.
 5. Server decrypts the session key using private key and save it for later use in the same session.
 6. Both client and server send data to each other in an encrypted format derived based on the session key. We called this
 as symmetric encryption as both parties use same key for encryption and decryption.

@@ -1039,7 +1039,7 @@ Answer: Domain events: For the communication between bounded context. Represents
 For example shopping cart. This event is triggered by bounded context order process, and it is received by the bounded 
 contexts shipping and payment to initiate shipping and invoicing of the order.
 
-191) Boundary Testing and its importance in software testing? // here
+191) Boundary Testing and its importance in software testing?
 Answer: Defect identification: Boundary conditions are often where software defects, such as overflow, 
 out-of-memory errors, or unexpected behavior. Robustness: Application handle extreme inputs gracefully. Security.
 
@@ -1093,7 +1093,7 @@ Answer: Advantages: Efficiency, Consistency, Regression Testing, Coverage, Conti
 Answer: A service is asynchronous if: It does not make a request to other microservices while processing requests.
 It makes a request to other microservices while processing requests and does not wait for the result.
 
-201) Describe Distributed architecture? // here
+201) Describe Distributed architecture? 
 Answer: Many devices and machines connected via a network. Multiple devices work together to perform a single task or 
 set of tasks, sharing resources and information among themselves. Client-server architecture. Peer-to-Peer Architecture. 
 Microservice architecture. Cloud-based architecture. Distributed architecture allows for better scalability, reliability, 
@@ -2093,7 +2093,7 @@ operations like put and get.
 It's worth noting that the actual implementation of these classes can change between different versions of the
 Java API and other libraries, but the basic principles and algorithms remain the same.
 
-294) Can you explain the different levels of testing (unit, integration, system, and acceptance)? // here
+294) Can you explain the different levels of testing (unit, integration, system, and acceptance)? 
 Answer: 
 a) Unit Testing. Definition:Unit testing involves testing individual components or functions of the software in isolation. 
 The goal is to validate that each unit of the software performs as expected.

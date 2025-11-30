@@ -110,7 +110,7 @@ and scalable infrastructure.
 | Operational security.    | Intrusion detection; reduce insider risks; employee U2F use; software dev practices. |
 | Internet communication.  | Google Front End; designed-in Denial of Service protection.                          |
 | Storage services.        | Encryption at rest.                                                                  |
-| User identity,           | Central identity service with support for U2F.                                       |
+| User identity.           | Central identity service with support for U2F.                                       |
 | Service deployment.      | Encryption of inter-service communication.                                           |
 | Hardware infrastructure. | Hardware design and provenance; secure boot stack; premises security.                |
 
@@ -169,12 +169,12 @@ from physical data centers?**
 - Google helps with best practices, templates, products and solutions.
 - Upper layers are Customers responsibility.
 
-| Responsibilities.         | IaaS (Compute Engine). | Paas (App Engine.) | Manages services. |
+| Responsibilities.         | IaaS (Compute Engine). | Paas (App Engine). | Manages services. |
 |---------------------------|------------------------|--------------------|-------------------|
-| Content                   | C                      | C                  | C                 |
-| Access Policies           | C                      | C                  | C                 |
-| Usage                     | C                      | C                  | C                 |
-| Deployment                | C                      | C                  | G                 |
+| Content                   | Customer               | Customer           | Customer          |
+| Access Policies           | Customer               | Customer           | Customer          |
+| Usage                     | Customer               | Customer           | Customer          |
+| Deployment                | Customer               | Customer           | Google            |
 | Web app Security          | C                      | C                  | G                 |
 | Identity                  | C                      | G                  | G                 |
 | Operations                | G                      | G                  | G                 |
@@ -753,7 +753,7 @@ Which load-balancing option should this customer choose?**
 - Horizontal scaling (read).
 - Google security (network firewalls, encrypted data, backups).
 
-**Cloud SQL + App Engine**
+**Cloud SQL + App Engine.**
 
 - Cloud SQL can be used with App Engine using standard drivers.
 - You can configure a Cloud SQL instance to follow an App Engine application.
@@ -1059,7 +1059,7 @@ $> kubectl get services
 
 ![Kubernetes get services](gcp-img/gcp-kubernetes-get-services.png "Kubernetes get services")
 
-**Replicas/**
+**Replicas.**
 
 ```console
 $> kubectl scale nginx --replicas=3
@@ -1324,7 +1324,7 @@ own runtime to run code in a language of your choice.
     - Identify web, mobile users with Auth0 and Firebase Authentication.
 - Generate client libraries.    
 
-**Cloud Endpoints: Supported platforms/**
+**Cloud Endpoints: Supported platforms.**
 
 | Runtime environments.            |
 |----------------------------------|
@@ -1830,7 +1830,7 @@ on infrastructure wholly managed by Google?**
 **Implement health-check endpoints.**
 
 - Health Monitoring Agent (Stackdriver Monitoring):
-    - `/health:`
+    - `/health`:
         - Storage.
         - Database.
         - Network connections.
@@ -2114,12 +2114,14 @@ mvn spring-boot:run
 - Cloud Spanner.
 - BigQuery.
 
+**Characteristics.**
+
 - Cost-effective
 - Varied choices based on your:
-    - Application
-    - Workload
+    - Application.
+    - Workload.
 
-**Cloud Storage**
+**Cloud Storage.**
 
 | Overview.                                   | Ideal for.              |
 |---------------------------------------------|-------------------------|
@@ -3364,11 +3366,11 @@ Function
 
 **Error Reporting.**
 
-- Errors thrown or reported manually
+- Errors thrown or reported manually.
 
 **Cloud Functions.**
 
-- Number of invocations, execution time, memory usege
+- Number of invocations, execution time, memory usage.
 
 #### Quiz.
 
@@ -3723,70 +3725,70 @@ cloud source repo, GitHub or Bitbucket.
 
 ***
 
-## Introduction to Execution Environments in Google Cloud
+## Introduction to Execution Environments in Google Cloud.
 
-**You have a choice of app execution environments**
+**You have a choice of app execution environments.**
 
-- Google Cloud Dataflow: Fully Managed
-- Google Cloud Functions
-- Cloud Run
-- Google App Engine Flexible Environment
-- Google Kubernetes Engine
-- Google Compute Engine: Highly customizable
+- Google Cloud Dataflow: Fully Managed.
+- Google Cloud Functions.
+- Cloud Run.
+- Google App Engine Flexible Environment.
+- Google Kubernetes Engine.
+- Google Compute Engine: Highly customizable.
 
-### Dataflow
+### Dataflow.
 
-**Create serverless, elastic data pipelines with Cloud Dataflow**
+**Create serverless, elastic data pipelines with Cloud Dataflow.**
 
 - Apache Beam SDK (Java and Python).
 
-**Cloud Dataflow removes operational overhead**
+**Cloud Dataflow removes operational overhead.**
 
 - Autoscaling:
     - Based on metrics: CPU utilization, throughput and the amount of work remaining.
-    - Rate of Game Events
-    - Number of Workers
-- Dynamic Workload Rebalancing    
+    - Rate of Game Events.
+    - Number of Workers.
+- Dynamic Workload Rebalancing.    
 
-**Use Dataflow for high-volume data processing**
+**Use Dataflow for high-volume data processing.**
 
 - (Batch, Stream) :arrow_right: Dataflow:
-    - Any Combination of basic and custom transformations
-    - Filtered
-    - Filtered and Grouped
-    - Filtered, Grouped and Windowed
+    - Any Combination of basic and custom transformations.
+    - Filtered.
+    - Filtered and Grouped.
+    - Filtered, Grouped and Windowed.
 - Use cases:
     - Click-stream point of sale and segmentation analysis in the retail industry.
     - Fraud detection in the financial service industry.
     - Personalized user experience in the gaming industry.
     - IoT Analytics in manufacturing, healthcare and logistics industries.
 
-**Consider other compute environments**
+**Consider other compute environments.**
 
 ```
 Apache Beam SDK 2.x for Java and Python
 ```
 
-### Cloud Functions
+### Cloud Functions.
 
-**Develop event-driven, serverless, highly scalable microservices with Cloud Functions**
+**Develop event-driven, serverless, highly scalable microservices with Cloud Functions.**
 
 ![Cloud Functions](gcp-img/gcp-event-driven-cloud-functions.png "Cloud Functions")
 
-**Use Cloud Functions to enable event-driven processing or to develop lightweight microservices**
+**Use Cloud Functions to enable event-driven processing or to develop lightweight microservices.**
 
 - Lightweight ETL:
-    - Cloud Storage
-    - Cloud Functions
-    - Datastore
+    - Cloud Storage.
+    - Cloud Functions.
+    - Datastore.
 - Messaging:
-    - Pub/Sub
-    - Cloud Functions
+    - Pub/Sub.
+    - Cloud Functions.
 - Webhooks:
-    - HTTP
-    - Cloud Functions        
+    - HTTP.
+    - Cloud Functions.        
 
-**Focus on code: Node.js and Cloud Client Library**
+**Focus on code: Node.js and Cloud Client Library.**
 
 *index.js*
 
@@ -3810,51 +3812,51 @@ exports.subscribe = function subscribe(event, callback) {
 }
 ```
 
-**Consider other compute environment**
+**Consider other compute environment.**
 
 - Large or complex codebase.
 - Languages other than Node.js, Python, Go, or Java.
 
-### App Engine Flexible Environment
+### App Engine Flexible Environment.
 
-**Deploy a scalable web and mobile backends in any language with App Engine flexible environment**
+**Deploy a scalable web and mobile backends in any language with App Engine flexible environment.**
 
-**Develop and deploy microservices**
+**Develop and deploy microservices.**
 
-**Go from code to production with a single command**
+**Go from code to production with a single command.**
 
 ```console
 $> gcloud app deploy
 ```
 
-- Sets up LB
-- 3 zones
-- Autoscale
+- Sets up LB.
+- 3 zones.
+- Autoscale.
 
-**Deploy safely with zero downtime**
+**Deploy safely with zero downtime.**
 
-**Use App Engine flexible environment for highly scalable web-focused apps**
+**Use App Engine flexible environment for highly scalable web-focused apps.**
 
 - Applications that are based on HTTP/s request-responses.
 - Applications that deploy public endpoints.
 - Continuous integration and delivery (CI/CD) pipelines with Jenkins or Spinnaker.
 
-**Consider other compute environment**
+**Consider other compute environment.**
 
 - Protocol Other Than HTTP/S.
 - Persistent Disks.
 - Spiky or Very Low Traffic.
 
-**App Engine standard environment is an option for apps with spiky or very low traffic**
+**App Engine standard environment is an option for apps with spiky or very low traffic.**
 
 - App Engine Standard Environment:
     - App Engine Standard APIs.
 - App Engine flexible environment:
     - Google Cloud Client Library.    
 
-### Google Kubernetes Engine
+### Google Kubernetes Engine.
 
-**Kubernetes is an open-source platform for deploying, scaling and operating containers**
+**Kubernetes is an open-source platform for deploying, scaling and operating containers.**
 
 ![Kubernetes](gcp-img/gcp-kube.png "Kubernetes")
 
@@ -3866,40 +3868,40 @@ orchestrating failovers, rolling out deployments, Storage Orchestration, and man
 - The Kubernetes control-plane manages the worker nodes and the pods in the cluster. 
 - A pod is a group of containers that share networking and storage resources on the node.
 
-**GKE is managed service for Kubernetes**
+**GKE is managed service for Kubernetes.**
 
 - Google maintains:
-    - Operating systems
-    - Nodes (including control plane)
-    - Monitoring and logging
-    - Kubernetes upgrades
+    - Operating systems.
+    - Nodes (including control plane).
+    - Monitoring and logging.
+    - Kubernetes upgrades.
 
-**GKE features**
+**GKE features.**
 
-- Fully managed
-- Container-optimized OS
-- Auto upgrade
-- Auto repair
-- Cluster scaling
-- Seamless integration: Cloud Build, Container Registry
-- Identity and Access Management
-- Integrated logging and monitoring
-- Integrated networking
-- Cloud Console
+- Fully managed.
+- Container-optimized OS.
+- Auto upgrade.
+- Auto repair.
+- Cluster scaling.
+- Seamless integration: Cloud Build, Container Registry.
+- Identity and Access Management.
+- Integrated logging and monitoring.
+- Integrated networking.
+- Cloud Console.
 
-**Use GKE for complex, portable apps**
+**Use GKE for complex, portable apps.**
 
 - Any app runtime packaged as a Docker container image.
 - Hybrid or multi-cloud apps.
 - Protocol other than HTTP/S.
 
-**GKE simplifies infrastructure service provisioning for your apps**
+**GKE simplifies infrastructure service provisioning for your apps.**
 
 - Google Cloud persistent disks.
 - Google Cloud network load balancers.
 - Integration with Google Cloud's operations suite.
 
-**Use GKE for greater control over how Google Cloud resources are deployed for your apps**
+**Use GKE for greater control over how Google Cloud resources are deployed for your apps.**
 
 ```console
 $> gcloud container cluster create
@@ -3914,7 +3916,7 @@ $> gcloud container cluster create
     --max-nodes 50
 ```
 
-**Deploy apps using standard Kubernetes tools**
+**Deploy apps using standard Kubernetes tools.**
 
 *frontend-deployment.yaml*
 
@@ -3939,65 +3941,65 @@ spec:
 $> kubectl create -f ./frontend-deployment.yaml
 ```
 
-**Use GKE as a part of your CI/CD pipeline**
+**Use GKE as a part of your CI/CD pipeline.**
 
 - Cloud Build, Container Registry, and GKE can be used to create a strong CI/CD system.
 
-**Consider other compute environments**
+**Consider other compute environments.**
 
 - If your app cannot be packaged as a container.
 
-### Cloud Run
+### Cloud Run.
 
-**Cloud Run lets you focus on development**
+**Cloud Run lets you focus on development.**
 
 - Run stateless containers that are invokable via web requests or Cloud Pub/Sub events.
 - Cloud Run is serverless, it abstracts away all infrastructure management.
 - Built on K native.
 
-**Cloud Run doesn't restrict the way you code**
+**Cloud Run doesn't restrict the way you code.**
 
-**Focus on writing code**
+**Focus on writing code.**
 
 - Charges for the resources you use calculated down to the nearest 100 milliseconds.
 
-**Deploy automatically scaled containerized apps with a single command**
+**Deploy automatically scaled containerized apps with a single command.**
 
 ```console
 $> gcloud beta run deploy --image gcr.io/PROJECT-ID/helloworld --platform managed
 ```
 
-**Consider other compute environments**
+**Consider other compute environments.**
 
 - If your app cannot be packaged as a container.
 - If your app is not stateless, or must respond to requests or events delivered using protocol other than HTTP.
 
-### Compute Engine
+### Compute Engine.
 
 - Gives you the greatest amount of control over your infrastructure.
 
-**Run your app on high-performance, scalable VMs with Compute Engine**
+**Run your app on high-performance, scalable VMs with Compute Engine.**
 
 - Predefined and Custom Machine Types.
 - Persistent Disks and Local SSDs.
 - Preemptible VMs.
 - Windows, Linux OS, or your own.
 
-**Use Compute Engine for full control of infrastructure**
+**Use Compute Engine for full control of infrastructure.**
 
-- Machine Type and OS
-- Software
-- Instance Groups with Global Load Balancing
+- Machine Type and OS.
+- Software.
+- Instance Groups with Global Load Balancing.
 
-**Use Compute Engine for maximum flexibility**
+**Use Compute Engine for maximum flexibility.**
 
-- Third-party software
-- Graphics Processing Unit
-- TensorFlow Processing Unit (TPU)
+- Third-party software.
+- Graphics Processing Unit.
+- TensorFlow Processing Unit (TPU).
 
-**Use Compute Engine for lift-and-shift migration**
+**Use Compute Engine for lift-and-shift migration.**
 
-**Consider startup time**
+**Consider startup time.**
 
 ![VM Startup Phases](gcp-img/gcp-compute-engine-startup-time.png "VM Startup Phases")
 
@@ -4005,11 +4007,11 @@ $> gcloud beta run deploy --image gcr.io/PROJECT-ID/helloworld --platform manage
 - Consider custom image.
 - Set appropriate target usage levels in autoscaling policy.
 
-#### Quiz
+#### Quiz.
 
 **1. What is the programming framework used with Cloud Dataflow?**
 
-- Apache Beam SDK
+- Apache Beam SDK.
 
 **2. For what types of applications should you consider an execution environment other than Cloud Functions?**
 
@@ -4019,62 +4021,62 @@ $> gcloud beta run deploy --image gcr.io/PROJECT-ID/helloworld --platform manage
 **3. Your application requires highly customized VMs for specialized applications that have specific operating system 
 requirements. Which execution environment should you consider?**
 
-- Google Compute Engine
+- Google Compute Engine.
 
 **4. Your application executes parallel data processing pipelines to analyze IoT manufacturing data. 
 Which would be the ideal execution environment for your application?**
 
-- Cloud Dataflow
+- Cloud Dataflow.
 
 **5. Your application will create and save a thumbnail of an image every time the user initiates an upload. 
 What execution environment should you consider?**
 
-- Google Cloud Functions
+- Google Cloud Functions.
 
 **6. Your application uses network protocols other than HTTP/S, and the application run partially on-premises 
 and partially in the cloud. What execution environment should you consider?**
 
-- Google Kubernetes Engine
+- Google Kubernetes Engine.
 
-### Summary
+### Summary.
 
 - Google Cloud Client Libraries are the recommended way to programmatically interact with GCP services.
 - With this approach, you are not boxed into one execution environment.
 
 ***
 
-## Debugging, Monitoring, and Performance Tuning
+## Debugging, Monitoring, and Performance Tuning.
 
-**Google Cloud's operations suite, a multi-cloud service**
+**Google Cloud's operations suite, a multi-cloud service.**
 
 - Cloud Logging:
-    - Platform/system/app logs
-    - Log search/view/filter
-    - Log-based metrics
+    - Platform/system/app logs.
+    - Log search/view/filter.
+    - Log-based metrics.
 - Cloud Monitoring:
-    - Platform/system/app metrics
-    - Uptime/health checks
-    - Dashboards
-    - Alerts
+    - Platform/system/app metrics.
+    - Uptime/health checks.
+    - Dashboards.
+    - Alerts.
 - Error Reporting:
-    - Error notifications
-    - Error dashboard
+    - Error notifications.
+    - Error dashboard.
 - Cloud Trace:
-    - Latency reporting
-    - Per-URL latency sampling
+    - Latency reporting.
+    - Per-URL latency sampling.
 - Cloud Debugger:
-    - Production debug snapshots
-    - Conditional snapshots
-    - IDE integration
+    - Production debug snapshots.
+    - Conditional snapshots.
+    - IDE integration.
 - Cloud Profiler:
-    - Low-impact profiling of apps in production      
+    - Low-impact profiling of apps in production.     
 
 ```
 Error Reporting displays errors that have occurred in your applications. 
 You can view the stack trace to determine where the error occurred. 
 ```
 
-**Cloud Monitoring enables you to increase app reliability**
+**Cloud Monitoring enables you to increase app reliability.**
 
 - Monitor Google Cloud, AWS, and multi-cloud environments.
 - Identify trends and prevent issues.
@@ -4082,17 +4084,17 @@ You can view the stack trace to determine where the error occurred.
 - Improve signal-to-noise.
 - Fix problems faster.
 
-### Debugging Application
+### Debugging Application.
 
-**Application Performance Management (APM) tools**
+**Application Performance Management (APM) tools.**
 
-- Cloud Trace
-- Cloud Debugger
-- Cloud Profiler
+- Cloud Trace.
+- Cloud Debugger.
+- Cloud Profiler.
 
-**Cloud Trace - Distributed tracing for everyone**
+**Cloud Trace - Distributed tracing for everyone.**
 
-**Cloud Trace can help answer questions**
+**Cloud Trace can help answer questions.**
 
 - How long does it take my application to handle a given request?
 - Why is it taking my app so long to handle a request?
@@ -4102,22 +4104,22 @@ You can view the stack trace to determine where the error occurred.
 - What can I do to reduce app latency?
 - What are my app's dependencies?
 
-**View and analyze trace data in the Cloud Trace interface**
+**View and analyze trace data in the Cloud Trace interface.**
 
-**Cloud Profiler - Continuous profiling to improve performance and reduce costs**
+**Cloud Profiler - Continuous profiling to improve performance and reduce costs.**
 
-**The Cloud Profiler UI provides flame charts to correlate statistics with app areas and components**
+**The Cloud Profiler UI provides flame charts to correlate statistics with app areas and components.**
 
-**Debug your app in development and production**
+**Debug your app in development and production.**
 
-**Debugger automatically creates debug snapshots**
+**Debugger automatically creates debug snapshots.**
 
-### Logging
+### Logging.
 
-**Install the Cloud Logging agent to capture logs**
+**Install the Cloud Logging agent to capture logs.**
 
-- Compute Engine
-- Amazon EC2
+- Compute Engine.
+- Amazon EC2.
 
 ```
 Fluentd
@@ -4126,52 +4128,52 @@ You can install Cloud Logging Agent on Compute Engine and Amazon EC2 instances t
 applications into Cloud Logging.
 ```
 
-**Cloud Logging is preconfigured in other compute environments**
+**Cloud Logging is preconfigured in other compute environments.**
 
-- Dataflow
-- App Engine (Flexible and standard environments)
-- Cloud Functions
-- Google Kubernetes Engine
+- Dataflow.
+- App Engine (Flexible and standard environments).
+- Cloud Functions.
+- Google Kubernetes Engine.
 
-**Set up log-based metrics and alerts**
+**Set up log-based metrics and alerts.**
 
-- Cloud Logging and Cloud Monitoring
+- Cloud Logging and Cloud Monitoring.
 
-### Monitoring and Tuning Performance
+### Monitoring and Tuning Performance.
 
-**Monitor to analyze long-term trends**
+**Monitor to analyze long-term trends.**
 
-**Monitor to compare results over time or between experimental configurations**
+**Monitor to compare results over time or between experimental configurations.**
 
-**Monitor to raise alerts when something is broken or about to be broken**
+**Monitor to raise alerts when something is broken or about to be broken.**
 
-**Monitor to perform ad hoc retrospective analysis**
+**Monitor to perform ad hoc retrospective analysis.**
 
-**Identify APIs and resources that you want to monitor**
+**Identify APIs and resources that you want to monitor.**
 
 - Public and private endpoints.
 - Multi-cloud resources, such as Compute Engine VM instances, Cloud Storage buckets, Amazon EC2 instances, and
 Amazon RDS databases.
 
-**Identify service-level indicators and objectives**
+**Identify service-level indicators and objectives.**
 
 - Service-Level Indicator (SLI): Latency.
-- Service-Level Objective (SLO): 99.9% of requests over 30 days have latency <100ms
+- Service-Level Objective (SLO): 99.9% of requests over 30 days have latency <100ms.
 
-**Create dashboards that include four golden signals**
+**Create dashboards that include four golden signals.**
 
 - Latency: Amount of time it takes to serve a request.
 - Traffic: How much demand placed on your system.
 - Error: Indicate the number of failed requests.
 - Saturation: How full your app is, or what resources being stretched in reaching target capacity.
 
-### Identifying and Troubleshoot Performance Issues
+### Identifying and Troubleshoot Performance Issues.
 
-**Monitor performance in development and production**
+**Monitor performance in development and production.**
 
-**In Development: Add performance tests to your test suite**
+**In Development: Add performance tests to your test suite.**
 
-**In Development: Check performance watchpoints related to incoming requests**
+**In Development: Check performance watchpoints related to incoming requests.**
 
 - A watch point is a potential area of configuration or app code that could indicate a performance issue.
 - Web authoring:
@@ -4182,7 +4184,7 @@ Amazon RDS databases.
     - Service-to-service or browser-to-service calls.
     - cron jobs, batch, ajax.
 
-**In Development: Review application code and logs**
+**In Development: Review application code and logs.**
 
 - Application errors:
     - HTTPs error and other exceptions.
@@ -4200,7 +4202,7 @@ Amazon RDS databases.
     - Circuit braker after some number of retries.
     - No retry in case 5xx errors and malformed URL errors.
 
-**In Production: Check performance watchpoints related to incoming requests in production**
+**In Production: Check performance watchpoints related to incoming requests in production.**
 
 - External user load:
     - Most frequent and slowest requests.
@@ -4209,27 +4211,27 @@ Amazon RDS databases.
 - Malicious load:
     - Source of traffic expected and legitimate.
 
-**In Production: Review deployment settings**
+**In Production: Review deployment settings.**
 
 - Scaling:
-    - Autoscaling
+    - Autoscaling.
 - Region:
-    - Source of traffic
+    - Source of traffic.
 - Cron Jobs:
-    - Schedule
+    - Schedule.
 
-**Traditional SRE blessing**
+**Traditional SRE blessing.**
 
 ```
-May the queries flow, and the pager stay silent
+May the queries flow, and the pager stay silent.
 ```
 
-#### Quiz
+#### Quiz.
 
 **1. Users are encountering errors in your application. You want to view the stack trace to determine where the error 
 occurred. What service would help you view the error?**
 
-- Error Reporting
+- Error Reporting.
 
 **2. You want to stream logs into Cloud Logging from third-party applications running on Compute Engine instances. 
 What service should you consider?**
@@ -4257,7 +4259,7 @@ What is the best way to detect performance issues earlier in the release cycle?*
 
 - You can execute the gRPC calls for Cloud Datastore and Cloud Pub/Sub in parallel.
  
-### Summary
+### Summary.
 
 - Google Cloud's operation suite is a multi cloud service.
 - You can use error reporting and cloud debugger to debug and troubleshoot your app in development and production.

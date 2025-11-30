@@ -450,6 +450,490 @@ Tree is used for inconsistency detection and minimizing the amount of data trans
 **86. Failure Detection.**
 * Gossip / heartbeats.
 
+**87. Tips for Designing Fault-Tolerant Systems.**
+* Replication.
+* Redundancy.
+* Failover (Primary Servers, Standby Servers).
+* Load Balancing.
+* Graceful Degradation.
+* Monitoring & Alerting.
+
+**88. Top Docker Concepts.**
+* Dockerfile.
+* Images: Code, Dependencies, Libraries.
+* Containers: Runtime instances of images (namespaces, cgroups).
+* Docker Registry.
+* Volumes.
+* Docker Compose.
+* Kubernetes.
+* Docker CLI.
+
+**89. Most important system design concepts.**
+* Caching - read heavy.
+* Message Queues - write heavy.
+* LSM tree databases like Cassandra - write heavy.
+* Redundancy and Failover.
+* Load Balancers.
+* CDNs.
+* Block Storage, Object Storage.
+* System Monitoring.
+* Indexes.
+* Sharding.
+
+**90. Web App key concepts.**
+* CI / CD.
+* Load Balancers.
+* Backend Servers.
+* Databases.
+* Logging / Monitoring.
+* Alert Service.
+* ElasticSearch (full text search).
+
+***
+
+## Distributed Message Queue.
+
+Background: Rabbit MQ, Pub/Sub.
+
+### Functional Requirements.
+* Fanout.
+* Retention message until delivered.
+* Delivery Semantics:
+  * At least once delivery.
+  * At most once delivery - for payments.
+  * Exactly once delivery.
+
+### Non-Functional Requirements.
+* Scalable.
+* Persistent-Storage.
+* Throughput.
+
+***
+
+## Design a Kev - Value Store.
+
+Background: NoSQL, Graph, Document, K/V Dynamo.
+* Cassandra.
+* Zookeeper.
+* Redis.
+
+### Functional Requirements.
+* get(key).
+* put(key, value).
+* delete(key).
+
+### Non Functional Requirements.
+* Durable.
+* Scalable:
+  * Replication.
+  * Sharding.
+
+### High-Level Design.
+* Indexing: LSM tree - writes optimized.
+* Replication: CAP.
+* Partitioning: Horizontal Partitioning (Sharding).
+* Node Failure.
+* Concurrent Writes: Isolation.
+
+### Design Details.
+* LSM: Long Structured merge-tree. Write optimized.
+* Writes batched in memory.
+* Data stored base on key -> mem table (in memory) -> SS table (disk).
+* SSTables are immutable. 
+* Key-value stored as deleted (thumb stone).
+* Transaction log.
+* Update - new values are not override.
+* Old value still remains.
+
+**Replication.**
+* Scale.
+* Fault tolerance.
+
+**PACEL.**
+* Trade off between latency and consistency, even when there is no partition in network.
+
+**Eventual Consistency.**
+* Favor availability (Cassandra).
+
+**Leader-Follower.**
+* Leader less replication (decentralized approach).
+* Quorum R/W. 
+  * W - min num of nodes that have to agree upon a write transaction before it is accepted.
+  * N = 3, W = 3: increased latency, strong consistency.
+  * R - Read quorum.
+  * Tunable Consistency.
+
+**Partitioning.**
+* Horizontal Shard.
+* Consistent Hashing.
+* VNode bunch of VNodes, mitigate single node taking too much data.
+
+**Node Failures.**
+* Zookeeper: To detect node failures (heartbeat) - HBase.
+* Gossip protocol - Cassandra.
+* Hinted Hind off.
+
+**Concurrent Writes.**
+* Cassandra - Last writes wins.
+* Dynamo - Vector - Clock (node, version).
+
+***
+
+## Design Rate Limiter.
+
+Background: Security, Availability, User Experience, Prevents users/bots make too many requests in time period.
+
+### Functional Requirements.
+* Backend API.
+* Microservice.
+
+### Non-Functional Requirements.
+* Performance.
+* Latency as low as possible.
+* Throughput.
+* Horizontally Scalable.
+* Storage, Rules.
+* Number of users.
+* Availability: 99.999%.
+* 4 bytes + 128 bytes = 132 bytes.
+* Billion: 132 GGB.
+
+**Fail Open.**
+* If Rate Limiter goes down, treat subsequent requests like rate limiter never exists (fail open can be dangerous). 
+
+**Fail Open.**
+* Do not allow any requests.
+
+### High Level design.
+```
+id: string
+api: string
+op: string (upload, comment)
+timeUnit: string
+requests: int
+```
+
+**Details.**
+* Algorithms:
+  * Fixed Window.
+  * Sliding Window.
+* Redis Sorted Sets.
+* Token Buckets.
+* Sliding Window Counter.
+
+***
+
+## Design Google Maps.
+
+Background: Uber, Lyft. Phone / GPS. Geocoding.
+
+### Functional Requirements.
+
+* Source - destination route.
+* User location tracking.
+* ETA, Traffic (Expected Time Arrival).
+* Have map data (5 TBs).
+
+### Non-Functional Requirements.
+
+* 1 Billion DAU, Scale.
+* Accuracy.
+* Availability, Reliability.
+* Latency tolerance.
+
+### High-Level Design.
+
+* Spatial Indexing. Quadtrees, GGeohashing.
+* Dynamo DB, PSQL - Supports spatial indexing.
+* Physical Address - Latitude / longitude.
+* NoSQL Quadtree - key of tiles.
+* CDN to store image.
+* Web Sockets - for real time updates.
+* Location Data Schema: (uid, timestamp, long/lat).
+
+***
+
+## Design Google Drive.
+
+Background: Upload, download, remove, edit, share folders.
+
+### Functional Requirements.
+
+* Upload.
+* Download.
+* Remove.
+
+### Non-Functional Requirements.
+
+* 200 M users.
+* 50 M Daily Active Users - 15 GB free storage.
+* 200 M * 15 GM = 3000 PB of data. Replicated 3x.
+* Throughput:
+  * 2 files/day: 10 MB each file on average.
+  * Read/write ratio is 2:1.
+  * Latency not much problem.
+* Availability most important + Reliability.
+
+### High Level Design.
+
+* Data Model:
+  * Files: Persistent HDFS, Object store (GCS, S3).
+  * Metadata: NoSQL database key/value store (MongoDB, Datastore, DynamoDB).
+
+**File System.**
+* `-` Scale problem.
+* `+` modify files.
+
+**Object Store.**
+* `+` Scale out of the box.
+* `-` Cannot modify files (immutable).
+* `+` Provide Reliability.
+* `+` Availability (multi-region).
+
+**Concepts.**
+* Block Level Storage.
+* De duplication.
+* Content Addressable Storage.
+* Folders: Hierarchy stored in key/value store.
+* Edit.
+* Reliability - Load Balancers fleet.
+* Heartbeat: Zookeeper (how do we know LB goes down).
+
+***
+
+## Distributed Message Queue.
+
+Background: Rabbit MQ one-to-one. Pub / Sub.
+
+### Functional Requirements.
+
+* Fanout.
+* Retain messages until delivered.
+* At least once delivery. At most once delivery - for payments. Exactly once delivery.
+
+### Non functional Requirements.
+
+* Scalable.
+* Persistent Storage.
+* Throughput.
+
+### High Level Design.
+
+* Pull vs Push. 
+* Pull - Subscribers Pull messages from Pub/Sub.
+* Push - Message is ready, immediately send it to subscriber.
+* Kafka stores messages as - Write Ahead Logs (WAL).
+
+***
+
+## System Design.
+
+*What happens when you type a URL.**
+  * URL components: `http://example.com/product/electronic/phone`.
+    * `http`: Schema.
+    * `example.com`: Domain.
+    * `/product/electroni/`: Path.
+    * `phone`: Resource.
+
+1. Bob enters a URL into the browser.
+2. Browser Looks up in cache (DNS cache).
+   a. Browser looks up IP using recursive DNS lookup.
+3. Browser established TCP connection with server.
+4. Browser sends HTTP req to server.
+5. Server sends back HTTP response.
+6. Browser renders HTTP content.
+
+**Why is Kafka fast?**
+* Sequential I/O: Append only log.
+* Zero copy principle: System call sendfile.
+* DMS - Direct Memory Access.
+
+**How to store passwords in the database?**
+1. Use modern hashing algorithm `bcrypt`.
+2. Salt the password.
+
+**Bare Metal, Virtual Machines, and Containers.**
+* Bare Metals:
+  * `-` Expensive.
+  * `-` Hard to manage.
+  * `-` Hard to scale.
+  * `-` Takes time.
+  * `+` Security.
+  * `+` Compliance.
+  * `+` Regulatory requirements.
+  * `+` Performance.
+* Virtualized:
+  * `-` Vulnerable to noisy neighbors.
+  * `-` Attacks.
+* Containerized:
+  * `-` Security.
+  * `+` Performance.
+  * `+` Quicker start.
+  * `+` Scalable.portable.
+  * `+` Host more than VMs.
+  * `+` Deployment.
+
+**Consistent Hashing.**
+
+* `serverIndex = hash(key) % N`, where `N` is the size of the server pool.
+* Consistent Hashing: Object keys, Server names.
+* Object, Servers -> fn hash function.
+* With simple hashing, when a new server is added, almost all the keys need to be remapped.
+* With consistent hashing, adding a new server only requires redistribution of a fraction of the keys.
+* For example, each server has 3 virtual nodes.
+* Amazon Dynamo DB, Apache Cassandra: Data Partitioning.
+* Content Delivery Networks: Distribute web contents evenly.
+* Load Balancers: Distribute persistent connections evenly.
+
+**Why is single-threaded Redis so fast.**
+
+* Rock solid.
+* Easy to use.
+* Fast.
+  * Register: 0.3 ns.
+  * L1 Cache: 0.9 ns.
+  * L2 Cache: 2.8 ns.
+  * L3 Cache: 12.9 ns.
+  * RAM: 120 ns.
+  * SSD: 50 - 150 us. (micro second).
+  * HDD: 1 - 10 ms.
+* `+` High read / write throughput.
+* `+` Low Latency.
+* `-` Dataset cannot be larger than memory.
+* I/O multiplexing & single threaded read / write.
+* Traditionally - Select of poll system calls.
+* More efficient way - Epoll, variant of I/O multiplexing.
+* Efficient Data Structure:
+  * LinkedLists.
+  * Hash table.
+  * Skip lists.
+
+**HTTP/1 to HTTP2 to HTTP/3.**
+
+* HTTP/1.1:
+  * Keep-alive: Reuse the same TCP connection.
+  * Pipelining: Head of line - blocking.
+* HTTP/2:
+  * Streams compressed headers.
+  * Multiple streams on one TCP connection.
+* HTTP/3 Quick:
+  * Based on UDP streams as fast as clients.
+  * Use Quic connect ID. The network is different but the ConnectionID is the same. Use the same Connection.
+
+**Why is RESTful API so popular.**
+
+* REST Representational State Transfer.
+
+* REST API Rules:
+  * Uniform Interface.
+  * Client-Server.
+  * Stateless.
+  * Cacheable.
+  * Layered System.
+  * Code on Demand (Optional).
+
+* Basic of REST.
+  * URIs:
+    * `https://example.com/api/v3/products`.
+    * `https://example.com/api/v3/users`.
+
+* POST -> Create.
+* GET -> Read.
+* PUT -> Update.
+* DELETE -> Delete.
+
+* Status codes:
+  * 200 level: Success.
+  * 400 level: Something wrong with our request.
+  * 500 level: Something wrong at the server level.
+
+* Idempotency:
+  * POST: NOT idempotent.
+  * GET: Idempotent.
+  * PUT: Idempotent.
+  * DELETE: Idempotent.
+
+* Stateless.
+  * Client: Do not store state info.
+  * Server: So not store state info.
+  * Request and Response, independent of all others.
+
+* Use Pagination.
+  * `/products?limit=25&offset=50`.
+
+* REST API Versioning.
+
+***
+
+**NoSQL: LMS Tree.**
+
+* RelationalDB is commonly basked by B-Tree.
+  * Optimized for reads.
+* Memtable.
+* SSTable.
+
+* Compacting strategies:
+  * Tiering:
+    * Cassandra - write optimized.
+  * Leveling:
+    * RocksDB - read optimized.
+
+* Optimization strategies of LSM Trees.**
+  * Key Lookup.
+  * Summary table - min /max range of each disk block of every level.
+  * Bloom filters at each level.
+
+***
+
+**Bloom Filter.**
+
+* Query - is w in a set?
+* Firm - NO.
+* Probably - Yes.
+* False Positives - possible.
+* Some false positive: OK. False negatives: Not OK. Bloom Filter.
+
+* Hash function:
+  * Fast.
+  * Evenly and randomly distributed.
+  * Collisions are OK.
+  * Collisions should be rare.
+
+***
+
+**Back of the envelope estimation.**
+
+* Daily Active Users.
+* Usage per DAU of the service.
+* Peak Usage = 5 x Average.
+
+**Twitter Example.**
+* 300 million MAU.
+* 150 million DAU.
+* 25% tweeting - each makes 2 tweets average - 25% * 2 = 0.5 tweets per DAU.
+* Peak = 2 x average.
+* 150 (million DAU) * 0.5 (tweets / DAU) * 2 (scaling) / 86400 (seconds in a day).  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

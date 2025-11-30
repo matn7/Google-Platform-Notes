@@ -446,7 +446,7 @@ Who can do what on which resource.
         - Used to authenticate from one service to another.
         - Used to control privileges used by resources.   
    
-**There are two types of Google Service Accounts**
+**There are two types of Google Service Accounts.**
 
 | Google-managed service accounts.                                | User-managed service accounts.                                      |
 |-----------------------------------------------------------------|---------------------------------------------------------------------|
@@ -635,7 +635,7 @@ $> gcloud iam service-accounts keys list --iam-account user@email.com
    
 ### IAM Audit Logs.
    
-**Cloud Audit Logs maintains there logs for each project, folder and organization.**
+**Cloud Audit Logs maintains three logs for each project, folder and organization.**
 
 - Admin activity audit logs.
 - Data access audit logs.
@@ -687,7 +687,7 @@ required to get the job done.
 
 ### VPC Firewalls.
    
-**Virtual Private Cloud (VPC)**
+**Virtual Private Cloud (VPC).**
 
 **Firewall rules protect VM instances from unapproved connections.**
 
@@ -1295,13 +1295,9 @@ $> gsutil logging set on -b gs://example-logs-bucket gs://example-bucket
 ```console
 $> gsutil mk storageanalysis
 
-$> bq load --skip_leading_rows=1 storageanalysis.usage
-gs://example-logs-bucket/example_bucket_usage_2021
-./cloud_storage_usage_schema_v0.json
+$> bq load --skip_leading_rows=1 storageanalysis.usage gs://example-logs-bucket/example_bucket_usage_2021 ./cloud_storage_usage_schema_v0.json
 
-$> bq load --skip_loading_rows=1 storageanalysis.storage
-gs://example-logs-bucket/example-bucket_storage_2021
-./cloud_storage_storage_schema_v0.json
+$> bq load --skip_loading_rows=1 storageanalysis.storage gs://example-logs-bucket/example-bucket_storage_2021 ./cloud_storage_storage_schema_v0.json
 ```
 
 ### Signed URLs and policy documents.
@@ -1376,7 +1372,7 @@ $> gsutil signurl -d 10m ~/key.sjon gs://super-secure-bucket/noir.jpg
 **What is an HSM (hardware security module)?**
 
 - An HSM (hardware security module) is a physical device that manages digital keys.
-- The HMS encrypts and decrypts data with secure crypto-processor chips.
+- The HSM encrypts and decrypts data with secure crypto-processor chips.
 - Using an HSM adds an extra layer of security to keys and data.
 
 **Cloud HSM.**
@@ -1599,9 +1595,9 @@ web application hosted on GCP.
 **Working with Cloud IAM roles.**
 
 - Cloud IAM roles:
-    - `secretmanager.admin:` Can view, edit, and access a secret.
-    - `secretmanager.secretAccessor:` Can only access secret data.
-    - `secretmanager.viewer:` Can view a secret's metadata and its versions, but can't edit or access secret data.
+    - `secretmanager.admin`: Can view, edit, and access a secret.
+    - `secretmanager.secretAccessor`: Can only access secret data.
+    - `secretmanager.viewer`: Can view a secret's metadata and its versions, but can't edit or access secret data.
 - Always apply permissions at the lowest level in the resource hierarchy.
 
 **Using Cloud Console.**
@@ -1885,7 +1881,7 @@ with traffic from multiple sources.
     - MDM/MAM.
     - Gateways & CASB.
     
-#### Quiz/
+#### Quiz.
 
 **1. DDoS Mitigation Layers.**
 

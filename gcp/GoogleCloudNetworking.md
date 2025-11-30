@@ -1,42 +1,42 @@
-# GCP Networking
+# GCP Networking.
 
-## Networking in Google Cloud 
+## Networking in Google Cloud .
 
-**Defining and Implementing Networks**
+**Defining and Implementing Networks.**
 
 - Google Cloud VPC Networking Fundamentals.
 - Controlling Access to VPC Networks.
 - Sharing Networks across Projects.
 - Load Balancing.
 
-**Hybrid Connectivity and Network Management**
+**Hybrid Connectivity and Network Management.**
 
 - Hybrid Connectivity.
 - Pricing and Billing.
 - Network Design and Deployment.
 - Network Monitoring and Troubleshooting.
 
-## Google Cloud VPC Networking Fundamentals
+## Google Cloud VPC Networking Fundamentals.
 
-### Virtual Private Cloud
+### Virtual Private Cloud.
 
-**VPC objects**
+**VPC objects.**
 
-- Projects
+- Projects.
 - Networks:
     - Default, auto mode, custom mode.
-- Subnetworks
-- Regions
-- Zones
+- Subnetworks.
+- Regions.
+- Zones.
 - IP addresses:
     - Internal, external, range.
-- Virtual machines (VMs)
-- Routes
-- Firewall rules        
+- Virtual machines (VMs).
+- Routes.
+- Firewall rules.        
 
-### Projects, networks, and subnetworks
+### Projects, networks, and subnetworks.
 
-**Projects and networks**
+**Projects and networks.**
 
 - **Project:**
     - Associate objects and services with billing.
@@ -48,7 +48,7 @@
     - Contains subnetworks.
     - Type: default, auto, or custom.
 
-**3 VPC network types**
+**3 VPC network types.**
 
 - Default:
     - Every project.
@@ -66,25 +66,25 @@
     - Regional IP allocation.
     - Expendable to any RFC 1918 size.        
 
-**Network isolate systems**
+**Network isolate systems.**
 
 ![Network isolate systems](gcp-img/gcp-network-isolate.png "Network isolate systems")
 
 - A and B can communicate over internal IPs even though they are in different regions.
 - C and D must communicate over external IPs even though they are in the same region. 
 
-**Google's VPC is global**
+**Google's VPC is global.**
 
 ![Google's VPC](gcp-img/gcp-googles-vpc.png "Google's VPC")
 
-**Subnetworks cross zones**
+**Subnetworks cross zones.**
 
 ![Subnetworks cross zones](gcp-img/gcp-subnetwork-cross-zones.png "Subnetworks cross zones")
 
 - VMs can be on the same subnet but in different zones.
 - A single firewall rule can apply to both VMs.
 
-**Expand subnets without re-creating instances**
+**Expand subnets without re-creating instances.**
 
 - Cannot overlap with other subnets.
 - Inside the RFC 1918 address spaces.
@@ -94,25 +94,25 @@
 
 ![Expand subnets](gcp-img/gcp-subnets.png "Expand subnets")
 
-### IP addresses
+### IP addresses.
 
-**VMs can have internal and external IP addresses**
+**VMs can have internal and external IP addresses.**
 
-| Internal IP | External IP |
-|---|---|
-| Allocated from subnet range to VMs by DHCP | Assigned from pool (ephemeral) |
-| DHCP lease is renewed every 24 hours | Reserved (static) and billed more when not attached to a running VM |
-| VM name + IP is registered with network-scoped DNS | VM doesn't know external IP; it is mapped to the internal IP |
+| Internal IP                                        | External IP                                                         |
+|----------------------------------------------------|---------------------------------------------------------------------|
+| Allocated from subnet range to VMs by DHCP         | Assigned from pool (ephemeral)                                      |
+| DHCP lease is renewed every 24 hours               | Reserved (static) and billed more when not attached to a running VM |
+| VM name + IP is registered with network-scoped DNS | VM doesn't know external IP; it is mapped to the internal IP        |
 
-### Mapping IP addresses
+### Mapping IP addresses.
 
-**External IPs are mapped to internal IPs**
+**External IPs are mapped to internal IPs.**
 
 ```console
 $> sudo /sbin/ifconfig
 ```
 
-**DNS resolution for internal addresses**
+**DNS resolution for internal addresses.**
 
 - Each instance has a hostname that can be resolved to an internal IP address:
     - The hostname is the same as the instance name.
@@ -123,7 +123,7 @@ $> sudo /sbin/ifconfig
     - Configured for use on an instance via DHCP.
     - Provides answer for internal and external addresses.    
 
-**DNS resolution for external addresses**
+**DNS resolution for external addresses.**
 
 - Instances with external IP addresses can allow connections from hosts outside of the project.
     - Users connect directly using external IP address.
@@ -132,7 +132,7 @@ $> sudo /sbin/ifconfig
 - DNS records for external addresses can be published using existing DNS servers (outside of GCP).
 - DNS zones can be hosted using Cloud DNS.        
 
-**Host DNS zones using Cloud DNS**
+**Host DNS zones using Cloud DNS.**
 
 - Google's DNS service.
 - Translate domain names into IP address.
@@ -141,22 +141,22 @@ $> sudo /sbin/ifconfig
 - Create and update millions of DNS records.
 - UI, command line, or API.
 
-**Assing a range of IP addresses**
+**Assigns a range of IP addresses.**
 
 - Assign a range of IP addresses as aliases to a VM's network interface using alias IP ranges.
 
 ![Range of IP addresses](gcp-img/gcp-range-of-ip.png "Range of IP addresses")
 
-### Routes and firewall rules
+### Routes and firewall rules.
 
-**A route is a mapping of an IP  range to a destination**
+**A route is a mapping of an IP  range to a destination.**
 
 - Every network has:
     - Routes that let instances in a network send traffic directly to each other.
     - A default route that directs packets to destinations that are outside the network.
 - **Firewall rules must also allow the packet**.    
 
-**Routes map traffic to destination networks**
+**Routes map traffic to destination networks.**
 
 - Destination in CIDR notation.
 - Applies to traffic egressing a VM.
@@ -167,7 +167,7 @@ $> sudo /sbin/ifconfig
 
 ![Routes map traffic to destination networks](gcp-img/gcp-routing-table.png "Routes map traffic to destination networks")
 
-**Instance routing tables**
+**Instance routing tables.**
 
 - **vpngateway:**
     - `10.100.0.0/16 -> default-route-87...`
@@ -181,7 +181,7 @@ $> sudo /sbin/ifconfig
     - `0.0.0.0/0 -> default-route-0086`
     - `172.12.0.0/16 -> vpngateway`
 
-**Firewall rules protect your VM instance from unapproved connections**
+**Firewall rules protect your VM instance from unapproved connections.**
 
 - VPC network functions as a distributed firewall.
 - Firewall rules applied to the network as a whole.
@@ -189,7 +189,7 @@ $> sudo /sbin/ifconfig
 - Firewall rules are stateful.
 - Implied deny all ingress and allow all egress.
 
-**Routes map traffic to destination networks**
+**Routes map traffic to destination networks.**
 
 - `direction:`
     - Inbound connections matched against `ingress` rules only.
@@ -208,42 +208,42 @@ $> sudo /sbin/ifconfig
 - Rule assignment:
     - All rules assigned to all instances, but you can assign certain rules to certain instances only.                 
 
-**GCP firewall use case: Egress**
+**GCP firewall use case: Egress.**
 
 - Conditions:
     - Destination CIDR ranges.
-    - Protocols
-    - Ports
+    - Protocols.
+    - Ports.
 - Action:
     - Allow: Permit the matching egress connection.
     - Deny: Block the matching egress connection.
 
 ![GCP firewall use case: Egress](gcp-img/gcp-firewall-egress.png "GCP firewall use case: Egress")  
     
-**GCP firewall use case: Ingress**
+**GCP firewall use case: Ingress.**
 
 - Conditions:
     - Source CIDR ranges.
-    - Protocols
-    - Ports
+    - Protocols.
+    - Ports.
 - Action:
     - Allow: Permit the matching ingress connection.
     - Deny: Block the matching ingress connection.    
 
 ![GCP firewall use case: Ingress](gcp-img/gcp-firewall-ingress.png "GCP firewall use case: Ingress")  
 
-**Hierarchical firewall policies**
+**Hierarchical firewall policies.**
 
 - My-Org: `Ingress from 1.1.1.10/24 priority 1 fo to_next Ingress any:any priority 2 deny`.
-- My-Org/my-folder-1: `Ingress tcp:80,443 priority 1 allow Ingress any:any priority 2 deny`
-- My-Org/my-folder-1/project_1/vps1: `Default ingress deny all, egress allow all`
-- My-Org/my-folder-2/project_2/vpc2: `Ingress tcp 80,443,22 priority 1000 allow Default ingress deny all, egress allow all`
+- My-Org/my-folder-1: `Ingress tcp:80,443 priority 1 allow Ingress any:any priority 2 deny`.
+- My-Org/my-folder-1/project_1/vps1: `Default ingress deny all, egress allow all`.
+- My-Org/my-folder-2/project_2/vpc2: `Ingress tcp 80,443,22 priority 1000 allow Default ingress deny all, egress allow all`.
 
 ***
 
-## Multiple network interfaces
+## Multiple network interfaces.
 
-**Multiple network interfaces**
+**Multiple network interfaces.**
 
 - VPC networks isolated (by default):
     - Communicate within networks using **internal IP**.
@@ -255,133 +255,133 @@ $> sudo /sbin/ifconfig
 
 ![Multiple network interfaces](gcp-img/gcp-multiple-network-interfaces.png "Multiple network interfaces")
 
-**Multiple network interfaces limitations**
+**Multiple network interfaces limitations.**
 
 - Configure when you create an instance.
 - Each interface in a different network.
 - Networks IP range cannot overlap.
 - Networks must exist to create VM.
 - Cannot delete an interface without deleting VM.
-- Internal DNS only associated to nic0
+- Internal DNS only associated to nic0.
 - Up to 8 NICs, depends on a VM.
 
-| Type of instance | # of virtual NICs |
-|---|---|
-| VM <= 2 vCPU | 2 NICs |
-| VM > 2vCPU | 1 NIC per vCPU (Max: 8) |
+| Type of instance | # of virtual NICs       |
+|------------------|-------------------------|
+| VM <= 2 vCPU     | 2 NICs                  |
+| VM > 2vCPU       | 1 NIC per vCPU (Max: 8) |
 
 ***
 
-## Cloud IAM
+## Cloud IAM.
 
-### Cloud Identity and Access Management
+### Cloud Identity and Access Management.
 
 ```
 Who can do what on which resources.
 ```
 
-**Cloud IAM objects**
+**Cloud IAM objects.**
 
-- Organization
-- Folders
-- Projects
-- Resources
-- Roles
-- Members
+- Organization.
+- Folders.
+- Projects.
+- Resources.
+- Roles.
+- Members.
 
-**Cloud IAM resource hierarchy**
+**Cloud IAM resource hierarchy.**
 
 - A policy set on a resource, and each policy contains a set of:
-    - Roles
-    - Members
+    - Roles.
+    - Members.
 - Resources inherit policies from the parent.
 - If the parent policy is less restrictive, it overrides a more restrictive resource policy.
 
 ![Cloud IAM resource hierarchy](gcp-img/gcp-cloud-iam-resource-hierarchy.png "Cloud IAM resource hierarchy")    
 
-### IAM members
+### IAM members.
 
-**Members**
+**Members.**
 
-**G Suite is now Google Workspace**
+**G Suite is now Google Workspace.**
 
 - Members Identity:
-    - Google Account
-    - Service Account
-    - Google Group
-    - Cloud Identity or Google Workspace Domain
+    - Google Account.
+    - Service Account.
+    - Google Group.
+    - Cloud Identity or Google Workspace Domain.
 - Roles:
-    - `compute.instanceAdmin`
-    - `storage.objectAdmin`
-    - `appengine.appAdmin`
-    - `logging.viewer`
-    - `pubsub.publisher`
+    - `compute.instanceAdmin`.
+    - `storage.objectAdmin`.
+    - `appengine.appAdmin`.
+    - `logging.viewer`.
+    - `pubsub.publisher`.
 - Note: You cannot use Cloud IAM to create or manage your users or groups.    
 
 
-### IAM roles
+### IAM roles.
 
-**Basic roles**
+**Basic roles.**
 
 - **Owner:**
-    - Invite members
-    - Remove Members
-    - Delete projects
-    - And... **Editor** roles
+    - Invite members.
+    - Remove Members.
+    - Delete projects.
+    - And... **Editor** roles.
 - **Editor:**
-    - Deploy applications
-    - Modify code
-    - Configure services
-    - And... **Viewer** roles
+    - Deploy applications.
+    - Modify code.
+    - Configure services.
+    - And... **Viewer** roles.
 - **Viewer:**
-    - Read-only access
+    - Read-only access.
 - **Billing Administrator:**
-    - Manage billing
-    - Add and remove administrators
+    - Manage billing.
+    - Add and remove administrators.
 
 ```
 A project can have multiple owners, editors, viewers, and billing administrators.
 ```            
 
-**Predefines roles**
+**Predefines roles.**
 
 - Cloud IAM:
     - Google Groups
     - Network Viewer Role:
         - List of Permissions:
-            - :heavy_check_mark: `compute.addresses.get`
-            - :heavy_check_mark: `compute.addresses.list`
-            - :heavy_check_mark: `compute.globalAddresses.get`
-            - :heavy_check_mark: `compute.globalAddresses.list`
-            - :heavy_check_mark: `compute.backendBuckets.get`
-            - :heavy_check_mark: `compute.backendBuckets.list`
-            - :heavy_check_mark: `compute.networks.list`
+            - `compute.addresses.get`.
+            - `compute.addresses.list`.
+            - `compute.globalAddresses.get`.
+            - `compute.globalAddresses.list`.
+            - `compute.backendBuckets.get`.
+            - `compute.backendBuckets.list`.
+            - `compute.networks.list`.
             - `...`
-    - **project_a**            
+    - **project_a**.
 
-**Network-related IAM roles**
+**Network-related IAM roles.**
 
-| Role Title | Description |
-|---|---|
-| Network Viewer | Read-only access to all networking resources |
-| Network Admin | Permissions to create, modify, and delete networking resources, except for firewall rules and SSL certificates |
-| Security Admin | Permissions to create, modify, and delete firewall rules and SSL certificates |
+| Role Title     | Description                                                                                                    |
+|----------------|----------------------------------------------------------------------------------------------------------------|
+| Network Viewer | Read-only access to all networking resources                                                                   |
+| Network Admin  | Permissions to create, modify, and delete networking resources, except for firewall rules and SSL certificates |
+| Security Admin | Permissions to create, modify, and delete firewall rules and SSL certificates                                  |
 
-**Custom roles**
+**Custom roles.**
 
 - **List of Permissions**:
-    - :heavy_check_mark: `compute.firewalls.*`
-    - :heavy_check_mark: `compute.sslCertificates.get`
-    - :heavy_check_mark: `compute.sslCertificates.list`
+    - `compute.firewalls.*`.
+    - `compute.sslCertificates.get`.
+    - `compute.sslCertificates.list`.
     - `...`
-- **Custom Role**
+- **Custom Role.**
     - My Network Admin Role    
     
-**The Organization Policy Service gives you centralized and programmatic control over your cloud resources**
+**The Organization Policy Service gives you centralized and programmatic control over your cloud resources.**
 
 ![Organization Policy](gcp-img/gcp-organization-policy.png "Organization Policy")      
 
-**Organization policy constraints**
+**Organization policy constraints.**
 
 - Defines what behaviors controlled.
 - List of boolean.
@@ -394,9 +394,9 @@ A project can have multiple owners, editors, viewers, and billing administrators
 
 ***
 
-## Firewall Rules
+## Firewall Rules.
 
-**Firewall rules protect your VM instances from unapproved connections**
+**Firewall rules protect your VM instances from unapproved connections.**
 
 - VPC network functions as a distributed firewall.
 - Firewall rules applied to the network as a whole.
@@ -404,25 +404,25 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Firewall rules are stateful.
 - Deny all ingress and allow all egress rules are implied.
 
-**Firewall rule parameters: Target and Source**
+**Firewall rule parameters: Target and Source.**
 
 - Target:
     - All instances in the network.
     - Specified target tags.
     - Specified service accounts.
 - Source:
-    - IP ranges
-    - Subnets
-    - Source Tage    
-    - Service account
+    - IP ranges.
+    - Subnets.
+    - Source Tage.    
+    - Service account.
 
 ![Firewall rule parameters](gcp-img/gcp-firewall-rule-params.png "Firewall rule parameters")  
 
-### Shared VPC
+### Shared VPC.
 
 ![Shared VPC](gcp-img/gcp-shared-vpc.png "Shared VPC")  
 
-**Provisioning shared VPC**
+**Provisioning shared VPC.**
 
 - **Organization Admin:**
     - Organization is the root node.
@@ -445,13 +445,13 @@ A project can have multiple owners, editors, viewers, and billing administrators
 
 ![Shared VPC](gcp-img/gcp-shared-vpc-diagram.png "Shared VPC") 
 
-### VPC Network Peering
+### VPC Network Peering.
 
-**VPC peering**
+**VPC peering.**
 
 ![VPC peering](gcp-img/gcp-vpc-peering.png "VPC peering") 
 
-**When using VPC peering**
+**When using VPC peering.**
 
 - Compute Engine, Kubernetes Engine, and App Engine flexible environments.
 - Peered VPC networks remain administratively separate.
@@ -459,15 +459,15 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - No subnet IP range overlap across peered VPC networks.
 - Transactive peering is not supported.
 
-**Shared VPC vs. VPC peering**
+**Shared VPC vs. VPC peering.**
 
-| Consideration | Shared VPC | VPC Network Peering |
-|---|---|---|
-| Across organizations | No | Yes |
-| Within project | No | Yes |
-| Network Administration | Centralized | Decentralized |
+| Consideration          | Shared VPC  | VPC Network Peering  |
+|------------------------|-------------|----------------------|
+| Across organizations   | No          | Yes                  |
+| Within project         | No          | Yes                  |
+| Network Administration | Centralized | Decentralized        |
 
-**Network Administration**
+**Network Administration.**
 
 - Centralized:
     - Organization Admin:
@@ -475,15 +475,15 @@ A project can have multiple owners, editors, viewers, and billing administrators
         - Security and Network Admins.
 - Decentralized:
     - Organization Admin (if same org):
-        - Security and Network Admins
+        - Security and Network Admins.
 
-**Peering with a shared VPC**
+**Peering with a shared VPC.**
 
 ![Peering with a shared VPC](gcp-img/gcp-peering-with-shared-vpc.png "Peering with a shared VPC") 
 
 ***
 
-## Load Balancing
+## Load Balancing.
 
 ![GCP Load Balancers](gcp-img/gcp-load-balancers.png "GCP Load Balancers") 
 

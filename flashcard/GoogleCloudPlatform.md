@@ -104,7 +104,7 @@ Answer: Container Threat Detection.
 25) Three Pillars of Observability?
 Answer: Logs, metrics, traces.
 
-26) Recommended flow for handling streaming data in Google CLoud?
+26) Recommended flow for handling streaming data in Google Cloud?
 Answer: Pub/Sub, Dataflow, BigQuery.
 
 27) Services to schedule asynchronous tasks (from your microservices) with an explicit invocation in Google Cloud?
@@ -158,7 +158,7 @@ Answer:
 a) Deploy and Shift all traffic at once: 'gcloud app deploy'.
 b) Deploy v2 without shifting traffic: '--no-promote'.
 c) Shift traffic to v2 all at once: 'gcloud app service set-traffic s1 --splits v1=1'.
-d) Gradual migration: Add --migrate option to previous command.
+d) Gradual migration: Add '--migrate' option to previous command.
 e) A/B testing: 'gcloud app series set-traffic s1 --splits=v2=.5,v1=.5'.
 
 41) Deployment Approaches MIG - Blue Green Deployment?
@@ -487,7 +487,7 @@ different from IAM? IAM permissions apply to all objects within a bucket. ACLs c
 to different objects. Users gets access if he is allowed by either IAM of ACL! Remember - Use IAM for common permissions
 to all objects in a bucket. Remember - Use ACLs if you need to customize access to individual objects.
 
-117) VM instance with default service account in Project-A needs to access CLoud Storage bucket in Project-B?
+117) VM instance with default service account in Project-A needs to access Cloud Storage bucket in Project-B?
 Answer: In Project-B, add the service account from Project-A, and assign Storage Object Viewer Permission on the bucket.
 
 118) Is Service Account an Identity or a resource?
@@ -565,7 +565,7 @@ of bindings. A binding, binds a role to list of members. Member type is identifi
 service account, group or domain.
 
 131) You are running an app in VM instance storing its data on a persistent data storage. You are taking snapshots every
-48 hours. If the VM instance crashes, you can manually bring it back up inj 45 minutes from snapshot. What is your RTO
+48 hours. If the VM instance crashes, you can manually bring it back up in 45 minutes from snapshot. What is your RTO
 and RPO?
 Answer: RTO (Recovery Time Objective): 45 minutes. RPO (Recovery Point Objective): 48 hours.
 
@@ -718,7 +718,7 @@ resources in private subnet. Each subnet is created in a region. Example: VPC-de
 europe-west1 or us-west1.
 
 160) Creating VPCs and Subnets?
-Answer: By default, every project has a different VPC. You can create your own VPCs
+Answer: By default, every project has a different VPC. You can create your own VPCs.
 Option1: Auto mode VPC network. Subnets are automatically created in each region. Default VPC created automatically in
 the project uses auto mode!
 Option2: Custom mode VPC network. No subnets are automatically created. You have complete control over subnets and their
@@ -763,7 +763,7 @@ Viewer or Project Viewer.
 Answer: Use Case1: Troubleshoot using VM Logs. Install Cloud Logging agent in all VMs and send logs to Cloud Logging.
 Search for logs in Cloud Logging.
 Use Case2: Export VM logs to BigQuery for querying using SQL like queries. Install
-Cloud Logging agent in all VM;s and send logs to Cloud Logging. Create a BigQuery datasets for storing the logs.
+Cloud Logging agent in all VM's and send logs to Cloud Logging. Create a BigQuery datasets for storing the logs.
 Create an export sink in Cloud Logging with BigQuery dataset as sink destination.
 Use Case3: You want to retain audit logs for external auditors at min cost. Create an export sink in Cloud Logging with
 Cloud Storage buckets as sink destination. Provide auditors with Storage Object Viewer role on the bucket.
@@ -771,7 +771,7 @@ Cloud Storage buckets as sink destination. Provide auditors with Storage Object 
 169) Cloud Logging - Export?
 Answer: Logs are ideally stored in Cloud Logging for limited periods: For long term retention (compliance, audit) logs
 can be exported to: Cloud storage bucket (example 'bucket/syslog/20250505'). Big Query dataset (example tables
-syslog-20250505 > columns, timestamp, log). Cloud Pub/Sub topic (base 64encoding log entries).
+syslog-20250505 > columns, timestamp, log). Cloud Pub/Sub topic (base64 encoding log entries).
 How do you export logs? Create sinks to these destinations using Log Router: You can create include or exclude filters to
 limit the logs.
 
@@ -798,7 +798,7 @@ create your private network in the cloud? Enter Virtual Private Cloud (VPC).
 
 173) Pub/Sub - Sending and Receiving a Message?
 Answer: Publisher Sends a message to Topic. Message individually delivered to each and every subscription. Subscribers
-can receive a message either by. Push: Pub/Sub sends the message to subscriber. Pull: Subscribers poll for messages.
+can receive a message either by. Push: Pub/Sub sends the message to subscriber. Pull: Subscribers pull for messages.
 Subscribers send acknowledgement(s). Message(s) are removed form subscriptions message queue: Pub/Sub ensures for
 messages is retained per subscription until it is acknowledged.
 
@@ -865,9 +865,9 @@ ACL (gcloud acl ch -U SERVICE_ACCOUNT:W BUCKET). Roles Storage Admin or Storage 
 Answer: BigQuery, Datastore, Firebase does NOT need VM configuration. Whereas Cloud SQL and BigTable need VM configuration.
 Relational Databases: small local databases: Cloud SQL. 
 Highly scalable global databases: Cloud Spanner. 
-Data warehouse:BigQuery.
+Data warehouse: BigQuery.
 NoSQL Databases: Transactional databases for a few terabytes of data - Cloud Datastore. 
-Huge volume of IoT or streaming analytics data - CLoud BigTable.
+Huge volume of IoT or streaming analytics data - Cloud BigTable.
 
 185) Synchronous Communication?
 Answer: Applications on your web server makes synchronous calls to the logging service. What if your logging service goes
@@ -1394,7 +1394,7 @@ Availability.
 278) PAAS (Platform AS A Service)?
 Answer: Use a platform provided by cloud. Cloud Provider is responsible for: OS (including upgrades and patches).
 App Runtime. Auto Scaling, Availability and Load Balancing. You are responsible for: Configuration (of Application
-Service). Application code (if needed). Varieties: CAAS (Container AS A Service): Containers instead of Apps.
+Service). Application code (if needed). Varieties: CAAS (Container as a Service): Containers instead of Apps.
 FAAS (Function as a Service): Functions instead of Apps. Databases-Relational and NoSQL (RDS, Cloud SQL), Queues, AI, ML,
 Operations.
 
@@ -1469,13 +1469,13 @@ Answer: Media workflow need huge shared storage for supporting process like vide
 way to share files in a secure and organized way. These file shares are shared by several virtual servers.
 
 292) Block Storage?
-Answer: Hard disk attached to your computers. Typically, one bock storage device can be connected to one virtual server.
+Answer: Hard disk attached to your computers. Typically, one block storage device can be connected to one virtual server.
 Exceptions, you can attach read only block devices with multiple virtual servers and certain cloud providers are
 exploring multi-writers disks as well! However, you can connect multiple different block storage devices to one virtual
 server. Used as: Direct-attached storage (DAS): Similar to a hard disk. Storage Area Network (SAN) - High Speed network
 connecting a pool of storage devices: used by Databases - Oracle and Microsoft SQL Server.
 
-293) Storage Types - Block Storage and FIle Storage?
+293) Storage Types - Block Storage and File Storage?
 Answer: What is the type of storage of your hard disk? Block Storage. 
 You've created a file share to share a set of files with your colleagues in an enterprise. 
 What type of storage are you using? File Storage.
@@ -1546,7 +1546,7 @@ Answer: ReplicaSets.
 313) What organizing components are available in GCP?
 Answer: Organization, folder, projects.
 
-314) Which type of storage system would you use to store data fies of the database?
+314) Which type of storage system would you use to store data files of the database?
 Answer: Block storage.
 
 315) Command to create a network Load Balancer at the command line?
@@ -1589,7 +1589,7 @@ Answer: 'gcloud compute firewall-rules create fwr1 --allow=udp:20000-30000 --dir
 Answer: 'gcloud sql backup create'.
 
 327) When you create a cloud router, what kind of unique identifier do you need to assign for the BGP protocol?
-Answer: ASN (Autonomous, System number) is a number used to identify a cloud router on a network.
+Answer: ASN (Autonomous System Number) is a number used to identify a cloud router on a network.
 
 328) Command to create a buckets in Cloud Storage?
 Answer: 'gsutil mb'.
@@ -1802,7 +1802,7 @@ Answer: Google Account - Represents a person (an email address).
 Service Account: Represents an application account (not person).
 Google group: Collection Google & Service Accounts: Has an unique email address. Helps to apply access policy to a group.
 Google Workspace Domain: Google Workspace (formerly G Suite) provides collaboration services for enterprises: Tools like
-Gmail, Calendar, Meet, Chat, Drive, Docs atc. are included. If your enterprise is using Google Workspace, you can manage
+Gmail, Calendar, Meet, Chat, Drive, Docs etc. are included. If your enterprise is using Google Workspace, you can manage
 permissions using your Google Workspace Domain.
 Cloud Identity Domain - Cloud Identity is an Identity as a Service (IDaaS) solution that centrally manages users and
 groups. You can use IAM to manage access to resources for each Cloud Identity account.
@@ -1910,7 +1910,7 @@ Answer: Cloud Memorystore.
 choose?
 Answer: BigQuery.
 
-398) App Engine - Request Routing? // HERE
+398) App Engine - Request Routing?
 Answer: You can use a combination of three approaches:
 a) Routing with URLs.
 b) Routing with a dispatch file: Configure 'dispatch.yaml' with routes 'gcloud app deploy dispatch.yaml'.
@@ -2349,7 +2349,7 @@ Create new configuration: 'gcloud config configurations create NAME/dev'. Activa
 498) Gcloud command structure - Playing with Services?
 Answer: 'gcloud GROUP SUBGROUP ACTION...': GROUP: config, compute, container, dataflow, functions, iam.
 SUBGROUP: instances or images or instance-template or machine-types or regions or zones.
-ACTION: create or list of stop or describe.
+ACTION: create or list or stop or describe.
 Examples:
 a) 'gcloud compute instances list'.
 b) 'gcloud compute instances create my-first-instance'.
@@ -2694,7 +2694,7 @@ in GCP include Google Cloud Functions (event-driven functions), Google App Engin
 and Google Cloud Run (containerized applications).
 
 
-NEW SECTION - GCP Compute Services.-
+NEW SECTION - GCP Compute Services.
 
 1) What are the main compute services offered by GCP?
 Answer: GCP offers several compute services, including:
@@ -3656,7 +3656,7 @@ existing applications and build new ones, supporting a move to a microservices a
 simplify operations, such as service mesh for microservices communication and monitoring, and config management for 
 policy enforcement, helping businesses modernize applications without being locked into a single cloud provider.
 
-3) Can you explain the role of Google Kubernetes Engine (GKE) in hybrid and multi-cloud strategies? // HERE
+3) Can you explain the role of Google Kubernetes Engine (GKE) in hybrid and multi-cloud strategies?
 Answer: In hybrid and multi-cloud strategies, Google Kubernetes Engine (GKE) plays a pivotal role by providing a managed 
 environment for deploying, managing, and scaling containerized applications using Google's infrastructure. GKE extends 
 to GKE On-Prem as part of the Anthos platform, allowing organizations to run Kubernetes in their own data centers and 
@@ -3904,7 +3904,7 @@ sets of permissions that match the unique needs of their organization. Unlike pr
 tailored to provide the precise level of access needed for a user or service account, enforcing the principle of least 
 privilege and reducing the risk of excessive permissions that could lead to security vulnerabilities.
 
-9) Explain the significance of VPC Service Controls in enhancing GCP governance? // HERE
+9) Explain the significance of VPC Service Controls in enhancing GCP governance?
 Answer: VPC Service Controls enhance GCP governance by creating a security perimeter around data stored in GCP services, 
 preventing data exfiltration and mitigating data breaches. It allows organizations to define fine-grained access control 
 policies for services and their data, ensuring that sensitive information is accessed only by authorized services and users, 
@@ -3939,47 +3939,40 @@ to build and deploy scalable and secure applications, gain insights from data us
 customer experiences through AI-driven technologies. Additionally, GCP's collaboration and productivity tools 
 (Google Workspace) support seamless communication and collaboration among teams.
 
-4) Can you describe how enterprises can leverage GCP for digital transformation?
-Answer: Enterprises can leverage GCP for digital transformation by utilizing its extensive range of services, including 
-cloud computing, machine learning, and data analytics, to innovate and improve business processes. GCP enables enterprises 
-to build and deploy scalable and secure applications, gain insights from data using big data solutions, and improve customer 
-experiences through AI-driven technologies. Additionally, GCP's collaboration and productivity tools (Google Workspace) 
-support seamless communication and collaboration among teams.
-
-5) What role does artificial intelligence and machine learning play in GCP for enterprises?
+4) What role does artificial intelligence and machine learning play in GCP for enterprises?
 Answer: Artificial intelligence (AI) and machine learning (ML) play a pivotal role in GCP for enterprises by offering 
 advanced tools and services to drive innovation, automate processes, and derive insights from data. GCP's AI Platform, 
 AutoML, and pre-trained AI services enable enterprises to develop custom ML models and integrate AI into applications 
 without deep expertise in data science. This can enhance customer experiences, optimize operations, and create new 
 business opportunities.
 
-6) How can enterprises manage costs effectively in GCP?
+5) How can enterprises manage costs effectively in GCP?
 Answer: Enterprises can manage costs effectively in GCP by utilizing cost management tools and features such as the 
 Google Cloud Pricing Calculator, Budgets and Alerts, and Cost Management reports. Implementing best practices like 
 rightsizing resources, using committed use discounts for sustained workloads, and monitoring and optimizing resource 
 usage with recommendations from the Cloud Operations suite can further help control costs. GCP also provides detailed 
 documentation and best practices to guide cost optimization.
 
-7) Describe the migration services available in GCP for enterprise workloads.
+6) Describe the migration services available in GCP for enterprise workloads.
 Answer: GCP offers various migration services for enterprise workloads, including the Migrate for Compute Engine, 
 Migrate for Anthos, Database Migration Service, and Transfer Appliance. These services facilitate the migration of 
 virtual machines, applications, databases, and large datasets to GCP, minimizing downtime and ensuring data integrity. 
 GCP also provides resources and professional services to assist enterprises in planning and executing migration projects.
 
-8) How does GCP facilitate compliance and governance for enterprises?
+7) How does GCP facilitate compliance and governance for enterprises?
 Answer: GCP facilitates compliance and governance for enterprises by offering a comprehensive suite of tools and features 
 to manage access, monitor resources, and ensure data protection. Features like Cloud Identity & Access Management, 
 Cloud Audit Logs, and Security Command Center help enterprises enforce policies, audit operations, and detect vulnerabilities. 
 GCP undergoes regular third-party audits and certifications to ensure compliance with global and industry-specific regulations.
 
-9) What disaster recovery solutions does GCP offer to enterprises? // HERE
+8) What disaster recovery solutions does GCP offer to enterprises?
 Answer: GCP offers robust disaster recovery solutions to enterprises, including multi-regional storage options, snapshot 
 and backup services, and the ability to replicate workloads across different regions. GCP's global infrastructure ensures 
 that enterprises can quickly recover from disasters by distributing applications and data across multiple locations, 
 minimizing downtime and data loss. Google Cloud's operations suite also provides monitoring and logging services to 
 detect and respond to incidents promptly.
 
-10) How does GCP support enterprise collaboration and productivity?
+9) How does GCP support enterprise collaboration and productivity?
 Answer: GCP supports enterprise collaboration and productivity through Google Workspace, which includes applications 
 like Gmail, Docs, Drive, Calendar, Meet, and more. Google Workspace enables teams to collaborate in real-time, share 
 documents securely, and communicate effectively, regardless of location. Additionally, GCP's infrastructure and services 
@@ -4340,9 +4333,9 @@ You can configure an autoscaling policy to trigger adding or removing instances 
 monitoring metric, load balancing capacity, or queue-based workloads.
 Disk, network latency, and memory can trigger scaling if monitoring metrics on those resources are configured.
 
-19) If a pod is terminated for being unhealthy—then the <WHAT> will add pods until the desired state is reached.
+19) If a pod is terminated for being unhealthy—then the ReplicaSet will add pods until the desired state is reached.
 Answer: Kubernetes ReplicaSets.
-A ReplicaSet is a controller that manages the number of pods running for a deployment.
+A ReplicaSet is a controller that manages the number of pods running for a deployment. 
 A deployment is a higher-level concept that manages ReplicaSets and provides declarative updates.
 
 20) Cloud Dataflow does require you to specify machine types when configuring a pipeline?
@@ -4428,7 +4421,7 @@ and minimize the steps the data scientists will have to take?
 Answer: Create VMs using a source image created from a disk with the data on it.
 10 GB of data is small enough to store on a single disk. By creating an image of a disk with the data stored on it,
 you can specify that source image when creating a VM. Other options would require the data scientist to copy the data
-from Cloud Storage to a disk on the VM. Google Drive would similarly require copying the data. loading into BigQuery
+from Cloud Storage to a disk on the VM. Google Drive would similarly require copying the data. Loading into BigQuery
 would load data into a database, not a file system as specified in the requirements.
 
 31) A client has brought you in to help reduce their DevOps overhead. Engineers are spending too much time
@@ -4856,7 +4849,7 @@ Deleting a CNAME record does not improve security.
 Answer: 'gcloud compute forwarding-rules create'
 The correct answer, is 'gcloud compute forwarding-rules create'.
 
-11) You want to create a VPN using Cloud Console. What section of Cloud Console should you use? // here
+11) You want to create a VPN using Cloud Console. What section of Cloud Console should you use?
 Answer: Hybrid Connectivity.
 The VPC create option is available in the Hybrid Connectivity section, so it is correct.
 Compute Engine, App Engine, and IAM & Admin do not have features related to VPNs.
@@ -5055,7 +5048,7 @@ Identities are abstractions of users. They can also represent characteristics of
 user or a VM in the GCP. Identities are not related to VM IDs. Roles are collections of privileges that can be granted to
 identities.
 
-46) At what levels of the resource hierarchy can a shared VPC be created? // here
+46) At what levels of the resource hierarchy can a shared VPC be created?
 Answer: Organization and folders.
 Shared VPCs can be created at the organization or folder level of the resource hierarchy. Shared VPCs are not created at
 the resource or project levels. Shared VPCs are not applied at subnets, which are resources in the resource hierarchy.
