@@ -26,7 +26,7 @@
 - The master node regularly replicates chunks to multiple chunkservers to ensure that data is available even in the event
   of a single chunkserver failure.
 
-**Key characteristics**
+**Key characteristics.**
 
 - Google File System (GFS) has several key characteristics, including:
   - Distributed Storage:
@@ -143,7 +143,7 @@ and C1. When the master notices this, it will designate some other ChunkServer a
 Since C1 did not actually fail, are there now two primaries for the same chunk?
 ```
 
-- If we have two primaries, both maight apply different updates to the same chunk, making the chunk inconsistent.
+- If we have two primaries, both might apply different updates to the same chunk, making the chunk inconsistent.
 - To prevent this, GFS uses leases.
 - C1 knows to stop being primary when its lease expires.
 - The master will not grant a lease to C2 until a previous lease to C1 expires.
@@ -168,31 +168,42 @@ Since C1 did not actually fail, are there now two primaries for the same chunk?
   with duplicate records or inconsistent reads.
 - GFS would not be a good fit for systems requiring consistent data, for example, stockbroker or bank transactions.
 
-### Quiz
+### Quiz.
 
-- In GFS, files are divided into **Fixed size** chunks.
-- To detect data corruption, GFS compares the contents of chunks on multiple ChunkServers:
-  - False. Instead GFS uses checksum.
-- File naming (or renaming) operation is atomic.
-  - True. All metadata operations are atomic.
-- To collect ChunkServer's state, GFS master sends regular **HeartBeat** messages to each ChunkServer.
-- Does GFS uses time-based leases to reduce the network traffic>
-  - True.
-    - For write operations, the primary replica, after getting the lease from master, becomes responsible for
-      maintaining a consistent mutation across replicas until the lease expires.
-    - This reduces the network traffic as the lease is valid for a specific time.
-- Which two strategies are used to keep GFS highly available?
-  - Fast Recovery and Chunk Replication.
-- Random writes into files in GFS are.
-  - Less Frequent.
-- Distributing replicas onto different racks causes following side effect.
-  - Slow writes.
-- Distributing replicas onto different racks has following benefits.
-  - Faster reads.
-  - Better reliability.
-- What does a ChunkServer store?
-  - Chunk data (one file per chunk).
-  - Chunk metadata (version number, checksum).
+**1. In GFS, files are divided into WHAT chunks?**
+* Fixed size.
+
+**2. To detect data corruption, GFS compares the contents of chunks on multiple ChunkServers?**
+* False. Instead GFS uses checksum.
+
+**3. File naming (or renaming) operation is atomic?**
+* True. All metadata operations are atomic.
+
+**4. To collect ChunkServer's state, GFS master sends regular WHAT messages to each ChunkServer?**
+- HeartBeat.
+
+**5. Does GFS uses time-based leases to reduce the network traffic?**
+* True.
+* For write operations, the primary replica, after getting the lease from master, becomes responsible for
+maintaining a consistent mutation across replicas until the lease expires.
+* This reduces the network traffic as the lease is valid for a specific time.
+
+**6. Which two strategies are used to keep GFS highly available?**
+* Fast Recovery and Chunk Replication.
+
+**7. Random writes into files in GFS are?**
+* Less Frequent.
+
+**8. Distributing replicas onto different racks causes following side effect.**
+* Slow writes.
+
+**9. Distributing replicas onto different racks has following benefits.**
+* Faster reads.
+* Better reliability.
+
+**10. What does a ChunkServer store?**
+* Chunk data (one file per chunk).
+* Chunk metadata (version number, checksum).
 
 ***
 

@@ -318,7 +318,6 @@ Who can do what on which resources.
     - `pubsub.publisher`.
 - Note: You cannot use Cloud IAM to create or manage your users or groups.    
 
-
 ### IAM roles.
 
 **Basic roles.**
@@ -487,7 +486,7 @@ A project can have multiple owners, editors, viewers, and billing administrators
 
 ![GCP Load Balancers](gcp-img/gcp-load-balancers.png "GCP Load Balancers") 
 
-### Managed Instances
+### Managed Instances.
 
 - Deploys identical instances based on instance template.
 - Instance group can be resized.
@@ -497,9 +496,9 @@ A project can have multiple owners, editors, viewers, and billing administrators
 
 ![Managed instance groups](gcp-img/gcp-managed-instance-groups.png "Managed instance groups") 
 
-**Create an instance template**
+**Create an instance template.**
 
-**Create a managed instance group**
+**Create a managed instance group.**
 
 - Determine instance group be single or multi-zoned, and location.
 - Choose ports they're going to allow and load balance across.
@@ -507,7 +506,7 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Decide if you want autoscale and under what circumstances.
 - Consider creating health checks.
 
-**Managed instance groups offer autoscaling capabilities**
+**Managed instance groups offer autoscaling capabilities.**
 
 - Dynamically add/remove instances:
     - Increases in load.
@@ -518,11 +517,11 @@ A project can have multiple owners, editors, viewers, and billing administrators
     - Monitoring metrics.
     - Queue-based workload.
     
-**Target CPU utilization = 75%**
+**Target CPU utilization = 75%.**
 
 ![Autoscaling policy](gcp-img/gcp-autoscaling.png "Autoscaling policy") 
 
-### HTTP(S) load balancing
+### HTTP(S) load balancing.
 
 - Global load balancing.
 - Anycast IP address.
@@ -532,11 +531,11 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Autoscaling.
 - URL maps.
 
-**Architecture of an HTTP(S) load balancer**
+**Architecture of an HTTP(S) load balancer.**
 
 ![HTTPS LB Arch](gcp-img/gcp-https-arch-lb.png "HTTPS LB Arch")
 
-**Backend services**
+**Backend services.**
 
 - Health check.
 - Session affinity (optional).
@@ -546,7 +545,7 @@ A project can have multiple owners, editors, viewers, and billing administrators
     - A balancing mode (CPU utilization or RPS).
     - A capacity scaler (ceiling % of CPU/Rate targets).
 
-**HTTP(S) load balancing**
+**HTTP(S) load balancing.**
 
 - Target HTTP(S) proxy.
 - One signed SSL certificate installed (at least).
@@ -556,19 +555,19 @@ A project can have multiple owners, editors, viewers, and billing administrators
     - Eliminates head of line blocking in multiplex streams.
     - Supports connection migration when the client's IP address changes.
 
-**SSL certificates**
+**SSL certificates.**
 
 - Required for HTTP(S) load balancing.
 - Up to 10 SSL certificates (per target proxy).
 - Create an SSL certificate resource.
 
-### Cloud Armor
+### Cloud Armor.
 
-**Cloud Armor works with HTTP(S) load balancing**
+**Cloud Armor works with HTTP(S) load balancing.**
 
 ![Cloud Armor](gcp-img/gcp-cloud-armor.png "Cloud Armor")
 
-**Security policies with deny and allow rules**
+**Security policies with deny and allow rules.**
 
 - Denying: Block source IP address or CIDR range.
 - Allowing: Allow a source IP address or CIDR range.
@@ -576,11 +575,11 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Deny rule: 403, 404, or 504 error code.
 - Priority: Rule order.
 
-**Cloud Armor Web Application Firewall**
+**Cloud Armor Web Application Firewall.**
 
 ![Cloud Armor Web Application Firewall](gcp-img/gcp-cloud-armor-firewall.png "Cloud Armor Web Application Firewall")
 
-**Google Cloud Armor integrates with the Security Command Center**
+**Google Cloud Armor integrates with the Security Command Center.**
 
 - Alerts of potential Layer 7 attacks.
 - Findings automatically sent to Security Command Center.
@@ -588,69 +587,69 @@ A project can have multiple owners, editors, viewers, and billing administrators
     - Allowed Traffic Spike.
     - Increasing Deny Ratio. 
 
-**Network endpoint groups**
+**Network endpoint groups.**
 
 - Specifies a group of backend endpoints or services.
 - Used as a backend for certain load balancers.
 - Zonal, internet and serverless endpoint types.
 
-### Cloud CDN
+### Cloud CDN.
 
-**Caching content with Cloud CDN**
+**Caching content with Cloud CDN.**
 
 ![Caching content with Cloud CDN](gcp-img/gcp-caching-with-cloud-cdn.png "Caching content with Cloud CDN")
 
-**Cloud CDN cache modes**
+**Cloud CDN cache modes.**
 
 - Cache modes control the factors that determine whether Cloud CDN caches your content.
 - Cloud CDN offers three caches modes:
-    - `USE_ORIGIN_HEADERS`
-    - `CACHE_ALL_STATIC`
-    - `FORCE_CACHE_ALL`
+    - `USE_ORIGIN_HEADERS`.
+    - `CACHE_ALL_STATIC`.
+    - `FORCE_CACHE_ALL`.
 
-### SSL/TCP proxy load balancing
+### SSL/TCP proxy load balancing.
 
-**SSL proxy load balancing**
+**SSL proxy load balancing.**
 
 - Global load balancing for encrypted, non-HTTP traffic.
 - Terminates SSL sessions at load balancing layer.
 - IPv4 or IPv6 clients.
 - Benefits:
-    - Intelligent routing
-    - Certificate management
-    - Security patching
-    - SSL policies
+    - Intelligent routing.
+    - Certificate management.
+    - Security patching.
+    - SSL policies.
 
-**TCP proxy load balancing**
+**TCP proxy load balancing.**
 
 - Global load balancing for unencrypted, non-HTTP traffic.
 - Terminates TCP sessions at load balancing layer.
 - IPv4 or IPv6 clients.
 - Benefits:
-    - Intelligent routing
-    - Security patching
+    - Intelligent routing.
+    - Security patching.
     
-### Network load balancing
+### Network load balancing.
 
 - Regional, non-proxied load balancer.
 - Forwarding rules (IP protocol data).
 - Traffic:
-    - UDP
-    - TCP/SSL ports
+    - UDP.
+    - TCP/SSL ports.
 - Backends:
-    - Instance group
-    - Target pool    
+    - Instance group.
+    - Target pool.
 
-**Target pool resource defines a group of instances that receive incoming traffic from forwarding rules**
+**Target pool resource defines a group of instances that receive incoming traffic from forwarding rules.**
 
 - Forwarding rules (TCP and UDP).
 - Up to 50 per project.
 - One health check.
 - Instances must be in the same region.
 
-### Internal Load Balancing
+### Internal Load Balancing.
 
-**Internal TCP/UDP load balancing**
+**Internal TCP/UDP load balancing.**
 
 - Regional load balancer:
     - VM instances in same region.
@@ -659,11 +658,11 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Software-defined, fully distributed load balancing.
 - Global access option. 
     
-**Software-defined, fully distributed load balancing**    
+**Software-defined, fully distributed load balancing.**    
 
 ![Internal Load Balancing](gcp-img/gcp-internal-lb.png "Internal Load Balancing")
 
-**Internal HTTP(S) load balancing**
+**Internal HTTP(S) load balancing.**
 
 - Regional, private load balancing:
     - VM instances in same region.
@@ -671,48 +670,48 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - HTTP, HTTPS, or HTTP/2 protocols.
 - Based on open source Envoy proxy.    
 
-**Internal load balancing supports 3-tier web services**
+**Internal load balancing supports 3-tier web services.**
 
-### Choosing Load Balancer
+### Choosing Load Balancer.
 
-**IPv6 termination for load balancing**
+**IPv6 termination for load balancing.**
 
 - HTTPS, SSL proxy, and TCP proxy load balancing services support IPv6 clients.
 
-**Load Balancing aspects to consider**
+**Load Balancing aspects to consider.**
 
 - Global vs Regional Load Balancing.
 - Internal vs External Load Balancing.
 - Traffic type:
     - HTTP, HTTPS: Use HTTP(S) service as a layer 7 load balancer.
     - Otherwise, use TCP and UDP traffic path:
-        - SSL proxy
-        - TCP proxy
-        - Network Load Balancer
+        - SSL proxy.
+        - TCP proxy.
+        - Network Load Balancer.
 - Internal:
     - Internal TCP, UDP, and HTTP(S) depending on traffic type.
     
-| Load balancer | Traffic type | Global/Regional | External/Internal | External ports for load balancing |
-|---|---|---|---|---|
-| HTTP(S) | HTTP or HTTPS | Global IPv4, IPv6 | External | HTTP on 80 or 8080; HTTPS on 443 |
-| SSL Proxy | TCP with SSL offload | --- | --- | 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 |
-| TCP Proxy | TCP without SSL offload. Does not preserve client IP addresses. | --- | --- | 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 |
-| Network TCP/UDP | TCP/UDP without SSL offload. Preserves client IP addresses | Regional IPv4 | --- | Any |
-| Internal TCP/UDP | TCP or UDP | --- | Internal | Any |
-| Internal HTTP(S) | HTTP or HTTPS | --- | --- | HTTP on 80 or 8080; HTTPS on 443 |
+| Load balancer    | Traffic type                                                    | Global/Regional   | External/Internal  | External ports for load balancing                               |
+|------------------|-----------------------------------------------------------------|-------------------|--------------------|-----------------------------------------------------------------|
+| HTTP(S)          | HTTP or HTTPS                                                   | Global IPv4, IPv6 | External           | HTTP on 80 or 8080; HTTPS on 443                                |
+| SSL Proxy        | TCP with SSL offload                                            | ---               | ---                | 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 |
+| TCP Proxy        | TCP without SSL offload. Does not preserve client IP addresses. | ---               | ---                | 25, 43, 110, 143, 195, 443, 465, 587, 700, 993, 995, 1883, 5222 |
+| Network TCP/UDP  | TCP/UDP without SSL offload. Preserves client IP addresses      | Regional IPv4     | ---                | Any                                                             |
+| Internal TCP/UDP | TCP or UDP                                                      | ---               | Internal           | Any                                                             |
+| Internal HTTP(S) | HTTP or HTTPS                                                   | ---               | ---                | HTTP on 80 or 8080; HTTPS on 443                                |
 
 ***
 
-## Hybrid Connectivity
+## Hybrid Connectivity.
 
-| | Dedicated | Shared |
-|---|---|---|
-| Layer 3 | Direct Peering | Carrier Peering |
-| Layer 2 | Dedicated Interconnect | Partner Interconnect | 
+|          | Dedicated              | Shared               |
+|----------|------------------------|----------------------|
+| Layer 3  | Direct Peering         | Carrier Peering      |
+| Layer 2  | Dedicated Interconnect | Partner Interconnect | 
 
-### Cloud VPN
+### Cloud VPN.
 
-**Cloud VPN securely connects your on-premises network to your GCP VPC network**
+**Cloud VPN securely connects your on-premises network to your GCP VPC network.**
 
 - Useful for low-volume data connections.
 - Classic VPN: 99.9% SLA.
@@ -723,7 +722,7 @@ A project can have multiple owners, editors, viewers, and billing administrators
     - Dynamic routes (Cloud Router).
     - IKEv1 and IKEv2 ciphers.
     
-**Dynamic routing with Cloud Router**    
+**Dynamic routing with Cloud Router.**    
 
 - To use dynamic routes, you need to configure Cloud Router.
 - Cloud Router can manage routes for a cloud VPN tunnel using Border Gateway Protocol or BGP.
@@ -731,17 +730,17 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - To set up BGP an additional IP address has to be assigned to each end of the VPN tunnel. 
 - These two IP addresses must be linked local IP addresses.
 
-### Cloud Interconnect
+### Cloud Interconnect.
 
-**Dedicated Interconnect provides direct physical connections**
+**Dedicated Interconnect provides direct physical connections.**
 
 - Allows transfer large amounts of data between a network.
 
 ![Cloud Interconnect](gcp-img/gcp-dedicated-interconnect.png "Cloud Interconnect")
 
-**Partner interconnect**
+**Partner interconnect.**
 
-**Partner Interconnect provides connectivity through a supported service provider**
+**Partner Interconnect provides connectivity through a supported service provider.**
 
 - If your data center is in a physical location that can't reach a dedicated interconnect collocation facility.
 - Or if your data needs don't warrant dedicated interconnect.
@@ -750,15 +749,15 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Establish BGP session between your router and cloud router. 
 - To start passing traffic between your networks via the service provider network.
 
-**Comparision of Interconnect options**
+**Comparison of Interconnect options.**
 
-| Connection | Provides | Capacity | Requirements | Access Type |
-|---|---|---|---|---|
-| IPsec VPN tunnel | Encrypted tunnel to VPC net through the public internet | 1.5-3 Gbps per tunnel | On-premises VPN gateway | |
-| Dedicated Interconnect | Dedicate, direct connection to VPC net | 10 Gbps or 100 Gbps per link | Connection in collocation facility | Internal IP addresses |
-| Partner Interconnect | Dedicated bandwidth, connection to VPC network through a service provider |  50 Mbps - 10 Gbps per connection | Service provider | |
+| Connection             | Provides                                                                  | Capacity                         | Requirements                       | Access Type           |
+|------------------------|---------------------------------------------------------------------------|----------------------------------|------------------------------------|-----------------------|
+| IPsec VPN tunnel       | Encrypted tunnel to VPC net through the public internet                   | 1.5-3 Gbps per tunnel            | On-premises VPN gateway            |                       |
+| Dedicated Interconnect | Dedicate, direct connection to VPC net                                    | 10 Gbps or 100 Gbps per link     | Connection in collocation facility | Internal IP addresses |
+| Partner Interconnect   | Dedicated bandwidth, connection to VPC network through a service provider | 50 Mbps - 10 Gbps per connection | Service provider                   |                       |
 
-**Common Interconnect use cases**
+**Common Interconnect use cases.**
 
 - Dedicated and Partner Interconnect have technical feature parity.
 - Partner Interconnect use cases:
@@ -768,9 +767,9 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Dedicated Interconnect use cases:
     - Higher bandwidth needs (10 Gbps, 100 Gbps).    
     
-### Cloud Peering    
+### Cloud Peering.
 
-**Direct Peering Provides a direct connection between your business network and Google's**
+**Direct Peering Provides a direct connection between your business network and Google's.**
 
 - Broad-reaching edge network locations.
 - Exchange BGP routes.
@@ -778,41 +777,41 @@ A project can have multiple owners, editors, viewers, and billing administrators
 - Peering requirements.
 - No SLA.
 
-**Carrier Peering provides connectivity through a supported partner**
+**Carrier Peering provides connectivity through a supported partner.**
 
 - Carrier Peering partner.
 - Reach all of Google's services.
 - Partner requirements.
 - No SLA.
 
-**Comparision of Peering options**
+**Comparison of Peering options.**
 
-| Connection | Provides | Capacity | Requirements | Access Type |
-|---|---|---|---|---|
-| Direct Peering | Dedicated, direct connection to Google's network | 10 Gbps Per link | Connection in GCP PoPs | Public IP addresses |
-| Carrier Peering | Peering through service provider to Google's public network | Varies based on partner offering | Service provider | Public IP addresses |
+| Connection      | Provides                                                    | Capacity                         | Requirements           | Access Type         |
+|-----------------|-------------------------------------------------------------|----------------------------------|------------------------|---------------------|
+| Direct Peering  | Dedicated, direct connection to Google's network            | 10 Gbps Per link                 | Connection in GCP PoPs | Public IP addresses |
+| Carrier Peering | Peering through service provider to Google's public network | Varies based on partner offering | Service provider       | Public IP addresses |
 
-**Choosing a connection option**
+**Choosing a connection option.**
 
 - **Interconnect:**
     - Direct access to RFC1918 IPs in your VPC - with SLA:
-        - Dedicated Interconnect
-        - Partner Interconnect
-        - Cloud VPN
+        - Dedicated Interconnect.
+        - Partner Interconnect.
+        - Cloud VPN.
 - **Peering:**
     - Access to Google public IPs only - without SLA:
-        - Direct Peering
-        - Carrier Peering        
+        - Direct Peering.
+        - Carrier Peering.    
 
 ***
 
-## Network Pricing and Billing
+## Network Pricing and Billing.
 
-### Network Pricing
+### Network Pricing.
 
 - Each GCP service has its own pricing model.
 
-**Estimate costs with the GCP Pricing Calculator**
+**Estimate costs with the GCP Pricing Calculator.**
 
 ```
 Compute Engine              Cloud Network
@@ -820,41 +819,41 @@ n1-standard-1       +       100 GB egress/monthly
 us-central-1                Americas and EMEA
 ```
 
-**General network pricing**
+**General network pricing.**
 
-| Traffic Type | Price (USD) |
-|---|---|
-| Ingress | No charge |
-| Egress to the same zone (Internal IP address) | No charge |
-| Egress to Google products (YouTube, Maps, Drive) | No charge |
-| Egress to a different GCP service (within the same region) | No charge |
-| Egress between zones in the same region (per GB) | $0.01 |
-| Egress to the same zone (external IP address, per GB) | $0.01 |
-| Egress between regions within the US (per GB) | $0.01 |
+| Traffic Type                                                     | Price (USD)      |
+|------------------------------------------------------------------|------------------|
+| Ingress                                                          | No charge        |
+| Egress to the same zone (Internal IP address)                    | No charge        |
+| Egress to Google products (YouTube, Maps, Drive)                 | No charge        |
+| Egress to a different GCP service (within the same region)       | No charge        |
+| Egress between zones in the same region (per GB)                 | $0.01            |
+| Egress to the same zone (external IP address, per GB)            | $0.01            |
+| Egress between regions within the US (per GB)                    | $0.01            |
 | Egress between regions, not including traffic between US regions | Varies by region |
 
-**External IP address pricing (us-central1)**
+**External IP address pricing (us-central1).**
 
-| Type | Price/Hour (USD) |
-|---|---|
-| Static IP address (assigned but unused) | $0.010 |
-| Static and ephemeral IP addresses in use on standard VM instances | $0.004 |
-| Static and ephemeral IP addresses in use on preemptible VM instances | $0.002 |
-| Static and ephemeral IP addresses attached to forwarding rules | No charge |
+| Type                                                                 | Price/Hour (USD)  |
+|----------------------------------------------------------------------|-------------------|
+| Static IP address (assigned but unused)                              | $0.010            |
+| Static and ephemeral IP addresses in use on standard VM instances    | $0.004            |
+| Static and ephemeral IP addresses in use on preemptible VM instances | $0.002            |
+| Static and ephemeral IP addresses attached to forwarding rules       | No charge         |
 
-### Network Service Tiers
+### Network Service Tiers.
 
-**Use Network Service Tiers to optimize your network for performance or cost**
+**Use Network Service Tiers to optimize your network for performance or cost.**
 
-| Premium Tier | Standard Tier |
-|---|---|
-| High performance routing (Google's network) | Lower price and performance than Premium |
-| Unique to Google Cloud | Comparable to other public cloud offerings |
-| Global SLA | No global SLA |
-| Global load balancing, Cloud CDN | Regional load balancing |
-| Performance is main consideration | Cost is main consideration |  
+| Premium Tier                                | Standard Tier                              |
+|---------------------------------------------|--------------------------------------------|
+| High performance routing (Google's network) | Lower price and performance than Premium   |
+| Unique to Google Cloud                      | Comparable to other public cloud offerings |
+| Global SLA                                  | No global SLA                              |
+| Global load balancing, Cloud CDN            | Regional load balancing                    |
+| Performance is main consideration           | Cost is main consideration                 |  
 
-**Optimize performance with Premium Tier**
+**Optimize performance with Premium Tier.**
 
 - Google Cloud Platform Region.
 - Google Network:
@@ -864,7 +863,7 @@ us-central-1                Americas and EMEA
 - Internet Service Provider.
 - End User.
 
-**Optimize cost with Standard Network Tier**
+**Optimize cost with Standard Network Tier.**
 
 - Google Cloud Platform Region.
 - Pop:
@@ -874,19 +873,19 @@ us-central-1                Americas and EMEA
 - Internet Service Provider.
 - End User.        
 
-### Billing
+### Billing.
         
-**Billing accumulated from the bottom up**
+**Billing accumulated from the bottom up.**
 
 ```
 Resource -> Projects -> Folders -> GCP Organization        
 ```
 
-**Control budgets and alerts to control costs**
+**Control budgets and alerts to control costs.**
 
-**Labels can help you optimize network spend**
+**Labels can help you optimize network spend.**
 
-- BigQuery
+- BigQuery.
 
 ```sql
 SELECT
@@ -896,43 +895,43 @@ FROM `project.dataset.table`
 GROUP BY labels;
 ```
 
-**Visualize a network spend with Data Studio**
+**Visualize a network spend with Data Studio.**
 
-- Daily View
-- Monthly view
-- Overall
+- Daily View.
+- Monthly view.
+- Overall.
 
 ***
 
-## Networking Design and Deployment
+## Networking Design and Deployment.
 
-### Common network design
+### Common network design.
 
-**Increased availability with multiple zones**
+**Increased availability with multiple zones.**
 
 ![Multiple zones](gcp-img/gcp-net-multiple-zones.png "Multiple zones")
 
-**Globalization with multiple regions**
+**Globalization with multiple regions.**
 
 ![Globalization multiple zones](gcp-img/gcp-net-glob-multi-zone.png "Globalization multiple zones")
 
-**Access Internal load balancer using HTTP(S) load balancer**
+**Access Internal load balancer using HTTP(S) load balancer.**
 
 ![Local and Global HTTP(S) LB](gcp-img/gcp-net-internal-https-lb.png "Local and Global HTTP(S) LB")
 
-**Access internal load balancer using Cloud VPN**
+**Access internal load balancer using Cloud VPN.**
 
-**Use security appliance for a next-generation firewall**
+**Use security appliance for a next-generation firewall.**
 
-### Private Instances
+### Private Instances.
 
-**Private Google Access to Google APIs and services**
+**Private Google Access to Google APIs and services.**
 
 - Allows VM instances that only have internal IP addresses to reach the external IP addresses of Google APIs and services.
 - Enable private google access on subnet by subnet basis.
 - Has no effect on instances that have external IP addresses.
 
-**Different private access options**
+**Different private access options.**
 
  - **Private Google AccessConnect:**
     - **Connection:** Connect to the public IP addresses if Google APIs and services through the VPC network's default 
@@ -948,15 +947,15 @@ GROUP BY labels;
     - **Usage:** Connect to specific Google and third-party services without assigning external IP addresses to your
     GCP and Google or third-party resources.  
 
-**Cloud NAT provides internet access to private instances**
+**Cloud NAT provides internet access to private instances.**
 
 ![Cloud NAT](gcp-img/gcp-cloud-nat.png "Cloud NAT")
 
-**Cloud NAT is a fully managed, software-defined service**
+**Cloud NAT is a fully managed, software-defined service.**
 
-### Deployment Manager
+### Deployment Manager.
 
-**Deployment Manager is an infrastructure automation tool**
+**Deployment Manager is an infrastructure automation tool.**
 
 - Repeatable deployment process.
 - Declarative language.
@@ -964,7 +963,7 @@ GROUP BY labels;
 - Parallel deployment.
 - Template-driven
 
-**Example: Auto mode network with HTTP firewall rule**
+**Example: Auto mode network with HTTP firewall rule.**
 
 - **autonetwork.jinja**
 
@@ -1009,11 +1008,11 @@ resources:
     Port: [80]
 ```
 
-**Infrastructure as code tools for GCP**
+**Infrastructure as code tools for GCP.**
 
-### Cloud Marketplace
+### Cloud Marketplace.
 
-**Launch networking solutions using Cloud Marketplace**
+**Launch networking solutions using Cloud Marketplace.**
 
 - Deploy production-grade solutions.
 - Single bill for GCP and third-party services.
@@ -1023,51 +1022,51 @@ resources:
 
 ***
 
-## Network Monitoring and Troubleshooting
+## Network Monitoring and Troubleshooting.
 
-### Monitoring
+### Monitoring.
 
-**Dashboards can visualize utilization and network traffic**
+**Dashboards can visualize utilization and network traffic.**
 
-**Altering policies can notify you of certain conditions**
+**Altering policies can notify you of certain conditions.**
 
-**Uptime checks test the availability of your public services**
+**Uptime checks test the availability of your public services.**
 
-### Network Intelligence Center
+### Network Intelligence Center.
 
-**Diagnose issues using Connectivity Test**
+**Diagnose issues using Connectivity Test.**
 
-**Performance Dashboard**
+**Performance Dashboard.**
 
-**Firewall Insights**
+**Firewall Insights.**
 
-### Logging
+### Logging.
 
-**VPC Flow Logs record a sample of network flows**
+**VPC Flow Logs record a sample of network flows.**
 
-**Enable VPC Flow Logs per VPC subnet**
+**Enable VPC Flow Logs per VPC subnet.**
 
-| Field | Type | Description |
-|---|---|---|
-| src_ip | string | Source IP address |
-| src_port | int32 | Source port |
-| dest_ip | string | Destination IP address |
-| dest_port | int32 | Destination port |
-| protocol | int32 | IANA protocol number |
+| Field     | Type   | Description            |
+|-----------|--------|------------------------|
+| src_ip    | string | Source IP address      |
+| src_port  | int32  | Source port            |
+| dest_ip   | string | Destination IP address |
+| dest_port | int32  | Destination port       |
+| protocol  | int32  | IANA protocol number   |
 
 - Other fields:
-    - Start/end time
-    - Bytes/packets sent
-    - Instance details
-    - VPC details
-    - Geographic details
+    - Start/end time.
+    - Bytes/packets sent.
+    - Instance details.
+    - VPC details.
+    - Geographic details.
 
-**Packet Mirroring clones the traffic of specified instances in your VPC network**
+**Packet Mirroring clones the traffic of specified instances in your VPC network.**
 
-**Cloud NAT logging allows you to log NAT connections and errors**
+**Cloud NAT logging allows you to log NAT connections and errors.**
 
 - Logs generated for the following scenarios:
     - When a network connection using NAT created.
     - When a packet dropped because no port was available for NAT.
 
-**Analyze logs in BigQuery and visualize in Data Studio**
+**Analyze logs in BigQuery and visualize in Data Studio.**

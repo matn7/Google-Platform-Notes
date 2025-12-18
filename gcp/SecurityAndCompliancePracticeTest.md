@@ -1,13 +1,13 @@
-# Security & Compliance
+# Security & Compliance.
 
 **Question 1: Your company is launching an IoT service and will receive large volumes of streaming data. You have to store 
 this data in Bigtable. You want to explore the Bigtable environment from the command line. What command would you run to 
 ensure you have command-line tools installed?**
 
-- `apt-get install bigtable-tools`
-- `gcloud components install bigtable-tools`
-- `apt-get install cbt`
-- :white_check_mark: **`gcloud components install cbt`**
+- `apt-get install bigtable-tools`.
+- `gcloud components install bigtable-tools`.
+- `apt-get install cbt`.
+- :white_check_mark: **`gcloud components install cbt`**.
 
 ```
 * The correct command is 'gcloud components install cbt` to install the Bigtable.
@@ -20,10 +20,10 @@ The app is required to collect data and store it on the smartphone when data can
 backend application. You want to minimize the amount of development you have to do to keep data synchronized between 
 smartphones and backend data stores. Which data store option should you recommend?**
 
-- Cloud Datastore
-- Cloud Spanner
-- Cloud SQL
-- :white_check_mark: **Cloud Firestore**
+- Cloud Datastore.
+- Cloud Spanner.
+- Cloud SQL.
+- :white_check_mark: **Cloud Firestore**.
 
 ```
 * Cloud Firestore is a mobile database service that can synchronize data between mobile devices 
@@ -36,10 +36,10 @@ mobile devices and the centralized data store.
 
 **Question 3: Once a GCP Cloud dataproc cluster is created , it can be:**
 
-- :white_check_mark: **Scaled up**
-- :white_check_mark: **Only workers nodes can change**
-- Both workers and master nodes can change
-- :white_check_mark: **Scaled down**
+- :white_check_mark: **Scaled up**.
+- :white_check_mark: **Only workers nodes can change**.
+- Both workers and master nodes can change.
+- :white_check_mark: **Scaled down**.
 
 ```
 * Once a cluster is created, it can be scaled up or down. 
@@ -49,9 +49,9 @@ mobile devices and the centralized data store.
 **Question 4: A team of mobile developers is developing a new application. It will require synchronizing data between 
 mobile devices and a backend database. Which database service would you recommend?**
 
-- BigQuery
-- Spanner
-- :white_check_mark: **Firestore**
+- BigQuery.
+- Spanner.
+- :white_check_mark: **Firestore**.
 
 ```
 * Firestore is a document database that has mobile supporting features, like data synchronization, so it is 
@@ -65,10 +65,10 @@ the right answer.
 You suggest they use a managed GCP service instead of managing a cluster themselves on Compute Engine. 
 The service they would use is:**
 
-- BigQuery
-- Cloud Hadoop
-- Cloud Dataflow
-- :white_check_mark: **Cloud Dataproc**
+- BigQuery.
+- Cloud Hadoop.
+- Cloud Dataflow.
+- :white_check_mark: **Cloud Dataproc**.
 
 ```
 * Cloud Dataproc is the managed Spark service. 
@@ -81,10 +81,10 @@ The service they would use is:**
 large volumes of data consistently and store it for several months. The startup has several applications that will need 
 to query this data. Volumes are expected to grow to petabyte volumes. Which database should you use?**
 
-- :white_check_mark: **Bigtable**
-- Bigquery
-- Datastore
-- Cloud Spanner
+- :white_check_mark: **Bigtable**.
+- Bigquery.
+- Datastore.
+- Cloud Spanner.
 
 ```
 * Bigtable is a wide-column database that can ingest large volumes of data consistently. 
@@ -94,7 +94,7 @@ to query this data. Volumes are expected to grow to petabyte volumes. Which data
 * BigQuery is an analytics database and not designed for ingestion of large volumes of data in short periods of time.
 ```
 
-**Question 7: You need to store data for X and therefore you are using a cache for Y. How will the cache affect data retrieval?**
+**Question 7: You need to store data for X, and therefore you are using a cache for Y. How will the cache affect data retrieval?**
 
 - Caches can get out of sync with the system of truth.
 - A cache will continue to store data even if power is lost, improving availability.
@@ -116,7 +116,7 @@ application. The developer is using a Cloud SQL MySQL, Second Generation instanc
 
 - Datastore and SSD persistent disks.
 - Datastore and HDD persistent disks.
-- :white_check_mark: **Memorystore and SSD persistent disks**
+- :white_check_mark: **Memorystore and SSD persistent disks.**
 - Memorystore and HDD persistent disks.
 
 ```
@@ -153,17 +153,17 @@ about a product catalog. What is the next step after creating a Cloud Spanner in
 ```
 The next step is to create a database within the instance. Once a database is created, tables can be created, and data 
 can be loaded into tables. Cloud Spanner is a managed database, so you do not need to apply security patches. 
-You can’t create tables without first having created a database
+You can’t create tables without first having created a database.
 ```
 
 **Question 11: A software developer asks for your help exporting data from a Cloud SQL database. 
 The developer tells you which database to export and which bucket to store the export file in, but hasn’t mentioned which 
 file format should be used for the export file. What are the options for the export file format?**
 
-- JSON and SQL
-- CSV and JSON
-- :white_check_mark: **CSV and SQL**
-- CSV and XML
+- JSON and SQL.
+- CSV and JSON.
+- :white_check_mark: **CSV and SQL.**
+- CSV and XML.
 
 ```
 When exporting a database from Cloud SQL, the export file format options are CSV and SQL, JSON & XML are not an option.
@@ -171,10 +171,10 @@ When exporting a database from Cloud SQL, the export file format options are CSV
 
 **Question 12: Cloud Filestore is based on what file system technology?**
 
-- EXT4
-- XFS
-- :white_check_mark: **Network File System (NFS)**
-- ReiserFS
+- EXT4.
+- XFS.
+- :white_check_mark: **Network File System (NFS).**
+- ReiserFS.
 
 ```
 Cloud Filestore is based on Network Filesystem (NSF), which is a distributed file management system. 
@@ -183,10 +183,10 @@ The other options are file systems supported by Linux but are not the foundation
 
 **Question 13: Which of the following file formats is not an option for an export file when exporting from BigQuery?**
 
-- CSV
-- :white_check_mark: **XML**
-- JSON
-- Avro
+- CSV.
+- :white_check_mark: **XML.**
+- JSON.
+- Avro.
 
 ```
 XML is not an option in BigQuery’s export process. All other options are available.
@@ -195,10 +195,10 @@ XML is not an option in BigQuery’s export process. All other options are avail
 **Question 14: A new government regulation requires all pharmaceutical companies to keep their financial data for 5 years. 
 What would you recommend as the best way to comply with the regulation requirement?**
 
-- Use Coldline Storage
-- Define a lifecycle policy
-- :white_check_mark: **Define a data retention policy**
-- Use Nearline Storage
+- Use Coldline Storage.
+- Define a lifecycle policy.
+- :white_check_mark: **Define a data retention policy.**
+- Use Nearline Storage.
 
 ```
 You would be tempted to answer Coldline Storage - but the correct answer is "Define a data retention policy.".
@@ -209,10 +209,10 @@ By defining a retention policy - we ensure that the data is not deleted, as requ
 **Question 15: You need to copy files from your local device to a bucket in Cloud Storage. What command would you use? 
 Assume you have Cloud SDK installed on your local computer.**
 
-- `gcloud storage objects copy`
-- :white_check_mark: **`gsutil cp`**
-- `gsutil copy`
-- `gcloud cp`
+- `gcloud storage objects copy`.
+- :white_check_mark: **`gsutil cp`**.
+- `gsutil copy`.
+- `gcloud cp`.
 
 ```
 gsutil is the command to copy files to Cloud Storage. The verb is cp, not copy.
@@ -220,9 +220,9 @@ gsutil is the command to copy files to Cloud Storage. The verb is cp, not copy.
 
 **Question 16: What features can you configure when running a Second Generation MySQL database in Cloud SQL?**
 
-- :white_check_mark: **Machine type**
-- :white_check_mark: **Failover replicas**
-- :white_check_mark: **Maintenance window**
+- :white_check_mark: **Machine type.**
+- :white_check_mark: **Failover replicas.**
+- :white_check_mark: **Maintenance window.**
 
 ```
 With a second-generation instance, you can configure the MySQL version, connectivity, machine type, automatic backups, 
@@ -232,10 +232,10 @@ failover replicas, database flags, maintenance windows, and labels, hence all if
 **Question 17: Your manager asks you to set up a bare-bones Pub/Sub system as a sandbox for new developers to learn about 
 messaging systems. What are the two resources within Pub/Sub you will need to create?**
 
-- Topics and databases
-- Topics and tables
-- Tables and subscriptions
-- :white_check_mark: **Topics and subscriptions**
+- Topics and databases.
+- Topics and tables.
+- Tables and subscriptions.
+- :white_check_mark: **Topics and subscriptions.**
 
 ```
 * Pub/Sub works with topics, which receive and hold messages, and subscriptions, which make messages available 
@@ -248,10 +248,10 @@ to consuming applications.
 **Question 18: You want to estimate the cost of running a BigQuery query. What two services within 
 Google Cloud Platform will you need to use?**
 
-- Billing and Pricing Calculator
-- BigQuery and Billing
-- :white_check_mark: **BigQuery and Pricing Calculator**
-- Billing and Pricing Calculator
+- Billing and Pricing Calculator.
+- BigQuery and Billing.
+- :white_check_mark: **BigQuery and Pricing Calculator.**
+- Billing and Pricing Calculator.
 
 ```
 * BigQuery provides an estimate of the amount of data scanned, and the Pricing Calculator gives a cost estimate 
@@ -261,10 +261,10 @@ for scanning that volume of data.
 
 **Question 19: The correct command to create a Pub/Sub topic is which of the following?**
 
-- :white_check_mark: **`gcloud pubsub topics create`**
-- `cbt pubsub topics create`
-- `gcloud pubsub create topics`
-- `bq pubsub create topics`
+- :white_check_mark: **`gcloud pubsub topics create`.**
+- `cbt pubsub topics create`.
+- `gcloud pubsub create topics`.
+- `bq pubsub create topics`.
 
 ```
 gcloud followed by the service, in this case pubsub, followed by the resource, in this case topics,
@@ -274,10 +274,10 @@ and finally the verb, in this case create.
 **Question 20: You have received a large data set from an Internet of Things (IoT) system. You want to use BigQuery to 
 analyze the data. What command-line command would you use to make data available for analysis in BigQuery?**
 
-- `gcloud BigQuery load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`
-- `bq import load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`
-- :white_check_mark: **`bq load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`**
-- `gcloud BigQuery load --autodetect --source_format=[FORMAT][DATASET].[TABLE][PATH_TO_SOURCE]`
+- `gcloud BigQuery load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`.
+- `bq import load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`.
+- :white_check_mark: **`bq load --autodetect --source_format=[FORMAT] [DATASET].[TABLE][PATH_TO_SOURCE]`.**
+- `gcloud BigQuery load --autodetect --source_format=[FORMAT][DATASET].[TABLE][PATH_TO_SOURCE]`.
 
 ```
 The autodetect and source_format parameters and path to source are correctly specified in all options. 
@@ -286,10 +286,10 @@ To work with Bigquery we use bq and "load" is the right option and not import.
 
 **Question 21: What is the query language used by Datastore?**
 
-- :white_check_mark: **GQL**
-- MDX
-- SQL
-- DataFrames
+- :white_check_mark: **GQL**.
+- MDX.
+- SQL.
+- DataFrames.
 
 ```
 * Datastore uses a SQL-like query language called GQL. 
@@ -327,9 +327,9 @@ but it is not necessary with a managed service.
 
 **Question 24: All block storage systems use what block size?**
 
-- 8 KB
-- 16 KB
-- 4 KB
+- 8 KB.
+- 16 KB.
+- 4 KB.
 - :white_check_mark: **Block size can vary.**
 
 ```
@@ -352,10 +352,10 @@ such as overly permissive permissions.
 
 **Question 26: What kind of data model is used by Datastore?**
 
-- Relational
-- :white_check_mark: **Document**
-- Graph
-- Wide-column
+- Relational.
+- :white_check_mark: **Document.**
+- Graph.
+- Wide-column.
 
 ```
 Datastore is a document database. 
@@ -365,10 +365,10 @@ Bigtable is a wide-column database.
 
 **Question 27: Which of the following commands will create a subscription on the topic ace-exam-topic1?**
 
-- `gcloud pubsub create --topic=ace-exam-topic1 ace-exam-sub1`
-- :white_check_mark: **`gcloud pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1`**
-- `gsutil pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1`
-- `gcloud pubsub subscriptions create --topic=ace-exam-topic1`
+- `gcloud pubsub create --topic=ace-exam-topic1 ace-exam-sub1`.
+- :white_check_mark: **`gcloud pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1`.**
+- `gsutil pubsub subscriptions create --topic=ace-exam-topic1 ace-exam-sub1`.
+- `gcloud pubsub subscriptions create --topic=ace-exam-topic1`.
 
 ```
 gcloud pubsub subscriptions create followed by the topic and the name of the subscription.
@@ -376,10 +376,10 @@ gcloud pubsub subscriptions create followed by the topic and the name of the sub
 
 **Question 28: Before you can start storing data in BigQuery, what must you create?**
 
-- A persistent disk
-- An entity
-- :white_check_mark: **A data set**
-- A bucket
+- A persistent disk.
+- An entity.
+- :white_check_mark: **A data set.**
+- A bucket.
 
 ```
 To use BigQuery to store data, you must have a data set to store it, which makes it the right answer. 
@@ -392,10 +392,9 @@ three to four hours. You want to shut down resources as soon as the analysis is 
 create a Dataproc cluster every night at midnight. What command would you use to create a cluster called 
 spark-nightly-analysis in the us-west2-a zone?**
 
-- `bq dataproc clusters create spark-nightly-analysis --zone us-west2-a`
-- `gcloud dataproc clusters spark-nightly-analysis --zone us-west2-a`
-- :white_check_mark: **`gcloud dataproc clusters create spark-nightly-analysis --zone us-west2-a`
-**
+- `bq dataproc clusters create spark-nightly-analysis --zone us-west2-a`.
+- `gcloud dataproc clusters spark-nightly-analysis --zone us-west2-a`.
+- :white_check_mark: **`gcloud dataproc clusters create spark-nightly-analysis --zone us-west2-a`.**
 
 ```
 The correct command is gcloud dataproc clusters create followed by the name of the cluster and the a --zone parameter. 
@@ -404,10 +403,10 @@ bq is the command-line tool for BigQuery, not Dataproc. Other combination of gcl
 
 **Question 30: Which of the following file formats is not supported when importing data into BigQuery?**
 
-- CSV
-- Avro
-- :white_check_mark: **YAML**
-- Parquet
+- CSV.
+- Avro.
+- :white_check_mark: **YAML.**
+- Parquet.
 
 ```
 YAML is not a file storage format; it used for specifying configuration data.
