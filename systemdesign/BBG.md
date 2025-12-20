@@ -194,7 +194,7 @@
 **3. Give 3 examples of questions to clarify requirements.**
 * What specific features are we building?
 * How many users? Anticipated scale?
-*What's the existing tech stack?
+* What's the existing tech stack?
 
 **4. What should you include in a high-level design proposal?**
 * Key components (clients, APIs, servers, databases, caches, etc.) in a box diagram. 
@@ -263,7 +263,8 @@
 
 **5. Token Bucket Algorithm.**
 * Bucket with pre-defined capacity; tokens added periodically.
-* Each request consumes a token. If no tokens, request is dropped.
+* Each request consumes a token. 
+* If no tokens, request is dropped.
 
 **6. Token Bucket Parameters.**
 * Bucket size: Max tokens in bucket.
@@ -432,64 +433,171 @@ fault tolerance in addition to the core consistent hashing algorithm.
 ## 7 - Design a Key - Value Store.
 
 **1. What is "hinted handoff" and why is it used in distributed key-value stores?**
-Hinted handoff is a mechanism to improve availability during temporary failures. When a node is temporarily unavailable, 
-another node accepts writes on its behalf. Once the unavailable node recovers, the "hinted" data is handed off to it, 
-ensuring eventual consistency.
+* Hinted handoff is a mechanism to improve availability during temporary failures. 
+* When a node is temporarily unavailable, another node accepts writes on its behalf. 
+* Once the unavailable node recovers, the "hinted" data is handed off to it, ensuring eventual consistency.
 
 **2. Explain the CAP theorem. Why is a CA system not suitable for real-world distributed systems?**
-The CAP theorem states that a distributed system can only guarantee two out of three properties: Consistency, Availability, 
-and Partition Tolerance. CA systems sacrifice partition tolerance, which is unacceptable because network partitions 
+* The CAP theorem states that a distributed system can only guarantee two out of three properties: 
+  * Consistency.
+  * Availability. 
+  * Partition Tolerance. 
+* CA systems sacrifice partition tolerance, which is unacceptable because network partitions 
 (communication breaks) are inevitable in real-world distributed environments.
 
 **3. What are SSTables? How are they used in the write path of a key-value store, and what problem do they solve?**
-SSTables (Sorted String Tables) are sorted lists of key-value pairs stored on disk. In the write path, data from the 
-memory cache is flushed to SSTables. They provide a persistent, sorted storage format that enables efficient reads, 
+* SSTables (Sorted String Tables) are sorted lists of key-value pairs stored on disk. 
+* In the write path, data from the memory cache is flushed to SSTables. 
+* They provide a persistent, sorted storage format that enables efficient reads, 
 especially when combined with Bloom filters.
 
 **4. Describe how Merkle trees are used to handle permanent failures and maintain data consistency in a distributed 
-key-value store.**
-Merkle trees are hash trees used to efficiently detect inconsistencies between replicas. By comparing the root hashes 
-of two Merkle trees, the system can quickly determine if the replicas have the same data. If not, it can traverse the 
-tree to identify and synchronize only the inconsistent buckets, minimizing data transfer.
+key-value store?**
+* Merkle trees are hash trees used to efficiently detect inconsistencies between replicas. 
+* By comparing the root hashes of two Merkle trees, the system can quickly determine if the replicas have the same data. 
+* If not, it can traverse the tree to identify and synchronize only the inconsistent buckets, minimizing data transfer.
 
 **5. Explain the concept of vector clocks and how they are used to resolve write conflicts in an eventually consistent 
-key-value store.**
-Vector clocks are `[server, version]` pairs associated with a data item. They track the history of updates to the data. 
-By comparing vector clocks, the system can determine if two versions of data are ancestors (one descends from the other) 
-or siblings (conflicting updates). This allows the system to detect and resolve conflicts, ensuring that updates are 
-eventually consistent.
+key-value store?**
+* Vector clocks are `[server, version]` pairs associated with a data item. 
+* They track the history of updates to the data.
+* By comparing vector clocks, the system can determine if two versions of data are ancestors (one descends from the other) 
+or siblings (conflicting updates). 
+* This allows the system to detect and resolve conflicts, ensuring that updates are eventually consistent.
 
 **6. What is a "coordinator" node in the context of a distributed key-value store, and what role does it play in read 
 and write operations?**
-A coordinator node acts as a proxy between the client and the key-value store cluster. For write operations, it receives 
-the write request, coordinates the replication to multiple nodes, and ensures the write quorum is met. For read operations, 
-it retrieves data from the necessary replicas and returns the result to the client.
+* A coordinator node acts as a proxy between the client and the key-value store cluster. 
+* For write operations, it receives the write request, coordinates the replication to multiple nodes, and ensures the 
+write quorum is met. 
+* For read operations, it retrieves data from the necessary replicas and returns the result to the client.
 
 **7. Explain the concept of "quorum consensus." How do the parameters N, W, and R relate to consistency and availability, 
 and what are some typical configurations?**
-Quorum consensus is a method to achieve consistency in distributed systems. N is the number of replicas, W is the write 
-quorum (minimum number of replicas that must acknowledge a write for it to be considered successful), and R is the read 
-quorum (minimum number of replicas that must respond to a read request).
-* R=1, W=N: Fast reads.
-* W=1, R=N: Fast writes.
-* W+R > N: Strong consistency.
+* Quorum consensus is a method to achieve consistency in distributed systems. 
+* N is the number of replicas, W is the write quorum (minimum number of replicas that must acknowledge a write for it to 
+be considered successful), and R is the read quorum (minimum number of replicas that must respond to a read request).
+  * R=1, W=N: Fast reads.
+  * W=1, R=N: Fast writes.
+  * W+R > N: Strong consistency.
 
 **8. What is a Bloom filter, and how is it used in the read path of a key-value store? What problem does it solve?**
-A Bloom filter is a probabilistic data structure used to test whether an element is a member of a set. In a key-value 
-store, it's used to quickly check if an SSTable might contain a specific key before actually reading the SSTable from disk. 
-This avoids unnecessary disk reads, improving read performance.
+* A Bloom filter is a probabilistic data structure used to test whether an element is a member of a set. 
+* In a key-value store, it's used to quickly check if an SSTable might contain a specific key before actually reading 
+the SSTable from disk. 
+* This avoids unnecessary disk reads, improving read performance.
 
 **9. Describe the gossip protocol and how it's used for failure detection in a distributed key-value store.**
-The gossip protocol is a decentralized method for failure detection. Each node maintains a membership list with heartbeat 
-counters. Nodes periodically exchange heartbeat information with random peers. If a node's heartbeat counter doesn't increase 
-for a certain period, it's considered offline, and this information is propagated through the network.
+* The gossip protocol is a decentralized method for failure detection. 
+* Each node maintains a membership list with heartbeat counters. 
+* Nodes periodically exchange heartbeat information with random peers. 
+* If a node's heartbeat counter doesn't increase for a certain period, it's considered offline, and this information is 
+propagated through the network.
 
 **10. What are the advantages of using consistent hashing for data partitioning in a distributed key-value store?**
-Back: Consistent hashing offers several advantages:
-* Automatic scaling: Servers can be added or removed without requiring a complete redistribution of data.
-* Load balancing: Data is distributed evenly across servers.
-* Heterogeneity: Servers with different capacities can be assigned a proportional number of virtual nodes.
-* Minimal data movement: When servers are added or removed, only a small portion of the data needs to be moved.
+* Consistent hashing offers several advantages:
+  * Automatic scaling: Servers can be added or removed without requiring a complete redistribution of data.
+  * Load balancing: Data is distributed evenly across servers.
+  * Heterogeneity: Servers with different capacities can be assigned a proportional number of virtual nodes.
+  * Minimal data movement: When servers are added or removed, only a small portion of the data needs to be moved.
+
+
+**11. What is a key-value store?**
+* A non-relational database that stores data as key-value pairs. 
+* Keys are unique identifiers, values can be any data type.
+
+**12. hat are the two main operations a key-value store should support?**
+* `put(key, value)` to insert/update data, and `get(key)` to retrieve data.
+
+**13. What does the CAP theorem state?**
+* It's impossible for a distributed system to simultaneously guarantee Consistency, Availability, and Partition Tolerance. 
+* You must choose a tradeoff.
+
+**14. Define Consistency in the context of distributed systems.**
+* All clients see the same data at the same time, regardless of which node they connect to.
+
+**15. Define Availability in the context of distributed systems.**
+* Every client request receives a response, even if some nodes are down.
+
+**16. Define Partition Tolerance in the context of distributed systems.**
+* The system continues to operate despite network partitions (communication breaks between nodes).
+
+**17. What's the difference between CP and AP systems?**
+* CP systems prioritize Consistency and Partition Tolerance (sacrifice Availability). 
+* AP systems prioritize Availability and Partition Tolerance (sacrifice Consistency).
+
+**18. Why is data partitioning necessary in a distributed key-value store?**
+* To distribute data across multiple servers when the dataset is too large for a single server.
+
+**19. What is consistent hashing and why is it useful for data partitioning?**
+* A technique that distributes data across servers in a way that minimizes data movement when servers are added or removed.
+
+**20. Why is data replication used in key-value stores?**
+* To improve availability and reliability by storing multiple copies of data on different servers.
+
+**21. What is quorum consensus? Define N, W, and R.**
+* A method to achieve consistency in replicated data. 
+* N = total replicas, W = write quorum (minimum ACKs for a successful write), R = read quorum (minimum responses for a successful read).
+
+**22. How do you guarantee strong consistency using quorums?**
+* Ensure that W + R > N. 
+* This guarantees that at least one node involved in a read has the latest data.
+
+**23. What is eventual consistency?**
+* A consistency model where updates are propagated to all replicas eventually, but there might be a delay during which 
+data is inconsistent.
+
+**24. Why is versioning important in eventually consistent systems?**
+* To detect and resolve conflicts that arise when concurrent writes occur on different replicas.
+
+**25. What are vector clocks and how are they used?**
+* A mechanism for versioning data in distributed systems. 
+* They track the history of updates and help detect conflicts between different versions of data.
+
+**26. Why is failure detection important?**
+* To identify unavailable nodes in the system so that appropriate actions can be taken (e.g., failover, hinted handoff).
+
+**27. What is the gossip protocol and how does it work?**
+* A decentralized failure detection mechanism where nodes periodically exchange membership information with each other.
+
+**28.What is sloppy quorum?**
+* Instead of enforcing the quorum requirement, the system chooses the first W healthy servers for writes and first 
+R healthy servers for reads on the hash ring. 
+* Offline servers are ignored.
+
+**29. What is hinted handoff and how does it improve availability?**
+* A mechanism where, if a node is temporarily unavailable, another node accepts writes on its behalf and forwards them 
+when the node recovers.
+
+**30.What are Merkle trees used for in key-value stores?**
+* To efficiently detect and repair inconsistencies between replicas. 
+* They allow for comparing data without transferring the entire dataset.
+
+**31. What is the role of a coordinator node in a distributed key-value store?**
+* The coordinator acts as a proxy between the client and the data nodes. 
+* It's responsible for routing requests, coordinating reads/writes, and handling consistency.
+
+**32. Describe the typical write path in a key-value store.**
+* Write to Commit Log (for durability). 
+* Write to Memory Cache.
+* Asynchronously flush data from Memory Cache to SSTables on disk.
+
+**33. What are SSTables?**
+* Sorted String Tables. 
+* They are immutable, sorted files on disk that store key-value pairs. 
+* New writes don't modify existing SSTables; instead, new SSTables are created.
+
+**34. Describe the typical read path in a key-value store.**
+* Check Memory Cache. 
+* If not found, check Bloom Filter to identify relevant SSTables. 
+* Read data from SSTables on disk.
+
+**35. What are Bloom filters and why are they used in the read path?**
+* Probabilistic data structures used to efficiently test whether an element is a member of a set. 
+* In key-value stores, they help quickly determine if an SSTable might contain a specific key, 
+avoiding unnecessary disk reads.
+
+***
 
 ## 8 - Design A Unique ID Generator In Distributed Systems.
 
@@ -523,6 +631,88 @@ Snowflake: Divides the 64-bit ID into sections:
 * Sequence Number: Handles multiple IDs generated on the same machine within the same millisecond (up to 4096 IDs).
 * Clock Synchronization: Important consideration to ensure consistent timestamp generation across servers (NTP is a common solution).
 * High Availability: ID generator is a critical system and needs to be highly available.
+
+**6. Why can't traditional database auto-increment be used in distributed systems for unique ID generation?**
+* Single DB server not large enough. 
+* Generating unique IDs across multiple DBs with minimal delay is challenging.
+
+**7. List the key requirements for the unique ID generator.**
+* Unique, numerical, 64-bit, ordered by date, generate > 10,000 IDs/second.
+
+**8. How does multi-master replication work for ID generation?**
+* Each DB server increments IDs by k (number of DB servers).
+
+**9. What are the drawbacks of multi-master replication?**
+* Hard to scale across data centers, IDs not time-ordered across servers, scaling issues when adding/removing servers.
+
+**10. What is a UUID?**
+* A 128-bit number with a very low probability of collision.
+
+**11. What are the advantages of using UUIDs?**
+* Simple to generate, no coordination needed, easy to scale.
+
+**12. What are the disadvantages of using UUIDs for this scenario?**
+* 128-bit (requirement is 64-bit).
+* Not time-ordered.
+* Non-numeric.
+
+**13. What is a ticket server?**
+* A centralized server with auto-increment feature.
+
+**14. What are the advantages of using a ticket server?**
+* Numeric IDs, easy to implement for small/medium scale.
+
+**15. What are the disadvantages of using a ticket server?**
+* Single point of failure, complex data synchronization with multiple ticket servers.
+
+**16. What is the core idea behind the Snowflake approach?**
+* Divide the ID into different sections.
+
+**17. What are the sections of the 64-bit ID in the Snowflake design?**
+* Sign bit, Timestamp, Datacenter ID, Machine ID, Sequence Number.
+
+**18. What is the purpose of the sign bit?**
+* Reserved for future use (always 0 in this design).
+
+**19. What is the timestamp section used for?**
+* Stores milliseconds since the epoch, ensures IDs are sortable by time.
+
+**20. What do Datacenter and Machine IDs represent?**
+* Datacenter ID identifies the datacenter, Machine ID identifies the machine within the datacenter.
+
+**21. What is the sequence number used for?**
+* Incremented for each ID generated in the same millisecond on the same server.
+
+**22. What is the maximum lifetime of the ID generator with a 41-bit timestamp?**
+* Approximately 69 years.
+
+**23. How many IDs can a machine generate per millisecond with a 12-bit sequence number?**
+* "4096".
+
+**24. What is the clock synchronization problem?**
+* Ensuring all ID generation servers have the same clock, especially in multi-core/multi-machine scenarios.
+
+**25. Why is high availability important for an ID generator?**
+* It's a mission-critical system; downtime affects many other services.
+
+**26. What is the purpose of the epoch time in the Snowflake design?**
+* It's the starting point for the timestamp. 
+* Using a custom epoch close to the current date extends the usable lifetime of the ID generator before the timestamp overflows.
+
+**27. Why might you want to adjust the bit lengths of the different sections (timestamp, datacenter ID, machine ID, sequence number)?**
+* To optimize for different use cases. 
+* For example, fewer sequence number bits and more timestamp bits for low-concurrency, long-term applications.
+
+**28. When are Datacenter and Machine IDs typically assigned, and why is it important to be careful when changing them?**
+* Assigned at startup. 
+* Changing them can lead to ID conflicts if not done carefully.
+
+**29. What are some alternatives to Network Time Protocol (NTP) for clock synchronization?**
+* While NTP is the most popular, other options include Precision Time Protocol (PTP) and solutions based on atomic clocks 
+for higher accuracy. 
+* (Note: The chapter mentions NTP but doesn't go into alternatives, but it's a good point to consider).
+
+***
 
 ## 9 - Design A URL Shortener.
 
@@ -561,18 +751,105 @@ ID generator. Easier to figure out the next available short URL, which can be a 
 * If found, store the mapping in the cache and return the long URL (using a 301 or 302 redirect).
 * If not found in the database, return an error.
 
+**6. What are the primary use cases for a URL shortener?**
+* URL shortening (long URL -> short URL), URL redirection (short URL -> long URL), High availability/scalability.
+
+**7. What are the two main API endpoints needed?**
+* POST `api/v1/data/shorten` (for creating short URLs) and GET `api/v1/shortUrl` (for redirecting).
+
+**8. What's the difference between 301 and 302 redirects, and when would you use each?**
+* 301 is permanent (browser caches). 
+* 302 is temporary (always hits the URL shortener). 
+* Use 301 to reduce server load, 302 for analytics.
+
+**9. What's a basic data model for storing URL mappings?**
+* A table with columns for id (primary key), shortURL, and longURL.
+
+**10. What are the key requirements for a hash function in a URL shortener?**
+* Must map each longURL to one hashValue, and each hashValue must be mappable back to the original longURL.
+
+**11. How do you determine the appropriate length for the shortened URL (hash value)?**
+* Calculate based on the number of URLs the system needs to support (e.g., 62^n >= total URLs).
+
+**12. What characters are typically allowed in a shortened URL?**
+* Numbers (0-9), lowercase letters (a-z), and uppercase letters (A-Z). 
+* (Total of 62 characters).
+
+**13. Explain the "hash + collision resolution" approach.**
+* Use a standard hash function, take the first n characters, and if a collision occurs, append a string and retry.
+
+**14. What are bloom filters and how can they improve performance?**
+* Space-efficient, probabilistic data structure used to test whether an element is a member of a set. 
+* It helps to reduce the number of DB queries to check for collisions.
+
+**15. Explain the "base 62 conversion" approach.**
+* Convert a unique ID (usually an incrementing integer) into a base-62 representation to create the short URL.
+
+**16. How are numbers mapped to characters in Base 62?**
+* 0-9 map to themselves, 10-35 map to a-z, and 36-61 map to A-Z.
+
+**17. Which approach ("hash + collision resolution" vs "base 62 conversion") results in fixed-length short URLs?**
+* "Hash + collision resolution" provides fixed length, while "base 62 conversion" does not.
+
+**18. Why is a unique ID generator important for the base 62 conversion method?**
+* It provides a unique input for the base 62 conversion, ensuring no collisions.
+
+**19. Describe the steps in the URL shortening process.**
+* Check if longURL exists in DB -> If yes, return shortURL -> If no, generate unique ID -> Convert ID to shortURL (base 62) -> Save mapping to DB.
+
+**20. Describe the steps in the URL redirecting process.**
+* User clicks shortURL -> Load balancer directs to web server -> Check cache -> If in cache, return longURL ->
+If not, check DB -> Return longURL (or error if not found).
+
+**21. Why is caching important in a URL shortener?**
+* Improves performance by storing frequently accessed shortURL-longURL mappings, reducing database load.
+
+**22. Why is rate limiting important?**
+* Prevents abuse by limiting the number of requests from a single IP address or user within a given time frame.
+
+**23. How can the web server tier be scaled?**
+* Horizontally, by adding more web servers behind a load balancer. 
+* The web tier is stateless.
+
+**24. What are common techniques for scaling the database?**
+* Replication and sharding.
+
+**25. What kind of analytics can be collected for a URL shortener?**
+* Click count, time of clicks, source of clicks, etc.
+
+**26. How do you estimate the storage requirements for a URL shortener over a period of time?**
+* (Number of URLs) * (Average URL Length) = Total Storage. 
+* Remember to factor in the time period (e.g., 10 years).
+
+**27. What are the advantages of using the "Hash + Collision Resolution" method?**
+* Fixed short URL length, doesn't necessarily need a unique ID generator.
+
+**28. What are the disadvantages of using the "Hash + Collision Resolution" method?**
+* Collision is possible and needs to be resolved, making it more complex.
+
+**29. What are the advantages of using the "Base 62 Conversion" method?**
+* Collision is not possible because ID is unique.
+
+**30. What are the disadvantages of using the "Base 62 Conversion" method?**
+* Short URL length is not fixed. 
+* It goes up with the ID. 
+* Exposes a possible security concern of being able to guess/crawl URLs if IDs are sequential.
+
+***
+
 ## 10 - Design A Web Crawler.
 
 **1. Core Crawling Process.**
 * Concept: Basic Web Crawler Algorithm.
-* Explanation: Start with seed URLs, download web pages, extract new URLs, and repeat. Scalability, robustness, politeness, 
-and extensibility are key considerations.
+* Explanation: Start with seed URLs, download web pages, extract new URLs, and repeat. 
+* Scalability, robustness, politeness, and extensibility are key considerations.
 * Components: URL Frontier, HTML Downloader, Content Parser, URL Extractor, URL Filter.
 
 **2. URL Frontier.**
 * Concept: Managing URLs to be downloaded.
 * Explanation: Addresses politeness (avoiding overloading servers), prioritization (crawling important pages first), 
-and freshness (recrawling updated pages). Uses front queues (prioritization) and back queues (politeness).
+and freshness (recrawling updated pages). 
+* Uses front queues (prioritization) and back queues (politeness).
 * Tech: FIFO queues, mapping tables (host to queue), prioritizers, hybrid storage (memory buffer + disk).
 
 **3. Politeness and Prioritization.**
@@ -591,6 +868,90 @@ locality, and short timeouts.
 * Redundant Content: Use hashes/checksums to detect duplicate pages.
 * Spider Traps: Limit URL length, monitor website behavior.
 * Data Noise: Filter out advertisements, spam, etc.
+
+**6. What is a web crawler?**
+* A program (robot/spider) that systematically browses the web, discovering and indexing content. 
+* Used by search engines, web archiving, data mining, and web monitoring.
+
+**7. What are the 3 basic steps of a web crawler?**
+* Download web pages from a set of URLs.
+* Extract URLs from those pages. 
+* Add new URLs to the download list and repeat.
+
+**8. Why is scalability important for a web crawler?**
+* The web is vast (billions of pages). 
+* Crawlers must be efficient and use parallelization to handle the load.
+
+**9. What does robustness mean in the context of web crawlers?**
+* Handling bad HTML, unresponsive servers, crashes, and malicious links gracefully without failing.
+
+**10. Why should a web crawler be "polite"?**
+* Avoid making too many requests to a single website in a short time to prevent overwhelming the server 
+(avoid being seen as a DOS attack).
+
+**11. What is extensibility in web crawler design?**
+* The system should be flexible to support new content types (e.g., images, PDFs) with minimal changes.
+
+**12. What are seed URLs?**
+* The starting point URLs for the crawling process. 
+* Choosing good seeds is important for broad coverage.
+
+**13. What is the URL Frontier?**
+* A data structure that stores URLs to be downloaded. 
+* It manages politeness, prioritization, and freshness.
+
+**14. What is the role of the HTML Downloader?**
+* Downloads web pages from the internet, given URLs from the URL Frontier.
+
+**15. Why is a DNS Resolver needed?**
+* Translates URLs (domain names) into IP addresses, which are necessary to connect to web servers.
+
+**16. What does the Content Parser do?**
+* Parses and validates downloaded HTML pages to ensure they are well-formed and don't cause issues.
+
+**17. What is the purpose of the "Content Seen?" component?**
+* Detects duplicate content to avoid storing the same information multiple times, saving storage space and processing time.
+
+**18. What is the URL Extractor responsible for?**
+* Parses HTML pages and extracts all the links (URLs) found within them.
+
+**19. What is the URL Filter's job?**
+* Excludes certain content types, file extensions, error links, and URLs from blacklisted sites.
+
+**20. What is the "URL Seen?" component used for?**
+* Keeps track of URLs that have already been visited or are in the Frontier to avoid processing the same URL multiple times.
+
+**21. Which search algorithm (DFS or BFS) is generally preferred for web crawling and why?**
+* BFS (Breadth-First Search) is preferred because DFS can go too deep and get stuck.
+
+**22. What is robots.txt and why is it important?**
+* A file that tells crawlers which parts of a website they are allowed to access. 
+* Crawlers should respect these rules.
+
+**23. How can politeness be implemented in a web crawler?**
+* By using a queue router and mapping table to ensure that each queue only contains URLs from the same host, 
+and worker threads download one page at a time from the same host with a delay.
+
+**24. How can URLs be prioritized in a web crawler?**
+* Based on usefulness, measured by PageRank, website traffic, update frequency, etc.
+
+**25. How can duplicate content be detected efficiently?**
+* By comparing hash values of web pages instead of comparing the content character by character.
+
+**26. What is "freshness" in the context of web crawling, and why is it important?**
+* Keeping the crawled data up-to-date by periodically re-crawling pages, especially important ones, based on their update history.
+
+**27. What are spider traps, and how can they be avoided?**
+* Web pages that cause crawlers to enter infinite loops. 
+* Can be avoided by setting a maximum URL length and manually excluding problematic websites.
+
+**28. What is distributed crawling, and why is it used?**
+* Distributing the crawl workload across multiple servers, each with multiple threads, to achieve high performance and scalability.
+
+**29. What is "data noise" in web crawling?**
+* Contents with little or no value, such as advertisements, code snippets, and spam URLs, which should be excluded.
+
+***
 
 ## 11 - Design A Notification System.
 
@@ -628,6 +989,87 @@ locality, and short timeouts.
 * Retry Mechanism: Handle sending failures.
 * Notification Templates: Streamline notification creation.
 * Monitoring & Tracking: System health and analytics.
+
+**6. Design A Notification System.**
+* Key considerations for building a system to send push notifications, SMS, and emails. 
+* Focus on scalability, reliability, and extensibility.
+
+**7. Notification Types.**
+* Push (iOS/Android), SMS, Email. 
+* Each has unique delivery mechanisms (APNs, FCM, SMS Gateways, Email Services).
+
+**8. Real-time vs. Soft Real-time.**
+* Aim for fast delivery, but accept slight delays under heavy load.
+
+**9. Contact Info Gathering.**
+* Collect device tokens, phone numbers, and emails during app install/signup. 
+* Store securely in a database.
+
+**10. User and Device Tables.**
+* User table stores user_id, email, phone number. 
+* Device table stores device_token, user_id. 
+* One user can have multiple devices.
+
+**11. High-Level Architecture.**
+* Services -> Notification System -> Third-Party Services (APNs, FCM, SMS, Email) -> User Devices.
+
+**12. Single Point of Failure (SPOF).**
+* Initial design had a single notification server, creating a SPOF.
+
+**13. Scalability Issues.**
+* The initial design was hard to scale due to a single server handling all notification types.
+
+**14. Performance Bottleneck.**
+* A single server can become overloaded during peak hours due to resource-intensive tasks.
+
+**15. Improved Architecture.**
+* Services -> Notification Servers -> Message Queues -> Workers -> Third-Party Services -> User Devices.
+
+**16. Notification Servers.**
+* Provide APIs, validate data, fetch user/device info, and enqueue notifications.
+
+**17. Message Queues.**
+* Decouple components, buffer high volumes, and isolate notification types (iOS, Android, SMS, Email).
+
+**18. Workers.**
+* Pull notification events from queues and send them to third-party services.
+
+**19. Data Loss Prevention.**
+* Persist notification data in a database (Notification Log) and implement a retry mechanism.
+
+**20. Deduplication.**
+* Implement a dedupe mechanism using event IDs to reduce duplicate notifications.
+
+**21. Notification Templates.**
+* Preformatted notifications with customizable parameters to ensure consistency and save time.
+
+**22. Notification Settings.**
+* Allow users to opt-in/out of notification types (push, email, SMS). 
+* Store settings in a database.
+
+**23. Rate Limiting.**
+* Limit the number of notifications a user receives to avoid overwhelming them.
+
+**24. Security.**
+* Use appKey/appSecret pairs to authenticate clients sending push notifications.
+
+**25. Monitoring & Tracking.**
+* Track key metrics like open rate, click rate, and queue length. 
+* Monitor system health and performance.
+
+**26. Extensibility.**
+* Design the system to easily plug in or unplug third-party services. 
+* Consider alternatives for different markets (e.g., FCM vs. JPush in China).
+
+**27. API Design.**
+* Design APIs for services to send notifications. 
+* Include parameters for recipient, sender, subject, and content. 
+* Secure APIs to prevent spam.
+
+**28. Caching.**
+* Cache user info, device info, and notification templates to reduce database load and improve performance.
+
+***
 
 ## 12 - Design A News Feed System.
 
@@ -690,6 +1132,118 @@ locality, and short timeouts.
 * Consistent Hashing: Distributes data and requests evenly to mitigate hotkey problems.
 * APIs: RESTful APIs (HTTP).
 
+**7. News Feed Definition?**
+* What is a news feed? (constantly updating list of stories).
+* Examples: Facebook, Instagram, Twitter
+* Key content: status updates, photos, videos, links, etc.
+
+**8. Core Features.**
+* Publishing posts.
+* Seeing friends' posts.
+* Reverse chronological order (for simplicity).
+
+**9. Key Questions to Ask.**
+* Mobile, web, or both?
+* Important features?
+* Sorting order?
+* Number of friends?
+* Traffic volume (DAU)?
+* Content types (text, images, videos)?
+
+**10. High-Level Design - Feed Publishing.**
+* User posts -> Load Balancer -> Web Servers.
+* Web Servers -> Post Service, Fanout Service, Notification Service.
+
+**11. High-Level Design - News Feed Building.**
+* User requests feed -> Load Balancer -> Web Servers -> News Feed Service -> News Feed Cache.
+
+**12. Feed Publishing API.**
+* POST `/v1/me/feed`.
+* Params: content, auth_token.
+
+**13. News Feed Retrieval API.**
+* GET `/v1/me/feed`.
+* Params: auth_token.
+
+**14. Post Service.**
+* Persists posts in database and cache (Post Cache, Post DB).
+
+**15. Fanout Service.**
+* Pushes new content to friends' news feeds.
+* Newsfeed data stored in cache for fast retrieval.
+
+**16. Notification Service.**
+* Informs friends of new content.
+* Sends push notifications.
+
+**17. Web Servers (Feed Publishing).**
+* Authentication (auth_token).
+* Rate limiting (prevent spam).
+
+**18. Fanout on Write (Push Model).**
+* News feed pre-computed at write time.
+* Pros: Real-time, fast fetching.
+* Cons: Hotkey problem, wasted resources for inactive users.
+
+**19. Fanout on Read (Pull Model).**
+* News feed generated at read time (on-demand).
+* Pros: Efficient for inactive users, no hotkey problem.
+* Cons: Slower fetching.
+
+**20. Hybrid Fanout Approach.**
+* Push for most users.
+* Pull for celebrities/users with many followers.
+* Consistent hashing to mitigate hotkey problem.
+
+**21. Fanout Service Details.**
+* Fetch friend IDs (Graph DB).
+* Get friend info (User Cache).
+* Send to Message Queue.
+* Fanout Workers update News Feed Cache.
+
+**22. News Feed Cache (Fanout).**
+* Stores `<post_id, user_id>` mapping.
+* Limits memory usage with configurable limit.
+
+**23. News Feed Retrieval Details.**
+* User requests feed (`/v1/me/feed`).
+* Web servers call News Feed Service.
+* News Feed Service gets post IDs from cache.
+* Fetches user/post objects from caches.
+
+**24. CDN for Media Content.**
+* Images, videos stored in CDN for fast retrieval.
+
+**25. Cache Architecture Layers.**
+* News Feed, Content, Social Graph, Action, Counters.
+
+**26. Scaling Considerations.**
+* Database scaling (vertical/horizontal, SQL/NoSQL, replication, sharding).
+* Stateless web tier.
+* Caching.
+* Multiple data centers.
+* Message queues/
+* Monitoring (QPS, latency).
+
+**27. Graph Database.**
+* Used for managing friend relationships and recommendations.
+* Why? Efficiently handles complex relationship queries.
+
+**28. Message Queue.**
+* Used for asynchronous communication between services (e.g., Fanout Service and Fanout Workers).
+* Why? Decouples services, improves reliability, and handles bursts of traffic.
+
+**29. Consistency Models.**
+* Important consideration when scaling the database.
+* Examples: eventual consistency, strong consistency.
+* Trade-offs between consistency and performance.
+
+**30. Hotkey Problem.**
+* Occurs when a single key (e.g., a celebrity user) receives a disproportionate amount of traffic.
+* Mitigation: Consistent hashing, caching, and fanout on read for high-traffic users.
+
+***
+
 ## 13 - Design A Chat System.
 **1. Core Requirements.**
 * 1-on-1 chat.
@@ -725,7 +1279,7 @@ locality, and short timeouts.
 **7. Data Storage.**
 * Relational Databases: For generic data (user profiles, settings, friend lists).
 * Key-Value Stores (NoSQL): For chat history. Offer scalability, low latency, and handle large data volumes well. 
-Examples: Cassandra, HBase.
+* Examples: Cassandra, HBase.
 
 **8. Message IDs.**
 * Ensure message ordering.
@@ -742,6 +1296,119 @@ Examples: Cassandra, HBase.
 * Horizontal scaling of chat servers and databases.
 * Caching to reduce latency and load on servers.
 * Service discovery for dynamic server selection.
+
+**11. Requirements.**
+* Question: 1-on-1 or group chat?
+* Mobile, web, or both?
+* Scale (DAU)?
+* Group member limit?
+* Features (attachments, text-only)?
+* Message size limit?
+* End-to-end encryption?
+* Chat history storage duration?
+
+**12. Core Chat Service Functions.**
+* Receive messages from clients.
+* Route messages to recipients.
+* Store messages for offline users.
+
+**13. Communication Protocols - HTTP.**
+* Good for sender side (client-initiated).
+* Keep-alive header for persistent connections.
+* Efficient for sending messages.
+
+**14. Communication Protocols - Polling.**
+* Client periodically asks the server for new messages.
+* Inefficient due to wasted resources when no new messages.
+
+**15. Communication Protocols - Long Polling.**
+* Client holds connection open until new message or timeout.
+* Drawbacks: Load balancing issues, difficulty detecting disconnections, inefficiency for infrequent chatters.
+
+**16. Communication Protocols - WebSockets.**
+* Bidirectional, persistent connection.
+* Starts as HTTP, "upgraded" to WebSocket.
+* Efficient for real-time updates.
+* Uses ports 80/443 (firewall friendly).
+
+**17. High-Level Architecture - Stateless Services.**
+* Traditional request/response services (login, signup, profile).
+* Behind a load balancer.
+* Example: Service discovery (Zookeeper).
+
+**18. High-Level Architecture - Stateful Service.**
+* Chat service.
+* Maintains persistent connections with clients.
+* Requires efficient connection management.
+
+**19. High-Level Architecture - Third-Party Integration.**
+* Push notifications (crucial for chat apps).
+
+**20. Scalability Considerations.**
+* Single server is a bad idea (single point of failure).
+* Start with single server for simplicity, but plan for scaling.
+
+**21. System Components.**
+* Chat servers: Send/receive messages.
+* Presence servers: Online/offline status.
+* API servers: User management, etc.
+* Notification servers: Push notifications.
+* Key-value store: Chat history.
+
+**22. Storage - Data Types.**
+* Generic data (user profiles): Relational databases.
+* Chat history: Key-value stores.
+
+**23. Storage - Chat History Read/Write.**
+* Enormous data volume.
+* Recent chats accessed frequently.
+* Random access needed for search, etc.
+* Read/write ratio ~1:1.
+
+**24. Storage - Key-Value Store Benefits.**
+* Horizontal scaling.
+* Low latency.
+* Handles long tail data well.
+* Used by other chat apps (Facebook, Discord).
+
+**25. Data Models - 1-on-1 Message Table.**
+* Columns: message_id, message_from, message_to, content, created_at.
+* Primary key: message_id (for message sequence).
+
+**26. Data Models - Group Chat Message Table.**
+* Columns: channel_id, message_id, user_id, content, created_at.
+* Composite primary key: (channel_id, message_id).
+* channel_id is the partition key.
+
+**27. Message ID Generation.**
+* Requirements: Unique, sortable by time.
+* Options: Auto-increment (not NoSQL), Snowflake (global), local sequence number generator.
+
+**28. Service Discovery (Zookeeper).**
+* Registers chat servers.
+* Chooses best server for client (location, capacity).
+
+**29. Online Presence - Heartbeat Mechanism.**
+* Client sends periodic heartbeat events.
+* Server considers user online if heartbeat received within a time window.
+* Avoids frequent status changes due to brief disconnects.
+
+**30. Online Presence - Status Fanout.**
+* Presence servers use publish-subscribe.
+* Each friend pair maintains a channel.
+* Status changes published to relevant channels.
+
+**31. Message Synchronization Across Multiple Devices.**
+* Each device maintains cur_max_message_id.
+* New messages: recipient ID matches user, message ID > cur_max_message_id.
+* Each device fetches new messages independently.
+
+**32. Small Group Chat Flow.**
+* Message copied to each group member's message sync queue (inbox).
+* Simplifies message sync, each client checks own inbox.
+* Scales well for small groups (e.g., < 500 members).
+
+***
 
 ## 14 - Design A Search Autocomplete System.
 **1. Autocomplete Definition.**
