@@ -506,7 +506,7 @@ propagated through the network.
 * A non-relational database that stores data as key-value pairs. 
 * Keys are unique identifiers, values can be any data type.
 
-**12. hat are the two main operations a key-value store should support?**
+**12. What are the two main operations a key-value store should support?**
 * `put(key, value)` to insert/update data, and `get(key)` to retrieve data.
 
 **13. What does the CAP theorem state?**
@@ -569,7 +569,7 @@ R healthy servers for reads on the hash ring.
 * A mechanism where, if a node is temporarily unavailable, another node accepts writes on its behalf and forwards them 
 when the node recovers.
 
-**30.What are Merkle trees used for in key-value stores?**
+**30. What are Merkle trees used for in key-value stores?**
 * To efficiently detect and repair inconsistencies between replicas. 
 * They allow for comparing data without transferring the entire dataset.
 
@@ -619,12 +619,12 @@ coordination issues.
 * Cons: Single point of failure. Multiple ticket servers introduce data synchronization challenges.
 
 **4. Snowflake Approach - ID Structure.**
-Snowflake: Divides the 64-bit ID into sections:
-* 1 bit: Sign bit (always 0).
-* 41 bits: Timestamp (milliseconds since epoch).
-* 5 bits: Datacenter ID.
-* 5 bits: Machine ID.
-* 12 bits: Sequence number (incremented per ID generated in a millisecond, resets every millisecond).
+* Snowflake: Divides the 64-bit ID into sections:
+  * 1 bit: Sign bit (always 0).
+  * 41 bits: Timestamp (milliseconds since epoch).
+  * 5 bits: Datacenter ID.
+  * 5 bits: Machine ID.
+  * 12 bits: Sequence number (incremented per ID generated in a millisecond, resets every millisecond).
 
 **5. Snowflake - Key Concepts.**
 * Timestamp: Provides time-based sorting. 41 bits allows for ~69 years of operation from a custom epoch.
@@ -731,7 +731,7 @@ for higher accuracy.
 
 **3. What are the trade-offs between using "Hash + Collision Resolution" and "Base 62 Conversion" for generating short URLs?**
 * Hash + Collision Resolution: Fixed-length short URLs, but requires collision detection and resolution, which can impact 
-* performance. Doesn't need unique ID generator.
+performance. Doesn't need unique ID generator.
 * Base 62 Conversion: Short URL length varies with ID, but guarantees uniqueness (no collisions). Depends on a unique 
 ID generator. Easier to figure out the next available short URL, which can be a security concern.
 
@@ -1411,56 +1411,148 @@ and worker threads download one page at a time from the same host with a delay.
 ***
 
 ## 14 - Design A Search Autocomplete System.
+
 **1. Autocomplete Definition.**
-Front end feature that predicts and suggests queries as the user types. Also known as typeahead or search-as-you-type.
+* Front end feature that predicts and suggests queries as the user types. 
+* Also known as typeahead or search-as-you-type.
 
 **2. Core Requirements.**
-Fast response time (<=100ms), relevance, sorted results (by popularity), scalability, high availability.
+* Fast response time (<=100ms), relevance, sorted results (by popularity), scalability, high availability.
 
 **3. Data Gathering Service.**
-Collects and aggregates user input queries. Can be real-time (for up-to-the-second results) or batched (e.g., weekly).
+* Collects and aggregates user input queries. 
+* Can be real-time (for up-to-the-second results) or batched (e.g., weekly).
 
 **4. Query Service.**
-Receives a search query prefix and returns the top k most frequently searched terms.
+* Receives a search query prefix and returns the top k most frequently searched terms.
 
 **5. Trie Data Structure.**
-A tree-like data structure optimized for storing and retrieving strings based on prefixes. 
-Each node represents a character or prefix.
+* A tree-like data structure optimized for storing and retrieving strings based on prefixes. 
+* Each node represents a character or prefix.
 
 **6. Trie Optimizations.**
-Limit the maximum length of a prefix to reduce search space. Cache the top k search queries at each node for faster retrieval.
+* Limit the maximum length of a prefix to reduce search space. 
+* Cache the top k search queries at each node for faster retrieval.
 
 **7. Data Aggregation.**
-Raw search query logs are aggregated to count query frequencies over a period (e.g., weekly).
+* Raw search query logs are aggregated to count query frequencies over a period (e.g., weekly).
 
 **8. Workers.**
-Asynchronous processes that build the trie data structure from aggregated data and store it in a database.
+* Asynchronous processes that build the trie data structure from aggregated data and store it in a database.
 
 **9. Trie Cache.**
-In-memory distributed cache that stores the trie for fast read access by the query service.
+* In-memory distributed cache that stores the trie for fast read access by the query service.
 
 **10. Trie DB.**
-Persistent storage for the trie data. Can be a document store (e.g., MongoDB) or a key-value store.
+* Persistent storage for the trie data. Can be a document store (e.g., MongoDB) or a key-value store.
 
 **11. Query Service Architecture.**
-Load balancer distributes requests to API servers, which fetch data from the Trie Cache. 
-Cache misses are handled by querying the Trie DB.
+* Load balancer distributes requests to API servers, which fetch data from the Trie Cache. 
+* Cache misses are handled by querying the Trie DB.
 
-**12.  Front-End Optimizations.**
-Use AJAX requests to avoid full page reloads. Implement browser caching to store autocomplete suggestions locally.
+**12. Front-End Optimizations.**
+* Use AJAX requests to avoid full page reloads. 
+* Implement browser caching to store autocomplete suggestions locally.
 
 **13. Trie Operations.**
-Create: Built from aggregated data. 
-Update: Performed weekly (full trie rebuild) or by updating individual nodes (less efficient). 
-Delete: Filter layer to remove unwanted suggestions.
+* Create: Built from aggregated data. 
+* Update: Performed weekly (full trie rebuild) or by updating individual nodes (less efficient). 
+* Delete: Filter layer to remove unwanted suggestions.
 
 **14. Scaling Storage (Sharding).**
-Partitioning the trie data across multiple servers. 
-Naive approach: shard by the first character. 
-Better approach: analyze historical data for even distribution.
+* Partitioning the trie data across multiple servers. 
+* Naive approach: shard by the first character. 
+* Better approach: analyze historical data for even distribution.
 
 **15. Multi-Language Support.**
-Use Unicode to store characters from different languages. Consider building separate tries for different countries/regions.
+* Use Unicode to store characters from different languages. 
+* Consider building separate tries for different countries/regions.
+
+**16. What is the core goal of a search autocomplete system?**
+* To provide fast, relevant, and sorted suggestions as a user types a search query.
+
+**17. List the key functional requirements.**
+* Fast response time, relevant suggestions, sorted results (by popularity), scalability, high availability.
+
+**18. What is the purpose of the data gathering service?**
+* To collect and aggregate user search queries for building the autocomplete index.
+
+**19. What is the role of the query service?**
+* To receive a search query prefix and return the top k most frequent suggestions.
+
+**20. What data structure is commonly used for autocomplete and why?**
+* Trie (prefix tree). Efficient for prefix-based search and storage of strings.
+
+**21. What does the root node in a trie represent?**
+* An empty string.
+
+**22. What does each node in a trie store?**
+* A character and, in the optimized version, frequency information and top k suggestions.
+
+**23. What is the time complexity to find top k queries in a trie (optimized)?**
+* O(1) - constant time, after optimizations like caching top queries at each node.
+
+**24. What are the two main optimizations for a trie in an autocomplete system?**
+* Limit the max length of a prefix. 
+* Cache top search queries at each node.
+
+**25. Why limit the maximum length of a search prefix?**
+* Because users rarely type very long queries, and it improves search time complexity.
+
+**26. Why cache the top k search queries at each node in the trie?**
+* To avoid traversing the entire trie for each query, significantly improving response time.
+
+**27. What is the purpose of analytics logs in the data gathering service?**
+* To store raw, unindexed data about search queries with timestamps.
+
+**28. What do aggregators do in the data gathering service?**
+* They process and aggregate the raw data from analytics logs into a more usable format (e.g., weekly query frequencies).
+
+**29. What is the role of workers in the data gathering service?**
+* To build the trie data structure from the aggregated data and store it in the Trie DB.
+
+**30. What are the two options for storing the trie data persistently?**
+* Document store (e.g., MongoDB) for serialized trie snapshots. 
+* Key-value store, mapping trie nodes to key-value pairs.
+
+**31. What is the purpose of the Trie Cache?**
+* To store the trie in memory for fast read access by the query service.
+
+**32. How does using AJAX improve the user experience?**
+* By allowing the browser to send/receive requests/responses without refreshing the whole page.
+
+**33. Why use browser caching for autocomplete suggestions?**
+* Because suggestions often don't change rapidly, caching reduces server load and improves response time.
+
+**34. Why is sharding necessary, and how can it be implemented?**
+* Sharding distributes the trie across multiple servers to handle large datasets. 
+* Sharding can be based on the first character of the query, but a shard map manager is better for even distribution.
+
+**35. How can the system be extended to support multiple languages?**
+* By storing Unicode characters in the trie nodes and potentially building different tries for different countries, 
+possibly stored in CDNs.
+
+**36. Why is data sampling important in a large-scale autocomplete system?**
+* Logging every search query requires significant processing power and storage. 
+* Data sampling reduces the load by only logging a fraction of the requests.
+
+**37. What is the recommended approach for updating the trie and why?**
+* Rebuild the trie weekly using aggregated data. 
+* This is more efficient than updating individual nodes frequently.
+
+**38. Why is updating individual trie nodes directly generally avoided?**
+* It's a slow operation. 
+* When a node is updated, all its ancestors up to the root must also be updated to maintain the correct top queries.
+
+**39. How are hateful or inappropriate autocomplete suggestions handled?**
+* A filter layer is added in front of the Trie Cache to filter out unwanted suggestions based on defined rules. 
+* The suggestions are then removed asynchronously from the database.
+
+**40. What is the purpose of the Shard Map Manager?**
+* The Shard Map Manager maintains a lookup database to identify which shard a query should be stored on, enabling more 
+even data distribution across shards.
+
+***
 
 ## 15 - Design YouTube.
 
@@ -1534,6 +1626,73 @@ with ISPs.
 * Types: Recoverable (retry), Non-recoverable (stop task).
 * Strategies: Retries, replicas, failover mechanisms.
 * Examples: Upload errors, transcoding errors, server failures.
+
+**16. Core Functionality.**
+* Front-End: Mobile apps, web browsers, smart TVs.
+* Functionality: Video upload, video streaming.
+
+**17. CDN (Content Delivery Network).**
+* Purpose: Stores and streams videos to users globally with low latency.
+* Benefit: Reduces load on origin servers, improves user experience.
+* Example: Amazon CloudFront, Akamai.
+
+**18. Blob Storage.**
+* Purpose: Stores original and transcoded video files.
+* Definition: Stores unstructured binary data (videos, images).
+* Note: Scalable and cost-effective for large media files.
+
+**19. API Servers.**
+* Purpose: Handles all requests except video streaming.
+* Examples: User authentication, metadata updates, feed recommendations, generating upload URLs.
+* Architecture: Behind a load balancer for even distribution of traffic.
+
+**20. Metadata Database.**
+* Purpose: Stores video metadata (URL, size, resolution, user info, etc.).
+* Requirements: Sharded and replicated for performance and high availability.
+
+**21. Video Transcoding (Encoding).**
+* Purpose: Converts videos into multiple formats, resolutions, and bitrates.
+* Benefit: Ensures compatibility across devices and network conditions.
+* Key Codecs: H.264, VP9, HEVC.
+* Containers: .mp4, .mov, .avi.
+
+**22. Streaming Protocols.**
+* Purpose: Standardized way to control data transfer for video streaming.
+* Examples: MPEG-DASH, Apple HLS, Microsoft Smooth Streaming, Adobe HDS.
+
+**23. Directed Acyclic Graph (DAG).**
+* Purpose: Model for video processing pipelines.
+* Benefit: Enables flexibility and parallelism in video transcoding.
+* Nodes: Represent tasks (inspection, encoding, thumbnail generation, watermarking).
+
+**24. Preprocessor.**
+* Purpose: Splits video streams, generates DAGs, caches data.
+* Functions: Video splitting by GOP alignment, DAG generation from configuration files, data caching for reliability.
+
+**25. Resource Manager.**
+* Purpose: Manages resource allocation for video transcoding.
+* Components: Task queue, worker queue, running queue, task scheduler.
+
+**26. Task Workers.**
+* Purpose: Execute tasks defined in the DAG (watermarking, encoding, thumbnail generation, merging).
+
+**27. Message Queues.**
+* Purpose: Decouple system components and enable parallelism.
+* Benefit: Improves system responsiveness and throughput.
+
+**28. Pre-signed URLs.**
+* Purpose: Secure video uploads.
+* Process: Client requests a pre-signed URL from API servers, then uploads the video directly to storage using the URL.
+
+**29. DRM & Video Protection.**
+* Purpose: Protect copyrighted videos.
+* Methods: Digital Rights Management (DRM) systems, AES encryption, visual watermarking.
+
+**30. CDN Cost Optimization.**
+* Strategies: Serve popular videos from CDN, other videos from video servers, encode less popular content on-demand,
+  regional CDN distribution, build own CDN or partner with ISPs.
+
+***
 
 ## 16 - Design Google Drive.
 
@@ -1625,6 +1784,63 @@ Notification Service, Offline Backup Queue.
 * Direct Upload to Cloud Storage: Faster uploads, but complex client-side implementation and security concerns.
 * Presence Service: Separate online/offline logic for other services to use.
 
+**21. Amazon S3.**
+* Object storage service for storing files (documents, photos, videos, etc.).
+* Provides scalability, data availability, security, and performance.
+* Supports same-region and cross-region replication for redundancy and availability.
+* Used in Google Drive to store file blocks.
+
+**22. Load Balancer.**
+* Distributes network traffic evenly across multiple API servers.
+* Ensures high availability by redirecting traffic away from failed servers.
+* Improves scalability by allowing easy addition/removal of API servers.
+
+**23. API Servers.**
+* Handle user authentication.
+* Manage user profiles.
+* Update file metadata.
+* Interact with metadata cache, metadata database, block servers, and cloud storage.
+
+**24. Metadata Database.**
+* Stores metadata about users, files, blocks, and versions.
+* Does not store the actual file content (that's in cloud storage).
+* Relational databases are preferred because ACID properties are natively supported.
+
+**25. Metadata Cache.**
+* Caches frequently accessed metadata for faster retrieval.
+* Improves performance by reducing the load on the metadata database.
+* Needs a strategy to maintain consistency with the database (e.g., invalidation on write).
+
+**26. Block Servers.**
+* Process files for upload.
+* Split files into blocks.
+* Compress blocks to reduce storage space.
+* Encrypt blocks for security.
+* Implement delta sync to only upload modified blocks.
+
+**27. Notification Service.**
+* Informs clients about file changes (additions, edits, deletions).
+* Uses long polling to maintain persistent connections with clients.
+* Alerts clients to pull the latest data when changes occur.
+
+**28. Long Polling.**
+* A technique used by the Notification Service.
+* Clients maintain a persistent connection to the server.
+* The server holds the connection open until there's new data to send.
+* Once data is sent (or a timeout occurs), the client immediately opens a new connection.
+
+**29. Delta Sync.**
+* A technique used by Block Servers to optimize file uploads.
+* Only modified blocks of a file are uploaded, instead of the entire file.
+* Reduces bandwidth consumption.
+
+**30. Data Deduplication.**
+* A technique to save storage space.
+* Identical data blocks (same hash value) are stored only once.
+* Reduces redundancy and overall storage costs.
+
+***
+
 ## 17 - Proximity Service.
 
 **1. Problem Definition - Proximity Service Goal.**
@@ -1703,6 +1919,55 @@ Notification Service, Offline Backup Queue.
 **20. Deployment - Deployment Strategy.**
 * Multiple regions and availability zones for low latency, high availability, and data privacy compliance.
 
+**21. What is Geohash?**
+* A geospatial indexing technique that reduces 2D latitude/longitude coordinates into a 1D string.
+* Works by recursively dividing the world into smaller grids.
+* Uses base32 representation.
+* Commonly used in various applications due to its simplicity.
+* Has boundary issues that need to be addressed (locations close but with different prefixes).
+
+**22. What is a Quadtree?**
+* A tree data structure where each internal node has four children, corresponding to four quadrants of a space.
+* Used to partition a 2D space by recursively subdividing it into quadrants.
+* Subdivision continues until a criterion is met (e.g., max number of businesses in a grid).
+* In-memory data structure (not a database solution).
+* Can dynamically adjust grid size based on population density.
+
+**23. What is Google S2?**
+* A geometry library that maps a sphere to a 1D index based on the Hilbert curve.
+* The Hilbert curve preserves locality, meaning points close on the curve are close in 1D space.
+* Good for geofencing (defining virtual perimeters).
+* Uses a Region Cover algorithm for flexible cell sizes.
+* More complex than Geohash or Quadtree.
+
+**24. What is Redis used for in this context?**
+* In-memory data store used for caching.
+* Caches:
+  * List of business IDs for a given geohash.
+  * Business objects (business info).
+  * Fast retrieval of frequently accessed data.
+  * Deployed in clusters across regions for high availability and low latency.
+
+**25. What is MySQL used for in this context?**
+* Stores business data and geospatial index data.
+* Primary-secondary setup (primary handles writes, replicas handle reads).
+* Business table is sharded by business ID.
+* Geospatial index table is scaled using read replicas.
+
+**26. What is the role of the Load Balancer?**
+* Distributes incoming traffic across multiple services (LBS, Business Service).
+* Routes API calls based on URL paths.
+* Provides a single DNS entry point.
+
+**27. What are the key API endpoints?**
+* GET `/v1/search/nearby`: Returns businesses based on location and radius.
+  * Parameters: latitude, longitude, radius.
+* GET `/v1/businesses/{:id}`: Returns detailed information about a business.
+* POST `/v1/businesses`: Adds a business.
+* PUT `/v1/businesses/{:id}`: Updates a business.
+* DELETE `/v1/businesses/{:id}`: Deletes a business.
+
+***
 
 ## 18 - Nearby Friends.
 
@@ -1766,6 +2031,62 @@ Notification Service, Offline Backup Queue.
 **20. Erlang/BEAM/OTP (Alternative).** 
 * Highly concurrent environment for managing user connections and location updates.
 
+**21. WebSocket.**
+* Purpose: Real-time, bidirectional communication between clients (mobile apps) and the server.
+* Key Features: Persistent connection, low latency, full-duplex communication.
+* Usage in "Nearby Friends":
+  * Mobile clients send location updates to the backend.
+  * Backend pushes location updates of nearby friends to clients.
+  * Handles initial handshake and client initialization.
+
+**22. Redis (Location Cache).**
+* Purpose: In-memory data store for caching the most recent location of active users.
+* Key Features: Fast read/write operations, TTL (Time-To-Live) support for automatic data expiration.
+* Usage in "Nearby Friends":
+  * Stores user_id as key and {latitude, longitude, timestamp} as value.
+  * TTL is used to automatically remove inactive users from the cache.
+  * Sharded to handle high update QPS (Queries Per Second).
+
+**23. Redis Pub/Sub.**
+* Purpose: Message broker for routing location updates from one user to their online friends.
+* Key Features: Lightweight channels, publish-subscribe pattern, supports many channels.
+* Usage in "Nearby Friends":
+  * Each user has their own channel.
+  * WebSocket servers publish location updates to user channels.
+  * Friends subscribe to these channels to receive updates.
+  * Distributed cluster to handle high message volume.
+  
+**24. Cassandra (Location History Database).**
+* Purpose: Stores historical location data for users.
+* Key Features: Horizontally scalable, handles heavy write workloads, fault-tolerant.
+* Usage in "Nearby Friends":
+  * Stores user_id, latitude, longitude, and timestamp.
+  * Sharded by user_id for even load distribution.
+
+**25. Load Balancer.**
+* Purpose: Distributes incoming traffic across multiple servers.
+* Key Features: Distributes traffic evenly, handles auto-scaling, health checks.
+* Usage in "Nearby Friends":
+  * Sits in front of RESTful API servers and WebSocket servers.
+  * Distributes traffic to available servers.
+  * Handles draining connections during server removal.
+
+**26. Service Discovery (etcd/Zookeeper).**
+* Purpose: Provides a centralized registry for service configuration and discovery.
+* Key Features: Key-value store, watch/notification mechanism for updates.
+* Usage in "Nearby Friends":
+  * Stores the hash ring configuration for the distributed Redis Pub/Sub cluster.
+  * WebSocket servers subscribe to updates to the hash ring.
+
+**27. Erlang/BEAM/OTP.**
+* Purpose: Alternative to Redis Pub/Sub for routing location updates.
+* Key Features: Lightweight processes, concurrency, fault-tolerance, distributed computing.
+* Usage in "Nearby Friends":
+  * Model each user as an Erlang process.
+  * User processes subscribe to updates from friend processes.
+  * Forms a mesh network for efficient routing.
+
+***
 
 ## 19 - Google Maps.
 
@@ -1857,6 +2178,54 @@ Notification Service, Offline Backup Queue.
 * Continuously updating ETAs based on traffic.
 * Server pushes updates to clients (WebSockets).
 
+**21. What is Geohashing? How is it used in Google Maps?**
+* Geohashing is a spatial indexing technique that divides the Earth into a grid and assigns a short string (geohash) 
+to each grid cell. 
+* In Google Maps, it's used to:
+  * Identify and retrieve map tiles efficiently.
+  * Organize and store routing tiles.
+
+**22. What is a CDN? Why is it important for map rendering?**
+* A CDN is a distributed network of servers that caches content closer to users. 
+* It's crucial for map rendering because:
+  * Map tiles are pre-generated and static, making them highly cacheable.
+  * Reduces latency by serving tiles from the nearest POP (Point of Presence).
+  * Lowers the load on the origin server.
+
+**23. What is Cassandra? Why is it suitable for the Location Service?**
+* Cassandra is a NoSQL, distributed database designed for high write throughput and scalability. 
+* It's a good fit for the Location Service because:
+  * Handles the massive volume of location updates from users.
+  * Provides horizontal scalability to accommodate growth.
+  * Offers high availability.
+
+**24. What is Kafka? How is it used with location data?**
+* Kafka is a distributed streaming platform used for building real-time data pipelines and streaming applications. 
+* In Google Maps, it:
+  * Ingests the stream of user location updates.
+  * Enables other services (traffic updates, routing tile processing, analytics) to consume this data in near real-time.
+
+**25. What is Redis? How is it used in the Geocoding Service?**
+* Redis is an in-memory data structure store, often used as a cache or message broker. 
+* In the Geocoding Service:
+  * Stores geocoding data (places and their lat/lng coordinates).
+  * Provides fast reads for frequent geocoding lookups.
+
+**26. What is object storage? How is it used for routing tiles?**
+* Object storage is a service that stores data as objects, often used for unstructured data.
+* For routing tiles:
+  * Stores routing tiles (graph data of road networks) as binary files.
+  * Provides a cost-effective and scalable storage solution.
+  * Tiles are organized by geohashes for fast lookup.
+
+**27. What are WebSockets? How are they used for adaptive ETA and rerouting?**
+* WebSockets provide full-duplex communication channels over a single TCP connection. 
+* For adaptive ETA and rerouting:
+  * Enables the server to push real-time updates (traffic changes, rerouting suggestions) to the client.
+  * Supports bi-directional communication, which might be required for features such as last-mile delivery.
+
+***
+
 ## 20 - Distributed Message Queue.
 
 **1. Message Queue Benefits.**
@@ -1934,6 +2303,43 @@ Increases availability. Each partition has multiple replicas.
 **25. Delivery Semantics.**
 * At-most-once, At-least-once, Exactly-once. Trade-offs between reliability and performance.
 
+**26. What is a Message Queue?**
+* A service that facilitates asynchronous communication between producers and consumers. 
+* Decouples systems, improves scalability/availability, and enhances performance.
+
+**27. What is Apache Kafka?**
+* A distributed event streaming platform (though blurring the lines with message queues). 
+* Known for high throughput, fault tolerance, and persistence.
+* Uses topics, partitions, and brokers.
+
+**28. What is Apache Pulsar?**
+* Another distributed event streaming platform, often compared to Kafka. 
+* Can also be used as a general-purpose message queue.
+
+**29. What is RabbitMQ?**
+* A popular message broker that implements the Advanced Message Queuing Protocol (AMQP). 
+* Focuses on flexible messaging rather than high-throughput stream processing, but is adding streaming features.
+
+**30. What is RocketMQ?**
+* A distributed messaging and streaming platform originally developed by Alibaba. 
+* Known for its financial-grade reliability and strong consistency.
+
+**31. What is Apache ZooKeeper used for in a message queue?**
+* A centralized service for maintaining configuration information, naming, providing distributed synchronization, 
+and group services. 
+* Used for metadata storage, state storage, and coordination service (e.g., leader election).
+
+**32. What is etcd?**
+* A distributed key-value store that provides a reliable way to store data across a cluster of machines. 
+* Similar to ZooKeeper, often used for service discovery, configuration management, and leader election.
+
+**33. What is AMQP?**
+* Advanced Message Queuing Protocol. 
+* An open standard application layer protocol for message-oriented middleware. 
+* Defines how messages are routed and delivered between brokers and clients.
+
+***
+
 ## 21 - Metrics Monitoring and Alerting System.
 
 **1. What is the primary goal of a metrics monitoring and alerting system?**
@@ -2004,6 +2410,60 @@ Increases availability. Each partition has multiple replicas.
 **22. How do pull and push models differ in terms of data authenticity, and how can the push model be secured?**
 * Pull model collects data from pre-defined servers, guaranteeing authenticity. 
 * Push model requires whitelisting servers or authentication to prevent malicious data.
+
+**23. What is a Time-Series Database (TSDB)? Why use one?**
+* A database optimized for storing and retrieving time-series data (data indexed by time).
+* Designed for high write throughput and efficient querying of data over time ranges.
+* Key features: data compression, retention policies, aggregation functions.
+* Examples: InfluxDB, Prometheus, OpenTSDB, Amazon Timestream, MetricsDB
+
+**24. What is InfluxDB? What are its key features?**
+* A popular open-source time-series database.
+* Features:
+  * Custom query language (Flux) optimized for time-series analysis.
+  * Scalable architecture for handling large volumes of data.
+  * Built-in functions for data aggregation and analysis.
+  * Supports tags/labels for efficient data filtering and querying.
+
+**25. What is Prometheus? How does it collect metrics?**
+* An open-source monitoring solution and time-series database.
+* Uses a pull model for collecting metrics: it scrapes metrics from target endpoints over HTTP.
+* PromQL: its powerful query language.
+* Designed for operational monitoring and alerting.
+
+**26. What is Kafka? Why is it used in a metrics pipeline?**
+* A distributed streaming platform.
+* Used as a message queue to decouple metrics collection from processing and storage.
+* Provides high throughput, fault tolerance, and scalability.
+* Allows for buffering of metrics data, preventing data loss during outages.
+
+**27. What are etcd and Zookeeper? What role do they play?**
+* Distributed key-value stores used for service discovery.
+* Services register their availability, and other components (like metrics collectors) can query them to find available services.
+* Enable dynamic configuration and automatic discovery of new or removed services.
+
+**28. What is Grafana? What is it used for?**
+* A popular open-source data visualization and monitoring tool.
+* Connects to various data sources (including TSDBs) to create dashboards and visualizations.
+* Allows users to create custom graphs, charts, and alerts based on metrics data.
+
+**29. Explain the difference between pull and push models for metrics collection.**
+* Pull: Metrics collector actively requests (pulls) metrics from services. (e.g., Prometheus).
+  * Pros: Easy debugging, health checks.
+  * Cons: Requires accessible endpoints, can be complex with firewalls.
+* Push: Services actively send (push) metrics to the collector. (e.g., CloudWatch, Graphite)
+  * Pros: Works well for short-lived jobs, simpler network setup.
+  * Cons: Requires agents, potential data authenticity issues.
+
+**30. What are the key components and functions of an alerting system?**
+* Components: Rule configuration, alert manager, alert store, notification channels.
+* Functions:
+  * Evaluate metrics against predefined rules.
+  * Deduplicate and merge alerts.
+  * Manage alert states (inactive, pending, firing, resolved).
+  * Send notifications via email, SMS, PagerDuty, etc.
+
+***
 
 ## 22 - Ad Click Event Aggregation.
 
@@ -2082,6 +2542,38 @@ Increases availability. Each partition has multiple replicas.
 **23. What are some important metrics to monitor in an ad click aggregation system, and why is reconciliation important?**
 * Latency, message queue size, system resource utilization. 
 * Reconciliation (comparing data sets) ensures data integrity and correctness, especially for billing purposes. 
+
+**24. What is Kafka and why is it used in this system?**
+* Kafka is a distributed message queue used to decouple producers (log watchers, aggregation services) and consumers 
+(aggregation services, database writers). 
+* It provides asynchronous processing, allowing independent scaling and fault tolerance. 
+* It also helps achieve end-to-end exactly-once semantics.
+
+**25. What is Cassandra and why is it a suitable database choice here?**
+* Cassandra is a NoSQL database optimized for write-heavy workloads and time-range queries. 
+* It's horizontally scalable, making it suitable for storing both raw and aggregated ad click data.
+
+**26. Explain the role of MapReduce in the aggregation service.**
+* MapReduce is a programming model used to process and aggregate large datasets in parallel. 
+* In this system, it's used to break down the aggregation task into smaller, manageable units 
+(Map, Aggregate, Reduce nodes) for distributed processing.
+
+**27. What is Apache Flink and how does it relate to stream processing?**
+* Back: Flink is a stream processing framework that can be used for real-time data aggregation. 
+* The chapter mentions it as an example of a streaming system and a component in Kappa architecture.
+
+**28. What is Apache Hadoop YARN and how can it be used to scale the aggregation service?**
+* YARN is a resource management platform used to manage and allocate computing resources in a Hadoop cluster. 
+* Aggregation service nodes can be deployed on YARN to scale the system by adding more computing resources.
+
+**29. What role do HDFS or S3 play in data deduplication?**
+* HDFS (Hadoop Distributed File System) or S3 (Amazon Simple Storage Service) can be used as external file storage to 
+record offsets for data consumption, helping to prevent data duplication in case of server outages.
+
+**30. What are ClickHouse and Druid, and why are they mentioned as alternatives?**
+* ClickHouse and Druid are OLAP (Online Analytical Processing) databases optimized for fast query performance on large 
+datasets. 
+* They are mentioned as alternative solutions for ad click data aggregation and analysis.
 
 ***
 
@@ -2205,6 +2697,64 @@ Increases availability. Each partition has multiple replicas.
 **35. What is the Saga pattern and how does it address data consistency in microservices?**
 * A sequence of local transactions with compensating transactions to undo changes if one fails, ensuring eventual consistency.
 
+**36. Relational Databases.**
+* Purpose: Data storage for structured data (hotels, rooms, reservations).
+* ACID Properties: Atomicity, Consistency, Isolation, Durability - crucial for reliable transactions.
+* Use Case: Suitable for read-heavy workloads with less frequent writes. 
+* Clear data structure and relationships.
+* Considerations: Can be scaled using techniques like replication and sharding.
+
+**37. NoSQL Databases.**
+* Purpose: Optimized for writes.
+* ACID Properties: Not guaranteed.
+* Use Case: Not suitable for hotel reservation system.
+
+**38. RESTful APIs.**
+* Purpose: Standard way to design APIs for web services. Uses HTTP methods (GET, POST, PUT, DELETE).
+* Example: POST `/v1/reservations` (Make a new reservation)
+* Benefits: Simple, widely adopted, easy to understand.
+
+**39. CDN (Content Delivery Network).**
+* Purpose: Caches static assets (images, JS, CSS) to reduce load times for users.
+* How it works: Distributes content across multiple servers geographically closer to users.
+* Benefits: Improves website performance and user experience.
+
+**40. API Gateway.**
+* Purpose: Central point of entry for all API requests.
+* Functions:
+  * Routing requests to appropriate microservices.
+  * Authentication and authorization.
+  * Rate limiting.
+  * Benefits: Simplifies client requests, improves security, and manages traffic.
+
+**41. gRPC.**
+* Purpose: High-performance Remote Procedure Call (RPC) framework for inter-service communication.
+* Benefits: Efficient, supports multiple languages, and uses protocol buffers for serialization.
+
+**42. Redis.**
+* Purpose: In-memory data store used for caching.
+* Features:
+  * Fast read/write speeds.
+  * TTL (Time-To-Live) for automatic data expiration.
+  * LRU (Least Recently Used) eviction policy.
+  * Use Case: Caching hotel inventory data for quick retrieval.
+
+**43. Debezium.**
+* Purpose: Change Data Capture (CDC) tool.
+* How it works: Captures database changes in real-time and streams them to other systems (e.g., Redis).
+* Benefits: Keeps cache data synchronized with the database.
+
+**44. Two-Phase Commit (2PC).**
+* Purpose: Distributed transaction protocol to ensure atomicity across multiple nodes.
+* How it works: Guarantees that either all nodes commit or all nodes rollback.
+* Cons: Blocking protocol, not performant, single node failure blocks progress.
+
+**45. Saga Pattern.**
+* Purpose: Manages data consistency across microservices.
+* How it works: Sequence of local transactions; each transaction updates and publishes a message to trigger the next transaction.
+* Compensation: If a transaction fails, compensating transactions undo previous changes.
+* Consistency: Relies on eventual consistency.
+
 ***
 
 ## 24 - Distributed Email Service.
@@ -2314,6 +2864,79 @@ provide buffering during traffic surges, and allow independent scaling of servic
 unavailable due to network partitions or other failures. 
 * Users connect to the data center that is physically closest to them.
 
+**26. MTP (Simple Mail Transfer Protocol).**
+* The standard protocol for sending emails between mail servers.
+Role in Email System: Used to transfer emails from the sender's mail server to the recipient's mail server.
+
+**27. POP (Post Office Protocol).**
+* A protocol for retrieving emails from a mail server to a local client. 
+* Downloads emails and typically deletes them from the server.
+* Role in Email System: Allows users to download emails to a single device.
+
+**28. IMAP (Internet Mail Access Protocol).**
+* A protocol for accessing emails on a mail server. 
+* Keeps emails on the server and synchronizes across multiple devices.
+* Role in Email System: Enables users to access emails from multiple devices, keeping them stored on the server.
+
+**29. DNS (Domain Name System) - MX Records.**
+* DNS is a hierarchical and decentralized naming system for computers, services, or any resource connected to the 
+Internet or a private network. 
+* MX records are a type of DNS record that specifies the mail server responsible for accepting email messages on behalf 
+of a recipient's domain.
+* Role in Email System: DNS servers, specifically MX records, are queried to find the correct mail server to deliver 
+an email to a specific domain.
+
+**30. MIME (Multipurpose Internet Mail Extension).**
+* A standard that allows attachments and non-text content to be sent via email.
+* Role in Email System: Enables the inclusion of attachments like images, videos, and documents in emails.
+
+**31. HTTP/HTTPS (Hypertext Transfer Protocol Secure).**
+* The foundation of data communication on the web. 
+* HTTPS is the secure version of HTTP, providing encrypted communication.
+* Role in Email System: Used for webmail interfaces and APIs, allowing clients to interact with email servers securely.
+
+**32. WebSocket.**
+* A communication protocol that provides full-duplex communication channels over a single TCP connection.
+* Role in Email System: Enables real-time updates and notifications for webmail clients.
+
+**33. Redis.**
+* An in-memory data structure store, often used as a cache, message broker, and database.
+* Role in Email System: Used as a distributed cache to store recent emails for faster retrieval.
+
+**34. S3 (Amazon Simple Storage Service).**
+* A scalable object storage service for storing large files.
+* Role in Email System: Used to store email attachments.
+
+**35. Elasticsearch.**
+* A distributed, RESTful search and analytics engine capable of solving a growing number of use cases.
+* Role in Email System: Used for indexing and searching emails, providing full-text search capabilities.
+
+**36. Kafka.**
+* A distributed, fault-tolerant, high-throughput streaming platform.
+* Role in Email System: Used as a message queue to decouple services that trigger reindexing from services that perform 
+reindexing.
+
+**37. Log-Structured Merge Tree (LSM Tree).**
+* A data structure used in databases that optimizes for write-heavy operations by using sequential writes.
+* Role in Email System: Can be used to structure the index data on disk for a custom search engine, 
+optimizing write performance.
+
+**38. Sender Policy Framework (SPF).**
+* An email authentication method designed to prevent spammers from sending messages on behalf of your domain.
+* Role in Email System: Helps to improve email deliverability by verifying the sender's domain.
+
+**39. DomainKeys Identified Mail (DKIM).**
+* An email authentication method that uses a digital signature to verify the sender and prevent email spoofing.
+* Role in Email System: Enhances email security and deliverability by confirming the email's authenticity.
+
+**40. Domain-based Message Authentication, Reporting & Conformance (DMARC).**
+* An email authentication protocol that builds on SPF and DKIM to provide a policy for handling emails that fail 
+authentication checks.
+* Role in Email System: Provides a framework for email senders to indicate that their messages are protected by SPF 
+and/or DKIM, and tells receivers what to do if neither of those authentication methods passes.
+
+***
+
 ## 25 - S3-like Object Storage.
 
 **1. What are the three main categories of storage systems?**
@@ -2401,6 +3024,98 @@ unavailable due to network partitions or other failures.
 **25. What are failure domains, and why are they important for durability?**
 * Physical or logical sections of the environment that can fail independently (e.g., node, rack, AZ). 
 * Replicating data across failure domains increases resilience.
+
+**26. Block Storage.**
+* Oldest storage type (1960s).
+* Treats storage as raw blocks.
+* Most flexible; used for filesystems, databases, VMs.
+* High performance, high cost.
+* Examples: HDDs, SSDs, SAN (Fibre Channel, iSCSI).
+
+**27. File Storage.**
+* Built on block storage.
+* Organizes data into files and directories (hierarchical).
+* General-purpose storage, easy file sharing.
+* Medium performance, medium cost.
+* Examples: NFS, SMB/CIFS.
+
+**28. Object Storage.**
+* Newer storage type.
+* Stores data as objects in a flat namespace.
+* Sacrifices performance for scalability, durability, and low cost.
+* Ideal for "cold" data, archives, backups, unstructured data.
+* Access via RESTful APIs.
+* Examples: AWS S3, Azure Blob Storage, Google Cloud Storage.
+
+**29. RESTful API.**
+* Architectural style for building web services.
+* Uses standard HTTP methods (GET, PUT, POST, DELETE) to access and manipulate resources.
+* Object storage uses RESTful APIs for accessing buckets and objects.
+
+**30. Bucket.**
+* A logical container for objects in object storage.
+* Has a globally unique name.
+* Must create a bucket before uploading data to object storage.
+
+**31. Object.**
+* Fundamental unit of storage in object storage.
+* Contains data (payload) and metadata.
+* Metadata is key-value pairs describing the object.
+
+**32. Versioning.**
+* Keeps multiple versions of an object in the same bucket.
+* Enabled at the bucket level.
+* Allows recovery from accidental deletion or overwrites.
+
+**33. UUID.**
+* Universally Unique Identifier.
+* 128-bit number used to uniquely identify objects in the data store.
+* Generated by the data routing service.
+
+**34. Consistent Hashing.**
+* A technique for distributing data across a cluster of servers.
+* Used by the placement service to determine which data nodes should store an object.
+* Provides a deterministic lookup that survives the addition or removal of nodes.
+
+**35. Paxos/Raft.**
+* Consensus protocols used to ensure that a distributed system can agree on a single value, even in the presence of failures.
+* Used by the placement service to maintain a consistent view of the virtual cluster map.
+
+**36. Erasure Coding.**
+* A data protection method that breaks data into fragments, expands and encodes it with redundant data pieces, 
+and stores the data across different locations or storage media.
+* Offers higher durability and lower storage costs compared to replication, but with increased complexity and slower 
+access speeds.
+
+**37. Checksum.**
+* A small-sized block of data used to detect data errors.
+* Generated by a checksum algorithm (e.g., MD5).
+* Used to verify data integrity during transmission and storage.
+
+**38. MD5.**
+* A widely used cryptographic hash function producing a 128-bit hash value.
+* Used as a checksum algorithm to verify data integrity.
+
+**39. Sharding.**
+* A database partitioning technique that splits a large database into smaller, more manageable pieces.
+* Used to scale the object table in the metadata store.
+* Sharding key: hash of (bucket_name, object_name).
+
+**40. TIMEUUID.**
+* A version 1 UUID whose timestamp is determined from the current system time.
+* Used for the object_version column in the object table when versioning is enabled.
+
+**41. Multipart Upload.**
+* A process for uploading large objects in smaller parts.
+* Improves reliability and allows for parallel uploads.
+* Requires an uploadID to track the upload and ETags to verify parts.
+
+**42. Garbage Collection.**
+* The process of automatically reclaiming storage space that is no longer used.
+* Handles lazy object deletion, orphan data, and corrupted data.
+* Uses compaction to clean up deleted objects.
+
+***
 
 ## 26 - Real-time Gaming Leaderboard.
 
@@ -2497,6 +3212,60 @@ unavailable due to network partitions or other failures.
 * Prevents hot partitions by distributing writes across multiple partitions.
 * Append a partition number (e.g., user_id % number_of_partitions) to the partition key.
 * Requires querying all partitions and merging results for reads.
+
+**21. Relational Databases (e.g., MySQL).**
+* Uses tables with rows and columns.
+* Good for simple leaderboards with few users.
+* Slow for real-time ranking with millions of users due to table scans and sorting.
+* Not ideal for frequently changing data.
+
+**22. Redis.**
+* In-memory data store for fast reads and writes.
+* Uses key-value pairs.
+* Supports sorted sets, which are ideal for leaderboards.
+* Can be used with persistence, read replicas, and promotion in case of main instance failure.
+
+**23. Redis Sorted Sets.**
+* Data type that stores members with associated scores.
+* Members are unique, but scores can repeat.
+* Sorted in ascending order by score.
+* Implemented using a hash table and a skip list for fast operations (O(log n)).
+* Commands: ZADD, ZINCRBY, ZRANGE, ZREVRANGE, ZRANK, ZREVRANK.
+
+**24. Skip List.**
+* Probabilistic data structure that uses multiple levels of linked lists to allow fast searching
+* Enables efficient searching, insertion, and deletion in sorted sets.
+* Uses multiple levels of indexes to skip nodes.
+
+**25. Apache Kafka.**
+* Distributed streaming platform.
+* Not explicitly used in the primary design, but mentioned as an option.
+* Useful when game scores are consumed by multiple services (e.g., analytics, notifications).
+* Enables decoupling of services.
+
+**26. AWS Lambda.**
+* Serverless computing platform.
+* Runs code without managing servers.
+* Scales automatically based on traffic.
+* Can be used to execute Redis commands and interact with databases.
+
+**27. Amazon DynamoDB.**
+* Fully managed NoSQL database.
+* Offers reliable performance and scalability.
+* Can use global secondary indexes for efficient data access.
+* Requires careful design of partition keys to avoid hot partitions.
+
+**28. NoSQL Databases.**
+* Alternative to relational databases.
+* Optimized for writes and sorting within partitions.
+* Examples: DynamoDB, Cassandra, MongoDB.
+* Good for large-scale leaderboards.
+
+**29. Redis Cluster.**
+* Provides a way to shard data automatically across multiple Redis nodes.
+* Uses hash slots (16384 slots).
+* Allows adding and removing nodes without redistributing all keys.
+* Requires gathering and sorting data from each shard to get the top N results.
 
 ***
 
@@ -2639,6 +3408,63 @@ wallet_updated.
 **40. Currency Exchange.**
 * Important consideration for international payment systems.
 
+**41. What is a PSP?.**
+* A third-party that moves money from account A to account B. 
+* Examples: Stripe, PayPal, Adyen, Square, Braintree. 
+* They handle the complexities of connecting to banks and card schemes.
+
+**42. What are card schemes?**
+* Organizations that process credit card transactions. 
+* Examples: Visa, MasterCard, Discover. 
+* They have complex ecosystems and rules.
+
+**43. What is a Ledger in a payment system?**
+* A financial record of all payment transactions. 
+* Crucial for post-payment analysis (revenue calculation, forecasting). 
+* Uses the double-entry system.
+
+**44. What is a Wallet in a payment system?**
+* Keeps track of the account balance of merchants and can record user payment history.
+
+**45. What is a RESTful API and how is it used in the payment service?**
+* Used for communication with the payment service. 
+* Key endpoints: POST `/v1/payments` (execute payment) and GET `/v1/payments/{:id}` (get payment status). 
+* Uses JSON for data exchange.
+
+**46. What is a Nonce?**
+* A unique identifier, often a UUID, used to ensure exactly-once registration of a payment order with a PSP. 
+* It helps prevent duplicate payments.
+
+**47. What are webhooks used for in payment processing?**
+* Asynchronous mechanism for PSPs to notify the payment service about payment status updates. 
+* The payment service registers a URL with the PSP, and the PSP sends a notification to that URL when the payment status changes.
+
+**48. What is Reconciliation in a payment system?**
+* A process that periodically compares the states of related services (internal and external) to ensure consistency. 
+* It's a last line of defense against data inconsistencies. 
+* Settlement files from PSPs/banks are compared with the ledger.
+
+**49. What are Retry and Dead Letter Queues used for?**
+* Mechanisms for handling failed payments. 
+* Retry queue holds retryable errors (transient issues). 
+* Dead letter queue holds messages that have repeatedly failed and require investigation.
+
+**50. What is Idempotency and why is it important?**
+* The property of an operation that can be applied multiple times without changing the result beyond the initial application. 
+* Crucial for preventing double charges. Achieved using idempotency keys.
+
+**51. What is an Idempotency Key?**
+* A unique value generated by the client for each request, used to ensure idempotency. 
+* If the same key is received twice, the server knows it's a retry and doesn't reprocess the request.
+
+**52. What is Exponential Backoff?**
+* A retry strategy where the waiting time between retries increases exponentially after each failure. 
+* Helps avoid overwhelming the system during temporary outages.
+
+**53. What is the double-entry system?**
+* Every transaction is recorded into two separate ledger accounts with the same amount. 
+* One account is debited and the other is credited with the same amount
+
 ***
 
 ## 28 - Digital Wallet.
@@ -2734,6 +3560,72 @@ The system should be able to reconstruct historical balances by replaying events
 **29. Distributed Event Sourcing.**
 * Sharding data and using distributed transactions (TC/C or Saga) to scale the event sourcing architecture.
 
+**30. Redis.**
+* An in-memory data structure store, often used as a cache or message broker.
+* Role: Initial design used Redis for fast account balance storage, but it lacked durability and transactional guarantees.
+
+**31. Zookeeper.**
+* A centralized service for maintaining configuration information, naming, providing distributed synchronization, 
+and group services.
+* Role: Used to store sharding information for the Redis cluster, allowing the wallet service to locate the correct 
+Redis node for each account.
+
+**32. Relational Databases (e.g., MySQL, PostgreSQL).**
+* Databases that organize data into tables with rows and columns, supporting ACID transactions.
+* Role: Replaced Redis to provide transactional guarantees for balance transfers, ensuring atomicity.
+
+**33. Two-Phase Commit (2PC).**
+* A distributed transaction protocol that ensures all participating nodes either commit or abort a transaction.
+* Role: A low-level solution to ensure atomicity across multiple database nodes, but it suffers from performance issues 
+and can be a single point of failure.
+
+**34. Try-Confirm/Cancel (TC/C).**
+* A compensating transaction pattern where resources are reserved in the "Try" phase, confirmed if all "Try" operations 
+succeed, or canceled to revert changes.
+* Role: A high-level solution for distributed transactions, implemented in the application layer, offering database 
+independence but requiring manual management of transaction details.
+
+**35. Saga.**
+* A distributed transaction management approach where a long-lived transaction is divided into a sequence of smaller, 
+local transactions.
+* Role: An alternative to TC/C, particularly suitable for microservices, where operations are executed in a linear order, 
+and compensating transactions are used for rollback.
+
+**36. Apache Kafka.**
+* A distributed streaming platform used for building real-time data pipelines and streaming applications.
+* Role: Used as a command queue in the event sourcing architecture, ensuring commands are processed in FIFO order.
+
+**37. Event Sourcing.**
+* An architectural pattern where all changes to application state are stored as a sequence of events.
+* Role: Provides reproducibility, auditability, and a reliable source of truth for account balances and transactions.
+
+**38. Command Query Responsibility Segregation (CQRS).**
+* A pattern that separates read and write operations, allowing for optimized data models for each.
+* Role: Used with event sourcing to create read-only state machines for querying account balances and other views of the data.
+
+**39. mmap (Memory Mapping).**
+* A technique that maps a file or device into memory, allowing it to be accessed as if it were an array in memory.
+* Role: Used to optimize file-based command, event, and state storage, providing fast sequential read and write operations.
+
+**40. SQLite/RocksDB.**
+* Embedded file-based databases. 
+* SQLite is a relational database, while RocksDB is a key-value store.
+* Role: Used for local state storage, with RocksDB's LSM tree structure optimizing write performance.
+
+**41. Apache Hadoop (HDFS).**
+* A distributed file system designed to store and process large datasets.
+* Role: Used for storing snapshots of the system state, enabling faster recovery and auditability.
+
+**42. Raft.**
+* A consensus algorithm that ensures data is replicated consistently across multiple nodes.
+* Role: Provides high reliability by replicating the event list across multiple nodes, ensuring no data loss and 
+maintaining data order.
+
+**43. Reverse Proxy.**
+* A server that sits in front of one or more backend servers, forwarding client requests to those servers.
+* Role: Used to provide a synchronous interface to the asynchronous event sourcing system, pushing real-time status 
+updates to clients.
+
 ***
 
 ## 29 - Stock Exchange.
@@ -2822,7 +3714,39 @@ and lock contention.
 * Placing clients' servers in the same data center as the exchange to minimize network latency. 
 * It's a paid service that provides a competitive edge.
 
+**26. FIX Protocol.**
+* Vendor-neutral communication protocol for securities transactions. 
+* Used for exchanging info between brokers and exchanges. 
+* Example: `8=FIX.4.2 | 9=176 | 35=8 | 49=PHLX`.
+* Think of it as a standard language for trading systems to talk to each other.
 
+**27. mmap.**
+* A POSIX-compliant UNIX system call that maps a file or device into memory. 
+* Enables high-performance shared memory between processes, especially when used with `/dev/shm` (memory-backed file system).
+* Key for low-latency communication within a single server, avoiding network overhead.
+
+**28. Ring Buffer.**
+* Fixed-size, circular queue where the head connects to the tail. 
+* Used in Market Data Publisher (MDP) for efficient data handling. 
+* Pre-allocated memory avoids object creation/deletion overhead.
+* Optimized for continuous data production and consumption with minimal overhead.
+
+**29. Reliable UDP (Multicast).**
+* Used for distributing market data to multiple subscribers simultaneously. 
+* Multicast sends data from one source to a group of hosts. 
+* Reliable UDP adds mechanisms for retransmission to ensure data delivery.
+* Ensures fair and timely market data distribution.
+
+**30. Raft.**
+* A consensus algorithm used for leader election and maintaining consistency across distributed systems. 
+* Ensures that if the primary instance goes down, one of the backup instances can take over and continue operations 
+without data loss.
+* Important for fault tolerance and high availability.
+
+**31. HdrHistogram.**
+* Used to measure latency determinism, specifically the 99th percentile latency. 
+* Helps ensure stable performance across almost all trades.
+* Important for identifying and addressing large latency fluctuations.
 
 
 
