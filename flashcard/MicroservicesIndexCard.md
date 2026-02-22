@@ -1,3 +1,5 @@
+## Microservices.
+
 **1. What is a monolithic architecture?**
 * A single deployable unit containing all functionality, often packaged as one EAR/WAR and supported by one database.
 
@@ -89,7 +91,7 @@
 **27. What do Linux namespaces provide?**
 * Isolation of processes, network, users, mount points.
 
-**28. What do cgroups provide?(())
+**28. What do cgroups provide?**
 * Resource limits for CPU, memory, I/O, etc.
 
 **29. Where does Docker actually run on Mac/Windows?**
@@ -290,8 +292,8 @@
 
 ## Load Balancing & Feign.
 
-**88. What is Spring Cloud LoadBalancer?**
-Back: A client-side load balancer replacing Netflix Ribbon.
+**88. What is Spring Cloud Load Balancer?**
+* A client-side load balancer replacing Netflix Ribbon.
 
 **89. Common load-balancing algorithms?**
 * Round-robin, random, weighted, retry-based, availability-aware.
@@ -300,15 +302,15 @@ Back: A client-side load balancer replacing Netflix Ribbon.
 * A declarative REST client that maps interfaces to HTTP calls.
 
 **91. What are Feign fallbacks?**
-Back: Backup behavior when the remote service fails.
+* Backup behavior when the remote service fails.
 
-**92. Why integrate Feign with LoadBalancer?**
+**92. Why integrate Feign with Load Balancer?**
 * To automatically resolve and balance calls across service instances.
 
 ## Resilience Patterns.
 
 **93. What is a circuit breaker?**
-*A pattern preventing repeated calls to failing services to avoid cascading failures.
+* A pattern preventing repeated calls to failing services to avoid cascading failures.
 
 **94. What is rate limiting?**
 * Restricting the number of requests per time window to protect services.
@@ -320,8 +322,9 @@ Back: Backup behavior when the remote service fails.
 * Isolating resources so failures in one component don't affect others.
 
 ## API Gateway.
+
 **97. What is an API Gateway?**
-Back: A single entry point that routes, filters, authenticates, and manages requests to microservices.
+* A single entry point that routes, filters, authenticates, and manages requests to microservices.
 
 **98. Why use an API gateway?**
 * Security, centralized routing, rate limiting, monitoring, and protocol translation.
@@ -333,6 +336,7 @@ Back: A single entry point that routes, filters, authenticates, and manages requ
 * Gateway handles routing, security, and filters; load balancer only distributes traffic.
 
 ## Kubernetes Core Concepts.
+
 **101. What is Kubernetes?**
 * An orchestration platform for deploying, scaling, and managing containerized applications.
 
@@ -455,7 +459,7 @@ Back: A single entry point that routes, filters, authenticates, and manages requ
 ## Kubernetes Deployment Strategies.
 
 **138. What is a rolling update?**
-Back: Gradual replacement of old pods with new pods without downtime.
+* Gradual replacement of old pods with new pods without downtime.
 
 **139. What is a recreate strategy?**
 * Deletes all old pods first, then creates new ones (causes downtime).

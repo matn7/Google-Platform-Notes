@@ -1888,7 +1888,7 @@ Notification Service, Offline Backup Queue.
 **11. Database Cluster Setup - DB Architecture.**
 * Primary-secondary setup. Primary handles writes, replicas handle reads. Replication delay is acceptable.
 
-**12, Geospatial Indexing - Basic Idea - Core Concept.**
+**12. Geospatial Indexing - Basic Idea - Core Concept.**
 * Divide the map into smaller areas and build indexes for fast search.
 
 **13. Geospatial Indexing - Options - Indexing Techniques.**
@@ -2096,7 +2096,7 @@ Notification Service, Offline Backup Queue.
 * ETA: Estimating travel time.
 * Map Rendering: Displaying the map.
 
-**2: Non-Functional Requirements.**
+**2. Non-Functional Requirements.**
 * Accuracy: Correct directions are critical.
 * Smoothness: Fluid map rendering on mobile.
 * Data Usage: Minimize data transfer on mobile.
@@ -2253,7 +2253,7 @@ to each grid cell.
 * Consumer groups can simulate point-to-point within a publish-subscribe system.
 
 **9. High-Level Architecture Components.**
-* Producers, Consumers, Brokers, Data Storage, State Storage, Metadata Storage, Coordination Service
+* Producers, Consumers, Brokers, Data Storage, State Storage, Metadata Storage, Coordination Service.
 
 **10. Data Storage Choice.**
 * Write-Ahead Log (WAL) is preferred for sequential access.
@@ -2295,7 +2295,7 @@ to each grid cell.
 * Used for metadata storage, state storage, and coordination (leader election).
 
 **23. Replication.**
-Increases availability. Each partition has multiple replicas.
+* Increases availability. Each partition has multiple replicas.
 
 **24. In-Sync Replicas (ISR).**
 * Replicas that are "in-sync" with the leader. Configurable lag.
@@ -2492,7 +2492,7 @@ and group services.
 * ad_id, click_timestamp, user_id, ip, country.
 
 **9. What information is stored in aggregated data?**
-* ad_id, click_minute, count (and potentially filter_id)
+* ad_id, click_minute, count (and potentially filter_id).
 
 **10. What are the pros and cons of storing only raw data?**
 * Pros: Full dataset, supports filtering/recalculation. 
@@ -2559,7 +2559,7 @@ and group services.
 (Map, Aggregate, Reduce nodes) for distributed processing.
 
 **27. What is Apache Flink and how does it relate to stream processing?**
-* Back: Flink is a stream processing framework that can be used for real-time data aggregation. 
+* Flink is a stream processing framework that can be used for real-time data aggregation. 
 * The chapter mentions it as an example of a streaming system and a component in Kappa architecture.
 
 **28. What is Apache Hadoop YARN and how can it be used to scale the aggregation service?**
@@ -2592,7 +2592,7 @@ datasets.
 * Helps understand system scale, estimate traffic (TPS/QPS), and identify potential bottlenecks. 
 
 **5. How does the QPS change across the booking funnel (detail page -> booking page -> reservation)?**
-* QPS decreases as users drop off at each stage. (e.g., 300 -> 30 -> 3)
+* QPS decreases as users drop off at each stage. (e.g., 300 -> 30 -> 3).
 
 **6. Give examples of Hotel-related APIs.**
 * GET `/v1/hotels/ID` (details). 
@@ -2783,7 +2783,7 @@ Flexibility/Extensibility (new features, custom protocols).
 * Used for retrieving emails. 
 * Emails remain on the server, allowing access from multiple devices.
 
-**7: What role does DNS play in email? What are MX records?**
+**7. What role does DNS play in email? What are MX records?**
 * DNS is used to find the mail exchanger (MX) record for the recipient's domain. 
 * MX records specify the mail servers responsible for accepting emails for that domain. 
 * Priority numbers determine the order of mail server preference.
@@ -2864,9 +2864,9 @@ provide buffering during traffic surges, and allow independent scaling of servic
 unavailable due to network partitions or other failures. 
 * Users connect to the data center that is physically closest to them.
 
-**26. MTP (Simple Mail Transfer Protocol).**
+**26. SMTP (Simple Mail Transfer Protocol).**
 * The standard protocol for sending emails between mail servers.
-Role in Email System: Used to transfer emails from the sender's mail server to the recipient's mail server.
+* Role in Email System: Used to transfer emails from the sender's mail server to the recipient's mail server.
 
 **27. POP (Post Office Protocol).**
 * A protocol for retrieving emails from a mail server to a local client. 
@@ -2971,13 +2971,13 @@ and/or DKIM, and tells receivers what to do if neither of those authentication m
 * Keeping multiple variants of an object in the same bucket, allowing for recovery of deleted or overwritten objects.
 
 **9. What level of data durability should the system have?**
-* Data durability is 6 nines (99.9999%)
+* Data durability is 6 nines (99.9999%).
 
 **10. What level of service availability should the system have?**
-* Service availability is 4 nines (99.99%)
+* Service availability is 4 nines (99.99%).
 
 **11. Name the main components in the high-level design of the object storage system.**
-* Load Balancer, API Service, IAM, Data Store, Metadata Store
+* Load Balancer, API Service, IAM, Data Store, Metadata Store.
 
 **12. What is the role of the API Service?**
 * Orchestrates calls to IAM, Metadata Service, and Data Store. 
@@ -3284,7 +3284,7 @@ access speeds.
 * Reconciliation (ensure data consistency).
 
 **4. TPS Estimation.**
-(*1 Million transactions per day = ~10 TPS. Focus on correctness, not just throughput.
+* 1 Million transactions per day = ~10 TPS. Focus on correctness, not just throughput.
 
 **5. Pay-In Flow Overview.**
 * Buyer places order -> Money to e-commerce bank account.
@@ -3408,7 +3408,7 @@ wallet_updated.
 **40. Currency Exchange.**
 * Important consideration for international payment systems.
 
-**41. What is a PSP?.**
+**41. What is a PSP?**
 * A third-party that moves money from account A to account B. 
 * Examples: Stripe, PayPal, Adyen, Square, Braintree. 
 * They handle the complexities of connecting to banks and card schemes.
@@ -3470,10 +3470,10 @@ wallet_updated.
 ## 28 - Digital Wallet.
 
 **1. Digital Wallet Basics.**
-A payment platform service where users store funds for later use. 
-Enables faster, fee-free transfers between users on the same platform.
+* A payment platform service where users store funds for later use. 
+* Enables faster, fee-free transfers between users on the same platform.
 
-**2. Core Requirement: Balance Transfer**
+**2. Core Requirement: Balance Transfer.**
 * The primary function is transferring balances between digital wallets.
 
 **3. Performance Goal: TPS.**
@@ -3486,7 +3486,7 @@ Enables faster, fee-free transfers between users on the same platform.
 * The system must ensure transactional guarantees (ACID properties).
 
 **6. Reproducibility.**
-The system should be able to reconstruct historical balances by replaying events.
+* The system should be able to reconstruct historical balances by replaying events.
 
 **7. API Endpoint.**
 * POST `/v1/wallet/balance_transfer`: Used to initiate balance transfers.
@@ -3513,13 +3513,13 @@ The system should be able to reconstruct historical balances by replaying events
 **14. Try-Confirm/Cancel (TC/C).**
 * A compensating transaction approach where resources are reserved, then either confirmed or cancelled.
 
-**15. TC/C - Try Phase*.*
+**15. TC/C - Try Phase.**
 * The coordinator asks all databases to reserve resources for the transaction.
 
 **16. TC/C - Confirm Phase.**
 * If all "Try" operations succeed, the coordinator asks all databases to confirm the operation.
 
-**.17: TC/C - Cancel Phase.**
+**17. TC/C - Cancel Phase.**
 * If any "Try" operation fails, the coordinator asks all databases to cancel the operation, undoing any changes.
 
 **18. Phase Status Table.**
@@ -3655,7 +3655,7 @@ updates to clients.
 
 **8. List three key non-functional requirements for a stock exchange.**
 * Availability (99.99%+), Fault Tolerance, Low Latency (millisecond level). 
-* Security (account management, KYC, DDoS protection)
+* Security (account management, KYC, DDoS protection).
 
 **9. Name the main components in the trading flow critical path.**
 * Client Gateway -> Order Manager -> Sequencer -> Matching Engine.
