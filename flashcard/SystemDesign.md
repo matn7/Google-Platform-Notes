@@ -1,228 +1,277 @@
-System Design.
+# System Design.
 
-1) Zookeeper & Schema Registry? 
-Answer: Zookeeper: Manage cluster, store metadata. Schema registry: Stores versioned history of all schemas by ID.
+**1) Zookeeper & Schema Registry?** 
+* Manage cluster, store metadata. Schema registry: Stores versioned history of all schemas by ID.
 Producer: Send schema to schema registry and get schema ID. 
 Consumer: Retrieve schema by ID. Data is serialized/deserialized with registered schema.
 
-2) Why is replication across multiple Kafka Servers needed in production environment?
-Answer: To compensate for the failure of any one.
+**2) Why is replication across multiple Kafka Servers needed in production environment?**
+* To compensate for the failure of any one.
 
-3) White-Box Testing? 
-Answer: Involves testing the internal structure, code and logic of a software application. Usage: It is used to ensure 
+**3) White-Box Testing?** 
+* Involves testing the internal structure, code and logic of a software application. Usage: It is used to ensure 
 that code is working correctly and efficiently, focusing on code coverage and path analysis.
 Advantage: Can identify complex logic errors, security vulnerabilities, and code optimization opportunities. Can provide 
 a higher level of coverage and uncover hidden defects. Disadvantages: Testers needs programming knowledge.
 
-4) Which options will increase the throughput on a Kafka producer? 
-Answer: Increase batch size. Setting a compression type as snoppy. Increase linger-ms.
+**4) Which options will increase the throughput on a Kafka producer?** 
+* Increase batch size. Setting a compression type as snoppy. Increase linger-ms.
 
-5) Where to fire an event? Microservice architecture? 
-Answer: In Application Service. Domain Layer should not know about how to fire the event.
+**5) Where to fire an event? Microservice architecture?** 
+* In Application Service. Domain Layer should not know about how to fire the event.
 
-6) When to choose synchronous vs asynchronous communication?
-Answer: 
-Synchronous:  
-a) Immediate responses are critical. 
-b) Request response interactions. 
-c) Performance bottleneck and reduced fault tolerance. 
-Asynchronous: 
-a) Real-time responses are not necessary, and you want to decouple components for scalability, reliability and fault-tolerance. 
-b) Background processing, event-driven architecture. 
-c) Introduce complexity in handling eventual consistency and message passing.
+**6) When to choose synchronous vs asynchronous communication?**
+* Synchronous:  
+  * Immediate responses are critical. 
+  * Request response interactions. 
+  * Performance bottleneck and reduced fault tolerance. 
+* Asynchronous:
+  * Real-time responses are not necessary, and you want to decouple components for scalability, reliability and fault-tolerance. 
+  * Background processing, event-driven architecture. 
+  * Introduce complexity in handling eventual consistency and message passing.
 
-7) What is a Microservice? 
-Answer: A Web Service. Small and Responsible for one thing (Search, Password Reset, Email Verification). Configured 
-to work in the Cloud and is easily scalable.
+**7) What is a Microservice?** 
+* A Web Service. 
+* Small and Responsible for one thing (Search, Password Reset, Email Verification). 
+* Configured to work in the Cloud and is easily scalable.
 
-8) What is a measure for performance? 
-Answer: Latency, Graceful degradation, Throughput, Response Time, Short tail latency (narrow latency distribution),
-Instructions per cycle.
+**8) What is a measure for performance?** 
+* Latency. 
+* Graceful degradation.
+* Throughput.
+* Response Time.
+* Short tail latency (narrow latency distribution).
+* Instructions per cycle.
 
-9) What is a maximum number of consumers that can work on Kafka topic? 
-Answer: Maximum number of consumers that can work on Kafka is equal to a partition number. The additional consumer will 
-be idle won't do any job.
+**9) What is a maximum number of consumers that can work on Kafka topic?** 
+* Maximum number of consumers that can work on Kafka is equal to a partition number. 
+* The additional consumer will be idle won't do any job.
 
-10) What does Thrashing mean in the context of computer science? 
-Answer: A situation when the OS is spending more time managing resources than allowing the application to run their code.
-Typically thrashing is associated with exhausting the physical memory due to virtual memory overuse, which leads to a high 
-number of page faults. This can happen if we run too many processes, allocate too many threads or allocate too much memory.
+**10) What does Thrashing mean in the context of computer science?** 
+* A situation when the OS is spending more time managing resources than allowing the application to run their code.
+* Typically thrashing is associated with exhausting the physical memory due to virtual memory overuse, which leads to a high 
+number of page faults. 
+* This can happen if we run too many processes, allocate too many threads or allocate too much memory.
 
-11) What are the factors that influence the technical Micro Service?
-Answer: Communication, Resilience, New Microservices. Operations: Logs, Metrics, Configuration, Deployment.
+**11) What are the factors that influence the technical Micro Service?**
+* Communication.
+* Resilience.
+* New Microservices.
+* Operations: Logs, Metrics, Configuration, Deployment.
 
-12) What are some roles of OS? 
-Answer: 
-a) Memory management. 
-b) Isolation between processes. 
-c) Schedule process and their threads on CPU cores. 
-d) Provide security and interface for accessing the hardware.
+**12) What are some roles of OS?** 
+* Memory management. 
+* Isolation between processes. 
+* Schedule process and their threads on CPU cores. 
+* Provide security and interface for accessing the hardware.
 
-13) What are arguments for a higher number of partitions? 
-Answer: More opportunity for concurrency.
+**13) What are arguments for a higher number of partitions?** 
+* More opportunity for concurrency.
 
-14) Web Service W3C Definition? 
-Answer: Software system designed to support interoperable machine-to-machine interaction over network. 3 Keys: 
-a) Designed for machine-to-machine (or app to app) interaction. 
-b) Should be interoperable, not platform dependent. 
-c) Should allow communication over a network.
+**14) Web Service W3C Definition?** 
+* Software system designed to support interoperable machine-to-machine interaction over network. 3 Keys: 
+  * Designed for machine-to-machine (or app to app) interaction. 
+  * Should be interoperable, not platform dependent. 
+  * Should allow communication over a network.
 
-15) We have a computer with a single core?
-Answer: We can achieve concurrency using multiple threads. We can achieve concurrency using multiple processes. 
-We can only achieve parallelism with multiple cores, but by multitasking, the OS can achieve concurrency using just one 
+**15) We have a computer with a single core?**
+* We can achieve concurrency using multiple threads. 
+* We can achieve concurrency using multiple processes. 
+* We can only achieve parallelism with multiple cores, but by multitasking, the OS can achieve concurrency using just one 
 core by the means of multithreading.
 
-16) What are Virtual Machines? 
-Answer: Virtual Machines are simulated computers that run on the same physical hardware. For the OS and app, virtual 
-machines look exactly like a physical server.
+**16) What are Virtual Machines?** 
+* Virtual Machines are simulated computers that run on the same physical hardware. 
+* For the OS and app, virtual machines look exactly like a physical server.
 
-17) Test case? 
-Answer: A test case is a detailed and documented set of instructions or steps that a tester follows to execute a specific 
-test scenario and evaluate whether a software app behaves as expected. Test Case ID, Test Case Title / Description,
-Test Objective, Preconditions, Test steps, Expected Results, Test Data, Test Environment, Execution Status, Actual Result,
-Attachment.
+**17) Test case?** 
+* A test case is a detailed and documented set of instructions or steps that a tester follows to execute a specific 
+test scenario and evaluate whether a software app behaves as expected. 
+* Test Case ID. 
+* Test Case Title / Description. 
+* Test Objective. 
+* Preconditions. 
+* Test steps. 
+* Expected Results.
+* Test Data.
+* Test Environment.
+* Execution Status.
+* Actual Result.
+* Attachment.
 
-18) What is TCP? 
-Answer: Transport layer in OSI. Reliable connection, ordered sending of data. Functions, flow control, error control, 
-repeat of data. Reliable way of sending data. Bytes stream, segments (header, data).
+**18) What is TCP?** 
+* Transport layer in OSI. Reliable connection, ordered sending of data. 
+* Functions, flow control, error control, repeat of data. 
+* Reliable way of sending data. Bytes stream, segments (header, data).
 
-19) System Design step-by-step process? 
-Answer: Ask Questions to capture: 
-a) Functional Requirements. 
-b) Non-functional Requirements. 
-c) System Constraints. 
-Define the System APIs. Create a Software Architecture Diagram to fulfill the Functional Requirements. 
-Refine the Software Architecture Diagram to address the Non-Functional Requirements.
+**19) System Design step-by-step process?** 
+* Ask Questions to capture: 
+  * Functional Requirements. 
+  * Non-functional Requirements. 
+  * System Constraints. 
+* Define the System APIs. 
+* Create a Software Architecture Diagram to fulfill the Functional Requirements. 
+* Refine the Software Architecture Diagram to address the Non-Functional Requirements.
 
-20) System Design Software Extensibility Architecture Pattern? 
-Answer: 
-a) Sidecar & Ambassador. 
-b) Anti-corruption Adapter pattern. 
-c) Backends for Frontends pattern.
+**20) System Design Software Extensibility Architecture Pattern?** 
+* Sidecar & Ambassador. 
+* Anti-corruption Adapter pattern. 
+* Backends for Frontends pattern.
 
-21) System Design Latency? 
-Answer: Time required to send packets between two points in computer network. Measured in milliseconds. Caused by 
-propagation time, waiting for free resources. The lower, the better.
+**21) System Design Latency?** 
+* Time required to send packets between two points in computer network. 
+* Measured in milliseconds. 
+* Caused by propagation time, waiting for free resources. 
+* The lower, the better.
 
-22) System Design Cloud Scalability Pattern?
-Answer: 
-a) Load Balancing. 
-b) Pipes and Filters. 
-c) Scatter Gather. 
-d) Execution Orchestrator for Microservices Architecture. 
-e) Choreography for Microservices Architecture.
+**22) System Design Cloud Scalability Pattern?**
+* Load Balancing. 
+* Pipes and Filters. 
+* Scatter Gather. 
+* Execution Orchestrator for Microservices Architecture. 
+* Choreography for Microservices Architecture.
 
-23) System Design Cloud Performance Pattern for Data Intensive Systems?
-Answer: 
-a) Map Reduce. 
-b) The Saga Pattern. 
-c) Transactional Outbox Pattern: Reliability in Event Driven Architecture. 
-d) Materialized View Pattern: Architecting High Performance Systems. 
-e) CQRS. 
-f) CQRS + Materialized View. 
-g) Event Sourcing Pattern.
+**23) System Design Cloud Performance Pattern for Data Intensive Systems?**
+* Map Reduce. 
+* The Saga Pattern. 
+* Transactional Outbox Pattern: Reliability in Event Driven Architecture. 
+* Materialized View Pattern: Architecting High Performance Systems. 
+* CQRS. 
+* CQRS + Materialized View. 
+* Event Sourcing Pattern.
 
-24) What is a symmetric encryption? 
-Answer: Single key for encryption and decryption.
+**24) What is a symmetric encryption?** 
+* Single key for encryption and decryption.
 
-25) Process data structures? 
-Answer: Process Table, Thread Table, File Table, IPC (Inter Process Communication), I/O (Input/Output).
+**25) Process data structures?** 
+* Process Table. 
+* Thread Table. 
+* File Table. 
+* IPC (Inter Process Communication). 
+* I/O (Input/Output).
 
-26) What are difference between Strategic DDD and Tactical DDD? 
-Answer: Strategic DDD: Introduces boundaries from domain model. Single bounded context per each domain. What is a Domain? 
-Operational area of your application (example online food ordering). Unbounded Context: Central Pattern in DDD. 
-Boundary within a Domain. Tactical DDD: Implementation patterns: 
-a) Entities: Core domain objects with a unique identifiers.
-b) Aggregates: Group of Entity objects which always need to be in consistent state. 
-c) Aggregate Root (AR).
-d) Value Objects: Immutable objects without identity. Only value matters. Bring context to the value. 
-e) Domain Service.
-f) Application Service. 
-g) Domain Event.
+**26) What are difference between Strategic DDD and Tactical DDD?** 
+* Strategic DDD: Introduces boundaries from domain model. 
+* Single bounded context per each domain. 
+* What is a Domain? 
+* Operational area of your application (example online food ordering). 
+* Unbounded Context: Central Pattern in DDD. 
+* Boundary within a Domain. 
+* Tactical DDD: Implementation patterns: 
+  * Entities: Core domain objects with a unique identifiers.
+  * Aggregates: Group of Entity objects which always need to be in consistent state. 
+  * Aggregate Root (AR).
+  * Value Objects: Immutable objects without identity. Only value matters. Bring context to the value. 
+  * Domain Service.
+  * Application Service. 
+  * Domain Event.
 
-27) Difference between SQL and NoSQL? 
-Answer: SQL table-based relational DB. Data is stored in precisely defined structures and the relationships between them 
-are represented using foreign keys. Good at querying multiple tables and large data sets, as well as maintaining transaction 
-consistency and security. NoSQL allows you to store data in various formats, such as documents, graphs, key-value or column.
-More flexible and scalable than SQL. Good for projects with a lot of load data. Error-resistant because the data is replicated.
+**27) Difference between SQL and NoSQL?** 
+* SQL table-based relational DB. 
+* Data is stored in precisely defined structures and the relationships between them are represented using foreign keys. 
+* Good at querying multiple tables and large data sets, as well as maintaining transaction consistency and security. 
+* NoSQL allows you to store data in various formats, such as documents, graphs, key-value or column.
+* More flexible and scalable than SQL. 
+* Good for projects with a lot of load data. 
+* Error-resistant because the data is replicated.
 
-28) What are different Specialized Storage Paradigm? 
-Answer: 
-a) Blob Storage: GCS or S3. 
-b) Time Series Database: Special kind of database optimized for storing and analyzing time-indexed data. Data points that 
+**28) What are different Specialized Storage Paradigm?** 
+* Blob Storage: GCS or S3. 
+* Time Series Database: Special kind of database optimized for storing and analyzing time-indexed data. Data points that 
 specifically occur at a given moment in time. InfluxDB, Prometheus and Graphana. 
-c) Graph Database: Social Networks Neo4j. 
-d) Cypher: Graph query language that was originally developed for the Neo4j graph database. 
-e) Spatial Database: Storing spacial data like locations on a map. Spatial indexes like quad-trees.
+* Graph Database: Social Networks Neo4j. 
+* Cypher: Graph query language that was originally developed for the Neo4j graph database. 
+* Spatial Database: Storing spacial data like locations on a map. Spatial indexes like quad-trees.
 
-29) What is SOAP? 
-Answer: Data Format: SOAP XML Request. SOAP XML Response. Transport: SOAP over MQ. SOAP over HTTP.
-Service Definition: WSDL defines: Endpoint, All Operations, Request Structure, Response Structure.
+**29) What is SOAP?** 
+* Data Format: SOAP XML Request. 
+* SOAP XML Response. 
+* Transport: SOAP over MQ. 
+* SOAP over HTTP.
+* Service Definition:. 
+* WSDL defines: 
+  * Endpoint. 
+  * All Operations. 
+  * Request Structure. 
+  * Response Structure.
 
-30) What is Smoke Testing? 
-Answer: Smoke Testing also known as build verification testing, involves running a subset of test cases to verify 
-that core functionalities of a software applications are operational after a new build or release. Quick feedback on whether 
-build is stable enough for more extensive testing. Identifies major issues. Prevents wasting time on comprehensive testing.
+**30) What is Smoke Testing?** 
+* Smoke Testing also known as build verification testing, involves running a subset of test cases to verify 
+that core functionalities of a software applications are operational after a new build or release. 
+* Quick feedback on whether build is stable enough for more extensive testing. 
+* Identifies major issues. 
+* Prevents wasting time on comprehensive testing.
 
-31) Set Based Consistency CQRS?
-Answer: How to check if record already exists in a database table? How to check if User already exists? Solution Lookup 
-database table. Message Dispatch Interceptor: 
-a) Will intercept a command before it is processed by the command handler. 
-b) Use JPA to query lookup table. 
-c) Event handler to persist productID and title in lookup table.
+**31) Set Based Consistency CQRS?**
+* How to check if record already exists in a database table? 
+* How to check if User already exists? 
+* Solution Lookup database table. 
+* Message Dispatch Interceptor: 
+  * Will intercept a command before it is processed by the command handler. 
+  * Use JPA to query lookup table. 
+  * Event handler to persist productID and title in lookup table.
 
-32) Service Discovery and Load Balancing in Microservices? 
-Answer: Service Discovery: 
-a) Simplifies service-to-service communication. 
-b) Facilitates stability and fault tolerance.
-c) Supports dynamic environments. 
-Load Balancing: 
-a) Enhances Reliability. 
-b) Improves Scalability. 
-c) Fault Tolerance.
-Tools and Technologies: 
-Service Discovery: consul, etcd, zookeeper, kubernetes. 
-Load Balancing: Reverse Proxy: Nginx, HaProxy. 
-Service Mesh: Istio, Linkerd. 
-Load Balancers: Google Cloud LB.
+**32) Service Discovery and Load Balancing in Microservices?**
+* Service Discovery: 
+  * Simplifies service-to-service communication. 
+  * Facilitates stability and fault tolerance.
+  * Supports dynamic environments. 
+* Load Balancing: 
+  * Enhances Reliability.
+  * Improves Scalability. 
+  * Fault Tolerance.
+* Tools and Technologies: 
+  * Service Discovery: consul, etcd, zookeeper, kubernetes. 
+  * Load Balancing: Reverse Proxy: Nginx, HaProxy. 
+  * Service Mesh: Istio, Linkerd.
+  * Load Balancers: Google Cloud LB.
 
-33) SOAP Service Definition? 
-Answer: Request / Response Format, Request Structure, Response Structure, Endpoint.
+**33) SOAP Service Definition?** 
+* Request / Response Format. 
+* Request Structure. 
+* Response Structure. 
+* Endpoint.
 
-34) What are Self-Contained Systems (SCS)? 
-Answer: SCS is a type of microservice that specifies elements of macro architecture.
+**34) What are Self-Contained Systems (SCS)?** 
+* SCS is a type of microservice that specifies elements of macro architecture.
 
-35) What is Security Testing? 
-Answer: Security testing encompasses a range of testing techniques designed to assess the confidentiality, integrity, 
-authentication, authorization and availability of software applications. Risk Mitigation. Compliance: PCI DSS, GDPR. 
-Customer Trust.
+**35) What is Security Testing?**
+* Security testing encompasses a range of testing techniques designed to assess the confidentiality, integrity, 
+authentication, authorization and availability of software applications. 
+* Risk Mitigation. 
+* Compliance: PCI DSS, GDPR. 
+* Customer Trust.
 
-36) What is a role of Schema Registry in Kafka? 
-Answer: Forces producer and consumer to use a valid schema.
+**36) What is a role of Schema Registry in Kafka?** 
+* Forces producer and consumer to use a valid schema.
 
-37) Scatter Gather Pattern Use Cases? 
-Answer: Scalability pattern. Use Cases: Search Services, Hospitality Services.
+**37) Scatter Gather Pattern Use Cases?** 
+* Scalability pattern. 
+* Use Cases: Search Services, Hospitality Services.
 
-38) Example of Scalable Unstructured Data Storage Cloud and Open Source Solutions? 
-Answer: Amazon S3, Google Cloud Storage, Azure Blob Storage.
+**38) Example of Scalable Unstructured Data Storage Cloud and Open Source Solutions?** 
+* Amazon S3.
+* Google Cloud Storage.
+* Azure Blob Storage.
 
-39) Use cases for SAGA Pattern? 
-Answer: Distributed long-running transactions across services. Used for Long Lived Transactions (LLT). Chain of local ACID 
-transactions to finalise a long-running transaction across service. Different kinds: Choreography-Based, Orchestration-Based. 
-ACID Transactions: Guarantees that a database will be in consistent state after running a group of operations. 
-Outbox: Help to use of local ACID transactions to let consistent (eventual) distributed transactions.
+**39) Use cases for SAGA Pattern?** 
+* Distributed long-running transactions across services. 
+* Used for Long Lived Transactions (LLT). 
+* Chain of local ACID transactions to finalise a long-running transaction across service. 
+* Different kinds: Choreography-Based, Orchestration-Based. 
+* ACID Transactions: Guarantees that a database will be in consistent state after running a group of operations. 
+* Outbox: Help to use of local ACID transactions to let consistent (eventual) distributed transactions.
 
-40) Robustness ways to ensure? 
-Answer: 
-a) Error Handling. 
-b) Monitoring and logging. 
-c) Versioning and rollback. 
-d) Testing and validation. 
-e) Redundancy and Fail-over. 
-f) Communication protocols. 
-g) Service Discovery. 
-h) Circuit Braking: Preventing cascading errors.
-i) Graceful Degradation: The application works even at reduced levels.
+**40) Robustness ways to ensure?** 
+* Error Handling. 
+* Monitoring and logging. 
+* Versioning and rollback. 
+* Testing and validation. 
+* Redundancy and Fail-over. 
+* Communication protocols. 
+* Service Discovery. 
+* Circuit Braking: Preventing cascading errors.
+* Graceful Degradation: The application works even at reduced levels.
 
 41) Robust system, what does it mean? 
 Answer: A robust system is able to operate efficiently, even in the presence of errors or other problems. 

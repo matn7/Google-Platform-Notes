@@ -560,7 +560,7 @@ data is inconsistent.
 **27. What is the gossip protocol and how does it work?**
 * A decentralized failure detection mechanism where nodes periodically exchange membership information with each other.
 
-**28.What is sloppy quorum?**
+**28. What is sloppy quorum?**
 * Instead of enforcing the quorum requirement, the system chooses the first W healthy servers for writes and first 
 R healthy servers for reads on the hash ring. 
 * Offline servers are ignored.
@@ -752,7 +752,9 @@ ID generator. Easier to figure out the next available short URL, which can be a 
 * If not found in the database, return an error.
 
 **6. What are the primary use cases for a URL shortener?**
-* URL shortening (long URL -> short URL), URL redirection (short URL -> long URL), High availability/scalability.
+* URL shortening (long URL -> short URL).
+* URL redirection (short URL -> long URL).
+* High availability/scalability.
 
 **7. What are the two main API endpoints needed?**
 * POST `api/v1/data/shorten` (for creating short URLs) and GET `api/v1/shortUrl` (for redirecting).
@@ -773,7 +775,7 @@ ID generator. Easier to figure out the next available short URL, which can be a 
 
 **12. What characters are typically allowed in a shortened URL?**
 * Numbers (0-9), lowercase letters (a-z), and uppercase letters (A-Z). 
-* (Total of 62 characters).
+* Total of 62 characters.
 
 **13. Explain the "hash + collision resolution" approach.**
 * Use a standard hash function, take the first n characters, and if a collision occurs, append a string and retry.
@@ -802,7 +804,7 @@ ID generator. Easier to figure out the next available short URL, which can be a 
 If not, check DB -> Return longURL (or error if not found).
 
 **21. Why is caching important in a URL shortener?**
-* Improves performance by storing frequently accessed shortURL-longURL mappings, reducing database load.
+* Improves performance by storing frequently accessed shortURL - longURL mappings, reducing database load.
 
 **22. Why is rate limiting important?**
 * Prevents abuse by limiting the number of requests from a single IP address or user within a given time frame.
@@ -1134,7 +1136,7 @@ and worker threads download one page at a time from the same host with a delay.
 
 **7. News Feed Definition?**
 * What is a news feed? (constantly updating list of stories).
-* Examples: Facebook, Instagram, Twitter
+* Examples: Facebook, Instagram, Twitter.
 * Key content: status updates, photos, videos, links, etc.
 
 **8. Core Features.**
@@ -1222,7 +1224,7 @@ and worker threads download one page at a time from the same host with a delay.
 * Stateless web tier.
 * Caching.
 * Multiple data centers.
-* Message queues/
+* Message queues.
 * Monitoring (QPS, latency).
 
 **27. Graph Database.**
@@ -1245,6 +1247,7 @@ and worker threads download one page at a time from the same host with a delay.
 ***
 
 ## 13 - Design A Chat System.
+
 **1. Core Requirements.**
 * 1-on-1 chat.
 * Group chat (max 100 users).
@@ -1880,7 +1883,7 @@ Notification Service, Offline Backup Queue.
 * Database Cluster (Primary-Secondary).
 
 **9. LBS Characteristics - LBS Details.**
-* Read-heavy, high QPS, stateless (easy to scale)
+* Read-heavy, high QPS, stateless (easy to scale).
 
 **10. Business Service Characteristics - Business Service Details.**
 * Handles both read (view details) and write (add/edit/delete) requests.
@@ -1892,13 +1895,15 @@ Notification Service, Offline Backup Queue.
 * Divide the map into smaller areas and build indexes for fast search.
 
 **13. Geospatial Indexing - Options - Indexing Techniques.**
-* Hash (Even Grid, Geohash), Tree (Quadtree, Google S2, R-Tree)
+* Hash (Even Grid, Geohash), Tree (Quadtree, Google S2, R-Tree).
 
 **14. Geohash - Key Idea - Geohash.**
-* Reduces 2D (lat/long) data to a 1D string. Recursive division into quadrants.
+* Reduces 2D (lat/long) data to a 1D string. 
+* Recursive division into quadrants.
 
 **15. Geohash - Boundary Issues - Geohash Limitations.**
-* Locations close geographically may have very different geohashes (no shared prefix). Solution: Check neighboring geohashes.
+* Locations close geographically may have very different geohashes (no shared prefix). 
+* Solution: Check neighboring geohashes.
 
 **16. Quadtree - Key Idea - Quadtree.**
 * Recursive subdivision of space into four quadrants until a criterion is met (e.g., max # of businesses in a grid). 
@@ -2415,7 +2420,7 @@ and group services.
 * A database optimized for storing and retrieving time-series data (data indexed by time).
 * Designed for high write throughput and efficient querying of data over time ranges.
 * Key features: data compression, retention policies, aggregation functions.
-* Examples: InfluxDB, Prometheus, OpenTSDB, Amazon Timestream, MetricsDB
+* Examples: InfluxDB, Prometheus, OpenTSDB, Amazon Timestream, MetricsDB.
 
 **24. What is InfluxDB? What are its key features?**
 * A popular open-source time-series database.
