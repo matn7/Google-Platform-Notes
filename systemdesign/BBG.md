@@ -3134,18 +3134,18 @@ access speeds.
 * Scalability to handle a large number of users.
 * High availability and reliability.
 
-**3. Describe the purpose and parameters of the POST /v1/scores API.**
+**3. Describe the purpose and parameters of the POST `/v1/scores` API.**
 * Purpose: Updates a user's score on the leaderboard.
-* Parameters: user_id, points.
+* Parameters: `user_id`, `points`.
 * Internal API, called by game servers.
 
-**4. What is the purpose of the GET /v1/scores API, and what type of information does it return?**
+**4. What is the purpose of the GET `/v1/scores` API, and what type of information does it return?**
 * Purpose: Fetches the top N players from the leaderboard.
 * Returns: User ID, username, rank, and score for each of the top players.
 
-**5. Describe the purpose and parameters of the GET /v1/scores/{user_id} API.**
+**5. Describe the purpose and parameters of the GET `/v1/scores/{user_id}` API.**
 * Purpose: Retrieves the rank of a specific user.
-* Parameters: user_id (in the URL).
+* Parameters: `user_id` (in the URL).
 * Returns: User ID, score, and rank of the specified user.
 
 **6. Briefly describe the high-level architecture of the leaderboard system.**
@@ -3159,9 +3159,9 @@ access speeds.
 * Score updates should be server-side.
 
 **8. How could you implement a leaderboard using a relational database (RDS) like MySQL?**
-* Create a table with user_id and score columns.
-* Update scores using INSERT or UPDATE statements.
-* Fetch leaderboard using SELECT with ORDER BY score DESC.
+* Create a table with `user_id` and `score` columns.
+* Update scores using `INSERT` or `UPDATE` statements.
+* Fetch leaderboard using `SELECT` with `ORDER BY` score `DESC`.
 
 **9. What are the limitations of using a relational database for a real-time leaderboard with millions of users?**
 * Sorting millions of rows for ranking is slow.
@@ -3172,17 +3172,17 @@ access speeds.
 * A data structure that stores members with associated scores, sorted by score.
 * Efficient for ranking, retrieving top N members, and updating scores in real-time.
 
-**11. Explain the purpose of the ZADD and ZINCRBY Redis commands in the context of a leaderboard.**
-* ZADD: Adds a new member with a score to the sorted set, or updates the score if the member already exists.
-* ZINCRBY: Increments the score of a member in the sorted set.
+**11. Explain the purpose of the `ZADD` and `ZINCRBY` Redis commands in the context of a leaderboard.**
+* `ZADD`: Adds a new member with a score to the sorted set, or updates the score if the member already exists.
+* `ZINCRBY`: Increments the score of a member in the sorted set.
 
-**12. Explain the purpose of the ZRANGE and ZREVRANGE Redis commands. Which one is more suitable for leaderboards?**
-* ZRANGE: Returns a range of members from the sorted set, sorted in ascending order.
-* ZREVRANGE: Returns a range of members from the sorted set, sorted in descending order. More suitable for leaderboards.
+**12. Explain the purpose of the `ZRANGE` and `ZREVRANGE` Redis commands. Which one is more suitable for leaderboards?**
+* `ZRANGE`: Returns a range of members from the sorted set, sorted in ascending order.
+* `ZREVRANGE`: Returns a range of members from the sorted set, sorted in descending order. More suitable for leaderboards.
 
-**13. Explain the purpose of the ZRANK and ZREVRANK Redis commands. Which one is more suitable for leaderboards?**
-* ZRANK: Returns the rank of a member in the sorted set, with scores sorted in ascending order.
-* ZREVRANK: Returns the rank of a member in the sorted set, with scores sorted in descending order. More suitable for leaderboards.
+**13. Explain the purpose of the `ZRANK` and `ZREVRANK` Redis commands. Which one is more suitable for leaderboards?**
+* `ZRANK`: Returns the rank of a member in the sorted set, with scores sorted in ascending order.
+* `ZREVRANK`: Returns the rank of a member in the sorted set, with scores sorted in descending order. More suitable for leaderboards.
 
 **14. What are some considerations for Redis persistence in a leaderboard system?**
 * Redis supports persistence, but restarting from disk can be slow.
@@ -3210,7 +3210,7 @@ access speeds.
 * Requires gathering top N players from each shard and sorting in the application.
 
 **19. How could you implement a leaderboard using DynamoDB?**
-* Use a global secondary index with game_name#year-month as the partition key and score as the sort key.
+* Use a global secondary index with `game_name#year-month` as the partition key and score as the sort key.
 * Use write sharding to avoid hot partitions.
 
 **20. Why is write sharding important in DynamoDB for a leaderboard, and how does it work?**
@@ -3234,11 +3234,11 @@ access speeds.
 * Data type that stores members with associated scores.
 * Members are unique, but scores can repeat.
 * Sorted in ascending order by score.
-* Implemented using a hash table and a skip list for fast operations (O(log n)).
-* Commands: ZADD, ZINCRBY, ZRANGE, ZREVRANGE, ZRANK, ZREVRANK.
+* Implemented using a hash table and a skip list for fast operations (`O(log n)`).
+* Commands: `ZADD`, `ZINCRBY`, `ZRANGE`, `ZREVRANGE`, `ZRANK`, `ZREVRANK`.
 
 **24. Skip List.**
-* Probabilistic data structure that uses multiple levels of linked lists to allow fast searching
+* Probabilistic data structure that uses multiple levels of linked lists to allow fast searching.
 * Enables efficient searching, insertion, and deletion in sorted sets.
 * Uses multiple levels of indexes to skip nodes.
 
