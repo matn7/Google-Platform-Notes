@@ -1289,6 +1289,7 @@ which are stored across multiple machines.
 * Sharding allows horizontal scaling by distributing data across many servers.
 
 **3. How does sharding differ from replication?**
+
 **Replication:**
 - Multiple copies of the same data.
 - Improves availability and read scalability.
@@ -1307,6 +1308,7 @@ which are stored across multiple machines.
   - Rarely changes.
 
 **5. What is the difference between horizontal and vertical partitioning?**
+
 **Horizontal partitioning:**
 - Split rows across machines.
 
