@@ -1,2382 +1,1210 @@
-NEW SECTION - CONTAINERS.
-
-1) What is a Container and How Does it Differ from a Virtual Machine? 
-Answer: A container is a lightweight, stand-alone, executable package that includes everything needed to run a piece of 
-software, including the code, runtime, system tools, libraries, and settings. Containers are isolated from each other and 
-the host system, but share the host system's kernel. This makes them more efficient, faster, and less resource-intensive 
-than virtual machines (VMs), which include entire guest operating systems.
-
-2) What is Docker and Why is it Popular in Containerization? 
-Answer: Docker is a platform that enables developers to build, deploy, and manage containers. It has become synonymous 
-with containerization because it simplifies the process of creating, running, and managing containers. Docker uses 
-Dockerfiles to automate the deployment of applications in containers, making it efficient and scalable for software development.
-
-3) Explain the Concept of Container Orchestration. 
-Answer: Container orchestration is the automated arrangement, coordination, and management of computer systems, middleware, 
-and services. It involves managing the lifecycle of containers, especially in large, dynamic environments. Tools like 
-Kubernetes, Docker Swarm, and Apache Mesos are used for orchestration, providing features like scaling, deployment, 
-and management of containerized applications.
-
-4) How Does a Container Registry Work? 
-Answer: A container registry is a storage and content delivery system that holds named container images, available in 
-different tagged versions. Users can push or pull images from the registry, making it a critical tool in the container lifecycle
-for version control and distribution of container images. Popular examples include Docker Hub and Google Container Registry.
-
-5) What are Namespaces in the Context of Containers? 
-Answer: Namespaces are a feature of the Linux kernel that partitions kernel resources so that one set of processes sees 
-one set of resources while another set of processes sees a different set of resources. In the context of containers, 
-namespaces provide a layer of isolation by ensuring that containers only see their own processes, file systems, network, and users.
-
-6) Describe Container Networking. How do Containers Communicate with Each Other?
-Answer: Container networking enables containers to communicate with each other and with the outside world. This is achieved 
-through various networking models like bridge networks, overlay networks, or host-based networks. Docker, for instance, 
-creates a virtual bridge, allowing containers to communicate through it. Containers can also be configured to expose 
-specific ports for outside communication.
-
-7) What is a Container Image and How is it Different from a Container? 
-Answer: A container image is a lightweight, standalone, executable package that includes everything needed to run a piece 
-of software. It consists of the code, runtime, system tools, libraries, and settings. A container, on the other hand, 
-is a runtime instance of an image. When an image is run, it exists in memory and has a state, whereas an image is a static file.
-
-8) Explain the Role of Dockerfile?
-Answer: A Dockerfile is a script containing a series of instructions and commands used for creating a container image. 
-It automates the process of building a Docker image. A Dockerfile defines what goes on in the environment inside a container. 
-It can include instructions to install specific software, environmental variables, and startup commands.
-
-9) What are Microservices and How Do Containers Benefit Them? 
-Answer: Microservices architecture is a method of developing software applications as a suite of independently deployable, 
-modular services. Containers are ideal for microservices due to their lightweight nature, allowing each service to be 
-deployed in a separate container with its dependencies, ensuring isolation, resource efficiency, and scalability.
-
-10) How Do You Monitor Containers and Their Performance? 
-Answer: Monitoring containers involves tracking metrics like CPU usage, memory consumption, I/O, network usage, and health 
-status of containers. Tools like Prometheus, Grafana, Docker Monitoring, cAdvisor, and others are used for monitoring. 
-They help in understanding the performance and status of containers, making it easier to manage large-scale container deployments.
-
-
-NEW SECTION - KUBERNETES COMPONENTS.
-
-1) What are the Main Components of a Kubernetes Cluster? 
-Answer: A Kubernetes cluster has two main types of components: the control plane and the worker nodes. The control plane 
-includes components like the 'kube-apiserver', 'etcd', 'kube-scheduler', and 'kube-controller-manager'. Worker nodes run 
-kubelet, kube-proxy, and container runtime. The control plane manages the cluster, while worker nodes run the applications.
-
-2) Explain the Role of the 'kube-apiserver' in Kubernetes?
-Answer: The 'KubeApiServer' is the front end of the Kubernetes control plane and serves as the main interface for the 
-Kubernetes API. It processes RESTful requests to manage Kubernetes resources like pods, services, replication controllers, 
-and others. It acts as a gateway to the etcd store and ensures that the cluster state matches the desired state described by the API.
-
-3) What is 'etcd' and Why is it Important in Kubernetes? 
-Answer: 'etcd' is a distributed key-value store used by Kubernetes to store all cluster data. It’s a critical part of 
-Kubernetes as it holds the entire state of the cluster, including node information, pods, configurations, secrets, and more. 
-Being distributed ensures high availability and reliability.
-
-4) Describe the Function of the 'kube-scheduler'? 
-Answer: The 'kube-scheduler' is responsible for assigning new pods to nodes. It selects the most suitable node for a pod 
-based on several criteria, including resource requirements, quality of service requirements, affinity and anti-affinity 
-specifications, and other constraints. The scheduler ensures that workloads are placed on the appropriate nodes to maintain 
-efficiency.
-
-5) How Does the 'kube-controller-manager' Work? 
-Answer: The 'kube-controller-manager' runs various controller processes in the background. These controllers include 
-the node controller, replication controller, endpoints controller, and others. Each controller watches the state of the 
-cluster through the 'kube-apiserver' and makes changes to move the current state towards the desired state.
-
-6) What is the 'kubelet' and What is its Role in a Kubernetes Node?
-Answer: The 'kubelet' is an agent running on each node in the cluster. It ensures that containers are running in a Pod. 
-The 'kubelet' takes a set of PodSpecs provided by the 'apiserver' and ensures that the containers described in those 
-PodSpecs are running and healthy. It communicates with the container runtime to manage container lifecycle.
-
-7) Explain the Function of 'kube-proxy' in Kubernetes.?
-Answer: 'kube-proxy' is a network proxy that runs on each node in the cluster, maintaining network rules that allow network 
-communication to the Pods from network sessions inside or outside the cluster. It ensures that the networking environment 
-is predictable and accessible, but also isolated where necessary.
-
-8) What is a Kubernetes Pod and How Does it Relate to Containers? 
-Answer: A Pod is the smallest deployable unit created and managed by Kubernetes. A Pod is a group of one or more containers, 
-with shared storage/network, and a specification for how to run the containers. Containers in a Pod share an IP Address 
-and port space, and can find each other via localhost. They also have access to shared volumes, allowing data to be shared 
-between them.
-
-9) Describe the Role of Container Runtime in Kubernetes?
-Answer: The container runtime is the software responsible for running containers. Kubernetes supports several container 
-runtimes, like Docker, containerd, and CRI-O. It provides the environment to run containers, pulls images from a container 
-image registry, and starts and stops containers.
-
-10) What are Kubernetes Services and How Do They Work? 
-Answer: A Kubernetes Service is an abstraction that defines a logical set of Pods and a policy by which to access them, 
-typically using IP addresses. Services allow applications running in the Kubernetes cluster to communicate with each other 
-and with the outside world. It assigns a fixed IP address to a group of Pods for consistent communication and load balancing.
-
-
-NEW SECTION - KUBERNETES INSTALLATION.
-
-1) What are the Prerequisites for Installing Kubernetes? 
-Answer: Before installing Kubernetes, you need a set of machines (physical or virtual) to run the Kubernetes components. 
-These machines should have a compatible Linux operating system, a container runtime like Docker, and network connectivity 
-between them. Additionally, you should have a way to access the cluster, typically through 'kubectl', Kubernetes 
-command-line tool.
-
-2) What is 'kubeadm' and How is it Used in Kubernetes Installation? 
-Answer: 'kubeadm' is a tool provided by Kubernetes to help set up and bootstrap a Kubernetes cluster in a simple, 
-standardized way. It automates many of the tasks involved in setting up a cluster, such as creating the necessary 
-certificates, setting up the control plane, and configuring the 'kubelet'.
-
-3) Explain the Steps to Install a Kubernetes Cluster Using 'kubeadm'?
-Answer: The basic steps to install a Kubernetes cluster with 'kubeadm' include:
-a) Installing 'kubeadm', 'kubelet', and 'kubectl' on all nodes.
-b) Initializing the cluster on the master node with 'kubeadm init'.
-c) Setting up the kubeconfig file for accessing the cluster.
-d) Installing a pod network add-on on the cluster.
-e) Joining the worker nodes to the cluster using the token and command generated by 'kubeadm init'.
-
-4) What is Minikube and How Does it Differ from a Full Kubernetes Installation? 
-Answer: Minikube is a tool that allows you to run Kubernetes locally on your personal computer. It creates a virtual machine 
-on your computer and sets up a simple cluster containing only one node. Minikube is great for learning and testing purposes 
-but differs from a full Kubernetes installation, which typically involves multiple nodes and runs on servers.
-
-5) How Do You Configure Network Plugins in Kubernetes? 
-Answer: After initializing a Kubernetes cluster, you need to install a network plugin to enable pod-to-pod communication. 
-This is done by applying a network plugin’s YAML configuration file using 'kubectl apply'. There are several network plugins 
-available like Calico, Flannel, Weave, etc., each with its configuration and installation instructions.
-
-6) What are the Considerations for Setting Up High Availability (HA) in Kubernetes?
-Answer: For high availability in Kubernetes, you need to set up multiple master nodes. This involves configuring a load 
-balancer that directs traffic to all active master nodes, setting up an 'etcd cluster' across multiple nodes for state storage, 
-and ensuring that the control plane components are replicated and synchronized across these nodes.
-
-7) Can Kubernetes be Installed on any Cloud Platform? How? 
-Answer: Yes, Kubernetes can be installed on any cloud platform. Most cloud providers offer managed Kubernetes services 
-(like AWS EKS, Azure AKS, Google GKE) which simplify the installation process. Alternatively, you can manually install 
-Kubernetes using 'kubeadm' or other tools by setting up virtual machines or instances within the cloud provider’s infrastructure.
-
-8) What is Helm and How Does it Relate to Kubernetes Installation? 
-Answer: Helm is a package manager for Kubernetes that simplifies installing, configuring, and updating applications on 
-Kubernetes clusters. While it does not install Kubernetes itself, it is used to manage applications running on a Kubernetes 
-cluster. Helm uses a packaging format called charts, which are pre-configured Kubernetes resources.
-
-9) How Do You Upgrade a Kubernetes Cluster? 
-Answer: To upgrade a Kubernetes cluster, you typically upgrade the control plane components first, followed by the worker 
-nodes. Tools like 'kubeadm' can automate parts of this process. It’s important to follow the specific upgrade instructions 
-for your Kubernetes version, as the process may vary slightly between versions.
-
-10) What Are Some Common Challenges Encountered During Kubernetes Installation? 
-Answer: Common challenges include networking configuration issues, compatibility problems between Kubernetes and the host 
-OS or container runtime, difficulties with setting up high availability, ensuring the cluster is secure, and dealing with 
-resource limitations on smaller or older hardware.
-
-
-NEW SECTION - DEPLOYMENTS.
-
-1) What is a Kubernetes Deployment and How Does it Work?
-Answer: A Kubernetes Deployment is an API object that provides declarative updates to applications. It allows you to describe 
-an application’s desired state, such as which container images to use and the number of pod replicas. The Deployment controller 
-changes the actual state to the desired state at a controlled rate, managing the rollout of updated application instances and, 
-if necessary, rolling back to an earlier deployment version.
-
-2) How Do You Update a Deployment in Kubernetes? 
-Answer: To update a Deployment in Kubernetes, you typically update the Deployment’s pod template, such as changing the 
-container image. Kubernetes then performs a rolling update, where it gradually replaces old pods with new ones. The rate 
-of replacement and the number of pods running the old and new version can be controlled through the Deployment configuration.
-
-3) Explain Rolling Updates and Rollbacks in Kubernetes Deployments. 
-Answer: Rolling updates are the default strategy for updating a Deployment. During a rolling update, Kubernetes incrementally 
-updates pod instances with new ones. If an issue is detected, you can roll back a Deployment to a previous version. Rollbacks 
-can be triggered using kubectl commands, and Kubernetes will revert the Deployment to the previously known stable state.
-
-4) How Does Kubernetes Handle Deployment Scaling? 
-Answer: Kubernetes scales Deployments by adjusting the number of replicas – the number of Pod instances running for that Deployment. 
-This can be done manually using commands like kubectl scale, or automatically using Horizontal Pod Autoscalers that adjust 
-the number of replicas based on CPU usage or other select metrics.
-
-5) What Happens to Deployments When a Node Fails? 
-Answer: When a node fails, the pods on that node become unavailable. The Deployment controller notices this and creates 
-new pods on other available nodes to replace the ones that were running on the failed node. This ensures that the Deployment 
-maintains the desired number of replicas.
-
-6) How Do You Monitor the Status of a Kubernetes Deployment?
-Answer: The status of a Kubernetes Deployment can be monitored using kubectl commands like 'kubectl get deployments'
-to check the deployment status, 'kubectl describe deployment' to get detailed information, and 'kubectl rollout status' 
-to watch the status of a deployment update.
-
-7) Can You Explain the Concept of Desired State in Kubernetes Deployments? 
-Answer: The desired state in Kubernetes Deployments refers to the state described in the Deployment’s configuration. 
-This includes aspects like the number of replicas, container images, and resource limits. Kubernetes continuously works 
-to ensure that the actual state of the Deployment matches this desired state.
-
-8) What is the Significance of ReplicaSets in Kubernetes Deployments? 
-Answer: A ReplicaSet is the next-generation ReplicationController. It ensures that a specified number of pod replicas are 
-running at any given time. In Deployments, a ReplicaSet is created for each new rollout of a Deployment and is responsible 
-for ensuring that the correct number of pods for that Deployment’s version are running.
-
-9) How Are Environment-Specific Configurations Managed in Kubernetes Deployments? 
-Answer: Environment-specific configurations in Kubernetes Deployments can be managed using ConfigMaps and Secrets, 
-which are decoupled from the deployment configurations. These objects can be mounted into pods as volumes or exposed as 
-environment variables, allowing different configurations for different environments without changing the deployment definition.
-
-10) What are Probes and How are They Used in Deployments? 
-Answer: Probes are used in Kubernetes to determine the health of a container within a pod. There are two types of probes: 
-Liveness probes are used to know when to restart a container, and Readiness probes are used to know when a container is ready 
-to start accepting traffic. These probes help ensure that only healthy containers are used in deployments.
-
-
-NEW SECTION - StatefulSet.
-
-1) What is a StatefulSet in Kubernetes and How Does it Differ from a Deployment? 
-Answer: A StatefulSet is a Kubernetes workload API object used for managing stateful applications, which are applications 
-that need to maintain a state or identity. Unlike Deployments, StatefulSets ensure that the pod identifiers and network 
-hostnames are consistent even across rescheduling. They are ideal for applications like databases that require stable, 
-unique network identifiers, persistent storage, and ordered, graceful deployment and scaling.
-
-2) How Does Kubernetes Manage the Pod Identity in a StatefulSet? 
-Answer: In a StatefulSet, each pod gets a unique, ordinal index and a stable network identity based on this index. 
-The names of the pods are consistent and follow the pattern: 'STATEFUL-NAME ORDINAL-INDEX'. This identity persists 
-even if the pod gets rescheduled onto another node.
-
-3) Explain How StatefulSets Handle Scaling and Updates?
-Answer: StatefulSets scale and update pods one at a time, in order, from the lowest ordinal to the highest. When scaling 
-down, they remove pods in reverse ordinal order. During updates, StatefulSets support rolling updates where updates 
-propagate sequentially from the first pod to the last.
-
-4) What is the Role of Persistent Volumes in StatefulSets? 
-Answer: Persistent Volumes (PVs) are essential for StatefulSets to provide stable storage that persists beyond the lifecycle 
-of individual pods. Each pod in a StatefulSet can be associated with a Persistent Volume using Persistent Volume Claims (PVCs). 
-This way, even if the pod is rescheduled, its data remains intact and attached to the pod.
-
-5) Can You Describe Headless Services and Their Use with StatefulSets? 
-Answer: A headless service in Kubernetes is a service with a clusterIP set to None. It’s often used with StatefulSets to 
-provide a unique network identity to each pod. The headless service ensures that each pod gets a stable DNS entry, which 
-is crucial for stateful applications that rely on stable network identifiers.
-
-6) How Does a StatefulSet Maintain Pod Ordering and Uniqueness?
-Answer: StatefulSets maintain pod ordering and uniqueness using a governing service, which is a headless service that 
-controls the network domain of the StatefulSet. The StatefulSet controller creates pods based on the ordinal index, 
-ensuring that each pod is created and terminated in a predictable order.
-
-7) What Happens to a StatefulSet When a Node Fails? 
-Answer: When a node fails, the pods in a StatefulSet on that node become unavailable. Kubernetes doesn't automatically 
-reschedule these pods to other nodes. Instead, if the failed node returns to a functional state, the pods are restarted 
-on it, preserving their state. For automatic failover, additional mechanisms like pod disruption budgets or node health 
-checks should be implemented.
-
-8) How Do You Update a StatefulSet, and What Are the Risks Involved? 
-Answer: StatefulSets are updated using a rolling update strategy by default. You update the StatefulSet configuration, 
-and Kubernetes applies the changes to each pod sequentially, respecting the ordering constraints. The primary risk in 
-updating StatefulSets is related to the application-specific requirements for data integrity and consistency, as these 
-applications often manage state.
-
-9) Explain the Significance of podManagementPolicy in a StatefulSet?
-Answer: The podManagementPolicy of a StatefulSet determines how pods are managed within the StatefulSet. The two policies 
-are OrderedReady, where pods are started sequentially, and Parallel, where pods are started or deleted simultaneously. 
-OrderedReady is the default and ensures orderly deployment and scaling.
-
-10) What are the Best Practices for Backing Up Data in a StatefulSet? 
-Answer: Best practices for backing up data in a StatefulSet include regularly snapshotting the Persistent Volumes using 
-tools like Velero, implementing a robust replication strategy if the application supports it (like in databases), and 
-ensuring data consistency during backups. It's also advisable to store backups in a location independent of the 
-Kubernetes cluster.
-
-
-NEW SECTION - ReplicaSet.
-
-1) What is a ReplicaSet in Kubernetes? 
-Answer: A ReplicaSet in Kubernetes is a workload API object used to ensure that a specified number of pod replicas are 
-running at any given time. It's primarily used to maintain the availability of a set of identical Pods. If there are not 
-enough replicas, it creates more; if there are too many, it deletes some.
-
-2) How Does a ReplicaSet Differ from a ReplicationController? 
-Answer: A ReplicaSet is the next-generation ReplicationController. The key difference is that ReplicaSets support set-based 
-selector requirements as opposed to the equality-based selector requirements of ReplicationControllers. This means ReplicaSets 
-can select a broader range of pods based on labels.
-
-3) How Do You Define and Use a ReplicaSet in Kubernetes? 
-Answer: A ReplicaSet is defined using a YAML file, which specifies the number of replicas and the pod template to use. 
-It includes a selector to identify the pods it should manage. You use a ReplicaSet by creating it with 
-'kubectl apply -f file.yaml'. The ReplicaSet then ensures that the specified number of replicas of the pod are running.
-
-4) What Happens if a Pod in a ReplicaSet Fails? 
-Answer: If a pod in a ReplicaSet fails (due to a node failure or termination), the ReplicaSet notices the decrease in 
-the number of replicas and creates a new pod to replace it. The new pod is created based on the pod template defined in 
-the ReplicaSet.
-
-5) Can You Scale a ReplicaSet? How? 
-Answer: Yes, you can scale a ReplicaSet by changing the replicas field in the ReplicaSet definition and then applying 
-the update. Alternatively, you can use the 'kubectl scale' command to change the number of replicas, example:
-'kubectl scale replicaset replicaset-name --replicas=number'.
-
-6) How Does a ReplicaSet Work with a Deployment in Kubernetes?
-Answer: In Kubernetes, Deployments are higher-level concepts that manage ReplicaSets. When you create a Deployment, 
-it creates a ReplicaSet to manage the pods. The Deployment automatically handles updating the ReplicaSet and its pods 
-according to the defined strategy, such as a rolling update.
-
-7) What are the Use Cases for a ReplicaSet? 
-Answer: ReplicaSets are used to ensure the availability and scalability of a set of identical pods. Common use cases 
-include running multiple instances of a stateless application or service, ensuring that a specific number of pods are 
-always running, and providing load balancing and fault tolerance.
-
-8) How Do You Update Pods in a ReplicaSet? 
-Answer: To update pods in a ReplicaSet, you typically update the pod template in the ReplicaSet definition and apply 
-the change. However, it's important to note that while a ReplicaSet ensures a certain number of pods are running, it does 
-not provide a mechanism to update the pods. For rolling updates, you should use a Deployment, which manages ReplicaSets.
-
-9) What is the Role of Label Selectors in a ReplicaSet? 
-Answer: Label selectors in a ReplicaSet determine which pods are controlled by the ReplicaSet. The selector matches labels 
-assigned to pods and ensures the ReplicaSet manages all pods with the specified labels. This is crucial for linking the 
-ReplicaSet to its pods.
-
-10) How Do You Ensure High Availability with ReplicaSets? 
-Answer: To ensure high availability with ReplicaSets, you should run multiple replicas of your pods across different nodes. 
-This way, if a node fails, other replicas on different nodes can continue serving requests. Also, using anti-affinity rules 
-can help in spreading the pods across different nodes to avoid single points of failure.
-
-
-NEW SECTION - PODS.
-
-1) What is a Pod in Kubernetes?
-Answer: A Pod is the smallest and most basic deployable object in Kubernetes. It represents a single instance of a running 
-process in your cluster and can contain one or more containers. These containers in a Pod are scheduled on the same node 
-and share the same network namespace, IP address, and port space.
-
-2) How Do Pods Communicate with Each Other in Kubernetes? 
-Answer: Pods communicate with each other using networking. Since each Pod has a unique IP address within the cluster, 
-they can communicate using standard TCP/IP networking. Pods can also communicate with each other using shared volumes, 
-where data is shared between containers in the same Pod.
-
-3) What is the Lifecycle of a Kubernetes Pod? 
-Answer: The lifecycle of a Kubernetes Pod includes several states: Pending (the Pod has been created, but some of its 
-containers are not yet running). Running (the Pod has been bound to a node, and all of the containers have been created). 
-Succeeded (all containers in the Pod have terminated successfully). Failed (all containers in the Pod have terminated, 
-and at least one container has terminated in failure). Unknown (the state of the Pod could not be obtained).
-
-4) Explain the Difference Between a Pod and a Container?
-Answer: A container is the smallest unit of computing that contains an application and its dependencies. A Pod, on the 
-other hand, is a Kubernetes abstraction that represents a group of one or more containers (such as Docker containers), 
-with shared storage/network, and a specification for how to run the containers.
-
-5) How are Resources Allocated to a Pod?
-Answer: Resources such as CPU and memory are allocated to a Pod based on the specifications in the Pod definition. 
-Each container in the Pod can specify a request (the amount of resource guaranteed) and a limit (the maximum amount of 
-resource the container can use). Kubernetes uses these specifications to schedule Pods on nodes with available resources 
-and manage resource usage.
-
-6) What are Multi-Container Pods and When Would You Use Them?
-Answer: Multi-container Pods are Pods that contain more than one container. These containers are tightly coupled and share 
-resources such as volumes and networking. Use multi-container Pods when containers need to work closely together, for instance, 
-a main application container and a helper container that pushes data to or pulls data from an external source.
-
-7) How Do You Manage Pod Scalability in Kubernetes? 
-Answer: Pod scalability in Kubernetes is typically managed using controllers like Deployments, ReplicaSets, or StatefulSets. 
-These controllers create and manage multiple instances of a Pod to ensure the desired number of replicas are running at 
-any given time, allowing for scaling up or down as needed.
-
-8) What are Init Containers and How are They Different from Regular Containers in a Pod? 
-Answer: Init containers are specialized containers that run before the application containers in a Pod. They are used to 
-set up the environment for the main application container, such as configuring settings, updating files/directories, or 
-waiting for some condition to be met. Unlike regular containers, init containers run to completion, and the Pod's application 
-containers start only after all init containers have completed successfully.
-
-9) How Does Kubernetes Handle Pod Failures? 
-Answer: Kubernetes handles Pod failures using controllers like Deployments and ReplicaSets. If a Pod fails (like in the 
-case of node failure), the controller notices the discrepancy between the desired state and the current state, and creates 
-a new Pod to maintain the desired number of replicas.
-
-10) Can You Describe the Process of Exposing a Pod to the External Network? 
-Answer: To expose a Pod to the external network, you typically use a Kubernetes Service. A Service provides a stable IP 
-address and DNS name entry for accessing the Pod. For external access, a Service of type LoadBalancer or NodePort is used, 
-which routes external traffic to the Pod either through a cloud provider’s load balancer or by exposing a port on the nodes.
-
-
-NEW SECTION - JOBS.
-
-1) What is a Kubernetes Job and What is its Purpose? 
-Answer: A Kubernetes Job is a resource used to manage a task that runs to completion, as opposed to long-running services. 
-It is used for tasks like batch processing, data analysis, or batch computation that need to run once and complete successfully. 
-Kubernetes ensures that a Job runs until the specified number of completions is achieved.
-
-2) How Does a Kubernetes Job Differ from a Pod? 
-Answer: While a Pod in Kubernetes represents a single instance of a running process, a Job manages one or more Pods that 
-are expected to terminate successfully (i.e., exit with a zero status). Pods created by a Job are meant to execute a specific 
-task and then exit successfully, indicating the completion of the Job.
-
-3) Can You Explain the Lifecycle of a Kubernetes Job? 
-Answer: The lifecycle of a Kubernetes Job starts when it is created. The Job then spawns one or more Pods based on its 
-spec and tracks their progress. If a Pod fails (non-zero exit status) and the Job’s restartPolicy is set to OnFailure, 
-the Job restarts the Pod. Once the required number of Pods completes successfully, the Job is marked as complete.
-
-4) What are CronJobs in Kubernetes, and How are They Related to Jobs? 
-Answer: CronJobs in Kubernetes are an extension of Jobs. While a Job runs a task to completion once, a CronJob creates 
-Jobs on a time-based schedule, similar to the Unix cron utility. It is used for periodic tasks like backups, report 
-generation, and sending emails.
-
-5) How Do You Monitor the Progress or Status of a Job in Kubernetes? 
-Answer: The progress or status of a Kubernetes Job can be monitored using the 'kubectl' command. For example, 
-'kubectl describe job [job-name]' provides detailed information about the Job’s progress and status, and 
-'kubectl get pods --selector=job-name=[job-name]' lists the Pods created by the Job, showing their individual status.
-
-6) What Happens to the Pods When a Kubernetes Job Completes?
-Answer: When a Kubernetes Job completes, the Pods that it spawned remain and are not deleted automatically. This allows 
-you to check the logs of the completed Pods to verify the output or debug if needed. However, you can configure the Job 
-to automatically delete the Pods upon completion using a TTL mechanism or by setting the Pod’s restartPolicy to Never.
-
-7) How Can You Control the Parallel Execution of Pods in a Kubernetes Job?
-Answer: You can control the parallel execution of Pods in a Kubernetes Job using the completions and parallelism properties 
-in the Job spec. Completions specifies the desired number of successfully finished Pods, and parallelism specifies the 
-maximum number of Pods that can run simultaneously.
-
-8) Explain How to Use a Job to Process a Work Queue in Kubernetes?
-Answer: To process a work queue using a Kubernetes Job, you create a Job that starts Pods where each Pod processes one 
-item from the queue and then exits. The Job should be configured to create as many Pods as there are items to process. 
-Ideally, the application should be designed to handle the case where multiple instances process the same item.
-
-9) How Do You Handle Job Failures and Retries in Kubernetes? 
-Answer: In Kubernetes, if a Job’s Pod fails (exits with a non-zero status), the Job will retry the Pod based on its 
-restartPolicy. The backoffLimit specifies the number of retries before marking the Job as failed. Setting an appropriate 
-backoffLimit can help manage how many times a Job should retry before being considered failed.
-
-10) Can a Kubernetes Job Update its Pod Template After Creation? 
-Answer: Once a Kubernetes Job is created, its Pod template cannot be modified. If you need to update the Pod template, 
-you have to create a new Job with the updated template. This immutability ensures that all Pods started by a Job are 
-equivalent from the perspective of the template used to start them.
-
-
-NEW SECTION - NAMESPACES.
-
-1) What are Kubernetes Namespaces and What is Their Purpose? 
-Answer: Namespaces in Kubernetes are a way to divide cluster resources between multiple users and applications. They provide 
-a scope for grouping and isolating resources such as Pods, Services, and Deployments. Namespaces are particularly useful 
-in environments with many users and teams to avoid conflicts and manage access and resources more effectively.
-
-2) How Do Namespaces Affect Resource Allocation and Isolation in Kubernetes? 
-Answer: Namespaces help in resource allocation by allowing administrators to assign resources like CPU and memory limits 
-to each namespace, ensuring fair resource distribution and preventing one namespace from consuming excessive cluster resources. 
-They also provide a level of isolation, as resources in one namespace are hidden from other namespaces, which enhances 
-security and organization.
-
-3) Can You Communicate Between Different Namespaces in Kubernetes? If Yes, How? 
-Answer: Yes, communication between different namespaces in Kubernetes is possible. By default, there are no restrictions 
-on traffic between namespaces. Services can be accessed from other namespaces using the service’s fully qualified domain 
-name (FQDN). Network policies can be implemented to control and restrict cross-namespace communication for security reasons.
-
-4) What is the Default Namespace in Kubernetes and When Would You Use it? 
-Answer: The default namespace in Kubernetes is named default. It is intended for use in environments where you don’t need 
-multiple namespaces. Resources created without specifying a namespace are placed in the default namespace. However, for 
-better organization and security, it’s recommended to create additional namespaces for different environments or projects.
-
-5) How Do You Create and Manage Namespaces in Kubernetes? 
-Answer: Namespaces in Kubernetes can be created using the 'kubectl create namespace [name]' command. Management of 
-namespaces involves applying configurations and resource quotas to them and assigning roles and permissions using 
-Role-Based Access Control (RBAC) within each namespace. Namespaces can be deleted using 'kubectl delete namespace [name]', 
-which also deletes all resources within them.
-
-6) Explain the Use of Resource Quotas in Kubernetes Namespaces?
-Answer: Resource quotas in Kubernetes namespaces are used to limit the amount of resources a namespace can consume. 
-This can include CPU and memory limits, storage quotas, and limits on the number of objects like Pods, Services, and 
-PersistentVolumeClaims. Resource quotas ensure fair use of cluster resources and prevent any single namespace from 
-exhausting cluster resources.
-
-7) What are Kubernetes Namespace Best Practices for a Large Organization? 
-Answer: In a large organization, it’s best to use namespaces to separate different teams, projects, or stages of development 
-(like dev, staging, and production). Each namespace should have resource quotas and network policies for isolation and security. 
-Additionally, use RBAC to control access to each namespace, ensuring users only have the necessary permissions.
-
-8) How Do Labels and Annotations Work with Namespaces? 
-Answer: Labels and annotations can be applied to namespaces just like other Kubernetes resources. Labels can be used to 
-organize and select subsets of namespaces for certain operations. Annotations can be used to store additional, non-identifying 
-information about the namespaces, which can be useful for tools and libraries working with Kubernetes metadata.
-
-9) Can You Migrate Resources Between Namespaces? 
-Answer: Migrating resources between namespaces is not straightforward as most Kubernetes resources are namespaced and tied 
-to their namespace. To migrate, you generally need to recreate the resource in the target namespace and delete it from 
-the original one. Persistent data and configurations need to be handled carefully during this process.
-
-10) How Does Kubernetes Handle Security Within Namespaces? 
-Answer: Kubernetes itself does not enforce strong isolation between namespaces; it’s more of an organizational tool. 
-Security within namespaces relies on implementing network policies for controlling traffic between pods and namespaces, 
-using RBAC for access control, and applying security contexts to pods and containers for privilege and access control at 
-a more granular level.
-
-
-NEW SECTION - SERVICES.
-
-1) What is a Kubernetes Service and Why is it Important?
-Answer: A Kubernetes Service is an abstract way to expose an application running on a set of Pods as a network service. 
-It provides a consistent and stable IP address, DNS name, and port and load balances the traffic among the Pods. Services 
-are crucial for managing how clients access your application, as they provide a stable interface to a dynamic set of Pods.
-
-2) Explain the Different Types of Services in Kubernetes? 
-Answer: The main types of Services in Kubernetes are:
-a) ClusterIP: Exposes the Service on an internal IP in the cluster, making it only reachable from within the cluster.
-b) NodePort: Exposes the Service on the same port of each selected Node’s IP, making it accessible from outside the cluster.
-c) LoadBalancer: Exposes the Service externally using a cloud provider’s load balancer.
-d) ExternalName: Maps the Service to an external DNS name.
-
-3) How Do Services Discover and Manage Traffic to Pods? 
-Answer: Services discover Pods using label selectors. When you define a Service, you specify a set of labels that match 
-a group of Pods. The Service routes traffic to these Pods using a round-robin algorithm by default. As Pods are created 
-or destroyed, the Service automatically updates the group of Pods it targets.
-
-4) What is the Role of Endpoints in Kubernetes Services? 
-Answer: Endpoints in Kubernetes Services are objects that keep track of IP addresses and ports of Pods that match the 
-Service’s selector. They are automatically managed by the Kubernetes control plane. When the Pods in a Service change, 
-the Endpoints object is automatically updated to reflect these changes.
-
-5) How Does a NodePort Service Work and When Would You Use it? 
-Answer: A NodePort Service exposes the Service on each Node’s IP at a static port. When a client sends a request to a 
-Node’s IP and NodePort, the request is forwarded to one of the Service’s Pods. NodePort is typically used when you want 
-to make a Service accessible from outside the Kubernetes cluster, but do not have a LoadBalancer.
-
-6) What is a LoadBalancer Service and How is it Different from NodePort and ClusterIP?
-Answer: A LoadBalancer Service exposes the Service externally using a cloud provider’s load balancer. It assigns a fixed, 
-external IP address to the Service. Unlike NodePort, which exposes the Service on a port across all Nodes, LoadBalancer 
-provides a single point of access. ClusterIP, on the other hand, only exposes the Service internally in the cluster.
-
-7) How Do You Secure a Service in Kubernetes? 
-Answer: To secure a Service in Kubernetes, you can:
-a) Use Network Policies to restrict access to the Service.
-b) Implement TLS/SSL for encrypted traffic to and from the Service.
-c) Use authentication and authorization mechanisms for the clients accessing the Service.
-
-8) Can You Update a Kubernetes Service Without Downtime? How? 
-Answer: Yes, you can update certain aspects of a Kubernetes Service without downtime, such as updating labels or annotations. 
-However, changing the Service type or ports can lead to downtime. For zero-downtime updates, you may need to create a new 
-Service and gradually switch traffic to it.
-
-9) Explain Headless Services in Kubernetes?
-Answer: A headless Service in Kubernetes is a Service with no cluster IP. It is used for services that require direct access 
-to individual Pods. With headless Services, you can use DNS to discover addresses for individual Pods.
-
-10) How Do Services Work with StatefulSets in Kubernetes? 
-Answer: Services are often used with StatefulSets to provide a stable network identity to each pod in the set. Each pod 
-in a StatefulSet gets a stable DNS name, managed by the Service, which is crucial for stateful applications like databases 
-that rely on stable network identifiers for each replica.
-
-
-NEW SECTION - PROBES.
-
-1) What are Probes in Kubernetes? 
-Answer: Probes are diagnostic tools used by Kubernetes to determine the health of a container within a pod. They perform 
-checks to ensure containers are running as expected. Kubernetes uses this information to make decisions about the pod, 
-like restarting a container that's failing or stopping traffic to a container that's not ready to accept requests.
-
-2) Explain the Difference Between Liveness and Readiness Probes?
-Answer: Liveness probes determine if a container is running and healthy. If a liveness probe fails, Kubernetes restarts 
-the container. Readiness probes determine if a container is ready to serve requests. If a readiness probe fails, Kubernetes 
-stops routing traffic to the pod until it passes the readiness check. Liveness probes ensure reliability, while readiness 
-probes ensure smooth traffic management.
-
-3) How Does a Startup Probe Work in Kubernetes? 
-Answer: A startup probe is used to indicate whether an application within a container has started. It’s useful for 
-applications that have a slow startup time. Until the startup probe succeeds, the liveness and readiness checks are disabled. 
-This prevents the application from being killed if it takes a long time to start.
-
-4) What Types of Probes are Available in Kubernetes? 
-Answer: Kubernetes supports three types of probes:
-a) HTTP GET: Makes an HTTP GET request to the container’s IP address on a specified port and path.
-b) TCP Socket: Tries to establish a TCP connection to the specified port of the container.
-c) Exec: Executes a specified command inside the container. Success is determined by the command's exit status.
-
-5) How Do You Configure Probes in a Kubernetes Pod? 
-Answer: Probes are configured in the pod’s specification. For each probe (liveness, readiness, startup), you define the 
-type of probe (HTTP GET, TCP Socket, Exec), along with parameters such as initialDelaySeconds, periodSeconds, timeoutSeconds, 
-successThreshold, and failureThreshold.
-
-6) Can Probes Affect the Performance of a Pod?
-Answer: Yes, probes can affect the performance of a pod, especially if they are configured with aggressive checking 
-intervals (periodSeconds). This can lead to increased resource usage and network traffic. It's important to balance the 
-need for timely health checks with the potential performance impact.
-
-7) What is the Importance of initialDelaySeconds in a Probe Configuration? 
-Answer: initialDelaySeconds is the time to wait before the first probe is initiated. This is important for applications 
-that require some time to start up before they can serve traffic or before their health can be reliably checked. Setting 
-this correctly prevents unnecessary restarts for slow-starting containers.
-
-8) How Does Kubernetes React to Failing Liveness Probes? 
-Answer: If a liveness probe fails, Kubernetes will restart the container. The failureThreshold parameter determines how 
-many times the probe must fail before Kubernetes takes action. This mechanism ensures that containers that are no longer 
-healthy can be restarted to try to restore normal operation.
-
-9) In What Scenarios Should You Avoid Using Liveness Probes? 
-Answer: You should avoid using liveness probes in scenarios where temporary issues such as short-lived spikes in resource 
-usage, transient network issues, or short-term dependencies on external services would cause the probe to fail. In such 
-cases, using a liveness probe can lead to unnecessary restarts and instability.
-
-10) How Do Readiness Probes Affect Load Balancing in Kubernetes? 
-Answer: Readiness probes affect load balancing by informing the kube-proxy and the ingress controller about whether a pod 
-is ready to receive traffic. If a readiness probe fails, Kubernetes marks the pod as not ready, and it won't receive 
-traffic from services or ingress controllers. This ensures that traffic is only sent to pods that are fully started and 
-ready to handle requests.
-
-
-NEW SECTION - HELM.
-
-1) What is Helm in Kubernetes, and what are its main components?
-Answer: Helm is a package manager for Kubernetes, which simplifies the deployment and management of applications on 
-Kubernetes clusters. Its main components are the Helm Client and the Tiller Server (in Helm 2; Helm 3 is tiller-less). 
-Helm 3 introduces improvements like better security, simplified client-only architecture, and enhanced chart management. 
-Charts, Helm's packaging format, describe a set of Kubernetes resources and configurations.
-
-2) How does Helm 3 improve upon Helm 2? 
-Answer: Helm 3 introduced significant changes: removal of Tiller (improving security), a new three-way strategic merge 
-patch, simplified chart dependencies management, better namespace handling, and JSON schema chart value validation. 
-These enhancements streamline user experience and increase security and reliability.
-
-3) What are Helm Charts and how are they useful? 
-Answer: Helm Charts are packages in Helm that contain all the necessary files and configurations to deploy an application, 
-tool, or service inside a Kubernetes cluster. They promote reusability and can encapsulate complex Kubernetes resources, 
-making it easier to share and deploy applications.
-
-4) Can you explain Chart Hooks in Helm? 
-Answer: Chart Hooks are a powerful feature in Helm that allow chart developers to add lifecycle events to their charts. 
-These events (hooks) can perform operations at different stages of the chart installation, upgrade, or deletion process, 
-such as database migrations or cleanup operations.
-
-5) How do you manage dependencies in Helm 3? 
-Answer: Helm 3 manages dependencies through the dependencies field in the 'Chart.yaml' file. You can list all dependent 
-charts and their versions here. Helm 3 simplifies dependency management by removing the need for a separate 'requirements.yaml' 
-file and allowing you to place dependencies directly in the charts/ directory or dynamically link them using the 'Chart.yaml'.
-
-6) What is a Helm Repository and how do you use it?
-Answer: A Helm Repository is a location where packaged charts can be stored and shared. It's essentially a collection of 
-'index.yaml' files that reference the chart versions. You can add repositories to your Helm installation, search them 
-for charts, and install charts from them into your Kubernetes cluster.
-
-7) How do you update a Helm Chart in a cluster? 
-Answer: To update a Helm Chart in a cluster, you use the helm upgrade command. This command takes the release name and 
-the new chart or new chart version and updates the existing deployment, respecting any modifications to configurations. 
-It’s an atomic operation that allows rollbacks in case of failures.
-
-8) What is Helm Rollback and how does it work? 
-Answer: Helm Rollback is used to revert a chart to its previous version. If a Helm upgrade fails or the application has 
-issues, you can use 'helm rollback [RELEASE] [REVISION]' to revert to a previous known stable state of your application.
-
-9) Explain the process of creating a custom Helm Chart. 
-Answer: Creating a custom Helm Chart involves several steps:
-a) Initialize a new chart with 'helm create [chart name]'.
-b) Edit the 'Chart.yaml' file and define metadata.
-c) Modify default templates or add new Kubernetes object templates in the templates/ directory.
-d) Define default configuration values in 'values.yaml'.
-e) Optionally, add chart dependencies and custom hooks.
-f) Package the chart with 'helm package [chart directory]'.
-g) Test the chart with 'helm install --dry-run --debug'.
-
-10) How does Helm handle release management in Kubernetes? 
-Answer: Helm manages Kubernetes application releases through Helm Charts. Each time a chart is installed, upgraded, 
-or deleted, a new release is created. Helm tracks and manages these releases, allowing for features like rollbacks, 
-revisions tracking, and release customization. It provides a higher-level abstraction for managing Kubernetes resources 
-and simplifies complex deployment scenarios.
-
-
-NEW SECTION - DEPLOYMENT PATTERNS.
-
-1) What is a Kubernetes Deployment and How Does it Work? 
-Answer: A Kubernetes Deployment is an API object that manages the creation and updating of ReplicaSets and Pods. 
-It allows you to describe an application’s life cycle, such as which images to use for the app, the number of pods, 
-and the way to update them, among other aspects. Deployments use a ReplicaSet to manage the pods. When you update a 
-Deployment, it triggers a rollout, which creates a new ReplicaSet and scales it up, while scaling down the old one.
-
-2) Explain Blue/Green Deployment Pattern in Kubernetes? 
-Answer: Blue/Green deployment is a technique that reduces downtime and risk by running two identical environments, only 
-one of which (Blue) serves live production traffic. For a new release, the new version (Green) is deployed alongside 
-the Blue. After testing the Green environment, traffic is switched over. If issues arise, traffic can be switched back 
-to Blue. Kubernetes facilitates this pattern through services that redirect network traffic to different deployments.
-
-3) Describe the Canary Deployment Pattern in Kubernetes? 
-Answer: Canary deployment involves rolling out a new version of an application gradually to a subset of users to ensure 
-stability before a full rollout. In Kubernetes, this can be achieved by deploying a new version of the application 
-(canary version) and slowly routing a small percentage of traffic to it. Based on the feedback and performance, the traffic 
-is gradually increased until the canary version is serving all the traffic.
-
-4) What is a Rolling Update in Kubernetes, and How is it Performed? 
-Answer: A Rolling Update is the default strategy to update the running version of your app in Kubernetes. It gradually 
-replaces instances of the old version of an application with the new one. This is managed by the Deployment controller in 
-Kubernetes. It ensures that only a certain number of pods are taken down and new ones are brought up simultaneously, 
-thus maintaining application availability.
-
-5) How Do You Implement A/B Testing in Kubernetes? 
-Answer: A/B testing in Kubernetes involves deploying two versions of an application (A and B), then directing a certain 
-percentage of user traffic to version B while the rest continue to use version A. This is often implemented using advanced 
-routing capabilities provided by an ingress controller or a service mesh like Istio, which allows you to route requests 
-based on different criteria.
-
-6) What is a StatefulSet in Kubernetes and How is it Different from a Deployment?
-Answer: StatefulSet is a Kubernetes workload API object used for managing stateful applications. It is similar to a Deployment 
-in that it manages Pods that are based on an identical container spec. However, unlike a Deployment, a StatefulSet maintains 
-a sticky identity for each of their Pods. These pods are created from the same spec, but are not interchangeable: each 
-has a persistent identifier that it maintains across any rescheduling.
-
-7) Explain the Shadow Deployment Pattern in Kubernetes. 
-Answer: Shadow deployment is a pattern where the incoming traffic is duplicated and sent to both the old and new versions 
-of the application. The new version (shadow) processes the traffic in parallel without affecting the real user responses. 
-This allows you to observe the behavior of the new version under real-world conditions without any risk to the actual 
-application. Kubernetes can implement this pattern with service meshes like Istio or Linkerd.
-
-8) What are Kubernetes Jobs and CronJobs? 
-Answer: Kubernetes Jobs are a way to run a workload (pod) that does not require a persistent identity or long-term storage. 
-It creates one or more pods and ensures that a specified number of them successfully terminate. CronJobs, on the other hand, 
-are similar to Jobs but allow you to schedule the execution of jobs at specific times or intervals. They are useful for 
-tasks like backups, report generation, and other periodic tasks.
-
-9) How Does Kubernetes Handle Rolling Back a Deployment? 
-Answer: Kubernetes allows you to roll back to an earlier deployment revision if the current state is not stable. This is 
-achieved using the kubectl rollout undo command. Kubernetes keeps a history of changes made to a Deployment, and when a 
-rollback is triggered, it refers to this history and updates the Deployment to a previous version.
-
-10) What is the Declarative Approach in Kubernetes Deployments? 
-Answer: The declarative approach in Kubernetes involves defining the desired state of the application in YAML or JSON 
-configuration files, and then using Kubernetes to achieve that state. Rather than specifying a series of steps to be 
-executed, you specify the desired state and let Kubernetes handle the process to achieve that state. This approach is 
-central to Kubernetes and allows for greater scalability and ease of management.
-
-
-NEW SECTION - AUTOSCALING.
-
-1) What is Autoscaling in Kubernetes and Why is it Important?
-Answer: Autoscaling in Kubernetes refers to the automatic adjustment of the number of Pods or nodes in a Kubernetes cluster, 
-based on the workload's demands. This is crucial for efficiently managing resources, ensuring application performance, 
-and reducing costs. Autoscaling helps in handling traffic spikes and reducing resources during low usage.
-
-2) Explain Horizontal Pod Autoscaling (HPA) in Kubernetes?
-Answer: Horizontal Pod Autoscaling (HPA) automatically scales the number of Pods in a deployment, replica set, or stateful 
-set based on observed CPU utilization or other select metrics. HPA adjusts the number of Pods in a replication controller, 
-deployment, or replica set based on observed CPU utilization or, with custom metrics support, other metrics.
-
-3) What is Vertical Pod Autoscaler (VPA) and How Does it Work? 
-Answer: Vertical Pod Autoscaler (VPA) automatically adjusts the CPU and memory reservations for Pods in a Kubernetes 
-cluster. It increases or decreases the CPU and memory limits and requests based on the usage. This helps in optimizing 
-the resources needed for the Pods and is particularly useful for workloads where the resource requirement changes over time.
-
-4) How Does Cluster Autoscaler Work in Kubernetes? 
-Answer: Cluster Autoscaler automatically adjusts the size of a Kubernetes cluster by adding or removing nodes based on 
-the demands of the workloads. It monitors the availability of Pods and node usage, and it scales nodes up when there are 
-pods that fail to run due to resource constraints, and scales down underutilized nodes to optimize costs.
-
-5) Discuss the Role of Metrics Server in Kubernetes Autoscaling? 
-Answer: The Metrics Server in Kubernetes collects resource usage data, like CPU and memory, from each node and Pod in 
-the cluster. This data is then used by components like Horizontal Pod Autoscaler (HPA) and Vertical Pod Autoscaler (VPA) 
-to make decisions about scaling. It’s a cluster-wide aggregator of resource usage data.
-
-6) What are Custom and External Metrics in Kubernetes Autoscaling?
-Answer: Custom metrics are user-defined metrics from within the cluster, and external metrics are metrics that are external 
-to the cluster. Both can be used with Horizontal Pod Autoscaler (HPA) to scale workloads based on complex metrics like 
-the number of requests per second, queue length, or other application-specific metrics, instead of just CPU and memory usage.
-
-7) How Do You Configure Autoscaling in Kubernetes? 
-Answer: Autoscaling in Kubernetes is configured using the HPA or VPA resource. You define the target resource (like Deployment), 
-the metrics to be used for scaling (like CPU utilization), and the minimum and maximum number of Pods. For Cluster Autoscaler, 
-it involves setting up the cluster with specific cloud provider capabilities and setting parameters for when to add or remove nodes.
-
-8) Explain the Difference Between Horizontal and Vertical Scaling?
-Answer: Horizontal scaling (scaling out/in) refers to adding or removing instances of Pods to change the amount of 
-handling capacity. Vertical scaling (scaling up/down), on the other hand, means adding more resources (CPU, memory) to 
-existing Pods. Horizontal scaling is about changing the number of components, while vertical scaling is about changing 
-the size of each component.
-
-9) Can Kubernetes Autoscaling Work with Stateful Applications? 
-Answer: While Kubernetes autoscaling is generally more suited for stateless applications, it can also work with stateful 
-applications. However, this requires careful management to ensure that the scaling actions do not disrupt the stateful 
-nature of the application, such as persistent storage requirements, session management, etc.
-
-10) What Factors Should Be Considered When Setting Up Autoscaling? 
-Answer: When setting up autoscaling, it’s important to consider factors like the type of workload (stateful or stateless), 
-the metrics to be used for scaling decisions, minimum and maximum thresholds for scaling, the responsiveness of the 
-application to scaling actions, and the impact on costs. It's also crucial to monitor and tweak the autoscaling setup to 
-align with the actual workload patterns.
-
-
-NEW SECTION - SECURITY.
-
-1) What are Kubernetes Namespaces and How Do They Relate to Security?
-Answer: Kubernetes namespaces are a way to divide cluster resources between multiple users. From a security perspective, 
-they provide a logical separation of cluster resources, allowing for the implementation of policies, limits, and permissions 
-on a per-namespace basis. This helps in creating a multi-tenant environment with controlled access to resources.
-
-2) Explain Role-Based Access Control (RBAC) in Kubernetes?
-Answer: RBAC in Kubernetes is a method of regulating access to resources based on the roles of individual users within an 
-organization. It allows administrators to define roles with specific permissions (like read, write, delete) and bind these 
-roles to users, groups, or service accounts. RBAC ensures that users have access only to the resources they need, 
-following the principle of least privilege.
-
-3) What is a Pod Security Policy (PSP) in Kubernetes? 
-Answer: A Pod Security Policy is a cluster-level resource that controls security-sensitive aspects of the pod specification. 
-PSPs define a set of conditions that a pod must run with to be accepted into the system, including privileges, access to 
-host resources, and other security-related aspects. They are crucial for maintaining a secure Kubernetes environment.
-
-4) How Do Network Policies Work in Kubernetes? 
-Answer: Network policies in Kubernetes enable the definition of rules about which pods can communicate with each other 
-and other network endpoints. They are used to isolate and control the flow of traffic between pods and external services, 
-thereby enhancing the security of the Kubernetes cluster.
-
-5) What is the Importance of Secrets Management in Kubernetes? 
-Answer: Secrets management in Kubernetes involves securely storing and managing sensitive information like passwords, 
-OAuth tokens, and SSH keys. Using Kubernetes Secrets, you can control and securely distribute these sensitive data to 
-the applications running in the cluster, without exposing them in your application's code or configuration files.
-
-6) How Does Kubernetes Certificate Management Work?
-Answer: Kubernetes manages TLS certificates for various components to ensure secure communication within the cluster. 
-The Kubernetes Certificate Authority (CA) issues certificates for nodes, API server, and other components. Administrators 
-can also manage and rotate these certificates, ensuring that the communication remains secure and that the certificates 
-are always valid.
-
-7) Discuss the Best Practices for Kubernetes Security? 
-Answer: Best practices for Kubernetes security include using RBAC for access control, limiting resource permissions using 
-namespaces, securing cluster networking with network policies, using Pod Security Policies, regularly updating and patching 
-Kubernetes, using secure communication channels, and implementing a strong secrets management strategy. Regular security 
-audits and adherence to security benchmarks like CIS Kubernetes Benchmark are also crucial.
-
-8) What is the Role of Container Image Security in Kubernetes? 
-Answer: Container image security in Kubernetes involves ensuring that the container images used in the cluster are free 
-from vulnerabilities. This includes scanning images for vulnerabilities, signing images to ensure their integrity, using 
-trusted image registries, and implementing policies to only allow images that meet certain security standards.
-
-9) How Do You Implement Logging and Monitoring for Security in Kubernetes? 
-Answer: Implementing logging and monitoring in Kubernetes involves collecting and analyzing logs from various components 
-like the Kubernetes API server, nodes, and containers to detect and respond to security incidents. Tools like ELK Stack 
-(Elasticsearch, Logstash, Kibana) or Prometheus and Grafana are commonly used for this purpose.
-
-10) Explain the Importance of Compliance and Security Auditing in Kubernetes. 
-Answer: Compliance and security auditing in Kubernetes involves regularly evaluating the cluster and its components against 
-security standards and best practices. This helps in identifying and mitigating security risks, ensuring compliance with 
-industry standards and regulations, and maintaining the overall security posture of the Kubernetes environment.
-
-
-NEW SECTION - MONITORING AND LOGGING.
-
-1) What is the Importance of Monitoring and Logging in Kubernetes?
-Answer: Monitoring and logging in Kubernetes are critical for maintaining the health, performance, and security of applications 
-and the Kubernetes cluster itself. Monitoring helps in tracking the performance metrics and health of pods, nodes, and other resources, 
-enabling proactive troubleshooting and optimization. Logging provides insight into the behavior and output of applications and 
-Kubernetes components, helping in debugging and auditing.
-
-2) Explain the Key Metrics to Monitor in a Kubernetes Cluster? 
-Answer: Key metrics to monitor in a Kubernetes cluster include resource utilization (CPU, memory, disk, network), pod status, 
-node health, deployment status, API server metrics, and error rates. Monitoring these metrics helps in ensuring the cluster 
-is performing optimally and that applications are running reliably.
-
-3) What Tools are Commonly Used for Monitoring Kubernetes Clusters? 
-Answer: Common tools for monitoring Kubernetes include Prometheus for metric collection and alerting, Grafana for data visualization, 
-cAdvisor for container monitoring, and Kubernetes built-in monitoring tools like Metrics Server. These tools help in collecting, 
-analyzing, and visualizing performance data from the Kubernetes cluster.
-
-4) How Does Prometheus Work in a Kubernetes Environment?
-Answer: Prometheus collects and stores metrics as time series data. In a Kubernetes environment, it scrapes metrics from 
-configured endpoints, like the metrics exposed by Kubernetes nodes and pods. Prometheus uses a powerful query language 
-(PromQL) for data processing and supports alerting rules to notify on specific conditions.
-
-5) What are DaemonSets and How are They Used in Monitoring? 
-Answer: DaemonSets are used in Kubernetes to ensure that a copy of a pod runs on all (or some) nodes in the cluster. 
-In monitoring, DaemonSets are often used to deploy node-level monitoring agents, such as log collectors or resource usage 
-monitors, ensuring that monitoring is consistent across the entire cluster.
-
-6) Describe the Role of Grafana in Kubernetes Monitoring? 
-Answer: Grafana is an open-source platform for monitoring and observability, used extensively with Kubernetes. It allows 
-you to query, visualize, alert on, and understand your metrics. Grafana is often used in conjunction with Prometheus to 
-create comprehensive dashboards that provide visual insights into the performance and health of Kubernetes clusters.
-
-7) How is Logging Implemented in Kubernetes? 
-Answer: Logging in Kubernetes is typically implemented using a combination of logging agents, storage backends, 
-and visualization tools. Common practices include using fluentd or Logstash as log forwarding agents, Elasticsearch as 
-a storage backend, and Kibana for log data visualization. Logs can be collected at the node level, pod level, and application level.
-
-8) What is the EFK Stack and How is it Used in Kubernetes? 
-Answer: The EFK stack, consisting of Elasticsearch, Fluentd, and Kibana, is a popular logging stack used in Kubernetes. 
-Elasticsearch is a search and analytics engine, Fluentd is a log collector and shipper, and Kibana is a visualization tool. 
-This stack is used for efficiently aggregating, storing, and visualizing logs from across the Kubernetes cluster.
-
-9) Explain How Kubernetes Events are Useful for Monitoring? 
-Answer: Kubernetes events are objects that provide insight into what is happening inside a cluster, such as what decisions 
-were made by the scheduler, why some pods were evicted from the node, or why some pods are not healthy. Monitoring these 
-events helps in understanding the state changes in the cluster and can be critical for troubleshooting issues.
-
-10) Discuss Best Practices for Effective Monitoring and Logging in Kubernetes. 
-Answer: Best practices include setting up comprehensive and meaningful alerts, creating dashboards for visualizing key 
-metrics, logging at an appropriate level (not too verbose or too sparse), ensuring logs are structured and centralized, 
-monitoring cluster-level and application-level metrics, and regularly reviewing and updating the monitoring and logging 
-setup to adapt to changes in the cluster and applications.
-
-
-NEW SECTION - RESOURCE MANAGEMENT.
-
-1) What is Resource Management in Kubernetes and Why is it Important?
-Answer: Resource management in Kubernetes involves allocating and managing computational resources like CPU and memory 
-for Pods and containers. It's essential for ensuring efficient use of hardware resources, maintaining application performance, 
-and avoiding resource contention between applications. Proper resource management helps in maximizing the efficiency and 
-stability of both applications and the Kubernetes cluster.
-
-2) How Do You Specify Resource Requests and Limits in Kubernetes? 
-Answer: Resource requests and limits are specified in the Pod specification. A request is the amount of that resource that 
-Kubernetes guarantees to a Pod, while a limit is the maximum amount that a Pod is allowed to use. If a Pod exceeds its 
-resource limit, it can be terminated or throttled depending on the resource type. Setting these values correctly is crucial 
-for reliable and efficient operation of both the applications and the cluster.
-
-3) Explain the Concept of Quality of Service (QoS) in Kubernetes? 
-Answer: Kubernetes uses Quality of Service (QoS) classes to make decisions about scheduling and evicting Pods. There are 
-three QoS classes: Guaranteed, Burstable, and BestEffort. 'Guaranteed' Pods are given the highest priority and are the 
-last to be evicted in resource shortage scenarios, 'Burstable' Pods have some minimum resources guaranteed but can use 
-more if available, and 'BestEffort' Pods have no guarantee of resources and are the first ones to be evicted.
-
-4) What is the Role of the Scheduler in Kubernetes Resource Management? 
-Answer: The Kubernetes Scheduler is responsible for assigning Pods to nodes. It makes these decisions based on resource 
-availability, resource requests and limits of Pods, affinity/anti-affinity rules, taints and tolerations, and other 
-scheduling criteria. The Scheduler ensures that each Pod is placed on a node that has sufficient resources to meet its needs.
-
-5) How Do Kubernetes LimitRanges Work? 
-Answer: LimitRanges are a policy to constrain resource allocations (CPU and memory) in a namespace. They can set default 
-and maximum values for resources per Pod or container, and ensure that resource claims by Pods fall within the defined range. 
-LimitRanges help in managing resource consumption in multi-tenant environments and prevent overuse of resources by a 
-single namespace or application.
-
-6) Describe Node Affinity in Kubernetes?
-Answer: Node Affinity in Kubernetes is a set of rules used by the scheduler to determine on which node a Pod can be placed. 
-It allows you to constrain which nodes your Pod is eligible to be scheduled based on labels on nodes. For example, you can
-ensure that a Pod runs on a node with a specific CPU or memory configuration, or in a specific geographic location.
-
-7) What is a Resource Quota in Kubernetes? 
-Answer: Resource Quotas are a tool in Kubernetes that enable administrators to limit the aggregate resource consumption 
-in a namespace. They can set hard limits on things like the total amount of memory or CPU that can be used by all Pods 
-in a namespace, the number of Pods, Services, or PersistentVolumeClaims in a namespace, and more. This is particularly 
-useful in multi-tenant clusters to prevent any single tenant from monopolizing cluster resources.
-
-8) How Does Kubernetes Handle Resource Overcommitment? 
-Answer: Kubernetes allows overcommitting resources to maximize resource utilization. Overcommitment means scheduling more 
-Pods on a node than the resources it actually has, based on the assumption that not all Pods will use their allocated 
-resources all the time. However, if resource demand exceeds the actual available resources, Kubernetes relies on QoS 
-classes and resource limits to determine which Pods to throttle or evict.
-
-9) What are Taints and Tolerations, and How Do They Affect Resource Management? 
-Answer: Taints and Tolerations are a mechanism in Kubernetes that allows a node to repel a set of Pods. Taints are applied 
-to nodes, and Tolerations are applied to Pods. Taints and Tolerations work together to ensure that Pods are not scheduled 
-onto inappropriate nodes. This can be used as part of resource management to ensure that certain nodes are reserved for 
-specific types of workloads based on their resource needs.
-
-10) Discuss the Use of Horizontal Pod Autoscalers in Managing Resources? 
-Answer: Horizontal Pod Autoscalers (HPA) automatically scale the number of Pods in a deployment, replica set, or stateful 
-set based on observed CPU utilization or other custom metrics. HPAs help in managing resources by automatically adjusting 
-the number of Pods to match the current load, thus ensuring that the application has the necessary resources while avoiding 
-over-provisioning.
-
-
-NEW SECTION - RBAC.
-
-1) What is RBAC in Kubernetes and Why is it Important?
-Answer: RBAC (Role-Based Access Control) in Kubernetes is a method for regulating access to Kubernetes API resources based 
-on the roles of individual users or processes. It's important because it allows fine-grained control over who can access 
-and perform actions on different resources in the cluster, enhancing security and minimizing the risk of unauthorized access.
-
-2) Explain Roles and RoleBindings in Kubernetes RBAC? 
-Answer: In Kubernetes RBAC, a Role is a set of permissions that apply to a specific namespace. It defines what actions 
-a user, group, or service account can perform (like read, create, edit, delete) on various resources. A RoleBinding grants 
-the permissions defined in a Role to a user, group, or service account. RoleBindings apply within a specific namespace.
-
-3) What are ClusterRoles and ClusterRoleBindings? 
-Answer: ClusterRoles and ClusterRoleBindings are similar to Roles and RoleBindings but apply cluster-wide. A ClusterRole 
-can be used to grant permissions across the entire cluster or on specific resources that are not namespaced (like nodes). 
-A ClusterRoleBinding grants the permissions defined in a ClusterRole to users, groups, or service accounts across the entire cluster.
-
-4) How Do You Create and Manage RBAC Policies in Kubernetes? 
-Answer: RBAC policies in Kubernetes are created and managed using YAML or JSON files that define Roles, RoleBindings, 
-ClusterRoles, and ClusterRoleBindings. These files are applied to the cluster using kubectl apply. Administrators can 
-create custom roles or use pre-defined roles provided by Kubernetes. Managing RBAC also involves regularly reviewing and 
-updating roles and bindings as necessary.
-
-5) Discuss the Principle of the Least Privilege in the Context of Kubernetes RBAC? 
-Answer: The principle of least privilege is a security practice that recommends providing users only the access necessary 
-to perform their job. In Kubernetes RBAC, this principle means assigning users, groups, or service accounts only the roles 
-that grant them the minimum necessary permissions. This reduces the potential impact of errors or security breaches.
-
-6) What is the Default RBAC Policy in a New Kubernetes Cluster?
-Answer: In a new Kubernetes cluster, RBAC is typically enabled by default. However, the default RBAC policy may vary depending 
-on how the cluster is set up. Generally, system roles and bindings are created for critical components and users, but no 
-additional user-specific roles or bindings are set up by default.
-
-7) How Do Namespaces Affect RBAC in Kubernetes? 
-Answer: Namespaces provide a scope for RBAC Roles and RoleBindings. A Role or RoleBinding is namespace-specific, meaning 
-it only grants access to resources within the same namespace. ClusterRoles and ClusterRoleBindings, however, are not limited 
-by namespaces and apply to the entire cluster.
-
-8) Explain the Use of Service Accounts with RBAC. 
-Answer: Service accounts in Kubernetes are used to provide an identity for processes that run in a Pod. In RBAC, service 
-accounts can be assigned roles or cluster roles, granting them specific permissions. This is particularly useful for giving 
-the right level of access to applications or services running within the cluster.
-
-9) Can You Extend or Customize Kubernetes RBAC? 
-Answer: Kubernetes RBAC can be extended and customized by creating custom roles and role bindings. Administrators can 
-define custom roles with specific permissions tailored to their organization's needs. However, the overall structure and 
-functionality of RBAC cannot be altered as it is a core part of Kubernetes architecture.
-
-10) What are Common Challenges in Managing Kubernetes RBAC? 
-Answer: Common challenges in managing Kubernetes RBAC include complexity in large-scale environments, ensuring the 
-principle of least privilege is followed, keeping RBAC policies up-to-date with changing requirements, and auditing and 
-compliance tracking. To address these challenges, organizations often use RBAC management tools and implement strict 
-policies for role definitions and assignments.
-
-
-NEW SECTION - STORAGE AND VOLUMES.
-
-1) What are Volumes in Kubernetes and Why are They Important?
-Answer: Volumes in Kubernetes are used for storing data and state across container restarts within the same pod. 
-They are important because containers are ephemeral and typically have a filesystem that does not persist beyond the 
-container’s lifecycle. Kubernetes volumes support many storage backends and help in keeping data persistent, sharing data 
-between containers in a pod, and storing configuration or secrets.
-
-2) Explain the Different Types of Volumes in Kubernetes?
-Answer: Kubernetes supports several types of volumes, like:
-a) emptyDir: A simple empty directory used for storing transient data.
-b) hostPath: Used for mounting directories from the host node’s filesystem.
-c) nfs: A NFS (Network File System) mounted into the pod.
-d) persistentVolumeClaim: A reference to a Persistent Volume used for persistent storage.
-e) configMap, secret, downwardAPI: Special types of volumes used for exposing certain Kubernetes resources and cluster 
-information to the pod.
-
-3) What is a Persistent Volume (PV) and a Persistent Volume Claim (PVC) in Kubernetes? 
-Answer: A Persistent Volume (PV) is a piece of storage in the cluster that has been provisioned by an administrator or 
-dynamically provisioned using Storage Classes. A Persistent Volume Claim (PVC) is a request for storage by a user. 
-It specifies size, and access modes, and is matched with a PV. PVs and PVCs support volumes that persist beyond the 
-lifecycle of individual pods.
-
-4) How Does Kubernetes Handle Dynamic Volume Provisioning? 
-Answer: Dynamic volume provisioning allows storage volumes to be created on-demand. This is done using StorageClasses, 
-which are templates describing how a volume should be created. When a PVC is created and requests a specific StorageClass, 
-a new volume is created according to the template and bound to the PVC.
-
-5) What are StorageClasses in Kubernetes? How Do They Work? 
-Answer: StorageClasses in Kubernetes provide a way to describe different “classes” of storage. They allow administrators 
-to define various types of storage (like SSDs, HDDs, or network storage) with different characteristics and let users 
-select a storage class through PVCs. The StorageClass defines the provisioner, parameters, and reclaimPolicy.
-
-6) Can You Explain How to Share Data Between Containers in a Pod?
-Answer: Data can be shared between containers within the same pod using volumes. A common type of volume for this purpose 
-is emptyDir. An emptyDir volume is created when a pod is assigned to a node and exists as long as that pod is running. 
-Containers in the pod can read and write the same files in the emptyDir volume.
-
-7) How Do You Configure a Pod to Use a PVC? 
-Answer: To configure a pod to use a PVC, you must specify the PVC in the pod’s manifest file. The PVC is mounted as a 
-volume inside the container. In the pod definition, you reference the PVC by name under the volumes section, and then 
-specify the mount path within the container under the volumeMounts section.
-
-8) What is a Reclaim Policy in Kubernetes Storage? 
-Answer: A Reclaim Policy in Kubernetes determines what happens to a Persistent Volume when the PVC is released. The options 
-are Retain (keeping the data and volume intact), Delete (deleting both the PV and the associated storage in the backend), 
-and Recycle (deprecated, which removes data and makes the volume available again for a new claim).
-
-9) Discuss Access Modes in Kubernetes Storage. 
-Answer: Access modes in Kubernetes define how a Persistent Volume can be accessed from a node. The primary access modes 
-are ReadWriteOnce (volume can be mounted as read-write by a single node), ReadOnlyMany (volume can be mounted as read-only 
-by many nodes), and ReadWriteMany (volume can be mounted as read-write by many nodes).
-
-10) How Does Kubernetes Ensure Data Persistence Across Pod Rescheduling? 
-Answer: Kubernetes ensures data persistence across pod rescheduling through Persistent Volumes (PVs). A PV exists 
-independently of pod lifecycle, so when a pod is deleted or rescheduled to another node, the data in the PV persists. 
-The PVC ensures that when the pod is rescheduled or recreated, it can reattach to its data stored in the PV.
-
-
-NEW SECTION - SCHEDULING.
-
-1) What is the Role of the Scheduler in Kubernetes?
-Answer: The Kubernetes Scheduler is responsible for assigning newly created or unscheduled pods to nodes in the cluster. 
-It makes this decision based on several factors such as resource requirements, hardware/software/policy constraints, 
-affinity and anti-affinity specifications, data locality, and inter-workload interference.
-
-2) How Does Kubernetes Scheduler Ensure Pod Placement According to Resource Requirements? 
-Answer: The Kubernetes Scheduler matches resource requirements like CPU and memory specified in the Pod spec against the 
-available resources on nodes. It ensures that a Pod is scheduled on a node only if the node has sufficient available 
-resources to meet the Pod's requirements.
-
-3) What are Taints and Tolerations in Kubernetes, and How Do They Affect Scheduling? 
-Answer: Taints and tolerations work together to ensure that Pods are not scheduled onto inappropriate nodes. A taint is 
-applied to a node and marks it to repel a set of Pods, unless those Pods tolerate the taint. Tolerations are applied to 
-Pods and allow (but do not require) the Pods to schedule onto nodes with matching taints.
-
-4) Explain Node Affinity and Anti-affinity in Kubernetes? 
-Answer: Node affinity and anti-affinity are rules used by the scheduler to place Pods on nodes based on labels on the nodes. 
-Affinity rules attract Pods to nodes with specific labels, while anti-affinity rules repel Pods from nodes with specific labels. 
-This is used to ensure that Pods are scheduled according to business, security, or compliance requirements.
-
-5) How Can You Influence Pod Scheduling Decisions Apart from Using Taints, Tolerations, and Affinity? 
-Answer: Apart from taints, tolerations, and affinity, you can influence scheduling decisions using:
-a) Node Selectors: Simple way to constrain Pods to nodes with specific labels.
-b) Resource Limits and Requests: Defining resource requirements in Pod specifications.
-c) Pod Priority and Preemption: Assigning priority to Pods and allowing higher priority Pods to preempt lower priority ones.
-d) Custom Scheduler: Implementing a scheduler that fits specific needs or policies.
-
-6) What Happens If a Pod Cannot Be Scheduled?
-Answer: If a Pod cannot be scheduled (e.g., due to resource constraints, taints, or affinity rules), it remains in the 
-Pending state. The scheduler continues to attempt to find a suitable node for the Pod until it can be successfully 
-scheduled or the Pod is deleted.
-
-7) How Does Kubernetes Handle Pod Scheduling Failure? 
-Answer: In case of scheduling failure, Kubernetes provides feedback about why the Pod couldn’t be scheduled. This can be 
-obtained using the 'kubectl describe pod [pod-name] command', which shows events including any scheduling failures. Cluster 
-administrators can use this information to diagnose and resolve scheduling issues.
-
-8) What is DaemonSet and How is its Scheduling Unique? 
-Answer: A DaemonSet ensures that a copy of a Pod runs on all (or some) nodes in the cluster. When nodes are added to the 
-cluster, Pods are automatically added to them. When nodes are removed, those Pods are garbage collected. DaemonSets are 
-typically used for node monitoring, log collection, or running system-level daemons.
-
-9) Can You Schedule Pods to Specific Nodes Based on Their Hardware (CPU/GPU) Specifications? 
-Answer: Yes, you can schedule Pods on nodes based on specific hardware requirements using node labels and Pod node selectors 
-or affinities. Nodes can be labeled according to their hardware specifications, and Pods can be configured to be scheduled 
-on nodes that match these labels.
-
-10) What are Pod Disruption Budgets and How Do They Affect Scheduling? 
-Answer: A Pod Disruption Budget (PDB) is a policy that limits the number of Pods of an application that can be down 
-simultaneously during voluntary disruptions (like upgrades). PDBs are considered by the Kubernetes scheduler to prevent 
-evictions that would violate the budget, ensuring high availability during maintenance operations.
-
-
-NEW SECTION - kubectl.
-
-1) What is kubectl and What is its Role in Kubernetes?
-Answer: kubectl is the command-line tool for interacting with the Kubernetes API server. It allows users to deploy 
-applications, inspect and manage cluster resources, and view logs. kubectl converts command-line requests into API calls 
-and communicates with the Kubernetes cluster to execute these requests.
-
-2) How Do You Create and Manage Resources in Kubernetes Using kubectl? 
-Answer: Resources in Kubernetes can be created using kubectl by applying YAML or JSON configuration files. Commands like 
-kubectl create, apply, delete, and edit are used to manage these resources. For example, 'kubectl apply -f deployment.yaml',
-would create or update resources defined in 'deployment.yaml'.
-
-3) Explain How to Use kubectl for Debugging Pods and Services.
-Answer: kubectl provides various commands for debugging, such as:
-a) 'kubectl logs', to retrieve logs from a container in a Pod.
-b) 'kubectl describe', to see detailed information about resources.
-c) 'kubectl exec', to execute commands inside a container. 
-d) 'kubectl get', to list resources and check their status. 
-These commands help diagnose issues and understand the state of the cluster.
-
-4) How Do You Scale Applications with kubectl? 
-Answer: Applications can be scaled in Kubernetes using 'kubectl scale'. For example, 
-'kubectl scale deployment my-deployment --replicas=5', changes the number of replicas in the my-deployment Deployment to 5. 
-This adjusts the number of Pods running, allowing for scaling up or down based on requirements.
-
-5) What is the Process of Updating Applications Using kubectl? 
-Answer: Applications are updated in Kubernetes using rolling updates, which ensure zero downtime. This can be done with 
-kubectl by updating the image or configuration of a Deployment. For instance, 
-'kubectl set image deployment/my-deployment my-container=newimage:tag', updates the container image, triggering a rolling update.
-
-6) How Do You Monitor the Health and Status of a Kubernetes Cluster with kubectl? 
-Answer: kubectl provides commands like 'kubectl get', to list resources and view their status, kubectl describe', to get 
-detailed information about a resource, and 'kubectl top', to view resource usage. These commands help monitor the health 
-and performance of the cluster and its components.
-
-7) Can You Explain How to Use Contexts and Configurations in kubectl? 
-Answer: Contexts in kubectl are used to switch between different clusters and namespaces. The kubectl config command is 
-used to manage kubeconfig files that store cluster, user, and context configurations. For example, 
-'kubectl config use-context my-context', switches to a different cluster or namespace saved in the kubeconfig file.
-
-8) How Does kubectl Interact with the Kubernetes API? 
-Answer: kubectl interacts with the Kubernetes API by sending HTTP requests to the API server. The command-line arguments 
-and flags in kubectl commands are converted into API resource paths and query parameters. kubectl handles authentication, 
-aggregates the API response, and displays the output to the user.
-
-9) What is the Role of kubectl in a CI/CD Pipeline? 
-Answer: In CI/CD pipelines, kubectl is used for deploying applications, managing resources, and ensuring the desired state 
-of the cluster in different stages of the pipeline. It can be used in automation scripts and integrated with CI/CD tools 
-to apply configurations, update images, and roll out changes to the Kubernetes cluster.
-
-10) Discuss Advanced kubectl Commands and Their Uses. 
-Answer: Advanced kubectl commands include:
-a) 'kubectl port-forward', for forwarding one or more local ports to a Pod.
-b) 'kubectl proxy', to create a proxy server between your machine and the Kubernetes API server.
-c) 'kubectl cp', to copy files and directories to and from containers in Pods.
-d) 'kubectl patch', to update Kubernetes objects in place. 
-These commands provide more control over interacting with and managing Kubernetes resources.
-
-
-NEW SECTION - kustomize.
-
-1) What is Kustomize and How is it Integrated into Kubernetes?
-Answer: Kustomize is a standalone tool to customize Kubernetes objects through a kustomization file. It introduces a 
-template-free way to customize application configuration that simplifies the use of off-the-shelf applications. Integrated 
-directly into kubectl since Kubernetes v1.14, Kustomize allows users to alter any API resource in a declarative fashion, 
-using overlay files that modify resources without changing the original YAML files.
-
-2) Explain the Concept of 'Overlays' in Kustomize? 
-Answer: Overlays in Kustomize are a set of modifications that are applied over the base resources. They allow you to maintain 
-variations of a configuration (like development, staging, and production environments) without duplicating resources. 
-Overlays can alter configurations for specific environments by modifying properties, adding labels, changing image tags, etc.
-
-3) How Does Kustomize Differ from Helm? 
-Answer: Kustomize and Helm are both tools used to manage Kubernetes configurations, but they differ in approach. Kustomize 
-uses a template-free approach and customizes YAML files through overlays, while Helm uses a templating engine to generate 
-Kubernetes YAML files from templates. Kustomize focuses on customizing and patching Kubernetes objects, while Helm is more 
-about packaging and distributing Kubernetes applications.
-
-4) What is a Kustomization File and What is its Purpose? 
-Answer: A kustomization file is a YAML configuration file in Kustomize. It specifies the Kubernetes resources to customize 
-and the modifications to apply. It can include references to other resources, patches to apply, and other settings like 
-name prefixes/suffixes, labels, and annotations. The kustomization file serves as the entry point for Kustomize to understand 
-how to process the resources.
-
-5) How Do You Manage Different Kubernetes Environments with Kustomize? 
-Answer: Kustomize manages different environments by using overlays. Each environment (like development, staging, production) 
-has its overlay directory containing a kustomization file that specifies environment-specific customizations. This approach 
-allows for reusing the base configuration and applying only the necessary changes for each environment.
-
-6) Can Kustomize Generate Resource Configurations Dynamically? 
-Answer: Yes, Kustomize can generate resource configurations dynamically. It can create new resources or modify existing 
-ones based on various inputs and transformations. This includes creating ConfigMaps and Secrets from files, applying 
-common labels, and setting or changing specific fields across multiple resources.
-
-7) What is the Role of 'Patches' in Kustomize? 
-Answer: Patches in Kustomize are used to modify or update Kubernetes resources. They allow you to change specific parts 
-of a resource, such as adding containers to a deployment, updating environment variables, or altering the replica count. 
-Patches provide a powerful way to apply targeted changes without altering the entire resource definition.
-
-8) How Does Kustomize Handle ConfigMaps and Secrets? 
-Answer: Kustomize has special features for creating and managing ConfigMaps and Secrets. It can generate these resources 
-from files or literals and allows you to modify them with overlays. Kustomize ensures that whenever the contents of a 
-ConfigMap or Secret change, it adjusts the hash suffix of these resources, triggering a rolling update if necessary.
-
-9) Discuss How Kustomize Improves the Reusability of Kubernetes Manifests? 
-Answer: Kustomize improves the reusability of Kubernetes manifests by separating base configurations from environment-specific 
-customizations. This structure allows you to maintain a single set of base manifests and reuse them in different environments 
-or scenarios by applying overlays. It reduces duplication and simplifies updates to the manifests.
-
-10) What Are Some Best Practices for Using Kustomize in a CI/CD Pipeline? 
-Answer: In a CI/CD pipeline, it’s best to keep base configurations and overlays in version control, use Kustomize to generate 
-the final manifests dynamically during the CI/CD process, and apply the generated manifests to the appropriate Kubernetes 
-clusters. It's also important to validate and test the generated configurations in the CI process before deploying them.
-
-NEW SECTION - GitOps.
-
-1) What is GitOps and How Does it Differ from Traditional DevOps? 
-Answer: GitOps is a paradigm or a set of practices that leverages Git as the single source of truth for declarative 
-infrastructure and applications. In GitOps, Git repositories hold the entire state of a system and the desired state of 
-the infrastructure, which can be automatically applied and updated in a target environment. Unlike traditional DevOps, 
-which often involves manual steps, GitOps automates the deployment process using Git-based workflows, thus increasing 
-efficiency, transparency, and consistency.
-
-2) Explain the Role of Git in GitOps? 
-Answer: In GitOps, Git is not just a version control system but acts as the central source of truth for the entire system. 
-All changes to infrastructure and applications are made through Git commits. These changes trigger automated processes 
-that apply these changes to the production environment. This approach ensures that the Git repository always reflects the 
-current state of the system, making it easy to track changes, roll back, and maintain compliance.
-
-3) How Does GitOps Improve Deployment Frequency and Reliability? 
-Answer: GitOps improves deployment frequency and reliability by automating deployments. Every change in the Git repository 
-triggers a deployment process, allowing for frequent and consistent updates. Automated testing and integration as part of 
-the GitOps pipeline ensure that changes are reliable and stable, reducing the likelihood of errors and downtime.
-
-4) What are the Benefits of Using GitOps for Kubernetes Management? 
-Answer: GitOps offers several benefits for Kubernetes management, including:
-a) Automated deployment and rollback of applications and configurations.
-b) Enhanced visibility and traceability of changes through Git.
-c) Improved consistency and compliance, as the Git repository reflects the desired state.
-d) Simplified management of Kubernetes manifests and configurations.
-e) Streamlined processes for updating and scaling Kubernetes clusters.
-
-5) How Do You Implement GitOps in an Organization?
-Answer: Implementing GitOps involves:
-a) Setting up a Git repository to store the entire configuration and state of your infrastructure.
-b) Using Infrastructure as Code (IaC) tools like Terraform or Ansible to define infrastructure.
-c) Setting up automated pipelines for testing, integration, and deployment using tools like Jenkins, Argo CD, or Flux.
-d) Enforcing policies for Git workflows and ensuring that all changes go through Git.
-e) Regularly reviewing and updating the workflows and configurations as needed.
-
-6) What is the Role of Continuous Integration and Continuous Deployment (CI/CD) in GitOps? 
-Answer: In GitOps, CI/CD plays a crucial role in automating the testing and deployment of code changes. Continuous 
-Integration involves automatically testing code changes from multiple contributors and merging them into the main branch. 
-Continuous Deployment automates the deployment of these changes to production environments. In GitOps, the CI/CD pipeline 
-is triggered by changes in the Git repository, ensuring that the deployments are consistent with the source code.
-
-7) Discuss the Security Implications of GitOps. 
-Answer: GitOps can enhance security by providing an audit trail of changes and enabling easy rollbacks to known good states. 
-However, it also requires strong security practices around Git repository access and management. Secure handling of secrets, 
-access controls, code signing, and regular scanning for vulnerabilities in the codebase are essential.
-
-8) How Does GitOps Facilitate Rollbacks and Disaster Recovery? 
-Answer: GitOps facilitates rollbacks and disaster recovery by maintaining the entire system's state in the Git repository. 
-If an issue arises, the system can be quickly rolled back to a previous state by reverting to a previous commit. This approach 
-also simplifies disaster recovery, as the Git repository can be used to reconstruct the system's state.
-
-9) What Tools are Commonly Used in a GitOps Workflow? 
-Answer: Common tools used in GitOps workflows include:
-a) Version control systems like Git (GitHub, GitLab, Bitbucket).
-b) Infrastructure as Code tools (Terraform, Ansible).
-c) Continuous deployment tools (Argo CD, Flux).
-d) Container orchestration tools (Kubernetes).
-e) Monitoring and observability tools (Prometheus, Grafana).
-
-10) How Do You Handle Configuration Management in GitOps? 
-Answer: In GitOps, configuration management is handled through Git. All configurations are stored as code in the repository. 
-Changes to configurations are made via commits and pull requests, ensuring a review process and audit trail. Automated tools 
-apply these configurations to the infrastructure, ensuring that the actual state always matches the state defined in the Git repository.
-
-
-NEW SECTION - AKS, EKS, GKS.
-
-1) What is AKS (Azure Kubernetes Service) and its Key Features? 
-Answer: AKS is Microsoft Azure's managed container orchestration service, based on Kubernetes. Key features include 
-integrated CI/CD experiences, enterprise-grade security and governance, simplified cluster management, automatic scaling, 
-and integration with other Azure services.
-
-2) How Does EKS (Amazon Elastic Kubernetes Service) Differ from Other Kubernetes Services? 
-Answer: EKS is Amazon's managed Kubernetes service. It integrates deeply with AWS services like IAM for authentication, 
-ELB for load balancing, and VPC for networking. EKS stands out for its robustness and seamless integration with AWS's 
-infrastructure, making it a strong choice for businesses deeply invested in AWS.
-
-3) What are the Advantages of Using GKE (Google Kubernetes Engine)? 
-Answer: GKE, Google's Kubernetes service, offers a fully managed experience with automated provisioning, repairs, and scaling. 
-Notable advantages include its strong integration with Google Cloud services, advanced cluster management features, 
-robust security, and a global container registry.
-
-4) Can You Migrate Existing Kubernetes Clusters to AKS, EKS, or GKE? How? 
-Answer: Yes, you can migrate existing Kubernetes clusters to these managed services. The process typically involves setting 
-up a new cluster in the service (AKS, EKS, or GKE), configuring networking, storage, and other cloud-specific settings, 
-and then migrating your workloads and data. Tools like kube-migrate or cloud provider-specific migration tools can 
-facilitate this process.
-
-5) How Do You Implement High Availability in AKS, EKS, and GKE? 
-Answer: High availability in these services involves multi-zone cluster configurations and automatic replication and 
-failover mechanisms. AKS, EKS, and GKE all support cluster deployment across multiple availability zones, ensuring 
-resilience and high availability of Kubernetes workloads.
-
-6) What are the Security Features Available in AKS, EKS, and GKE?
-Answer: All three services offer robust security features:
-a) AKS: Integrates with Azure Active Directory and offers network policies, Azure Policy integrations, and security monitoring 
-with Azure Security Center.
-b) EKS: Integrates with AWS Identity and Access Management (IAM), supports VPC networking, and offers encryption with AWS KMS.
-c) GKE: Offers integrated Google Cloud IAM, uses Container-Optimized OS for nodes, and provides built-in network policies 
-and Node auto-upgrade features.
-
-7) How Does Auto-scaling Work in AKS, EKS, and GKE? 
-Answer: Auto-scaling in these services allows automatic resizing of clusters based on workload:
-a) AKS: Uses Azure’s VM scale sets for node auto-scaling.
-b) EKS: Utilizes AWS Auto Scaling groups.
-c) GKE: Offers cluster autoscaler and vertical pod autoscaling.
-
-8) Explain the Pricing Models of AKS, EKS, and GKE. 
-Answer:
-a) AKS: Does not charge for the Kubernetes management service; you pay only for the VMs, storage, and networking resources consumed.
-b) EKS: Charges a management fee for each Kubernetes cluster, plus the resources (like EC2 instances) used.
-c) GKE: Charges a cluster management fee and for the resources used. Offers a free tier for a single-zone cluster with 
-limited resources.
-
-9) What are the Networking Capabilities of AKS, EKS, and GKE? 
-Answer: All three services offer advanced networking capabilities:
-a) AKS: Integrates with Azure Virtual Network, offering network policies, load balancing, and network isolation.
-b) EKS: Supports Amazon VPC for networking, allowing detailed control over network settings.
-c) GKE: Integrates with Google Cloud VPC, offering powerful network policies and load balancing features.
-
-10) How Do You Monitor and Log Kubernetes Clusters in AKS, EKS, and GKE? 
-Answer:
-a) AKS: Integrates with Azure Monitor and Log Analytics for monitoring and logging.
-b) EKS: Can be monitored with Amazon CloudWatch and integrates with AWS CloudTrail for logging.
-c) GKE: Offers integrated logging and monitoring with Stackdriver (Operations).
-
-
-NEW SECTION - INTERVIEW 1.
-
-1) Explain the Role of Dockerfile?
-Answer: A Dockerfile is a script containing a series of instructions and commands used for creating a container image. 
-It automates the process of building a Docker image. A Dockerfile defines what goes on in the environment inside a container. 
-It can include instructions to install specific software, environmental variables, and startup commands.
-
-2) What are Kubernetes Namespaces and What is Their Purpose? 
-Answer: Namespaces in Kubernetes are a way to divide cluster resources between multiple users and applications. They provide 
-a scope for grouping and isolating resources such as Pods, Services, and Deployments. Namespaces are particularly useful 
-in environments with many users and teams to avoid conflicts and manage access and resources more effectively.
-
-3) What is a Pod in Kubernetes? 
-Answer: A Pod is the smallest and most basic deployable object in Kubernetes. It represents a single instance of a running 
-process in your cluster and can contain one or more containers. These containers in a Pod are scheduled on the same node 
-and share the same network namespace, IP address, and port space.
-
-4) What are Helm Charts and how are they useful? 
-Answer: Helm Charts are packages in Helm that contain all the necessary files and configurations to deploy an application, 
-tool, or service inside a Kubernetes cluster. They promote reusability and can encapsulate complex Kubernetes resources, 
-making it easier to share and deploy applications.
-
-5) Explain Horizontal Pod Autoscaling (HPA) in Kubernetes? 
-Answer: Horizontal Pod Autoscaling (HPA) automatically scales the number of Pods in a deployment, replica set, or stateful 
-set based on observed CPU utilization or other select metrics. HPA adjusts the number of Pods in a replication controller, 
-deployment, or replica set based on observed CPU utilization or, with custom metrics support, other metrics.
-
-
-NEW SECTION - INTERVIEW 2.
-
-1) What are Microservices and How Do Containers Benefit Them?
-Answer: Microservices architecture is a method of developing software applications as a suite of independently deployable, 
-modular services. Containers are ideal for microservices due to their lightweight nature, allowing each service to be deployed 
-in a separate container with its dependencies, ensuring isolation, resource efficiency, and scalability.
-
-2) Can Kubernetes be Installed on any Cloud Platform? How? 
-Answer: Yes, Kubernetes can be installed on any cloud platform. Most cloud providers offer managed Kubernetes services 
-(like AWS EKS, Azure AKS, Google GKE) which simplify the installation process. Alternatively, you can manually install 
-Kubernetes using 'kubeadm' or other tools by setting up virtual machines or instances within the cloud provider’s infrastructure.
-
-3) What is Helm and How Does it Relate to Kubernetes Installation? 
-Answer: Helm is a package manager for Kubernetes that simplifies installing, configuring, and updating applications on 
-Kubernetes clusters. While it doesn’t install Kubernetes itself, it is used to manage applications running on a Kubernetes 
-cluster. Helm uses a packaging format called charts, which are pre-configured Kubernetes resources.
-
-4) Describe Node Affinity in Kubernetes?
-Answer: Node Affinity in Kubernetes is a set of rules used by the scheduler to determine on which node a Pod can be placed. 
-It allows you to constrain which nodes your Pod is eligible to be scheduled based on labels on nodes. For example, you can 
-ensure that a Pod runs on a node with a specific CPU or memory configuration, or in a specific geographic location.
-
-5) What is a Resource Quota in Kubernetes? 
-Answer: Resource Quotas are a tool in Kubernetes that enable administrators to limit the aggregate resource consumption 
-in a namespace. They can set hard limits on things like the total amount of memory or CPU that can be used by all Pods in 
-a namespace, the number of Pods, Services, or PersistentVolumeClaims in a namespace, and more. This is particularly useful 
-in multi-tenant clusters to prevent any single tenant from monopolizing cluster resources.
-
-
-NEW SECTION - INTERVIEW 3.
-
-1) What is a Kubernetes Service and Why is it Important?
-Answer: A Kubernetes Service is an abstract way to expose an application running on a set of Pods as a network service. 
-It provides a consistent and stable IP address, DNS name, and port and load balances the traffic among the Pods. Services 
-are crucial for managing how clients access your application, as they provide a stable interface to a dynamic set of Pods.
-
-2) Explain the Different Types of Services in Kubernetes? 
-Answer: The main types of Services in Kubernetes are:
-a) ClusterIP: Exposes the Service on an internal IP in the cluster, making it only reachable from within the cluster.
-b) NodePort: Exposes the Service on the same port of each selected Node’s IP, making it accessible from outside the cluster.
-c) LoadBalancer: Exposes the Service externally using a cloud provider’s load balancer.
-d) ExternalName: Maps the Service to an external DNS name.
-
-3) How Do Services Discover and Manage Traffic to Pods? 
-Answer: Services discover Pods using label selectors. When you define a Service, you specify a set of labels that match a 
-group of Pods. The Service routes traffic to these Pods using a round-robin algorithm by default. As Pods are created or 
-destroyed, the Service automatically updates the group of Pods it targets.
-
-4) What are Kubernetes Namespaces and How Do They Relate to Security? 
-Answer: Kubernetes namespaces are a way to divide cluster resources between multiple users. From a security perspective, 
-they provide a logical separation of cluster resources, allowing for the implementation of policies, limits, and permissions 
-on a per-namespace basis. This helps in creating a multi-tenant environment with controlled access to resources.
-
-5) Explain Role-Based Access Control in Kubernetes? 
-Answer: RBAC in Kubernetes is a method of regulating access to resources based on the roles of individual users within an 
-organization. It allows administrators to define roles with specific permissions (like read, write, delete) and bind these 
-roles to users, groups, or service accounts. RBAC ensures that users have access only to the resources they need, following 
-the principle of least privilege.
-
-
-NEW SECTION - INTERVIEW 4.
-
-1) What is AKS (Azure Kubernetes Service) and its Key Features?
-Answer: AKS is Microsoft Azure's managed container orchestration service, based on Kubernetes. Key features include 
-integrated CI/CD experiences, enterprise-grade security and governance, simplified cluster management, automatic scaling, 
-and integration with other Azure services.
-
-2) What is 'kubectl' and What is its Role in Kubernetes? 
-Answer: 'kubectl' is the command-line tool for interacting with the Kubernetes API server. It allows users to deploy 
-applications, inspect and manage cluster resources, and view logs. 'kubectl' converts command-line requests into API calls 
-and communicates with the Kubernetes cluster to execute these requests.
-
-3) How Do You Create and Manage Resources in Kubernetes Using 'kubectl'? 
-Answer: Resources in Kubernetes can be created using 'kubectl' by applying YAML or JSON configuration files. Commands 
-like kubectl create, apply, delete, and edit are used to manage these resources. For example, 'kubectl apply -f deployment.yaml'
-would create or update resources defined in 'deployment.yaml'.
-
-4) Explain How to Use kubectl for Debugging Pods and Services?
-Answer: kubectl provides various commands for debugging, such as:
-a) 'kubectl logs', to retrieve logs from a container in a Pod.
-b) 'kubectl describe', to see detailed information about resources.
-c) 'kubectl exec', to execute commands inside a container.
-d) 'kubectl get', to list resources and check their status. 
-These commands help diagnose issues and understand the state of the cluster.
-
-5) Describe the Canary Deployment Pattern in Kubernetes?
-Answer: Canary deployment involves rolling out a new version of an application gradually to a subset of users to ensure 
-stability before a full rollout. In Kubernetes, this can be achieved by deploying a new version of the application 
-(canary version) and slowly routing a small percentage of traffic to it. Based on the feedback and performance, the traffic 
-is gradually increased until the canary version is serving all the traffic.
-
-
-NEW SECTION - INTERVIEW 5.
-
-1) What is a Kubernetes Job and What is its Purpose?
-Answer: A Kubernetes Job is a resource used to manage a task that runs to completion, as opposed to long-running services. 
-It is used for tasks like batch processing, data analysis, or batch computation that need to run once and complete 
-successfully. Kubernetes ensures that a Job runs until the specified number of completions is achieved.
-
-2) How Does a Kubernetes Job Differ from a Pod? 
-Answer: While a Pod in Kubernetes represents a single instance of a running process, a Job manages one or more Pods that 
-are expected to terminate successfully (i.e., exit with a zero status). Pods created by a Job are meant to execute a specific 
-task and then exit successfully, indicating the completion of the Job.
-
-3) What is a ReplicaSet in Kubernetes? 
-Answer: A ReplicaSet in Kubernetes is a workload API object used to ensure that a specified number of pod replicas are 
-running at any given time. It's primarily used to maintain the availability of a set of identical Pods. If there are not 
-enough replicas, it creates more; if there are too many, it deletes some.
-
-4) How Does a ReplicaSet Differ from a ReplicationController? 
-Answer: A ReplicaSet is the next-generation ReplicationController. The key difference is that ReplicaSets support set-based 
-selector requirements as opposed to the equality-based selector requirements of ReplicationControllers. This means ReplicaSets 
-can select a broader range of pods based on labels.
-
-5) What Happens if a Pod in a ReplicaSet Fails? 
-Answer: If a pod in a ReplicaSet fails (due to a node failure or termination), the ReplicaSet notices the decrease in the 
-number of replicas and creates a new pod to replace it. The new pod is created based on the pod template defined in the ReplicaSet.
-
-
-NEW SECTION - Kubernetes Masterclass.
-
-1) Kubernetes Cluster?
-Answer: Master (aka control-plane): 1 / more (for prod environments for high availability). Nodes: Up to 5000.
-
-2) Kubernetes Cluster Components?
-Answer: 
-First component master / control plane contains:
-a) api-server: APIs for clients to talk to the cluster and create workloads (workload is application mysql, nginx etc).
-b) etcd: A distributed key-value store to store cluster data.
-c) controller-manager: A process which continuously monitors workloads / nodes etc.
-d) scheduler: Workload scheduler.
-Second component: node contains:
-a) kubelet: An agent which creates containers and monitors.
-b) container runtime (docker): To create container, we need to have container runtime on the node.
-c) kube-proxy: Maintains the network rules on the node for communication among workloads in the cluster.
-
-3) Kubernetes Tools?
-Answer: 
-a) kind / minikube: To set up a kubernetes cluster for learning.
-b) kubectl: CLI tool to interact with kubernetes master / api-server.
-
-4) Kube Config?
-Answer: A config file to organize cluster info. Location at '$HOME/.kube/config'. Environment variable kubeconfig.
-
-5) Kubernetes Summary?
-Answer: Kubernetes Cluster:
-a) master / control-plane (1 or more): api-server, etcd, scheduler, controller-manager.
-b) node / worker (1 or more): container runtime, kubelet, kube-proxy.
-Kubectl is a CLI tool to talk to api-server. Kube config is a file which stores the cluster information. Kind is a tool
-to create kubernetes cluster for learning.
-
-6) What is a Pod?
-Answer: Workload is an application running on your k8s cluster. Pod is the basic building block to create workload.
-Smallest deployable unit in k8s. Pod can run one or more containers. Only one of the containers in your app container!
-Other containers are helpers! Pod represents a VM and containers represent the process.
-
-7) What is a Docker?
-Answer: We package the app, any executable along with all the dependencies as docker image. We create an instance of the
-image - container. We treat each container like a VM. Containers can talk to each other via IP address / service name.
-
-8) Pod Status?
-Answer:
-a) Pending: Node is yet to be assigned.
-b) ContainerCreating: Kubelet is working on creating container.
-c) Running: Kubelet started the container.
-d) ErrImagePull / ImagePullBackOff: Failed pulling image. Kubelet will retry with some delay.
-e) Completed: Container exited Successfully. 
-f) Error: Container exited with error.
-g) CrashLoopBackOff: There is a problem in running the container. Kubelet is retrying with delay. (no issues in pulling
-the image).
-h) Terminating: Pod is getting deleted.
-
-9) Pod Labels. Get pod by label command?
-Answer: 'kubectl get pod -l dept=dep-1,team=team-a'.
-
-10) Pod, Formatting output?
-Answer: 'kubectl get pod -o wide'.
-
-11) Pod, Formatting output in yaml file? +
-Answer: 'kubectl get pod pod-1 -o yaml'.
-
-12) Pod, delete pods using file?
-Answer: 'kubectl delete -f 03-multiple-pods.yaml'.
-
-13) Pod, delete single pod?
-Answer: 'kubectl delete pod pod-2'.
-
-14) Port-Forward?
-Answer: 'kubectl port-forward my-pod 8080:80'
-
-15) ENTRYPOINT vs CMD?
-Answer: 
-We can not override ENTRYPOINT by issuing override: 'docker run IMAGE OVERRIDE'.
-We can override CMD: 'docker run IMAGE OVERRIDE'.
-
-16) Docker - Kubernetes?
-Answer: ENTRYPOINT is command. CMD is args.
-
-17) Pod Container Restart Policy?
-Answer:
-a) Never: Completed / Error - Do NOT Restart.
-b) Always: Completed / Error - Restart.
-c) OnFailure: Error - Restart.
-
-18) Kubectl Commands!
-Answer:
-a) 'kubectl get nodes': To list nodes in the cluster.
-b) 'kubectl create -f FILE-NAME': To create resources in the given yaml.
-c) 'kubectl delete -f FILE-NAME': To delete resources in the given yaml.
-d) 'kubectl get pod': To list all the pods (in the default namespace).
-e) 'kubectl get pod --show-label': To list pod labels.
-f) 'kubectl get pod -l team=team-a', 'kubectl get pod -l team!=team-a': To query pods based on labels.
-g) 'kubectl get pod POD-NAME -o yaml': To provide pod info in the yaml format.
-h) 'kubectl describe pod POD-NAME': To describe pod.
-i) 'kubectl delete pod POD-NAME': To delete the given pod.
-j) 'kubectl delete pod --all': To delete all pods.
-k) 'kubectl logs POD-NAME': To check the pod log (assuming single container).
-l) 'kubectl logs POD-NAME -c CONTAINER-NAME': To check the specific container log for a pod when there are multiple
-containers.
-m) 'kubectl exec -it POD-NAME -c CONTAINER-NAME -- bash': To access the container of the pod.
-n) 'kubectl port-forward POD-NAME 8080:80': To access our application APIs from our host for debugging.
-
-19) ReplicaSet?
-Answer: Manages Pod. It ensures that our desired replicas for the given pod spec are running. 
-ReplicaSet - 'restartPolicy: Always'. In a cluster, a node might die, entire zone could be down due to network issues. 
-ReplicaSet ensures that desired count is met. A lower level resource and not recommended to be created by us directly!
-Deployment manages ReplicaSet. To manage resources, we will use 'metadata.label'!
-
-20) Deployment?
-Answer: Manages ReplicaSet. This is what we would use mostly to create workload! To deploy stateless application.
-One deployment - One microservice. Deployment - List of ReplicaSet - List Pod.
-
-21) Create vs Apply?
-Answer: Kubectl create:
-'kubectl create -f FILE-NAME': Top create resources in the given file.
-'kubectl create -f .': To create resources from all the yaml's in the current directory.
-'kubectl create -f http:// somesite.com/k8s.yaml': To create resources in the given url.
-Kubectl apply:
-'kubectl apply -f FILE-NAME': To create / update resources in the given file.
-'kubectl apply -f .': To create / update resources from all the yaml's in the current directory.
-'kubectl apply -f http:// somesite.com/k8s.yaml': To create / update resources in the given url.
-
-22) Deployment Strategy?
-Answer: 
-a) recreate: Terminate the old pods and create the new pods.
-b) rolling update: Gradually roll out the changes. We can have a mix of old and new pods temporarily. Below properties
-can be a number or %. 
-maxSurge: Max number of additional pods that can be created. 
-maxUnavailable: Max number of pods that can be terminated.
-
-23) Service?
-Answer: Logical abstraction for a set of Pods. A single reliable network endpoint to access Pods. Stable IP address.
-DNS name.
-
-24) Service / kube-proxy?
-Answer: A simple proxy. k8s resource Service does not consume CPU/memory. Not round-robin Load Balancer. It is random.
-Do not expect URL rewriting / path based routing etc. (It is Ingress in k8s).
-
-25) Service Types?
-Answer: 
-a) ClusterIP: For communication within the k8s cluster. Can not be accessed from outside the cluster. (AWS / GCP cloud -
-private subnet communication). This is the default option if we do not specify. Mostly this is what we would use.
-b) NodePort: Can be accessed from outside via k8s master/node via Specific port (can be used for testing).
-c) To be used in AWS / GCP / Azure cloud providers. Can be used to receive traffic from outside.
-
-26) NodePort?
-Answer: Allowed node port ranges are 30_000-32_767. Each node is set to listen on specific port. Any request to one of the 
-nodes on the port is forwarded to the pod.
-
-27) LoadBalancer?
-Answer: To be used in the cloud provider. To receive external traffic and forward to pods.
-
-28) Namespace?
-Answer: Virtual cluster / Partitioning within a cluster. Isolating a group of resources within a cluster. Use Cases:
-Dev / QA environments. Isolating separate team resources. Namespaces can also be used to set resource quotas by the
-administrators.
-
-29) Probes?
-Answer: Problem: Pods are considered to be live & ready as soon as the containers are started. If the Pod is ready,
-the Service will send the requests to the Pod. RollingUpdate will terminate old pods. We should ensure that our Pods
-are live and ready to avoid surprises! Probes are tools/utilities to measure the health of the pod. Has it started?
-Is it alive? Is it ready to serve requests?
-
-30) Probe Types?
-Answer: Terms: Live - Is the Pod alive? Ready - can the Pod serve the request?
-a) 'startupProbe': To check if the application inside the container has started. Action if fails, restart.
-b) 'livenessProbe': To check if the application is still alive. Action if fails, restart.
-c) 'redinessProbe': To check if the application is ready to take the requests from service. Action if fails, remove 
-from service.
-
-31) Probe Execution Phase?
-Answer: 
-a) 'startupProbe': It starts as soon as container started! If the check passes, startupProbe stops.
-b) 'livenessProbe': It starts once startupProbe completes. It is executed through the pod lifecycle.
-c) 'redinessProbe': It starts once startupProbe completes. It is executed through the pod lifecycle.
-
-32) Probe Options?
-Answer:
-a) 'exec': Execute any command to check. For example: 'cat /tmp/app.log'.
-b) 'httpGet': To invoke a http endpoint. For example: '/health'.
-c) 'tcpSocket': To check if the app started listening on specific port.
-
-33) Probe Properties?
-Answer: 
-a) 'initialDelaySeconds': 0.
-b) 'periodSeconds': 10.
-c) 'timeoutSeconds': 1.
-d) 'successThreshold': 1.
-e) 'failureThreshold': 3.
-
-34) ConfigMap & Secret?
-Answer: To keep the configuration data separately from the application: ConfigMap, Secret.
-ConfigMap: non-sensitive data, 'application.properties'.
-Secret: sensitive data, 'credentials'.
-Inject all the key/value pairs as env variables. Inject one of the key value as env variable value. Inject key's value
-as a file in a specific location.
-
-35) ConfigMap?
-Answer: Properties as Key/Value. Properties as file. Store any binary file. Max size 1MB.
-
-36) Secret?
-Answer: Same as ConfigMap - but for sensitive data. Value is base64 encoded. Use cases: ssh key files, basic credentials,
-service accounts, etc.
-
-37) Cluster?
-Answer: Workload requires: Compute instances. Storage: Life cycle of storage should be separated from Pod life cycle.
-
-38) Persistent Volumes?
-Answer: A K A PV. Storage abstraction, Volume plugins. Provides storage - Similar to node in the cluster which provides
-CPU/Memory.
-
-39) Storage Terminologies?
-Answer:
-a) Storage Class: Type of storage. Example: AWS EBS SSD - super-fast. AWS EBS disk based - slow. GCP - PD standard.
-GCP - PD ssd. GCP - PD extreme.
-b) Persistent Volume Claim: Request to create PV. Resource which links PV and Pod. Example: Request to create 5 GB of 
-GCP PD ssd for application.
-c) Persistent Volume: Actual storage created for a specific storage class. Example: 5 GB of GCP PD ssd. 100 GB of GCP
-PD standard.
-
-40) Access Modes?
-Answer:
-a) ReadWriteOnce - per node.
-b) ReadWriteOncePod - per pod.
-c) ReadOnlyMany.
-d) ReadWriteMany.
-
-41) StatefulSet?
-Answer: Same as Deployment - but for a Stateful workload. Each pod will have unique / stable hostname. StatefulSet is
-NOT just for databases. Instead, it is for any workload which wants sticky identity.
-
-42) Headless Service?
-Answer: Service will not have any IP & Kube-proxy does NOT do any load balancing. DNS entries would be created for
-'POD-NAME.SVC-NAME'.
-
-43) Consequences of Exceeding Limit?
-Answer: 
-a) Memory: Kubelet will kill the container and restart.
-b) CPU: Container will NOT be killed. Throttled.
-
-44) Ingress?
-Answer: Service: ClusterIP, NodePort (30000-32767), LoadBalancer (AWS, GCP, etc.).
-Smart Router / Proxy to bring traffic into the cluster. Contains a set of routing rules. We need Ingress Controller to
-manage Ingress.
-
-45) Ingress Controller?
-Answer: Ingress Controller manages Ingress resources (like Deployment Controller). Implements the Ingress Rules.
-There are multiple implementations: AWS, GCP.
-
-
-NEW SECTION - Mine Flashcard.
-
-1) Kubernetes Core Concepts?
-Answer:
-a) Cluster: A set of Node machines which are running the Containerized App (Worker Nodes) or control other Nodes (Master Node).
-b) Nodes: Physical of virtual machine with a certain hardware capacity which hosts one or multiple Pods and communicates
-with the Cluster. Master Node: Cluster Control Plane, managing the Pods across Worker Nodes. Worker Node: Hosts Pods,
-running App containers (+ resources).
-c) Pods: Pod hold the actual running App container + their required resources (example volumes).
-d) Containers: Normal Docker Containers.
-e) Services: A logical set (group) of Pods with a unique. Pod and container - independent IP address.
-
-2) Kubernetes Objects?
-Answer: Pods, Deployments, Services, Volume. Objects can be created in two ways: Imperatively or Declaratively.
-
-3) Pod Object?
-Answer: The Pod Object: The smallest unit Kubernetes interacts with. 
-a) Containers and runs one or multiple containers: The most common use-case is "one container per pod".
-b) Pods contain shared resources (example volumes) for all Pod containers.
-c) Has a cluster - internal IP by default: Containers inside a Pod can communicate via localhost.
-Pods are designed to be ephemeral: Kubernetes will start, stop and replace them as needed. For Pods to be managed for
-you, you need a "Controller" for example a Deployment.
-
-4) Deployment Object?
-Answer: Controls (multiple) Pods. You set a desired state, Kubernetes then changes the actual state. Define which Pods
-and containers to run and the number of instances. Deployments can be paused, deleted and rolled-back. Deployments can be 
-scaled dynamically (and automatically): You can change the number of desired Pods as needed. Deployments manage a Pod
-for you, you can also create multiple Deployments. You, therefore typically don't directly control Pods, instead you
-use Deployments to set up the desired end state.
-
-5) What is the Service Object?
-Answer: Exposes Pods to the Cluster or Externally. Pods have an internal IP by default - it changes when a Pod is replaced:
-Finding Pods is hard if the IP changes all the time. Services group Pods with a shared IP. Services can allow external
-access to Pods: The default (internal only) can be overwritten. Without Services, Pods are very hard to reach and
-communication is difficult. Reaching a Pod from outside the Cluster is not possible at all without Services.
-
-6) Kubernetes Create Service Object Command?
-Answer: 'kubectl expose deployment FIRST-APP --type=LoadBalancer --port 8080'.
-
-7) Kubernetes Create Deployment Object Command?
-Answer: 'kubectl create deployment FIRST-APP --image=panda/kub-first-app'.
-
-8) Kubernetes Autoscaling Command?
-Answer: 'kubectl scale deployment/FIRST-APP --replicas=3'.
-
-9) Kubernetes Updating Deployments?
-Answer: Change image tag:
-a) 'docker tag KUB-FIRST-APP panda/kub-first-app:2'.
-b) 'docker push panda/kub-first-app:2'.
-Update image:
-a) 'kubectl set image deployment/first-app kube-first-app=panda/kub-first-app:2'.
-b) 'kubectl rollout status deployment/first-app'.
-
-10) Namespacing and Control Groups?
-Answer: Namespacing: Isolating resources per process (or group of processes).
-Control Groups (cgroups): Limit amount of resources used per process.
-Namespacing: Process, Network, Hostnames, Hard Drive, Users, IPC.
-Control Groups (cgroups): Memory, HD I/O, CPU Usage, Network Bandwidth.
-
-11) Creating and Running a Container from an image? +
-Answer: 'docker run IMAGE-NAME'.
-'docker': Reference to docker client.
-'run': Try to create and run a container.
-'IMAGE-NAME': Name of image to use for this container.
-'docker run' = 'docker create' + 'docker start'.
-
-12) Stop Running Containers?
-Answer: 
-'docker stop CONTAINER-ID'. 
-'docker kill CONTAINER-ID'.
-Stop: SIGTERM, kill: SIGKILL.
-
-13) Execute an additional command in a Container?
-Answer: 
-'docker exec -it CONTAINER-ID COMMAND'.
-'docker': Reference to the Docker Client.
-'exec': Run another command.
-'-it': Allows us to provide input to the container.
-
-14) The purpose of '-it' flag?
-Answer: '-i': attach our terminal to stdin to running process. '-t': show pretty.
-
-15) Creating Docker Images?
-Answer: Dockerfile: Configuration to define how our container should behave. Docker Client, Docker Server, Usable image!
-
-16) Creating a Dockerfile?
-Answer: 
-a) Specify a base image. 
-b) Run some commands to install additional programs. 
-c) Specify a command to run on container startup.
-
-17) Tagging an image?
-Answer:
-a) 'docker build -t panda/redis:latest .'.
-b) 'docker run panda/redis'.
-
-18) Manual Image Generation with Docker Commit?
-Answer: 
-a) 'docker run -it alpine sh'.
-b) 'docker commit -c CMD["redis-server"] CONTAINER-ID'.
-
-19) Copying Build Files?
-Answer: 'COPY ./ ./'.
-a) First './' Path to folder to copy from (your machine) relative to build context.
-b) Second './' Place to copy stuff to inside (the container).
-    
-20) Container Port Mapping. Docker run with port mapping?
-Answer: 
-a) 'docker run -p 8080:8080 IMAGE-ID'.
-
-21) Specifying a Working Directory?
-Answer: 'WORKDIR /usr/app'. Any following command will be executed relative to '/usr/app' path in the container.
-
-22) Object Type POD?
-Answer: Runs one or more closely related containers.
-
-23) Object Type Service?
-Answer: Setup networking in a Kubernetes Cluster.
-
-24) Object Type Deployment?
-Answer: Maintains a set of individual Pods, ensuring that they have the correct config and that the right number exists.
-
-25) Pods vs Deployment?
-Answer: 
-a) Pod: Runs a single set of containers. Good for one-off dev purposes. Rarely use directly in production.
-b) Deployment: Runs a set of individual Pods (one or more). Monitors the state of each Pod, updating as necessary. 
-Good for dev and prod.
-
-26) Kubernetes Pods / Services / Status deployments?
-Answer: 
-a) 'kubectl get pods'.
-b) 'kubectl get services'.
-c) Get detailed info about an object. 'kubectl describe OBJECT-TYPE OBJECT-NAME'.
-d) 'kubectl describe pod client-pod'.
-e) 'kubectl get deployments'.
-f) 'kubectl get pods -o wide'.
-
-27) Kubernetes important Takeaways?
-Answer: 
-a) Kubernetes is a system to deploy containerized apps.
-b) Nodes are individual machines (or vms) that run containers.
-c) Masters are machines (or vms) with a set of programs to manage nodes.
-d) Kubernetes didn't build our images, it got them from somewhere else.
-e) Kubernetes (the master) decided where to run each container. Each node can run a dissimilar set of containers.
-f) To deploy something, we update the desired state of the master with a config file.
-g) The master works constantly to meet your desired state.
-
-28) The path to production Kubernetes?
-Answer: 
-a) Create Config files for each Service and Deployment.
-b) Test locally on minikube.
-c) Create a Github/Trevis flow to build images and deploy.
-d) Deploy app to a Cloud providers.
-
-29) NodePort vs ClusterIP Service?
-Answer: Services: Sets up networking in a Kubernetes Cluster.
-a) ClusterIP: Exposes a set of Pods to other objects in the cluster.
-b) NodePort: Exposes a set of Pods to the outside world (only good for dev purposes!!!).
-
-30) Volume in generic container terminology?
-Answer: Some type of mechanism that allows a container to access a filesystem outside itself.
-
-31) Volume in Kubernetes?
-Answer: An object that allows a container to store data at the Pod level.
-
-32) Persistent Volume, Access Mode?
-Answer: 
-a) ReadWriteOne: Can be used by a single node.
-b) ReadOnlyMany: Multiple nodes can read from this.
-c) ReadWriteMany: Can be read and written to by many nodes.
-    
-33) Kubernetes object Secrets?
-Answer: Securely stored a piece of information in the cluster, such as a database password. Creating a secret.
-'kubectl create secret generic SECRET-NAME --from-literal key=value'.
-'create': Imperative command to create a new object.
-'secret': Type of object.
-'generic': Type of secret.
-'SECRET-NAME': Name, for later reference in code.
-
-34) Services, Ingress, Load Balancer?
-Answer: 
-a) Ingress: Exposes a set of services to the outside world.
-b) Load Balancer: Legacy way of getting network traffic into a cluster.
-
-35) Environment Variables Docker Compose?
-Answer: 
-a) 'variableName=value': Sets a variable in the container at run-time.
-b) 'variableName': Sets a variable in the container at run-time. Value is taken from your computer.
-
-36) Kubernetes Object types and API Versions?
-Answer: Config File, StatefulSet, ReplicaController, Pod, Service. Objects service different purposes, running a container,
-monitoring a container, setting up networking etc.
-
-37) Kubernetes Service Config Files?
-Answer: Kubernetes Node. Kube-proxy: Service NodePort, I'm going to use my 'selector component:web' to find every object
-with a label 'component:web'. And expose its port 3000 to the outside world.
-
-38) Kubernetes Deployment Rollbacks and History Commands?
-Answer:
-a) 'kubectl rollout undo deployment/first-app'.
-b) 'kubectl rollout status deployment/first-app'.
-c) 'kubectl rollout history deployment/first-app'.
-d) 'kubectl rollout history deployment/first-app --revision=3'.
-e) 'kubectl rollout undo deployment/first-app --to-revision=1'.
-
-39) Kubernetes state?
-Answer: State is data created and used by your application which must not be lost.
-a) User-generated data, user accounts, often stored in a database, but could also be files (example uploads).
-b) Intermediate results derived by app. Often stored in memory, temporary database tables or files.
-
-40) Kubernetes and Volumes?
-Answer: Kubernetes can mount Volumes into containers. A broad variety of Volume types, drivers are supported.
-Local Volumes (on Nodes), Cloud-provider specific Volumes.
-Volume lifetime depends on the Pod lifetime. Volumes survive Container restarts (and removal). Volumes are removed when
-Pods are destroyed.
-
-41) Kubernetes Volumes vs Docker Volumes?
-Answer: 
-a) Kubernetes Volumes: Supports many different Drivers and types. Volumes are not necessarily persistent.
-Volumes survive Container restarts and removals.
-b) Docker Volumes: Basically on Driver / Type support. Volumes persist until manually cleared. Volumes survive container
-restarts and removals.
-
-42) What is Hypervisor?
-Answer: A virtual machine manager.
-
-43) Normal Volumes versus Persistent Volumes in Kubernetes?
-Answer: Volumes allow you to persist data.
-a) Normal Volumes: Volume is attached to Pod and Pod lifecycle. Defined and created together with Pod. Repetitive and hard
-to administer on a global level.
-b) Persistent Volumes: Volume is a standalone Cluster resource (Not attached to a Pod). Created standalone, claimed via 
-a PVC. Can be defined once and used multiple times.
-
-44) Explain what are some Pods usage patterns?
-Answer: Pods are used to run multiple containers as a single unit, allowing them to share resources and network configs.
-This allows for easier management and coordination of the containers.
-
-45) Tagging an Image?
-Answer: 'docker build -t panda/redis: latest .'.
-
-46) Creating Docker Images?
-Answer: 
-Dockerfile: Configuration to define how our container should behave.
-a) Creating a Dockerfile.
-b) Specify a base image.
-c) Run some commands to install additional programs.
-d) Specify a command to run on container startup.
-
-47) Docker Architecture?
-Answer: Docker Client. Docker Daemon; Containers, Local Images, Image Repository. 
-
-48) Container Orchestration?
-Answer: Requirement: I want 10 instances of microservice A, 15 instances of Microservice B.
-Typical Features:
-a) Auto Scaling: Scale containers based on demand.
-b) Service Discovery: Help microservices find one another.
-c) Load Balancer: Distribute load among multiple instances of a microservice.
-d) Self Healing: Do health checks and replace failing instances.
-e) Zero Downtime Deployments: Release new versions without downtime.
-
-49) Kubernetes Deployments?
-Answer: Deployment enables declarative updates for Pods and ReplicaSets. Is very important to make that you are able to
-update new releases of applications without downtime. Strategy is called rolling updates. Ensures that a release upgrade, 
-happens without a problem (downtimes).
-
-50) Kubernetes Service?
-Answer: Provide an always available external interface to the applications which are running inside the Pods. A service
-allows your application to receive traffic through a permanent lifetime IP address. Service was created with 
-'kubectl expose deployment'. ClusterIP service can only be accessed from inside the container.
-
-51) Kubernetes - Liveness and Readiness Probe?
-Answer: Kubernetes uses probes to check the health of a microservice. If readiness probe is not successful, no traffic is
-sent. If liveness probe is not successful, Pod is restarted. Spring Boot Actuator (greater than 2.3) provider inbuilt
-readiness and liveness probes: 'health/readiness', '/health/liveness'.
-
-52) Controller Manager (kube-controller-manager) Master Node?
-Answer: Manages the overall health of the cluster. Whatever desired state that we have, it makes sure that the actual
-state of the Kubernetes Cluster matches the desired state.
-
-53) Scheduler (kube-scheduler) Master node?
-Answer: The Scheduler is responsible for scheduling the Pods onto the Nodes. The decision might be based on how much 
-memories available and how much CPU is available.
-
-54) API Server (kube-apiserver) Master Node?
-Answer: If I try to make a change through kubectl of If I try to make a change to the Google Cloud console the change
-is submitted to this API server and processed from here.
-
-55) Distribute Database (etcd) Master Node?
-Answer: All the config changes that we are making, all the deployments that we are creating, all the scaling operations
-that we are performing, are stored in a Distributed Database.
-
-56) Container Runtime (CRI - docker, rkt) Worker Node?
-Answer: You want to run containers inside our Pods and these need the Container Runtime.
-
-57) Node Agent (kubelet) Worker Node?
-Answer: The job of a kubelet is to make sure that if monitors what's happening on the Node and communicates it back to the 
-Master Node. If a Pod goes down Node Agent reports it to the Controller Manager.
-
-58) Networking Component (kube-proxy) Worker Node?
-Answer: It helps with exposing services around your nodes and Pods.
-
-59) What is the difference between CMD and ENTRYPOINT in a Dockerfile?
-Answer: CMD is used to specify the command that should always be run when a container is started from the image.
-ENTRYPOINT is used to specify the default command that should be run when a container is started from the image.
-
-60) Docker Container and Networks?
-Answer: Containers are isolated but can be connected to send requests to each others (example HTTPS).
-a) Option 1: Determine container IP and use that. IP might change determining it is unnecessary, manual work.
-b) Option 2: Create a Docker network and add both containers. Containers can use each other's name as request addresses.
-
-61) Data, Volumes and Networking?
-Answer: Containers are isolated and stateless.
-Isolated: Containers have their own data and filesystem detached from the host machine filesystem. Use BindMounts 
-to connect host machine folders: '-v /local/path:/container/path'.
-Stateless: They can store data internally, but data will be lost if the container is removed and replaced by a new one.
-Use Volumes to persist data: '-v NAME:/container/path'.
-
-62) Docker Key Commands?
-Answer: 
-a) Build an image based on a Dockerfile: 'docker build -t NAME:TAG .'.
-b) Run a container based on a remote or local image: 'docker run --name NAME --rm -d IMAGE'.
-c) Share / Fetch images to/from DockerHub: 
-'docker push REPOSITORY/NAME:TAG', 'docker pull REPOSITORY/NAME:TAG'.
-
-63) Bind Mounts, Volumes and COPY?
-Answer: 
-a) Images/Container is the "single source of truth".
-b) A container should rarely work standalone, you should not have source code on your remote machine.
-c) Use COPY to copy a code snapshot into the image.
-d) Ensures that every image runs without any extra, surrounding configuration or code.
-
-64) What exactly do you mean by "Dockernized node"? Can this node be on-premises or in the Cloud?
-Answer: A Dockernized node is a physical or virtual machine that has been configured to run Docker containers. 
-It can be on-premises or in the cloud.
-
-65) What is the difference between "expose" and "publish" in Docker?
-Answer: "expose" is used to specify the ports that should be made available to linked containers, while "publish" is used
-to specify the ports that should be made available to the host.
-
-66) What is the purpose of EXPOSE command in Dockerfile?
-Answer: The purpose of the EXPOSE command is to specify the ports that should be made available to linked containers.
-
-67) Can you explain what is Emulation?
-Answer: Emulation is the process of mimicking the behavior of one system using another system.
-
-68) Docker Automatic Container Restarts?
-Answer: Restart Policies:
-a) "no": Never attempt to restart this container if it stops or crashes.
-b) "always": If this container stops for any reason, always attempt to restart it.
-c) "on-failure": Only restart if the container stops with an error code.
-d) "unless-stopped": Always restart unless we (the developers) forcibly stop it.
-
-69) Writing Docker Compose Files?
-Answer: Services (containers): Publish Ports. Environment Variables. Volumes. Networks.
-
-70) What Docker Compose is NOT?
-Answer: Docker Compose does NOT replace Dockerfiles from custom Images. Docker Compose Does not replace Images or
-Containers. Docker Compose is NOT suited for managing multiple containers on different hosts (machines).
-
-71) Creating Container Networks?
-Answer: Within a Docker network, all containers can communicate with each other and IPs are automatically resolved.
-'docker run --network my-network'.
-
-72) When running containers on your system (via docker run), can these containers communicate with the world wide web?
-Answer: Yes.
-
-73) How containers communicate with each other if they are in the same network?
-Answer: You can use container names as addresses.
-
-74) How can containers communicate with other containers?
-Answer: By manually finding the IP address or by using a network.
-
-75) How can applications running in a container communicate to your local host machine?
-Answer: By using the special 'host.docker.internal' address.
-
-76) Creating and Destroying a Kubernetes Cluster?
-Answer: 
-a) Set geographical location in which we want to run it. 
-'gcloud config set compute/zone europe-west-2-a'.
-b) Launch Kubernetes cluster.
-'gcloud container clusters create my-cluster --issue-client-certificate --enable-basic-auth'.
-c) Delete.
-'gcloud container clusters delete my-cluster --async --quiet'.
-
-77) ARGuments and ENVironment Variables??
-Answer: Docker supports build-time ARGuments and runtime ENVironment variables.
-a) 'ARG': Available inside of Dockerfile, NOT accessible in CMD or any other application code. Set on image build 
-(docker build) via '--build-arg'.
-b) 'ENV': Available inside of Dockerfile and in app code. Set via ENV in Dockerfile or via '--env' on docker run.
-
-78) How virtualization works at low level?
-Answer: Virtualization works at hardware level by abstracting the physical resources of a machine and presenting them to
-the OS as virtual resources.
-
-79) What is Paravirtualization?
-Answer: Paravirtualization is a type of virtualization where the guest OS is modified to work in a virtualized environment.
-
-80) How to link containers?
-Answer: By using the 'docker run' command with the '--link' option.
-
-81) What is the difference between the COPY and ADD commands in a Dockerfile?
-Answer: The COPY command copies files from the host to the container, while the ADD command copies files from the host
-to the image.
-
-82) Kubernetes Concepts?
-Answer: 
-a) Nodes: Are the servers on which Kubernetes runs. They are organized in a cluster.
-b) Pod: Is multiple Docker containers that together provide a service. Containers that belong to one Pod run on one node.
-c) ReplicaSet: Ensures that a certain number of instances of a Pod runs. This allows the load to be distributed to the
-Pods. In addition, the system is fail-safe.
-d) Deployment: Generates replica set and provides required Docker images.
-e) Services: Make Pod accessible. The services are registered under one name in the DNS and have a fixed IP address under
-which they can be contacted through the cluster. In addition, services enable routing from the outside.
-f) Declarative: Meaning the configuration defines a desired state. Kubernetes makes sure that the system fits the 
-desired state.
-
-83) What's the difference between a repository and a registry?
-Answer: A repository is a collection of Docker images, while a registry is a place to store and Distribute Docker images.
-
-84) Kubernetes Features?
-Answer: Runs Docker containers in a cluster of nodes. Fail-safety. Supports load balancing. Supports Service Discovery.
-Microservices has no code dependencies to Kubernetes.
-
-85) Are Anonymous Volumes useless?
-Answer: No, you can use them to prioritize container - internal paths higher than external paths.
-
-86) What is a "Bind Mount"?
-Answer: A path on your host machine, which you know and specified, that is mapped to some container-internal path.
-
-87) Bind Mounts?
-Answer: Location on host file system, not tied to any specific container. Survives container shutdown / restart - removal 
-on host file system. Can be shared across containers. Can be re-used for some container (across restarts).
-
-88) Anonymous Volumes?
-Answer: Created specifically for a single container. Survives container shutdown / restart unless '--rm' is used.
-Cannot be shared across containers. Since it's anonymous, it can't be re-used (even on same image).
-
-89) Environment Variables with Docker Compose?
-Answer: 'variableName = value': Sets a variable in the container at run-time.
-'variableName': Sets a variable in the container at run-time. Values is taken from your computer.
-
-90) Docker Two Types of External Data Storages?
-Answer: 
-Volumes managed by Docker. 
-Bind Mounts managed by You.
-a) Anonymous Volumes: Docker sets up a folder / path on your host machine, exact location is unknown to you ('=dev'). 
-Managed via docker volume commands.
-b) Named Volumes: A defined path in the container is mapped to the created volume / mount. Example '/some-path' on your
-hosting machine is mapped to '/app/data'. Great for data which should be persistent but which you don't need to edit
-directly.
-
-91) Kubernetes Service Discovery?
-Answer: A service makes the replica set accessible.
-a) The service provides the Pod with an IP address and a DNS record.
-b) Other Pods communicate with the service by reading the IP address from the DNS record.
-c) Thereby, Kubernetes implements service discovery with DNS. In addition, microservices receive the IP addresses of 
-other microservices via environment variables.
-
-92) Kubernetes' namespaces?
-Answer: Namespaces are virtual clusters so that services and deployments are completely separated. Separate the 
-microservices from infrastructure.
-
-93) Kubernetes Apps with states?
-Answer: Persistent Volumes and Stateful Sets Operators.
-
-94) What is the role of Docker daemon in a container environment?
-Answer: The Docker daemon manages the containers and images.
-
-95) Kubernetes Advantage of namespaces?
-Answer: They allow different environment to co-exist. They allow separation of the microservices from the infrastructure.
-
-96) What is the difference between a Docker registry and a Docker repository?
-Answer: A Docker registry is a collection of repositories, while a Docker repository is a collection of images.
-
-97) Namespacing?
-Answer: Isolating resources per process (or group of processes). Process, Hard Drive, Network, Users, Hostnames, IPC.
-
-98) In Kubernetes Engine, a node pool is?
-Answer: A subset of node instances within a cluster that all have the same configuration.
-
-99) How much memory of a node does Kubernetes required as overhead?
-Answer: A scaled amount starting at 25 percent of memory and decreasing to 2 percent of marginal memory as the total
-amount of memory increases.
-
-100) Command to have 10 replicas of a deployment named 'ch07-app-deploy'?
-Answer: 'kubectl scale deployment ch07-app-deploy --replicas=10'.
-
-101) Kubernetes' deployments can be in which states?
-Answer: Processing, Completed, Failed.
-
-102) Volumes?
-Answer: Volumes are folders on your host machine hard drive which are mounted ("made available", mapped) into container.
-A container can write data into volume and read data from it. Volumes persist if a container shuts down. If a container
-restarts and mounts a volume, and data inside the volume is available in the container.
-
-103) Docker Data?
-Answer: Application (code + environment variables). Written and provided by developer. Added to image and container in
-build phase. "Fixed": Can't be changed once image is built. Read-only, hence stored in Images.
-Temporarily App Data (example entered used input). Fetched / Produced in running container. Stored in memory or temporary
-files. Dynamic and changing, but cleared regularly. Read + Write temporary, hence stored in containers.
-Permanent App Data (example User Account). Fetched / Produced in running container. Stored in files or a database.
-Must not be lost if container stops / restarts. Read + write, permanent, stored with containers and volumes.
-
-104) What is the Docker image naming convention?
-Answer: 'username/repository:tag'.
-
-105) What is a Docker container checkpoint?
-Answer: A Docker container checkpoint is a saved state of a container, including its configuration and data.
-
-106) Kubernetes delete commands?
-Answer:
-a) 'kubectl delete -f kafka-client.yaml'.
-b) 'helm uninstall gke-container-kafka'.
-c) 'gcloud container cluster delete panda-cluster --zone europe-west4-a'.
-
-107) How does Docker handle resources constraints for containers?
-Answer: Docker sets resource limits through configuration flags or resource management commands, such as '--memory' and
-'--cpu-shares', allowing for control over the resources that a container can use.
-
-108) Google Cloud Kubernetes?
-Answer: 
-a) 'gcloud auth login'.
-b) 'gcloud config set project'.
-c) 'gcloud container cluster create'.
-d) 'kubectl get nodes'.
-
-109) Kubernetes namespace?
-Answer: Provides a mechanism for isolating groups of resources within a single cluster.
-
-110) Kubernetes Pods, Services?
-Answer: A Pod is the smallest deployable unit. A Pod can consist of one or more containers.
-Services are used to expose deployment through NodePort or LoadBalancer.
-
-111) Exposing a Kubernetes Service?
-Answer: Point the external IP to nodes, set firewall rules to access to node.
-
-112) Virtual Machine vs Docker Container?
-Answer: 
-a) Virtual Machines: PROS: Separated environments. Environment-specific configurations are possible. Environment configs 
-can be shared and reduced reliably.
-CONS: Redundant duplication waste of space. Performance can be slow, boot time can be long. Reproducing on another
-computer / server is possible but may still be tricky.
-Bigger impact on OS, slower, higher disk space usage. Sharing, re-building can be challenging. Encapsulate "whole 
-machines" instead of just apps / envs.
-b) Docker Containers: Low impact on OS, very fast, minimal disk space usage. Sharing, re-building and distribution 
-is easy. Encapsulate apps / environments instead of "whole machines".
-
-113) What's the idea behind image tag?
-Answer: An image can have a name and then multiple "versions" of that image attached on the same name.
-
-114) What is the difference between CMD and ENTRYPOINT in a Dockerfile?
-Answer: ENTRYPOINT is a default command to run when a container is started, while CMD is the command that must be run
-when a container is started.
-
-115) What are the various states that a Docker container can be in at any given point in time?
-Answer: Running, Exited, Paused.
-
-
-NEW SECTION - Docker From Scratch
-
-1) Docker Terminologies?
-Answer: 
-a) Dockerfile (no extensions): Human readable instructions for the app to run (dependencies + runtime). 
-'.java' Human readable instructions for the app behavior.
-b) Build: Creating snapshot from Dockerfile. build / compile / package.
-c) Image: Lightweight VM (Snapshot). '.class' / '.jar'.
-d) Tag: Image version. jar version. 
-e) Container: Instance of image. Running lightweight VM. We can create multiple containers from an image. Instances 
-objects. 'Person p1 = new Person()';.
-f) DockerHub: Image Registry. Maven Repository.
-
-2) Docker Exec?
-Answer: docker exec CONTAINER-NAME COMMAND: To start a command on a running container. 
-'run' - creates new container & executes the command. 
-'exec' - does the similar thing on a running container.
-
-3) Docker Network Drivers?
-Answer: 
-a) Bridge: Default, Custom / User defined. 
-b) None (disable all the network).
-c) Host (works only on Linux machines).
-d) Overlay (for docker swarm).
-
-4) Dockerfile commands?
-Answer:
-a) 'FROM image': The base image for your docker image. Any image should extend another image.
-b) 'ADD host-dir container-dir': Adds files from your host directory to the image. ADD can also accept url.
-'COPY host-dir container-dir': Adds files from your host directory to the image.
-c) 'RUN command': Command to execute during the image build process. Useful to install any software or create directories etc.
-d) 'ENV key value': Sets an environment variable.
-e) 'WORKDIR path': Creates a workspace / default working directory. If we ignore root directory would be used.
-f) 'EXPOSE port': Exposes port.
-g) 'CMD [command to execute when container starts]': The command to be executed, process to be started when the container is
-created. You can override command.
-h) 'ENTRYPOINT [command to execute when container starts]': The command to be executed, process to be started when the 
-container is created. You cannot override command.
-
-5) Docker Compose Commands?
-Answer:
-a) 'docker-compose up': Spins up all the containers with custom bridge network.
-b) 'docker-compose down': Brings the app down, removes containers and networks.
-c) 'docker-compose ps': To check service status.
-d) 'docker-compose logs SERVICE-NAME': Check the service logs for debugging.
-
-
-NEW SECTION - Kubernetes in Action
-
-1) List namespaces in Linux?
-Answer:
-a) Mount - mnt.
-b) Process ID - PID.
-c) Network - net.
-d) Inter-process communication - IPC.
-e) Work station and domain - UTS.
-f) User ID - user.
+# NEW SECTION – CONTAINERS
+
+### 1. What is a Container? How is it different from a Virtual Machine?
+
+* A container is a lightweight package containing an application and its dependencies.
+* Unlike a VM, it shares the host OS kernel, making it faster and more resource-efficient.
+
+### 2. What is Docker?
+
+* Docker is a platform for building, running, and managing containers.
+* It simplifies container creation using **Dockerfiles** and is widely used for application deployment.
+
+### 3. What is Container Orchestration?
+
+* Container orchestration automates deploying, scaling, and managing containers.
+* Common tools include **Kubernetes**, **Docker Swarm**, and **Apache Mesos**.
+
+### 4. What is a Container Registry?
+
+* A container registry stores and distributes container images.
+* Developers push and pull versioned images.
+* Examples: **Docker Hub** and **Google Container Registry**.
+
+### 5. What are Namespaces?
+
+* Linux namespaces isolate container resources (processes, network, files, users), ensuring containers run
+  independently.
+
+### 6. How do Containers Communicate?
+
+* Containers communicate through networking (bridge, overlay, or host networks).
+* They can also expose ports for external access.
+
+### 7. What is the Difference Between a Container Image and a Container?
+
+* A **container image** is a static template containing the application and dependencies.
+* A **container** is the running instance of that image.
+
+### 8. What is a Dockerfile?
+
+* A Dockerfile is a script that defines how to build a Docker image, including software installation,
+  environment variables, and startup commands.
+
+### 9. What are Microservices? Why are Containers Useful?
+
+* Microservices split an application into independent services.
+* Containers provide isolation, portability, and easy scaling for each service.
+
+### 10. How are Containers Monitored?
+
+* Containers are monitored using metrics like CPU, memory, disk, and network usage.
+* Popular tools include **Prometheus**, **Grafana**, and **cAdvisor**.
+
+# NEW SECTION – KUBERNETES COMPONENTS
+
+### 1. What are the Main Components of a Kubernetes Cluster?
+
+* A Kubernetes cluster consists of the **Control Plane** (manages the cluster) and **Worker Nodes** (run applications).
+
+### 2. What is `kube-apiserver`?
+
+* The API server is the entry point to Kubernetes.
+* It handles API requests and manages cluster resources.
+
+### 3. What is `etcd`?
+
+* `etcd` is a distributed key-value store that keeps all Kubernetes cluster data and configuration.
+
+### 4. What is `kube-scheduler`?
+
+* The scheduler assigns Pods to the most suitable worker nodes based on available resources and constraints.
+
+### 5. What is `kube-controller-manager`?
+
+* It runs controllers that continuously compare the current cluster state with the desired state and make corrections.
+
+### 6. What is `kubelet`?
+
+* `kubelet` is the agent on each worker node that ensures Pods and containers are running as specified.
+
+### 7. What is `kube-proxy`?
+
+* `kube-proxy` manages network rules, enabling communication between Pods and Services.
+
+### 8. What is a Kubernetes Pod?
+
+* A Pod is the smallest deployable unit in Kubernetes, containing one or more containers that share networking and
+  storage.
+
+### 9. What is a Container Runtime?
+
+* The container runtime (e.g., **containerd**, **CRI-O**, Docker) pulls images and runs containers.
+
+### 10. What is a Kubernetes Service?
+
+* A Service provides a stable IP and DNS name for a group of Pods, enabling communication and load balancing.
+
+# NEW SECTION – KUBERNETES INSTALLATION
+
+### 1. What are the Prerequisites for Installing Kubernetes?
+
+* Linux machines (physical/VM), a container runtime (e.g., Docker/containerd), network connectivity, and **kubectl**.
+
+### 2. What is `kubeadm`?
+
+* `kubeadm` is a tool that automates Kubernetes cluster setup, including the control plane and node configuration.
+
+### 3. How do you Install Kubernetes with `kubeadm`?
+
+1. Install **kubeadm**, **kubelet**, and **kubectl**.
+2. Run `kubeadm init`.
+3. Configure `kubectl` (`kubeconfig`).
+4. Install a CNI network plugin.
+5. Join worker nodes using the generated join command.
+
+### 4. What is Minikube?
+
+* Minikube runs a single-node Kubernetes cluster locally for learning and testing.
+
+### 5. How are Network Plugins Configured?
+
+* Install a CNI plugin (e.g., **Calico**, **Flannel**, **Weave**) using `kubectl apply`.
+
+### 6. How is High Availability (HA) Achieved?
+
+* Use multiple control-plane nodes, a load balancer, and a replicated **etcd** cluster.
+
+### 7. Can Kubernetes Run on Any Cloud Platform?
+
+* Yes. Use managed services (**EKS**, **AKS**, **GKE**) or install manually with **kubeadm**.
+
+### 8. What is Helm?
+
+* Helm is Kubernetes' package manager that installs and manages applications using **Helm Charts**.
+
+### 9. How do you Upgrade a Kubernetes Cluster?
+
+* Upgrade the control plane first, then worker nodes, typically using **kubeadm**.
+
+### 10. What are Common Kubernetes Installation Challenges?
+
+* Network configuration, compatibility issues, HA setup, security, and limited system resources.
+
+# NEW SECTION – DEPLOYMENTS
+
+### 1. What is a Kubernetes Deployment?
+
+* A Deployment manages Pods declaratively, ensuring the desired number of replicas and handling updates and rollbacks.
+
+### 2. How do you Update a Deployment?
+
+* Modify the Deployment (e.g., change the container image).
+* Kubernetes performs a **rolling update** automatically.
+
+### 3. What are Rolling Updates and Rollbacks?
+
+* **Rolling updates** replace Pods gradually with minimal downtime.
+* **Rollbacks** restore the previous stable version if needed.
+
+### 4. How are Deployments Scaled?
+
+* Scale manually with `kubectl scale` or automatically using the **Horizontal Pod Autoscaler (HPA)**.
+
+### 5. What Happens if a Node Fails?
+
+* Kubernetes recreates lost Pods on healthy nodes to maintain the desired replica count.
+
+### 6. How do you Monitor a Deployment?
+
+- `kubectl get deployments`.
+- `kubectl describe deployment`.
+- `kubectl rollout status`.
+
+### 7. What is the Desired State?
+
+* The desired state defines how the application should run (replicas, image, resources).
+* Kubernetes continuously matches the actual state to it.
+
+### 8. What is a ReplicaSet?
+
+* A ReplicaSet ensures the required number of Pod replicas are running.
+* Deployments manage ReplicaSets.
+
+### 9. How are Environment-Specific Configurations Managed?
+
+* Use **ConfigMaps** for configuration and **Secrets** for sensitive data.
+
+### 10. What are Probes?
+
+- **Liveness Probe:** Restarts unhealthy containers.
+- **Readiness Probe:** Determines when a container is ready to receive traffic.
+
+# NEW SECTION – STATEFULSET
+
+### 1. What is a StatefulSet? How is it Different from a Deployment?
+
+* A StatefulSet manages **stateful applications** requiring stable identities and persistent storage.
+* Unlike Deployments, Pods have fixed names and storage.
+
+### 2. How is Pod Identity Managed?
+
+* Each Pod gets a unique ordinal name (e.g., `app-0`, `app-1`) and a stable DNS name that persists after restarts.
+
+### 3. How do StatefulSets Handle Scaling and Updates?
+
+* Pods are created, updated, and deleted **one at a time** in order.
+* Scaling down occurs in reverse order.
+
+### 4. What is the Role of Persistent Volumes?
+
+* Each Pod gets its own **Persistent Volume Claim (PVC)**, ensuring data persists even if the Pod is recreated.
+
+### 5. What is a Headless Service?
+
+* A headless Service (`clusterIP: None`) provides stable DNS names for each StatefulSet Pod.
+
+### 6. How is Pod Ordering Maintained?
+
+* StatefulSets create and terminate Pods in a predictable order using ordinal indexes and a headless Service.
+
+### 7. What Happens if a Node Fails?
+
+* Pods keep their identity and storage.
+* Kubernetes restores them while preserving their associated data.
+
+### 8. How are StatefulSets Updated?
+
+* They use **rolling updates**, updating Pods sequentially to maintain application consistency.
+
+### 9. What is `podManagementPolicy`?
+
+- **OrderedReady (default):** Pods start one by one.
+- **Parallel:** Pods start or stop simultaneously.
+
+### 10. What are StatefulSet Backup Best Practices?
+
+* Use **Persistent Volume snapshots**, backup tools (e.g., **Velero**), replication, and external backup storage.
+
+# NEW SECTION – REPLICASET.
+
+### 1. What is a ReplicaSet?
+
+* A ReplicaSet ensures a specified number of identical Pod replicas are always running.
+
+### 2. How is a ReplicaSet Different from a ReplicationController?
+
+* ReplicaSets support **set-based label selectors**, making them more flexible than ReplicationControllers.
+
+### 3. How do you Create a ReplicaSet?
+
+* Define it in a YAML file and create it with:
+
+```bash
+kubectl apply -f replicaset.yaml
+```
+
+### 4. What Happens if a Pod Fails?
+
+* The ReplicaSet automatically creates a replacement Pod to maintain the desired replica count.
+
+### 5. How do you Scale a ReplicaSet?
+
+* Update the `replicas` field or run:
+
+```bash
+kubectl scale replicaset <name> --replicas=<number>
+```
+
+### 6. How does a ReplicaSet Work with a Deployment?
+
+* Deployments manage ReplicaSets, providing rolling updates, rollbacks, and scaling.
+
+### 7. What are ReplicaSet Use Cases?
+
+* Maintaining Pod availability, scaling stateless applications, and providing fault tolerance.
+
+### 8. How do you Update Pods in a ReplicaSet?
+
+* Modify the Pod template, but **Deployments** are recommended for safe rolling updates.
+
+### 9. What is the Role of Label Selectors?
+
+* Label selectors identify which Pods are managed by the ReplicaSet.
+
+### 10. How do ReplicaSets Improve High Availability?
+
+* Run multiple replicas across different nodes to ensure applications remain available during failures.
+
+# NEW SECTION – PODS
+
+### 1. What is a Pod?
+
+* A Pod is the smallest deployable unit in Kubernetes.
+* It contains one or more containers sharing network and storage.
+
+### 2. How do Pods Communicate?
+
+* Pods communicate using their unique IP addresses.
+* Containers within the same Pod also share networking and volumes.
+
+### 3. What is the Pod Lifecycle?
+
+* Pod phases are:
+    - **Pending**.
+    - **Running**.
+    - **Succeeded**.
+    - **Failed**.
+    - **Unknown**.
+
+### 4. What is the Difference Between a Pod and a Container?
+
+* A **container** runs an application, while a **Pod** is a Kubernetes object that hosts one or more containers.
+
+### 5. How are Resources Allocated?
+
+* Pods use **CPU** and **memory requests/limits** defined in the Pod specification.
+
+### 6. What are Multi-Container Pods?
+
+* Pods with multiple tightly coupled containers that share networking and storage (e.g., app + sidecar).
+
+### 7. How are Pods Scaled?
+
+* Pods are scaled using **Deployments**, **ReplicaSets**, or **StatefulSets**.
+
+### 8. What are Init Containers?
+
+* Init containers run **before** application containers to perform setup tasks, then exit.
+
+### 9. How Does Kubernetes Handle Pod Failures?
+
+* Controllers automatically recreate failed Pods to maintain the desired state.
+
+### 10. How do you Expose a Pod Externally?
+
+* Use a **Service** (e.g., **NodePort** or **LoadBalancer**) to provide external access to the Pod.
+
+# NEW SECTION – JOBS.
+
+### 1. What is a Kubernetes Job?
+
+* A Job runs a task to **completion** (e.g., batch processing, backups, data migration).
+
+### 2. How is a Job Different from a Pod?
+
+* A Pod runs a container, while a Job manages Pods until the task completes successfully.
+
+### 3. What is the Lifecycle of a Job?
+
+* A Job creates Pods, monitors them, retries failed Pods (if configured), and completes after the required successful
+  executions.
+
+### 4. What is a CronJob?
+
+* A CronJob schedules Jobs to run automatically at specified times, similar to Linux `cron`.
+
+### 5. How do you Monitor a Job?
+
+- `kubectl describe job <job-name>`
+- `kubectl get pods --selector=job-name=<job-name>`
+
+### 6. What Happens After a Job Completes?
+
+* Completed Pods remain by default for log inspection but can be automatically cleaned up using **TTL**.
+
+### 7. How do you Control Parallel Execution?
+
+- **completions** – total successful Pods required.
+- **parallelism** – maximum Pods running simultaneously.
+
+### 8. How are Jobs Used for Work Queues?
+
+* Multiple Pods process queue items in parallel until all tasks are completed.
+
+### 9. How are Job Failures Handled?
+
+* Failed Pods are retried based on **restartPolicy** and **backoffLimit**.
+
+### 10. Can a Job's Pod Template be Updated?
+
+* **No.**
+* The Pod template is immutable.
+* Create a new Job to apply changes.
+
+# NEW SECTION – NAMESPACES.
+
+### 1. What are Kubernetes Namespaces?
+
+* Namespaces logically divide a Kubernetes cluster to organize and isolate resources for different teams, projects, or
+  environments.
+
+### 2. How do Namespaces Affect Resource Allocation?
+
+* They support **resource quotas** and isolation, preventing one namespace from consuming excessive cluster resources.
+
+### 3. Can Different Namespaces Communicate?
+
+* Yes.
+* Services can communicate using their **FQDN**.
+* **Network Policies** can restrict cross-namespace traffic.
+
+### 4. What is the Default Namespace?
+
+* `default` is the namespace used when no namespace is specified.
+
+### 5. How do you Create and Manage Namespaces?
+
+```bash
+kubectl create namespace <name>
+kubectl delete namespace <name>
+```
+
+* Use **RBAC** and **Resource Quotas** to manage access and resources.
+
+### 6. What are Resource Quotas?
+
+* Resource Quotas limit CPU, memory, storage, and object counts (Pods, Services, PVCs) per namespace.
+
+### 7. What are Namespace Best Practices?
+
+* Separate **dev**, **staging**, and **production**; apply **RBAC**, **Resource Quotas**, and **Network Policies**.
+
+### 8. How do Labels and Annotations Work?
+
+* **Labels** organize/select namespaces, while **annotations** store additional metadata.
+
+### 9. Can Resources be Moved Between Namespaces?
+
+* Not directly.
+* Resources must usually be recreated in the target namespace.
+
+### 10. How is Security Managed in Namespaces?
+
+* Use **RBAC**, **Network Policies**, and **Security Contexts** to control access and isolate workloads.
+
+# NEW SECTION – SERVICES.
+
+### 1. What is a Kubernetes Service?
+
+* A Service provides a stable IP, DNS name, and load balancing for a group of Pods.
+
+### 2. What are the Types of Kubernetes Services?
+
+- **ClusterIP:** Internal access only (default).
+- **NodePort:** Exposes the Service on each node.
+- **LoadBalancer:** External access via a cloud load balancer.
+- **ExternalName:** Maps to an external DNS name.
+
+### 3. How do Services Discover Pods?
+
+* Services use **label selectors** to find matching Pods and automatically route traffic to them.
+
+### 4. What are Endpoints?
+
+* Endpoints store the IP addresses and ports of Pods behind a Service and update automatically.
+
+### 5. What is a NodePort Service?
+
+* NodePort exposes a Service on a fixed port on every node, allowing external access.
+
+### 6. What is a LoadBalancer Service?
+
+* LoadBalancer provides a cloud-managed external IP, unlike **ClusterIP** (internal) and **NodePort** (node-based).
+
+### 7. How do you Secure a Service?
+
+* Use **Network Policies**, **TLS/SSL**, and **authentication/authorization**.
+
+### 8. Can a Service be Updated Without Downtime?
+
+* Yes.
+* Most changes (e.g., labels) are seamless, but changing ports or type may require creating a new Service.
+
+### 9. What is a Headless Service?
+
+* A headless Service (`clusterIP: None`) provides direct DNS access to individual Pods.
+
+### 10. How do Services Work with StatefulSets?
+
+* Headless Services provide stable DNS names and network identities for StatefulSet Pods.
+
+# NEW SECTION – PROBES.
+
+### 1. What are Probes in Kubernetes?
+
+* Probes are health checks used to determine a container's status and whether it should receive traffic or be restarted.
+
+### 2. What is the Difference Between Liveness and Readiness Probes?
+
+- **Liveness Probe:** Restarts unhealthy containers.
+- **Readiness Probe:** Determines if a Pod is ready to receive traffic.
+
+### 3. What is a Startup Probe?
+
+* A Startup Probe checks whether a slow-starting application has finished starting.
+* Liveness and Readiness probes wait until it succeeds.
+
+### 4. What Types of Probes are Available?
+
+- **HTTP GET**.
+- **TCP Socket**.
+- **Exec Command**.
+
+### 5. How are Probes Configured?
+
+* Configure probes in the Pod spec using parameters like `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`,
+  `successThreshold`, and `failureThreshold`.
+
+### 6. Can Probes Affect Performance?
+
+* Yes.
+* Very frequent probes increase CPU, memory, and network usage.
+
+### 7. What is `initialDelaySeconds`?
+
+* It specifies how long Kubernetes waits before performing the first probe, preventing unnecessary failures during
+  startup.
+
+### 8. What Happens if a Liveness Probe Fails?
+
+* Kubernetes restarts the container after the configured failure threshold is reached.
+
+### 9. When Should You Avoid Liveness Probes?
+
+* Avoid them for applications with temporary failures or slow startup, where unnecessary restarts may occur.
+
+### 10. How do Readiness Probes Affect Load Balancing?
+
+* Only Pods with successful readiness probes receive traffic from Services and Ingress.
+
+# NEW SECTION – HELM.
+
+### 1. What is Helm?
+
+* Helm is the **package manager for Kubernetes**.
+* It uses **Charts** to simplify application deployment and management. (Helm 3 is **Tiller-less**.)
+
+### 2. How is Helm 3 Different from Helm 2?
+
+* Helm 3 removes **Tiller**, improving security, simplifies dependency management, and enhances release handling.
+
+### 3. What are Helm Charts?
+
+* Helm Charts are reusable packages containing Kubernetes manifests and configuration for deploying applications.
+
+### 4. What are Chart Hooks?
+
+* Hooks run tasks during chart lifecycle events (install, upgrade, delete), such as database migrations or cleanup.
+
+### 5. How are Dependencies Managed?
+
+* Dependencies are defined in `Chart.yaml` under the `dependencies` section.
+
+### 6. What is a Helm Repository?
+
+* A Helm Repository stores and distributes Helm Charts for installation and sharing.
+
+### 7. How do you Update a Helm Release?
+
+```bash
+helm upgrade <release> <chart>
+```
+
+### 8. What is Helm Rollback?
+
+* Helm Rollback restores a previous release version:
+
+```bash
+helm rollback <release> <revision>
+```
+
+### 9. How do you Create a Custom Helm Chart?
+
+1. `helm create <chart-name>`.
+2. Edit `Chart.yaml` and `values.yaml`.
+3. Modify templates.
+4. Test with `helm install --dry-run --debug`.
+
+### 10. How does Helm Manage Releases?
+
+* Helm tracks application releases, revisions, upgrades, and rollbacks, making deployments easier to manage.
+
+# NEW SECTION – DEPLOYMENT PATTERNS.
+
+### 1. What is a Kubernetes Deployment?
+
+* A Deployment manages Pods and ReplicaSets, supporting declarative updates, scaling, rollouts, and rollbacks.
+
+### 2. What is Blue/Green Deployment?
+
+* Two identical environments (**Blue** and **Green**) run simultaneously.
+* Traffic switches to the new version after validation, enabling quick rollback.
+
+### 3. What is Canary Deployment?
+
+* A new version is released to a small percentage of users first.
+* Traffic gradually increases if the deployment is successful.
+
+### 4. What is a Rolling Update?
+
+* The default update strategy that gradually replaces old Pods with new ones while maintaining application availability.
+
+### 5. How is A/B Testing Implemented?
+
+* Different user groups are routed to different application versions using **Ingress** or a **Service Mesh** (e.g.,
+  Istio).
+
+### 6. How is a StatefulSet Different from a Deployment?
+
+* StatefulSets manage **stateful** applications with stable identities and persistent storage, while Deployments
+  manage **stateless** workloads.
+
+### 7. What is Shadow Deployment?
+
+* Production traffic is duplicated to a new version for testing without affecting user responses.
+
+### 8. What are Jobs and CronJobs?
+
+- **Job:** Runs a task to completion once.
+- **CronJob:** Runs Jobs on a scheduled basis.
+
+### 9. How do you Roll Back a Deployment?
+
+```bash
+kubectl rollout undo deployment <deployment-name>
+```
+
+### 10. What is the Declarative Approach?
+
+* Define the desired application state in YAML/JSON, and Kubernetes automatically maintains that state.
+
+# NEW SECTION – AUTOSCALING.
+
+### 1. What is Autoscaling in Kubernetes?
+
+* Autoscaling automatically adjusts the number of **Pods** or **nodes** based on workload demand to improve performance
+  and reduce costs.
+
+### 2. What is Horizontal Pod Autoscaler (HPA)?
+
+* HPA automatically scales the number of Pods based on **CPU**, **memory**, or **custom/external metrics**.
+
+### 3. What is Vertical Pod Autoscaler (VPA)?
+
+* VPA automatically adjusts a Pod's **CPU** and **memory requests/limits** based on usage.
+
+### 4. What is Cluster Autoscaler?
+
+* Cluster Autoscaler adds or removes **worker nodes** based on pending Pods and node utilization.
+
+### 5. What is the Role of Metrics Server?
+
+* Metrics Server collects **CPU** and **memory** usage data used by HPA and VPA.
+
+### 6. What are Custom and External Metrics?
+
+- **Custom Metrics:** Application metrics (e.g., requests/sec).
+- **External Metrics:** Metrics from outside the cluster (e.g., cloud queues).
+
+### 7. How do you Configure Autoscaling?
+
+* Create **HPA** or **VPA** resources, define target workloads, metrics, and minimum/maximum limits.
+
+### 8. What is the Difference Between Horizontal and Vertical Scaling?
+
+- **Horizontal Scaling:** Add/remove Pods.
+- **Vertical Scaling:** Increase/decrease CPU and memory per Pod.
+
+### 9. Can Autoscaling Work with Stateful Applications?
+
+* Yes, but it requires careful handling of persistent storage and application state.
+
+### 10. What Should You Consider When Configuring Autoscaling?
+
+* Workload type, scaling metrics, min/max limits, application behavior, performance, and cost.
+
+# NEW SECTION – SECURITY.
+
+### 1. How do Namespaces Improve Security?
+
+* Namespaces isolate resources and enable separate **RBAC**, quotas, and policies for different teams or environments.
+
+### 2. What is RBAC?
+
+* **Role-Based Access Control (RBAC)** grants permissions to users, groups, or service accounts based on assigned roles.
+
+### 3. What is Pod Security Policy (PSP)?
+
+* PSP controlled Pod security settings (privileges, host access, etc.).
+* **Note:** PSP is **deprecated** and replaced by **Pod Security Admission (PSA)**.
+
+### 4. What are Network Policies?
+
+* Network Policies control which Pods can communicate with each other and external networks.
+
+### 5. What are Kubernetes Secrets?
+
+* Secrets securely store sensitive data such as passwords, API keys, certificates, and tokens.
+
+### 6. How is Certificate Management Handled?
+
+* Kubernetes uses **TLS certificates** (issued by a CA) to secure communication between cluster components.
+
+### 7. What are Kubernetes Security Best Practices?
+
+* Use **RBAC**, **Namespaces**, **Network Policies**, **Pod Security Admission (PSA)**, image scanning, regular updates,
+  and secret management.
+
+### 8. Why is Container Image Security Important?
+
+* Scan images for vulnerabilities, use trusted registries, and sign images to ensure integrity.
+
+### 9. How are Security Logging and Monitoring Implemented?
+
+* Collect logs and metrics using tools like **ELK Stack**, **Prometheus**, and **Grafana** to detect security issues.
+
+### 10. Why are Compliance and Security Audits Important?
+
+* Regular audits ensure compliance with security standards, identify vulnerabilities, and improve the cluster's security
+  posture.
+
+# NEW SECTION – MONITORING AND LOGGING.
+
+### 1. Why are Monitoring and Logging Important?
+
+* Monitoring tracks cluster health and performance, while logging helps with troubleshooting, debugging, and auditing.
+
+### 2. What Key Metrics Should be Monitored?
+
+* Monitor **CPU**, **memory**, **disk**, **network**, Pod status, node health, deployment status, and API server
+  metrics.
+
+### 3. What Monitoring Tools are Commonly Used?
+
+* **Prometheus**, **Grafana**, **Metrics Server**, and **cAdvisor**.
+
+### 4. How does Prometheus Work?
+
+* Prometheus scrapes metrics from Kubernetes components, stores them as time-series data, and queries them using *
+  *PromQL**.
+
+### 5. What are DaemonSets Used for in Monitoring?
+
+* DaemonSets run monitoring or logging agents on every node (e.g., Fluentd, node exporters).
+
+### 6. What is Grafana?
+
+* Grafana visualizes metrics through dashboards and is commonly paired with **Prometheus**.
+
+### 7. How is Logging Implemented?
+
+* Logging uses agents (e.g., **Fluentd**, **Logstash**) to collect logs and send them to centralized storage.
+
+### 8. What is the EFK Stack?
+
+* **Elasticsearch + Fluentd + Kibana** for centralized log collection, storage, and visualization.
+
+### 9. Why are Kubernetes Events Useful?
+
+* Events record cluster activities (e.g., scheduling, failures, evictions) and help troubleshoot issues.
+
+### 10. What are Monitoring and Logging Best Practices?
+
+* Use centralized logging, meaningful alerts, dashboards, structured logs, and monitor both cluster and application
+  metrics.
+
+# NEW SECTION – RESOURCE MANAGEMENT.
+
+### 1. What is Resource Management in Kubernetes?
+
+* Resource management allocates **CPU** and **memory** to Pods, ensuring efficient resource usage and application
+  stability.
+
+### 2. What are Resource Requests and Limits?
+
+- **Request:** Minimum guaranteed CPU/memory.
+- **Limit:** Maximum CPU/memory a container can use.
+
+### 3. What is Quality of Service (QoS)?
+
+* Kubernetes assigns Pods to QoS classes:
+    - **Guaranteed**.
+    - **Burstable**.
+    - **BestEffort**.
+
+### 4. What is the Role of the Scheduler?
+
+* The scheduler places Pods on nodes based on available resources, requests, affinity, taints, and other constraints.
+
+### 5. What is a LimitRange?
+
+* A **LimitRange** sets default and maximum CPU/memory values for Pods and containers within a namespace.
+
+### 6. What is Node Affinity?
+
+* Node Affinity schedules Pods onto nodes with specific labels or characteristics.
+
+### 7. What is a ResourceQuota?
+
+* A **ResourceQuota** limits total resource usage (CPU, memory, Pods, PVCs, etc.) within a namespace.
+
+### 8. What is Resource Overcommitment?
+
+* Kubernetes allows allocating more resources than physically available, relying on **QoS** and limits to manage
+  contention.
+
+### 9. What are Taints and Tolerations?
+
+* **Taints** prevent Pods from being scheduled on certain nodes unless the Pods have matching **Tolerations**.
+
+### 10. How does HPA Help with Resource Management?
+
+* **Horizontal Pod Autoscaler (HPA)** automatically scales the number of Pods based on CPU, memory, or custom metrics.
+
+# NEW SECTION – RBAC
+
+### 1. What is RBAC in Kubernetes?
+
+* **Role-Based Access Control (RBAC)** controls access to Kubernetes resources based on assigned roles.
+
+### 2. What are Roles and RoleBindings?
+
+- **Role:** Defines permissions within a **namespace**.
+- **RoleBinding:** Assigns a Role to a user, group, or service account.
+
+### 3. What are ClusterRoles and ClusterRoleBindings?
+
+- **ClusterRole:** Defines cluster-wide permissions.
+- **ClusterRoleBinding:** Assigns a ClusterRole across the entire cluster.
+
+### 4. How are RBAC Policies Managed?
+
+* Create **Roles**, **RoleBindings**, **ClusterRoles**, and **ClusterRoleBindings** in YAML and apply them with
+  `kubectl apply`.
+
+### 5. What is the Principle of Least Privilege?
+
+* Grant users and applications only the minimum permissions required to perform their tasks.
+
+### 6. What is the Default RBAC Policy?
+
+* RBAC is usually enabled by default with system roles, but custom user permissions must be configured.
+
+### 7. How do Namespaces Affect RBAC?
+
+* **Roles** and **RoleBindings** are namespace-scoped, while **ClusterRoles** and **ClusterRoleBindings** are
+  cluster-wide.
+
+### 8. How are Service Accounts Used with RBAC?
+
+* Service accounts are assigned Roles or ClusterRoles to grant Pods the required permissions.
+
+### 9. Can RBAC be Customized?
+
+* Yes.
+* Administrators can create custom Roles and Bindings with specific permissions.
+
+### 10. What are Common RBAC Challenges?
+
+* Managing permissions at scale, enforcing least privilege, keeping policies updated, and auditing access.
+
+# NEW SECTION – STORAGE AND VOLUMES.
+
+### 1. What are Volumes in Kubernetes?
+
+* Volumes provide storage for Pods, allowing data to persist across container restarts and be shared between containers.
+
+### 2. What are Common Volume Types?
+
+- **emptyDir** – Temporary storage.
+- **hostPath** – Mounts host filesystem.
+- **NFS** – Network file system.
+- **PersistentVolumeClaim (PVC)** – Persistent storage.
+- **ConfigMap / Secret / DownwardAPI** – Configuration and metadata.
+
+### 3. What are PV and PVC?
+
+- **PersistentVolume (PV):** Cluster storage resource.
+- **PersistentVolumeClaim (PVC):** Request for storage that binds to a PV.
+
+### 4. What is Dynamic Provisioning?
+
+* Kubernetes automatically creates storage volumes using a **StorageClass** when a PVC is requested.
+
+### 5. What is a StorageClass?
+
+* A StorageClass defines how storage is provisioned (e.g., SSD, HDD, cloud storage).
+
+### 6. How do Containers Share Data in a Pod?
+
+* Containers share data by mounting the same volume (commonly **emptyDir**).
+
+### 7. How do you Use a PVC in a Pod?
+
+* Reference the PVC under `volumes` and mount it using `volumeMounts`.
+
+### 8. What is a Reclaim Policy?
+
+- **Retain** – Keep the volume and data.
+- **Delete** – Remove the volume and storage.
+- **Recycle** – Deprecated.
+
+### 9. What are Kubernetes Access Modes?
+
+**Answer:**
+
+- **ReadWriteOnce (RWO)**
+- **ReadOnlyMany (ROX)**
+- **ReadWriteMany (RWX)**
+
+### 10. How is Data Preserved During Pod Rescheduling?
+
+**Answer:** Pods reconnect to the same **Persistent Volume (PV)** through their **Persistent Volume Claim (PVC)**.
+
+# NEW SECTION – SCHEDULING.
+
+### 1. What is the Role of the Kubernetes Scheduler?
+
+* The scheduler assigns Pods to the most suitable nodes based on resources, constraints, and policies.
+
+### 2. How does the Scheduler Meet Resource Requirements?
+
+* It schedules Pods only on nodes with sufficient **CPU**, **memory**, and other required resources.
+
+### 3. What are Taints and Tolerations?
+
+- **Taints:** Prevent Pods from running on specific nodes.
+- **Tolerations:** Allow Pods to run on tainted nodes.
+
+### 4. What are Node Affinity and Anti-Affinity?
+
+- **Affinity:** Prefers or requires specific nodes.
+- **Anti-Affinity:** Prevents scheduling on certain nodes.
+
+### 5. How Else Can Scheduling be Controlled?
+
+* Using **Node Selectors**, **Resource Requests/Limits**, **Pod Priority & Preemption**, or a **Custom Scheduler**.
+
+### 6. What Happens if a Pod Cannot be Scheduled?
+
+* The Pod remains in the **Pending** state until a suitable node becomes available.
+
+### 7. How do you Troubleshoot Scheduling Failures?
+
+* Check scheduling events with:
+
+```bash
+kubectl describe pod <pod-name>
+```
+
+### 8. What is a DaemonSet?
+
+* A DaemonSet ensures one Pod runs on every (or selected) node, commonly for logging and monitoring.
+
+### 9. Can Pods be Scheduled to Specific Hardware?
+
+* Yes.
+* Use **Node Labels**, **Node Selectors**, or **Node Affinity** to target nodes (e.g., GPU nodes).
+
+### 10. What is a Pod Disruption Budget (PDB)?
+
+* A **PDB** limits how many Pods can be unavailable during voluntary disruptions, helping maintain high availability.
+
+# NEW SECTION – `kubectl`.
+
+### 1. What is `kubectl`?
+
+* `kubectl` is the Kubernetes command-line tool used to interact with the API server and manage cluster resources.
+
+### 2. How do you Create and Manage Resources?
+
+* Use commands such as:
+
+```bash
+kubectl apply -f file.yaml
+kubectl create
+kubectl delete
+kubectl edit
+```
+
+### 3. How do you Debug Pods and Services?
+
+- `kubectl logs` – View container logs.
+- `kubectl describe` – View detailed resource information.
+- `kubectl exec` – Run commands inside a container.
+- `kubectl get` – List resources.
+
+### 4. How do you Scale Applications?
+
+```bash
+kubectl scale deployment <name> --replicas=<number>
+```
+
+### 5. How do you Update Applications?
+
+```bash
+kubectl set image deployment/<name> <container>=<image:tag>
+```
+
+* This triggers a rolling update.
+
+### 6. How do you Monitor Cluster Health?
+
+- `kubectl get`
+- `kubectl describe`
+- `kubectl top`
+
+### 7. What are Contexts in `kubectl`?
+
+* Contexts allow switching between different clusters and namespaces using `kubectl config`.
+
+### 8. How does `kubectl` Communicate with Kubernetes?
+
+* It sends authenticated HTTP API requests to the Kubernetes **API Server**.
+
+### 9. What is the Role of `kubectl` in CI/CD?
+
+* It automates deployments, updates, scaling, and resource management in CI/CD pipelines.
+
+### 10. What are Some Advanced `kubectl` Commands?
+
+- `kubectl port-forward`
+- `kubectl proxy`
+- `kubectl cp`
+- `kubectl patch`
+
+# NEW SECTION – KUSTOMIZE.
+
+### 1. What is Kustomize?
+
+* Kustomize is a Kubernetes configuration management tool that customizes YAML files **without templates**.
+* It is built into `kubectl`.
+
+### 2. What are Overlays?
+
+* Overlays apply environment-specific changes (e.g., **dev**, **staging**, **prod**) to shared base manifests.
+
+### 3. How is Kustomize Different from Helm?
+
+- **Kustomize:** Template-free, uses overlays and patches.
+- **Helm:** Uses templates and packages applications as Charts.
+
+### 4. What is a `kustomization.yaml` File?
+
+* It defines resources, patches, labels, name changes, generators, and other customizations.
+
+### 5. How do you Manage Multiple Environments?
+
+* Create a common **base** and separate **overlay** directories for each environment.
+
+### 6. Can Kustomize Generate Resources?
+
+* Yes.
+* It can generate **ConfigMaps**, **Secrets**, labels, and other resource configurations.
+
+### 7. What are Patches?
+
+* Patches modify specific fields in existing Kubernetes resources without changing the original manifests.
+
+### 8. How are ConfigMaps and Secrets Managed?
+
+* Kustomize generates them from files or literals and updates their hashes when content changes.
+
+### 9. How does Kustomize Improve Reusability?
+
+* It separates **base configurations** from **environment-specific overlays**, reducing duplication.
+
+### 10. What are Kustomize Best Practices?
+
+* Keep bases and overlays in version control, generate manifests during CI/CD, and validate before deployment.
+
+# NEW SECTION – GITOPS.
+
+### 1. What is GitOps?
+
+* GitOps uses **Git as the single source of truth** for infrastructure and application deployments through declarative
+  configuration.
+
+### 2. What is the Role of Git in GitOps?
+
+* Git stores the desired system state.
+* Changes are made through commits, triggering automated deployments.
+
+### 3. How does GitOps Improve Deployments?
+
+* It automates deployments, increases consistency, enables frequent releases, and reduces human error.
+
+### 4. What are the Benefits of GitOps?
+
+* Automated deployments, easy rollbacks, version control, audit trails, consistency, and simplified Kubernetes
+  management.
+
+### 5. How do you Implement GitOps?
+
+- Store configs in Git.
+- Use IaC tools (e.g., Terraform).
+- Deploy with **Argo CD** or **Flux**.
+- Enforce Git-based workflows.
+
+### 6. What is the Role of CI/CD in GitOps?
+
+* **CI** tests and validates changes, while **CD** automatically synchronizes Kubernetes with the desired Git state.
+
+### 7. What are GitOps Security Best Practices?
+
+* Secure Git access, protect secrets, use RBAC, code reviews, image scanning, and signed commits.
+
+### 8. How does GitOps Support Rollbacks?
+
+* Revert to a previous Git commit, and GitOps tools automatically restore the previous cluster state.
+
+### 9. What Tools are Commonly Used in GitOps?
+
+* **GitHub/GitLab**, **Argo CD**, **Flux**, **Terraform**, **Kubernetes**, **Prometheus**, and **Grafana**.
+
+### 10. How is Configuration Management Handled?
+
+* All configuration is stored in Git and applied automatically, ensuring the cluster always matches the desired state.
+
+# NEW SECTION – KUBERNETES MASTERCLASS
+
+### 1. What is a Kubernetes Cluster?
+
+* A cluster consists of a **Control Plane (Master)** and one or more **Worker Nodes**.
+* Production clusters typically use multiple control-plane nodes for high availability.
+
+### 2. What are the Main Kubernetes Components?
+
+- **Control Plane:** API Server, etcd, Scheduler, Controller Manager.
+- **Worker Node:** Kubelet, Container Runtime, Kube-proxy.
+
+### 3. What are Common Kubernetes Tools?
+
+- **kind / Minikube:** Local Kubernetes clusters.
+- **kubectl:** CLI for managing Kubernetes.
+
+### 4. What is Kubeconfig?
+
+* Configuration file (`~/.kube/config`) storing cluster, user, and context information.
+
+### 5. What is a Pod?
+
+* The smallest deployable unit in Kubernetes.
+* A Pod runs one or more containers that share networking and storage.
+
+### 6. What is Docker?
+
+* Docker packages applications into **images**, which run as **containers**.
+* Containers communicate via IP or Services.
+
+### 7. What are Common Pod States?
+
+* **Pending**.
+* **ContainerCreating**.
+* **Running**.
+* **Completed**.
+* **Error**.
+* **CrashLoopBackOff**.
+* **ImagePullBackOff**.
+* **Terminating**.
+
+### 8. What are ReplicaSets and Deployments?
+
+- **ReplicaSet:** Maintains the desired number of Pods.
+- **Deployment:** Manages ReplicaSets, rolling updates, and rollbacks.
+
+### 9. What are Kubernetes Services?
+
+- **ClusterIP:** Internal access.
+- **NodePort:** External access via node port.
+- **LoadBalancer:** External access via cloud load balancer.
+
+### 10. What are Probes?
+
+- **Startup Probe:** Checks application startup.
+- **Liveness Probe:** Restarts unhealthy containers.
+- **Readiness Probe:** Determines when a Pod can receive traffic.
+
+### 11. What are ConfigMaps and Secrets?
+
+- **ConfigMap:** Stores non-sensitive configuration.
+- **Secret:** Stores sensitive data (e.g., passwords, keys).
+
+### 12. What are PV, PVC, and StorageClass?
+
+- **StorageClass:** Defines storage type.
+- **PVC:** Requests storage.
+- **PV:** Actual persistent storage resource.
+
+### 13. What is a StatefulSet?
+
+* Manages stateful applications with stable identities and persistent storage.
+
+### 14. What is an Ingress?
+
+* An HTTP/HTTPS router that exposes Services externally using routing rules managed by an **Ingress Controller**.
+
+### 15. Essential `kubectl` Commands
+
+```bash
+kubectl get nodes
+kubectl get pods
+kubectl describe pod <pod>
+kubectl logs <pod>
+kubectl exec -it <pod> -- bash
+kubectl apply -f file.yaml
+kubectl delete -f file.yaml
+kubectl port-forward <pod> 8080:80
+```
 

@@ -346,14 +346,14 @@
   from multiple sources into a single view.
 * Event-Driven Updates: materialized view is kept up-to-date by subscribing to events published by the microservices
   that own the data. Whenever a microservice changes data (e.g. updates a consumer profile, adds a transaction, etc.), it
-  publishes an event. service maintaining the materialized view listens to these events and updates the view accordingly.
+  publishes an event. Service maintaining the materialized view listens to these events and updates the view accordingly.
 * Optimized for Read Operations: primary reason to use a materialized view is to speed up read operations, especially
   in scenarios where data is spread across multiple microservices. Instead of querying each service in real time, the
   materialized view provides a precomputed result, significantly reducing the time required to fetch data.
 * Let's consider a bank scenario where there are four microservices: Customer, Accounts, Loans, and Cards. Each service
   maintains its own data and uses Kafka to publish domain events.
-  bank wants to introduce a customer-facing portal where users can view their aggregated banking information in one place,
-  including their profile details, account balance, loan status, and card transactions. challenge is to pull data from
+  Bank wants to introduce a customer-facing portal where users can view their aggregated banking information in one place,
+  including their profile details, account balance, loan status, and card transactions. Challenge is to pull data from
   multiple microservices and display it in a single view on the UI.
   One way to solve this issue is using the API Composition pattern. A new service called CustomerBankView could orchestrate
   the Customer, Accounts, Loans, and Cards services, fetching the required data from each microservice via API calls and
@@ -373,7 +373,7 @@
 
 ### Transactional Outbox Pattern.
 
-* Let's assume we're persisting bank account data into a DB. data science team wants to perform analytics on the data.
+* Let's assume we're persisting bank account data into a DB. Data science team wants to perform analytics on the data.
   We have a few options:
 1. Grant direct DB access: Creates tight coupling, requiring coordination on schema changes.
 2. Use 2PC for data writing: Ensures consistency but is slow and blocking due to node coordination.
@@ -438,8 +438,8 @@
 * If the **(n + 1)** transaction in a saga fails, the effects of the previous n transactions need to be reversed.
   Each of those steps, Ti, has an associated compensating transaction, Ci, which is designed to undo the effect of Ti.
   To roll back the saga, each Ci must be executed in reverse order, starting from the last successful transaction.
-  changes from T1 to Tn are committed by individual microservices into their respectiveDB.
-  compensation transactions in the reverse order will undo the changes made by **T1 ... Tn**.
+  Changes from T1 to Tn are committed by individual microservices into their respectiveDB.
+  Compensation transactions in the reverse order will undo the changes made by **T1 ... Tn**.
 
 ![Saga Pattern Compensation.](flashcard-img/saga-pattern-compensation.png "Saga Pattern Compensation.")
 
@@ -472,7 +472,7 @@
 
 ### Orchestration Saga Pattern.
 
-* term comes from the way an orchestra is conducted by conductor, who directs and coordinates the performance of musicians
+* Term comes from the way an orchestra is conducted by conductor, who directs and coordinates the performance of musicians
   to play in harmony. Similarly, in the Orchestration Saga Pattern, a centralized orchestrator directs, and sequences the
   calls to different services to ensure that the overall business transaction is completed successfully or rolled back in
   the case of failure.

@@ -254,7 +254,7 @@
 - Scheduling x
 - Virtual Memory x
 - Paging x
-- Memory Allocation
+- Memory Allocation x
 - Concurrency
 
 ---

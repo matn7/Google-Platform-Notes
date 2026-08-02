@@ -15,3 +15,10 @@ Also prepare answer in MD format.
 
 Can you "minimize" content of my notes. Do not remove rearange anything, just make notes more consistent, and shorter if possible.
 Even reducing content length by 10, 20 % is good.
+
+
+
+Can you prepare index cards for Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions, books?
+Can be 50 - 100 or more concepts, 
+
+
