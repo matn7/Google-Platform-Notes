@@ -22,3 +22,8 @@ Can you prepare index cards for Enterprise Integration Patterns: Designing, Buil
 Can be 50 - 100 or more concepts, 
 
 
+
+Can you prepare index cards say 20 or more depending of need, which covers most important concepts, of entire, 19 Math and Geometry, section?
+
+
+

@@ -707,7 +707,7 @@ ENTRYPOINT ["java", "-jar", "/accounts-0.0.1-SNAPSHOT.jar"]
 * These principles were developed to assist developers in building effective cloud-native applications, emphasizing the
   key
   factors that should be considered for optimal outcomes.
-* Subsequently, Kevin Hoffman expended upon the original factors and introduced additional ones in his book, "Beyond the
+* Subsequently, Kevin Hoffman expanded upon the original factors and introduced additional ones in his book, "Beyond the
   Twelve-Factor App". This revised approach, referred as the 15-Factor methodology, refreshing the content of the
   original
   principles and incorporates three new factors.
@@ -1124,8 +1124,7 @@ actions. Implementing identity and access management standards can greatly enhan
   context.
 * The default profile is always active. Spring Boot loads all properties in **application.properties** into the default
   profile.
-  We can create another profiles by creating property files like **application_prod.properties** or *
-  *application_qa.properties**.
+  We can create another profiles by creating property files like **application_prod.properties** or **application_qa.properties**.
   We can activate a specific profile using **spring.profiles.active** property like **spring.profiles.active=prod**.
   An important point to consider is that once an application is built and packaged, it should not be modified.
 * If any configuration changes are required, such as updating credentials or database handles, they should be made
@@ -1263,11 +1262,9 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
     1. Add actuator dependency in the Config Client services: Add Spring Boot Actuator dependency inside **pom.xml** of
        the
        individual microservices like accounts, loans, cards to expose the **/refresh** endpoint.
-    2. Enable **/refresh** API: The Spring Boot Actuator library provides a configuration endpoint called *
-       */actuator/refresh**
+    2. Enable **/refresh** API: The Spring Boot Actuator library provides a configuration endpoint called **/actuator/refresh**
        that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it
-       in the
-       **application.yaml** file.
+       in the **application.yaml** file.
   ```yaml
   management:
     endpoints:
@@ -1302,14 +1299,11 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
   efficient
   communication across the application ecosystem.
 * Below are the steps to follow:
-    1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside *
-       *pom.xml**
+    1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside **pom.xml**
        of the individual microservices like accounts, loans and cards to expose the **/busrefresh** endpoint.
-    2. Enable **/busrefresh** API: The Spring Boot Actuator library provides a configuration endpoint called *
-       */actuator/busrefresh**
+    2. Enable **/busrefresh** API: The Spring Boot Actuator library provides a configuration endpoint called **/actuator/busrefresh**
        that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it
-       in the
-       **application.yaml** file.
+       in the **application.yaml** file.
         ```yaml
         management:
           endpoints:
@@ -1352,11 +1346,9 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
   after
   each new push to the configuration repository.
 * Below are steps to follow:
-    1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside *
-       *pom.xml** of the
+    1. Add actuator dependency in the Config Server & Client services: Add Spring Boot Actuator dependency inside **pom.xml** of the
        individual microservices like accounts, loans, cards, and Config Server to expose the **/busrefresh** endpoint.
-    2. Enable **/busrefresh** API: The Spring Boot Actuator library provides a configuration endpoint called *
-       */actuator/busrefresh**
+    2. Enable **/busrefresh** API: The Spring Boot Actuator library provides a configuration endpoint called **/actuator/busrefresh**
        that can trigger a refresh event. By default, this endpoint is not exposed, so you need to explicitly enable it
        in
        **application.yaml** file.
@@ -1394,26 +1386,18 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
 ### Liveness and Readiness probes.
 
 * A **liveness probe** sends a signal that the container or application is either alive (passing) or dead (failing). If
-  the
-  container is alive, then no action is required because the current state is good. If the container is dead, then an
-  attempt
-  should be made to heal the application by restarting it. In simple word, liveness answers a true-or-false question:
+  the container is alive, then no action is required because the current state is good. If the container is dead, then an
+  attempt should be made to heal the application by restarting it. In simple word, liveness answers a true-or-false question:
   "Is the container alive?".
-* A **readiness probe** used to know whether the container or app being probed is ready to start receiving network
-  traffic.
+* A **readiness probe** used to know whether the container or app being probed is ready to start receiving network traffic.
   If your container enters a state where it is still alive but cannot handle incoming network traffic (a common scenario
   during startup), you want the readiness probe to fail. So that, traffic will not be sent to a container which isn't
-  ready for it.
-  If someone prematurely send network traffic to the container, it could cause the load balancer (or router) to return a
-  502
-  error to the client and terminate the request. The client would get a "connection refused" error message.
+  ready for it. If someone prematurely send network traffic to the container, it could cause the load balancer (or router)
+  to return a 502 error to the client and terminate the request. The client would get a "connection refused" error message.
   In simple words, readiness answers a true-or-false question: "Is this container ready to receive network traffic?".
-* Inside Spring Boot apps, actuator gathers the "Liveness" and "Readiness" information from the *
-  *ApplicationAvailability**
-  interface and uses that information in dedicated health indicators: **LivenessStateHealthIndicator** and *
-  *ReadinessStateHealthIndicator**.
-  These indicators are shown on the global health endpoint (**/actuator/health**). They are also exposed as separate
-  HTTP
+* Inside Spring Boot apps, actuator gathers the "Liveness" and "Readiness" information from the **ApplicationAvailability**
+  interface and uses that information in dedicated health indicators: **LivenessStateHealthIndicator** and **ReadinessStateHealthIndicator**.
+  These indicators are shown on the global health endpoint (**/actuator/health**). They are also exposed as separate HTTP
   Probes by using health groups: **/actuator/health/liveness** and **/actuator/health/readiness**.
 
 ***
@@ -1428,8 +1412,7 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
 **How do new service instances enter into the network?**
 
 * If a microservice instance fails, new instances will be brought online to ensure constant availability. This means
-  that
-  the IP address of the instances can be constantly changing. So how does these new instances can start serving to the
+  that the IP address of the instances can be constantly changing. So how does these new instances can start serving to the
   clients?
 
 **Load balance, info sharing between microservice instances.**
@@ -1446,14 +1429,10 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
 ## How service communication happens in Traditional apps?
 
 * Inside web network, when a service/app want to communicate with another service/app, it must be given the necessary
-  information
-  to locate it, such as an IP address or a DNS name. Let's examine the scenario of two services, Accounts and Loans. If
-  there
-  was only a single instance of Loans microservice. Upstream Service (Accounts) internal communication between
-  microservices
-  using hostname, DNS, or IP address. No Service Discovery or Load Balancing involved. Loans Microservice (Downstream
-  Service).
-  Loans microservice will be a backing service with respect to Accounts microservice.
+  information to locate it, such as an IP address or a DNS name. Let's examine the scenario of two services, Accounts and Loans. 
+  If there was only a single instance of Loans microservice. Upstream Service (Accounts) internal communication between
+  microservices using hostname, DNS, or IP address. No Service Discovery or Load Balancing involved. Loans Microservice (Downstream
+  Service). Loans microservice will be a backing service with respect to Accounts microservice.
 
 ![Service comm no LB.](flashcard-img/service-comm.png "Service comm no LB.")
 
@@ -2998,8 +2977,7 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
     ```
 3. Composing functions: If our scenario needs multiple functions to be executed, then we need to compose them otherwise
    we
-   can use them as individual functions as well. Composing functions can be achieved by defining a property in *
-   *application.yaml**
+   can use them as individual functions as well. Composing functions can be achieved by defining a property in **application.yaml**
    like shown below.
     ```yaml
     spring:
@@ -3074,8 +3052,7 @@ BUILD_VERSION="1.3" java -jar accounts-service-0.0.1-SNAPSHOT.jar'.
 
 #### Steps to create bindings using Spring Cloud Stream.
 
-1. Add the Stream related dependencies: Add the maven dependencies **spring-cloud-stream**, *
-   *spring-cloud-stream-binder-rabbit**
+1. Add the Stream related dependencies: Add the maven dependencies **spring-cloud-stream**, **spring-cloud-stream-binder-rabbit**
    inside **pom.xml** of message service where we defined functions.
 2. Add the stream binding and rabbitmq properties inside **application.yaml** of message service.
 3. We need to define input bindings for each function accepting input data and an output binding for each function
@@ -3832,12 +3809,11 @@ service:
 
 ### Important Helm commands.
 
-* **helm create bank**: Create a blank chart with the name bank. Inside the bank folder, we can see **Charts.yaml**, *
-  *values.yaml**
-  , **Charts** folder, **templates** folder etc.
-* **helm dependencies build**: Build is used to reconstruct a chart**s dependencies.
-* **helm install [NAME] [CHART]**: Install the manifest mentioned in the **[CHART]** with a given release name inside *
-  *[NAME]**.
+* **helm create bank**: Create a blank chart with the name bank. Inside the bank folder, we can see **Charts.yaml**, 
+  **values.yaml**, **Charts** folder, **templates** folder etc.
+* **helm dependencies build**: Build is used to reconstruct a charts dependencies.
+* **helm install [NAME] [CHART]**: Install the manifest mentioned in the **[CHART]** with a given release name inside
+  **[NAME]**.
 * **helm upgrade [NAME] [CHART]**: Upgrades a specified release to a new version of a chart.
 * **helm history [NAME]**: Prints historical versions for a given release.
 * **helm rollback [NAME] [REVISION]**: Roll back a release to a previous version. The first argument of the rollback

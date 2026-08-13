@@ -967,111 +967,904 @@ using unidirectional traversal.**
 
 ## 11 Trees.
 
-Card 1: Title: Tree Fundamentals
+**1. Define a tree. What are its key components (nodes, edges, root, leaf, parent, child)? What's a binary tree?**
+* A tree is a hierarchical data structure. 
+* Nodes store data and have connections (edges) to other nodes. Key components:
+* Root: Topmost node, no parent.
+* Leaf: Node with no children.
+* Parent/Child: Defines the hierarchical relationship.
+* Binary Tree: Each node has at most two children (left and right).
 
-Front: Define a tree. What are its key components (nodes, edges, root, leaf, parent, child)? What's a binary tree?
-Back: A tree is a hierarchical data structure. Nodes store data and have connections (edges) to other nodes. Key components:
-Root: Topmost node, no parent.
-Leaf: Node with no children.
-Parent/Child: Defines the hierarchical relationship.
-Binary Tree: Each node has at most two children (left and right).
-Card 2: Title: Tree Terminology
+**2. Define subtree, path, depth, and height in the context of trees.**
+* Subtree: A tree formed by a node and all its descendants.
+* Path: A sequence of connected nodes.
+* Depth: Number of edges from the root to a node.
+* Height: Length of the longest path from the root to a leaf. (Important: In this chapter, a tree with one node has a height of 1).
 
-Front: Define subtree, path, depth, and height in the context of trees.
-Back:
-Subtree: A tree formed by a node and all its descendants.
-Path: A sequence of connected nodes.
-Depth: Number of edges from the root to a node.
-Height: Length of the longest path from the root to a leaf. (Important: In this chapter, a tree with one node has a height of 1).
-Card 3: Title: DFS - Depth-First Search
+**3. Explain DFS. What are the three main types of DFS traversals? Give code snippet for each one.**
+* DFS explores a tree branch as far as possible before backtracking. 
+* Types:
+  * Preorder: Process node, then left, then right.
+  * Inorder: Left, then process node, then right.
+  * Postorder: Left, then right, then process node.
 
-Front: Explain DFS. What are the three main types of DFS traversals? Give code snippet for each one.
-Back: DFS explores a tree branch as far as possible before backtracking. Types:
-Preorder: Process node, then left, then right.
-def preorder(node):
-if not node: return
-process(node)
-preorder(node.left)
-preorder(node.right)
-Inorder: Left, then process node, then right.
-def inorder(node):
-if not node: return
-inorder(node.left)
-process(node)
-inorder(node.right)
-Postorder: Left, then right, then process node.
-def postorder(node):
-if not node: return
-postorder(node.left)
-postorder(node.right)
-process(node)
-Card 4: Title: DFS Use Cases
+**4: When would you choose Preorder, Inorder, or Postorder traversal?**
+* Preorder: Good for duplicating a tree or getting prefix notation of an expression tree. Process root before children.
+* Inorder: Useful for Binary Search Trees (BSTs) to get elements in sorted order. Process nodes from left to right.
+* Postorder: Good for deleting a tree (delete children before parent) or getting postfix notation of an expression tree. 
+Process subtrees before their root.
 
-Front: When would you choose Preorder, Inorder, or Postorder traversal?
-Back:
-Preorder: Good for duplicating a tree or getting prefix notation of an expression tree. Process root before children.
-Inorder: Useful for Binary Search Trees (BSTs) to get elements in sorted order. Process nodes from left to right.
-Postorder: Good for deleting a tree (delete children before parent) or getting postfix notation of an expression tree. Process subtrees before their root.
-Card 5: Title: BFS - Breadth-First Search
+**5. Explain BFS. How is it typically implemented? Give code snippet.**
+* BFS explores a tree level by level. 
+* It uses a queue.
 
-Front: Explain BFS. How is it typically implemented? Give code snippet.
-Back: BFS explores a tree level by level. It uses a queue.
-from collections import deque
-def bfs(root):
-if not root: return
-queue = deque([root])
-while queue:
-node = queue.popleft()
-process(node)
-if node.left: queue.append(node.left)
-if node.right: queue.append(node.right)
-Card 6: Title: BFS Use Cases
+**6. When is BFS preferred over DFS?**
+* BFS is preferred when you need to find the shortest path between nodes or when you need to process the tree level by level. 
+* Level-order traversal is a variant of BFS.
 
-Front: When is BFS preferred over DFS?
-Back: BFS is preferred when you need to find the shortest path between nodes or when you need to process the tree level by level. Level-order traversal is a variant of BFS.
-Card 7: Title: Complexity Analysis - DFS
+**7. What are the time and space complexities of DFS? Explain.**
+* Time: `O(n)`, where `n` is the number of nodes (visits each node once).
+* Space: `O(h)`, where `h` is the height of the tree (due to the call stack). 
+  * Worst case: `O(n)` for a skewed tree. 
+  * Best (balanced) case: `O(log n)`.
 
-Front: What are the time and space complexities of DFS? Explain.
-Back:
-Time: O(n), where n is the number of nodes (visits each node once).
-Space: O(h), where h is the height of the tree (due to the call stack). Worst case: O(n) for a skewed tree. Best (balanced) case: O(log n).
-Card 8: Title: Complexity Analysis - BFS
+**8. What are the time and space complexities of BFS? Explain.**
+* Time: `O(n)`, where `n` is the number of nodes (visits each node once).
+* Space: `O(n)`, in the worst case, when the queue contains all nodes at the widest level 
+(approximately `n/2` nodes in a complete binary tree).
 
-Front: What are the time and space complexities of BFS? Explain.
-Back:
-Time: O(n), where n is the number of nodes (visits each node once).
-Space: O(n), in the worst case, when the queue contains all nodes at the widest level (approximately n/2 nodes in a complete binary tree).
-Card 9: Title: Real-World Tree Applications
+**9. Describe a real-world example of tree data structures.**
+* File systems are a classic example. 
+  * The root directory is the root of the tree, and directories/files are nodes. 
+* Other examples include: organizational charts, DOM (Document Object Model) in web pages, and decision trees in machine learning.
 
-Front: Describe a real-world example of tree data structures.
-Back: File systems are a classic example. The root directory is the root of the tree, and directories/files are nodes. Other examples include: organizational charts, DOM (Document Object Model) in web pages, and decision trees in machine learning.
-Card 10: Title: Choosing DFS vs. BFS
+**10. Summarize the key differences between DFS and BFS, and how to choose between them.**
+* DFS: Explores deeply, uses recursion (stack). Good for existence checks, path finding when path length isn't 
+a primary concern. Less memory if tree is balanced.
+* BFS: Explores level by level, uses a queue. Good for shortest path problems, level-order traversal. More memory.
+* Choice: 
+  * Shortest path => BFS. 
+  * Space is a concern & tree is deep => DFS. 
+  * Need to process in a specific order (pre/in/post) => DFS.
 
-Front: Summarize the key differences between DFS and BFS, and how to choose between them.
-Back:
-DFS: Explores deeply, uses recursion (stack). Good for existence checks, path finding when path length isn't a primary concern. Less memory if tree is balanced.
-BFS: Explores level by level, uses a queue. Good for shortest path problems, level-order traversal. More memory.
-Choice: Shortest path => BFS. Space is a concern & tree is deep => DFS. Need to process in a specific order (pre/in/post) => DFS.
+**11. What is a Binary Search Tree (BST)? What are its key properties? Why are they useful?**
+* A BST is a binary tree with the following properties:
+  * The value of each node is greater than or equal to all values in its left subtree.
+  * The value of each node is less than or equal to all values in its right subtree.
+* BSTs allow for efficient searching, insertion, and deletion of nodes (`O(log n)` on average for balanced trees).
+* Inorder traversal of a BST yields the nodes in sorted order.
+
+**12. What does it mean for a tree to be balanced? Why is balancing important? Give examples of balanced vs. unbalanced trees.**
+* A balanced tree is one where the heights of the subtrees of any node differ by at most a certain constant (often 1).
+* Balancing is important to ensure that operations like search, insert, and delete remain efficient (`O(log n)`). 
+* Unbalanced trees can degenerate into linked lists, leading to `O(n)` performance.
+* Examples:
+  * Balanced: AVL trees, Red-Black trees are self-balancing. A complete binary tree is also balanced.
+  * Unbalanced: A skewed tree (all nodes on one side) is unbalanced.
+
+***
+
+## 12 Tries.
+
+**1. What is a Trie?**
+* A Trie (pronounced "try"), also known as a prefix tree, is a specialized tree-like data structure used to efficiently 
+store and retrieve a collection of strings.
+
+**2. What is the core intuition behind Tries?**
+* Tries store strings by taking advantage of their shared prefixes. 
+* Instead of storing each string independently, common prefixes share nodes, minimizing redundancy and optimizing storage.
+
+**3. How is a single string like "internet" represented in a Trie?**
+* Each character in the string becomes a node, and these nodes are connected sequentially. 
+* So, 'i' -> 'n' -> 't' -> 'e' -> 'r' -> 'n' -> 'e' -> 't'.
+
+**4. How do Tries handle multiple words with shared prefixes, like "internet" and "interface"?**
+* They reuse the common prefix nodes. 
+* For "internet" and "interface", the nodes for 'i', 'n', 't', 'e', 'r' would be shared. 
+* From the 'r' node, "internet" would branch off to 'n' then 'e' then 't', while "interface" would branch off 
+to 'f' then 'a' then 'c' then 'e'.
+
+**5. What are the two essential attributes of a TrieNode?**
+* Children: A data structure (like a hash map or array) to store references to its child nodes.
+* End of word indicator: An attribute to mark if the node completes a valid word.
+
+**6. How are TrieNode children typically stored?**
+* Hash Map: 
+  * Most commonly, a hash map (e.g., children = {'a': TrieNode_for_a, 'b': TrieNode_for_b}) where the key is a character 
+  and the value is the child `TrieNode`. 
+  * This is flexible for any character set.
+* Array: If the character set is limited and known (e.g., only lowercase English letters), an array of fixed size 
+(e.g., 26 for 'a' through 'z') can be used for direct indexing.
+
+**7. How can a `TrieNode` indicate the "end of a word"?**
+* Boolean attribute: A simple `is_word` (or `is_end_of_word`) boolean set to True if the node represents the last 
+character of a valid word.
+* String variable: 
+  * A word attribute that stores the actual string if the node marks the end of a word (e.g., word = "internet"). 
+  * This is less common but useful if you need to retrieve the full word quickly.
+
+**8. What is the purpose of the root `TrieNode`?**
+* The root `TrieNode` is the starting point for all words in the trie. 
+* It does not represent any character itself; it simply serves as the anchor from which all words branch out.
+
+**9. What is the time complexity for inserting a word of length $k$ into a trie?**
+* `$O(k)$`.
+* We traverse the trie character by character, creating new nodes if they don't exist. 
+* Each character requires a constant amount of work (hash map lookup/insertion or array access).
+
+**10. What is the time complexity for searching for a word of length $k$ in a trie?**
+* `$O(k)$`.
+* We traverse the trie character by character along the path defined by the word. 
+* Each character requires a constant amount of work (hash map lookup or array access).
+
+**11. What is the time complexity for searching for a prefix of length `$k$` in a trie?**
+* `$O(k)$`.
+* Similar to searching for a word, we traverse the trie along the path defined by the prefix. 
+* The search is complete once the path for the entire prefix has been followed.
+
+**12. What is the time complexity for deleting a word of length `$k$` from a trie?**
+* `$O(k)$`.
+* Deletion involves finding the word (an `$O(k)$` operation) and then potentially removing nodes that are no longer part 
+of any other words, which can also be done in `$O(k)$` time by backtracking.
+
+**13. When are Tries primarily useful? (Main use case).**
+* For efficient prefix searches. 
+* If a problem requires finding all strings that share a common prefix, a trie is the ideal data structure.
+
+**14. Beyond prefix searches, what other problems can Tries help with?**
+* Word validation: Quickly verifying the existence of words within a set of strings.
+* Data storage optimization: Reducing redundancy through shared prefixes among strings.
+
+**15. Provide a real-world example of Tries in action.**
+* Autocomplete systems. 
+* When you type, the system traverses a trie based on your input. 
+* It then retrieves all words/phrases branching from that point in the trie to suggest possible completions quickly.
+
+**16. What problem in the "Tries" section focuses on basic implementation?**
+* "Design a Trie" (This typically covers implementing insert, search, and startsWith/searchPrefix methods).
+
+**17. What concept is covered for inserting and searching words with special characters?**
+* "Insert and Search Words with Wildcards" (This extends the basic trie functionality to handle pattern matching).
+
+**18. What common traversal problem is often solved using Tries?**
+* "Find All Words on a Board" (e.g., a Boggle-like game, where you search for words in a grid of letters).
+
+**19. What is a key advantage of using a Trie over a hash set for storing strings, especially for prefix-related tasks?**
+* While a hash set can check for word existence in `$O(k)$` on average, it cannot efficiently find all words with 
+a given prefix. 
+* A Trie can do this in `$O(k)$` to find the prefix node, then potentially `$O(N)$` where `N` is the number of words 
+starting with that prefix.
+
+**20. Can Tries store words of different lengths?**
+* Yes, Tries naturally accommodate words of varying lengths. 
+* The `is_word` (or word attribute) simply gets set to True at the node corresponding to the last character of each word, 
+regardless of its depth in the trie.
+
+***
+
+## 13 Graphs.
+
+**1. Graph Definition.**
+* A data structure made of nodes (also called vertices) connected by edges. 
+* Graphs are used to model relationships, where the edges define these connections.
+
+**2. GraphNode Class (Conceptual).**
+* Represents an individual node in a graph.
+* It typically stores a val (the node's value/identifier).
+* It contains a list (or array) of neighbors, which are references to other `GraphNode` objects connected by an edge.
+
+**3. Adjacent Node / Neighbor.**
+* Two nodes are considered adjacent or neighbors if there is a direct edge connecting them.
+
+**4. Node Degree.**
+* The degree of a node is the total number of edges connected to that specific node.
+
+**5. Path in a Graph.**
+* A path is a sequence of nodes connected by edges. 
+* It describes a particular route through the graph.
+
+**6. Directed vs. Undirected Graphs.**
+* Directed Graph: Edges have a specific direction (e.g., A → B means you can go from A to B, but not necessarily B to A).
+* Undirected Graph: Edges have no direction (e.g., A --- B means you can go from A to B and B to A).
+
+**7. Weighted vs. Unweighted Graphs.**
+* Weighted Graph: Edges have a numerical weight or cost associated with them (e.g., distance, time, traffic).
+* Unweighted Graph: Edges have no associated weight; all connections are considered equal.
+
+**8. Cyclic vs. Acyclic Graphs.**
+* Cyclic Graph: Contains at least one cycle, which is a path that starts and ends at the same node.
+* Acyclic Graph: Contains no cycles. 
+* A common type is a Directed Acyclic Graph (DAG).
+
+**9. Graph Representations.**
+* How a graph's structure is stored in memory. 
+* The two most common methods are:
+  * Adjacency List.
+  * Adjacency Matrix.
+* Often, you'll need to build one of these from problem input.
+
+**10. Adjacency List.**
+* The neighbors of each node are stored in a list (or array).
+* Typically implemented using a hash map where the key is a node, and the value is its list of neighbors.
+* Pros: Memory efficient for sparse graphs (few edges relative to nodes), efficient to find all neighbors of a node.
+
+**11. Adjacency Matrix.**
+* The graph is represented as a 2D matrix (e.g., `matrix[i][j]`).
+* `matrix[i][j]` indicates an edge between node i and node j.
+* A 1 (or weight) signifies an edge, 0 signifies no edge.
+* Pros: Fast `O(1)` check for existence of a specific edge, efficient for dense graphs (many edges).
+
+**12. Adjacency List vs. Matrix (When to use)?**
+* Adjacency List: Preferred for sparse graphs (many nodes, few edges) and when needing to iterate over all neighbors efficiently.
+Most common choice.
+* Adjacency Matrix: Preferred for dense graphs (many edges) and when frequent `O(1)` checks for specific edge existence are needed.
+
+**13. Graph Traversal.**
+* Techniques for systematically visiting every node and edge in a graph.
+* Primary methods: Depth-First Search (DFS) and Breadth-First Search (BFS).
+* Crucial for both: Keep track of visited nodes (e.g., using a hash set) to prevent infinite loops in cyclic graphs and 
+ensure each node is processed only once.
+
+**14. DFS Concept.**
+* Explores as deeply as possible along each branch before backtracking.
+* It's like going down one path to its very end, then coming back to try another path from a previous decision point.
+* Typically implemented recursively.
+
+**15. DFS Code Structure (High-Level).**
+* Mark the current node as visited.
+* Process the current node (e.g., print its value).
+* For each neighbor of the current node:
+  * If the neighbor has not been visited, recursively call DFS on that neighbor.
+
+**16. BFS Concept.**
+* Explores nodes level by level (or layer by layer) outwards from a starting node.
+* It visits all immediate neighbors of a node before moving on to their neighbors.
+* Typically implemented iteratively using a queue data structure.
+
+**17. BFS Code Structure (High-Level).**
+* Initialize a queue with the start node and a visited set.
+* While the queue is not empty:
+  * Dequeue a node.
+* If the node has not been visited:
+  * Mark it as visited.
+  * Process the node.
+  * Enqueue all its neighbors (regardless of visited status – check visited when dequeued).
+
+**18. Time Complexity (DFS & BFS).**
+* `O(N + E)`
+```
+N: Number of nodes (vertices).
+E: Number of edges.
+```
+* This is because each node is visited once, and each edge is explored (traversed) once.
+
+**19. Space Complexity (DFS & BFS).**
+* `O(N)`.
+```
+N: Number of nodes.
+```
+* DFS: Due to the maximum depth of the recursive call stack.
+* BFS: Due to the maximum size of the queue (can store up to N nodes in the worst case).
+
+**20. Why Use a Visited Set in Traversal?**
+* Prevents Infinite Loops: Essential for graphs containing cycles, otherwise traversal might revisit the same nodes endlessly.
+* Efficiency: Ensures each node is processed exactly once, contributing to the optimal `O(N+E)` time complexity.
+* Correctness: Guarantees that the traversal terminates and correctly covers all reachable nodes.
+
+**21. Real-World Graph Examples.**
+* Social Networks: Users are nodes, friendships/connections are edges (e.g., LinkedIn, Facebook).
+* Navigation/GPS: Locations are nodes, roads are weighted edges.
+* Recommendation Systems: Users/items as nodes, interactions as edges.
+* Computer Networks: Devices as nodes, network cables/connections as edges.
+
+***
+
+## 14 Backtracking.
+
+**1. What is Backtracking?**
+* Backtracking is an algorithmic technique for solving problems by trying to build a solution incrementally. 
+* If a partial solution cannot be completed into a valid full solution, the algorithm "backs up" or "backtracks" to an 
+earlier point to make a different choice, exploring alternative paths until a valid solution (or all solutions) are found. 
+* Think of it as navigating a maze: if a path hits a dead end, you return to the last junction and try another route.
+
+**2. What is a State Space Tree?**
+* A state space tree (also called a decision tree) is a conceptual representation of all possible sequences of decisions 
+in a problem. 
+* It's a tree where each node represents a specific state of the problem, and the branches (edges) extending from it 
+represent the different decisions that can be made from that state.
+
+**3. What do "Edges" represent in a State Space Tree?**
+* Each edge in a state space tree signifies a single, possible decision, move, or action that can be taken at a particular 
+point in the problem-solving process, leading from one state to another.
+
+**4. What is the "Root Node" in a State Space Tree?**
+* The root node is the very top node of the tree. 
+* It represents the initial state or configuration of the problem before any decisions or actions have been made.
+
+**5. What are "Intermediate Nodes" in a State Space Tree?**
+* These are any nodes in the tree that are not the root node and are not leaf nodes. 
+* They represent partially completed states or intermediate positions where further decisions still need to be made to 
+reach a complete solution.
+
+**6. What are "Leaf Nodes" in a State Space Tree?**
+* Leaf nodes are the terminal nodes of the tree, meaning they have no children. 
+* They represent complete solutions (which could be valid or invalid) or dead ends where no further decisions can be made.
+
+**7. What does a "Path" represent in a State Space Tree?**
+* A path in a state space tree is a sequence of connected edges and nodes leading from the root node down to any leaf node. 
+* This path illustrates a particular series of decisions that leads to a complete (though not necessarily correct) 
+or invalid solution.
+
+**8. Why is it useful to draw a State Space Tree?**
+* Drawing out the state space tree helps visualize the entire set of possible decisions and outcomes for a problem. 
+* It provides a clear conceptual map of the solution space, which is invaluable for understanding how the backtracking 
+algorithm will explore and solve the problem.
+
+**9. How is the Backtracking Algorithm typically implemented?**
+* Backtracking algorithms are most commonly implemented using a recursive Depth-First Search (DFS) approach. 
+* DFS naturally explores one path completely to its end before moving back up to explore alternative branches, 
+which directly mirrors the "try a path, then backtrack" nature of the algorithm.
+
+**10. What is the "Termination Condition" in a Backtracking Algorithm?**
+* This is the base case for the recursive function. 
+* It defines when a specific path should stop being explored—either because a complete solution (valid or invalid) 
+has been formed, or because it's determined that the current path cannot lead to a valid solution.
+
+**11. What does "Iterate Through Decisions" mean in backtracking?**
+* At each current state in the problem, the algorithm systematically loops through and explores every single possible 
+choice or move that can be made from that state. 
+* This ensures all potential avenues are considered.
+
+**12. What happens when you "Make a Decision" in backtracking?**
+* When a specific decision is chosen during iteration, the current state of the problem is modified or updated to reflect 
+the consequences of that choice. 
+* This effectively moves the algorithm deeper into a particular branch of the state space tree.
+
+**13. What is the "Recursive Call" in a Backtracking Algorithm?**
+* After making a decision and updating the problem's state, the backtracking function calls itself with this new, modified state. 
+* This initiates the exploration of all further paths that can branch out from this updated position, continuing the DFS traversal.
+
+**14. What is "Backtracking" (the action) or "Undo Decision"?**
+* This is a critical step performed after a recursive call returns. 
+* It involves reversing the changes made by the most recent decision, restoring the problem to its exact state before 
+that decision was made. 
+* This allows the algorithm to explore other alternative branches from the previous decision point.
+
+**15. What is the general template or structure of a Backtracking function?**
+* A typical backtracking function dfs(state) includes:
+  * A check for a termination condition.
+  * A loop to iterate through possible decisions.
+  * Inside the loop: make a decision (update state).
+  * A recursive call (`dfs(new_state)`).
+  * After the call: undo the decision (backtrack to revert state).
+
+**16. How is Time Complexity typically analyzed for Backtracking algorithms?**
+* Time complexity is often analyzed by considering two main factors: the "branching factor" and the "depth" of the 
+state space tree. 
+* Since these algorithms can explore many paths, the complexity often grows exponentially.
+
+**17. What is the "Branching Factor (b)" in backtracking complexity?**
+* The branching factor represents the maximum number of distinct decisions or choices that can be made from any given 
+state in the problem. 
+* In the state space tree, it corresponds to the maximum number of children any node can have.
+
+**18. What is the "Depth (d)" in backtracking complexity?**
+* The depth refers to the length of the deepest path in the state space tree. 
+* It corresponds to the total number of decisions or steps required to reach a complete solution from the initial state.
+
+**19. What is the approximate Time Complexity formula for Backtracking?**
+* The time complexity is often estimated as `$O(b * d)$`, where 'b' is the branching factor and 'd' is the depth. 
+* This is because, in the worst case, the algorithm might explore a significant portion of the nodes across different 
+levels of the state space tree. 
+* It's worth noting that for many backtracking problems, the actual complexity can be exponential, more akin to `$O(b^d)$`, 
+as the number of nodes grows rapidly with depth.
+
+**20. When is Backtracking most useful?**
+* Backtracking is particularly useful for problems where you need to explore all possible solutions or combinations that 
+satisfy certain constraints. 
+* It's ideal for generating permutations, subsets, combinations, or finding all possible paths in a complex search space.
+
+**21. Provide a real-world example of Backtracking.**
+* AI algorithms in complex games like chess or Go use backtracking. 
+* They explore various possible moves, simulate the game's progression for each, and evaluate the potential outcomes. 
+* If a sequence of moves leads to an unfavorable position, the AI backtracks to an earlier decision point to try 
+alternative strategies, systematically searching for the optimal play.
+
+**22. What are common problem categories solved by Backtracking?**
+* Backtracking is frequently applied to problems involving:
+  * Permutations: Finding all possible orderings of a set of items.
+  * Subsets: Generating all possible groups of items from a larger set.
+  * Combinations: Selecting items from a set without regard to their order.
+* Examples include the N-Queens problem, Sudoku solvers, and generating all combinations that sum to a target value.
+
+***
+
+## 15 Dynamic Programming.
+
+**1. Dynamic Programming (DP).**
+* A powerful algorithmic technique used to solve complex problems by breaking them down into simpler, smaller parts (subproblems). 
+* Its main goal is to optimize performance by avoiding redundant calculations.
+
+**2. Subproblems.**
+* Smaller, self-contained versions of the main problem. 
+* The solution to the main problem can be constructed by combining the solutions to these subproblems. 
+* Recursion often naturally identifies these.
+
+**3. The Problem with Simple Recursion.**
+* Without optimization, a purely recursive approach can become inefficient because it might repeatedly solve the exact 
+same subproblem multiple times, leading to unnecessary computational expense.
+
+**4. DP's Core Solution.**
+* Dynamic Programming tackles the inefficiency of repeated subproblem calculations by storing the solutions to each 
+subproblem once it's computed. 
+* This way, if the same subproblem is encountered again, its pre-calculated solution can be instantly retrieved and reused.
+
+**5. Optimal Substructure (DP Attribute 1).**
+* A problem exhibits optimal substructure if the global optimal solution to the problem can be built directly from the 
+optimal solutions of its subproblems. 
+* This is a crucial property for a problem to be solvable by DP.
+
+**6. Overlapping Subproblems (DP Attribute 2).**
+* A problem has overlapping subproblems if the same subproblems are encountered and solved repeatedly during the recursive process. 
+* This is the specific inefficiency that Dynamic Programming is designed to overcome.
+
+**7. Recurrence Relation (DP Component 1).**
+* A mathematical formula or rule that defines the solution to a problem in terms of the solutions to its smaller subproblems. 
+* It's the "recipe" for how to combine subproblem solutions.
+
+**8. Base Cases (DP Component 2).**
+* The simplest, smallest instances of a problem whose solutions are known directly without needing further decomposition. 
+* These are the stopping points for the recursive or iterative DP process.
+
+**9. The DP Process (General Steps).**
+* Identify if the problem has Optimal Substructure and Overlapping Subproblems.
+* Define a Recurrence Relation.
+* Determine the Base Cases.
+* Implement the solution (either top-down with memoization or bottom-up with tabulation, though this chapter focuses 
+on the concept of storing solutions).
+
+**10. Memoization (Implicit in DP).**
+* A specific optimization technique, often used in a "top-down" DP approach, where the results of function calls are 
+stored (memoized) and returned when the same inputs occur again. 
+* It's how DP "stores solutions."
+
+**11. Real-world Example: Word Segmentation.**
+* Search engines use DP to analyze user queries without spaces (e.g., "bestrestaurants"). 
+* DP checks all possible ways to insert spaces to form valid words by solving smaller segments (subproblems) and storing 
+results to avoid re-evaluating segments.
+
+**12. 1D-DP (One-Dimensional Dynamic Programming).**
+* A category of DP problems where the state or subproblems can typically be represented using a single index or dimension
+(e.g., often an array or list `dp[i]`).
+
+**13. Example of 1D-DP Problem: Climbing Stairs.**
+* A classic problem where you need to find the number of distinct ways to climb to the top of a staircase, taking either
+one or two steps at a time. 
+* The solution for `n` steps depends on the solutions for `n-1` and `n-2` steps.
+
+**14. Example of 1D-DP Problem: Minimum Coin Combination.**
+* A problem asking for the fewest number of coins needed to make a certain amount, given a set of coin denominations.
+
+**15. Example of 1D-DP Problem: Neighborhood Burglary.**
+* (Also known as House Robber) A problem where you want to maximize the amount of money you can steal from houses in a line, 
+with the constraint that you cannot rob adjacent houses.
+
+**16. Example of 1D-DP Problem: Maximum Subarray Sum.**
+* A problem to find the contiguous subarray within a one-dimensional array of numbers that has the largest sum.
+
+**17. 2D-DP (Two-Dimensional Dynamic Programming).**
+* A category of DP problems where the state or subproblems require two indices or dimensions for representation 
+(e.g., often a 2D array or matrix `dp[i][j]`). 
+* These problems usually involve grids, strings, or comparing two sequences.
+
+**18. Example of 2D-DP Problem: Matrix Pathways.**
+* Problems often involving finding the number of unique paths or the minimum cost path from one corner of a grid to another, 
+moving only in specific directions (e.g., right or down).
+
+**19. Example of 2D-DP Problem: Longest Common Subsequence (LCS).**
+* Given two sequences, find the length of the longest subsequence present in both of them.
+
+**20. Example of 2D-DP Problem: 0/1 Knapsack.**
+* A problem where you need to choose a subset of items, each with a weight and a value, to fit into a knapsack with 
+a maximum capacity, such that the total value of items is maximized. 
+* Each item can only be included once (0 or 1).
+* These cards cover the foundational ideas and terminology introduced in the chapter, giving you a solid overview of 
+what Dynamic Programming is and how to identify its core components!
+
+***
+
+## 16 Greedy.
+
+**1. What is a Greedy Algorithm?.**
+* An algorithm that makes a series of decisions, where each decision is the best immediate choice available at that moment, 
+aiming to find the best overall solution.
+
+**2. What is the "Greedy Choice Property"?**
+* The principle stating that the best overall solution (global optimum) to a problem can be achieved by making the best 
+possible decision at each individual step (local optimum).
+
+**3. How does a greedy algorithm make its decisions?**
+* Decisions are made based only on the current context, selecting the locally optimal choice, and without considering 
+its potential impact on future steps.
+
+**4. What is the difference between a "local optimum" and a "global optimum"?**
+* A local optimum is the best solution found at a specific step or within a limited scope. 
+* A global optimum is the absolute best solution for the entire problem.
+
+**5. What types of problems are most suitable for greedy algorithms?**
+* Optimization problems, where the goal is to find the best possible solution (e.g., minimum cost, maximum value, shortest path).
+
+**6. What common property do greedy problems often share with Dynamic Programming problems?**
+* They both typically exhibit optimal substructure, meaning an optimal solution to the problem can be constructed from 
+optimal solutions to its subproblems.
+
+**7. What is a key difference in decision-making strategy between Greedy Algorithms and Dynamic Programming (DP)?**
+* Greedy algorithms make a single, irrevocable best choice at each step. 
+* DP considers all possible subproblem solutions to ensure the overall best is found.
+
+**8. Can every problem solvable by Dynamic Programming also be solved by a greedy approach?**
+* No. 
+* While many greedy problems can be solved with DP, not all DP problems can be solved greedily because the greedy choice 
+might not always lead to a global optimum.
+
+**9. Can every problem solvable by a greedy approach also be solved by Dynamic Programming?**
+* Generally, yes. 
+* Problems suitable for greedy algorithms usually have optimal substructure, which DP is designed to handle.
+
+**10. What real-world algorithm is provided as an example of a greedy approach?**
+* Huffman coding, used in data compression.
+
+**11. How does Huffman Coding apply the greedy choice property?**
+* It repeatedly combines the two least frequent characters (a local optimum) to build a binary tree, ultimately assigning 
+* shortest codes to most frequent characters to minimize total data size (global optimum).
+
+**12. What is the primary objective of Huffman Coding?**
+* To minimize the overall size of the encoded data by assigning variable-length codes, with more frequent characters 
+getting shorter codes.
+
+**13. What does the road trip analogy in the chapter illustrate about greedy algorithms?**
+* It shows how choosing the fastest leg of a journey at each step (local optimum) can result in the fastest overall route 
+(global optimum) for certain problems.
+
+**14. In the context of a greedy algorithm, what does it mean to "ignore its impact on future steps"?**
+* The algorithm selects the best option purely based on the current state, without evaluating how that choice might 
+affect future opportunities or constraints down the line.
+
+**15. Name one of the broad application categories for greedy algorithms mentioned in the chapter outline.**
+* "Reaching a Destination" (e.g., problems like Jump to the End, Gas Stations).
+
+**16. Name another broad application category for greedy algorithms mentioned in the chapter outline.**
+* "Resource Allocation" (e.g., problems like Candies).
+
+**17. What is the general conclusion regarding a "one-size-fits-all framework" for solving greedy problems?**
+* It's impractical; each greedy problem is unique and requires a specific understanding and application of the greedy 
+choice property.
+
+**18. What is the main learning goal for studying greedy algorithms in this chapter?**
+* To gain a general understanding of how the greedy choice property functions across various unique problem scenarios, 
+rather than memorizing a single template.
+
+**19. What is the definition of an "optimization problem" in computer science?**
+* A problem where the goal is to find the best solution from all feasible solutions, usually by maximizing or minimizing 
+some objective function.
+
+**20. When might a greedy approach not work to find a global optimum?**
+* When the immediate "best" choice at a step inadvertently prevents a better overall solution from being found later on 
+(i.e., the greedy choice property doesn't hold).
+
+***
+
+## 17 Sort And Search.
+
+**1. What is the primary goal when sorting and searching items in data structures?**
+* Efficiency.
+
+**2. What does "Time Complexity" measure in an algorithm, and what scenarios does it consider?**
+* It measures how the running time of an algorithm grows as the input size (`$n$`) increases, considering best, average, 
+and worst-case scenarios.
+
+**3. What does "Space Complexity" measure in an algorithm?**
+* It measures the amount of auxiliary memory an algorithm needs to execute, relative to the input size (`$n$`).
+
+**4. What does '`$n$`' typically represent in the context of sorting and searching algorithm complexity?**
+* The number of elements in the data structure or input.
+
+**5. Define "Stability" for a sorting algorithm.**
+* A stable sorting algorithm preserves the relative order of equal elements from the input in the sorted output. 
+* If two elements have the same value, their original order is maintained.
+
+**6. What defines an "In-place sorting" algorithm?**
+* It sorts elements within the original data structure, using only a constant amount (`$O(1)$`) of extra storage space.
+
+**7. What characterizes "Comparison-based sorting" algorithms, and what is their typical time complexity lower bound?**
+* These algorithms sort by comparing elements pairwise. 
+* They generally have a lower bound of `$O(n \log n)$` time complexity.
+
+**8. How do "Non-comparison-based sorting" algorithms differ from comparison-based ones in terms of performance and requirements?**
+* They can achieve linear time complexity (`$O(n)$`) but require specific assumptions about the input data 
+(e.g., a limited range of values).
+
+**9. What is the time complexity for Merge Sort in its best, average, and worst cases?**
+* All cases: `$O(n \log n)$`.
+
+**10. What is the space complexity for Merge Sort?**
+* `$O(n)$` (because it typically requires auxiliary space for merging).
+
+**11. What is the time complexity for Quicksort in its best, average, and worst cases?**
+* Best/Average: `$O(n \log n)$`. 
+* Worst: `$O(n^2)$`.
+
+**12. What is the space complexity for Quicksort?**
+* Average: `$O(\log n)$` (due to recursion stack). 
+* Worst: `$O(n)$` (if recursion depth is large).
+
+**13. What is the time complexity for Counting Sort, and what does 'k' represent?**
+* All cases: `$O(n+k)$`. 
+* '`k`' represents the range of values in the input array.
+
+**14. What is the space complexity for Counting Sort?**
+* `$O(n+k)$` (for the count array and output array).
+
+**15. What are the time and space complexities for Insertion Sort?**
+* Time: Best `$O(n)$`, Average/Worst `$O(n^2)$`. 
+* Space: `$O(1)$`.
+
+**16. What are the time and space complexities for Selection Sort?**
+* Time: All cases `$O(n^2)$`. 
+* Space: `$O(1)$`.
+
+**17. What are the time and space complexities for Bubble Sort?**
+* Time: Best `$O(n)$`, Average/Worst `$O(n^2)$`. 
+* Space: `$O(1)$`.
+
+**18. What are the time and space complexities for Heapsort?**
+* Time: All cases `$O(n log n)$`. Space: `$O(1)$`.
+
+**19. What are the time and space complexities for Bucket Sort, and what does 'k' represent?**
+* Time: Best/Average $O(n+k)$, Worst $O(n^2)$. Space: $O(n+k)$. 'k' represents the number of buckets used.
+
+**20. What are the time and space complexities for Radix Sort, and what do 'd' and 'k' represent?**
+* Time: All cases `$O(d(n+k))$`. 
+* Space: `$O(n+k)$`. 
+* 'd' is the number of digits in the maximum element, 'k' is the range of inputs.
+
+**21. Name three common in-place sorting algorithms that have a worst-case time complexity of `$O(n^2)$`.**
+* Insertion Sort, Selection Sort, Bubble Sort.
+
+**22. Name three sorting algorithms that commonly achieve `$O(n log n)$` time complexity.**
+* Merge Sort, Quicksort (average case), Heapsort.
+
+**23. Provide a real-world example where efficient sorting algorithms are crucial.**
+* Sorting products on an e-commerce platform by price, rating, or relevance to user search queries.
+
+**24. Which three specific sorting algorithms does this introductory chapter focus on?**
+* Merge sort, Quicksort, and Counting sort.
+
+**25. What specific problems are listed under "Sort" and "Search" in the chapter outline diagram?**
+* Sort: Sort Linked List, Sort Array, Dutch National Flag.
+* Search: Kth Largest Integer
+
+***
+
+## 18 Bit Manipulation.
+
+**1. What is Bit Manipulation?**
+* A programming technique that involves operating directly on the individual bits (binary digits) of numbers. 
+* It's used to perform tasks more efficiently and optimize for speed and memory.
+
+**2. Why is Bit Manipulation useful?**
+* It allows direct interaction with the binary representation of numbers, leading to faster algorithms. 
+* It's excellent for space optimization, like using a single integer to store multiple boolean flags 
+(each bit representing a different state).
+
+**3. Bitwise NOT Operator (~).**
+* Inverts all the bits of a number. 
+* Every 0 becomes 1, and every 1 becomes 0.
+* ~0101 would result in 1010 (assuming a 4-bit representation).
+
+**4. Bitwise AND Operator (&).**
+* Compares two bits at corresponding positions. 
+* It returns 1 only if both bits are 1; otherwise, it returns 0.
+* Example: 0101 & 0011 = 0001.
+* Common use: Clearing bits, checking if a bit is set.
+
+**5. Bitwise OR Operator (|).**
+* Compares two bits at corresponding positions. 
+* It returns 1 if at least one of the bits is 1; it returns 0 only if both bits are 0.
+* Example: 0101 | 0011 = 0111
+* Common use: Setting bits to 1.
+
+**6. Bitwise XOR Operator (^).**
+* Compares two bits at corresponding positions. 
+* It returns 1 if the bits are different; it returns 0 if the bits are the same.
+* Example: 0101 ^ 0011 = 0110
+* Common use: Toggling bits, finding unique elements.
+
+**7. Key Characteristics of the XOR Operator (^).**
+* `a ^ 0 = a` (XORing any number with zero returns the original number).
+* `a ^ a = 0` (XORing any number with itself returns zero).
+
+**8. Left Shift Operator (<< n).**
+* Shifts the bits of a number to the left by n positions. 
+* Zeros are added to the rightmost positions. 
+* This operation is equivalent to multiplying the number by `2^n`.
+* Example: (binary 1001) << 2 becomes (binary 100100) (which is 9 * 4 = 36).
+
+**9. Right Shift Operator (>> n).**
+* Shifts the bits of a number to the right by n positions. 
+* Bits on the right are discarded. 
+* This operation is equivalent to dividing the number by `2^n` (using integer division).
+* Example: (binary 1001) >> 2 becomes (binary 0010) (which is 9 / 4 = 2 integer division).
+
+**10. The Bit Mask (1 << i).**
+* This fundamental pattern creates a number (a "bit mask") where only the i-th bit (0-indexed from the right) is set to 1, 
+and all other bits are 0. 
+* It's crucial for targeting specific bits.
+* Example: (1 << 0) is 0001, (1 << 2) is 0100.
+
+**11. Technique: Setting the i-th bit of x to 1.**
+*  Use the OR operator with a bit mask: `x |= (1 << i)`.
+* This ensures the i-th bit becomes 1 without altering any other bits in x.
+
+**12. Technique: Clearing the i-th bit of x (setting to 0).**
+* Use the AND operator with an inverted bit mask: `x &= ~(1 << i)`.
+* `~(1 << i)` creates a mask with 0 at the i-th position and 1s everywhere else, effectively turning off the i-th bit in x.
+
+**13. Technique: Toggling the i-th bit of x.**
+* Use the XOR operator with a bit mask: `x ^= (1 << i)`.
+* If the i-th bit is 0, it becomes 1; if it's 1, it becomes 0.
+
+**14. Technique: Checking if the i-th bit of x is set.**
+* Use the AND operator with a bit mask and check if the result is non-zero: `if (x & (1 << i)) != 0`.
+* If the i-th bit of x is 1, the AND operation will yield a non-zero value (specifically, 1 << i). 
+* If it's 0, the result will be 0.
+
+**15. Technique: Checking if a number x is Even or Odd.**
+* Check the least significant bit (LSB) using the AND operator: 
+  * `if (x & 1) == 0`: x is even (LSB is 0) else: x is odd (LSB is 1)
+
+**16. Technique: Checking if a number x is a power of 2.**
+* A number is a power of 2 if it's greater than 0 and has only one bit set:
+  * `if (x > 0 && (x & (x - 1)) == 0)`
+* Subtracting 1 from a power of 2 flips the rightmost 1 to 0 and all subsequent 0s to 1s. 
+* ANDing it with the original number will result in 0.
+
+**17. Real-world Application of Bit Manipulation: Data Transmission.**
+* Used in network protocols for efficient encoding, compression, and transmission of data. 
+* Examples include using bitwise AND for IP addresses/subnet masks, and bit manipulation in checksums or parity bits 
+for error detection/correction.
+
+**18. Chapter Problem Category: Counting Bits.**
+* Problems that involve determining the number of set bits (ones) in a binary representation of an integer.
+* Example: Calculating the Hamming weight of an integer.
+
+**19. Chapter Problem Category: XOR-based Problems.**
+* Problems that primarily leverage the unique properties of the XOR operator to find specific values or perform 
+operations efficiently.
+* Example: Finding a "lonely integer" (an element that appears only once in an array where all other elements appear twice).
+
+**20. Chapter Problem Category: Mask-based Problems.**
+* Problems that use bit masks to isolate, extract, or modify specific segments or patterns of bits within a number.
+* Example: Swapping odd and even bits of an integer.
+
+***
+
+## 19 Math And Geometry.
+
+**1. Math & Geometry - Core Purpose.**
+* Concept: Foundational concepts regularly tested in technical interviews.
+* Explanation: Covers numerical reasoning (e.g., GCD, modular arithmetic) and spatial reasoning 
+(e.g., geometric transformations, point analysis), crucial for solving a wide range of programming problems.
+
+**2. Greatest Common Divisor (GCD) - Definition.**
+* Concept: The largest positive integer that divides two or more integers without leaving a remainder.
+* Explanation: For example, GCD(12, 18) = 6. 
+* It's used in simplifying fractions, cryptography, and various number theory problems.
+
+**3. GCD - Euclidean Algorithm.**
+* Concept: Efficient method to compute GCD.
+* Explanation: Based on the principle GCD(a, b) = GCD(b, a % b). 
+* The process repeats until b becomes 0, at which point a is the GCD. 
+* It's an iterative or recursive approach.
+
+**4. Modular Arithmetic - Definition.**
+* Concept: A system of arithmetic for integers where numbers "wrap around" upon reaching a certain value (the modulus).
+* Explanation: Instead of an infinite number line, numbers are treated within a fixed range (0 to modulus - 1). 
+* The result of `a % n` is the remainder when a is divided by n.
+
+**5. Modular Arithmetic - Applications.**
+* Concept: Practical uses in computer science.
+* Explanation: Essential in cryptography (e.g., RSA), hash functions, cyclic data structures (e.g., circular arrays), 
+time calculations (e.g., clocks), and handling large numbers where only the remainder matters.
+
+**6. Floating-Point Precision - The Problem.**
+* Concept: float and double types are approximations, not exact representations of real numbers.
+* Explanation: Due to their binary representation, many decimal numbers cannot be stored precisely. 
+* This can lead to tiny errors, making direct equality comparisons (==) unreliable.
+
+**7. Floating-Point Precision - Solutions**
+* Concept: How to handle floating-point comparisons and calculations safely.
+* Explanation: Instead of `a == b`, compare `abs(a - b) < epsilon`, where epsilon is a small positive tolerance(e.g., 1e-9). 
+* Be mindful of accumulating errors in long chains of calculations.
+
+**8. Integer Overflow - Definition.**
+* Concept: An arithmetic operation produces a result larger than the maximum value representable by the variable's data type.
+* Explanation: For example, adding 1 to the maximum int value can cause it to "wrap around" to the minimum int value, 
+leading to unexpected incorrect results.
+
+**9. Integer Underflow - Definition.**
+* Concept: An arithmetic operation produces a result smaller than the minimum value representable by the variable's data type.
+* Explanation: For example, subtracting 1 from the minimum int value can cause it to "wrap around" to the maximum int value.
+
+**10. Integer Overflow/Underflow - Prevention.**
+* Concept: Strategies to avoid erroneous results from boundary conditions.
+* Explanation: Use larger data types (e.g., long long in C++), check for potential overflow before performing an 
+operation (e.g., if (a > INT_MAX - b)), or utilize arbitrary-precision arithmetic libraries for very large numbers.
+
+**11. Recognizing Patterns - Problem-Solving Skill.**
+* Concept: A fundamental technique in algorithmic problem-solving.
+* Explanation: Involves carefully observing sequences, structures, or relationships in data or problem examples to deduce 
+a general rule, formula, or recursive relationship. 
+* Often a precursor to dynamic programming or direct mathematical solutions.
+
+**12. Computer Graphics - Real-World Application.**
+* Concept: A major domain heavily reliant on math and geometry.
+* Explanation: From video games to CAD software, graphics uses geometric shapes to model objects and mathematical 
+transformations (rotation, scaling, translation) to animate and manipulate them in 2D or 3D space.
+
+**13. 3D Rendering - Core Process.**
+* Concept: Generating a 2D image from a 3D model.
+* Explanation: Involves complex mathematical computations, including trigonometry, vector math, and matrix operations, 
+to determine object positions, light interactions, and shadows in a virtual environment.
+
+**14. Geometric Transformations - Types.**
+* Concept: Fundamental operations to change an object's position, orientation, or size.
+* Explanation:
+  * Translation: Moving an object along an axis.
+  * Rotation: Turning an object around a point or axis.
+  * Scaling: Changing an object's size.
+
+**15. Vector Math - Role in Geometry.**
+* Concept: Vectors represent magnitude and direction, crucial for spatial calculations.
+* Explanation: Used to define positions, velocities, forces, and normals. 
+* Operations like dot product (for angles and projections) and cross product (for perpendicular vectors and areas) 
+are vital in physics and graphics.
+
+**16. Matrix Operations - Role in Geometry.**
+* Concept: Matrices provide a powerful way to represent and apply transformations.
+* Explanation: A single matrix can combine multiple transformations (rotation, scaling, translation, shear) and apply 
+them efficiently to many points or objects simultaneously, especially in 3D graphics.
+
+**17. Reverse 32-bit Integer - Problem Focus.**
+* Concept: A specific problem involving integer manipulation and overflow checks.
+* Explanation: Requires reversing the digits of an integer (e.g., 123 -> 321) while ensuring the result fits within the 
+bounds of a 32-bit signed integer type. 
+* If overflow occurs, a specific value (e.g., 0) is usually returned.
+
+**18. The Josephus Problem - Problem Focus.**
+* Concept: A classic mathematical and computer science puzzle.
+* Explanation: People are arranged in a circle, and every k-th person is eliminated until only one remains. 
+* The problem is to find the position of the survivor.
+* Often solved with modular arithmetic or dynamic programming.
+
+**19. Triangle Numbers - Concept.**
+* Concept: The sum of the first n natural numbers.
+* Explanation: The n-th triangle number, `T_n`, is given by the formula `n * (n + 1) / 2`. 
+* For example, `T_4 = 1 + 2 + 3 + 4 = 10`.
+* They appear in various combinatorial contexts.
+
+**20. Spiral Traversal - Problem Focus.**
+* Concept: A common matrix/array traversal problem.
+* Explanation: Involves visiting all elements of a 2D array (matrix) by moving in a spiral pattern, typically starting 
+from the outer layer and progressively moving inwards. 
+* Requires careful management of boundaries.
+
+**21. Maximum Collinear Points - Problem Focus.**
+* Concept: Finding the largest subset of points that lie on a single straight line.
+* Explanation: Given a set of 2D points, the task is to determine the maximum number of points that are collinear. 
+* This often involves calculating slopes between point pairs and handling edge cases like vertical lines and duplicate points.
 
 
-Card 11: Title: Binary Search Trees (BSTs)
-
-Front: What is a Binary Search Tree (BST)? What are its key properties? Why are they useful?
-Back:
-A BST is a binary tree with the following properties:
-The value of each node is greater than or equal to all values in its left subtree.
-The value of each node is less than or equal to all values in its right subtree.
-BSTs allow for efficient searching, insertion, and deletion of nodes (O(log n) on average for balanced trees).
-Inorder traversal of a BST yields the nodes in sorted order.
-Card 12: Title: Tree Balancing
-
-Front: What does it mean for a tree to be balanced? Why is balancing important? Give examples of balanced vs. unbalanced trees.
-Back:
-A balanced tree is one where the heights of the subtrees of any node differ by at most a certain constant (often 1).
-Balancing is important to ensure that operations like search, insert, and delete remain efficient (O(log n)). Unbalanced trees can degenerate into linked lists, leading to O(n) performance.
-Examples:
-Balanced: AVL trees, Red-Black trees are self-balancing. A complete binary tree is also balanced.
-Unbalanced: A skewed tree (all nodes on one side) is unbalanced.
 
 
 

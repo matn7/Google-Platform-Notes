@@ -5,74 +5,76 @@
 ### Complexity
 - ⭐ Analyze Time & Space Complexity (N/A)
 
+/ LEETCODE ---> ALGOEXPERT
+
 ### Sorting & Searching
-- 912. Sort an Array
-- 215. Kth Largest Element in an Array
-- 88. Merge Sorted Array
-- 23. Merge k Sorted Lists
-- 33. Search in Rotated Sorted Array
-- 34. Find First and Last Position of Element in Sorted Array
-- 704. Binary Search
-- 4. Median of Two Sorted Arrays
+- 912. Sort an Array ---> Merge Sort / Quick Sort / Heap Sort
+- 215. Kth Largest Element in an Array ---> Quickselect
+- 88. Merge Sorted Array ---> Merge Sorted Arrays
+- 23. Merge k Sorted Lists ---> Merge Linked Lists / Merge Sorted Arrays
+- 33. Search in Rotated Sorted Array ---> Shifted Binary Search
+- 34. Find First and Last Position of Element in Sorted Array ---> Search For Range 
+- 704. Binary Search ---> Binary Search
+- 4. Median of Two Sorted Arrays ---> Median of Two Sorted Arrays
 
 ### Divide & Conquer
-- 53. Maximum Subarray
-- 50. Pow(x, n)
-- 493. Reverse Pairs
-- 315. Count of Smaller Numbers After Self
+- 53. Maximum Subarray ---> Kadane's Algorithm
+- 50. Pow(x, n) ---> NO MATCH
+- 493. Reverse Pairs ---> Count Intervals
+- 315. Count of Smaller Numbers After Self ---> Right Smaller Than
 
 ### Dynamic Programming
-- 70. Climbing Stairs
-- 198. House Robber
-- 213. House Robber II
-- 322. Coin Change
-- 300. Longest Increasing Subsequence
-- 1143. Longest Common Subsequence
-- 516. Longest Palindromic Subsequence
-- 72. Edit Distance
-- 139. Word Break
-- 416. Partition Equal Subset Sum
-- 494. Target Sum
-- 518. Coin Change II
-- 62. Unique Paths
-- 64. Minimum Path Sum
-- 91. Decode Ways
+- 70. Climbing Stairs ---> Staircase Traversal
+- 198. House Robber ---> Max Subset Sum No Adjacent
+- 213. House Robber II ---> Max Subset Sum No Adjacent 
+- 322. Coin Change ---> Min Number Of Coins For Change
+- 300. Longest Increasing Subsequence ---> Longest Increasing Subsequence
+- 1143. Longest Common Subsequence ---> Longest Common Subsequence
+- 516. Longest Palindromic Subsequence ---> NO MATCH
+- 72. Edit Distance ---> Levenshtein Distance
+- 139. Word Break ---> Strings Made Up Of Strings / Numbers In Pi
+- 416. Partition Equal Subset Sum ---> Knapsack Problem
+- 494. Target Sum ---> Dice Throws
+- 518. Coin Change II ---> Number Of Ways To Make Change
+- 62. Unique Paths ---> Number Of Ways To Traverse Graph
+- 64. Minimum Path Sum ---> NO MATCH
+- 91. Decode Ways ---> NO MATCH
 
 ### Greedy
-- 55. Jump Game
-- 45. Jump Game II
-- 134. Gas Station
-- 435. Non-overlapping Intervals
-- 452. Minimum Number of Arrows to Burst Balloons
-- 406. Queue Reconstruction by Height
-- 621. Task Scheduler
-- 763. Partition Labels
+- 55. Jump Game ---> NO MATCH
+- 45. Jump Game II ---> NO MATCH
+- 134. Gas Station ---> Valid Starting City
+- 435. Non-overlapping Intervals ---> NO MATCH
+- 452. Minimum Number of Arrows to Burst Balloons ---> NO MATCH
+- 406. Queue Reconstruction by Height ---> NO MATCH
+- 621. Task Scheduler ---> Task Assignment
+- 763. Partition Labels ---> NO MATCH
 
 ---
 
 # Arrays & Strings
 
-- 1. Two Sum
-- 15. 3Sum
-- 18. 4Sum
-- 53. Maximum Subarray
-- 238. Product of Array Except Self
-- 189. Rotate Array
-- 283. Move Zeroes
-- 56. Merge Intervals
-- 57. Insert Interval
-- 54. Spiral Matrix
-- 73. Set Matrix Zeroes
-- 11. Container With Most Water
-- 42. Trapping Rain Water
-- 128. Longest Consecutive Sequence
-- 239. Sliding Window Maximum
-- 3. Longest Substring Without Repeating Characters
-- 76. Minimum Window Substring
-- 49. Group Anagrams
-- 242. Valid Anagram
-- 443. String Compression
-- 151. Reverse Words in a String
+- 1. Two Sum ---> Two Number Sum
+- 15. 3Sum ---> Three Number Sum
+- 18. 4Sum ---> Four Number Sum
+- 53. Maximum Subarray ---> Kadane's Algorithm
+- 238. Product of Array Except Self ---> Array Of Products
+- 189. Rotate Array ---> NO MATCH
+- 283. Move Zeroes ---> Move Element To End
+- 56. Merge Intervals ---> Merge Overlapping Intervals
+- 57. Insert Interval ---> NO MATCH
+- 54. Spiral Matrix ---> Spiral Traverse
+- 73. Set Matrix Zeroes ---> NO MATCH
+- 11. Container With Most Water ---> NO MATCH
+- 42. Trapping Rain Water ---> Water Area
+- 128. Longest Consecutive Sequence ---> Largest Range 
+- 239. Sliding Window Maximum ---> NO MATCH
+- 3. Longest Substring Without Repeating Characters ---> Longest Substring Without Duplication
+- 76. Minimum Window Substring ---> Smallest Substring Containing
+- 49. Group Anagrams ---> Group Anagrams 
+- 242. Valid Anagram ---> NO MATCH
+- 443. String Compression ---> Run-Length Encoding
+- 151. Reverse Words in a String ---> Reverse Words In String
 
 ---
 
@@ -239,23 +241,6 @@
 - 362. Design Hit Counter (Premium)
 - 379. Design Phone Directory (Premium)
 - 359. Logger Rate Limiter (Premium)
-
----
-
-# Operating Systems
-
-- Processes vs Threads x
-- Mutexes x
-- Semaphores x
-- Locks x
-- Deadlock x
-- Livelock x
-- Context Switching x
-- Scheduling x
-- Virtual Memory x
-- Paging x
-- Memory Allocation x
-- Concurrency
 
 ---
 
