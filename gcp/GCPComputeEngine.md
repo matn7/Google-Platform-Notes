@@ -87,7 +87,7 @@
     - Workload grouping.
     - First mover workloads identified.
     - Refined TCO/ROI Analysis.
-    - High-level effort estimations    .        
+    - High-level effort estimations. 
 
 **Automated discovery options.**
 
@@ -122,7 +122,7 @@
     - AWS IAM Policy.
     - AWS IAM Role.
     - AWS S3 Bucket (Billing).
-    - AWS Cost and Usage Report or Detailed Billing Report (DBR)    .
+    - AWS Cost and Usage Report or Detailed Billing Report (DBR).
 
 **CloudPhysics Observer.**
 
@@ -167,7 +167,7 @@
     - Helps tag/un-tag VMs based on their OS versions.
     - Power On/Off/Suspend.
     
-**On-Prem IT Cloud Simulator Card.**
+**On-Prem IT Cloud Simulator Card.** // here
 
 **GCP Cloud Simulator Card.**
 

@@ -255,22 +255,22 @@ monitoring metric, load balancing capacity, or queue-based workloads.
 * Disk, network latency, and memory can trigger scaling if monitoring metrics on those resources are configured.
 ```
 
-**Question 19: If a pod is terminated for being unhealthy—then the (Kubernetes Replicasets) will add pods until the desired state is reached**
+**Question 19: If a pod is terminated for being unhealthy—then the (Kubernetes Replicasets) will add pods until the desired state is reached?**
 
 - Kubernetes Service.
 - Kubernetes Deployment.
 - Kubernetes Container.
-- :white_check_mark: **Kubernetes Replicasets**.
+- :white_check_mark: **Kubernetes ReplicaSets**.
 
 ```
 * A ReplicaSet is a controller that manages the number of pods running for a deployment. 
 * A deployment is a higher-level concept that manages ReplicaSets and provides declarative updates.
 ```
 
-**Question 20: Cloud Dataflow does require you to specify machine types when configuring a pipeline ?**
+**Question 20: Cloud Dataflow does require you to specify machine types when configuring a pipeline?**
 
-- :white_check_mark: **FALSE**.
-- TRUE.
+- :white_check_mark: **False**.
+- True.
 
 ```
 Cloud Dataflow does not require you to specify machine types, but you can specify machine type and worker disk type if 
@@ -424,8 +424,8 @@ and minimize the steps the data scientists will have to take?**
 ```
 10 GB of data is small enough to store on a single disk. By creating an image of a disk with the data stored on it, 
 you can specify that source image when creating a VM. Other options would require the data scientist to copy the data 
-from Cloud Storage to a disk on the VM. Google Drive would similarly require copying the data. loading into BigQuery 
-would load data into a database, not a file system as specified in the requirements.
+from Cloud Storage to a disk on the VM. Google Drive would similarly require copying the data. 
+Loading into BigQuery would load data into a database, not a file system as specified in the requirements.
 ```
 
 **Question 31: A client has brought you in to help reduce their DevOps overhead. Engineers are spending too much time 
@@ -473,8 +473,8 @@ manage servers or clusters. A good option for them is?**
 
 **Question 34: When we are moving services from "n1-standard-1" to "n1-standard-4" it is called as Vertical Scaling?**
 
-- :white_check_mark: **TRUE**.
-- FALSE.
+- :white_check_mark: **True**.
+- False.
 
 ```
 Vertical scaling, requires moving services from one VM to another VM with more or fewer resources
@@ -554,7 +554,8 @@ in cluster size.
 - :white_check_mark: **Command line SDK**.
 
 ```
-VMs are provisioned using the cloud console, the command-line SDK, or the REST API. SOAP request is not correct choice.
+VMs are provisioned using the cloud console, the command-line SDK, or the REST API. 
+SOAP request is not correct choice.
 ```
 
 **Question 40: What command is used to run a Docker image on a cluster?**
@@ -591,7 +592,8 @@ There is no option to specify a router or change firewall rules on the Network t
 - `gcloud containers deployment ch07-app-deploy --replicas=5`.
 
 ```
-Use of "gcloud" and "upgrade" is incorrect. "scale" is the right command along with replicas.
+* Use of "gcloud" and "upgrade" is incorrect. 
+* "scale" is the right command along with replicas.
 ```
 
 **Question 43: You have deployed an application to a Kubernetes cluster. You have noticed that several pods are starved 
@@ -612,7 +614,7 @@ pods that were terminated. What Kubernetes component makes this possible?**
 * Alerts are for reporting on the state of resources.
 ```
 
-**Question 44: You have just opened the GCP console at console.google.com. You have authenticated with the user you want 
+**Question 44: You have just opened the GCP console at `console.google.com`. You have authenticated with the user you want 
 to use. What is one of the first things you should do before performing tasks on VMs?**
 
 - Open Cloud Shell.
@@ -697,8 +699,8 @@ are deployed as a unit.
 
 **Question 49: Stackdriver Monitoring can collect metrics on Amazon Web Services ?**
 
-- :white_check_mark: **TRUE**.
-- FALSE.
+- :white_check_mark: **True**.
+- False.
 
 ```
 Stackdriver Monitoring collects metrics on the performance of infrastructure resources and applications. 

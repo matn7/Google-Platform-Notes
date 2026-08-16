@@ -27,3 +27,6 @@ Can you prepare index cards say 20 or more depending of need, which covers most 
 
 
 
+
+Are you able to create an overwiew with bullet points regarding topic: Design Distributed Message Queue from System design interview section from neetcode.io?
+Also create note from those points. Create output as md file to download.

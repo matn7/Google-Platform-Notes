@@ -80,65 +80,65 @@
 
 # Linked Lists
 
-- 206. Reverse Linked List
-- 92. Reverse Linked List II
-- 141. Linked List Cycle
-- 142. Linked List Cycle II
-- 21. Merge Two Sorted Lists
-- 23. Merge k Sorted Lists
-- 19. Remove Nth Node From End
-- 138. Copy List with Random Pointer
-- 146. LRU Cache
-- 143. Reorder List
-- 234. Palindrome Linked List
-- 160. Intersection of Two Linked Lists
+- 206. Reverse Linked List --->  Reverse Linked List
+- 92. Reverse Linked List II ---> Reverse Linked List
+- 141. Linked List Cycle ---> Find Loop
+- 142. Linked List Cycle II ---> Find Loop
+- 21. Merge Two Sorted Lists ---> Merge Linked Lists
+- 23. Merge k Sorted Lists ---> Merge Sorted Arrays / Merge Linked Lists
+- 19. Remove Nth Node From End ---> Remove Kth Node From End
+- 138. Copy List with Random Pointer ---> NO MATCH
+- 146. LRU Cache ---> LRU Cache
+- 143. Reorder List ---> Rearrange Linked List
+- 234. Palindrome Linked List ---> NO MATCH
+- 160. Intersection of Two Linked Lists ---> Merging Linked Lists
 
 ---
 
 # Stacks & Queues
 
-- 20. Valid Parentheses
-- 155. Min Stack
-- 232. Implement Queue using Stacks
-- 225. Implement Stack using Queues
-- 496. Next Greater Element I
-- 503. Next Greater Element II
-- 739. Daily Temperatures
-- 84. Largest Rectangle in Histogram
-- 239. Sliding Window Maximum
-- 150. Evaluate Reverse Polish Notation
+- 20. Valid Parentheses ---> Balanced Brackets
+- 155. Min Stack ---> Min Max Stack Construction
+- 232. Implement Queue using Stacks ---> NO MATCH
+- 225. Implement Stack using Queues ---> NO MATCH
+- 496. Next Greater Element I ---> Next Greater Element
+- 503. Next Greater Element II ---> Next Greater Element
+- 739. Daily Temperatures ---> Next Greater Element
+- 84. Largest Rectangle in Histogram ---> Largest Rectangle Under Skyline
+- 239. Sliding Window Maximum ---> NO MATCH
+- 150. Evaluate Reverse Polish Notation ---> Reverse Polish Notation
 
 ---
 
 # Hash Tables
 
-- 1. Two Sum
-- 49. Group Anagrams
-- 347. Top K Frequent Elements
-- 706. Design HashMap
-- 705. Design HashSet
-- 380. Insert Delete GetRandom O(1)
-- 128. Longest Consecutive Sequence
+- 1. Two Sum ---> Two Number Sum
+- 49. Group Anagrams ---> Group Anagrams
+- 347. Top K Frequent Elements ---> NO MATCH
+- 706. Design HashMap ---> NO MATCH
+- 705. Design HashSet ---> NO MATCH
+- 380. Insert Delete GetRandom O(1) ---> NO MATCH
+- 128. Longest Consecutive Sequence ---> Largest Rectangle
 
 ---
 
 # Trees
 
 ### Binary Trees
-- 94. Binary Tree Inorder Traversal
-- 144. Binary Tree Preorder Traversal
-- 145. Binary Tree Postorder Traversal
-- 102. Binary Tree Level Order Traversal
-- 104. Maximum Depth of Binary Tree
-- 111. Minimum Depth of Binary Tree
-- 110. Balanced Binary Tree
-- 543. Diameter of Binary Tree
-- 226. Invert Binary Tree
-- 101. Symmetric Tree
-- 297. Serialize and Deserialize Binary Tree
-- 199. Binary Tree Right Side View
-- 112. Path Sum
-- 124. Binary Tree Maximum Path Sum
+- 94. Binary Tree Inorder Traversal ---> Iterative In-order Traversal
+- 144. Binary Tree Preorder Traversal ---> Depth-first Search
+- 145. Binary Tree Postorder Traversal ---> NO MATCH
+- 102. Binary Tree Level Order Traversal ---> Breadth-first Search
+- 104. Maximum Depth of Binary Tree ---> Node Depths / All Kinds of Node Depths
+- 111. Minimum Depth of Binary Tree ---> NO MATCH
+- 110. Balanced Binary Tree ---> Height Balanced Binary Tree
+- 543. Diameter of Binary Tree ---> Invert Binary Tree
+- 226. Invert Binary Tree ---> Symmetrical Tree
+- 101. Symmetric Tree ---> Symmetrical Tree
+- 297. Serialize and Deserialize Binary Tree ---> NO MATCH
+- 199. Binary Tree Right Side View ---> Right Sibling Tree
+- 112. Path Sum ---> Branch Sums
+- 124. Binary Tree Maximum Path Sum ---> Max Path Sum In Binary Tree
 
 ### Binary Search Trees
 - 98. Validate Binary Search Tree
