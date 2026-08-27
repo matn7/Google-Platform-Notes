@@ -167,7 +167,7 @@
     - Helps tag/un-tag VMs based on their OS versions.
     - Power On/Off/Suspend.
     
-**On-Prem IT Cloud Simulator Card.** // here
+**On-Prem IT Cloud Simulator Card.**
 
 **GCP Cloud Simulator Card.**
 

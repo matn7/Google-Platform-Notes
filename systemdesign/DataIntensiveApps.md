@@ -131,7 +131,7 @@ and reducing cognitive load for developers.
   - Inconsistent views of state.
 * These issues do not occur—or are much simpler—within a single process.
 
-**20. Why should architectural decisions be driven by measurement?**
+**20. Why should architectural decisions be driven by measurement?** 
 * Intuition is often misleading.
 * Useful metrics include:
   - Latency percentiles.
@@ -322,8 +322,8 @@ its lifetime.
 enabling faster diagnosis and continuous improvement.
 
 **18. Why is security considered a nonfunctional requirement?**
-* Security protects confidentiality, integrity, and availability of data while supporting authentication, authorization, 
-* auditing, and compliance.
+* Security protects confidentiality, integrity, and availability of data while supporting authentication, 
+authorization, auditing, and compliance.
 
 **19. Why should NFRs be considered early in system design?**
 * Many architectural decisions are difficult or expensive to change later. 
@@ -1986,7 +1986,7 @@ Instead, design systems that remain correct despite uncertainty.
 
 **2. Why is consistency harder in distributed systems than on a single machine?**
 * Because data is replicated across multiple machines that communicate over unreliable networks, making it impossible 
-* for every node to have perfect, instantaneous knowledge of all updates.
+for every node to have perfect, instantaneous knowledge of all updates.
 
 **3. What is consensus?**
 * Consensus is the process by which multiple nodes agree on a single value or decision despite failures and unreliable 
@@ -2234,18 +2234,18 @@ Higher Availability
 
 ### Quick Comparison Cheat Sheet.
 
-| Concept                   | Purpose                                         | Example                         |
-|---------------------------|-------------------------------------------------|---------------------------------|
-| Replication               | Copy data                                       | Primary → Replicas              |
-| Consensus                 | Agree on decisions                              | Leader election                 |
-| Quorum                    | Prevent conflicting decisions                   | 3 of 5 nodes                    |
-| Replicated Log            | Same operation order                            | Raft log                        |
-| Linearizability           | Latest write immediately visible                | Strong consistency              |
-| Sequential Consistency    | Same operation order, not necessarily real time | Shared memory model             |
-| Lease                     | Time-limited ownership                          | Distributed lock                |
-| Epoch / Term              | Identify leadership generation                  | Raft term number                |
-| Fencing Token             | Prevent stale leaders                           | Storage write token             |
-| State Machine Replication | Keep replicas identical                         | Deterministic command execution |
+| Concept.                   | Purpose                                          | Example                          |
+|----------------------------|--------------------------------------------------|----------------------------------|
+| Replication.               | Copy data.                                       | Primary → Replicas.              |
+| Consensus.                 | Agree on decisions.                              | Leader election.                 |
+| Quorum.                    | Prevent conflicting decisions.                   | 3 of 5 nodes.                    |
+| Replicated Log.            | Same operation order.                            | Raft log.                        |
+| Linearizability.           | Latest write immediately visible.                | Strong consistency.              |
+| Sequential Consistency.    | Same operation order, not necessarily real time. | Shared memory model.             |
+| Lease.                     | Time-limited ownership.                          | Distributed lock.                |
+| Epoch / Term.              | Identify leadership generation.                  | Raft term number.                |
+| Fencing Token.             | Prevent stale leaders.                           | Storage write token.             |
+| State Machine Replication. | Keep replicas identical.                         | Deterministic command execution. |
 
 ### Interview Review Questions.
 1. Why is **consensus** harder than simple replication?
@@ -2272,6 +2272,7 @@ Higher Availability
   - ETL pipelines.
 
 **2. How does batch processing differ from online processing?**
+
 **Batch.**
 - Processes bounded datasets.
 - Prioritizes throughput.
@@ -2524,18 +2525,18 @@ Choose Batch Processing When
 
 ### Quick Comparison Cheat Sheet.
 
-| Concept             | Purpose                         | Key Benefit                |
-|---------------------|---------------------------------|----------------------------|
-| Batch Processing    | Process bounded datasets        | High throughput            |
-| Map                 | Transform records independently | Parallelism                |
-| Shuffle             | Group identical keys            | Enables aggregation        |
-| Reduce              | Combine grouped records         | Summaries and analytics    |
-| Data Locality       | Execute near storage            | Less network traffic       |
-| DAG                 | Model workflow dependencies     | Flexible pipelines         |
-| ETL                 | Prepare analytical data         | Clean, structured datasets |
-| Immutable Input     | Never modify source data        | Safe retries               |
-| Deterministic Tasks | Same input → same output        | Fault tolerance            |
-| Data Lineage        | Track transformations           | Auditing and debugging     |
+| Concept.             | Purpose.                         | Key Benefit.                |
+|----------------------|----------------------------------|-----------------------------|
+| Batch Processing.    | Process bounded datasets.        | High throughput.            |
+| Map.                 | Transform records independently. | Parallelism.                |
+| Shuffle.             | Group identical keys.            | Enables aggregation.        |
+| Reduce.              | Combine grouped records.         | Summaries and analytics.    |
+| Data Locality.       | Execute near storage.            | Less network traffic.       |
+| DAG.                 | Model workflow dependencies.     | Flexible pipelines.         |
+| ETL.                 | Prepare analytical data.         | Clean, structured datasets. |
+| Immutable Input.     | Never modify source data.        | Safe retries.               |
+| Deterministic Tasks. | Same input → same output.        | Fault tolerance.            |
+| Data Lineage.        | Track transformations.           | Auditing and debugging.     |
 
 ### Interview Review Questions
 1. Why does **batch processing** optimize for throughput instead of latency?
@@ -2561,12 +2562,13 @@ Choose Batch Processing When
   - Event-driven applications.
 
 **2. How does stream processing differ from batch processing?**
-**Batch**
+
+**Batch:**
 - Processes finite datasets.
 - High throughput.
 - Delayed results.
 
-**Stream**
+**Stream:**
 - Processes unbounded event streams.
 - Low latency.
 - Continuous results.
@@ -2872,18 +2874,18 @@ Choose Stream Processing When
 
 ### Quick Comparison Cheat Sheet.
 
-| Concept        | Purpose                      | Key Benefit                 |
-|----------------|------------------------------|-----------------------------|
-| Event          | Immutable fact               | Replay and auditability     |
-| Event Stream   | Ordered sequence of events   | Continuous processing       |
-| Message Broker | Decouple producers/consumers | Scalability                 |
-| Consumer Group | Parallel processing          | Horizontal scaling          |
-| Offset         | Track read progress          | Recovery                    |
-| Window         | Bound infinite streams       | Aggregation                 |
-| Watermark      | Handle late events           | Accurate event-time results |
-| Checkpoint     | Save processing state        | Fault tolerance             |
-| Event Sourcing | Persist event history        | Rebuild state               |
-| CQRS           | Separate reads and writes    | Optimized query models      |
+| Concept.        | Purpose.                      | Key Benefit.                 |
+|-----------------|-------------------------------|------------------------------|
+| Event.          | Immutable fact.               | Replay and auditability.     |
+| Event Stream.   | Ordered sequence of events.   | Continuous processing.       |
+| Message Broker. | Decouple producers/consumers. | Scalability.                 |
+| Consumer Group. | Parallel processing.          | Horizontal scaling.          |
+| Offset.         | Track read progress.          | Recovery.                    |
+| Window.         | Bound infinite streams.       | Aggregation.                 |
+| Watermark.      | Handle late events.           | Accurate event-time results. |
+| Checkpoint.     | Save processing state.        | Fault tolerance.             |
+| Event Sourcing. | Persist event history.        | Rebuild state.               |
+| CQRS/           | Separate reads and writes.    | Optimized query models.      |
 
 ---
 
@@ -3151,18 +3153,18 @@ Streaming Principles
 
 ### Quick Comparison Cheat Sheet.
 
-| Concept              | Purpose                           | Key Insight                |
-|----------------------|-----------------------------------|----------------------------|
-| Event                | Immutable fact                    | Never changes              |
-| State                | Current system condition          | Derived from events        |
-| Event Log            | Append-only history               | Source of truth            |
-| Replay               | Reprocess events                  | Recovery and evolution     |
-| Materialized View    | Optimized read model              | Disposable and rebuildable |
-| Event Sourcing       | Persist every change as an event  | Complete audit trail       |
-| CQRS                 | Separate writes from reads        | Specialized models         |
-| Dataflow             | Continuous transformations        | Reactive architecture      |
-| Eventual Consistency | Asynchronous convergence          | Better scalability         |
-| Unified Dataflow     | One model for batch and streaming | Simpler architecture       |
+| Concept.              | Purpose.                           | Key Insight.                |
+|-----------------------|------------------------------------|-----------------------------|
+| Event.                | Immutable fact.                    | Never changes.              |
+| State.                | Current system condition.          | Derived from events.        |
+| Event Log.            | Append-only history.               | Source of truth.            |
+| Replay.               | Reprocess events.                  | Recovery and evolution.     |
+| Materialized View.    | Optimized read model.              | Disposable and rebuildable. |
+| Event Sourcing.       | Persist every change as an event.  | Complete audit trail.       |
+| CQRS.                 | Separate writes from reads.        | Specialized models.         |
+| Dataflow              | Continuous transformations.        | Reactive architecture.      |
+| Eventual Consistency. | Asynchronous convergence.          | Better scalability.         |
+| Unified Dataflow.     | One model for batch and streaming. | Simpler architecture.       |
 
 ### Interview Review Questions.
 1. Why is an **immutable event log** often a better source of truth than storing only the latest state?
@@ -3474,18 +3476,18 @@ Technology shapes society.
 
 ### Quick Comparison Cheat Sheet.
 
-| Concept           | Purpose                            | Key Takeaway                                     |
-|-------------------|------------------------------------|--------------------------------------------------|
-| Privacy           | Control information use            | Collect only what you need                       |
-| Security          | Prevent unauthorized access        | Protect confidentiality, integrity, availability |
-| Transparency      | Explain system behavior            | Build trust                                      |
-| Accountability    | Accept responsibility              | Enable auditing and review                       |
-| Fairness          | Reduce unjust outcomes             | Monitor bias continuously                        |
-| Data Minimization | Reduce collected data              | Lower privacy and security risks                 |
-| Least Privilege   | Limit permissions                  | Reduce attack surface                            |
-| Encryption        | Protect stored/transmitted data    | Mitigate breaches                                |
-| Audit Logs        | Record important actions           | Support investigations                           |
-| Resilience        | Continue operating during failures | Protect users from harm                          |
+| Concept.           | Purpose.                            | Key Takeaway.                                     |
+|--------------------|-------------------------------------|---------------------------------------------------|
+| Privacy.           | Control information use.            | Collect only what you need.                       |
+| Security.          | Prevent unauthorized access.        | Protect confidentiality, integrity, availability. |
+| Transparency.      | Explain system behavior.            | Build trust.                                      |
+| Accountability.    | Accept responsibility.              | Enable auditing and review.                       |
+| Fairness.          | Reduce unjust outcomes.             | Monitor bias continuously.                        |
+| Data Minimization. | Reduce collected data.              | Lower privacy and security risks.                 |
+| Least Privilege.   | Limit permissions.                  | Reduce attack surface.                            |
+| Encryption.        | Protect stored/transmitted data.    | Mitigate breaches.                                |
+| Audit Logs.        | Record important actions.           | Support investigations.                           |
+| Resilience.        | Continue operating during failures. | Protect users from harm.                          |
 
 ### Interview Review Questions.
 1. Why is **privacy** more than just encrypting data?

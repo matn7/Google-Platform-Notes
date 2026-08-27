@@ -108,7 +108,7 @@ equal to the current one.
 
 ***
 
-## 02 Two Pointers.
+## 02 Hash Maps And Sets.
 
 **1. What is a Hash Map (or Hash Table/Dictionary)?**
 * A data structure that stores data in key-value pairs, allowing for efficient retrieval of values based on their associated keys. 
@@ -258,7 +258,7 @@ in the hash table, reducing the likelihood of collisions.
 
 ***
 
-## 03 Two Pointers.
+## 03 Linked Lists.
 
 **1. Define a linked list.**
 * A data structure of nodes where each node contains data (val) and a pointer (next) to the next node in the sequence.
@@ -636,7 +636,7 @@ rather than `O(k)` (window size).
 
 ***
 
-## 07 Binary Search.
+## 07 Stacks.
 
 **1. What is a Stack? Explain its core principle.**
 * A stack is a linear data structure that follows the LIFO (Last-In-First-Out) principle. 

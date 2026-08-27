@@ -1,5 +1,10 @@
 # Google Interview Prep – LeetCode Checklist
 
+Prepare for Google:
+* Morning reading binders.
+* List of problems from this doc (leetcode + algoexpert).
+* System Design from algoexpert.
+
 ## Algorithms
 
 ### Complexity
@@ -141,83 +146,83 @@
 - 124. Binary Tree Maximum Path Sum ---> Max Path Sum In Binary Tree
 
 ### Binary Search Trees
-- 98. Validate Binary Search Tree
-- 701. Insert into a BST
-- 450. Delete Node in a BST
-- 99. Recover Binary Search Tree
-- 230. Kth Smallest Element in BST
-- 426. Convert BST to Sorted Doubly Linked List (Premium)
-- 270. Closest Binary Search Tree Value (Premium)
+- 98. Validate Binary Search Tree ---> Validate BST
+- 701. Insert into a BST ---> BST Construction
+- 450. Delete Node in a BST ---> BST Construction
+- 99. Recover Binary Search Tree ---> Repair BST
+- 230. Kth Smallest Element in BST ---> Find Kth Largest Value in BST
+- 426. Convert BST to Sorted Doubly Linked List (Premium) ---> NO MATCH
+- 270. Closest Binary Search Tree Value (Premium) ---> Find Closest Value in BST
 
 ### Heaps
-- 215. Kth Largest Element in an Array
-- 347. Top K Frequent Elements
-- 23. Merge k Sorted Lists
-- 295. Find Median from Data Stream
-- 621. Task Scheduler
+- 215. Kth Largest Element in an Array ---> Quickselect
+- 347. Top K Frequent Elements ---> NO MATCH
+- 23. Merge k Sorted Lists ---> Merge Sorted Arrays
+- 295. Find Median from Data Stream ---> Continuous Median
+- 621. Task Scheduler ---> NO MATCH
 
 ---
 
 # Graphs
 
 ### Traversal
-- 200. Number of Islands
-- 133. Clone Graph
-- 733. Flood Fill
-- 207. Course Schedule
-- 261. Graph Valid Tree (Premium)
-- 323. Number of Connected Components (Premium)
+- 200. Number of Islands ---> River Sizes
+- 133. Clone Graph ---> NO MATCH
+- 733. Flood Fill ---> River Sizes
+- 207. Course Schedule ---> Topological Sort / Cycle in Graph
+- 261. Graph Valid Tree (Premium) ---> Cycle in Graph
+- 323. Number of Connected Components (Premium) ---> River Sizes
 
 ### Shortest Path
-- 743. Network Delay Time
-- 1091. Shortest Path in Binary Matrix
-- 787. Cheapest Flights Within K Stops
-- 1631. Path With Minimum Effort
+- 743. Network Delay Time ---> Dijkstra's Algorithm
+- 1091. Shortest Path in Binary Matrix ---> NO MATCH
+- 787. Cheapest Flights Within K Stops ---> NO MATCH
+- 1631. Path With Minimum Effort ---> Dijkstra's Algorithm
 
 ### Cycles / Union Find
-- 207. Course Schedule
-- 684. Redundant Connection
-- 685. Redundant Connection II
-- 547. Number of Provinces
+- 207. Course Schedule --> Topological Sort / Cycle in Graph
+- 684. Redundant Connection ---> NO MATCH
+- 685. Redundant Connection II ---> NO MATCH
+- 547. Number of Provinces ---> River Sizes
 
 ### Topological Sort
-- 210. Course Schedule II
-- 269. Alien Dictionary (Premium)
+- 210. Course Schedule II ---> Topological Sort
+- 269. Alien Dictionary (Premium) ---> Topological Sort
 
 ### Minimum Spanning Tree
-- 1584. Min Cost to Connect All Points
-- 1135. Connecting Cities With Minimum Cost (Premium)
+- 1584. Min Cost to Connect All Points ---> Prim's Algorithm
+- 1135. Connecting Cities With Minimum Cost (Premium) ---> Prim's Algorithm
 
 ---
 
 # Recursion & Backtracking
 
-- 46. Permutations
-- 47. Permutations II
-- 77. Combinations
-- 78. Subsets
-- 39. Combination Sum
-- 40. Combination Sum II
-- 51. N Queens
-- 37. Sudoku Solver
-- 93. Restore IP Addresses
-- 17. Letter Combinations of a Phone Number
-- 131. Palindrome Partitioning
-- 79. Word Search
-- 212. Word Search II
+- 46. Permutations ---> Permutations
+- 47. Permutations II ---> Permutations
+- 77. Combinations ---> Powerset
+- 78. Subsets ---> Powerset
+- 39. Combination Sum ---> NO MATCH
+- 40. Combination Sum II ---> NO MATCH
+- 51. N Queens ---> Non-Attacking Queens
+- 37. Sudoku Solver ---> Solve Sudoku
+- 93. Restore IP Addresses ---> Valid IP Addresses
+- 17. Letter Combinations of a Phone Number ---> Phone Number Mnemonics
+- 131. Palindrome Partitioning ---> Palindrome Partitioning Min Cuts
+- 79. Word Search ---> Boggle Board
+- 212. Word Search II ---> Boggle Board
 
 ---
 
 # Mathematics
 
-- 50. Pow(x, n)
-- 204. Count Primes
-- 172. Factorial Trailing Zeroes
-- 1492. The kth Factor of n
-- 149. Max Points on a Line
-- 202. Happy Number
-- 326. Power of Three
-- 633. Sum of Square Numbers
+- 50. Pow(x, n) ---> NO MATCH
+- 204. Count Primes ---> NO MATCH
+- 172. Factorial Trailing Zeroes ---> NO MATCH
+- 1492. The kth Factor of n ---> NO MATCH
+- 149. Max Points on a Line ---> Line Through Points
+- 202. Happy Number ---> NO MATCH
+- 326. Power of Three ---> NO MATCH
+- 633. Sum of Square Numbers ---> NO MATCH
 
 ---
 
@@ -225,37 +230,37 @@
 
 ## LeetCode Design Problems
 
-- 146. LRU Cache
-- 460. LFU Cache
-- 355. Design Twitter
-- 981. Time Based Key Value Store
-- 1396. Design Underground System
-- 706. Design HashMap
-- 705. Design HashSet
-- 208. Implement Trie
-- 211. Design Add and Search Words
-- 642. Design Search Autocomplete System (Premium)
-- 535. Encode and Decode TinyURL
-- 588. Design In-Memory File System (Premium)
-- 1166. Design File System
-- 362. Design Hit Counter (Premium)
-- 379. Design Phone Directory (Premium)
-- 359. Logger Rate Limiter (Premium)
+- 146. LRU Cache ---> LRU Cache
+- 460. LFU Cache ---> LRU Cache
+- 355. Design Twitter ---> NO MATCH
+- 981. Time Based Key Value Store ---> NO MATCH
+- 1396. Design Underground System ---> NO MATCH
+- 706. Design HashMap ---> NO MATCH
+- 705. Design HashSet ---> NO MATCH
+- 208. Implement Trie ---> Suffix Trie Construction
+- 211. Design Add and Search Words ---> Multi String Search / Suffix Trie Construction
+- 642. Design Search Autocomplete System (Premium) ---> Longest Most Frequent Prefix / trie problems
+- 535. Encode and Decode TinyURL ---> NO MATCH
+- 588. Design In-Memory File System (Premium) ---> NO MATCH
+- 1166. Design File System ---> NO MATCH
+- 362. Design Hit Counter (Premium) ---> NO MATCH
+- 379. Design Phone Directory (Premium) ---> NO MATCH
+- 359. Logger Rate Limiter (Premium) ---> NO MATCH
 
 ---
 
 # Object-Oriented Design
 
-- 146. LRU Cache
-- 460. LFU Cache
-- 208. Trie
-- 211. Word Dictionary
-- 355. Design Twitter
-- 588. Design In-Memory File System
-- 1166. Design File System
-- 1396. Design Underground System
-- 981. TimeMap
-- 729. My Calendar I
-- 731. My Calendar II
+- 146. LRU Cache ---> LRU Cache
+- 460. LFU Cache ---> LRU Cache
+- 208. Trie ---> Suffix Trie Construction
+- 211. Word Dictionary ---> Multi String Search / Suffix Trie Construction
+- 355. Design Twitter ---> NO MATCH
+- 588. Design In-Memory File System ---> NO MATCH
+- 1166. Design File System ---> NO MATCH
+- 1396. Design Underground System ---> NO MATCH
+- 981. TimeMap ---> NO MATCH
+- 729. My Calendar I ---> Calendar Matching
+- 731. My Calendar II ---> Calendar Matching
 
 ***

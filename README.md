@@ -27,6 +27,8 @@ Can you prepare index cards say 20 or more depending of need, which covers most 
 
 
 
+Przygotuj punkty, bullet points -> krótki opis, hasłowo.
+Erland -> small processed -> Nearby Friends
 
-Are you able to create an overwiew with bullet points regarding topic: Design Distributed Message Queue from System design interview section from neetcode.io?
-Also create note from those points. Create output as md file to download.
+
+Flipping Physics → Michel van Biezen / Organic Chemistry Tutor → Physics Videos by Eugene → MIT OCW

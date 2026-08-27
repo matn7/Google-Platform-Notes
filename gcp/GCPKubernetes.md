@@ -590,8 +590,8 @@ metadata:
 spec:
     replicas: 3
     selector:
-      matchLabels
-      app: nginx
+      matchLabels:
+        app: nginx
 ```
 
 **Labels can be matched by label selectors.**
