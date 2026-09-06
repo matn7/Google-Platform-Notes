@@ -13,140 +13,140 @@ Prepare for Google:
 / LEETCODE ---> ALGOEXPERT
 
 ### Sorting & Searching
-- 912. Sort an Array ---> Merge Sort / Quick Sort / Heap Sort
-- 215. Kth Largest Element in an Array ---> Quickselect
-- 88. Merge Sorted Array ---> Merge Sorted Arrays
-- 23. Merge k Sorted Lists ---> Merge Linked Lists / Merge Sorted Arrays
-- 33. Search in Rotated Sorted Array ---> Shifted Binary Search
-- 34. Find First and Last Position of Element in Sorted Array ---> Search For Range 
-- 704. Binary Search ---> Binary Search
-- 4. Median of Two Sorted Arrays ---> Median of Two Sorted Arrays
+- 912. Sort an Array ---> Merge Sort / Quick Sort / Heap Sort               x
+- 215. Kth Largest Element in an Array ---> Quickselect                     x
+- 88. Merge Sorted Array ---> Merge Sorted Arrays                           x
+- 23. Merge k Sorted Lists ---> Merge Linked Lists / Merge Sorted Arrays    x
+- 33. Search in Rotated Sorted Array ---> Shifted Binary Search             x
+- 34. Find First and Last Position of Element in Sorted Array ---> Search For Range     x 
+- 704. Binary Search ---> Binary Search                                     x
+- 4. Median of Two Sorted Arrays ---> Median of Two Sorted Arrays           x
 
 ### Divide & Conquer
-- 53. Maximum Subarray ---> Kadane's Algorithm
-- 50. Pow(x, n) ---> NO MATCH
-- 493. Reverse Pairs ---> Count Intervals
-- 315. Count of Smaller Numbers After Self ---> Right Smaller Than
+- 53. Maximum Subarray ---> Kadane's Algorithm                              x
+- 50. Pow(x, n) ---> NO MATCH                                               x
+- 493. Reverse Pairs ---> Count Inversions                                   x
+- 315. Count of Smaller Numbers After Self ---> Right Smaller Than          x
 
 ### Dynamic Programming
-- 70. Climbing Stairs ---> Staircase Traversal
-- 198. House Robber ---> Max Subset Sum No Adjacent
-- 213. House Robber II ---> Max Subset Sum No Adjacent 
-- 322. Coin Change ---> Min Number Of Coins For Change
-- 300. Longest Increasing Subsequence ---> Longest Increasing Subsequence
-- 1143. Longest Common Subsequence ---> Longest Common Subsequence
-- 516. Longest Palindromic Subsequence ---> NO MATCH
-- 72. Edit Distance ---> Levenshtein Distance
-- 139. Word Break ---> Strings Made Up Of Strings / Numbers In Pi
-- 416. Partition Equal Subset Sum ---> Knapsack Problem
-- 494. Target Sum ---> Dice Throws
-- 518. Coin Change II ---> Number Of Ways To Make Change
-- 62. Unique Paths ---> Number Of Ways To Traverse Graph
-- 64. Minimum Path Sum ---> NO MATCH
-- 91. Decode Ways ---> NO MATCH
+- 70. Climbing Stairs ---> Staircase Traversal                              x
+- 198. House Robber ---> Max Subset Sum No Adjacent                         x
+- 213. House Robber II ---> Max Subset Sum No Adjacent                      x
+- 322. Coin Change ---> Min Number Of Coins For Change                      x
+- 300. Longest Increasing Subsequence ---> Longest Increasing Subsequence   x
+- 1143. Longest Common Subsequence ---> Longest Common Subsequence          x
+- 516. Longest Palindromic Subsequence ---> NO MATCH                        x
+- 72. Edit Distance ---> Levenshtein Distance                               x
+- 139. Word Break ---> Strings Made Up Of Strings / Numbers In Pi           x
+- 416. Partition Equal Subset Sum ---> Knapsack Problem                     x
+- 494. Target Sum ---> Dice Throws                                          x
+- 518. Coin Change II ---> Number Of Ways To Make Change                    x
+- 62. Unique Paths ---> Number Of Ways To Traverse Graph                    x
+- 64. Minimum Path Sum ---> NO MATCH                                        x
+- 91. Decode Ways ---> NO MATCH                                             x
 
 ### Greedy
-- 55. Jump Game ---> NO MATCH
-- 45. Jump Game II ---> NO MATCH
-- 134. Gas Station ---> Valid Starting City
-- 435. Non-overlapping Intervals ---> NO MATCH
-- 452. Minimum Number of Arrows to Burst Balloons ---> NO MATCH
-- 406. Queue Reconstruction by Height ---> NO MATCH
-- 621. Task Scheduler ---> Task Assignment
-- 763. Partition Labels ---> NO MATCH
+- 55. Jump Game ---> NO MATCH                                               x
+- 45. Jump Game II ---> NO MATCH                                            x
+- 134. Gas Station ---> Valid Starting City                                 x
+- 435. Non-overlapping Intervals ---> NO MATCH                              x
+- 452. Minimum Number of Arrows to Burst Balloons ---> NO MATCH             x
+- 406. Queue Reconstruction by Height ---> NO MATCH                         x
+- 621. Task Scheduler ---> Task Assignment                                  x
+- 763. Partition Labels ---> NO MATCH                                       x
 
 ---
 
 # Arrays & Strings
 
-- 1. Two Sum ---> Two Number Sum
-- 15. 3Sum ---> Three Number Sum
-- 18. 4Sum ---> Four Number Sum
-- 53. Maximum Subarray ---> Kadane's Algorithm
-- 238. Product of Array Except Self ---> Array Of Products
-- 189. Rotate Array ---> NO MATCH
-- 283. Move Zeroes ---> Move Element To End
-- 56. Merge Intervals ---> Merge Overlapping Intervals
-- 57. Insert Interval ---> NO MATCH
-- 54. Spiral Matrix ---> Spiral Traverse
-- 73. Set Matrix Zeroes ---> NO MATCH
-- 11. Container With Most Water ---> NO MATCH
-- 42. Trapping Rain Water ---> Water Area
-- 128. Longest Consecutive Sequence ---> Largest Range 
-- 239. Sliding Window Maximum ---> NO MATCH
-- 3. Longest Substring Without Repeating Characters ---> Longest Substring Without Duplication
-- 76. Minimum Window Substring ---> Smallest Substring Containing
-- 49. Group Anagrams ---> Group Anagrams 
-- 242. Valid Anagram ---> NO MATCH
-- 443. String Compression ---> Run-Length Encoding
-- 151. Reverse Words in a String ---> Reverse Words In String
+- 1. Two Sum ---> Two Number Sum                                            x
+- 15. 3Sum ---> Three Number Sum                                            x
+- 18. 4Sum ---> Four Number Sum                                             x
+- 53. Maximum Subarray ---> Kadane's Algorithm                              x
+- 238. Product of Array Except Self ---> Array Of Products                  x
+- 189. Rotate Array ---> NO MATCH                                           x
+- 283. Move Zeroes ---> Move Element To End                                 x
+- 56. Merge Intervals ---> Merge Overlapping Intervals                      x
+- 57. Insert Interval ---> NO MATCH                                         x
+- 54. Spiral Matrix ---> Spiral Traverse                                    x
+- 73. Set Matrix Zeroes ---> NO MATCH                                       x
+- 11. Container With Most Water ---> NO MATCH                               x
+- 42. Trapping Rain Water ---> Water Area                                   x
+- 128. Longest Consecutive Sequence ---> Largest Range                      x
+- 239. Sliding Window Maximum ---> NO MATCH                                 x
+- 3. Longest Substring Without Repeating Characters ---> Longest Substring Without Duplication  x
+- 76. Minimum Window Substring ---> Smallest Substring Containing           x
+- 49. Group Anagrams ---> Group Anagrams                                    x
+- 242. Valid Anagram ---> NO MATCH                                          x
+- 443. String Compression ---> Run-Length Encoding                          x
+- 151. Reverse Words in a String ---> Reverse Words In String               x
 
 ---
 
 # Linked Lists
 
-- 206. Reverse Linked List --->  Reverse Linked List
-- 92. Reverse Linked List II ---> Reverse Linked List
-- 141. Linked List Cycle ---> Find Loop
-- 142. Linked List Cycle II ---> Find Loop
-- 21. Merge Two Sorted Lists ---> Merge Linked Lists
-- 23. Merge k Sorted Lists ---> Merge Sorted Arrays / Merge Linked Lists
-- 19. Remove Nth Node From End ---> Remove Kth Node From End
-- 138. Copy List with Random Pointer ---> NO MATCH
-- 146. LRU Cache ---> LRU Cache
-- 143. Reorder List ---> Rearrange Linked List
-- 234. Palindrome Linked List ---> NO MATCH
-- 160. Intersection of Two Linked Lists ---> Merging Linked Lists
+- 206. Reverse Linked List --->  Reverse Linked List                        x
+- 92. Reverse Linked List II ---> Reverse Linked List                       x
+- 141. Linked List Cycle ---> Find Loop                                     x
+- 142. Linked List Cycle II ---> Find Loop                                  x
+- 21. Merge Two Sorted Lists ---> Merge Linked Lists                        x
+- 23. Merge k Sorted Lists ---> Merge Sorted Arrays / Merge Linked Lists    x
+- 19. Remove Nth Node From End ---> Remove Kth Node From End                x
+- 138. Copy List with Random Pointer ---> NO MATCH                          x
+- 146. LRU Cache ---> LRU Cache                                             x
+- 143. Reorder List ---> Rearrange Linked List                              x
+- 234. Palindrome Linked List ---> NO MATCH                                 x
+- 160. Intersection of Two Linked Lists ---> Merging Linked Lists           x
 
 ---
 
 # Stacks & Queues
 
-- 20. Valid Parentheses ---> Balanced Brackets
-- 155. Min Stack ---> Min Max Stack Construction
-- 232. Implement Queue using Stacks ---> NO MATCH
-- 225. Implement Stack using Queues ---> NO MATCH
-- 496. Next Greater Element I ---> Next Greater Element
-- 503. Next Greater Element II ---> Next Greater Element
-- 739. Daily Temperatures ---> Next Greater Element
-- 84. Largest Rectangle in Histogram ---> Largest Rectangle Under Skyline
-- 239. Sliding Window Maximum ---> NO MATCH
-- 150. Evaluate Reverse Polish Notation ---> Reverse Polish Notation
+- 20. Valid Parentheses ---> Balanced Brackets                              x
+- 155. Min Stack ---> Min Max Stack Construction                            x
+- 232. Implement Queue using Stacks ---> NO MATCH                           x
+- 225. Implement Stack using Queues ---> NO MATCH                           x
+- 496. Next Greater Element I ---> Next Greater Element                     x
+- 503. Next Greater Element II ---> Next Greater Element                    x
+- 739. Daily Temperatures ---> Next Greater Element                         x
+- 84. Largest Rectangle in Histogram ---> Largest Rectangle Under Skyline   x
+- 239. Sliding Window Maximum ---> NO MATCH                                 x
+- 150. Evaluate Reverse Polish Notation ---> Reverse Polish Notation        x
 
 ---
 
 # Hash Tables
 
-- 1. Two Sum ---> Two Number Sum
-- 49. Group Anagrams ---> Group Anagrams
-- 347. Top K Frequent Elements ---> NO MATCH
-- 706. Design HashMap ---> NO MATCH
-- 705. Design HashSet ---> NO MATCH
-- 380. Insert Delete GetRandom O(1) ---> NO MATCH
-- 128. Longest Consecutive Sequence ---> Largest Rectangle
+- 1. Two Sum ---> Two Number Sum                                            x
+- 49. Group Anagrams ---> Group Anagrams                                    x
+- 347. Top K Frequent Elements ---> NO MATCH                                x
+- 706. Design HashMap ---> NO MATCH                                         x
+- 705. Design HashSet ---> NO MATCH                                         x
+- 380. Insert Delete GetRandom O(1) ---> NO MATCH                           x
+- 128. Longest Consecutive Sequence ---> Largest Rectangle                  x
 
 ---
 
 # Trees
 
 ### Binary Trees
-- 94. Binary Tree Inorder Traversal ---> Iterative In-order Traversal
-- 144. Binary Tree Preorder Traversal ---> Depth-first Search
-- 145. Binary Tree Postorder Traversal ---> NO MATCH
-- 102. Binary Tree Level Order Traversal ---> Breadth-first Search
-- 104. Maximum Depth of Binary Tree ---> Node Depths / All Kinds of Node Depths
-- 111. Minimum Depth of Binary Tree ---> NO MATCH
-- 110. Balanced Binary Tree ---> Height Balanced Binary Tree
-- 543. Diameter of Binary Tree ---> Invert Binary Tree
-- 226. Invert Binary Tree ---> Symmetrical Tree
-- 101. Symmetric Tree ---> Symmetrical Tree
-- 297. Serialize and Deserialize Binary Tree ---> NO MATCH
-- 199. Binary Tree Right Side View ---> Right Sibling Tree
-- 112. Path Sum ---> Branch Sums
-- 124. Binary Tree Maximum Path Sum ---> Max Path Sum In Binary Tree
+- 94. Binary Tree Inorder Traversal ---> Iterative In-order Traversal       x
+- 144. Binary Tree Preorder Traversal ---> Depth-first Search               x
+- 145. Binary Tree Postorder Traversal ---> NO MATCH                        x
+- 102. Binary Tree Level Order Traversal ---> Breadth-first Search          x
+- 104. Maximum Depth of Binary Tree ---> Node Depths / All Kinds of Node Depths         x
+- 111. Minimum Depth of Binary Tree ---> NO MATCH                           x
+- 110. Balanced Binary Tree ---> Height Balanced Binary Tree                x
+- 543. Diameter of Binary Tree ---> Invert Binary Tree                      x
+- 226. Invert Binary Tree ---> Symmetrical Tree                             x
+- 101. Symmetric Tree ---> Symmetrical Tree                                 x
+- 297. Serialize and Deserialize Binary Tree ---> NO MATCH                  x
+- 199. Binary Tree Right Side View ---> Right Sibling Tree                  x
+- 112. Path Sum ---> Branch Sums                                            x
+- 124. Binary Tree Maximum Path Sum ---> Max Path Sum In Binary Tree        x
 
 ### Binary Search Trees
-- 98. Validate Binary Search Tree ---> Validate BST
+- 98. Validate Binary Search Tree ---> Validate BST                         x
 - 701. Insert into a BST ---> BST Construction
 - 450. Delete Node in a BST ---> BST Construction
 - 99. Recover Binary Search Tree ---> Repair BST
