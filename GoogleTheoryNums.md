@@ -147,80 +147,80 @@ Prepare for Google:
 
 ### Binary Search Trees
 - 98. Validate Binary Search Tree ---> Validate BST                         x
-- 701. Insert into a BST ---> BST Construction
-- 450. Delete Node in a BST ---> BST Construction
-- 99. Recover Binary Search Tree ---> Repair BST
-- 230. Kth Smallest Element in BST ---> Find Kth Largest Value in BST
-- 426. Convert BST to Sorted Doubly Linked List (Premium) ---> NO MATCH
-- 270. Closest Binary Search Tree Value (Premium) ---> Find Closest Value in BST
+- 701. Insert into a BST ---> BST Construction                              X
+- 450. Delete Node in a BST ---> BST Construction                           X
+- 99. Recover Binary Search Tree ---> Repair BST                            X
+- 230. Kth Smallest Element in BST ---> Find Kth Largest Value in BST       X   
+- 426. Convert BST to Sorted Doubly Linked List (Premium) ---> NO MATCH     X
+- 270. Closest Binary Search Tree Value (Premium) ---> Find Closest Value in BST    X
 
 ### Heaps
-- 215. Kth Largest Element in an Array ---> Quickselect
-- 347. Top K Frequent Elements ---> NO MATCH
-- 23. Merge k Sorted Lists ---> Merge Sorted Arrays
-- 295. Find Median from Data Stream ---> Continuous Median
-- 621. Task Scheduler ---> NO MATCH
+- 215. Kth Largest Element in an Array ---> Quickselect                     X
+- 347. Top K Frequent Elements ---> NO MATCH                                X
+- 23. Merge k Sorted Lists ---> Merge Sorted Arrays                         X
+- 295. Find Median from Data Stream ---> Continuous Median                  X
+- 621. Task Scheduler ---> NO MATCH                                         X
 
 ---
 
 # Graphs
 
 ### Traversal
-- 200. Number of Islands ---> River Sizes
-- 133. Clone Graph ---> NO MATCH
-- 733. Flood Fill ---> River Sizes
-- 207. Course Schedule ---> Topological Sort / Cycle in Graph
-- 261. Graph Valid Tree (Premium) ---> Cycle in Graph
+- 200. Number of Islands ---> River Sizes                                   X
+- 133. Clone Graph ---> NO MATCH                                            X
+- 733. Flood Fill ---> River Sizes                                          X
+- 207. Course Schedule ---> Topological Sort / Cycle in Graph               X
+- 261. Graph Valid Tree (Premium) ---> Cycle in Graph                       X
 - 323. Number of Connected Components (Premium) ---> River Sizes
 
 ### Shortest Path
-- 743. Network Delay Time ---> Dijkstra's Algorithm
-- 1091. Shortest Path in Binary Matrix ---> NO MATCH
-- 787. Cheapest Flights Within K Stops ---> NO MATCH
-- 1631. Path With Minimum Effort ---> Dijkstra's Algorithm
+- 743. Network Delay Time ---> Dijkstra's Algorithm                         X
+- 1091. Shortest Path in Binary Matrix ---> NO MATCH                        X
+- 787. Cheapest Flights Within K Stops ---> NO MATCH                        X
+- 1631. Path With Minimum Effort ---> Dijkstra's Algorithm                  X
 
 ### Cycles / Union Find
-- 207. Course Schedule --> Topological Sort / Cycle in Graph
-- 684. Redundant Connection ---> NO MATCH
-- 685. Redundant Connection II ---> NO MATCH
-- 547. Number of Provinces ---> River Sizes
+- 207. Course Schedule --> Topological Sort / Cycle in Graph                X
+- 684. Redundant Connection ---> NO MATCH                                   X
+- 685. Redundant Connection II ---> NO MATCH                                X
+- 547. Number of Provinces ---> River Sizes                                 X
 
 ### Topological Sort
-- 210. Course Schedule II ---> Topological Sort
-- 269. Alien Dictionary (Premium) ---> Topological Sort
+- 210. Course Schedule II ---> Topological Sort                             X
+- 269. Alien Dictionary (Premium) ---> Topological Sort                     X
 
 ### Minimum Spanning Tree
-- 1584. Min Cost to Connect All Points ---> Prim's Algorithm
-- 1135. Connecting Cities With Minimum Cost (Premium) ---> Prim's Algorithm
+- 1584. Min Cost to Connect All Points ---> Prim's Algorithm                X
+- 1135. Connecting Cities With Minimum Cost (Premium) ---> Prim's Algorithm X
 
 ---
 
 # Recursion & Backtracking
 
-- 46. Permutations ---> Permutations
-- 47. Permutations II ---> Permutations
-- 77. Combinations ---> Powerset
-- 78. Subsets ---> Powerset
-- 39. Combination Sum ---> NO MATCH
-- 40. Combination Sum II ---> NO MATCH
-- 51. N Queens ---> Non-Attacking Queens
-- 37. Sudoku Solver ---> Solve Sudoku
-- 93. Restore IP Addresses ---> Valid IP Addresses
-- 17. Letter Combinations of a Phone Number ---> Phone Number Mnemonics
-- 131. Palindrome Partitioning ---> Palindrome Partitioning Min Cuts
-- 79. Word Search ---> Boggle Board
-- 212. Word Search II ---> Boggle Board
+- 46. Permutations ---> Permutations                                        X
+- 47. Permutations II ---> Permutations                                     X
+- 77. Combinations ---> Powerset                                            X
+- 78. Subsets ---> Powerset                                                 X
+- 39. Combination Sum ---> NO MATCH                                         X
+- 40. Combination Sum II ---> NO MATCH                                      X
+- 51. N Queens ---> Non-Attacking Queens                                    X
+- 37. Sudoku Solver ---> Solve Sudoku                                       X
+- 93. Restore IP Addresses ---> Valid IP Addresses                          X
+- 17. Letter Combinations of a Phone Number ---> Phone Number Mnemonics     X
+- 131. Palindrome Partitioning ---> Palindrome Partitioning Min Cuts        X
+- 79. Word Search ---> Boggle Board                                         X
+- 212. Word Search II ---> Boggle Board                                     X
 
 ---
 
 # Mathematics
 
-- 50. Pow(x, n) ---> NO MATCH
-- 204. Count Primes ---> NO MATCH
-- 172. Factorial Trailing Zeroes ---> NO MATCH
-- 1492. The kth Factor of n ---> NO MATCH
-- 149. Max Points on a Line ---> Line Through Points
-- 202. Happy Number ---> NO MATCH
+- 50. Pow(x, n) ---> NO MATCH                                               X
+- 204. Count Primes ---> NO MATCH                                           X
+- 172. Factorial Trailing Zeroes ---> NO MATCH                              X
+- 1492. The kth Factor of n ---> NO MATCH                                   X
+- 149. Max Points on a Line ---> Line Through Points                        X                       
+- 202. Happy Number ---> NO MATCH                                           X
 - 326. Power of Three ---> NO MATCH
 - 633. Sum of Square Numbers ---> NO MATCH
 
@@ -230,37 +230,37 @@ Prepare for Google:
 
 ## LeetCode Design Problems
 
-- 146. LRU Cache ---> LRU Cache
-- 460. LFU Cache ---> LRU Cache
-- 355. Design Twitter ---> NO MATCH
-- 981. Time Based Key Value Store ---> NO MATCH
-- 1396. Design Underground System ---> NO MATCH
-- 706. Design HashMap ---> NO MATCH
-- 705. Design HashSet ---> NO MATCH
-- 208. Implement Trie ---> Suffix Trie Construction
-- 211. Design Add and Search Words ---> Multi String Search / Suffix Trie Construction
-- 642. Design Search Autocomplete System (Premium) ---> Longest Most Frequent Prefix / trie problems
-- 535. Encode and Decode TinyURL ---> NO MATCH
-- 588. Design In-Memory File System (Premium) ---> NO MATCH
-- 1166. Design File System ---> NO MATCH
-- 362. Design Hit Counter (Premium) ---> NO MATCH
-- 379. Design Phone Directory (Premium) ---> NO MATCH
-- 359. Logger Rate Limiter (Premium) ---> NO MATCH
+- 146. LRU Cache ---> LRU Cache                                             X
+- 460. LFU Cache ---> LRU Cache                                             X
+- 355. Design Twitter ---> NO MATCH                                         X
+- 981. Time Based Key Value Store ---> NO MATCH                             X
+- 1396. Design Underground System ---> NO MATCH                             X
+- 706. Design HashMap ---> NO MATCH                                         X
+- 705. Design HashSet ---> NO MATCH                                         X
+- 208. Implement Trie ---> Suffix Trie Construction                         X
+- 211. Design Add and Search Words ---> Multi String Search / Suffix Trie Construction  X
+- 642. Design Search Autocomplete System (Premium) ---> Longest Most Frequent Prefix / trie problems    X
+- 535. Encode and Decode TinyURL ---> NO MATCH                              X
+- 588. Design In-Memory File System (Premium) ---> NO MATCH                 X
+- 1166. Design File System ---> NO MATCH                                    X
+- 362. Design Hit Counter (Premium) ---> NO MATCH                           X
+- 379. Design Phone Directory (Premium) ---> NO MATCH                       X
+- 359. Logger Rate Limiter (Premium) ---> NO MATCH                          X
 
 ---
 
 # Object-Oriented Design
 
-- 146. LRU Cache ---> LRU Cache
-- 460. LFU Cache ---> LRU Cache
-- 208. Trie ---> Suffix Trie Construction
-- 211. Word Dictionary ---> Multi String Search / Suffix Trie Construction
-- 355. Design Twitter ---> NO MATCH
-- 588. Design In-Memory File System ---> NO MATCH
-- 1166. Design File System ---> NO MATCH
-- 1396. Design Underground System ---> NO MATCH
-- 981. TimeMap ---> NO MATCH
-- 729. My Calendar I ---> Calendar Matching
-- 731. My Calendar II ---> Calendar Matching
+- 146. LRU Cache ---> LRU Cache                                             X
+- 460. LFU Cache ---> LRU Cache                                             X
+- 208. Trie ---> Suffix Trie Construction                                   X
+- 211. Word Dictionary ---> Multi String Search / Suffix Trie Construction  X
+- 355. Design Twitter ---> NO MATCH                                         X
+- 588. Design In-Memory File System ---> NO MATCH                           X
+- 1166. Design File System ---> NO MATCH                                    X
+- 1396. Design Underground System ---> NO MATCH                             X
+- 981. TimeMap ---> NO MATCH                                                X
+- 729. My Calendar I ---> Calendar Matching                                 X
+- 731. My Calendar II ---> Calendar Matching                                X
 
 ***

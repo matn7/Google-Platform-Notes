@@ -32,3 +32,8 @@ Erland -> small processed -> Nearby Friends
 
 
 Flipping Physics → Michel van Biezen / Organic Chemistry Tutor → Physics Videos by Eugene → MIT OCW
+
+
+Go through my notes from this repos, and extract top 100 most useful questions for senior roles, choose as you see fit it.
+
+
