@@ -120,6 +120,7 @@ The goal is to find a balance between throughput, latency, cost, and downstream 
 **Memory phrase.**
 
 > "Concurrency = requests per instance. Scaling = number of instances."
+
 > "Higher concurrency improves utilization until resource contention increases latency."
 
 ***
@@ -198,6 +199,7 @@ Finally, I would validate the chosen approach with a proof of concept before com
 **Memory phrase.**
 
 > "Workload requirements -> State management -> Scaling -> Operational control -> Cost -> Proof of concept."
+
 > "Choose Cloud Run by default when the workload fits; choose GKE when specific requirements justify Kubernetes."
 
 ***
@@ -237,6 +239,7 @@ In practice, I would choose based on the application's bottlenecks and validate 
 **Memory phrase.**
 
 > "Horizontal = More instances. Vertical = Bigger instances."
+
 > "Cloud Run: managed instances + configured resources. GKE: HPA + VPA + node autoscaling."
 
 ***
@@ -276,6 +279,7 @@ Finally, I would reproduce the issue through load testing and verify that the ch
 **Memory phrase.**
 
 > "Cold starts -> Concurrency -> CPU/Memory -> Database -> Scaling limits."
+
 > "Measure the bottleneck before changing the scaling configuration."
 
 ***
@@ -315,6 +319,7 @@ testing to verify the improvements.
 **Memory phrase.**
 
 > "Cold start = Start container -> Initialize JVM -> Initialize Spring -> Serve requests."
+
 > "Cold cache = Application is running, but data hasn't been cached yet."
 
 ***
@@ -350,6 +355,7 @@ The goal is to minimize field requests, interrupted operations, and data inconsi
 **Memory phrase.**
 
 > "SIGTERM -> Stop new work -> Finish in-flight requests -> Release resources -> Exit."
+
 > "Graceful shutdown reduces disruption, but idempotency protects correctness." 
 
 ***
@@ -377,6 +383,7 @@ The goal is to recover from temporary failures without creating additional load 
 **Memory phrase.**
 
 > "Timeout -> Classify -> Retry with backoff and jitter -> Circuit break -> Monitor."
+
 > "Retries recover from transient failures. Circuit breakers prevent cascading failures. Idempotency protects correctness."
 
 ***
@@ -422,6 +429,7 @@ asynchronous messaging for independent downstream processing.
 **Memory phrase.**
 
 > "Synchronous = Wait for the result. Asynchronous = Decouple the work."
+
 > "Choose based on immediacy, coupling, reliability, and consistency requirements."
 
 ***
@@ -462,6 +470,7 @@ Finally, I would monitor unacknowledged messages, oldest message age, processing
 **Memory phrase.**
 
 > "Publish durably -> Consume -> Process transactionally -> Acknowledge -> Retry failures -> Dead-letter poison messages."
+
 > "Pub/Sub subscriptions distribute or fan out messages; acknowledgments track completion; idempotency handles duplicates."
 
 ***
@@ -491,7 +500,9 @@ the same event concurrently.
 **Memory phrase.**
 
 > "Outbox protects publishing. Inbox protects consumption."
+
 > "receive -> Insert event ID -> Update business state -> Commit -> ACK."
+
 > "Use a unique constraint, not just a read-before-write check."
 
 ***
@@ -515,7 +526,9 @@ problems early.
 **Memory phrase.**
 
 > "Duplicates -> Idempotency + unique constraint."
+
 > "Out of order -> Ordering key + entity version."
+
 > "Poison messages -> Bounded retries + dead-letter topic."
 
 ***
@@ -551,8 +564,11 @@ I would choose based on whether I'm distributing business events, executing comm
 **Memory phrase.**
 
 > "Pub/Sub = Distribute events."
+
 > "Cloud Tasks = Execute commands."
+
 > "Eventarc = Route events."
+
 > "Fan-out -> Pub/Sub. Controlled work -> Cloud Tasks. Cloud events -> Eventarc."
 
 ***
@@ -600,6 +616,7 @@ I would also follow the principle of separating build, release, and run stages a
 **Memory phrase.**
 
 > "Config outside, state outside, logs outside, start fast, shutdown gracefully."
+
 > "3 - Config, 6 - Processes, 7 - Port binding, 9 - Disposability, 11 - Logs."
 
 ***
@@ -629,6 +646,7 @@ disk for correctness.
 **Memory phrase.**
 
 > "Stateless = Any instance cn process the request."
+
 > "Keep application instances disposable; keep essential state in shared, durable services."
 
 ***
@@ -657,6 +675,7 @@ The key principle is that application autoscaling must respect downstream databa
 **Memory phrase.**
 
 > "Instances * Pool size <= Database connection budget."
+
 > "Scale the application, but protect the database."
 
 ***
@@ -687,6 +706,7 @@ Finally, I would regularly test regional failover to verify that the system can 
 **Memory phrase.**
 
 > "Multi-region compute + Multi-region data + Traffic failover + Tested recovery."
+
 > "RTO determines how hast we recover. RPO determines how much data we can lose."
 
 ***
@@ -725,8 +745,11 @@ Finally, I would use distributed tracing, metrics, and alerts to monitor the ent
 **Memory phrase.**
 
 > "Scalability -> Stateless Cloud Run + backpressure."
+
 > "Fault tolerance -> Durable messaging + retries + idempotency."
+
 > "Consistency -> Local transactions + Outbox + Saga."
+
 > "Quorum protects replicated data consistency. Saga protects distributed business workflow consistency."
 
 ***
@@ -776,7 +799,9 @@ Kubernetes-specific requirements.
 **Memory phrase.**
 
 > "No Kubernetes requirements -> Consider Cloud Run, but validate workload fit."
+
 > "Assess -> Pilot -> Benchmark -> Migrate gradually -> Monitor -> Roll back if needed."
+
 > "Choose the simplest platform that satisfies the workload's requirements - not the platform with most features."
 
 ***
@@ -805,6 +830,7 @@ Finally, I would load-test the new architecture and compare cost, latency, and r
 **Memory phrase.**
 
 > "GKE worker = Always pooling. Cloud Run service = Request-driven."
+
 > "Push for request-driven processing; continuous CPU or worker pools for long-running pull subscriptions."
 
 ***
@@ -842,7 +868,9 @@ downstream dependencies.
 **Memory phrase.**
 
 > "Concurrency is not throughput. Measure latency, contention, scaling, and cost."
+
 > "Higher concurrency -> Fewer instances, potentially more contention."
+
 > "Lower concurrency -> More instances, potentially more downstream pressure."
 
 ***
@@ -869,6 +897,7 @@ Finally, I would monitor p95 and p99 latency, startup time, cold-start frequency
 **Memory phrase.**
 
 > "Optimize startup first, keep minimal warm capacity, then tune scaling." 
+
 > "Lazy initialization reduces startup work, but may shift the delay to the first request."
 
 ***
@@ -908,24 +937,701 @@ I would recommend migration suitable workloads incrementally rather than enforci
 **Memory phrase.**
 
 > "State -> Execution model -> Infrastructure control -> Performance -> Cost."
+
 > "Cloud Run by default for suitable managed workload; GKE when Kubernetes capabilities are justified."
 
+***
 
+# Week 2 — Security, IAM & Application Authentication
 
+Focus: Identity and Access Management, service accounts, secrets, authentication, authorization, and secure application architecture.
 
+## Field 2.1 — IAM & Service Accounts.
 
+**26. What is the difference between authentication and authorization in Google Cloud?**
 
+Authentication verifies the identity of a user or service, while authorization determines what actions that identity is
+permitted to perform.
 
+In Google Cloud, authentication can be performed using service accounts, OAuth 2.0 access tokens, or OIDC ID tokens, 
+depending on the service and use case.
 
+Authorization is typically enforced through IAM policies, roles, and permissions, following the principle of least privilege.
 
+An authentication failure commonly results in HTTP 401 (Unauthorized) or the gRPC UNAUTHENTICATED status, whereas as
+authorization results in HTTP 403 (Forbidden) or PERMISSION_DENIED.
 
+For example, a Cloud Run application may successfully authenticate using its service account but still fail to publish 
+a Pub/Sub message if the service account lacks the `pubsub.topics.publish` permission.
 
+***
 
+**27. Explain the principle of least privilege. How would you apply it to a Spring Boot application deployed on Cloud Run?**
 
+The principle of least privilege means granting users and applications only the minimum permissions required to perform
+their tasks. This reduces the attack surface and limits the blast radius if an identity is compromised.
 
+Foa a Spring Boot application deployed on Cloud Run, I would create a dedicated service account and assign it to the Cloud
+Run service.
 
+I would grant only the necessary IAM roles, scoped to specific resources whenever possible. For example, it the application
+needs to publish messages to a Pub/Sub topic, I would grant `roles/pubsub.publisher` on that topic rather than at the 
+project level.
 
+I would use Application Default Credentials (ADC) to authenticate to Google Cloud services without managing service account keys.
 
+Additionally, I would use Spring Security to enforce application-level authorization, such as restricting access to specific
+REST endpoints based on user roles.
+
+This approach applies least privilege at both the cloud infrastructure and application levels.
+
+| Feature     | Google Cloud IAM                               | Spring Security                                         |
+|-------------|------------------------------------------------|---------------------------------------------------------|
+| Controls    | Access to Google Cloud resources               | Access to application endpoints and business operations |
+| Identity    | Service accounts, users, groups                | Application users and authenticated clients             |
+| Permissions | `pubsub.topics.publish`, `storage.objects.get` | `ROLE_ADMIN`, `ROLE_USER`, application authorities      |
+| Enforcement | Google Clous services                          | Spring Security filters and method security             |
+| Example     | Can this service publish to Pub/Sub?           | Can this user cancel an order?                          |
+
+***
+
+**28. What is a Google Cloud service account, and how does it differ from a user account?**
+
+A Google Cloud service account is a non-human identity used by applications, services, and automated workloads to authenticate
+to Google Cloud APIs and resources.
+
+Unlike a user account, which represents a human identity, a service account represents a workload such as a Cloud Run
+service, a GKE application, or an automated CI/CD pipeline.
+
+A service account is not a permission itself. Permissions are granted to it through IAM roles and policies.
+
+For example, a Spring Boot application running on Cloud Run can use a dedicated service account with the 
+`roles/pubsub.publisher` role to publish messages to a specific topic.
+
+The application can authenticate using Application Default Credentials and short-lived credentials provided by the runtime,
+without storing service account keys.
+
+Using separate service accounts for different applications supports the principle of least privilege and reduces the blast 
+radius if one workload is compromised.
+
+| Feature        | Service Account                                  | User Account                          |
+|----------------|--------------------------------------------------|---------------------------------------|
+| Represents     | Application or workload                          | Human user                            |
+| Typical usage  | Cloud Run, GKE, automation                       | Developer, administrator              |
+| Identity       | `orders-service@project.iam.gserviceaccount.com` | `developer@example.com`               |
+| Authentication | Workload credentials, short-lived tokens         | Interactive sign-in, user credentials |
+| Authorization  | IAM roles and permissions                        | IAM roles and permissions             |
+| Lifecycle      | Managed for a workload                           | Managed for a person                  |
+
+***
+
+**29. What are the differences between basic, predefined, and custom IAM roles? When would you create a custom role?**
+
+Google Cloud IAM provides three categories of roles: basic, predefined, and custom.
+
+Basic roles, such as Owner, Editor, and Viewer, provide broad permissions across Google Cloud services. They are generally
+not recommended for application service accounts because they may violate the principle of least privilege.
+
+Predefined roles are managed by Google and provide permissions for specific services or responsibilities. For example,
+`roles/pubsub.publisher` allows publishing messages to Pub/Sub topics, while `roles/storage.objectViewer` provides read
+access to Cloud Storage objects.
+
+Custom roles are user-defined collections of supported IAM permissions. I would create a custom role when existing predefined 
+roles grant more permissions than required and a more granular permission set is necessary.
+
+Whenever possible, I would prefer predefined roles scoped to specific resources because they are easier to maintain and
+follow Google's recommended access patterns. Custom roles should be used when there is a clear security or business
+requirement for additional granularity.
+
+| Role type  | Examples                                               | Characteristics                                                         |
+|------------|--------------------------------------------------------|-------------------------------------------------------------------------|
+| Basic      | `roles/owner`, `roles/editor`, `roles/viewer`          | Broad permissions across many Google Cloud services                     |
+| Predefined | `roles/pubsub.publisher`, `roles/storage.objectViewer` | Google-managed roles designed for specific services or responsibilities |
+| Custom     | `projects/my-project/roles/customPublisher`            | User-defined collections of supported IAM permissions                   |
+
+***
+
+**30. How does Application Default Credentials (ADC) work in a Java application running locally and on Cloud Run?**
+
+Application Default Credentials (ADC) is a credential discovery mechanism used by Google Cloud client libraries to automatically
+authenticate applications without explicitly configuring credentials in the application code.
+
+ADC searches for credentials in a defined order: first the GOOGLE_APPLICATION_CREDENTIALS environment variable, then the
+local ADC credentials file, and finally credentials provided by the Google Cloud metadata server.
+
+During local development, developers typically run `gcloud auth application-default login` to generate local credentials associated
+with their Google account. Alternatively, they can use service account impersonation.
+
+On Cloud Run, ADC obtains short-lived credentials for the service account attached to the service through the metadata
+server. This eliminates the need to store service account keys in the application.
+
+The same Java application code can therefore run locally and in production without changing its authentication logic.
+IAM roles assigned to the active identity determine which Google Cloud resources the application can access.
+
+***
+
+## Field 2.2 — Workload Identity & Service Authentication.
+
+**31. How can a Spring Boot application deployed on Cloud Run authenticate to Pub/Sub without storing service account keys?**
+
+A Spring Boot application running on Cloud Run can authenticate to Pub/Sub using Application Default Credentials (ADC) without
+storing service account keys.
+
+First, I would create a dedicated service account and attach it to the Cloud Run service. Then I would grant the service 
+account the `roles/pubsub.publisher` IAM role on the specific topic it needs to access, following the principle of least
+privilege.
+
+When the application uses the Google Cloud Pub/Sub Java library, ADC automatically obtains short-lived access tokens for
+the attached service account through the Cloud Run metadata server.
+
+The client library uses these credentials to authenticate API requests, while Google Cloud IAM verifies whether the service
+account has permission to publish messages.
+
+This approach avoids long-lived service account keys and provides secure, automatically managed authentication.
+
+***
+
+**32. What is Workload Identity Federation, and what security problems does it solve?**
+
+Workload Identity Federation is a Google Cloud authentication mechanism that allows external workloads to access Google
+Cloud resources using identities from trusted external identity providers, without storing long-lived service account keys.
+
+It supports scenarios such as GitHub Actions, AWS, Azure, and workloads running outside Google Cloud.
+
+The external workload obtains credentials from its identity provider and exchanges them through Google Cloud Security Token
+Service for short-lived federated credentials. The workload can then access supported Google Cloud resources directly or
+impersonate a Google Cloud service account, depending on the configuration.
+
+The main security benefit is eliminating long-lived service account keys, which reduces the risk of credentials leakage
+and removed the need for manual key distribution and rotation.
+
+Workload Identity Federation can aso be combined with IAM roles adn attribute-based conditions to restrict access to
+specific workloads, repositories, or environments.
+
+For example, GitHub Actions can use OIDC-based Workload Identity Federation to deploy a Sping Boot application to Cloud Run
+without storing a Google Cloud service account JSON key in GitHub secrets.
+
+| Security Problem                  | How WIF helps                                              |
+|-----------------------------------|------------------------------------------------------------|
+| Long-lived service account keys   | Uses short-lived credentials instead                       |
+| Credential leakage                | Avoids disrupting private Google Cloud keys                |
+| Manual key rotation               | Removes the need to rotate downloaded service account keys |
+| Identity management across clouds | Reuses trusted external identities                         |
+| Excessive access                  | Supports IAM conditions and restricted identity mappings   |
+
+***
+
+**33. How would you securely authenticate communication between two private Cloud Run services?**
+
+To Securely authenticate communication between two private Cloud Run services, I would use Google Cloud IAM and OIDC ID tokens.
+
+First, I would assign a dedicated service account to the calling Cloud Run service and grant it the `roles/run.invoker` 
+role on the target service.
+
+When making an HTTP request, the calling application obtains a Google-signed ID token through the Cloud Run metadata server,
+setting the target service URL as the token audience.
+
+The application sends the ID token in the `Authorization: Bearer` header over HTTPS. Cloud Run validates the token and checks
+whether the calling service account has permission to invoke the target service.
+
+This approach provides service-to-service authentication without storing service account keys or managing mTLS certificates
+manually. I would also configure ingress restrictions where network-level access controls are required.
+
+***
+
+**34. What is the difference between IAM-based authentication and application-level authorization?**
+
+IAM-based authentication and authorization control access to Google Cloud resources, while application-level authorization
+controls what an authenticated caller can do inside an application.
+
+For example, when one private Cloud Run service calls another, the caller sends a Google-signed OIDC ID token. Cloud Run
+authenticates the caller and uses IAM to verify that its service account has the `roles/run.invoker` role on the target Service.
+
+However, this permission only allows the caller to invoke the service. It does not determine which business operations the
+caller is allowed to perform.
+
+Application-level authorization is typically implemented using Spring Security, JWT scopes, roles, or business-specific
+access-control rules. For example, a user might be allowed to view payments but not issue refunds.
+
+Both layers are important: IAM protects access to cloud resources and service boundaries, while application-level authorization
+enforces fine-grained business permissions.
+
+***
+
+**35. A Java application running on GKE needs to access BigQuery. How would you configure workload identity 
+and permissions securely?**
+
+I would use Workload Identity Federation for GKE to allow the Java application to authenticate to BigQuery without storing
+service account keys.
+
+First, I would enable Workload Identity Federation for GKE and create a dedicated Kubernetes ServiceAccount for the application.
+I would configure the Pod to run using that ServiceAccount.
+
+Next, I would grant the workload identity only the required BigQuery IAM permissions. For a read-only application that executes
+queries, I would typically grant `roles/bigquery.dataViewer` on the specific dataset and `roles/bigquery.jobUser` on the
+project where query jobs are created.
+
+The Java application would use the BigQuery client library with Application Default Credentials. The GKE metadata server
+would provide credentials for the workload identity automatically.
+
+Where supported, I would use direct federated principal access. Alternatively, I could configure the Kubernetes ServiceAccount
+to impersonate a dedicated Google Cloud IAM service account.
+
+This approach avoids long-lived credentials, isolates permissions between workloads, and follows the principle of least privilege.
+
+***
+
+**36. What is Secret Manager, and why is it preferable to storing credentials in environment variables or source code?**
+
+Google Cloud Secret Manager is a managed service for securely storing and accessing sensitive information such as database
+passwords, API keys, and certificates.
+
+It provides encryption, IAM-based access control, secret versioning, rotation support, and audit logging.
+
+Secret Manager is preferable to storing credentials directly in source code or plaintext deployment configuration because
+it reduces the risk of accidental exposure and allows access to be centrally controlled and audited.
+
+For example, a Spring Boot application running on Cloud Run can use its dedicated service account and Application Default
+Credentials to retrieve a secret. I would grant the `roles/secretmanager.secretAccessor` role only on the specific secret 
+the application needs.
+
+Secret Manager also supports integration with Cloud Run through environment variables or mounted files, so applications do
+not need to embed sensitive values in container images or source code.
+
+***
+
+**37. How would you integrate Secret Manager with a Spring Boot application?**
+
+I would integrate Google Secret Manager with Spring Boot using Spring Cloud GCP Secret Manager, the Secret Manager Java 
+client library, or Cloud Run's native secret injection.
+
+For a typical Spring Boot application, I would use the Spring Cloud GCP Secret Manager starter and reference secrets in
+`application.yml` using the `sm://` syntax. This allows secrets to be injected into Spring components without hardcoding
+sensitive values.
+
+The application would authenticate using Application Default Credentials. On Cloud Run, ADC uses the service account attached
+to the service, so no service account JSON keys are required.
+
+I would grant the service account the `roles/secretmanager.secretAccessor` role on only the secrets it needs.
+
+Alternatively, Cloud Run can expose Secret Manager secrets as environment variables or mounted files.
+
+I would also consider secret rotation: secrets resolved at application startup may require a restart or refresh, while
+programmatic retrieval can support dynamic updates.
+
+| Approach                        | How it works                                              | Best suited for                                      |
+|---------------------------------|-----------------------------------------------------------|------------------------------------------------------|
+| Spring Cloud GCP Secret Manager | Integrates secrets into Spring's configuration system     | Database passwords, API keys, application properties |
+| Secret Manager Java client      | Retrieves secrets programmatically using Google's API     | Dynamic retrieval, custom caching, rotation handling |
+| Cloud Run secret injection      | Exposes secrets as environment variables or mounted files | Simple configuration with minimal Java changes       |
+
+***
+
+**38. What are the differences between accessing secrets through environment variables and mounted volumes in Cloud Run?**
+
+In Cloud Run, Secret Manager secrets can be exposed either as environment variables or as mounted files.
+
+When using environment variables, Cloud Run retrieves the secret when a container instance starts and makes its value
+available through the process environment. This is convenient for Spring Boot configuration properties, but running instances
+do not automatically receive updated secret values after rotation.
+
+When using mounted volumes, Cloud Run exposes the secret as a file in the container filesystem. The application reads the file
+when needed. If the volume references the `latest` secret version, subsequent file reads can retrieve an updated version
+without restarting the instance.
+
+Mounted volumes are particularly useful for certificates, private keys, and frequently rotated secrets, while environment
+variables are simpler for relatively static configuration.
+
+Both methods use Secret Manager and should be protected with least-privilege IAM permissions, typically 
+`roles/secretmanager.secretAccessor` on the specific secret.
+
+| Feature                       | Environment variable                             | Mounted Volume                                    |
+|-------------------------------|--------------------------------------------------|---------------------------------------------------|
+| Access method                 | `System.getenv()`                                | Read a file                                       |
+| Secret retrieval              | At instance startup                              | When the file is read                             |
+| Secret rotation               | Existing instances retain their value            | Can retrieve updated versions on subsequent reads |
+| Recommended version reference | Pin a specific version                           | `latest` can support rotation                     |
+| Startup behavior              | Instance startup fails if secret retrieval fails | Instance may start, but file reads can fail       |
+| Typical use case              | API keys, static configuration                   | Certificates, files, rotating secrets             |
+
+***
+
+**39. How would you implement secret rotation without disrupting application availability?**
+
+To rotate secrets without disturbing application availability, I would use a staged rotation strategy with overlapping credentials.
+
+First, I would create a new credentials in the target system and store it as a new version in Google Cloud Secret Manager,
+while keeping the old credentials valid.
+
+Next, I would update the application to use the new secret. For a Spring Boot application on Cloud Run, I could either implement
+dynamic secret refresh or deploy a new Cloud Run revision configured with the new secret version.
+
+For a revision-based approach, I would verify the health of the new revision and gradually shifty traffic to it, monitoring
+authentication failures, error rates, and latency.
+
+Once all instances and dependent credentials are using the new credentials, I would revoke the old credentials.
+
+The key is to avoid revoking the old credentials before the new one is fully deployed and validated. I would also ensure that
+components, such as database connection pools or HTTP clients reload their credentials correctly.
+
+***
+
+**40. Your application accidentally logs an authentication token. What immediate actions would you take, and how would
+you prevent similar incidents?**
+
+If an application accidentally logs an authentication token, I would immediately treat the token as compromised and revoke
+or invalidate it where possible. Depending on the credential type, I might also need to rotate the underlying credential or
+temporarily restrict the affected identity's permissions.
+
+Next, I would fix the logging implementation to prevent further exposure and restrict access to the affected logs.
+
+I would perform a security audit to determine who had access to the logs, whether the token was accessed or used, and
+which resources might have been compromised.
+
+I would also remediate the affected logs and any exported copies while preserving necessary incident evidence.
+
+To prevent similar incidents, I would avoid logging sensitive information such as authentication tokens, passwords, and
+authorization headers. Where request logging is necessary, I would use allowlist-based logging and centralized 
+sensitive-data masking.
+
+Finally, I would implement automated security tests, least-privilege access to Cloud Logging, and monitoring for accidental
+credential exposure.
+
+***
+
+| Question                      | Key takeaways                                                  |
+|-------------------------------|----------------------------------------------------------------|
+| Q36 - Secret Manager          | Centralized, encrypted, IAM-controlled secret storage          |
+| Q37 - Spring Boot integration | Spring Cloud GCP, ADC, native secret injection                 |
+| Q38 - Secret injection        | Environment variables ar startup; mounted volumes at read time |
+| Q39 - Secret rotation         | Overlapping credentials, dynamic refresh, revision rollout     |
+| Q40 - Credential leakage      | Revoke first, contain, investigate, remediate, prevent         |
+
+***
+
+## Field 2.4 — Networking & API Security.
+
+**41. What is the difference between public and private Cloud Run services?**
+
+A public Cloud Run service allows unauthenticated requests, whereas a private Cloud Run service requires callers to be
+authenticates and authorized through IAM.
+
+Cloud Run provides two independent security mechanisms: ingress configuration and IAM-based access control.
+
+Ingress configuration determines where requests can originate from, while IAM determines which identities are authorized to
+invoke the service.
+
+A private Cloud Run service can still be reachable from the public internet if its ingress is configured to allow all traffic.
+However, callers must provide a valid identity token and have the necessary invocation permissions, typically through the
+`roles/run.invoker` role.
+
+For internal microservices, I would combine restricted ingress with IAM-based authentication and dedicated service accounts
+to achieve defense in depth.
+
+***
+
+**42. How would you restrict access to a Cloud Run API so that only authorized internal services can invoke it?**
+
+I would restrict access to the Cloud Run API using a combination of internal ingress configuration and IAM-based authentication
+and authorization.
+
+First, I would configure the Cloud Run service with internal ingress and require authenticated invocation.
+
+Next, I would assign dedicated service accounts to the calling service and grant the `roles/run.invoker` role only to
+authorized service accounts at the target service level, following the principle of least privilege.
+
+I would also configure appropriate VPC routing to ensure that requests from the calling services are recognized as internal traffic.
+
+The calling services would obtain Google-signed OIDC ID tokens using their service account identities and include them in
+the HTTP Authorization header.
+
+This approach provides defense in depth by ensuring that only authenticated, authorized services originating from permitted
+internal network sources can invoke the API.
+
+| Requirement                      | Google Cloud mechanism  |
+|----------------------------------|-------------------------|
+| Restrict where request originate | Internal ingress        |
+| Restrict who can invoke the API  | IAM                     |
+| Identify the calling workload    | Service account         |
+| Authorize invocation             | `roles/run.invoker`     |
+| Authenticate HTTP requests       | OIDC ID token           |
+| Enable internal communication    | Appropriate VPC routing |
+
+***
+
+**43. What is the difference between ingress controls, egress controls, and IAM authorization in Cloud Run?**
+
+Ingress controls, egress controls, and IAM authorization address different aspects of Cloud Run security.
+
+Ingress controls determine where incoming requests can originate from, such as the public internet, internal networks, 
+or an external Application Load Balancer.
+
+Egress controls determine how outbound traffic from a Cloud Run service is routed. Using Direct VPC egress or Serverless 
+VPC Access, I can route traffic through a VPC and apply network security policies to restrict access to specific destinations.
+
+IAM authorization determines which authenticated identities are permitted to perform specific operations. For example, the
+`roles/run.invoker` role allows an authorized identity to invoke a Cloud Run service.
+
+These mechanisms complement each other and can be combined to provide defense in depth.
+
+| Mechanism         | Question it answers                         |
+|-------------------|---------------------------------------------|
+| Ingress           | Where can incoming requests originate from? |
+| Egress            | How and where can outgoing traffic travel?  |
+| Authentication    | Who is making the request?                  |
+| IAM authorization | What is that identity allowed to do?        |
+
+***
+
+**44. How would you securely connect a Cloud Run application to a private database through a VPC?**
+
+To securely connect a Cloud Run application to a private Cloud SQL database, I would configure the database with a private
+IP address and establish VPC connectivity using Direct VPC egress or Serverless VPC Access.
+
+I would assign a dedicated service account to the Cloud Run application and grant it the `roles/cloudsql.client` role
+when using Cloud SQL Auth Proxy or the Cloud SQL Java Connector.
+
+For a Spring Boot application, I would prefer the Cloud SQL Java Connector because it provides encrypted connections
+and IAM-based connection authorization without requiring a separate proxy process.
+
+For database authentication, I would use credentials stored in Secret Manager or automatic IAM database authentication.
+
+Finally, I would apply appropriate network security controls, least-privilege database permissions, and connection pooling.
+
+This approach allows the application to communicate securely with the database without exposing it to the public internet.
+
+| Feature                                        | VPC egress        | Cloud SQL Auth Proxy  | Java Connector  |
+|------------------------------------------------|-------------------|-----------------------|-----------------|
+| Provides private network connectivity          | Yes               | No                    | No              |
+| Provides encrypted database connections        | No, not by itself | Yes                   | Yes             |
+| IAM-based connection authorization             | No                | Yes                   | Yes             |
+| Requires a separate process                    | No                | Typically yes         | No              |
+| Supports automatic IAM database authentication | No                | Yes                   | Yes             |
+
+> "IAM permissions do not establish network connectivity, and network connectivity does not grant IAM permissions. 
+Cloud SQL Auth Proxy is not a VPN or a VPC connector."
+
+***
+
+**45. What are the roles of HTTPS, OAuth 2.0, OpenID Connect, and JWT in securing cloud-native applications?**
+
+HTTPS, OAuth 2.0, OpenID Connect, and JWT address different aspects of cloud-native application security.
+
+HTTPS provides secure communication through TLS, ensuring confidentiality, integrity, and server authentication.
+
+OAuth 2.0 is a delegated authorization framework that allows clients to access protected resources using access
+tokens without sharing the resource owner's credentials.
+
+OpenID Connect is an authentication layer built on top of OAuth 2.0. It allows applications to verify the identity of an
+authenticated subject using ID tokens.
+
+JWT is a standardized token format used to represent claims such as identity, issuer, audience, expiration, and optionally
+authorization information. Applications must validate the token's signature and relevant claims before trusting it.
+
+In Google Cloud, I would typically use OAuth 2.0 access tokens to access Google Cloud APIs and Google-signed OIDC ID tokens
+for authenticated service-to-service communication with Cloud Run.
+
+| Feature               | Access token                           | ID token                                     |
+|-----------------------|----------------------------------------|----------------------------------------------|
+| Primary purpose       | Access protected resources             | Assert an authenticated identity             |
+| Standard              | OAuth 2.0                              | OpenID Connect                               |
+| Format                | JWT or opaque                          | JWT                                          |
+| Google Cloud use case | Pub/Sub, BigQuery, Secret Manager APIs | Authenticated Cloud Run invocation           |
+| Authorization         | Scopes and resource-specific policies  | Target service separately checks permissions |
+
+***
+
+| Question                            | Key takeaway                                                                          |
+|-------------------------------------|---------------------------------------------------------------------------------------|
+| Q41 -Public vs private Cloud Run    | Network accessibility and authenticated invocation are independent                    |
+| Q42 - Internal API security         | Internal ingress + IAM + ID token                                                     |
+| Q43 - Network controls              | Ingress, egress and IAM serve different purposes                                      | 
+| Q44 - Private database connectivity | VPC connectivity + secure connector + database authentication                         |
+| Q45 - Security protocols            | HTTPS protects transport, OAuth authorizes, OIDC authenticates, JWT represents claims |
+
+***
+
+## Field 2.5 — Follow-up Challenges.
+
+**46. A Cloud Run service has the Editor role at the project level but only needs to publish Pub/Sub messages.
+How would you improve its security configuration?**
+
+The Editor role is a basic IAM role that grants excessively broad permissions and violates the principle of least privilege
+in this scenario.
+
+I would create a dedicated service account for the Cloud Run service and grant it the predefined `roles/pubsub.publisher`
+role at the specific Pub/Sub topic level rather than at the project level.
+
+I would configure Cloud Run to use this service account and rely on Application Default Credentials for authentication,
+without using service account JSON keys.
+
+After validating that the application can successfully publish messages, I would remove the unnecessary Editor role, taking
+into account any other workloads that might depend on the original service account.
+
+This approach reduces the attack surface and limits the potential blast radius if the application is compromised.
+
+| Role                      | Scope of permissions                    | Suitable?  |
+|---------------------------|-----------------------------------------|------------|
+| `roles/editor`            | Broad resource modification permissions | No         |
+| `roles/pubsub.admin`      | Full Pub/Sub administration             | No         |
+| `roles/pubsub.editor`     | Broad Pub/Sub modification permissions  | No         |
+| `roles/pubsub.subscriber` | Consume messages                        | No         |
+| `roles/pubsub.publisher`  | Publish messages                        | Yes        |
+
+| Dimension      | Question                                            |
+|----------------|-----------------------------------------------------|
+| Role selection | What operations can the identity perform?           |
+| Resource scope | On which resources can it perform those operations? |
+
+***
+
+**47. A developer downloads a service account JSON key to connect a local Java application to BigQuery.
+What risks does this introduce, and what alternatives would you recommend?**
+
+Downloading a service account JSON key introduces security risks because it contains a long-lived private key that could
+be accidentally exposed through source code repositories, logs, backups, or insecure local storage.
+
+If the key is compromised, an attacker could authenticate as the service account and access resources according to its 
+IAM permissions.
+
+For local Java development, I would recommend using Application Default Credentials with the developer's Google account 
+or service account impersonation.
+
+Service account impersonation allows the developer to obtain short-lived access tokens without downloading or managing
+private keys.
+
+I would also apply the principle of least privilege by granting only the necessary BigQuery permissions at the appropriate
+resource scope.
+
+For production workloads, I would use attached service accounts or Workload Identity Federation.
+
+Although Secret Manager can securely store credentials, I would prefer eliminating service account keys entirely rather than
+managing them in a secret store.
+
+> "Whenever a certification question proposes storing, distributing, or rotating service account JSON keys, 
+first consider whether you can eliminate those keys entirely."
+
+***
+
+**48. Two Cloud Run services communicate through HTTP. The receiving service must reject requests from unauthorized callers.
+Design a secure service-to-service authentication mechanism.**
+
+I would implement secure service-to-service authentication using dedicated service accounts, IAM authorization, Google-signed
+OIDC ID tokens, and HTTPS.
+
+First, I would configure the receiving Cloud Run service to require authenticated invocation.
+
+Next, I would grant the calling service's dedicated service account the `roles/run.invoker` role on the receiving service,
+following the principle of least privilege.
+
+The calling application would obtain a short-lived OIDC ID token using its service account identity, with the receiving
+service URL as the token audience.
+
+It would include the token in the Authorization header of each HTTPS request.
+
+Cloud Run would validate the token and verify the caller's IAM permissions before forwarding the request to the application.
+
+This approach provides encrypted communication, keyless authentication, and identity-based authorization without requiring
+custom mTLS infrastructure of long-lived service account keys.
+
+> Service account -> Workload identity.
+
+> OIDC ID token -> Authentication.
+
+> `roles/run.invoker` -> Authorization.
+
+> HTTPS -> Transport security.
+
+> Internal ingress (optional) -> Network isolation. 
+
+> Remember: for standard Cloud Run service-to-service authentication, think OIDC + IAM + HTTPS first, not mTLS.
+
+***
+
+**49. Your application must access a third-party API using a rotating API key. How would you manage the key throughout
+development, testing, and production?**
+
+I would use Google Cloud Secret Manager to securely store and manage third-party API keys.
+
+I would maintain separate API keys and secrets for development, testing, and production to ensure environment isolation.
+
+Each application would use a dedicated identity and receive the `roles/secretmanager.secretAccessor` role only on the 
+required secret.
+
+I would use Application Default Credentials to access Secret Manager without introducing additional service account keys.
+
+To automate rotation, I would configure a Secret Manager rotation schedule and use Pub/Sub notifications to trigger a 
+dedicated rotation service.
+
+The rotation service would generate a new API key at the third-party provider, store it as a new secret version, and allow
+the application to refresh its credentials.
+
+After validating the new key and ensuring that all application instances have switched to it, I would revoke the previous key.
+
+Finally, I would enable audit logging and monitor authentication failures to detect potential security or rotation issues.
+
+| Responsibility               | Solution                                   |
+|------------------------------|--------------------------------------------|
+| Secure storage               | Secret Manager                             |
+| Authentication               | ADC                                        |
+| Access control               | IAM                                        |
+| Environment isolation        | Separate secrets and identities            |
+| Credential history           | Secret versioning                          |
+| Rotation trigger             | Rotation schedule + Pub/Sub                |
+| Actual credential rotation   | Custom rotation service                    |
+| Availability during rotation | Credential overlap and application refresh |
+| Security monitoring          | Audit logs                                 |
+
+> Secret storage is only one part of secret management. A complete solution must address the entire credential lifecycle:
+creation, storage, access, rotation, validation, revocation, and auditing.
+
+***
+
+**50. A Spring Boot application deployed on GKE receives 403 Permission Denied errors when accessing Cloud Storage.
+Describe your troubleshooting process.**
+
+A 403 Permission Denied error typically indicates an authorization failure or another security policy restrictions.
+
+I would first inspect the application logs to identify the failed Cloud Storage operation, the required permission, and the
+target resource.
+
+Next, I would verify which Kubernetes ServiceAccount the application is using and ensure that Workload Identity Federation 
+for GKE is configured correctly.
+
+I would check whether the application uses Application Default Credentials and whether the actual workload identity has the
+required IAM permissions on the target Cloud Storage bucket.
+
+For example, if the application only needs to read objects, I would grant the `roles/storage.objectViewer` role at the bucket
+level.
+
+I would use Cloud Audit Logs and IAM Policy Troubleshooter to identify the actual caller and the reason for the authorization
+failure.
+
+If the IAM configuration is correct, I would investigate additional restrictions such as IAM deny policies and VPC Service 
+Controls.
+
+Finally, I would apply the minimum required configuration change and verify that the application can successfully access
+Cloud Storage without introducing excessive permissions.
+
+**Essential cheat sheet**
+
+| Scenario                                     | Preferred solution                                              |
+|----------------------------------------------|-----------------------------------------------------------------|
+| Local Java authentication                    | ADC with user credentials                                       |
+| Local testing as a service account           | Service account impersonation                                   |
+| External CI/CD authentication                | Workload Identity Federation                                    |
+| GKE accessing Google Cloud APIs              | Workload Identity Federation for GKE                            |
+| Cloud Run accessing Google Cloud APIs        | Attached service account + ADC                                  |
+| Cloud Run invoking another Cloud Run service | OIDC ID token + `roles/run.invoker`                             |
+| Publishing Pub/Sub messages                  | `roles/pubsub.publisher`                                        |
+| Reading Cloud Storage objects                | `roles/storage.objectViewer`                                    |
+| Reading secrets                              | `roles/secretmanager.secretAccessor`                            |
+| Private Cloud SQL connectivity               | Direct VPC egress + private IP + secure database authentication |
+| Third-part API credentials                   | Secret Manager + automated rotation                             |
+| Static outbound public IP                    | VPC egress + Cloud NAT                                          |
+| IAM troubleshooting                          | Actual principal + permission + resource + audit logs           |
+
+***
 
 
 
